@@ -1,0 +1,135 @@
+ % **************************************************************************************************************
+% A PhD thesis suitable for submission at the University of Sussex
+%
+% Copyright (c) 2018 Martin Jung
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE. 
+%
+% **************************************************************************************************************
+
+% Document class via KOMA script
+%\documentclass[oneside,openright,titlepage,numbers=noenddot,headinclude,a4paper,%1headlines,% letterpaper 
+%                footinclude=true,cleardoublepage=empty,abstractoff, % <--- obsolete, remove (todo)
+%                BCOR=5mm,paper=a4,fontsize=11pt,
+%                english,%
+%                ]{scrreprt}
+\documentclass[a4paper,11pt,oneside]{memoir}
+
+\newcommand{\myTitle}{Jet Physics at the LHC and Beyond \xspace}
+\newcommand{\mySubtitle}{An even cooler subtitle \xspace}
+\newcommand{\myKeywords}{things, I, have, done, or, wish, I, had, done \xspace}
+\newcommand{\myDegree}{\xspace}
+\newcommand{\myName}{Natasha Peake\xspace}
+\newcommand{\myNameLink}{http://www.sussex.ac.uk/profiles/357982}
+\newcommand{\myProf}{Andrea Banfi\xspace}
+\newcommand{\myOtherProf}{Andrea Banfi\xspace}
+\newcommand{\mySupervisor}{Andrea Banfi\xspace}
+\newcommand{\myFaculty}{Faculty of Science\xspace}
+\newcommand{\myDepartment}{Department of Theoretical Particle Physics\xspace}
+\newcommand{\myCenter}{Center for XX\xspace}
+\newcommand{\myUni}{University of Sussex\xspace}
+\newcommand{\myLocation}{Brighton\xspace}
+\newcommand{\myTime}{\today \xspace}
+\newcommand{\myVersion}{version 1.0\xspace}
+
+% Load all settings and packages
+\input{settings}
+
+% **************************************************************************************************************
+%---------------------------------------------------
+% BEGIN DOCUMENT
+%---------------------------------------------------
+
+\begin{document}
+%\frenchspacing
+%\raggedbottom
+%\pagenumbering{roman}
+%\pagestyle{plain}
+
+\makeatletter
+\renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
+\makeatother
+\pagestyle{custom}% Set page style to custom
+\chapterstyle{hansen} % Set chapter style
+
+%---------------------------------------------------
+% PREAMBLE: roman page numbering i, ii, iii, ...
+%---------------------------------------------------
+\begingroup
+  \frontmatter
+  \pagenumbering{roman}
+  \clearpage\input{front/Titlepage} % Title page
+  \clearpage\input{front/Dedication} % Dedication page
+  \clearpage\input{front/Acknowledgments} % Acknowledgements page
+  \clearpage\input{front/Declaration} % Declaration
+  \clearpage\input{front/Abstract} % Abstract page
+\endgroup
+
+%---------------------------------------------------
+% TABLE OF CONTENTS, LISTS OF TABLES & FIGURES
+%---------------------------------------------------
+
+\begingroup
+  \newpage  
+  \setlength{\parskip}{0pt} % To restore distance between Chapters, sections and subsections in the table of contents
+  \pdfbookmark[0]{Contents}{contents_bookmark}
+  \pagestyle{custom}% Set page style to custom
+  \chapterstyle{hansen} % Set chapter style
+  \tableofcontents* % as per in memoir class 
+\endgroup
+
+%---------------------------------------------------
+% MAIN THESIS TEXT: arabic page numbering 1, 2, 3, ...
+% THESIS CONTENT - CHAPTERS
+%---------------------------------------------------
+
+\mainmatter
+
+\pagenumbering{arabic} %Start official numbering here
+%\setcounter{page}{90} % Manual adjustment if necessary
+
+% Modify the header style
+%\pagestyle{scrheadings}
+
+\begingroup
+  \input{content/01Chapter}  
+\endgroup
+
+%---------------------------------------------------
+% APPENDICES
+%---------------------------------------------------
+%\appendix
+%\begingroup
+%  \input{content/Chapter01}
+%\endgroup
+%\backmatter
+%\input{front/Acronyms.tex}
+
+%---------------------------------------------------
+% BIBLIOGRAPHY
+%---------------------------------------------------
+%\clearpage
+%\phantomsection
+%\bibliography{Chapters/bibliography}
+%\clearpage\input{front/Colophon}
+
+%---------------------------------------------------
+% END DOCUMENT
+%---------------------------------------------------
+\end{document}
