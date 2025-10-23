@@ -1,0 +1,191 @@
+\chapter{Resummation}
+
+The ARES (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. {\color{purple} For the very first time NNLL resummation has been performed for Hadronic collisions using the ARES method.} In this section we will discuss the need for resummation, observables which are often used in resummation, along with a description of both formalisms (CAESAR and ARES). We will also present new work in this chapter - showing how initial state radiation has been calculated in ARES for the first time.
+
+\section{Motivation}
+\emph{Include: need for resummation, event-shapes explanation and examples, plots showing}
+
+\subsection{Resummation and event-shapes}
+Despite the clear advantage of IRC safe observables, issues still arise. Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
+Every power of $\alpha_s$ and therefore each emission can give up to two logarithms, coming from either the soft or collinear divergence. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$.
+\\\\The ARES method (discussed in section \ref{sec: Resummation}) looks at event-shape resummation.
+Event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. \emph{18/09/2024 Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.} 
+
+Examples of event shapes (and the ones we are looking at in our paper) are: one-jettiness, transverse thrust, and thrust minor. More information on event shapes can be found in \cite{Banfi:2016yyq}. 
+The cumulative distribution for an event-shape is defined as the integral of the differential distribution up to some value $v$, normalised by the total cross-section:
+\begin{equation}
+	\Sigma(v)\equiv\frac{1}{\sigma}\int_0^vdV\frac{d\sigma}{dV}.
+	\label{eq:total-cummulant}
+\end{equation}
+In the region $\alpha_sL\sim1$, we can expand $\Sigma(v)$ in terms of the coupling $\alpha_s$ and logarithms $L$ in the following way:
+\begin{equation}
+	\Sigma(v)\simeq\exp\{Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)+\cdots\}\,.
+	\label{eq:resummed-cummulant}
+\end{equation}
+Here, the exponent takes into account terms to all orders in $\alpha_s$, to a given logarithmic order. This is where a LL calculation determines the term $g_1(\alpha_sL)$, which resums contributions of the form $\alpha_s^nL^{n+1}$ in $\ln\Sigma(v)$ to all orders in perturbation theory. Next, NLL corresponds to computing the terms $g_1$ and $g_2$, hence resumming $\alpha_s^nL^{n}$. \\\\
+With all the necessary components in place, we can now proceed to the main task at hand: discussing the ARES method.
+
+
+
+
+\section{CAESAR}
+\emph{Include: introducing the formalism, explaining what it has been used for}
+
+\section{ARES}
+\emph{Include: stating some of the things done by Luke, not as much detail necessary I think, mention ISR and exactly how this is done as this is new.}
+
+\subsection{Observable Requirements}
+For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}:
+\begin{description}
+   \item[Continuously global] A global observable is one which is sensitive to all of the emissions in an event. An observable which is continuously global adds another feature such that the scaling of the observable with respect to the energy of the emission is the same everywhere in the phase space. If an observable is not continuously global, it results in the presence of additional large logarithms known as non-global logarithms (these will not be discussed in this report).
+ \item[rIRC safety] In section \ref{sec: IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
+ 
+\end{description}
+
+\subsection{Formulation}
+The ARES method begins by understanding that any rIRC safe observable $V$, in the presence of a single soft emission collinear to leg $\ell$, can be parameterised in the following way \cite{Arpino:2019ozn}:
+\begin{equation}
+	V(\{p\},k)\simeq V_{\text{sc}}(k)\equiv d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^ae^{-b_\ell\eta^{(\ell)}}g_\ell(\phi^{(\ell)})\,,
+	\label{eq:general-sc-V}
+\end{equation}
+where $k_t^{(\ell)},\eta^{(\ell)},$ and $\phi^{(\ell)}$ are the transverse momentum, rapidity, and azimuthal angle of the emission $k$ with respect to the parent emitter $p_\ell$ and $a, b_{\ell}$ and $d_\ell$ are parameters. Note that $d_\ell$ is a coefficient which depends on the underlying Born kinematics, and we have introduced and arbitrary \enquote{resummation} scale $Q$ which we use as a reference normalisation scale for transverse momenta. 
+ $a, b_{\ell}, d_\ell, g_\ell$ 
+%Unsure if its best to put this here. 
+\\ \\
+Furthermore, we must consider an observable $V(\{\tilde{p}\},k_1,\cdots , k_n)$ which is a non-negative function of final-state $\{\tilde{p}\}$ and additional emissions $\{k_i\}$. Any continuously global, rIRC safe observable $V$ goes smoothly to zero for the born event such that:
+\begin{equation}
+V(\tilde{p}_1,\cdots , \tilde{p}_n)=V(p_1,\cdots ,p_n)=0\, .
+	\label{eq:Born-observable}
+\end{equation}
+It is clear to see that the tilde denotes the final-state moment recoil due to the extra emissions and that there is a mapping between the recoiled and the Born momenta.
+Additionally, in our case of the three-jet observable, we expect the observable to approach zero for momentum configurations that approach the limit of 3 narrow jets. 
+We consider the cumulative distribution of a three-jet event shape $V(p_1,\cdots ,p_n)$, defined as the following:
+\begin{equation}
+	\Sigma_{\mathcal{H}}(v)\equiv\frac{1}{\sigma_{\mathcal{H}}}\sum_{n=3}^{\infty}\int d\Phi_n\frac{d\sigma_n}{d\Phi_n}\mathcal{H}(p_1,\cdots ,p_n)\,\Theta(v-V(p_1,\cdots ,p_n))\,,
+	\label{eq:hard-cumulant}
+\end{equation}
+where $d\Phi_n$ is the $n$-particle phase space, $d\sigma_n/d\Phi_n$ is the normalised differential cross-section for producing $n$ final-state particles, and 
+$\mathcal{H}(p_1,\cdots ,p_n)$ is an event selection function which is 1 for events with 3 or more hard jets and 0 otherwise. This can be calculated through jet algorithms but we will not be discussed in this report. \\ \\
+In near-to-planar kinematics i.e. when $v\ll1$, we find that $\Sigma_{\mathcal{H}}(v)$ becomes the following:
+ \begin{equation}
+	\Sigma_{\mathcal{H}}(v)\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_3\frac{d\sigma_3}{d\Phi_3}\Sigma(\{p_1,p_2,p_3\},v)\,\mathcal{H}(p_1,p_2,p_3)\,.
+	\label{eq:hard-cumulant-approx}
+\end{equation}
+In the region where $v\ll1$, large logarithms emerge in the function $\Sigma(\{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\},v)$. Our aim is to be able to resum these logarithms, up to a given logarithmic accuracy to all orders in the strong coupling (in our case NNLL). In fact, we find that this is equal to the following:
+\begin{equation}
+	\Sigma(\{p_1,p_2,p_3\},v)\equiv\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n)\int\prod_{i=1}^n[dk_i]\,|\mathcal{M}(\{\tilde{p}\},k_1,\cdots ,k_n)|^2\,\Theta(v-V(\{\tilde{p}\},k_1,\cdots ,k_n)\, ,
+	\label{eq:born-cumulant}
+\end{equation}
+where $S(n)$ is the symmetry factor e.g. $1/n!$ for $n$ identical gluons. Moreover, $\mathcal{V}(\{\tilde{p}\}$ includes all virtual corrections to the Born process, and $|\mathcal{M}(\{\tilde{p}\},k_1,\cdots ,k_n)|^2$ contains all real corrections.
+Using properties of rIRC safety and derivations found in \cite{Banfi:2018mcq}, we find that the NNLL master formula, in the presence of initial soft radiation only, is the following:
+\begin{multline}
+  \label{eq:Sigma-NNLL-fs}
+  \Sigma(\{p_1,p_2,p_3\},v)= e^{-R_{\mathrm{NNLL}}(v)}\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
+      +\frac{\alpha_s(Qv^{\frac{1}{a+b_3}})}{2\pi}C_{\mathrm{hc},3}^{(1)}) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
+\end{multline}
+where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and
+$\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
+In this formula, \(\mathcal{F}_{\mathrm{NLL}}\) and \(\delta\mathcal{F}_{\mathrm{NNLL}}\) have a general expression for any rIRC safe observable and are single logarithmic functions. This allows us to express them in terms of the single-logarithmic quantity \(\lambda\). We find that \(\mathcal{F}_{\mathrm NLL}\) is purely NLL, while the terms containing \(H^{(1)}, C_{\mathrm{hc},3}^{(1)}\), and \(\delta\mathcal{F}_{\mathrm NNLL}\) are of order NNLL. \\ \\
+The idea is that at NLL, there are a collection of soft-collinear emissions. 
+At NNLL, we still have this ensemble of soft-collinear emission contributing terms of $(\alpha_s^n L^n)$. However, in addition to this, there will be \emph{one} of the following: hard-collinear emission, soft wide-angle emission or, gluon splitting emission. Each one will contribute a factor of the coupling such that the terms are of order $\alpha_s^{n+1} L^n$, achieving NNLL accuracy.
+We will now describe all the quantities within this master formula:
+\begin{itemize}
+\item the ``radiator'' $R_{\mathrm{NNLL}}(v)$ includes all virtual
+  corrections of soft and/or collinear origin. These are divergent,
+  but their divergences cancel with those corrections from real radiation. We will discuss this in a little more detail later in section \ref{sec:radiator}.
+\item \emph{Resolved} soft and collinear emissions widely separated in
+  angle, and the corresponding virtual corrections, build up to the
+  NLL function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$. To compute this
+  function one must obtain the expression for the observable
+  $V(\{\tilde p\},k_1,\dots,k_n)$ when $k_1,\dots, k_n$ are soft
+  \emph{and} collinear. In particular, for rIRC safe observables, the
+  following limit exists
+  \begin{equation}
+    \label{eq:V-lim}
+    \lim_{v\to 0}\frac{V(\{\tilde p\},k_1,\dots,k_n)}{v} \equiv \frac{V^{\mathrm sc}(\{\tilde p\},k_1,\dots,k_n)}{v}\,.
+  \end{equation}
+  Given $V^{\mathrm{sc}}(\{\tilde p\},k_1,\dots,k_n)$, the function $\mathcal{F}_{\mathrm NLL}(\lambda)$ can be computed using the general formula
+ \begin{equation}
+    \label{eq:FNLL-formula}
+    \mathcal{F}_{\mathrm{NLL}}(\lambda) = \int\! \dZ \,\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,,
+  \end{equation}
+  where we have defined the soft-collinear measure $\dZ$ through the formula
+  \begin{multline}
+    \label{eq:dZ-def}
+    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,.
+\end{multline}
+In the above formula, we have introduced the rescaling variables
+$\zeta_i\equiv V^{\mathrm{sc}}(\{\tilde p\},k_i)/v$. With
+$\{\zeta_i,\phi_i^{(\ell_i)}\}$ fixed for event shapes, one can freely
+integrate over emissions' rapidities, which yields a jacobian factor
+$R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg.
+
+\item $H^{(1)}$ and $C_{\mathrm{hc},3}^{(1)}$ are coefficients of order $\alpha_s(Q)$ due to the virtual corrections. Multiplying these by $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, we obtain terms of order NNLL. 
+
+\item All other \emph{resolved} soft or final-state hard-collinear emissions and the corresponding virtual corrections build the NNLL function
+  $\delta\mathcal{F}_{\mathrm NNLL}(\lambda)$. More precisely, these
+  consist of a single soft and/or collinear ``special'' emission,
+  accompanied by an arbitrary number of soft and collinear emissions
+  widely separated in angle (and the corresponding virtual
+  corrections). The function $\delta\mathcal{F}_{\mathrm NNLL}(\lambda)$
+  is the sum of various terms, and comes from relaxing different approximations that were used within the NLL calculation. %see what this means by the NLL calculation and reword this part.
+  For a three-jet event shape we find this to be the following:
+\begin{equation}
+    \label{eq:dFNNLL}
+    \delta\mathcal{F}_{\mathrm NNLL} = \delta\mathcal{F}_{\mathrm sc}+\delta\mathcal{F}_{\mathrm hc}+\delta\mathcal{F}_{\mathrm rec}+\Delta\mathcal{F}_{\mathrm rec}+\delta\mathcal{F}_{\mathrm wa}+\Delta\mathcal{F}_{\mathrm wa}+\delta\mathcal{F}_{\mathrm correl}\,,
+\end{equation}
+where each contribution reflects the region of phase space spanned by the special emission.%Work out what this special emission is. 
+
+Note that the three-jet event introduces two new functions $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ which do not occur in the two-jet scenario. All these contributions within~\ref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$ of the appropriate weight function $G(\{k_i\})$, as shown in equation~(\ref{eq:dZ-def}). 
+\end{itemize}
+
+
+\subsection{The Radiator}
+\label{sec: radiator}
+At NNLL accuracy, with more than two emitting legs, it is convenient
+to split the radiator $R_{\NNLL}(v)$ into the sum of a soft part $R_s(v)$ and a hard-collinear part $R_{\mathrm hc}(v)$:
+\begin{equation}
+  \label{eq:nnll-radiator}
+  R_{\NNLL}(v) = R_s(v)+R_{\mathrm hc}(v)\,.
+\end{equation}
+The soft radiator $R_s$ includes contributions due to the unresolved soft and/or collinear radiation such that the radiator includes terms of order LL and above. The hard-collinear radiator, on the other hand, is due to the unresolved hard-collinear radiation and therefore contributes terms of NLL accuracy and above. In fact it is found in \cite{Arpino:2019ozn}, a master formula for  $R_{\mathrm NNLL}(v)$, whose explicit expression depends only on the observable properties with a single soft and collinear emission $a,b_\ell,d_\ell,g_\ell(\phi)$, which are found using equation~\ref{eq:general-sc-V}. The soft radiator is found to be:
+\begin{equation}
+R_s(v)=\sum_{(ij)}C_{(ij)}\sum_{\ell\in(ij)}\mathcal{R}_{\ell}^{(ij)}(v)\,,
+\label{eq:soft-radiator}
+\end{equation}
+where $C_{(ij)}$ is the Casimir operator 
+such that in our case, $C_{(q\bar{q})}=2C_F-C_A$ and $C_{(gq)}=C_{(g\bar{q})}=C_A$. The full expression for $\mathcal{R}_{\ell}^{(ij)}$ i.e. the soft radiator for each dipole is, is contained in \cite{Arpino:2019ozn}.
+The hard-collinear radiator is found to be the following:
+\begin{equation}
+	R_{\mathrm{hc}}(v)=\sum_{\ell}R_{\mathrm{hc},\ell}(v)\,,
+	\label{eq:radiator-hc}
+\end{equation}
+such that
+\begin{equation}
+	R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s}{\pi}h_3^{(\ell)}(\lambda)\,,
+	\label{eq:radiator-hc-more}
+\end{equation}
+where the functions $h_2^{(\ell)}, h_3^{(\ell)}$ depend solely on $a$ and $b_{\ell}$ and are again contained within \cite{Arpino:2019ozn}.
+
+\subsubsection{The contributions to $\delta\mathcal{F}_{\mathrm{NNLL}}$}
+%Re-word this title
+The corrections, $\delta\mathcal{F}_{\mathrm{sc}}, \delta\mathcal{F}_{\mathrm{wa}}, \Delta\mathcal{F}_{\mathrm{wa}}, \delta\mathcal{F}_{\mathrm{correl}}$ all have origin in resolved soft emissions, whereas the terms $\delta\mathcal{F}_{\mathrm{hc}}, \delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$ have hard-collinear nature. 
+% Each resolved real emission is found by requiring that $V(\{\tilde{p}\},k_i)>\epsilon v$ such that there is a lower bound on the phase-space where a resolved emission can take place and because of rIRC safety, $\epsilon$ is independent of $v$. 
+
+\begin{description}
+\item[Soft emissions]: $\delta\mathcal{F}_{\mathrm sc}$ represents the running coupling corrections to the real emissions in the CMW scheme. It also accounts for the correct rapidity boundary for a single soft-collinear emission. $\delta\mathcal{F}_{\mathrm wa}$ arises from a soft emission near $\eta=0$ and accounts for the variation between the observable and its soft-collinear parametrisation for a single soft wide-angle emission accompanied by an ensemble of soft-collinear gluons. $\Delta\mathcal{F}_{\mathrm wa}$ is the NNLL contribution arising from wide angled resolved emissions. Finally, $\delta\mathcal{F}_{\mathrm correl}$ addresses the treatment of the splitting of a single soft and collinear gluon.
+
+\item[Hard-collinear emissions]: $\delta\mathcal{F}_{\mathrm hc}$ originates from the emission of a hard-collinear parton at the level of the squared matrix element. $\delta\mathcal{F}_{\mathrm rec}$ is due to a hard-collinear emission (at the level of the kinematics) recoiling against the soft-collinear ensemble of emissions. This includes contributions due to spin correlations and hence may depend on the underlying Born momenta. $\Delta\mathcal{F}_{\mathrm rec}$ appears for the first time in near-to-planar three jet events. This accounts for correlations which occur between the spin of a hard collinear gluon and the event plane. 
+\end{description}
+\subsection{Initial State Radiation}
+ {\color{purple} For the very first time NNLL resummation has been performed for Hadronic collisions using the ARES method.}
+
+
+
+
+
+
+
+
+\section{Matching}
+\emph{Include something on matching with fixed order i.e. something to essentially show that resummation is necessary. I think here we can add in some of the plots calculated from the numerical work done in hhHjet project.}

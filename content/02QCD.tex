@@ -1,0 +1,260 @@
+\chapter{Quantum Chromodynamics}
+\emph{Include: perturbation theory, UV/IR divergences, subtraction schemes (might need this for explaining the hard function in ARES)}
+{\color{green} Need to add QCD Lagrangian and how Feynman rules are founded I think first. Also need reference to the Standard Model but explain we work purely in QCD. We may need to have Higgs mechanism since we are doing Higgs plus one jet.}
+\section{QCD: The basics}
+Quantum chromodynamics (QCD) is an $SU(3)$ non-Abelian gauge theory describing the strong interaction between quarks and gluons - collectively referred to as partons. Quarks are Dirac spinors that transform under the fundamental representation of the gauge group $SU(3)$, while gluons are spin-1 vector gauge bosons transforming under the adjoint representation. Acting as mediators of the strong force, gluons facilitate interactions among quarks. Partons possess a type of charge known as colour: quarks exhibit three colours - red, green, and blue - whereas gluons have eight colour states. Quarks combine to form bound states called hadrons, which include mesons ($q\bar{q}$) with integer spin and baryons ($qqq$) with half-integer spin. \\ \\
+In QCD, the interaction vertices can be derived from the QCD Lagrangian. The corresponding Feynman rules for quark-gluon and gluon self-interactions are depicted in figures \ref{fig:qgg}, \ref{fig:3-gluon}, and \ref{fig:gggg}. These vertices are essential for computing the scattering amplitudes of a given process, which in turn allows us to determine the cross-section which describes the probability of a given event. 
+
+\begin{figure} [h]
+    \centering
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (a);
+            \vertex[right=2cm of a] (b);
+            \vertex[above right=1.5cm and 1cm of b] (c);
+            \vertex[below right=1.5cm and 1cm of b] (d);
+            
+            \diagram* {
+                (a) -- [gluon] (b),
+                (b) -- [fermion] (c),
+                (b) -- [anti fermion] (d),
+            };
+        \end{feynman}
+        \node[left] at (a) {$\mu,a$};
+
+        \node[right=1.5cm of b] { $=-ig_s\gamma^\mu\,t_R^a$ };
+        
+    \end{tikzpicture}
+        \caption{The three-point gluon-quark vertex.}
+        \label{fig:qgg}
+\end{figure}
+%Second Feynman diagram.
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (a);
+            \vertex[right=2cm of a] (b);
+            \vertex[above right=1.5cm and 1cm of b] (c);
+            \vertex[below right=1.5cm and 1cm of b] (d);
+            
+            \diagram* {
+                (a) -- [gluon, momentum={$p_1$}] (b),
+                (b) -- [gluon, momentum={$p_2$}] (c),
+                (b) -- [gluon, momentum={$p_3$}] (d),
+            };
+        \end{feynman}
+        \node[left] at (a) {$\alpha, a$};
+        \node[above right] at (c) {$\beta, b$};
+        \node[below right] at (d) {$\gamma, c$};
+        \node[right=1.5cm of b] { $= -g_sf^{abc}\left[(p_1+p_2)_{\gamma}\,\eta_{\alpha\beta}+(p_3-p_2)_{\alpha}\,\eta_{\beta\gamma}-(p_1+p_3)_{\beta}\,\eta_{\alpha\gamma}\right]$ };
+    \end{tikzpicture}
+    \caption{The three-point gluon vertex}
+    \label{fig:3-gluon}
+\end{figure}
+%Sort the arrows, momenta and captioning out. 
+%Third Feynman diagram. 
+\begin{figure} [h]
+\centering
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (v) at (0,0);
+    \vertex [above left=of v] (a) {\(\alpha, a\)};
+    \vertex [below left=of v] (b) {\(\beta, b\)};
+    \vertex [above right=of v] (c) {\(\gamma, c\)};
+    \vertex [below right=of v] (d) {\(\delta, d\)};
+    
+    \diagram* {
+      (v) -- [gluon] (a),
+      (v) -- [gluon] (b),
+      (v) -- [gluon] (c),
+      (v) -- [gluon] (d),
+    };
+  \end{feynman}
+  \node[right=3cm of v] (eq) {
+    \( = \quad \text{$-ig_s^2\left[f^{abe}f^{cde}(\eta_{\alpha\gamma}\eta_{\beta\delta}-\eta_{\alpha\delta}\eta_{\beta\gamma})+{\text{cyclic\,permutations\,of}} \,(a, b, c, d)\right]$} \)
+  };
+\end{tikzpicture}
+\caption{The four-point gluon vertex.}
+\label{fig:gggg}
+\end{figure}
+In these figures, the $3\times3$ matrix in colour space, $t_R^a$, represents the colour factor, while the structure constants $f^{abc}$  belong to the gauge group $SU(3)$. The parameter $g_s$ is related to the strong coupling of QCD $\alpha_s$ by the following: {\color{blue}Check this equation.} 
+\begin{equation}
+	\alpha_s(Q)=\frac{g_s^2(Q)}{4\pi}\,,
+	\label{eq:coupling-constant}
+\end{equation}
+where the $Q$ is merely describing the dependence on energy scale. 
+{\color{blue}Unsure whether to put $Q^2$ in the brackets}
+Due to the nature of QCD, $\alpha_s$ increases as  $Q$ decreases. {\color{blue} Add more about this - 'due to the nature is a bit vague - explain why.} In the regions of low energy, where $\alpha_s$ becomes large, quark confinement occurs. This is the phenomenon that quarks cannot exist in isolation and instead they are bound together with gluons to form hadrons.  {\color{blue} Bound together with gluons?} This region is the non-perturbative regime and is where perturbation theory is no longer applicable. \\ \\
+Conversely, at high energies where $Q$ is large and $\alpha_s$ is small, QCD exhibits asymptotic freedom. In this regime, quarks and gluons behave as free particles and where perturbation theory occurs (again explained later) provides us with a good approximation. This behaviour is illustrated in figure~\ref{fig:alpha_s_plot}, which shows the running of $\alpha_s$ with energy scale.  {\color{blue}Generate a better graph.} Throughout this thesis, we may assume to always be working in the high-energy limit, exploiting the property of asymptotic freedom.
+{\color{blue}Rewrite this.} 
+{\color{green}Add plot.}
+
+\subsection{Perturbation Theory}
+As discussed in the previous section, perturbative QCD (pQCD) can be used in the high-energy limit. We will now discuss the details of pQCD. Looking at the vertices in figures \ref{fig:qgg} and \ref{fig:3-gluon} {\color{blue}(what about the other figure - surely this gives two emissions (fact check this))}, we see that every gluon emission gives rise to one power of $g_s$. The cross-section can therefore be expressed as a power series in $\alpha_s$:
+\begin{equation}
+	\sigma=c_0+c_1\cdot\alpha_s+c_2\cdot\alpha_s^2+\cdots\,,
+	\label{eq:pQCD}
+\end{equation}
+where $c_i$ are constant terms {\color{blue}( Known as what?).} 
+Since $\alpha_s$ is small in the high-energy limit {\color{blue}(Better way to say this)}, the higher order terms in this expansion are expected to become become increasingly small. This allows a good approximation for the full result to come from the first couple of terms of the expansion -  this notion is referred to as perturbation theory {\color{blue}(Better way to say this)}. Calculating the terms in this truncated expansion is referred to as a fixed-order (FO) calculation, where the terms with the lowest power of $\alpha_s$ along with a non-zero coefficient $c_i$ is known as leading-order (LO). The next contribution, with the next smallest powers $\alpha_s$ is termed next-to-leading-order (NLO) and so on (NNLO etc.) {\color{blue}(A briefer way to say this hopefully).} Jet physics is an exclusively high-energy process and therefore pQCD can be used \cite{Schwartz:2014sze}, \cite{Campbell:2017hsr}. {\color{blue}(This ending kind of comes out of nowhere and I think it needs to be better linked).} 
+
+\section{Infrared Divergences}
+{\color{blue} Need to reword this whole section - start back from here.} \\ \\ 
+While perturbation theory is a fantastic tool used in the high-energy limit - it does come with problems in the form of divergences{\color{blue} (are these divergences problems?)}. There are two types of divergences, the first referred to as ultraviolet (UV) divergences. This occurs when considering a loop diagram such that we integrate over the momentum of a virtual particle {\color{blue} (maybe a little more information on this and fact check)}. The other type that occur are known as infrared and collinear (IRC) divergences {\color{blue} (can we just call them IR divergences?)}. {\color{blue} (Better way to write this).} In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon or a $Z$-boson ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. In this example, we choose to look at the case of the photon where the LO diagram is shown in figure \ref{fig:photon-qq}. 
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (a) {\(\gamma\)};
+            \vertex [right=of a] (b);
+            \vertex [above right=of b] (f1) {\(q\)};
+            \vertex [below right=of b] (f2) {\(\overline{q}\)};
+            
+            \diagram* {
+                (a) -- [photon] (b) -- [fermion] (f1),
+                           (b) -- [anti fermion] (f2),
+            };
+        \end{feynman}
+    \end{tikzpicture}
+    \caption{Feynman diagram showing the production of $q\bar{q}$ from a photon (LO process).}
+    \label{fig:photon-qq}
+\end{figure}
+The NLO diagram process can be shown in figures \ref{fig:photon-qg} and \ref{fig:photon-bar-qg} and depicts the process where an additional gluon is radiated from either  $q$ or $\bar{q}$ ($e^+e^-\rightarrow q\bar{q}g$). 
+{\color{green} Add figures.}
+
+
+We wish to consider the NLO cross-section, which we will not calculate but simply state the result:
+ \begin{equation}
+	\sigma_{\gamma\rightarrow q\bar{q}g}=\int[d\Phi_{3}]\,|M_{\gamma\rightarrow q\bar{q}g}|^2=C_F\,g_s^2\int[d\Phi_{2}]\,|M_{q\bar{q}}|^2\,\frac{d^3\vec{k}}{(2\pi)^32E_g}\Theta(E_g)\frac{2p_1p_2}{(p_1k)(p_2k)}\,,
+	\label{eq:qqg-cross-section}
+\end{equation}
+where $E_q$, $E_{\bar{q}},$ and $E_g$ are the energies of the quark, anti-quark and gluon respectively. In the first step, we integrate with respect to the three-body phase space $d\Phi_{3}$, since there are three-particles present in the final state. The second equality holds only if we assume $E_g\ll E_q,E_{\bar{q}}$ \emph{18/09/24 i.e. in the limit where the gluon is soft such that it factorises into a LO matrix element squared and a real gluon emission}. In this case we see that the total cross-section can be factorised into a $q\bar{q}$ piece and a gluon piece. The $q\bar{q}$ piece is the cross-section at leading order, $\int[d\Phi_{2}]\,|M_{q\bar{q}}|^2$, whereas the gluon piece is the following:%Check this is all true - is this the idea that it can only happen when the gluon is soft? Is it worthwhile mentioning the hard process of e+e-->qbar{q}?
+\begin{equation}
+	\sigma_g=C_F\,g_s^2\int\frac{d^3\vec{k}}{2E_g((2\pi)^3}\Theta(E_g)\frac{2p_1p_2}{(p_1k)(p_2k)}=\frac{2\alpha_sC_F}{\pi}\int\frac{dE_g}{E_g}\frac{d\phi}{2\pi}\frac{d\theta}{\sin\theta}\,.
+	\label{eq:g-cross-section}
+\end{equation}
+The angle $\theta$ is between the gluon and the quark (or anti-quark, depending on which is emitting the gluon) and $\phi$ is the angle in the out-of-page direction. \emph{18/09/2024 Note that equation~\eqref{eq:qqg-cross-section} is essentially like saying that the probability of an emission of a soft gluon from a hard emitter is given by the product of the LO $q\bar{q}$ production probability and the soft emission probability shown in equation~\eqref{eq:g-cross-section}}. The soft emission probability shows that there are singularities as the gluon becomes soft ($E_g\rightarrow0$) and when the gluon becomes collinear to the emitting quark (or anti-quark) ($\theta\rightarrow0,\pi$).
+These are the IRC divergences talked about previously, and will arise for every gluon emission and therefore at every order in perturbation theory. When fully integrated (using dimensional regularisation to regulate the integrals), we obtain values proportional to $\frac{1}{\epsilon^2}$,  coming from the region where the gluon is soft and collinear, and terms proportional to $\frac{1}{\epsilon}$, which occur due to the gluon being only collinear to the quark (or antiquark). 
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{feynman}
+            % Define vertices
+            \vertex (a) {\(\gamma\)};
+            \vertex [right=of a] (b);
+            \vertex [above right=of b] (f1) {\(q\)};
+            \vertex [below right=of b] (f2) {\(\overline{q}\)};
+            \vertex at ($(f1)!0.5!(b)$) (mid1);
+            \vertex at ($(f2)!0.5!(b)$) (mid2);
+            
+            % Draw diagram
+            \diagram* {
+                (a) -- [photon] (b),
+                (b) -- [fermion] (f1),
+                (b) -- [anti fermion] (f2),
+                (mid1) -- [gluon] (mid2),
+            };
+        \end{feynman}
+    \end{tikzpicture}
+    \caption{NLO virtual diagram for $\gamma\rightarrow q\bar{q}g$.}
+    \label{fig:photon-qq-gluon}
+\end{figure}
+The diagrams in figures \ref{fig:photon-qg} and \ref{fig:photon-bar-qg}, show the emission of a real gluon and therefore are termed real diagrams. In pQCD, it mandatory for us to include all diagrams which are allowed at a given order, and so we must also consider the diagram where there is a virtual gluon emitted and received between the quark-antiquark pair as depicted in figure \ref{fig:photon-qq-gluon}. We find that the cross-section of this process also contains divergences, and are equal and opposite to those which come from the real NLO processes. Therefore, we find a finite result when computing the overall cross-section at NLO \cite{Schwartz:2014sze}, \cite{Luisoni:2015xha}. We will state again for emphasis that this only occurs when the gluon is soft ($E_g\ll E_q,E_{\bar{q}}$). Next, we will see whether this behaviour occurs for other observables, beyond the cross-section. \emph{18/09/2024 It is important to note that it is the KLN theorem which states that the cancellation of IRC divergences between real and virtual diagrams occur at every order in perturbation theory provided that we sum over all possible virtual and final states.}
+
+
+
+\section{High-energy physics}
+\emph{Include: factorisation at high-energy limit, what a jet is, the process following a high-energy collision, IRC Safety, resummation requirement.}
+
+\subsection{Jet Physics}
+Jets are defined to be the bunches of highly collimated particles that are produced by high-energy collisions. Within these collisions the primary partons produced, radiate gluons which tend to be highly collimated {\color{blue} (say more regarding the collimated here?)}, following the directions of the original partons produced. This radiation causes the energy of the partons to decrease, giving rise to a larger $\alpha_s$, and so causing the partons cluster together to form the final-state particles we see in our detectors - hadrons. This process is known as hadronisation. {\color{blue} (Surely a better way to say this).} Despite the energy decrease, pQCD is still used since hadronisation does not alter the energy-momenta flow of the primary partons. {\color{blue} (Fact check this regarding the hadronisation flow and what it is called).} It is because of this that we are able to understand the jet properties by looking at the high energy process of the quarks and gluons, while ignoring the individual hadrons that contribute to the jet. In this way we can remain in the high-energy limit making perturbation theory possible {\color{blue} (link these two sentences together and add in diagram of particle production)} \cite{Schwartz:2014sze}, \cite{Campbell:2017hsr}, \cite{Banfi:2016yyq}. 
+
+\subsection{IRC Safety} 
+\label{sec: IRC}
+The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. \\ \\
+An IRC safe observable is one that does not change regardless of the number of soft or collinear emissions, such that it obeys the following:
+\begin{equation}
+V(\{q\},k_1,\cdots ,k_n)=V(\{q\},k_1,\cdots , k_{j+1},\cdots ,k_n),\quad \text{when}\quad E_{j+1}\rightarrow0\quad\text{or}\quad\vec{k}_{j+1}\parallel \vec{q}_{\text{emit}}
+	\label{eq:IRC-safety}
+\end{equation}
+where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$ is the additional emission and ${q}_{\text{emit}}$ is the parent parton which emits the additional gluon. While equation~\eqref{eq:IRC-safety} holds for a single emission, the above must be true for any number of emissions. Therefore, IRC safe observables can be calculated to all orders in perturbation theory.
+
+
+
+
+\section{Jet algorithms}
+\emph{Include: jet algorithm definition, jet definition definition, sequential vs. cone algorithms, Cambridge, Durham, generalised hadronic and generalised electron-positron collision}
+
+It is not always clear from looking at a detector, which hadrons belong to which jet or more generally how many jets are present in a detector, for example looking at figure {\color{green} (add figure of 2 vs. 3/4 jets)}. Because of this we often need a jet algorithm to identify what is occurring in the detector. A jet algorithm is a set of rules which tells us how many hadrons exist in a given jet and how many jets there are present in a given event. Jet algorithms are not only applied to hadrons but to the perturbative partons in the final-state. There are many types of jet algorithms and many to choose from. In this way it is really important to understand that the jet algorithm chosen depends on the questions you are wanting to answer and the information required from an events.
+
+\begin{enumerate}
+	\item Jet algorithm/definition
+	\item Snowmass i.e. what is a good jet algorithm
+	\item Sequential vs. cone
+	\item JADE
+	\item Durham/Cambridge
+	\item kT hadron family
+\end{enumerate}
+
+\subsection{Key concepts of jet algorithms}
+Jet algorithms can be categorised into two main types: sequential recombination algorithms and cone algorithms.
+\begin{itemize}
+	\item {\textbf{Sequential recombination algorithms}}: These iteratively cluster the closest particles according to a chosen distance measure until a stopping criterion is met. Variations come from different choices of distance measure (e.g. relative transverse momenta or angular separation between particles (see later)) and stopping criteria. 
+	\item {\textbf{Cone algorithms}}: These group particles within a given radius $R$ i.e. a given conical region, such that the sum of the momentum coincide with the cone axis. Different algorithms within this category come arise from the different methods used to search for stable cones.
+\end{itemize}
+
+In the following, we will describe various sequential recombination algorithms. 
+
+There are two different ways in which clustering algorithms can define jets~:
+\begin{enumerate}
+	\item{\textbf{Ordering}}: The ordering in the clustering of the particles is either done in terms of the smallest relative transverse momenta or in terms of the order of the smallest angles between the particles. This is known as $`k_\perp$ ordering' and `angular ordering' respectively. 
+	\item{\textbf{Inclusive vs. Exclusive}}: This is regarding the definition of the jets inside the event. A definition is termed `exclusive' if all the particles are clustered to the proton remnant or the hard jet. On the other hand, if only some particles are clustered into the hard jets, while the other particles remain outside the hard jets, the definition is referred to as `inclusive'. 
+\end{enumerate}
+
+\subsection{$e^+e^-$ Algorithms}
+\subsubsection{ The $k_\perp$ (Durham) algorithm}
+Also known as the Durham algorithm in the context of $e^+e^-$ annihilation, this procedure was introduced as a clustering algorithm for $e^+e^-$ annihilation in~\cite{Catani:1991hj}. We introduce the original formulation, followed by its extension to deep inelastic scattering (DIS) as presented in~\cite{Catani:1992zp}.
+Consider the following $e^+e^-$ collision producing $n$-hadron final state:
+\begin{equation}
+\label{eq:Durhamee}
+e^+(p_a)+e^-(p_b)\rightarrow h_1(p_1) + \cdots h_n(p_n)\,,
+\end{equation}
+where $p_a+p_b\equiv Q$. The $k_\perp$ algorithm proceeds as follows: 
+\begin{enumerate}
+    \item {\textbf{Define a resolution parameter}}, $y_{\mathrm{cut}}$
+    \item {\textbf{Compute the relative transverse momentum}} for each pair of hadrons $h_i, h_j$:
+        \begin{equation}
+        \label{eq:yij-De}
+    	d_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,
+    \end{equation}
+    where $E_i$ is the energy of hadron $h_i$ and $\theta_{ij}$ is the angle between the pair. Both quantities are calculated in the centre-of-mass (CoM) frame of the incoming leptons. Note that this distance measure, $d_{ij}$ is IRC safe. 
+    \item {\textbf{Identify the smallest $d_{ij}$ value}} among all computed pairs. If this minimum satisfies $d_{ij}<y_{\mathrm{cut}}$, then the two hadrons $(p_i,p_j)$ are combined into a pseudoparticle $p_{ij}$, whose value is determined by the recombination scheme used.
+    \item {\textbf{Repeat this procedure}} from the step 2, until the pairs of objects remaining satisfy $d_{ij}>y_{\mathrm{cut}}$. These objects are called jets. 
+\end{enumerate}
+This algorithm relies on a single parameter, $y_{\mathrm{cut}}$, which sets the minimum relative transverse momentum between a pair of jets. It ensures that soft particles are clustered with harder ones in similar directions. 
+
+\subsubsection{The Cambridge algorithm}
+The Cambridge algorithm, first introduced in~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering, in contrast to the relative transverse-momentum approach discussed earlier. This clustering technique reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}.
+This algorithm uses the same distance measure, $d_{ij}$, as the Durham algorithm (given in equation~\ref{eq:yij-De}), along with an additional measure, $v_{ij}=2(1-\cos\theta_{ij})$.
+For the process given in equation~\ref{eq:Durhamee}, the Cambridge algorithm proceeds as follows:
+\begin{enumerate}
+    \item {\textbf{If only one object remains}}, label it a jet and stop.
+    \item {\textbf{Compute the squared angle}} for a pair of hadrons $h_i, h_j$:
+        \begin{equation}
+        \label{eq:vij-cambridge}
+        v_{ij}=2(1-\cos\theta_{ij})\,.
+    \end{equation}
+    Please note that this is \emph{not} infrared safe, and therfore we must use an additional distance measure $d_{ij}$.
+    \item {\textbf{Identify the smallest $v_{ij}$}} among all computed pairs. 
+    \item{\textbf{Find the corresponding $d_{ij}$}} using  equation~\ref{eq:yij-De}:
+    	\begin{itemize}
+		\item If $d_{ij}<y_{\mathrm{cut}}$, merge the two hadrons into a pseudoparticle, and return to step 1.
+		\item Otherwise, take the less energetic particle of $h_i$ and $h_j$, label it a jet, and return to step 1.
+	\end{itemize}
+    \end{enumerate}
+    
+    \subsection{Hadronic Collisions}
+    
+    \subsection{Generalised Algorithms}
+
