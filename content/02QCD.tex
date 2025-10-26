@@ -188,73 +188,57 @@ where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$
 
 It is not always clear from looking at a detector, which hadrons belong to which jet or more generally how many jets are present in a detector, for example looking at figure {\color{green} (add figure of 2 vs. 3/4 jets)}. Because of this we often need a jet algorithm to identify what is occurring in the detector. A jet algorithm is a set of rules which tells us how many hadrons exist in a given jet and how many jets there are present in a given event. Jet algorithms are not only applied to hadrons but to the perturbative partons in the final-state. There are many types of jet algorithms and many to choose from. In this way it is really important to understand that the jet algorithm chosen depends on the questions you are wanting to answer and the information required from an events.
 
-\begin{enumerate}
-	\item Jet algorithm/definition
-	\item Snowmass i.e. what is a good jet algorithm
-	\item Sequential vs. cone
-	\item JADE
-	\item Durham/Cambridge
-	\item kT hadron family
-\end{enumerate}
+{\color{green} Need to add: recombination scheme, IRC safety, what each of these points mean (and how IRC affects these points), think about if we should have them in electron-positron and hadronic sections, add reference and add the whole question idea Andrea was talking about.}
 
 \subsection{Key concepts of jet algorithms}
-Jet algorithms can be categorised into two main types: sequential recombination algorithms and cone algorithms.
-\begin{itemize}
-	\item {\textbf{Sequential recombination algorithms}}: These iteratively cluster the closest particles according to a chosen distance measure until a stopping criterion is met. Variations come from different choices of distance measure (e.g. relative transverse momenta or angular separation between particles (see later)) and stopping criteria. 
-	\item {\textbf{Cone algorithms}}: These group particles within a given radius $R$ i.e. a given conical region, such that the sum of the momentum coincide with the cone axis. Different algorithms within this category come arise from the different methods used to search for stable cones.
-\end{itemize}
-
-In the following, we will describe various sequential recombination algorithms. 
-
-There are two different ways in which clustering algorithms can define jets~:
+A \emph{jet definition} consists of: a \emph{jet algorithm}, the algorithm's parameters, and the recombination scheme. \\ \\
+The snowmass accord in the 90's set out a set of requirements for what a "good" jet algorithm would have:
 \begin{enumerate}
-	\item{\textbf{Ordering}}: The ordering in the clustering of the particles is either done in terms of the smallest relative transverse momenta or in terms of the order of the smallest angles between the particles. This is known as $`k_\perp$ ordering' and `angular ordering' respectively. 
-	\item{\textbf{Inclusive vs. Exclusive}}: This is regarding the definition of the jets inside the event. A definition is termed `exclusive' if all the particles are clustered to the proton remnant or the hard jet. On the other hand, if only some particles are clustered into the hard jets, while the other particles remain outside the hard jets, the definition is referred to as `inclusive'. 
-\end{enumerate}
+	\item Simple to implement in an experimental analysis
+	\item Simple to implement in a theoretical calculation
+	\item Defined at any order of perturbation theory
+	\item Yield a finite cross section at any order of perturbation theory
+	\item Yield a cross section that is relatively insensitive to hadronisation
+\end{enumerate} 
+
+There are many types of jet algorithms, however they can be divided into two broad classes known as sequential recombination algorithms and cone algorithms:
+\begin{itemize}
+	\item {\textbf{Sequential recombination algorithms}}: These iteratively cluster the closest particles according to a chosen distance measure until a stopping criterion is met. Variations come from different choices of distance measure (e.g. relative transverse momenta or angular separation between particles (see later)) and stopping criteria. Sequential recombination algorithms are referred to as \enquote{bottom-up} algorithms due to nature of how the algorithm clusters smallest distance first. {\color{blue} Check this is why they are called bottom-up.}
+	\item {\textbf{Cone algorithms}}: These group particles within a given radius $R$ i.e. a given conical region, such that the sum of the momentum coincide with the cone axis. Different algorithms within this category come arise from the different methods used to search for stable cones. Cone algorithms can be described as \enquote{top-down} algorithms. {\color{blue} Check all the information here and understand what they do in a simpler way I think.}
+\end{itemize}
+In this thesis, we will only be working with sequential recombination algorithms and so we will discuss a few sequential recombination algorithms which give a background behind the algorithm introduced in section ().
 
 \subsection{$e^+e^-$ Algorithms}
-\subsubsection{ The $k_\perp$ (Durham) algorithm}
-Also known as the Durham algorithm in the context of $e^+e^-$ annihilation, this procedure was introduced as a clustering algorithm for $e^+e^-$ annihilation in~\cite{Catani:1991hj}. We introduce the original formulation, followed by its extension to deep inelastic scattering (DIS) as presented in~\cite{Catani:1992zp}.
-Consider the following $e^+e^-$ collision producing $n$-hadron final state:
-\begin{equation}
-\label{eq:Durhamee}
-e^+(p_a)+e^-(p_b)\rightarrow h_1(p_1) + \cdots h_n(p_n)\,,
-\end{equation}
-where $p_a+p_b\equiv Q$. The $k_\perp$ algorithm proceeds as follows: 
+Algorithms for electron-positron collision are relatively easy to describe. They key idea is that we calculate a specific distance $d_{ij}$ and we find the pair $p_i$ and $p_j$ which yields the smallest distance. If this is below a given jet resolution parameter $y_{\mathrm{cut}}$ then the two particles are recombined into a new pseudo-particle by the recombination scheme. If not then the two particles are two particles are not combined and are left on the list and we move onto a new pair of particles, with the next smallest $d_{ij}$ {\color{blue} (check this)}. This procedure continues until all particles and pseudo-particles left have $d_{ij}>y_{\mathrm{cut}}$. These are defined as jets. {\color{blue} Work out if all pseudo-particles or just particle?}
+\subsubsection{The JADE algorithm}
+The first sequential recombination algorithm was introduced by the JADE collaboration. They produced an $e^+e^-$ algorithm {\color{blue} (check this)} and is set out in the following way:
 \begin{enumerate}
     \item {\textbf{Define a resolution parameter}}, $y_{\mathrm{cut}}$
-    \item {\textbf{Compute the relative transverse momentum}} for each pair of hadrons $h_i, h_j$:
+    \item {\textbf{Compute the distance measure}} for every pair of particles $i$, $j$:
         \begin{equation}
-        \label{eq:yij-De}
-    	d_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,
+        \label{eq:yij-jade}
+    	d^{\mathrm{JADE}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\,
     \end{equation}
-    where $E_i$ is the energy of hadron $h_i$ and $\theta_{ij}$ is the angle between the pair. Both quantities are calculated in the centre-of-mass (CoM) frame of the incoming leptons. Note that this distance measure, $d_{ij}$ is IRC safe. 
-    \item {\textbf{Identify the smallest $d_{ij}$ value}} among all computed pairs. If this minimum satisfies $d_{ij}<y_{\mathrm{cut}}$, then the two hadrons $(p_i,p_j)$ are combined into a pseudoparticle $p_{ij}$, whose value is determined by the recombination scheme used.
+    where $Q$ is the total energy in the event, $E_i$ is the energy of particle $i$ and $\theta_{ij}$ is the angle between the pair $i$, $j$. 
+      \item {\textbf{Identify the smallest $d_{ij}$ value}} among all computed pairs. If this minimum satisfies $d_{ij}<y_{\mathrm{cut}}$, then the two particles, $i$ and $j$, are combined into a pseudoparticle, whose value is determined by the recombination scheme used.
     \item {\textbf{Repeat this procedure}} from the step 2, until the pairs of objects remaining satisfy $d_{ij}>y_{\mathrm{cut}}$. These objects are called jets. 
 \end{enumerate}
-This algorithm relies on a single parameter, $y_{\mathrm{cut}}$, which sets the minimum relative transverse momentum between a pair of jets. It ensures that soft particles are clustered with harder ones in similar directions. 
+The difficulty with the JADE algorithm is that it was at risk of clustering soft pairs of gluons which are widely separated in angle. This in theory is fine, however it led to hard partons clustering with gluons which aren't necessarily radiated from them. This is an issue as in a jet it should contain the parton and the radiation coming from that parton in general. {\color{blue} Make this a bit tighter I think i.e. understand it a bit more.} This can be solved by a simple modification which takes us to the $k_\perp$ algorithm.  
+
+
+\subsubsection{ The $k_\perp$ (Durham) algorithm}
+Also known as the Durham algorithm~\cite{Catani:1991hj} (DIS~\cite{Catani:1992zp}), the procedure is the same as that shown in the JADE algorithm however with a modified distance measure:
+\begin{equation}
+	 \label{eq:yij-De}
+    	d^{\mathrm{Durham}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,,
+\end{equation} 
+which at smaller angles $d_{ij}\simeq(\min(E_i^2,E_j^2)\theta_{ij})^2$ which is effectively the relative transverse momenta of particle $i$ w.r.t particle $j$. The minimum function ensures that soft-wide emissions w.r.t each other have a greater distance measure than the distance measure between hard partons emitting a soft gluon closer in angle. {\color{green} See how this actually works and change up - looks to similar to jetography.} 
 
 \subsubsection{The Cambridge algorithm}
-The Cambridge algorithm, first introduced in~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering, in contrast to the relative transverse-momentum approach discussed earlier. This clustering technique reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}.
-This algorithm uses the same distance measure, $d_{ij}$, as the Durham algorithm (given in equation~\ref{eq:yij-De}), along with an additional measure, $v_{ij}=2(1-\cos\theta_{ij})$.
-For the process given in equation~\ref{eq:Durhamee}, the Cambridge algorithm proceeds as follows:
-\begin{enumerate}
-    \item {\textbf{If only one object remains}}, label it a jet and stop.
-    \item {\textbf{Compute the squared angle}} for a pair of hadrons $h_i, h_j$:
-        \begin{equation}
-        \label{eq:vij-cambridge}
-        v_{ij}=2(1-\cos\theta_{ij})\,.
-    \end{equation}
-    Please note that this is \emph{not} infrared safe, and therfore we must use an additional distance measure $d_{ij}$.
-    \item {\textbf{Identify the smallest $v_{ij}$}} among all computed pairs. 
-    \item{\textbf{Find the corresponding $d_{ij}$}} using  equation~\ref{eq:yij-De}:
-    	\begin{itemize}
-		\item If $d_{ij}<y_{\mathrm{cut}}$, merge the two hadrons into a pseudoparticle, and return to step 1.
-		\item Otherwise, take the less energetic particle of $h_i$ and $h_j$, label it a jet, and return to step 1.
-	\end{itemize}
-    \end{enumerate}
-    
+The Cambridge algorithm, first introduced in~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering, in contrast to the relative transverse-momentum approach in the Durham algorithm. This clustering technique reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}. This algorithm follows the same procedure as explained in () but unlike the previous two algorithms it uses two distance measures: the same distance measure, $d_{ij}$, as the Durham algorithm (given in equation~\ref{eq:yij-De}), and the additional measure, $v_{ij}=2(1-\cos\theta_{ij})$.
+The distance measure $v_{ij}$ is used in step 2 and this is the value found to be the smallest between all pairs. However this is not IRC safe {\color{blue} (need to understand why)} we need to stll use $d_{ij}$ used from the Durham algorithm to evaluate how large it is compared to $y_{\mathrm{cut}}$ as in step 3.    
     \subsection{Hadronic Collisions}
+    {\color{green} Next add in the hadronic $k_\perp$ algorithms which can then lead us to look at the $e^+e^-$ generalised algorithms.}
     
     \subsection{Generalised Algorithms}
 
