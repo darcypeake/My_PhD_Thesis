@@ -166,10 +166,7 @@ The diagrams in figures \ref{fig:photon-qg} and \ref{fig:photon-bar-qg}, show th
 
 \section{High-energy physics}
 \emph{Include: factorisation at high-energy limit, what a jet is, the process following a high-energy collision, IRC Safety, resummation requirement.}
-
-\subsection{Jet Physics}
-Jets are defined to be the bunches of highly collimated particles that are produced by high-energy collisions. Within these collisions the primary partons produced, radiate gluons which tend to be highly collimated {\color{blue} (say more regarding the collimated here?)}, following the directions of the original partons produced. This radiation causes the energy of the partons to decrease, giving rise to a larger $\alpha_s$, and so causing the partons cluster together to form the final-state particles we see in our detectors - hadrons. This process is known as hadronisation. {\color{blue} (Surely a better way to say this).} Despite the energy decrease, pQCD is still used since hadronisation does not alter the energy-momenta flow of the primary partons. {\color{blue} (Fact check this regarding the hadronisation flow and what it is called).} It is because of this that we are able to understand the jet properties by looking at the high energy process of the quarks and gluons, while ignoring the individual hadrons that contribute to the jet. In this way we can remain in the high-energy limit making perturbation theory possible {\color{blue} (link these two sentences together and add in diagram of particle production)} \cite{Schwartz:2014sze}, \cite{Campbell:2017hsr}, \cite{Banfi:2016yyq}. 
-
+{\color{green} Add in the big picture thing that is used in every single thesis here I think.}
 \subsection{IRC Safety} 
 \label{sec: IRC}
 The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. \\ \\
@@ -183,15 +180,30 @@ where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$
 
 
 
-\section{Jet algorithms}
-\emph{Include: jet algorithm definition, jet definition definition, sequential vs. cone algorithms, Cambridge, Durham, generalised hadronic and generalised electron-positron collision}
+\section{Jet Physics}
+\emph{Include: jet algorithm definition, jet definition definition, sequential vs. cone algorithms, Cambridge, Durham, generalised hadronic and generalised electron-positron collision.} {\color{green} Need to add: recombination scheme, IRC safety, what each of these points mean (and how IRC affects these points), think about if we should have them in electron-positron and hadronic sections, add reference and add the whole question idea Andrea was talking about.}
+\subsection{Jets}
 
-It is not always clear from looking at a detector, which hadrons belong to which jet or more generally how many jets are present in a detector, for example looking at figure {\color{green} (add figure of 2 vs. 3/4 jets)}. Because of this we often need a jet algorithm to identify what is occurring in the detector. A jet algorithm is a set of rules which tells us how many hadrons exist in a given jet and how many jets there are present in a given event. Jet algorithms are not only applied to hadrons but to the perturbative partons in the final-state. There are many types of jet algorithms and many to choose from. In this way it is really important to understand that the jet algorithm chosen depends on the questions you are wanting to answer and the information required from an events.
+{\color{RoyalBlue}The most frequently observed objects in collisions recorded at the LHC are jets. These occur in high-energy collisions are highly collimated sprays of particles,~\cite{Banfi:2016yyq}. These are formed when hard partons are produced in an high-energy process. These partons will radiate gluons (also in a collimated fashion in the direction of the original hard parton produced), which can form more gluons or quark-antiquark pairs~\cite{Schwartz:2014sze}. As the radiation occurs, the energy of the process decreases and so the interactions between the particles increase until they reach an energy of $\sim \Lambda_{\mathrm{QCD}}$, where the partons then cluster together to form final-state hadrons we observe in our detectors~\cite{Schwartz:2014sze},~\cite{Banfi:2016yyq}.} {\color{red} It should be noted that while understanding jets, we are able to rely on the properties of quarks and gluons opposed to the final-state hadrons. This is because hadronisation does not significantly affect the energy-momenta flow of the initial partons and so we can use pQCD to understand these objects~\cite{Banfi:2016yyq}.} {\color{blue} Add: `This leads to a massive proliferation of hadrons which, however, tend to “clump” into fairly energetic clusters, called jets.'  (QCD Book), messy objects.}
 
-{\color{green} Need to add: recombination scheme, IRC safety, what each of these points mean (and how IRC affects these points), think about if we should have them in electron-positron and hadronic sections, add reference and add the whole question idea Andrea was talking about.}
 
-\subsection{Key concepts of jet algorithms}
-A \emph{jet definition} consists of: a \emph{jet algorithm}, the algorithm's parameters, and the recombination scheme. \\ \\
+
+
+
+
+\subsection{Jet Definition}
+
+While we have discussed how jets are formed, these are very messy objects which are often hard to tackle and analyse. Formally, jets can be described through a \emph{jet definition} which consists of: 
+\begin{enumerate}
+\item a \emph{jet algorithm}:  a set of rules which clusters particles into a given jet
+\item the algorithm's parameters: these indicate the proximity in which two particles need to be with respect to one another to be recombined into a single particle and belong to a certain jet
+\item  the \emph{recombination scheme}: indicates how the momentum of two particles will be recombined to give the new particle a momenta - most common is the $E$-scheme.
+\end{enumerate} 
+All will become clear in due course. 
+
+\subsection{Jet Algorithm}
+It is necessary to have a formal jet definition as: when looking at an event display, like that in figure ({\color{blue} add in figure of ALEPH event display}), it is not always clear how many jets there are present, or even which hadrons belong to which jet. For this event, maybe we can say and figure out that is has () amount of jets, however doing this for every single event for every type of process would be a tedious task. What we need is a set of rules which provides a well-defined and systematic procedure for grouping final-state particles into jets and for identifying the number of jets present in an event. These set of rules are known as a jet algorithm. 
+
 The snowmass accord in the 90's set out a set of requirements for what a "good" jet algorithm would have:
 \begin{enumerate}
 	\item Simple to implement in an experimental analysis
@@ -200,6 +212,8 @@ The snowmass accord in the 90's set out a set of requirements for what a "good" 
 	\item Yield a finite cross section at any order of perturbation theory
 	\item Yield a cross section that is relatively insensitive to hadronisation
 \end{enumerate} 
+
+Jet algorithms are not only applied to hadrons but to the perturbative partons in the final-state. There are many types of jet algorithms and many to choose from. In this way it is really important to understand that the jet algorithm chosen depends on the questions you are wanting to answer and the information required from an events.
 
 There are many types of jet algorithms, however they can be divided into two broad classes known as sequential recombination algorithms and cone algorithms:
 \begin{itemize}
