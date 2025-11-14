@@ -1,0 +1,49 @@
+\chapter{Generalised Deep Inelastic Scattering Algorithm}
+\label{chapter: DIS}
+In this section, we will discuss a new algorithm that was introduced in [], for deep inelastic scattering, the process which is given in  equation~\ref{eq: DIS}.  The algorithms shown in section~\ref{subsec: DIS-alg} give some background for the algorithm created. In addition to this, the algorithm has been implemented as a plugin to \verb|fjcontrib| and details of it and details of its implementation are given in appendix (). We begin here by outlining the procedure of the algorithm.
+\section{The Algorithm}
+
+\begin{enumerate}
+
+    \item For every pair of particles $i$ and $j$, define the ordering variable
+    \begin{equation}
+        v_{ij} = \min(E_i^{2p},\,E_j^{2p})(1 - \cos\theta_{ij})\,,
+    \end{equation}
+    and for each particle $i$, define the beam variable
+    \begin{equation}
+        v_{iB} = E_i^{2p}(1 - \cos\theta_{iB})\,,
+    \end{equation}
+where $p$ can be 0 (Cambridge) or 1 ($k_\perp$) depending on the variation of the algorithm used. 
+    \item Identify the minimum among all $\{v_{ij},\, v_{iB}\}$:
+    \begin{itemize}
+        \item If $v_{iB} < v_{ij}$, assign particle $i$ to the beam jet and return to step~2.
+        \item If $v_{ij} < v_{iB}$, compute the associated distance measure $d_{ij}$:
+           \begin{equation}
+        d_{ij}
+        = 2\min(E_i^{2},\,E_j^{2})(1 - \cos\theta_{ij})
+        = 2v_{ij}\,\min(E_i^{2-2p},\,E_j^{2-2p})\,.
+    \end{equation}
+    \end{itemize}
+
+ 
+
+    \item Determine whether the particles should be merged:
+    \begin{itemize}
+        \item If $d_{ij} < k_T^2$, merge particles $i$ and $j$ into a pseudo-particle and return to step~2.
+        \item If $d_{ij} > k_T^2$, assign the softer particle to the beam jet and return to step~2.
+    \end{itemize}
+    Here, $k_T^2$ plays a role analogous to the jet-resolution parameter, $d_{\mathrm{cut}}$, introduced in Section~\ref{subsec: e+e-}, but with dimensions of energy squared.
+
+\end{enumerate}
+{\color{red} I think we end up with one macrojet and one beam jet. Need to re-read Catani and Wobbish paper on what they exactly cluster in terms of the macrojet.}\\ \\
+{\color{blue}We want to add in that this is similar to Catanis/Wobbish  but dimensionful distance measure and cut and also like MvB/SFR but not an observable - look at what they say here about $y_\mathrm{cut}$.}
+
+
+{\color{blue} Add in Centauro  - maybe describe it (am unsure tbh). Then do the phenomenological comparisons.}
+
+
+
+
+
+
+
