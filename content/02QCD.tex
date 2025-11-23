@@ -1,98 +1,258 @@
 \chapter{Quantum Chromodynamics}
 \emph{Include: perturbation theory, UV/IR divergences, subtraction schemes (might need this for explaining the hard function in ARES)}
-{\color{green} Need to add QCD Lagrangian and how Feynman rules are founded I think first. Also need reference to the Standard Model but explain we work purely in QCD. We may need to have Higgs mechanism since we are doing Higgs plus one jet.}
+{\color{green} 
+\begin{enumerate}
+	\item QCD: quarks, gluons, matrices, Lagrangian, Feynman rules
+	\begin{itemize}
+	\item The running coupling: asymptotic freedom vs. confinement 
+	\end{itemize}
+	\item Perturbation theory (refer back to the Feynman rules)
+	\begin{itemize}
+	\item Divergences: UV and IR
+	\item KLN theorem
+	\end{itemize}
+	\item High-energy physics
+	\begin{itemize}
+	\item Big picture of HEP + explanation
+	\item Factorisation
+	\item IRC Safety
+	\end{itemize}
+	\item Jet Physics
+	\begin{itemize}
+	\item Jet definition
+	\item Types of algorithms
+	\item Examples of algorithms
+	\end{itemize}	
+\end{enumerate}}
 \section{QCD: The basics}
-Quantum chromodynamics (QCD) is an $SU(3)$ non-Abelian gauge theory describing the strong interaction between quarks and gluons - collectively referred to as partons. Quarks are Dirac spinors that transform under the fundamental representation of the gauge group $SU(3)$, while gluons are spin-1 vector gauge bosons transforming under the adjoint representation. Acting as mediators of the strong force, gluons facilitate interactions among quarks. Partons possess a type of charge known as colour: quarks exhibit three colours - red, green, and blue - whereas gluons have eight colour states. Quarks combine to form bound states called hadrons, which include mesons ($q\bar{q}$) with integer spin and baryons ($qqq$) with half-integer spin. \\ \\
-In QCD, the interaction vertices can be derived from the QCD Lagrangian. The corresponding Feynman rules for quark-gluon and gluon self-interactions are depicted in figures \ref{fig:qgg}, \ref{fig:3-gluon}, and \ref{fig:gggg}. These vertices are essential for computing the scattering amplitudes of a given process, which in turn allows us to determine the cross-section which describes the probability of a given event. 
-
-
-
-\begin{figure} [h]
-    \centering
-    \begin{tikzpicture}
-        \begin{feynman}
-            \vertex (a);
-            \vertex[right=2cm of a] (b);
-            \vertex[above right=1.5cm and 1cm of b] (c);
-            \vertex[below right=1.5cm and 1cm of b] (d);
-            
-            \diagram* {
-                (a) -- [gluon] (b),
-                (b) -- [fermion] (c),
-                (b) -- [anti fermion] (d),
-            };
-        \end{feynman}
-        \node[left] at (a) {$\mu,a$};
-
-        \node[right=1.5cm of b] { $=-ig_s\gamma^\mu\,t_R^a$ };
-        
-    \end{tikzpicture}
-        \caption{The three-point gluon-quark vertex.}
-        \label{fig:qgg}
-\end{figure}
-%Second Feynman diagram.
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}
-        \begin{feynman}
-            \vertex (a);
-            \vertex[right=2cm of a] (b);
-            \vertex[above right=1.5cm and 1cm of b] (c);
-            \vertex[below right=1.5cm and 1cm of b] (d);
-            
-            \diagram* {
-                (a) -- [gluon, momentum={$p_1$}] (b),
-                (b) -- [gluon, momentum={$p_2$}] (c),
-                (b) -- [gluon, momentum={$p_3$}] (d),
-            };
-        \end{feynman}
-        \node[left] at (a) {$\alpha, a$};
-        \node[above right] at (c) {$\beta, b$};
-        \node[below right] at (d) {$\gamma, c$};
-        \node[right=1.5cm of b] { $= -g_sf^{abc}\left[(p_1+p_2)_{\gamma}\,\eta_{\alpha\beta}+(p_3-p_2)_{\alpha}\,\eta_{\beta\gamma}-(p_1+p_3)_{\beta}\,\eta_{\alpha\gamma}\right]$ };
-    \end{tikzpicture}
-    \caption{The three-point gluon vertex}
-    \label{fig:3-gluon}
-\end{figure}
-%Sort the arrows, momenta and captioning out. 
-%Third Feynman diagram. 
-\begin{figure} [h]
+In the 1940s, many unstable, strongly interacting particles—collectively referred to as hadrons—were discovered. In 1963, Gell-Mann and Zweig introduced a model that explained several features of these particles, with the basic idea being that hadrons are composed of simpler spin-$\tfrac{1}{2}$ particles known as \emph{quarks}. The six known quarks are grouped into three generations—light, intermediate, and heavy—as shown in Table~\ref{table:quark-properties}. In this picture, hadrons come in two classes: mesons ($q\bar{q}$) and baryons ($qqq$). Quantum Chromodynamics (QCD) describes how partons bind together to form hadrons. It is an $\mathrm{SU}(3)$ non-Abelian gauge theory governing the strong interaction between quarks and the gauge bosons known as gluons. Quarks and gluons are collectively referred to as \emph{partons}, and they carry a conserved charge called colour. The quarks transform in the fundamental representation of the $\mathrm{SU}(3)$ group, with fields written as $q_a$ for $a = 1,2,3$, corresponding to the three colour states (typically labelled red, green, and blue). The associated antiquarks are denoted $\bar{q}^a$. The gluons, written as $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight possible colour degrees of freedom carried by the gluons.
+{\color{blue}(Add in the references for Gell-Mann/Zwigg (parton model) and the discovery of hadrons).}
+\begin{table}[h!]
 \centering
-\begin{tikzpicture}
-  \begin{feynman}
-    \vertex (v) at (0,0);
-    \vertex [above left=of v] (a) {\(\alpha, a\)};
-    \vertex [below left=of v] (b) {\(\beta, b\)};
-    \vertex [above right=of v] (c) {\(\gamma, c\)};
-    \vertex [below right=of v] (d) {\(\delta, d\)};
-    
-    \diagram* {
-      (v) -- [gluon] (a),
-      (v) -- [gluon] (b),
-      (v) -- [gluon] (c),
-      (v) -- [gluon] (d),
-    };
-  \end{feynman}
-  \node[right=3cm of v] (eq) {
-    \( = \quad \text{$-ig_s^2\left[f^{abe}f^{cde}(\eta_{\alpha\gamma}\eta_{\beta\delta}-\eta_{\alpha\delta}\eta_{\beta\gamma})+{\text{cyclic\,permutations\,of}} \,(a, b, c, d)\right]$} \)
-  };
-\end{tikzpicture}
-\caption{The four-point gluon vertex.}
-\label{fig:gggg}
-\end{figure}
-In these figures, the $3\times3$ matrix in colour space, $t_R^a$, represents the colour factor, while the structure constants $f^{abc}$  belong to the gauge group $SU(3)$. The parameter $g_s$ is related to the strong coupling of QCD $\alpha_s$ by the following: {\color{blue}Check this equation.} 
+\begin{tabular}{|c|c|c|c|}
+\hline
+Light  & Intermediate & Heavy & Charge \\ \hline
+$u$ (up)   & $c$ (charm)   & $t$ (top) & $+\tfrac{2}{3}$    \\ \hline
+$d$   (down)	& $s$ (strange)    & $b$ (bottom)  & $-\tfrac{1}{3}$  \\ \hline
+\end{tabular}
+\caption{Properties of the 6 known quarks. More details on the mass can be found in~\cite{ParticleDataGroup:2024cfk}.}
+\label{table:quark-properties}
+\end{table}
+
+The QCD Lagrangian density governs the dynamics of massless gluons and quarks of mass $m$:
 \begin{equation}
-	\alpha_s(Q)=\frac{g_s^2(Q)}{4\pi}\,,
+\label{eq: L-QCD}
+\mathcal{L}_{\mathrm{QCD}}
+= \mathcal{L}_{\mathrm{classical}}
++ \mathcal{L}_{\mathrm{GF}}
++ \mathcal{L}_{\mathrm{ghost}}\,,
+\end{equation}
+where the first contribution describes massless gluons coupled to quarks $\psi$ of mass $m$:
+\begin{equation}
+\label{eq: L-Classical}
+\mathcal{L}_{\mathrm{classical}}
+= -\frac{1}{4} F_{\mu\nu}^{A} F^{\mu\nu}_{A}
++ \sum_{f=1}^{n_f} \bar{q}^f_a (i\slashed{D} - m)_{ab}\, q^f_b \,,
+\end{equation}
+where $n_f$ refers to the flavours of quarks where $n_f=6$ in the Standard Model (see below) and can be seen in~\ref{table:quark-properties}. 
+The gluon dynamics are encoded in the field-strength tensor:
+\begin{equation}
+F_{\alpha\beta}^{A}
+= \partial_\alpha A_\beta^A
+- \partial_\beta A_\alpha^A
+- g_s f^{ABC} A_\alpha^B A_\beta^C \,.
+\end{equation}
+We have used the Feynman slash notation $\slashed{D} = \gamma_\mu D^\mu$, to show the covariant derivative:
+\begin{equation}
+(D_\mu)_{ab}
+= \partial_\mu \delta_{ab}
++ ig_s (t^CA_\mu^C)_{ab},
+\end{equation}
+where the gamma matrices satisfy the anti-commutation relations $\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}$ and where $t^C$ are colour matrices and are  the generators of the fundamental representation of $SU(3)$. An explicit representation of these generators are given by the eight traceless and  Hermitian Gell-Mann matrices, $\lambda^C$:
+\begin{equation}
+	t^C=\frac{1}{2}\lambda^C\,.
+\end{equation}
+These colour matrices satisfy the following commutation relation:
+\begin{equation}
+[t^A, t^B] = i f^{ABC} t^C\,,
+\end{equation}
+where $f^{ABC}$ are the structure constants of the gauge group $SU(3)$. These satisfy
+\begin{equation}
+\begin{aligned}
+\mathrm{Tr}(t^A t^B) &= T_R\, \delta^{AB}, \qquad T_R = \frac{1}{2}, \\
+\sum_A t^{A}_{ab} t^{A}_{bc} &= C_F\, \delta_{ac}, \qquad C_F = \frac{4}{3}, \\
+\sum_{A,B} f^{ABC} f^{ABD} &= C_A\, \delta^{CD}, \qquad C_A = 3.
+\end{aligned}
+\end{equation}
+Throughout this work we adopt the metric convention $g^{\mu\nu} = (1,-1,-1,-1)$.\\
+The term second term in equation~\ref{eq: L-QCD} is referred to as the gauge fixing term {\color{blue} (add in why we need this term)}:
+\begin{equation}
+	\mathcal{L}_\mathrm{GF}=-\frac{1}{2\xi}(\partial^\mu A_\mu^{A})^2\,,
+\end{equation}
+where $\xi$ is the gauge parameter and tells us which gauge we are working in e.g. the Feynman guage is $\xi=0$ while the Lorentz gauge is $\xi=1$.\\
+The third term in equation~\ref{eq: L-QCD} is:
+\begin{equation}
+\mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
+\end{equation}
+where $\eta^A$ are complex scalar fields which are referred to as Faddeev-Popov ghosts and obeys Fermi statistics i.e. the field is anti-commuting. These ghosts do
+not correspond to physical states and simply appear as a consequence of the gauge fixing procedure of the non-abelian theory. \\ \\ 
+The Feynman rules extracted from the full QCD Lagrangian are shown in Figures~\ref{fig:QCD-Propagator-Rules} and\ref{fig:QCD-Vertex-Rules} (please note for brevity we have not included the Feynman rules of the ghosts due to lack of relevance of the original work performed in this thesis).
+
+
+
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{feynman}
+    \vertex (a);
+    \vertex[right=2cm of a] (b);
+    \diagram*{
+        (a) -- [fermion, momentum={$p$}] (b),
+    };
+\end{feynman}
+\node[left] at (a) {$a,i$};
+\node[right] at (b) {$b,j$};
+\node[right=1.0cm of b] {$=\; \delta^{ab}\dfrac{i}{(\slashed{p}-m+i\epsilon)_{ji}}$};
+\end{tikzpicture}
+
+\vspace{0.7cm}
+
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{feynman}
+    \vertex (a);
+    \vertex[right=2cm of a] (b);
+    \diagram*{
+        (a) -- [gluon, momentum={$p$}] (b),
+    };
+\end{feynman}
+\node[left] at (a) {$A,\alpha$};
+\node[right] at (b) {$B,\beta$};
+\node[right=1.0cm of b] {$=\; \delta^{AB}\dfrac{i}{p^{2}+i\epsilon}\!\left(-g_s^{\alpha\beta}-(1-\xi)\dfrac{p^\alpha\,p^\beta}{p^2+i\epsilon}\right)$};
+\end{tikzpicture}
+
+\caption{Feynman rules for the quark and gluon propagators. These can be extracted from terms with two fields. {\color{blue} (Write better caption and change indices.)}}
+\label{fig:QCD-Propagator-Rules}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{feynman}
+    \vertex (a);
+    \vertex[right=2cm of a] (b);
+    \vertex[above right=1.2cm and 0.8cm of b] (c);
+    \vertex[below right=1.2cm and 0.8cm of b] (d);
+    \diagram*{
+        (a) -- [gluon] (b),
+        (b) -- [fermion] (c),
+        (b) -- [anti fermion] (d),
+    };
+\end{feynman}
+\node[left] at (a) {$A,\alpha$};
+\node[right] at (c) {$b,i$};
+\node[right] at (d) {$c,j$};
+\node[right=1.5cm of b] {$=\; -ig_s\,(t^A)_{cb}\,(\gamma^\alpha)_{ji}$};
+\end{tikzpicture}
+
+\vspace{0.7cm}
+
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{feynman}
+    \vertex (v);
+    \vertex[left=2cm of v] (a);
+    \vertex[above right=1.3cm and 0.9cm of v] (b);
+    \vertex[below right=1.3cm and 0.9cm of v] (c);
+
+    \diagram*{
+        (a) -- [gluon, momentum={$p$}] (v),
+        (b) -- [gluon, momentum={$q$}] (v),
+        (c) -- [gluon, momentum={$r$}] (v),
+    };
+\end{feynman}
+
+\node[left] at (a) {$A,\alpha$};
+\node[above right] at (b) {$B,\beta$};
+\node[below right] at (c) {$C,\gamma$};
+
+\node[right=2.3cm of v] {
+$\displaystyle
+= -g_s\, f^{ABC}
+\big[
+(p-q)^\gamma g^{\alpha\beta}
++ (q-r)^\alpha g^{\beta\gamma}
++ (r-p)^\beta g^{\alpha\gamma}
+\big]
+$
+};
+
+\end{tikzpicture}
+
+
+\vspace{0.7cm}
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{feynman}
+    \vertex (v);
+    \vertex[above left=of v]  (A) {$A,\alpha$};
+    \vertex[below left=of v]  (B) {$B,\beta$};
+    \vertex[above right=of v] (C) {$C,\gamma$};
+    \vertex[below right=of v] (D) {$D,\delta$};
+
+    \diagram*{
+        (v) -- [gluon] (A),
+        (v) -- [gluon] (B),
+        (v) -- [gluon] (C),
+        (v) -- [gluon] (D),
+    };
+\end{feynman}
+
+\node[right=3.1cm of v] {
+$\displaystyle
+= -ig_s^2 \left[
+\begin{aligned}
+& f^{EAC}f^{EBD}(g^{\alpha\beta}g^{\gamma\delta}-g^{\alpha\delta}g^{\beta\gamma}) \\
+&+ f^{EAD}f^{EBC}(g^{\alpha\beta}g^{\gamma\delta}-g^{\alpha\gamma}g^{\beta\delta}) \\
+&+ f^{EAB}f^{ECD}(g^{\alpha\gamma}g^{\beta\delta}-g^{\alpha\delta}g^{\beta\gamma})
+\end{aligned}
+\right]
+$
+};
+\end{tikzpicture}
+
+
+\caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and the four--gluon vertex. {\color{blue} (Write better caption and change indices.)}}
+\label{fig:QCD-Vertex-Rules}
+\end{figure}
+
+
+
+\section{The running of the strong coupling $\alpha_s$}
+A parameter we have not mentioned in the previous chapter was the coupling $g_s$. In this way we can define the strong coupling constant $\alpha_s$ as: 
+\begin{equation}
+	\alpha_s\equiv\frac{g_s^2}{4\pi}\,.
 	\label{eq:coupling-constant}
 \end{equation}
-where the $Q$ is merely describing the dependence on energy scale. 
-{\color{blue}Unsure whether to put $Q^2$ in the brackets}
-Due to the nature of QCD, $\alpha_s$ increases as  $Q$ decreases. {\color{blue} Add more about this - 'due to the nature is a bit vague - explain why.} In the regions of low energy, where $\alpha_s$ becomes large, quark confinement occurs. This is the phenomenon that quarks cannot exist in isolation and instead they are bound together with gluons to form hadrons.  {\color{blue} Bound together with gluons?} This region is the non-perturbative regime and is where perturbation theory is no longer applicable. \\ \\
+The coupling constant $\alpha_s$ determines the strength of the strong interaction as is referred to as a \emph{running coupling} $\alpha_s(\mu_R^2)$, which means it it varies as a function of the renormalisation scale $\mu_R$ (more explained later).  We can see how $\alpha_s$ varies with scale $\mu_R$ through the renormalisation group equation:
+\begin{equation}
+	\mu_R^2\frac{d\alpha_s(\mu_R^2)}{d\mu_R^2}=\beta(\alpha_s)=-(\beta_0\alpha_s^2+\beta_1\alpha_s^3+\beta_2\alpha_s^4+\cdots)\,,
+\end{equation}
+where $\beta(\alpha_s)$ is referred to as the beta-function and encodes the dynamics for how the coupling constant acts with increasing/decreasing scale $\mu_R$. The coefficients $\beta_n$ can be calculated via perturbation theory (see below) where the first term is found to be:
+\begin{equation}
+	\beta_0=\frac{11C_A-4T_Rn_f}{12\pi}\,,
+\end{equation}
+such that:
+\begin{equation}
+	\alpha_s(\mu_R)=\frac{\alpha_s(Q)}{1+\alpha_s\beta_0\ln\tfrac{\mu_R^2}{Q^2}}\,.
+\end{equation}
+{\color{green}(Stopped here.)}\\
+We can see from the sign of $\beta_0$ that $\alpha_s$ increases as  $\mu_R$ decreases. In the regions of low energy, where $\alpha_s$ becomes large, quark confinement occurs. This is the phenomenon that quarks cannot exist in isolation and instead they are bound together with gluons to form hadrons.  {\color{blue} Bound together with gluons?} This region is the non-perturbative regime and is where perturbation theory is no longer applicable. \\ \\
 Conversely, at high energies where $Q$ is large and $\alpha_s$ is small, QCD exhibits asymptotic freedom. In this regime, quarks and gluons behave as free particles and where perturbation theory occurs (again explained later) provides us with a good approximation. This behaviour is illustrated in figure~\ref{fig:alpha_s_plot}, which shows the running of $\alpha_s$ with energy scale.  {\color{blue}Generate a better graph.} Throughout this thesis, we may assume to always be working in the high-energy limit, exploiting the property of asymptotic freedom.
 {\color{blue}Rewrite this.} 
 {\color{green}Add plot.}
 
-\subsection{Perturbation Theory}
+\section{Perturbation Theory}
 As discussed in the previous section, perturbative QCD (pQCD) can be used in the high-energy limit. We will now discuss the details of pQCD. Looking at the vertices in figures \ref{fig:qgg} and \ref{fig:3-gluon} {\color{blue}(what about the other figure - surely this gives two emissions (fact check this))}, we see that every gluon emission gives rise to one power of $g_s$. The cross-section can therefore be expressed as a power series in $\alpha_s$:
 \begin{equation}
 	\sigma=c_0+c_1\cdot\alpha_s+c_2\cdot\alpha_s^2+\cdots\,,
@@ -100,8 +260,10 @@ As discussed in the previous section, perturbative QCD (pQCD) can be used in the
 \end{equation}
 where $c_i$ are constant terms {\color{blue}( Known as what?).} 
 Since $\alpha_s$ is small in the high-energy limit {\color{blue}(Better way to say this)}, the higher order terms in this expansion are expected to become become increasingly small. This allows a good approximation for the full result to come from the first couple of terms of the expansion -  this notion is referred to as perturbation theory {\color{blue}(Better way to say this)}. Calculating the terms in this truncated expansion is referred to as a fixed-order (FO) calculation, where the terms with the lowest power of $\alpha_s$ along with a non-zero coefficient $c_i$ is known as leading-order (LO). The next contribution, with the next smallest powers $\alpha_s$ is termed next-to-leading-order (NLO) and so on (NNLO etc.) {\color{blue}(A briefer way to say this hopefully).} Jet physics is an exclusively high-energy process and therefore pQCD can be used \cite{Schwartz:2014sze}, \cite{Campbell:2017hsr}. {\color{blue}(This ending kind of comes out of nowhere and I think it needs to be better linked).} 
-
-\section{Infrared Divergences}
+\section{Perturbation Theory}
+\subsection{Divergences}
+\subsubsection{UV Divergences}
+\subsubsection{IR Divergences}
 {\color{blue} Need to reword this whole section - start back from here.} \\ \\ 
 While perturbation theory is a fantastic tool used in the high-energy limit - it does come with problems in the form of divergences{\color{blue} (are these divergences problems?)}. There are two types of divergences, the first referred to as ultraviolet (UV) divergences. This occurs when considering a loop diagram such that we integrate over the momentum of a virtual particle {\color{blue} (maybe a little more information on this and fact check)}. The other type that occur are known as infrared and collinear (IRC) divergences {\color{blue} (can we just call them IR divergences?)}. {\color{blue} (Better way to write this).} In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon or a $Z$-boson ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. In this example, we choose to look at the case of the photon where the LO diagram is shown in figure \ref{fig:photon-qq}. 
 \begin{figure}[h]
@@ -167,6 +329,10 @@ The diagrams in figures \ref{fig:photon-qg} and \ref{fig:photon-bar-qg}, show th
 
 
 \section{High-energy physics}
+\subsection{Explanation of Process}
+\subsection{Factorisation}
+\subsection{Parton Model (maybe in previous section)}
+Give explanation at the beginning. 
 \emph{Include: factorisation at high-energy limit, what a jet is, the process following a high-energy collision, IRC Safety, resummation requirement.}
 {\color{green} Add in the big picture thing that is used in every single thesis here I think.}
 \subsection{IRC Safety} 
@@ -271,9 +437,11 @@ This clustering procedure effectively reconstructs the sequence of gluon emissio
 {\color{red} (Not understanding why this will give rise to better substructure and reduced NP effects.) }
 
 \subsection{Jet Algorithms for Deep-Inelastic Scattering}
+\label{subsec: DIS-alg}
 {\color{RoyalBlue}
  Deep-inelastic scattering (DIS) is the process:
 \begin{equation}
+\label{eq: DIS}
     e^-(k) + N(P) \rightarrow e^-(k') + X(p_X)\,,
 \end{equation}
 where $N$ denotes the incoming hadron (usually a proton) and $X$ represents all final-state hadrons produced. In DIS processes, three lorentz invariants are often used to describe the kinematics:
@@ -339,7 +507,15 @@ As introduced in Ref.~\cite{Catani:1992zp}, the $k_\perp$ algorithm described in
 
 
 \subsubsection{Cambridge DIS Algorithm}
-This was originally proposed in~\cite{Wobisch:1998wt} and was an extension of the $e^+e^-$ Cambridge algorithm, introduced in Section~\ref{subsec: e+e-}, extended in the same way that the $k_\perp$ algorithm for  $e^+e^-$ was extended to DIS in the above.
+{\color{RoyalBlue}
+The {\color{blue}(exclusive)} Cambridge algorithm for deep-inelastic scattering, originally proposed in Ref.~\cite{Wobisch:1998wt}, is an extension of the $e^+e^-$ Cambridge algorithm introduced in Section~\ref{subsec: e+e-}, generalised in the same manner as the $k_\perp$ algorithm was extended from $e^+e^-$ collisions to DIS, in the section above. \\\\
+The procedure follows the same steps as the $k_\perp$ DIS algorithm described above, but uses angular \emph{ordering variables}, $v_{ij}$ and $v_{iB}$, in place of the distance measures $d_{ij}$ and $d_{iB}$. The variable $v_{ij}$ is defined in Eq.~\ref{eq:vij-cambridge}, while the beam angular-ordering variable $v_{iB}$ is given by:
+\begin{equation}
+    v_{iB} = 2(1 - \cos\theta_{iB})\,.
+\end{equation}
+The clustering proceeds by finding the smallest value among $\{v_{ij}, v_{iB}\}$ and determining whether the corresponding object is associated with a final-state macro-jet or the beam jet. Once the pre-clustering is complete, the algorithm proceeds as in the $e^+e^-$ Cambridge algorithm (see Section~\ref{subsec: e+e-}) to resolve the jet substructure within each macro-jet.
+}
+{\color{blue} (Add in: widely separated in angle are attached to the hard leg i.e. no multiple gluon clustering - soft jet freezing.)}
 
 
 
