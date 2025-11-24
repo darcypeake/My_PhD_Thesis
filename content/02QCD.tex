@@ -24,9 +24,10 @@
 	\item Examples of algorithms
 	\end{itemize}	
 \end{enumerate}}
+
 \section{QCD: The basics}
-In the 1940s, many unstable, strongly interacting particles—collectively referred to as hadrons—were discovered. In 1963, Gell-Mann and Zweig introduced a model that explained several features of these particles, with the basic idea being that hadrons are composed of simpler spin-$\tfrac{1}{2}$ particles known as \emph{quarks}. The six known quarks are grouped into three generations—light, intermediate, and heavy—as shown in Table~\ref{table:quark-properties}. In this picture, hadrons come in two classes: mesons ($q\bar{q}$) and baryons ($qqq$). Quantum Chromodynamics (QCD) describes how partons bind together to form hadrons. It is an $\mathrm{SU}(3)$ non-Abelian gauge theory governing the strong interaction between quarks and the gauge bosons known as gluons. Quarks and gluons are collectively referred to as \emph{partons}, and they carry a conserved charge called colour. The quarks transform in the fundamental representation of the $\mathrm{SU}(3)$ group, with fields written as $q_a$ for $a = 1,2,3$, corresponding to the three colour states (typically labelled red, green, and blue). The associated antiquarks are denoted $\bar{q}^a$. The gluons, written as $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight possible colour degrees of freedom carried by the gluons.
-{\color{blue}(Add in the references for Gell-Mann/Zwigg (parton model) and the discovery of hadrons).}
+{\color{RoyalBlue}
+In the 1940s, a number of unstable, strongly interacting particles—collectively known as hadrons—were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interpreted hadrons as composite states built from more fundamental spin-$\tfrac{1}{2}$ constituents called \emph{quarks}. The six known quarks are organised into three generations—light, intermediate, and heavy—as listed in Table~\ref{table:quark-properties}. In this picture, hadrons fall into two classes: mesons ($q\bar q$) and baryons ($qqq$).
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
@@ -39,7 +40,8 @@ $d$   (down)	& $s$ (strange)    & $b$ (bottom)  & $-\tfrac{1}{3}$  \\ \hline
 \label{table:quark-properties}
 \end{table}
 
-The QCD Lagrangian density governs the dynamics of massless gluons and quarks of mass $m$:
+Quantum Chromodynamics (QCD) is an $\mathrm{SU}(3)$ non-Abelian gauge theory that governs the strong interaction. It describes how quarks bind together to form hadrons, with the interaction mediated by the gauge bosons known as gluons. Quarks and gluons are collectively referred to as \emph{partons}, and they carry a conserved charge called colour. Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour states typically labelled red, green, and blue. The associated antiquarks are written as $\bar{q}^a$. Gluons, denoted $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight colour degrees of freedom characteristic of the gauge group.\\ \\
+The QCD Lagrangian density describes the dynamics of massless gluons and quarks of mass $m$:
 \begin{equation}
 \label{eq: L-QCD}
 \mathcal{L}_{\mathrm{QCD}}
@@ -47,36 +49,36 @@ The QCD Lagrangian density governs the dynamics of massless gluons and quarks of
 + \mathcal{L}_{\mathrm{GF}}
 + \mathcal{L}_{\mathrm{ghost}}\,,
 \end{equation}
-where the first contribution describes massless gluons coupled to quarks $\psi$ of mass $m$:
+where the classical part contains the kinetic terms for the gluon and quark fields, together with their interactions:
 \begin{equation}
 \label{eq: L-Classical}
 \mathcal{L}_{\mathrm{classical}}
 = -\frac{1}{4} F_{\mu\nu}^{A} F^{\mu\nu}_{A}
-+ \sum_{f=1}^{n_f} \bar{q}^f_a (i\slashed{D} - m)_{ab}\, q^f_b \,,
++ \sum_{f=1}^{n_f} \bar{q}^f_a (i\slashed{D} - m)_{ab}\, q^f_b \,.
 \end{equation}
-where $n_f$ refers to the flavours of quarks where $n_f=6$ in the Standard Model (see below) and can be seen in~\ref{table:quark-properties}. 
-The gluon dynamics are encoded in the field-strength tensor:
+Here $n_f$ denotes the number of quark flavours, which takes the value $n_f = 6$ in the Standard Model (see Table~\ref{table:quark-properties}). The gluon dynamics are encoded in the non-Abelian field-strength tensor
 \begin{equation}
 F_{\alpha\beta}^{A}
 = \partial_\alpha A_\beta^A
 - \partial_\beta A_\alpha^A
 - g_s f^{ABC} A_\alpha^B A_\beta^C \,.
 \end{equation}
-We have used the Feynman slash notation $\slashed{D} = \gamma_\mu D^\mu$, to show the covariant derivative:
+We use the Feynman slash notation $\slashed{D} = \gamma_\mu D^\mu$ for the covariant derivative,
 \begin{equation}
 (D_\mu)_{ab}
 = \partial_\mu \delta_{ab}
-+ ig_s (t^CA_\mu^C)_{ab},
++ ig_s (t^C A_\mu^C)_{ab}\,,
 \end{equation}
-where the gamma matrices satisfy the anti-commutation relations $\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}$ and where $t^C$ are colour matrices and are  the generators of the fundamental representation of $SU(3)$. An explicit representation of these generators are given by the eight traceless and  Hermitian Gell-Mann matrices, $\lambda^C$:
+where the gamma matrices satisfy the anti-commutation relation $\{\gamma^\mu,\gamma^\nu\} = 2 g^{\mu\nu}$. Throughout this work we adopt the metric convention $g^{\mu\nu} = (1,-1,-1,-1)$. The matrices $t^C$ denote the generators of the fundamental representation of $\mathrm{SU}(3)$. An explicit representation of these are given by the eight traceless and Hermitian Gell-Mann matrices, $\lambda^C$:
 \begin{equation}
 	t^C=\frac{1}{2}\lambda^C\,.
 \end{equation}
-These colour matrices satisfy the following commutation relation:
+These colour matrices satisfy the commutation relation
 \begin{equation}
 [t^A, t^B] = i f^{ABC} t^C\,,
 \end{equation}
-where $f^{ABC}$ are the structure constants of the gauge group $SU(3)$. These satisfy
+where $f^{ABC}$ are the structure constants of the $\mathrm{SU}(3)$ gauge group. \\ 
+In addition to the commutation relation above, the generators obey the identities
 \begin{equation}
 \begin{aligned}
 \mathrm{Tr}(t^A t^B) &= T_R\, \delta^{AB}, \qquad T_R = \frac{1}{2}, \\
@@ -84,19 +86,19 @@ where $f^{ABC}$ are the structure constants of the gauge group $SU(3)$. These sa
 \sum_{A,B} f^{ABC} f^{ABD} &= C_A\, \delta^{CD}, \qquad C_A = 3.
 \end{aligned}
 \end{equation}
-Throughout this work we adopt the metric convention $g^{\mu\nu} = (1,-1,-1,-1)$.\\
-The term second term in equation~\ref{eq: L-QCD} is referred to as the gauge fixing term {\color{blue} (add in why we need this term)}:
+\\The second term in Eq.~\ref{eq: L-QCD} is the gauge-fixing term:
 \begin{equation}
-	\mathcal{L}_\mathrm{GF}=-\frac{1}{2\xi}(\partial^\mu A_\mu^{A})^2\,,
+    \mathcal{L}_{\mathrm{GF}}
+    = -\frac{1}{2\xi} \left( \partial^\mu A_\mu^{A} \right)^{2}\,.
 \end{equation}
-where $\xi$ is the gauge parameter and tells us which gauge we are working in e.g. the Feynman guage is $\xi=0$ while the Lorentz gauge is $\xi=1$.\\
-The third term in equation~\ref{eq: L-QCD} is:
+This is required since the QCD Lagrangian is invariant under local $\mathrm{SU}(3)$ gauge transformations, which in turn introduces redundant degrees of freedom. This gauge fixing term removes this redundancy. The parameter $\xi$ specifies the choice of gauge; for example, $\xi = 1$ corresponds to Feynman gauge and $\xi = 0$ to Landau gauge.{\color{blue} (Double check that this is correct motivation.)}\\
+The third term in Eq.~\ref{eq: L-QCD} is the ghost term,
 \begin{equation}
 \mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
 \end{equation}
-where $\eta^A$ are complex scalar fields which are referred to as Faddeev-Popov ghosts and obeys Fermi statistics i.e. the field is anti-commuting. These ghosts do
-not correspond to physical states and simply appear as a consequence of the gauge fixing procedure of the non-abelian theory. \\ \\ 
-The Feynman rules extracted from the full QCD Lagrangian are shown in Figures~\ref{fig:QCD-Propagator-Rules} and\ref{fig:QCD-Vertex-Rules} (please note for brevity we have not included the Feynman rules of the ghosts due to lack of relevance of the original work performed in this thesis).
+where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they appear as a consequence of the gauge-fixing procedure in non-Abelian gauge theories.\\ \\
+The Feynman rules extracted from the full QCD Lagrangian are shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. For brevity, the ghost Feynman rules are omitted, as they are not required for the calculations presented in this thesis.{\color{red} (Think about whether to say full or not as think it's actually only from the classical part.)}
+
 
 
 
@@ -126,12 +128,12 @@ The Feynman rules extracted from the full QCD Lagrangian are shown in Figures~\r
         (a) -- [gluon, momentum={$p$}] (b),
     };
 \end{feynman}
-\node[left] at (a) {$A,\alpha$};
-\node[right] at (b) {$B,\beta$};
-\node[right=1.0cm of b] {$=\; \delta^{AB}\dfrac{i}{p^{2}+i\epsilon}\!\left(-g_s^{\alpha\beta}-(1-\xi)\dfrac{p^\alpha\,p^\beta}{p^2+i\epsilon}\right)$};
+\node[left] at (a) {$A,\mu$};
+\node[right] at (b) {$B,\nu$};
+\node[right=1.0cm of b] {$=\; \delta^{AB}\dfrac{i}{p^{2}+i\epsilon}\!\left(-g_s^{\mu\nu}-(1-\xi)\dfrac{p^\mu\,p^\nu}{p^2+i\epsilon}\right)$};
 \end{tikzpicture}
 
-\caption{Feynman rules for the quark and gluon propagators. These can be extracted from terms with two fields. {\color{blue} (Write better caption and change indices.)}}
+\caption{Feynman rules for the quark and gluon propagators.}
 \label{fig:QCD-Propagator-Rules}
 \end{figure}
 
@@ -151,9 +153,9 @@ The Feynman rules extracted from the full QCD Lagrangian are shown in Figures~\r
         (b) -- [anti fermion] (d),
     };
 \end{feynman}
-\node[left] at (a) {$A,\alpha$};
-\node[right] at (c) {$b,i$};
-\node[right] at (d) {$c,j$};
+\node[left] at (a) {$A,\mu$};
+\node[right] at (c) {$c,j$};
+\node[right] at (d) {$b,i$};
 \node[right=1.5cm of b] {$=\; -ig_s\,(t^A)_{cb}\,(\gamma^\alpha)_{ji}$};
 \end{tikzpicture}
 
@@ -173,17 +175,17 @@ The Feynman rules extracted from the full QCD Lagrangian are shown in Figures~\r
     };
 \end{feynman}
 
-\node[left] at (a) {$A,\alpha$};
-\node[above right] at (b) {$B,\beta$};
+\node[left] at (a) {$A,\mu$};
+\node[above right] at (b) {$B,\nu$};
 \node[below right] at (c) {$C,\gamma$};
 
 \node[right=2.3cm of v] {
 $\displaystyle
 = -g_s\, f^{ABC}
 \big[
-(p-q)^\gamma g^{\alpha\beta}
-+ (q-r)^\alpha g^{\beta\gamma}
-+ (r-p)^\beta g^{\alpha\gamma}
+(p-q)^\gamma g^{\mu\nu}
++ (q-r)^\mu g^{\nu\gamma}
++ (r-p)^\nu g^{\mu\gamma}
 \big]
 $
 };
@@ -195,8 +197,8 @@ $
 \begin{tikzpicture}[baseline=(current bounding box.center)]
 \begin{feynman}
     \vertex (v);
-    \vertex[above left=of v]  (A) {$A,\alpha$};
-    \vertex[below left=of v]  (B) {$B,\beta$};
+    \vertex[above left=of v]  (A) {$A,\mu$};
+    \vertex[below left=of v]  (B) {$B,\nu$};
     \vertex[above right=of v] (C) {$C,\gamma$};
     \vertex[below right=of v] (D) {$D,\delta$};
 
@@ -210,23 +212,20 @@ $
 
 \node[right=3.1cm of v] {
 $\displaystyle
-= -ig_s^2 \left[
 \begin{aligned}
-& f^{EAC}f^{EBD}(g^{\alpha\beta}g^{\gamma\delta}-g^{\alpha\delta}g^{\beta\gamma}) \\
-&+ f^{EAD}f^{EBC}(g^{\alpha\beta}g^{\gamma\delta}-g^{\alpha\gamma}g^{\beta\delta}) \\
-&+ f^{EAB}f^{ECD}(g^{\alpha\gamma}g^{\beta\delta}-g^{\alpha\delta}g^{\beta\gamma})
+&= -ig_s^2  \left[f^{EAC}f^{EBD}(g^{\mu\nu}g^{\gamma\delta}-g^{\mu\delta}g^{\nu\gamma})\right.\\
+&\qquad\quad + f^{EAD}f^{EBC}(g^{\mu\nu}g^{\gamma\delta}-g^{\mu\gamma}g^{\nu\delta})\\
+&\qquad\quad \left.+ f^{EAB}f^{ECD}(g^{\mu\gamma}g^{\nu\delta}-g^{\mu\delta}g^{\nu\gamma})\right]
 \end{aligned}
-\right]
 $
 };
 \end{tikzpicture}
 
 
-\caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and the four--gluon vertex. {\color{blue} (Write better caption and change indices.)}}
+\caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and the four--gluon vertex.}
 \label{fig:QCD-Vertex-Rules}
 \end{figure}
-
-
+}
 
 \section{The running of the strong coupling $\alpha_s$}
 A parameter we have not mentioned in the previous chapter was the coupling $g_s$. In this way we can define the strong coupling constant $\alpha_s$ as: 
