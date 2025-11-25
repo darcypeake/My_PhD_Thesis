@@ -226,30 +226,49 @@ $
 \label{fig:QCD-Vertex-Rules}
 \end{figure}
 }
+This section mainly used the pink book and lecture notes.
 
 \section{The running of the strong coupling $\alpha_s$}
-A parameter we have not mentioned in the previous chapter was the coupling $g_s$. In this way we can define the strong coupling constant $\alpha_s$ as: 
+A parameter introduced in the previous section but not yet defined is the coupling $g_s$. This quantity characterises the strength of the strong interaction and is commonly expressed in terms of the strong coupling constant,
 \begin{equation}
-	\alpha_s\equiv\frac{g_s^2}{4\pi}\,.
-	\label{eq:coupling-constant}
+    \alpha_s \equiv \frac{g_s^2}{4\pi}\,.
+    \label{eq:coupling-constant}
 \end{equation}
-The coupling constant $\alpha_s$ determines the strength of the strong interaction as is referred to as a \emph{running coupling} $\alpha_s(\mu_R^2)$, which means it it varies as a function of the renormalisation scale $\mu_R$ (more explained later).  We can see how $\alpha_s$ varies with scale $\mu_R$ through the renormalisation group equation:
+The coupling constant determines the interaction strength and is said to \emph{run} since it varies with the renormalisation scale $\mu_R$ (to be discussed later) according to the renormalisation group equation
 \begin{equation}
-	\mu_R^2\frac{d\alpha_s(\mu_R^2)}{d\mu_R^2}=\beta(\alpha_s)=-(\beta_0\alpha_s^2+\beta_1\alpha_s^3+\beta_2\alpha_s^4+\cdots)\,,
+\label{eq:coupling-DE}
+    \mu_R^2 \frac{\partial \alpha_s(\mu_R^2)}{\partial \mu_R^2} = \beta(\alpha_s)\,.
 \end{equation}
-where $\beta(\alpha_s)$ is referred to as the beta-function and encodes the dynamics for how the coupling constant acts with increasing/decreasing scale $\mu_R$. The coefficients $\beta_n$ can be calculated via perturbation theory (see below) where the first term is found to be:
+The $\beta$-function can be expanded perturbatively as
 \begin{equation}
-	\beta_0=\frac{11C_A-4T_Rn_f}{12\pi}\,,
+    \beta(\alpha_s) = -\!\left(\beta_0\,\alpha_s^2 + \beta_1\,\alpha_s^3 + \beta_2\,\alpha_s^4 + \cdots\right),
 \end{equation}
-such that:
+where the coefficients are found to be
 \begin{equation}
-	\alpha_s(\mu_R)=\frac{\alpha_s(Q)}{1+\alpha_s\beta_0\ln\tfrac{\mu_R^2}{Q^2}}\,.
+\begin{aligned}
+    \beta_0 &= \frac{11 C_A - 4\,T_R\,n_f}{12\pi}\,, \\
+    \beta_1 &= \frac{17 C_A^2 - 5\,C_A\,n_f - 3\,C_F\,n_f}{2\pi\,(11 C_A - 2 n_f)}\,, \\
+   & \qquad \qquad\cdots
+   % \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
+\end{aligned}
 \end{equation}
-{\color{green}(Stopped here.)}\\
-We can see from the sign of $\beta_0$ that $\alpha_s$ increases as  $\mu_R$ decreases. In the regions of low energy, where $\alpha_s$ becomes large, quark confinement occurs. This is the phenomenon that quarks cannot exist in isolation and instead they are bound together with gluons to form hadrons.  {\color{blue} Bound together with gluons?} This region is the non-perturbative regime and is where perturbation theory is no longer applicable. \\ \\
-Conversely, at high energies where $Q$ is large and $\alpha_s$ is small, QCD exhibits asymptotic freedom. In this regime, quarks and gluons behave as free particles and where perturbation theory occurs (again explained later) provides us with a good approximation. This behaviour is illustrated in figure~\ref{fig:alpha_s_plot}, which shows the running of $\alpha_s$ with energy scale.  {\color{blue}Generate a better graph.} Throughout this thesis, we may assume to always be working in the high-energy limit, exploiting the property of asymptotic freedom.
-{\color{blue}Rewrite this.} 
-{\color{green}Add plot.}
+he coefficients of the $\beta$-function arise from loop corrections to the bare vertices of the theory. In this way, the scale dependence of the coupling emerges from higher-order quantum corrections. \\\\
+%It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation-scheme independent; $\beta_2$ and higher coefficients depend on the renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later).
+ Solving Eq.~\eqref{eq:coupling-DE} to first order, using a reference scale $Q$, yields
+\begin{equation}
+	\alpha_s(\mu_R^2)=\frac{\alpha_s(Q^2)}{1+\alpha_s\beta_0\ln\tfrac{\mu_R^2}{Q^2}}\,.
+\end{equation}
+As $\mu_R \to \infty$, the coupling becomes small, allowing quarks and gluons to behave as nearly free particles. This phenomenon is known as \emph{asymptotic freedom}, a regime in which perturbation theory (see below) provides us with a very good approximation. Conversely, as $\mu_R \to 0$, the coupling becomes large, signalling the \emph{confinement} regime in which quarks and gluons are bound into hadrons and perturbation theory breaks down. \\\\
+The effect of the running coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{figures/strong_coupling.pdf}
+    \caption{Summary of determinations of $\alpha_s$ as a function of the energy scale $Q$, compared to the running of the coupling computed at five loops using the current PDG average $\alpha_s(m_Z^2) = 0.1180 \pm 0.0009$~\cite{ParticleDataGroup:2024cfk}.}
+    \label{fig:strong-coupling}
+\end{figure}
+Throughout this thesis, we will assume we are working in the high-energy limit, exploiting asymptotic freedom.
+This section used the pink and black book.
+
 
 \section{Perturbation Theory}
 As discussed in the previous section, perturbative QCD (pQCD) can be used in the high-energy limit. We will now discuss the details of pQCD. Looking at the vertices in figures \ref{fig:qgg} and \ref{fig:3-gluon} {\color{blue}(what about the other figure - surely this gives two emissions (fact check this))}, we see that every gluon emission gives rise to one power of $g_s$. The cross-section can therefore be expressed as a power series in $\alpha_s$:
