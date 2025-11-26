@@ -97,7 +97,9 @@ The third term in Eq.~\ref{eq: L-QCD} is the ghost term,
 \mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
 \end{equation}
 where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they appear as a consequence of the gauge-fixing procedure in non-Abelian gauge theories.\\ \\
-The Feynman rules extracted from the full QCD Lagrangian are shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. For brevity, the ghost Feynman rules are omitted, as they are not required for the calculations presented in this thesis.{\color{red} (Think about whether to say full or not as think it's actually only from the classical part.)}
+The Feynman rules extracted from the full QCD Lagrangian are shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. {\color{blue} (Add: the propagators come from the kinetic terms, while the vertices come from the interaction terms and show how various particles couple to one another.)}
+For brevity, the ghost Feynman rules are omitted, as they are not required for the calculations presented in this thesis. {\color{red} (Think about whether to say full or not as think it's actually only from the classical part.)}
+
 
 
 
@@ -263,25 +265,37 @@ The effect of the running coupling has also been confirmed experimentally, as il
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{figures/strong_coupling.pdf}
-    \caption{Summary of determinations of $\alpha_s$ as a function of the energy scale $Q$, compared to the running of the coupling computed at five loops using the current PDG average $\alpha_s(m_Z^2) = 0.1180 \pm 0.0009$~\cite{ParticleDataGroup:2024cfk}.}
+    \caption{Summary of determinations of $\alpha_s$ as a function of the energy scale $Q$, compared to the running of the coupling computed at five loops using the current PDG average $\alpha_s(m_Z^2) = 0.1180 \pm 0.0009$~\cite{ParticleDataGroup:2024cfk}. {\color{blue}(Need to change this.)}}
     \label{fig:strong-coupling}
 \end{figure}
 Throughout this thesis, we will assume we are working in the high-energy limit, exploiting asymptotic freedom.
 This section used the pink and black book.
 
+\section{Perturbation Theory}
 
-\section{Perturbation Theory}
-As discussed in the previous section, perturbative QCD (pQCD) can be used in the high-energy limit. We will now discuss the details of pQCD. Looking at the vertices in figures \ref{fig:qgg} and \ref{fig:3-gluon} {\color{blue}(what about the other figure - surely this gives two emissions (fact check this))}, we see that every gluon emission gives rise to one power of $g_s$. The cross-section can therefore be expressed as a power series in $\alpha_s$:
+With the QCD Lagrangian and Feynman rules established in the previous section, we can now outline how calculations are carried out in practice. At high energies, the strong coupling $\alpha_s$ becomes small, which allows the interaction terms in the Lagrangian to be treated as a perturbation of the free theory. Using the propagators and vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}, we construct Feynman diagrams whose contributions are organised according to their powers of~$\alpha_s$.
+
+The resulting scattering amplitude (matrix element) takes the form of a perturbative series,
 \begin{equation}
-	\sigma=c_0+c_1\cdot\alpha_s+c_2\cdot\alpha_s^2+\cdots\,,
-	\label{eq:pQCD}
+    \mathcal{M}
+    = \mathcal{M}_0
+    + \alpha_s\,\mathcal{M}_1
+    + \alpha_s^2\,\mathcal{M}_2
+    + \cdots\,,
+    \label{eq:pQCD}
 \end{equation}
-where $c_i$ are constant terms {\color{blue}( Known as what?).} 
-Since $\alpha_s$ is small in the high-energy limit {\color{blue}(Better way to say this)}, the higher order terms in this expansion are expected to become become increasingly small. This allows a good approximation for the full result to come from the first couple of terms of the expansion -  this notion is referred to as perturbation theory {\color{blue}(Better way to say this)}. Calculating the terms in this truncated expansion is referred to as a fixed-order (FO) calculation, where the terms with the lowest power of $\alpha_s$ along with a non-zero coefficient $c_i$ is known as leading-order (LO). The next contribution, with the next smallest powers $\alpha_s$ is termed next-to-leading-order (NLO) and so on (NNLO etc.) {\color{blue}(A briefer way to say this hopefully).} Jet physics is an exclusively high-energy process and therefore pQCD can be used \cite{Schwartz:2014sze}, \cite{Campbell:2017hsr}. {\color{blue}(This ending kind of comes out of nowhere and I think it needs to be better linked).} 
-\section{Perturbation Theory}
-\subsection{Divergences}
-\subsubsection{UV Divergences}
-\subsubsection{IR Divergences}
+where $\mathcal{M}_0$ is the tree-level term and $\mathcal{M}_i$ denotes the $i$-th order correction. Since $\alpha_s$ is small in the high-energy regime, higher-order terms are increasingly suppressed, meaning that truncating the series after the first few contributions typically yields a reliable approximation. Such a truncated calculation is referred to as a fixed-order (FO) prediction. The first non-zero term is called leading order (LO), the next term next-to-leading order (NLO), followed by next-to-next-to-leading order (NNLO), and so on.
+
+The introduction of loop diagrams at NLO and beyond brings new features—most notably ultraviolet and infrared divergences—which require regularisation and renormalisation. These issues will be discussed in the next section.
+
+CHANGE ALL OF THIS TO OWN WORDS \\ \\
+SWAP WITH PREVIOUS SECTION \\ \\
+SEE IF WE NEED TO REFERENCE \\ \\ 
+SAY IN HIGH ENERGY LIMIT, SMALL COUPLING.
+
+\section{Divergences}
+\subsection{UV Divergences}
+\subsection{IR Divergences}
 {\color{blue} Need to reword this whole section - start back from here.} \\ \\ 
 While perturbation theory is a fantastic tool used in the high-energy limit - it does come with problems in the form of divergences{\color{blue} (are these divergences problems?)}. There are two types of divergences, the first referred to as ultraviolet (UV) divergences. This occurs when considering a loop diagram such that we integrate over the momentum of a virtual particle {\color{blue} (maybe a little more information on this and fact check)}. The other type that occur are known as infrared and collinear (IRC) divergences {\color{blue} (can we just call them IR divergences?)}. {\color{blue} (Better way to write this).} In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon or a $Z$-boson ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. In this example, we choose to look at the case of the photon where the LO diagram is shown in figure \ref{fig:photon-qq}. 
 \begin{figure}[h]
