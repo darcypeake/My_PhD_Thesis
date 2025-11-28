@@ -233,10 +233,12 @@ $
 \label{fig:QCD-Vertex-Rules}
 \end{figure}
 }
-This section mainly used the pink book and lecture notes.
+{\color{orange}This section mainly used the pink book and lecture notes.}
 
 \section{Perturbation Theory}
-With the QCD Lagrangian and Feynman rules established in the previous section, we can now outline how calculations are carried out in practice. Using the propagators and vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}, we construct Feynman diagrams, which provide a pictorial representation of the scattering amplitude $\mathcal{M}$ for a given process. Applying the Feynman rules allows us to evaluate $\mathcal{M}$, with each diagram contributing a term whose order is determined by the number of interaction vertices—equivalently, by the number of gluon emissions or self-interactions involved. Since each QCD vertex carries a factor of the strong coupling $g_s$ (or $\alpha_s$), diagrams with more gluon emissions or loop corrections appear at higher powers of $\alpha_s$.  This leads naturally to a perturbative expansion of the matrix element,
+{\color{RoyalBlue}
+With the QCD Lagrangian and corresponding Feynman rules established in the previous section, we can now outline how  calculations are performed in practice. Using the propagators and interaction vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules} respectively, we can construct Feynman diagrams. These diagrams offer a visual representation of the scattering (probability) amplitude $\mathcal{M}$ for a given process and by applying the Feynman rules we are able to calculate its value. \\ \\
+From the structure of the interaction vertices, it is evident that either the emission of an additional gluon (a real correction) or the appearance of a loop (a virtual correction) within the Feynman diagram introduces extra powers of the strong coupling $\alpha_s$. This indicates that the scattering amplitude follows a perturbative expansion,
 \begin{equation}
     \mathcal{M}
     = \mathcal{M}_0
@@ -245,19 +247,22 @@ With the QCD Lagrangian and Feynman rules established in the previous section, w
     + \cdots\,,
     \label{eq:pQCD}
 \end{equation}
-where $\mathcal{M}_0$, $\mathcal{M}_1$, $\mathcal{M}_2$, etc., represent the successive terms in the perturbative expansion. The first non-zero term is the leading-order (LO) contribution, followed by the next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on. Since $\alpha_s$ is small in the high-energy regime (see next section), higher-order terms are increasingly suppressed. Consequently, the series can usually be truncated after the first few terms, yielding a fixed-order (FO) prediction.
+where $\mathcal{M}_0$ is the tree-level (classical) contribution, often referred to as the leading-order (LO) or Born term, while the terms $\mathcal{M}_1$, $\mathcal{M}_2$, etc.\ represent higher-order (quantum) corrections to the Born and are often referred to as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on. \\ \\ 
+Since $\alpha_s$ becomes small at high energies (as discussed in the next section), higher-order terms are increasingly suppressed in this regime. As a result, the perturbative series can be well approximated by its first few terms, yielding a \emph{fixed-order} (FO) prediction. This approach is known as perturbation theory, and its application to QCD is referred to as perturbative QCD (pQCD). Throughout this thesis, we will work within the framework of pQCD.
+} \\ \\
+{\color{orange} No reference for this section.}
 
 \section{The running of the strong coupling $\alpha_s$}
-The coupling constant $\alpha_s$, determines the interaction strength and is said to \emph{run} since it varies with the renormalisation scale $\mu_R$ (to be discussed later) according to the renormalisation group equation
+As noted in the previous section, perturbative QCD relies on the strong coupling becoming small at high energies. This behaviour reflects the fact that $\alpha_s$ is not a fixed constant but instead \emph{runs} with the renormalisation scale $\mu_R$ -- an unphysical scale introduced by the procedure of renormalisation which will be discussed in the following section -- and whose scale dependence is determined by the renormalisation group equation
 \begin{equation}
 \label{eq:coupling-DE}
     \mu_R^2 \frac{\partial \alpha_s(\mu_R^2)}{\partial \mu_R^2} = \beta(\alpha_s)\,.
 \end{equation}
-The $\beta$-function can be expanded perturbatively as
+The $\beta$-function here follows a perturbative expansion
 \begin{equation}
     \beta(\alpha_s) = -\!\left(\beta_0\,\alpha_s^2 + \beta_1\,\alpha_s^3 + \beta_2\,\alpha_s^4 + \cdots\right),
 \end{equation}
-where the coefficients are found to be
+with coefficients 
 \begin{equation}
 \begin{aligned}
     \beta_0 &= \frac{11 C_A - 4\,T_R\,n_f}{12\pi}\,, \\
@@ -266,13 +271,14 @@ where the coefficients are found to be
    % \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
 \end{aligned}
 \end{equation}
-he coefficients of the $\beta$-function arise from loop corrections to the bare vertices of the theory. In this way, the scale dependence of the coupling emerges from higher-order quantum corrections. \\\\
+%These arise from loop corrections to the bare vertices of the theory. In this way, the scale dependence of the coupling emerges from higher-order quantum corrections. \\\\
 %It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation-scheme independent; $\beta_2$ and higher coefficients depend on the renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later).
  Solving Eq.~\eqref{eq:coupling-DE} to first order, using a reference scale $Q$, yields
 \begin{equation}
 	\alpha_s(\mu_R^2)=\frac{\alpha_s(Q^2)}{1+\alpha_s\beta_0\ln\tfrac{\mu_R^2}{Q^2}}\,.
 \end{equation}
-As $\mu_R \to \infty$, the coupling becomes small, allowing quarks and gluons to behave as nearly free particles. This phenomenon is known as \emph{asymptotic freedom}, a regime in which perturbation theory provides us with a very good approximation. Conversely, as $\mu_R \to 0$, the coupling becomes large, signalling the \emph{confinement} regime in which quarks and gluons are bound into hadrons and perturbation theory breaks down. \\\\
+{\color{green} Stop here.}\\ \\
+As $\mu_R \to \infty$, the coupling becomes small, allowing quarks and gluons to effectively behave as free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides us with a very good approximation. Conversely, as $\mu_R \to 0$, the coupling becomes large, signalling the break down of perturbation theory in which  quarks and gluons are bound into hadrons, known as \emph{confinement}. \\\\
 The effect of the running coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}.
 \begin{figure}[h]
     \centering
