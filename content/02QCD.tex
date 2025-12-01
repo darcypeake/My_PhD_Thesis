@@ -291,49 +291,38 @@ From the sign of $\beta_0$ and the form equation~\ref{eq:scale-dependence}, the 
 }
 {\color{orange} This section used the pink and black book.}
 
-
-
 \section{Divergences}
-While perturbation theory is a fantastic tool used in the high-energy limit - it does come with problems in the form of divergences. There are two types of divergences, the first referred to as ultraviolet (UV) divergences. This occurs when considering a loop diagram such that we integrate over the momentum of a virtual particle. The other type that occur are known as infrared and collinear (IRC) divergences. 
+While perturbation theory provides us with a fantastic approximation in the high-energy limit, there are still issues. These come in the form of divergences and come in two types:  ultraviolet (UV) divergences and infrared (IR) divergences. 
 
-\subsection{UV Divergences}
-
+\subsection*{UV Divergences}
+UV divergences occur when there are loop diagrams an example of the fermion loop shown in~\ref{fig:fermion-bubble}. The Feynman rules associated with loops required us to integrate of the momenta. In this sense it we are required to integrate over the momentum of a virtual particle. 
 \begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[scale=1.6]
-        \begin{feynman}
+\begin{tikzpicture}[scale=2]
+\begin{feynman}
+    \vertex (a) at (-2,0) {$\mu$, a} ;
+    \vertex (b) at ( 2,0) {$\nu$, b};
+    \vertex (c) at (-0.8,0);
+    \vertex (d) at ( 0.8,0);
 
-            \vertex (g1) at (0,0) {\(p\)};
-            \vertex [right=4.2cm of g1] (g2) {\(p\)};
+    \diagram*{
+        (a) -- [gluon, momentum=$p$] (c),
+        (d) -- [gluon, momentum=$p$] (b),
+        (c) -- [fermion, half left,  looseness=1.5, momentum=$p+q$] (d),
+        (d) -- [fermion, half left,  looseness=1.5, momentum=$q$] (c),
+    };
 
-            \vertex [right=1.6cm of g1] (a);
-            \vertex [right=2.6cm of g1] (b);
-
-            \diagram*{
-                (g1) -- [gluon] (a),
-                (b) -- [gluon] (g2),
-            };
-
-            \draw (a)
-                to [fermion, out=70, in=110, looseness=1.9]
-                node[midway, above] {\(k\)}
-                (b);
-
-            \draw (b)
-                to [fermion, out=-110, in=-70, looseness=1.9]
-                node[midway, below] {\(p-k\)}
-                (a);
-
-        \end{feynman}
-    \end{tikzpicture}
-
-    \caption{Quark-loop contribution to the gluon propagator, with momenta \(k\) and \(p-k\).}
+\end{feynman}
+\end{tikzpicture}
+\caption{The fermion bubble diagram. {\color{blue} (Need to change the caption.)}}
+\label{fig:fermion-bubble}
 \end{figure}
+Taking Feynman rules, we find we obtain the following integral for the value of the Feynman diagram
+\begin{equation}
+	I=\int d^4q\frac{N^{\mu\nu}}{(q^2-m^2)((p+q)^2-m^2)}\,,
+\end{equation}
+where $N^{\mu\nu}$ is some numerator whose exact value is not necessary for the discussion here. 
 
-
-
-
-\subsection{IR Divergences}
+\subsection*{IR Divergences}
 In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon or a $Z$-boson ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}.
 \subsubsection{Leading-order cross-section}
 The easiest way to discuss IR divergences is through the process $e^+e^-\rightarrow q\bar{q}$
@@ -377,9 +366,6 @@ where $Q_f$ is the electric charge of a given quark flavour where this equation 
 \subsubsection{NLO real cross-section}
 \begin{figure}[h]
     \centering
-    %------------------------------------------
-    % LEFT DIAGRAM: gluon from upper quark leg
-    %------------------------------------------
     \begin{tikzpicture}
         \begin{feynman}
 
@@ -392,10 +378,8 @@ where $Q_f$ is the electric charge of a given quark flavour where this equation 
             \vertex [above right=2cm of b] (f1) {\(q\)};
             \vertex [below right=2cm of b] (f2) {\(\overline{q}\)};
 
-            % midpoint on upper leg
             \vertex at ($(b)!0.5!(f1)$) (m1);
 
-            % gluon emission point
             \vertex [right=1.2cm of m1, yshift=0.0cm] (g1) {\(g\)};
 
             \diagram*{
@@ -411,9 +395,7 @@ where $Q_f$ is the electric charge of a given quark flavour where this equation 
         \end{feynman}
     \end{tikzpicture}
     \hspace{2cm}
-    %------------------------------------------
-    % RIGHT DIAGRAM: gluon from lower antiquark leg
-    %------------------------------------------
+
     \begin{tikzpicture}
         \begin{feynman}
 
@@ -426,10 +408,8 @@ where $Q_f$ is the electric charge of a given quark flavour where this equation 
             \vertex [above right=2cm of b] (f1) {\(q\)};
             \vertex [below right=2cm of b] (f2) {\(\overline{q}\)};
 
-            % midpoint on lower leg
             \vertex at ($(b)!0.5!(f2)$) (m2);
 
-            % gluon emission point
             \vertex at ($(m2) + (1.2cm,-0.0cm)$) (g2) {\(g\)};
 
             \diagram*{
