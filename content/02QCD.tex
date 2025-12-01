@@ -247,116 +247,292 @@ From the structure of the interaction vertices, it is evident that either the em
     + \cdots\,,
     \label{eq:pQCD}
 \end{equation}
-where $\mathcal{M}_0$ is the tree-level (classical) contribution, often referred to as the leading-order (LO) or Born term, while the terms $\mathcal{M}_1$, $\mathcal{M}_2$, etc.\ represent higher-order (quantum) corrections to the Born and are often referred to as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on. \\ \\ 
+where $\mathcal{M}_0$ is the tree-level (classical) contribution, often referred to as the leading-order (LO) or Born term, while the terms $\mathcal{M}_1$, $\mathcal{M}_2$, etc.\ represent higher-order (quantum) corrections to the Born and are often referred to as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on. 
+{\color{red} (I am wondering whether it should be like, `the first non-zero term is LO/classical etc.')}\\ \\ 
 Since $\alpha_s$ becomes small at high energies (as discussed in the next section), higher-order terms are increasingly suppressed in this regime. As a result, the perturbative series can be well approximated by its first few terms, yielding a \emph{fixed-order} (FO) prediction. This approach is known as perturbation theory, and its application to QCD is referred to as perturbative QCD (pQCD). Throughout this thesis, we will work within the framework of pQCD.
 } \\ \\
 {\color{orange} No reference for this section.}
 
 \section{The running of the strong coupling $\alpha_s$}
-As noted in the previous section, perturbative QCD relies on the strong coupling becoming small at high energies. This behaviour reflects the fact that $\alpha_s$ is not a fixed constant but instead \emph{runs} with the renormalisation scale $\mu_R$ -- an unphysical scale introduced by the procedure of renormalisation which will be discussed in the following section -- and whose scale dependence is determined by the renormalisation group equation
+{\color{RoyalBlue}
+As noted in the previous section, pQCD relies on the strong coupling becoming small at high energies. This behaviour reflects the fact that $\alpha_s$ is not a fixed constant but instead \emph{runs} with the renormalisation scale $\mu_R$ -- an unphysical scale introduced by the renormalisation procedure, which will be discussed in the following section. The scale dependence of the coupling is governed by the renormalisation group equation
 \begin{equation}
 \label{eq:coupling-DE}
     \mu_R^2 \frac{\partial \alpha_s(\mu_R^2)}{\partial \mu_R^2} = \beta(\alpha_s)\,.
 \end{equation}
-The $\beta$-function here follows a perturbative expansion
+The QCD $\beta$-function admits a perturbative expansion of the form
 \begin{equation}
     \beta(\alpha_s) = -\!\left(\beta_0\,\alpha_s^2 + \beta_1\,\alpha_s^3 + \beta_2\,\alpha_s^4 + \cdots\right),
 \end{equation}
 with coefficients 
 \begin{equation}
 \begin{aligned}
-    \beta_0 &= \frac{11 C_A - 4\,T_R\,n_f}{12\pi}\,, \\
-    \beta_1 &= \frac{17 C_A^2 - 5\,C_A\,n_f - 3\,C_F\,n_f}{2\pi\,(11 C_A - 2 n_f)}\,, \\
-   & \qquad \qquad\cdots
-   % \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
+    \beta_0 &= \frac{11 C_A - 4\,T_R\,n_f}{12\pi}\\[1em]
+    \beta_1 &= \frac{17 C_A^2 - 5\,C_A\,n_f - 3\,C_F\,n_f}{2\pi\,(11 C_A - 2 n_f)}\\[1em]
+    \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
 \end{aligned}
 \end{equation}
-%These arise from loop corrections to the bare vertices of the theory. In this way, the scale dependence of the coupling emerges from higher-order quantum corrections. \\\\
-%It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation-scheme independent; $\beta_2$ and higher coefficients depend on the renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later).
- Solving Eq.~\eqref{eq:coupling-DE} to first order, using a reference scale $Q$, yields
+It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–scheme independent; the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later)\footnote{The concepts of renormalisation and renormalisation schemes will be introduced in the following section.}.
+ {\color{red}(Am unsure if I need to have this bit about renormalisation scheme here. Also make sure we have the correct form of the $\beta$ functions.)}
+Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
 \begin{equation}
-	\alpha_s(\mu_R^2)=\frac{\alpha_s(Q^2)}{1+\alpha_s\beta_0\ln\tfrac{\mu_R^2}{Q^2}}\,.
+\label{eq:scale-dependence}
+    \alpha_s(\mu_R^2)
+    = \frac{\alpha_s(Q^2)}
+    {1 + \alpha_s(Q^2)\,\beta_0\,\ln\!\left(\tfrac{\mu_R^2}{Q^2}\right)}\, .
 \end{equation}
-{\color{green} Stop here.}\\ \\
-As $\mu_R \to \infty$, the coupling becomes small, allowing quarks and gluons to effectively behave as free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides us with a very good approximation. Conversely, as $\mu_R \to 0$, the coupling becomes large, signalling the break down of perturbation theory in which  quarks and gluons are bound into hadrons, known as \emph{confinement}. \\\\
-The effect of the running coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}.
+From the sign of $\beta_0$ and the form equation~\ref{eq:scale-dependence}, the scale dependence of the strong coupling becomes apparent. As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. Conversely, as $\mu_R \to 0$, the coupling grows large, signalling the breakdown of perturbation theory and the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. This phenomenon is known as \emph{confinement}. \\\\The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom. \\ \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{figures/strong_coupling.pdf}
     \caption{Summary of determinations of $\alpha_s$ as a function of the energy scale $Q$, compared to the running of the coupling computed at five loops using the current PDG average $\alpha_s(m_Z^2) = 0.1180 \pm 0.0009$~\cite{ParticleDataGroup:2024cfk}. {\color{blue}(Need to change this.)}}
     \label{fig:strong-coupling}
 \end{figure}
-Throughout this thesis, we will assume we are working in the high-energy limit, exploiting asymptotic freedom.
-This section used the pink and black book.
+}
+{\color{orange} This section used the pink and black book.}
 
 
 
 \section{Divergences}
 While perturbation theory is a fantastic tool used in the high-energy limit - it does come with problems in the form of divergences. There are two types of divergences, the first referred to as ultraviolet (UV) divergences. This occurs when considering a loop diagram such that we integrate over the momentum of a virtual particle. The other type that occur are known as infrared and collinear (IRC) divergences. 
+
 \subsection{UV Divergences}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.6]
+        \begin{feynman}
+
+            \vertex (g1) at (0,0) {\(p\)};
+            \vertex [right=4.2cm of g1] (g2) {\(p\)};
+
+            \vertex [right=1.6cm of g1] (a);
+            \vertex [right=2.6cm of g1] (b);
+
+            \diagram*{
+                (g1) -- [gluon] (a),
+                (b) -- [gluon] (g2),
+            };
+
+            \draw (a)
+                to [fermion, out=70, in=110, looseness=1.9]
+                node[midway, above] {\(k\)}
+                (b);
+
+            \draw (b)
+                to [fermion, out=-110, in=-70, looseness=1.9]
+                node[midway, below] {\(p-k\)}
+                (a);
+
+        \end{feynman}
+    \end{tikzpicture}
+
+    \caption{Quark-loop contribution to the gluon propagator, with momenta \(k\) and \(p-k\).}
+\end{figure}
+
+
+
+
 \subsection{IR Divergences}
-In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon or a $Z$-boson ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. In this example, we choose to look at the case of the photon where the LO diagram is shown in figure \ref{fig:photon-qq}. 
+In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon or a $Z$-boson ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}.
+\subsubsection{Leading-order cross-section}
+The easiest way to discuss IR divergences is through the process $e^+e^-\rightarrow q\bar{q}$
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
         \begin{feynman}
-            \vertex (a) {\(\gamma\)};
-            \vertex [right=of a] (b);
+
+            \vertex (e1) at (0,1) {\(e^-\)};
+            \vertex (e2) at (0,-1) {\(e^+\)};
+
+            \vertex [right=1.5cm of e1, yshift=-1cm] (a);
+
+            \vertex [right=2.0cm of a] (b);
+
             \vertex [above right=of b] (f1) {\(q\)};
             \vertex [below right=of b] (f2) {\(\overline{q}\)};
-            
+
             \diagram* {
-                (a) -- [photon] (b) -- [fermion] (f1),
-                           (b) -- [anti fermion] (f2),
+                (e1) -- [fermion] (a) -- [fermion] (e2),
+                (a)  -- [photon, edge label=\(\gamma^*\)] (b),
+                (b)  -- [fermion] (f1),
+                (b)  -- [anti fermion] (f2),
             };
+
         \end{feynman}
     \end{tikzpicture}
-    \caption{Feynman diagram showing the production of $q\bar{q}$ from a photon (LO process).}
+
+    \caption{Feynman diagram of \(e^- e^+\) annihilation into a virtual \(\gamma^*/Z\) producing a \(q\bar{q}\) pair.}
     \label{fig:photon-qq}
 \end{figure}
-The NLO diagram process can be shown in figures \ref{fig:photon-qg} and \ref{fig:photon-bar-qg} and depicts the process where an additional gluon is radiated from either  $q$ or $\bar{q}$ ($e^+e^-\rightarrow q\bar{q}g$). 
-{\color{green} Add figures.}
 
+In order to investigate these IRC divergences, let us consider the simplest QCD process: the production of a quark-antiquark pair from either a virtual photon ($e^+e^-\rightarrow q\bar{q}$) \cite{Luisoni:2015xha}. 
 
-We wish to consider the NLO cross-section, which we will not calculate but simply state the result:
- \begin{equation}
-	\sigma_{\gamma\rightarrow q\bar{q}g}=\int[d\Phi_{3}]\,|M_{\gamma\rightarrow q\bar{q}g}|^2=C_F\,g_s^2\int[d\Phi_{2}]\,|M_{q\bar{q}}|^2\,\frac{d^3\vec{k}}{(2\pi)^32E_g}\Theta(E_g)\frac{2p_1p_2}{(p_1k)(p_2k)}\,,
-	\label{eq:qqg-cross-section}
-\end{equation}
-where $E_q$, $E_{\bar{q}},$ and $E_g$ are the energies of the quark, anti-quark and gluon respectively. In the first step, we integrate with respect to the three-body phase space $d\Phi_{3}$, since there are three-particles present in the final state. The second equality holds only if we assume $E_g\ll E_q,E_{\bar{q}}$ \emph{18/09/24 i.e. in the limit where the gluon is soft such that it factorises into a LO matrix element squared and a real gluon emission}. In this case we see that the total cross-section can be factorised into a $q\bar{q}$ piece and a gluon piece. The $q\bar{q}$ piece is the cross-section at leading order, $\int[d\Phi_{2}]\,|M_{q\bar{q}}|^2$, whereas the gluon piece is the following:%Check this is all true - is this the idea that it can only happen when the gluon is soft? Is it worthwhile mentioning the hard process of e+e-->qbar{q}?
+We find that the cross-section for this leading-order diagram is
 \begin{equation}
-	\sigma_g=C_F\,g_s^2\int\frac{d^3\vec{k}}{2E_g((2\pi)^3}\Theta(E_g)\frac{2p_1p_2}{(p_1k)(p_2k)}=\frac{2\alpha_sC_F}{\pi}\int\frac{dE_g}{E_g}\frac{d\phi}{2\pi}\frac{d\theta}{\sin\theta}\,.
-	\label{eq:g-cross-section}
+	\sigma_{\mathrm{LO}}=\frac{4\pi\alpha^2}{s}N_c\sum_fQ_f^2\,,
 \end{equation}
-The angle $\theta$ is between the gluon and the quark (or anti-quark, depending on which is emitting the gluon) and $\phi$ is the angle in the out-of-page direction. \emph{18/09/2024 Note that equation~\eqref{eq:qqg-cross-section} is essentially like saying that the probability of an emission of a soft gluon from a hard emitter is given by the product of the LO $q\bar{q}$ production probability and the soft emission probability shown in equation~\eqref{eq:g-cross-section}}. The soft emission probability shows that there are singularities as the gluon becomes soft ($E_g\rightarrow0$) and when the gluon becomes collinear to the emitting quark (or anti-quark) ($\theta\rightarrow0,\pi$).
-These are the IRC divergences talked about previously, and will arise for every gluon emission and therefore at every order in perturbation theory. When fully integrated (using dimensional regularisation to regulate the integrals), we obtain values proportional to $\frac{1}{\epsilon^2}$,  coming from the region where the gluon is soft and collinear, and terms proportional to $\frac{1}{\epsilon}$, which occur due to the gluon being only collinear to the quark (or antiquark). 
+where $Q_f$ is the electric charge of a given quark flavour where this equation is summed over all quark flavours and $N_c=3$ and $\alpha$ is the QED coupling constant.
+
+\subsubsection{NLO real cross-section}
+\begin{figure}[h]
+    \centering
+    %------------------------------------------
+    % LEFT DIAGRAM: gluon from upper quark leg
+    %------------------------------------------
+    \begin{tikzpicture}
+        \begin{feynman}
+
+            \vertex (e1) at (0,1) {\(e^-\)};
+            \vertex (e2) at (0,-1) {\(e^+\)};
+
+            \vertex [right=1.5cm of e1, yshift=-1cm] (a);
+            \vertex [right=2.0cm of a] (b);
+
+            \vertex [above right=2cm of b] (f1) {\(q\)};
+            \vertex [below right=2cm of b] (f2) {\(\overline{q}\)};
+
+            % midpoint on upper leg
+            \vertex at ($(b)!0.5!(f1)$) (m1);
+
+            % gluon emission point
+            \vertex [right=1.2cm of m1, yshift=0.0cm] (g1) {\(g\)};
+
+            \diagram*{
+                (e1) -- [fermion] (a) -- [fermion] (e2),
+                (a)  -- [photon, edge label=\(\gamma^*\)] (b),
+
+                (b) -- [fermion] (m1) -- [fermion] (f1),
+                (b) -- [anti fermion] (f2),
+
+                (m1) -- [gluon] (g1),
+            };
+
+        \end{feynman}
+    \end{tikzpicture}
+    \hspace{2cm}
+    %------------------------------------------
+    % RIGHT DIAGRAM: gluon from lower antiquark leg
+    %------------------------------------------
+    \begin{tikzpicture}
+        \begin{feynman}
+
+            \vertex (e1) at (0,1) {\(e^-\)};
+            \vertex (e2) at (0,-1) {\(e^+\)};
+
+            \vertex [right=1.5cm of e1, yshift=-1cm] (a);
+            \vertex [right=2.0cm of a] (b);
+
+            \vertex [above right=2cm of b] (f1) {\(q\)};
+            \vertex [below right=2cm of b] (f2) {\(\overline{q}\)};
+
+            % midpoint on lower leg
+            \vertex at ($(b)!0.5!(f2)$) (m2);
+
+            % gluon emission point
+            \vertex at ($(m2) + (1.2cm,-0.0cm)$) (g2) {\(g\)};
+
+            \diagram*{
+                (e1) -- [fermion] (a) -- [fermion] (e2),
+                (a)  -- [photon, edge label=\(\gamma^*\)] (b),
+
+                (b) -- [fermion] (f1),
+                (b) -- [anti fermion] (m2) -- [anti fermion] (f2),
+
+                (m2) -- [gluon] (g2),
+            };
+
+        \end{feynman}
+    \end{tikzpicture}
+
+    \caption{Two real-emission diagrams for \(e^- e^+ \to \gamma^* \to q\bar{q}g\): gluon from the upper quark leg (left) and gluon from the lower antiquark leg (right).}
+\end{figure}
+
+
+
+We find that the total cross-section for this NLO process is
+\begin{equation}
+\label{eq:qqg-real}
+	\sigma^{q\bar{q}g}=\sigma_{\mathrm{LO}}\,\,C_F\,\frac{\alpha_s}{2\pi}\int_0^1dx_q\int_{1-x_q}^{1}dx_{\bar{q}}\,\,\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,,
+\end{equation}
+where $x_q=\tfrac{2E_q}{\sqrt{s}}$ and $x_{\bar{q}}=\tfrac{2E_{\bar{q}}}{\sqrt{s}}$.
+This indicates that the divergences occur when $x_{q,{\bar{q}}}\rightarrow 1$. Moreover, we know that:
+\begin{equation}
+\begin{aligned}
+1-x_q=\frac{x_{\bar{q}}\,E_g(1-\cos\theta_{{\bar{q}}g})}{\sqrt{s}}\,,\\
+1-x_{\bar{q}}=\frac{x_{q}\,E_g(1-\cos\theta_{qg})}{\sqrt{s}}\,,
+\end{aligned}
+\end{equation}
+we can therefore see that the singularities arise when there is:
+\begin{enumerate}
+	\item A soft emission i.e. $E_g\rightarrow 0$
+	\item A collinear emission i.e. $\theta_{{\bar{q}}g},\theta_{qg}\rightarrow 0$
+\end{enumerate}
+Now, integrating equation~\ref{eq:qqg-real} using dimensional regularisation where $d=4-2\varepsilon$, we find that:
+\begin{equation}
+	\sigma^{q\bar{q}g}=\sigma_{\mathrm{LO}}\,\frac{\alpha_s}{2\pi}\frac{C_F}{\Gamma(1-\varepsilon)}\left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}\left(\frac{2}{\varepsilon^2}+\frac{3}{\varepsilon}-\pi^2+\frac{19}{2}+\mathcal{O}(\varepsilon)\right)\,,
+\end{equation}
+where we obtain values proportional to $\frac{1}{\epsilon^2}$,  coming from the region where the gluon is soft and collinear, and terms proportional to $\frac{1}{\epsilon}$, which occur due to the gluon being only collinear to the quark (or antiquark). 
+\subsubsection{NLO virtual cross-section}
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
         \begin{feynman}
-            % Define vertices
-            \vertex (a) {\(\gamma\)};
-            \vertex [right=of a] (b);
-            \vertex [above right=of b] (f1) {\(q\)};
-            \vertex [below right=of b] (f2) {\(\overline{q}\)};
-            \vertex at ($(f1)!0.5!(b)$) (mid1);
-            \vertex at ($(f2)!0.5!(b)$) (mid2);
-            
-            % Draw diagram
-            \diagram* {
-                (a) -- [photon] (b),
+
+            \vertex (e1) at (0,1) {\(e^-\)};
+            \vertex (e2) at (0,-1) {\(e^+\)};
+
+            \vertex [right=1.5cm of e1, yshift=-1cm] (a);
+
+            \vertex [right=2.0cm of a] (b);
+
+            \vertex [above right=2cm of b] (f1) {\(q\)};
+            \vertex [below right=2cm of b] (f2) {\(\overline{q}\)};
+
+            \vertex at ($(b)!0.5!(f1)$) (mid1);
+            \vertex at ($(b)!0.5!(f2)$) (mid2);
+
+            \diagram*{
+                (e1) -- [fermion] (a) -- [fermion] (e2),
+
+                (a) -- [photon, edge label=\(\gamma^*\)] (b),
+
+
                 (b) -- [fermion] (f1),
                 (b) -- [anti fermion] (f2),
+
                 (mid1) -- [gluon] (mid2),
             };
+
         \end{feynman}
     \end{tikzpicture}
-    \caption{NLO virtual diagram for $\gamma\rightarrow q\bar{q}g$.}
-    \label{fig:photon-qq-gluon}
+
+    \caption{NLO virtual diagram for \(e^-e^+ \!\rightarrow \gamma^* \!\rightarrow q\bar q\) with a virtual gluon exchanged between the quark and antiquark legs.}
 \end{figure}
-The diagrams in figures \ref{fig:photon-qg} and \ref{fig:photon-bar-qg}, show the emission of a real gluon and therefore are termed real diagrams. In pQCD, it mandatory for us to include all diagrams which are allowed at a given order, and so we must also consider the diagram where there is a virtual gluon emitted and received between the quark-antiquark pair as depicted in figure \ref{fig:photon-qq-gluon}. We find that the cross-section of this process also contains divergences, and are equal and opposite to those which come from the real NLO processes. Therefore, we find a finite result when computing the overall cross-section at NLO \cite{Schwartz:2014sze}, \cite{Luisoni:2015xha}. We will state again for emphasis that this only occurs when the gluon is soft ($E_g\ll E_q,E_{\bar{q}}$). Next, we will see whether this behaviour occurs for other observables, beyond the cross-section. \emph{18/09/2024 It is important to note that it is the KLN theorem which states that the cancellation of IRC divergences between real and virtual diagrams occur at every order in perturbation theory provided that we sum over all possible virtual and final states.}
+
+Luckily for us, we find that the cross-section coming from the virtual diagrams give rise to divergences with the opposite sign:
+\begin{equation}
+	\sigma^{q\bar{q}(g)}=\sigma_{\mathrm{LO}}\,\frac{\alpha_s}{2\pi}\frac{C_F}{\Gamma(1-\varepsilon)}\left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}\left(-\frac{2}{\varepsilon^2}-\frac{3}{\varepsilon}+\pi^2-8+\mathcal{O}(\varepsilon)\right)\,.
+\end{equation}
+\subsubsection{Total NLO cross-section}
+This shows that by summing together the real and virtual diagram we obtain the NLO cross-section i.e. $\sigma_{\mathrm{NLO}}=\sigma^{q\bar{q}g}+\sigma^{q\bar{q}(g)}$
+\begin{equation}
+\sigma_{\mathrm{NLO}}=\sigma_{\mathrm{LO}}\,\frac{\alpha_s}{2\pi}\frac{C_F}{\Gamma(1-\varepsilon)}\left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}\left(\frac{3}{2}+\mathcal{O}(\varepsilon)\right)\,.
+\end{equation}
+This is finite and so by taking $\varepsilon\rightarrow0$, we obtain:
+\begin{equation}
+\sigma_{\mathrm{NLO}}=\frac{\alpha_s}{2\pi}\frac{3}{2}C_F\,\sigma_{\mathrm{LO}}\,.
+\end{equation}
+The fact that the real and virtual diagrams divergences cancel are in fact not a surprise and are a consequence of the KLN theorem. The KLN theorem states that this cancellation of IRC divergences between real emission and virtual diagrams occurs at every order in perturbation theory and for every process, provided we sum over all possible initial and final states. \\ \\
+ADD IN:
+PERTURBATIVE EXPANSION LIKE SAID BEFORE WITH MATRIX ELEMENTS \\ \\
+WHAT WE EXPLAIN NEXT IN TERMS OF SUBTRACTION SCHEME\\ \\
+PROBABLY NEED IDEA OF ISR/FSR WITH DGLAP AND FACTORISATION SCALE
 
 
+
+
+{\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book.}
 
 \section{High-energy physics}
 \subsection{Explanation of Process}
