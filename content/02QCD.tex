@@ -506,7 +506,7 @@ We find that the cross-section for the real contributions in Fig.~\ref{fig:photo
 \label{eq:qqg-real}
 	\sigma^{q\bar{q}g}=\sigma_{\mathrm{LO}}\,\,C_F\,\frac{\alpha_s}{2\pi}\int_0^1dx_q\int_{1-x_q}^{1}dx_{\bar{q}}\,\,\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,,
 \end{equation}
-where $x_q=\tfrac{2E_q}{\sqrt{s}}$ and $x_{\bar{q}}=\tfrac{2E_{\bar{q}}}{\sqrt{s}}$.
+where $x_q=\tfrac{2E_q}{\sqrt{s}}$ and $x_{\bar{q}}=\tfrac{2E_{\bar{q}}}{\sqrt{s}}$ {\color{blue}(put in other formula for the $x_i$'s)}.
 From here, we can see divergences occur when $x_{q,{\bar{q}}}\rightarrow 1$. Since
 \begin{equation}
 \begin{aligned}
@@ -519,6 +519,7 @@ we can see that singularities arise when there is:
 	\item A soft emission i.e. $E_g\rightarrow 0$
 	\item A collinear emission i.e. $\theta_{{\bar{q}}g},\theta_{qg}\rightarrow 0$
 \end{enumerate}
+Note soft divergence if: $x_q\rightarrow1$ \emph{and} $x_{\bar{q}}\rightarrow1$ while collinear divergence if: $x_q\rightarrow1$ \emph{or} $x_{\bar{q}}\rightarrow1$.
 These are infrared and collinear divergences respectively, collectively termed IR divergences. 
 As for UV divergences, to isolate these divergence we use dimensional regularisation, such that equation~\ref{eq:qqg-real} becomes
 \begin{equation}
@@ -540,12 +541,61 @@ This is finite and so by taking $\varepsilon\rightarrow0$, we obtain:
 The fact that the real and virtual diagrams divergences cancel are in fact not a surprise and are a consequence of the KLN theorem. The KLN theorem states that this cancellation of IRC divergences between real emission and virtual diagrams occurs at every order in perturbation theory and for every process, provided we sum over all possible initial and final states. \\ \\
 In this capacity, we find that the total cross-section is:
 \begin{equation}
-	\sigma = \sigma_{\mathrm{LO}}\left(1+\frac{\alpha_s}{2\pi}\frac{3}{2}C_F\right)
+	\sigma = \sigma_{\mathrm{LO}}\left(1+\frac{\alpha_s}{2\pi}\frac{3}{2}C_F+\,\mathcal{O}(\alpha_s^2)\right)
 \end{equation}
 following the same form as the  perturbative expansion as the matrix elements in equation~\ref{eq:pQCD}\footnote{This makes sense as the cross-section is matrix element square.} \\ \\
 {\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book \& thesis' and powerpoint. For UV divergences, no formal references right at this second.}
 
+\section{Matrix element factorisation}
+\subsection*{Soft factorisation}
+\begin{equation}
+|\mathcal{M}_{g, a_1\cdots(q,p_1,\cdots)}^{(0)}|^2\simeq-4\pi\alpha_s\sum_{ij}S_{ij}(q)\bra{\mathcal{M}_{a_1,\cdots}(p_1,\cdots)}\mathbf{T_i}\cdot\mathbf{T_j}\ket{\mathcal{M}_{a_1,\cdots}(p_1,\cdots)}\,,
+\end{equation}
+where $S_{ij}(q)=\frac{p_i\cdot p_j}{p_i\cdot q\,p_j\cdot q}$\,.
+
+\subsection*{Collinear factorisation}
+Sudakov parameterisation 
+\begin{equation}
+\begin{aligned}
+	&p_1^\mu=zp^\mu+k_\perp^\mu-\frac{k_\perp^\mu}{z}\frac{n^\mu}{2p\cdot n}\,,\\
+	&p_2^\mu=(1-z)p^\mu-k_\perp^\mu-\frac{k_\perp^\mu}{1-z}\frac{n^\mu}{2p\cdot n}\,.
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+|\mathcal{M}_{a_1,a_2,\cdots(p_1,p_2,\cdots)}^{(0)}|^2\simeq4\pi\alpha_s\bra{\mathcal{M}_{a,\cdots}(p,\cdots)}\hat{\mathbf{P}}^{(0)}_{a_1\,a_2}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{a,\cdots}(p,\cdots)}\,,
+\end{equation}
+where $\hat{\mathbf{P}}^{(0)}_{a_1\,a_2}(z,k_\perp;\epsilon)$ are the splitting functions which depends on the colours involved and have the following format
+\begin{equation}
+\begin{aligned}
+	&\hat{\mathbf{P}}_{q\bar{q}}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{\bar{q}q}^{(0)}(z,k_\perp;\epsilon)=\\
+	&\hat{\mathbf{P}}_{qg}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{{\bar{q}}g}^{(0)}(z,k_\perp;\epsilon)=\\
+	&\hat{\mathbf{P}}_{gq}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{g{\bar{q}}}^{(0)}(z,k_\perp;\epsilon)=\\
+	&\hat{\mathbf{P}}_{gg}^{(0)}(z,k_\perp;\epsilon)=\,.
+\end{aligned}
+\end{equation}
+
+
+
+
+
 \section{The Parton Model/ Factorisation}
+High-energy hadronic collisions can be described by the QCD improved parton model. In this process, the hard scattering between two hadrons is the result of an interaction between quarks and gluons which are the constituents of the incoming hadrons. These partons take fractions of momenta of the parent hadron's momenta.  \\ \\
+Because of this, we can take advantage of the factorisation formula
+\begin{equation}
+\label{eq:factorisation-formula}
+	\sigma(P_1,P_2)=\sum_{i,j}\int_0^1dx_1\,dx_2\,f_i(x_1,\mu_F^2)\,f_j(x_2,\mu_F^2)\,\hat{\sigma}_{ij}(\alpha_s(\mu_R^2),\mu_R^2,\mu_F^2)+\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)\,,
+\end{equation}
+where $f_{i,j}$ are the parton distribution functions for parton $i$ and $j$ respectively which have momenta $p_1=x_1P_1$ and $p_2=x_2P_2$ where $x_1$ and $x_2$ are the momentum fractions. We are able to integrate over these momentum fractions, with the help of the parton distribution functions (PDFs) $f_i(x_1)$, which give the probability of finding a parton $i$ which has a momentum fraction $x_1$. We sum over all possible flavours of quark inside the proton, where how much the individual flavour contributes  to the total cross-section is determined by the parton-evel cross-section $\hat{\sigma}$ as well as by the PDF of that flavour quark. \\ \\
+Equation~\ref{eq:factorisation-formula} is referred to as a factorisation formula since it can be \emph{factorised} into two parts: the PDF and the parton-level cross-section: the PDF and the parton-level cross-section. These quantities are very distinct: the parton-level cross-section accounts for the high-energy scattering of the process, and is calculable in pQCD, while the PDFs describe distribution of partons within the hadron. These are non-perturbative functions which are extracted from data and depend on the scale they are probed at. \\ \\
+There is a scale not yet mentioned here, namely the factorisation scale $\mu_F$. This scale is an arbitary parameter and is thought of a scale which separates long and short distance physics where by considering a parton with transverse momenta $p_\perp$:
+\begin{itemize}
+	\item If $p_\perp<\mu_F$: it is considered to be part of the hadron structure and is absorbed into the PDF.
+	\item If $p_\perp>\mu_F$: it is considered to be part of the partonic cross-section.
+\end{itemize}
+Finally, the term $\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)$ refers to the fact that this formula holds in the high-energy limit. \\ \\
+{\color{orange}Used pink book, Edinburgh notes, and A Banfi powerpoint recommendation for this mainly.}
+  
 
 
 
