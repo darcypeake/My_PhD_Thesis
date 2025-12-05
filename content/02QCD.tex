@@ -355,8 +355,7 @@ $\ln 4\pi$ and $\gamma_E$ (Euler–Mascheroni constant where $\gamma_E\approx0.5
 
 
 \subsection*{IR Divergences}
-In order to investigate these IRC divergences, let us consider the simplest QCD process: $e^+e^-$ annihilation to form hadrons ($e^+e^-\rightarrow \mathrm{hadrons}$), \cite{Luisoni:2015xha}. \\ \\
-There is an important feature to note here. Due to quark-hadron duality~\cite{Shifman:2000jv}, we can say that every parton will go to a hadron \footnote{There are some exceptions}, and so we can approximate this process  of $e^+e^-\rightarrow \mathrm{hadrons}$ to $e^+e^-\rightarrow q\bar{q}$ as shown in Fig.~\ref{fig:photon-qq}. 
+In order to investigate these IRC divergences, let us consider the simplest QCD process: $e^+e^-\rightarrow \mathrm{hadrons}$. In order to calculate the LO cross-section, we can use the Feynman rules to calculate the $e^+e^-\rightarrow q\bar{q}$ process as shown in Fig.~\ref{fig:photon-qq}. We are able to do this due to quark-hadron duality, which explains that in the high-energy regime, we can approximate between the two since every parton will radiate to form a hadron\footnote{Please note there are some exceptions to this as noted in~\cite{Shifman:2000jv}.}.
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
@@ -380,7 +379,7 @@ There is an important feature to note here. Due to quark-hadron duality~\cite{Sh
 
         \end{feynman}
     \end{tikzpicture}
-    \caption{Feynman diagram of \(e^- e^+\) annihilation into a virtual \(\gamma^*/Z\) producing a \(q\bar{q}\) pair.}
+    \caption{Feynman diagram of \(e^- e^+\) annihilation into a virtual \(\gamma^*\) producing a \(q\bar{q}\) pair.}
     \label{fig:photon-qq}
 \end{figure}
 \newpage
@@ -464,6 +463,10 @@ gluon emitted from the upper quark leg (left) and from the lower antiquark leg (
 \label{fig:photon-qqg}
 \end{figure}
 
+
+
+
+
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
@@ -543,7 +546,19 @@ In this capacity, we find that the total cross-section is:
 \begin{equation}
 	\sigma = \sigma_{\mathrm{LO}}\left(1+\frac{\alpha_s}{2\pi}\frac{3}{2}C_F+\,\mathcal{O}(\alpha_s^2)\right)
 \end{equation}
-following the same form as the  perturbative expansion as the matrix elements in equation~\ref{eq:pQCD}\footnote{This makes sense as the cross-section is matrix element square.} \\ \\
+following the same form as the  perturbative expansion as the matrix elements in equation~\ref{eq:pQCD}. The cross-section is the integrated matrix element squared
+{\color{green}
+\begin{enumerate}
+	\item cross-section = integrated matrix element squared
+	\item perturbative expansion in matrix element
+	\item if we are calling it matrix element then make sure to call it matrix element when we introduce it
+	\item lead into wanting to understand the soft and collinear limits in the matrix elements i.e. seen singularities in cross-sections, lets take a closer look at the matrix element speifically in these limits - this might not make sense though.
+\end{enumerate}
+
+}
+
+
+
 {\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book \& thesis' and powerpoint. For UV divergences, no formal references right at this second.}
 
 \section{Matrix element factorisation}
@@ -568,10 +583,10 @@ Sudakov parameterisation
 where $\hat{\mathbf{P}}^{(0)}_{a_1\,a_2}(z,k_\perp;\epsilon)$ are the splitting functions which depends on the colours involved and have the following format
 \begin{equation}
 \begin{aligned}
-	&\hat{\mathbf{P}}_{q\bar{q}}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{\bar{q}q}^{(0)}(z,k_\perp;\epsilon)=\\
-	&\hat{\mathbf{P}}_{qg}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{{\bar{q}}g}^{(0)}(z,k_\perp;\epsilon)=\\
-	&\hat{\mathbf{P}}_{gq}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{g{\bar{q}}}^{(0)}(z,k_\perp;\epsilon)=\\
-	&\hat{\mathbf{P}}_{gg}^{(0)}(z,k_\perp;\epsilon)=\,.
+	&\hat{\mathbf{P}}_{q\bar{q}}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{\bar{q}q}^{(0)}(z,k_\perp;\epsilon)=T_R\left[-g^{\mu\nu}+4z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\\
+	&\hat{\mathbf{P}}_{qg}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{{\bar{q}}g}^{(0)}(z,k_\perp;\epsilon)=C_F\left[\frac{1+z^2}{1-z}-\epsilon(1-z)\right]\\
+	&\hat{\mathbf{P}}_{gq}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{g{\bar{q}}}^{(0)}(z,k_\perp;\epsilon)=C_F\left[\frac{1+(1-z)^2}{z}-\epsilon z\right]\\
+	&\hat{\mathbf{P}}_{gg}^{(0)}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,.
 \end{aligned}
 \end{equation}
 
@@ -601,7 +616,7 @@ Finally, the term $\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)$
 
 \section{IRC Safety} 
 \label{sec: IRC}
-The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}, \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}. \\ \\
+The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}. \\ \\
 An IRC safe observable is one that does not change regardless of the number of soft or collinear emissions, such that it obeys the following:
 \begin{equation}
 V(\{q\},k_1,\cdots ,k_n)=V(\{q\},k_1,\cdots , k_{j+1},\cdots ,k_n),\quad \text{when}\quad E_{j+1}\rightarrow0\quad\text{or}\quad\vec{k}_{j+1}\parallel \vec{q}_{\text{emit}}
@@ -619,10 +634,13 @@ where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$
 
 
 \section{High-energy physics}
-\subsection*{Explanation of a high-energy collision}
-Give explanation at the beginning. 
-\emph{Include: factorisation at high-energy limit, what a jet is, the process following a high-energy collision, IRC Safety, resummation requirement.}
-{\color{green} Add in the big picture thing that is used in every single thesis here I think.}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/High-energy-event.jpeg}
+    \caption{High energy event taken from Ref.~\cite{Gleisberg:2008ta}}
+    \label{fig:high-energy-event}
+\end{figure}
+
 
 
 
