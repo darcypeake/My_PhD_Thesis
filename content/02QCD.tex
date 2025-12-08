@@ -272,9 +272,7 @@ with coefficients
     \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
 \end{aligned}
 \end{equation}
-It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–scheme independent; the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later)\footnote{The concepts of renormalisation and renormalisation schemes will be introduced in the following section.}.
- {\color{red}(Am unsure if I need to have this bit about renormalisation scheme here. Also make sure we have the correct form of the $\beta$ functions.)}
-Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
+It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–scheme independent; the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later). Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
 \begin{equation}
 \label{eq:scale-dependence}
     \alpha_s(\mu_R^2)
@@ -292,16 +290,17 @@ From the sign of $\beta_0$ and the form equation~\ref{eq:scale-dependence}, the 
 {\color{orange} This section used the pink and black book.}
 
 \section{Divergences}
-While perturbation theory is highly effective at high energies, it also introduces
-certain problems in the form of divergences. These come in two forms:
+{\color{RoyalBlue} While perturbation theory is highly effective at high energies, it also introduces
+certain problems in the form of divergences. In QCD these come in two forms:
 \begin{itemize}
     \item \textbf{Ultraviolet (UV):} arise in loop diagrams when the momentum of the
     virtual particle becomes large.
-    \item \textbf{Infrared (IR):} arise when gluon emissions are low energy (soft) or
-    collinear (or anticollinear) to a high-energy (hard) parton.
+    \item \textbf{Infrared (IR):} arise when a gluon emission becomes soft (low energy) or
+    collinear to a hard (high energy) parton.
 \end{itemize}
-
+}
 \subsection*{UV Divergences}
+{\color{RoyalBlue}
 Let us begin by discussing UV divergences. One Feynman rule not shown in
 Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules} is the rule associated
 with loop diagrams. Each closed loop contributes an integration of the form
@@ -343,19 +342,24 @@ discussion. For large loop momenta, the integral behaves as
       \sim \lim_{\Lambda \to \infty} \ln \Lambda\,,
 \end{equation}
 revealing a UV divergence.
-We cannot allow divergences to remain in the theory, so we need a way to handle them. This is done through a procedure known as regularisation. Although several regularisation procedures  exist, in this thesis we use the one known as \emph{dimensional regularisation}.  This method
+We cannot allow divergences to remain in the theory, so we need a way to handle them. This is done through a procedure known as regularisation. Although several regularisation procedures  exist, in this thesis we use \emph{dimensional regularisation}.  This method
 preserves both Lorentz and gauge invariance, and as we will see later can also be used
-to handle infrared (IR) divergences. The idea behind dimensional regularisation is to promote the space-time dimension to $d = 4 - 2\varepsilon$ where $\varepsilon < 0$, so that, instead of logarithmic divergences, the integrals develop poles in $\varepsilon$. \\ \\
+to treat IR divergences. The idea behind dimensional regularisation is to promote the space-time dimension to $d = 4 - 2\varepsilon$, with $\varepsilon < 0$, so that, instead of logarithmic divergences, the integrals develop poles in $\varepsilon$. \\ \\
 Once the poles have been isolated, the next step is to remove them. This is achieved by
 redefining the parameters of the theory and introducing counterterms that cancel the
 divergent pieces. This procedure is known as renormalisation. Throughout this thesis we
 work in the $\overline{\mathrm{MS}}$ renormalisation scheme, in which the counterterms
 subtract not only the $1/\varepsilon$ poles but also the accompanying constants
-$\ln 4\pi$ and $\gamma_E$ (Euler–Mascheroni constant where $\gamma_E\approx0.5772$) that arise in dimensional regularisation. The renormalisation procedure introduces the renormalisation scale $\mu_R$, and the strong coupling $\alpha_s$ acquires a dependence on this scale, as discussed in the previous section.
+$\ln 4\pi$ and $\gamma_E$ (the Euler–Mascheroni constant, $\gamma_E\approx0.5772$) that arise through dimensional regularisation. The renormalisation procedure introduces the renormalisation scale $\mu_R$, and the strong coupling $\alpha_s$ acquires a dependence on this, as discussed in the previous section.
+}\\ \\
+{\color{orange} Most of what can be found here is in Peskin\&Schroeder.}
 
 
 \subsection*{IR Divergences}
-In order to investigate these IRC divergences, let us consider the simplest QCD process: $e^+e^-\rightarrow \mathrm{hadrons}$. In order to calculate the LO cross-section, we can use the Feynman rules to calculate the $e^+e^-\rightarrow q\bar{q}$ process as shown in Fig.~\ref{fig:photon-qq}. We are able to do this due to quark-hadron duality, which explains that in the high-energy regime, we can approximate between the two since every parton will radiate to form a hadron\footnote{Please note there are some exceptions to this as noted in~\cite{Shifman:2000jv}.}.
+{\color{RoyalBlue}
+Turning our attention to IR divergences, let us consider the simplest QCD process: $e^+e^-\rightarrow \mathrm{hadrons}$. To calculate the LO cross-section, we use the
+Feynman rules to evaluate the partonic process $e^+e^- \rightarrow q\bar{q}$, whose
+Feynman diagram is shown in Fig.~\ref{fig:photon-qq}. 
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
@@ -382,13 +386,21 @@ In order to investigate these IRC divergences, let us consider the simplest QCD 
     \caption{Feynman diagram of \(e^- e^+\) annihilation into a virtual \(\gamma^*\) producing a \(q\bar{q}\) pair.}
     \label{fig:photon-qq}
 \end{figure}
-\newpage
-We find that the leading-order this cross-section is
+This approach is justified by quark-hadron duality: in the high-energy regime, the hadronic cross-section can be approximated sufficiently well by the partonic one calculated in perturbation theory \footnote{There are, however, known exceptions to this approximation; see Ref.~\cite{Shifman:2000jv}.}. \\ \\
+{\color{red} (I have a couple of questions used here:
+\begin{enumerate}
+	\item Quark-hardon duality was initially introduced by Poggio, Quinn and Weinberg - should this 	be cited here?
+	\item Is a better option to cite~\cite{Azimov:1984np} - local parton hadron duality - this was cited 
+		in Ryan Wood's thesis, and so was wondering if this is a more suitable citation? I am thinking that I need a citation for this for quark-hadron duality itself along with the exceptions to it in Ref.~\cite{Shifman:2000jv}.
+	\item I do not need to explain the exact `exceptions' laid out by~\cite{Shifman:2000jv}?
+		\item Quark-hadron duality refers to \emph{inclusive} cross-sections - do I need to be 		explicit about this here?
+\end{enumerate} 
+)} \\ \\
+We find that the LO cross-section is
 \begin{equation}
 	\sigma_{\mathrm{LO}}=\frac{4\pi\alpha^2}{s}N_c\sum_fQ_f^2\,,
 \end{equation}
-where $Q_f$ is the electric charge of a given quark flavour where this equation is summed over all quark flavours and $N_c=3$ and $\alpha$ is the QED coupling constant. \\ \\
-Now looking at the NLO cross-section, we find that there are three diagrams that constitute this: two from the real and one from the virtual, as shown in Figs.~\ref{fig:photon-qqg} and~\ref{fig:photon-qq(g)} respectively. 
+where $Q_f$ is the electric charge of quark flavour $f$, $N_c = 3$ is the number of quark colours, and $\alpha$ is the QED coupling constant. With the LO cross section established, we proceed to the NLO corrections in order to gain insight into the structure of IR divergences. At this order the cross section receives contributions from three diagrams: two real-emission diagrams and one virtual diagram, shown in Figs.~\ref{fig:photon-qqg} and~\ref{fig:photon-qq(g)}, respectively.
 \begin{figure}[h]
 \centering
 \begin{minipage}{0.45\textwidth}
@@ -463,90 +475,104 @@ gluon emitted from the upper quark leg (left) and from the lower antiquark leg (
 \label{fig:photon-qqg}
 \end{figure}
 
-
-
-
-
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
         \begin{feynman}
-
-            \vertex (e1) at (0,1) {\(e^-\)};
+            \vertex (e1) at (0,1)  {\(e^-\)};
             \vertex (e2) at (0,-1) {\(e^+\)};
-
-            \vertex [right=1.5cm of e1, yshift=-1cm] (a);
-
-            \vertex [right=2.0cm of a] (b);
-
-            \vertex [above right=2cm of b] (f1) {\(q\)};
-            \vertex [below right=2cm of b] (f2) {\(\overline{q}\)};
-
+            
+  	    \vertex (a) at (1.5,0);
+	    \vertex (b) at (3.5,0);
+	    
+        \vertex (f1) at (4.8,1) {\(q\)};
+        \vertex (f2) at (4.8,-1) {\(\overline{q}\)};
             \vertex at ($(b)!0.5!(f1)$) (mid1);
             \vertex at ($(b)!0.5!(f2)$) (mid2);
 
             \diagram*{
                 (e1) -- [fermion] (a) -- [fermion] (e2),
-
-                (a) -- [photon, edge label=\(\gamma^*\)] (b),
-
-
-                (b) -- [fermion] (f1),
-                (b) -- [anti fermion] (f2),
-
+                (a)  -- [photon, edge label=\(\gamma^*\)] (b),
+                (b)  -- [fermion]      (f1),
+                (b)  -- [anti fermion] (f2),
                 (mid1) -- [gluon] (mid2),
             };
-
         \end{feynman}
     \end{tikzpicture}
-
-    \caption{NLO virtual diagram for \(e^-e^+ \!\rightarrow \gamma^* \!\rightarrow q\bar q\) with a virtual gluon exchanged between the quark and antiquark legs.}
+    \caption{NLO virtual diagram for \(e^- e^+ \!\rightarrow \gamma^* \!\rightarrow q\bar{q}\).}
     \label{fig:photon-qq(g)}
 \end{figure}
-
 We find that the cross-section for the real contributions in Fig.~\ref{fig:photon-qqg} is
 \begin{equation}
 \label{eq:qqg-real}
 	\sigma^{q\bar{q}g}=\sigma_{\mathrm{LO}}\,\,C_F\,\frac{\alpha_s}{2\pi}\int_0^1dx_q\int_{1-x_q}^{1}dx_{\bar{q}}\,\,\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,,
 \end{equation}
-where $x_q=\tfrac{2E_q}{\sqrt{s}}$ and $x_{\bar{q}}=\tfrac{2E_{\bar{q}}}{\sqrt{s}}$ {\color{blue}(put in other formula for the $x_i$'s)}.
-From here, we can see divergences occur when $x_{q,{\bar{q}}}\rightarrow 1$. Since
-\begin{equation}
-\begin{aligned}
-1-x_q=\frac{x_{\bar{q}}\,E_g(1-\cos\theta_{{\bar{q}}g})}{\sqrt{s}}\,,\\
-1-x_{\bar{q}}=\frac{x_{q}\,E_g(1-\cos\theta_{qg})}{\sqrt{s}}\,,
-\end{aligned}
-\end{equation}
-we can see that singularities arise when there is:
+where the energy fractions are defined as 
+\[
+    x_i = \frac{2 p_i \cdot p}{s}\,, \qquad p=(p_q+p_{\bar{q}}+p_g)\,.
+    \]
+From the integrand we see that divergences arise in the following limits:
 \begin{enumerate}
-	\item A soft emission i.e. $E_g\rightarrow 0$
-	\item A collinear emission i.e. $\theta_{{\bar{q}}g},\theta_{qg}\rightarrow 0$
+    \item \(x_q \to 1\) \emph{and} \(x_{\bar{q}} \to 1\): soft emission (\(E_g \to 0\));
+    \item \(x_q \to 1\) \emph{or} \(x_{\bar{q}} \to 1\): collinear emission 
+          (\(\theta_{\bar{q}g},\, \theta_{qg} \to 0\)).
 \end{enumerate}
-Note soft divergence if: $x_q\rightarrow1$ \emph{and} $x_{\bar{q}}\rightarrow1$ while collinear divergence if: $x_q\rightarrow1$ \emph{or} $x_{\bar{q}}\rightarrow1$.
-These are infrared and collinear divergences respectively, collectively termed IR divergences. 
-As for UV divergences, to isolate these divergence we use dimensional regularisation, such that equation~\ref{eq:qqg-real} becomes
+These are infrared and collinear singularities, collectively referred to as IR divergences. Using dimensional regularisation to isolate them, Eq.~\ref{eq:qqg-real} becomes
 \begin{equation}
-	\sigma^{q\bar{q}g}=\sigma_{\mathrm{LO}}\,\frac{\alpha_s}{2\pi}\frac{C_F}{\Gamma(1-\varepsilon)}\left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}\left(\frac{2}{\varepsilon^2}+\frac{3}{\varepsilon}-\pi^2+\frac{19}{2}+\mathcal{O}(\varepsilon)\right)\,,
+    \sigma^{q\bar{q}g}
+    = \sigma_{\mathrm{LO}}\, \frac{\alpha_s}{2\pi}\,
+      \frac{C_F}{\Gamma(1-\varepsilon)}
+      \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
+      \left(
+          \frac{2}{\varepsilon^2}
+        + \frac{3}{\varepsilon}
+        - \pi^2
+        + 8
+        + \mathcal{O}(\varepsilon)
+      \right).
 \end{equation}
-where terms proportional to $\frac{1}{\epsilon^2}$ come from the region where the gluon is soft and collinear, and terms proportional to $\frac{1}{\epsilon}$, which occur due to the gluon being only collinear to the quark (or antiquark).  \\ \\
-We find that the contribution coming from the virtual diagram in Fig.~\ref{fig:photon-qq(g)} gives rise to poles with the opposite sign:
+The virtual correction produces poles with precisely the same structure but opposite sign:
 \begin{equation}
-	\sigma^{q\bar{q}(g)}=\sigma_{\mathrm{LO}}\,\frac{\alpha_s}{2\pi}\frac{C_F}{\Gamma(1-\varepsilon)}\left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}\left(-\frac{2}{\varepsilon^2}-\frac{3}{\varepsilon}+\pi^2-8+\mathcal{O}(\varepsilon)\right)\,.
+    \sigma^{q\bar{q}(g)}
+    = \sigma_{\mathrm{LO}}\, \frac{\alpha_s}{2\pi}\,
+      \frac{C_F}{\Gamma(1-\varepsilon)}
+      \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
+      \left(
+         -\frac{2}{\varepsilon^2}
+         -\frac{3}{\varepsilon}
+         + \pi^2
+         - 8
+         + \mathcal{O}(\varepsilon)
+      \right).
 \end{equation}
-By summing together the real and virtual diagram we obtain the NLO cross-section i.e. $\sigma_{\mathrm{NLO}}=\sigma^{q\bar{q}g}+\sigma^{q\bar{q}(g)}$
+Adding the real and virtual contributions gives the finite NLO correction,
+\[
+    \sigma_{\mathrm{NLO}}
+    = \sigma^{q\bar{q}g} + \sigma^{q\bar{q}(g)}
+    = \sigma_{\mathrm{LO}}\, \frac{\alpha_s}{2\pi}\,
+      \frac{C_F}{\Gamma(1-\varepsilon)}
+      \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
+      \left(\frac{3}{2} + \mathcal{O}(\varepsilon)\right),
+\]
+where taking the limit \(\varepsilon \to 0\) yields
 \begin{equation}
-\sigma_{\mathrm{NLO}}=\sigma_{\mathrm{LO}}\,\frac{\alpha_s}{2\pi}\frac{C_F}{\Gamma(1-\varepsilon)}\left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}\left(\frac{3}{2}+\mathcal{O}(\varepsilon)\right)\,.
+    \sigma_{\mathrm{NLO}}
+    = \frac{\alpha_s}{2\pi}\, \frac{3}{2}\, C_F\, \sigma_{\mathrm{LO}}\,.
 \end{equation}
-This is finite and so by taking $\varepsilon\rightarrow0$, we obtain:
+As a result, the total cross section up to NLO is
 \begin{equation}
-\sigma_{\mathrm{NLO}}=\frac{\alpha_s}{2\pi}\frac{3}{2}C_F\,\sigma_{\mathrm{LO}}\,.
+    \sigma
+    = \sigma_{\mathrm{LO}}
+      \left(1 + \frac{\alpha_s}{2\pi}\,\frac{3}{2} C_F 
+      + \mathcal{O}(\alpha_s^2)\right).
 \end{equation}
-The fact that the real and virtual diagrams divergences cancel are in fact not a surprise and are a consequence of the KLN theorem. The KLN theorem states that this cancellation of IRC divergences between real emission and virtual diagrams occurs at every order in perturbation theory and for every process, provided we sum over all possible initial and final states. \\ \\
-In this capacity, we find that the total cross-section is:
-\begin{equation}
-	\sigma = \sigma_{\mathrm{LO}}\left(1+\frac{\alpha_s}{2\pi}\frac{3}{2}C_F+\,\mathcal{O}(\alpha_s^2)\right)
-\end{equation}
-following the same form as the  perturbative expansion as the matrix elements in equation~\ref{eq:pQCD}. The cross-section is the integrated matrix element squared
+The cancellation of singularities between the real and virtual diagrams is not
+unexpected—it is a direct consequence of the \emph{KLN theorem}~\cite{Kinoshita:1962ur,
+Lee:1964is}. This theorem guarantees that IR divergences cancel between real and virtual contributions order by order in perturbation theory for any process, provided one sums over all degenerate initial and final states.} \\ \\
+{\color{red} (A mention of inclusive cross-section?)} \\ \\
+{\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book \& thesis' and powerpoint. For UV divergences, no formal references right at this second.}
+
+\section{Matrix element factorisation}
 {\color{green}
 \begin{enumerate}
 	\item cross-section = integrated matrix element squared
@@ -556,12 +582,6 @@ following the same form as the  perturbative expansion as the matrix elements in
 \end{enumerate}
 
 }
-
-
-
-{\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book \& thesis' and powerpoint. For UV divergences, no formal references right at this second.}
-
-\section{Matrix element factorisation}
 \subsection*{Soft factorisation}
 \begin{equation}
 |\mathcal{M}_{g, a_1\cdots(q,p_1,\cdots)}^{(0)}|^2\simeq-4\pi\alpha_s\sum_{ij}S_{ij}(q)\bra{\mathcal{M}_{a_1,\cdots}(p_1,\cdots)}\mathbf{T_i}\cdot\mathbf{T_j}\ket{\mathcal{M}_{a_1,\cdots}(p_1,\cdots)}\,,
@@ -590,9 +610,15 @@ where $\hat{\mathbf{P}}^{(0)}_{a_1\,a_2}(z,k_\perp;\epsilon)$ are the splitting 
 \end{aligned}
 \end{equation}
 
-
-
-
+\section{IRC Safety} 
+\label{sec: IRC}
+The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}. \\ \\
+An IRC safe observable is one that does not change regardless of the number of soft or collinear emissions, such that it obeys the following:
+\begin{equation}
+V(\{q\},k_1,\cdots ,k_n)=V(\{q\},k_1,\cdots , k_{j+1},\cdots ,k_n),\quad \text{when}\quad E_{j+1}\rightarrow0\quad\text{or}\quad\vec{k}_{j+1}\parallel \vec{q}_{\text{emit}}
+	\label{eq:IRC-safety}
+\end{equation}
+where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$ is the additional emission and ${q}_{\text{emit}}$ is the parent parton which emits the additional gluon. While equation~\eqref{eq:IRC-safety} holds for a single emission, the above must be true for any number of emissions. Therefore, IRC safe observables can be calculated to all orders in perturbation theory.
 
 \section{The Parton Model/ Factorisation}
 High-energy hadronic collisions can be described by the QCD improved parton model. In this process, the hard scattering between two hadrons is the result of an interaction between quarks and gluons which are the constituents of the incoming hadrons. These partons take fractions of momenta of the parent hadron's momenta.  \\ \\
@@ -611,24 +637,6 @@ There is a scale not yet mentioned here, namely the factorisation scale $\mu_F$.
 Finally, the term $\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)$ refers to the fact that this formula holds in the high-energy limit. \\ \\
 {\color{orange}Used pink book, Edinburgh notes, and A Banfi powerpoint recommendation for this mainly.}
   
-
-
-
-\section{IRC Safety} 
-\label{sec: IRC}
-The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}. \\ \\
-An IRC safe observable is one that does not change regardless of the number of soft or collinear emissions, such that it obeys the following:
-\begin{equation}
-V(\{q\},k_1,\cdots ,k_n)=V(\{q\},k_1,\cdots , k_{j+1},\cdots ,k_n),\quad \text{when}\quad E_{j+1}\rightarrow0\quad\text{or}\quad\vec{k}_{j+1}\parallel \vec{q}_{\text{emit}}
-	\label{eq:IRC-safety}
-\end{equation}
-where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$ is the additional emission and ${q}_{\text{emit}}$ is the parent parton which emits the additional gluon. While equation~\eqref{eq:IRC-safety} holds for a single emission, the above must be true for any number of emissions. Therefore, IRC safe observables can be calculated to all orders in perturbation theory.
-
-
-
-
-
-
 
 
 
