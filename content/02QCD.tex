@@ -236,16 +236,17 @@ $
 {\color{orange}This section mainly used the pink book and lecture notes.}
 
 \section{Perturbation Theory}
+\label{sec:pert-theory}
 {\color{RoyalBlue}
-With the QCD Lagrangian and corresponding Feynman rules established in the previous section, we can now outline how  calculations are performed in practice. Using the propagators and interaction vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules} respectively, we can construct Feynman diagrams. These diagrams offer a visual representation of the scattering (probability) amplitude $\mathcal{M}$ for a given process and by applying the Feynman rules we are able to calculate its value. \\ \\
+With the QCD Lagrangian and corresponding Feynman rules established in the previous section, we can now outline how  calculations are performed in practice. Using the propagators and interaction vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules} respectively, we can construct Feynman diagrams. These diagrams offer a visual representation of the scattering (probability) amplitude (matrix element) $\mathcal{M}$ for a given process and by applying the Feynman rules we are able to calculate its value. \\ \\
 From the structure of the interaction vertices, it is evident that either the emission of an additional gluon (a real correction) or the appearance of a loop (a virtual correction) within the Feynman diagram introduces extra powers of the strong coupling $\alpha_s$. This indicates that the scattering amplitude follows a perturbative expansion,
 \begin{equation}
+\label{eq:M-pert-theory}
     \mathcal{M}
     = \mathcal{M}_0
     + \alpha_s\,\mathcal{M}_1
     + \alpha_s^2\,\mathcal{M}_2
     + \cdots\,,
-    \label{eq:pQCD}
 \end{equation}
 where $\mathcal{M}_0$ is the tree-level (classical) contribution, often referred to as the leading-order (LO) or Born term, while the terms $\mathcal{M}_1$, $\mathcal{M}_2$, etc.\ represent higher-order (quantum) corrections to the Born and are often referred to as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on. 
 {\color{red} (I am wondering whether it should be like, `the first non-zero term is LO/classical etc.')}\\ \\ 
@@ -509,8 +510,9 @@ We find that the cross-section for the real contributions in Fig.~\ref{fig:photo
 \end{equation}
 where the energy fractions are defined as 
 \[
-    x_i = \frac{2 p_i \cdot p}{s}\,, \qquad p=(p_q+p_{\bar{q}}+p_g)\,.
+    x_i = \frac{2 p_i \cdot p}{s}\,, \qquad p=(p_q+p_{\bar{q}}+p_g)\,,
     \]
+ where $s=(p_{e^+}+p_{e^-})^2$ is the centre-of-mass (CoM) energy squared. 
 From the integrand we see that divergences arise in the following limits:
 \begin{enumerate}
     \item \(x_q \to 1\) \emph{and} \(x_{\bar{q}} \to 1\): soft emission (\(E_g \to 0\));
@@ -572,43 +574,59 @@ Lee:1964is}. This theorem guarantees that IR divergences cancel between real and
 {\color{red} (A mention of inclusive cross-section?)} \\ \\
 {\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book \& thesis' and powerpoint. For UV divergences, no formal references right at this second.}
 
-\section{Matrix element factorisation}
-{\color{green}
-\begin{enumerate}
-	\item cross-section = integrated matrix element squared
-	\item perturbative expansion in matrix element
-	\item if we are calling it matrix element then make sure to call it matrix element when we introduce it
-	\item lead into wanting to understand the soft and collinear limits in the matrix elements i.e. seen singularities in cross-sections, lets take a closer look at the matrix element speifically in these limits - this might not make sense though.
-\end{enumerate}
+\section{Factorisation of $|\mathcal{M}|^2$}
+We have looked at a particular process in the previous section, but let us understand what happens when we take these soft and collinear limits for a general process. Let's understand the constituents needed to calculate a generic process. Let us look at the soft and collinear limits more generally such that we can look at the structure of QCD at all orders of $\alpha_s$. This can be done by looking at the soft and collinear limits of the matrix element squared $|\mathcal{M}|^2$. We will see that these limits give rise to a factorisation formula.
+Factorisation allows us to compute resummation in QCD - more will be discussed in chapter~4 and~5.
 
-}
-\subsection*{Soft factorisation}
+For a $2\rightarrow m$ hard scattering process: $p_a+p_b\rightarrow p_1+\cdots p_m$, the general formula for the parton-level cross-section is
 \begin{equation}
-|\mathcal{M}_{g, a_1\cdots(q,p_1,\cdots)}^{(0)}|^2\simeq-4\pi\alpha_s\sum_{ij}S_{ij}(q)\bra{\mathcal{M}_{a_1,\cdots}(p_1,\cdots)}\mathbf{T_i}\cdot\mathbf{T_j}\ket{\mathcal{M}_{a_1,\cdots}(p_1,\cdots)}\,,
+	\sigma=\frac{1}{2s}\int d\Phi^{(m)}(p_1,\cdots , p_m)|\mathcal{M}_m(p_a,p_b;p_1,\cdots p_m)|^2\,,
 \end{equation}
-where $S_{ij}(q)=\frac{p_i\cdot p_j}{p_i\cdot q\,p_j\cdot q}$\,.
-
-\subsection*{Collinear factorisation}
-Sudakov parameterisation 
+where $d\Phi^{(m)}$ is the $m$-parton phase space 
+\begin{equation}
+	d\Phi^{(m)}=(2\pi)^4\delta^{(4)}\left(p_a+p_b-\sum_{i=1}^{m}p_i\right)\prod_{i=1}^{m}\,,\frac{d^3p_i}{(2\pi)^3\,2E_i}
+\end{equation}
+and  where $|\mathcal{M}_m|^2=\braket{\mathcal{M}_m|\mathcal{M}_m}$ is the matrix element squared for a $2\rightarrow m$ hard scattering process.
+Determine the behaviour of the general QCD matrix element where a single parton becomes soft or collinear. 
+Suppressing the initial state momenta $p_a, p_b$ for conciseness, we find that the squared matrix element in the soft limit is
+\begin{equation}
+	|\mathcal{M}_{m+1}^{(0)}(q,p_1,\cdots p_m)|^2\simeq-4\pi\alpha_s\sum_{i,j=1}^{m}S_{ij}(q)\bra{\mathcal{M}_m^{(0)}(p_1,\cdots p_m)}\mathbf{T}_i\cdot\mathbf{T}_j\ket{\mathcal{M}_m^{(0)}(p_1,\cdots p_m)}\,,
+\end{equation}
+where $q$ is the momenta of the soft parton.we are summing over the colour-correlators, which obey the colour-charge algebra
 \begin{equation}
 \begin{aligned}
-	&p_1^\mu=zp^\mu+k_\perp^\mu-\frac{k_\perp^\mu}{z}\frac{n^\mu}{2p\cdot n}\,,\\
-	&p_2^\mu=(1-z)p^\mu-k_\perp^\mu-\frac{k_\perp^\mu}{1-z}\frac{n^\mu}{2p\cdot n}\,.
-\end{aligned}
+	&\mathbf{T}_i\cdot\mathbf{T}_j=\mathbf{T}_j\cdot\mathbf{T}_i\,, \quad \text{if}\quad i\neq j \\
+	&\mathbf{T}_i^2=C_i\,,
+	\end{aligned}
 \end{equation}
-
+where $C_i$ is known as the Casimir operator and is $C_A, C_F$ if particle $i$ is a gluon or quark respectively.  Moreover, 
 \begin{equation}
-|\mathcal{M}_{a_1,a_2,\cdots(p_1,p_2,\cdots)}^{(0)}|^2\simeq4\pi\alpha_s\bra{\mathcal{M}_{a,\cdots}(p,\cdots)}\hat{\mathbf{P}}^{(0)}_{a_1\,a_2}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{a,\cdots}(p,\cdots)}\,,
+	S_{ij}=\frac{p_i\cdot p_j}{p_i\cdot q\,p_j\cdot q}\,.
+\end{equation} 
+We find that the squared matrix element in the collinear limit is
+\begin{equation}
+	|\mathcal{M}_{m+1}^{(0)}(p_1,\cdots p_i, p_j, \cdots p_{m+1})|^2\simeq4\pi\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{\mathbf{P}}^{(0)}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,.
 \end{equation}
-where $\hat{\mathbf{P}}^{(0)}_{a_1\,a_2}(z,k_\perp;\epsilon)$ are the splitting functions which depends on the colours involved and have the following format
+where $\hat{\mathbf{P}}^{(0)}_{ij}$ are the unregulated Altarelli-Parisi splitting functions which describes this splitting and are given by
 \begin{equation}
 \begin{aligned}
 	&\hat{\mathbf{P}}_{q\bar{q}}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{\bar{q}q}^{(0)}(z,k_\perp;\epsilon)=T_R\left[-g^{\mu\nu}+4z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\\
-	&\hat{\mathbf{P}}_{qg}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{{\bar{q}}g}^{(0)}(z,k_\perp;\epsilon)=C_F\left[\frac{1+z^2}{1-z}-\epsilon(1-z)\right]\\
-	&\hat{\mathbf{P}}_{gq}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{g{\bar{q}}}^{(0)}(z,k_\perp;\epsilon)=C_F\left[\frac{1+(1-z)^2}{z}-\epsilon z\right]\\
+	&\hat{\mathbf{P}}_{qg}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{{\bar{q}}g}^{(0)}(z,k_\perp;\epsilon)=\delta^{ss'}C_F\left[\frac{1+z^2}{1-z}-\epsilon(1-z)\right]\\
+	&\hat{\mathbf{P}}_{gq}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{g{\bar{q}}}^{(0)}(z,k_\perp;\epsilon)=\delta^{ss'}C_F\left[\frac{1+(1-z)^2}{z}-\epsilon z\right]\\
 	&\hat{\mathbf{P}}_{gg}^{(0)}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,.
 \end{aligned}
 \end{equation}
+where $s,s'$ are the spins of the partons.
+Note that when taking $i$ and $j$ to be collinear to one another, it is useful to use Sudakov decomposition,
+\begin{equation}
+\begin{aligned}
+	&p_i^\mu=z\,p^\mu+k_\perp^\mu-\frac{k_\perp^\mu}{z}\frac{n^\mu}{2\,p\cdot n}\,,\\
+	&p_j^\mu=(1-z)\,p^\mu-k_\perp^\mu-\frac{k_\perp^\mu}{1-z}\frac{n^\mu}{2\,p\cdot n}\,,
+\end{aligned}
+\end{equation}
+where $k_\perp$ is a generic space-like vector orthogonal to $n$ and $p$, $z$ is the momentum fraction carried by the parton $i$ and $k_\perp^\mu\rightarrow0$ is the collinear limit.
+
+
 
 \section{IRC Safety} 
 \label{sec: IRC}
