@@ -291,6 +291,7 @@ From the sign of $\beta_0$ and the form equation~\ref{eq:scale-dependence}, the 
 {\color{orange} This section used the pink and black book.}
 
 \section{Divergences}
+\label{sec:divergences}
 {\color{RoyalBlue} While perturbation theory is highly effective at high energies, it also introduces
 certain problems in the form of divergences. In QCD these come in two forms:
 \begin{itemize}
@@ -570,73 +571,164 @@ As a result, the total cross section up to NLO is
 \end{equation}
 The cancellation of singularities between the real and virtual diagrams is not
 unexpected—it is a direct consequence of the \emph{KLN theorem}~\cite{Kinoshita:1962ur,
-Lee:1964is}. This theorem guarantees that IR divergences cancel between real and virtual contributions order by order in perturbation theory for any process, provided one sums over all degenerate initial and final states.} \\ \\
-{\color{red} (A mention of inclusive cross-section?)} \\ \\
+Lee:1964is}. This theorem guarantees that IR divergences cancel between real and virtual contributions order by order in perturbation theory for any process, provided one sums over all initial and final states.} \\ \\
 {\color{orange} Done with Luisoni \& Marzani, Schwartz and the pink book \& thesis' and powerpoint. For UV divergences, no formal references right at this second.}
 
-\section{Factorisation of $|\mathcal{M}|^2$}
-We have looked at a particular process in the previous section, but let us understand what happens when we take these soft and collinear limits for a general process. Let's understand the constituents needed to calculate a generic process. Let us look at the soft and collinear limits more generally such that we can look at the structure of QCD at all orders of $\alpha_s$. This can be done by looking at the soft and collinear limits of the matrix element squared $|\mathcal{M}|^2$. We will see that these limits give rise to a factorisation formula.
-Factorisation allows us to compute resummation in QCD - more will be discussed in chapter~4 and~5.
 
-For a $2\rightarrow m$ hard scattering process: $p_a+p_b\rightarrow p_1+\cdots p_m$, the general formula for the parton-level cross-section is
+\section{The $2\rightarrow m$ partonic cross-section}
+{\color{red} (Would it be better to have this section in an earlier section, such that after discussing IR divergences we can jump straight into soft and collinear factorisation?)} \\ \\
+In the previous section we computed the cross section up to NLO for a specific process,
+showing how soft and collinear singularities appear in the real and virtual
+contributions. To understand these limits in a more general setting, it is useful to
+step back and consider how one computes the cross section for an arbitrary process.
+In particular, we will identify the basic ingredients that enter a generic partonic
+cross section.
+For a $2\rightarrow m$ hard scattering process,
+\[
+    p_a + p_b \rightarrow p_1 + \cdots + p_m\,,
+\]
+the parton-level cross section is given by
 \begin{equation}
-	\sigma=\frac{1}{2s}\int d\Phi^{(m)}(p_1,\cdots , p_m)|\mathcal{M}_m(p_a,p_b;p_1,\cdots p_m)|^2\,,
+\label{eq:2-to-m-xsec}
+    \sigma= \frac{1}{2s}\int d\Phi^{(m)}(p_1,\ldots,p_m)\,|\mathcal{M}_m(p_a,p_b; p_1,\ldots,p_m)|^2\,F_J^{(m)}(p_1,\ldots,p_m)\,,
 \end{equation}
-where $d\Phi^{(m)}$ is the $m$-parton phase space 
+where the components of this expression are:
+\begin{itemize}
+	\item $d\Phi^{(m)}$ is the $m$-parton phase space 
 \begin{equation}
 	d\Phi^{(m)}=(2\pi)^4\delta^{(4)}\left(p_a+p_b-\sum_{i=1}^{m}p_i\right)\prod_{i=1}^{m}\,,\frac{d^3p_i}{(2\pi)^3\,2E_i}
 \end{equation}
-and  where $|\mathcal{M}_m|^2=\braket{\mathcal{M}_m|\mathcal{M}_m}$ is the matrix element squared for a $2\rightarrow m$ hard scattering process.
-Determine the behaviour of the general QCD matrix element where a single parton becomes soft or collinear. 
-Suppressing the initial state momenta $p_a, p_b$ for conciseness, we find that the squared matrix element in the soft limit is
+\item $\mathcal{M}_m$ is the scattering amplitude for the $2\!\rightarrow\! m$ process,
+    which can be expanded perturbatively as in Eq.~\ref{eq:M-pert-theory}. Its modulus
+    squared is
+    \[
+        |\mathcal{M}_m|^2 = \langle \mathcal{M}_m | \mathcal{M}_m \rangle .
+    \]
+    {\color{red} (Do I need to explain the bra/ket and the basis these take?)}
+\item $F_J^{(m)}$ is the \emph{jet function}, which specifies the observable being calculated. 
+It may contain $\Theta$-functions, $\delta$-functions, or  numerical factors,
+    depending on whether one is defining a total or differential cross section,
+    or an expectation value. When $F_J^{(m)} = 1$, Eq.~\ref{eq:2-to-m-xsec} gives the total cross-section (such as the one computed in the previous section for $e^+e^-$ annihilation).
+    \end{itemize}
+
+\section{Soft and collinear factorisation of $|\mathcal{M}_m|^2$}
+With the general structure of a partonic cross section established, we now turn to one
+of its key ingredients: the squared scattering amplitude $|\mathcal{M}_m|^2$.  
+In the soft and collinear limits, the matrix element factorises into a remarkably simple and general form. We summarise the relevant results below.
+\subsection*{Soft limit}
+Suppressing the initial–state momenta $(p_a,p_b)$ for brevity, the squared matrix
+element for the emission of an additional soft parton of momentum $q$ behaves as
 \begin{equation}
-	|\mathcal{M}_{m+1}^{(0)}(q,p_1,\cdots p_m)|^2\simeq-4\pi\alpha_s\sum_{i,j=1}^{m}S_{ij}(q)\bra{\mathcal{M}_m^{(0)}(p_1,\cdots p_m)}\mathbf{T}_i\cdot\mathbf{T}_j\ket{\mathcal{M}_m^{(0)}(p_1,\cdots p_m)}\,,
+    |\mathcal{M}_{m+1}^{(0)}(q,p_1,\ldots,p_m)|^2
+    \simeq
+    -4\pi\alpha_s
+    \sum_{i,j=1}^{m}
+        S_{ij}(q)\,
+        \big\langle
+            \mathcal{M}_m^{(0)}(p_1,\ldots,p_m)
+        \big|
+            \mathbf{T}_i \cdot \mathbf{T}_j
+        \big|
+            \mathcal{M}_m^{(0)}(p_1,\ldots,p_m)
+        \big\rangle,
 \end{equation}
-where $q$ is the momenta of the soft parton.we are summing over the colour-correlators, which obey the colour-charge algebra
+where the colour operators satisfy
 \begin{equation}
 \begin{aligned}
-	&\mathbf{T}_i\cdot\mathbf{T}_j=\mathbf{T}_j\cdot\mathbf{T}_i\,, \quad \text{if}\quad i\neq j \\
-	&\mathbf{T}_i^2=C_i\,,
-	\end{aligned}
+    \mathbf{T}_i \cdot \mathbf{T}_j &= \mathbf{T}_j \cdot \mathbf{T}_i \qquad (i\neq j),\\[4pt]
+    \mathbf{T}_i^2 &= C_i \qquad (C_i = C_F \text{ for a quark, } C_A \text{ for a gluon}),
+\end{aligned}
 \end{equation}
-where $C_i$ is known as the Casimir operator and is $C_A, C_F$ if particle $i$ is a gluon or quark respectively.  Moreover, 
-\begin{equation}
-	S_{ij}=\frac{p_i\cdot p_j}{p_i\cdot q\,p_j\cdot q}\,.
-\end{equation} 
-We find that the squared matrix element in the collinear limit is
-\begin{equation}
-	|\mathcal{M}_{m+1}^{(0)}(p_1,\cdots p_i, p_j, \cdots p_{m+1})|^2\simeq4\pi\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{\mathbf{P}}^{(0)}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,.
+and
+\[
+    S_{ij}(q) = \frac{p_i \cdot p_j}{(p_i \cdot q)(p_j \cdot q)}
+\]
+is referred to as the eikonal factor and encodes the soft dynamics of QCD.
+
+\subsection*{Collinear limit}
+
+When two partons $i$ and $j$ become collinear, the squared matrix element factorises as
+\begin{equation} 
+|\mathcal{M}_{m+1}^{(0)}(p_1,\cdots p_i, p_j, \cdots p_{m+1})|^2\simeq4\pi\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{\mathbf{P}}^{(0)}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,. 
 \end{equation}
-where $\hat{\mathbf{P}}^{(0)}_{ij}$ are the unregulated Altarelli-Parisi splitting functions which describes this splitting and are given by
+where $\hat{\mathbf{P}}^{(0)}_{ij}$ are the unregularised Altarelli–Parisi splitting functions:
 \begin{equation}
 \begin{aligned}
+\label{eq:AP-functions}
 	&\hat{\mathbf{P}}_{q\bar{q}}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{\bar{q}q}^{(0)}(z,k_\perp;\epsilon)=T_R\left[-g^{\mu\nu}+4z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\\
 	&\hat{\mathbf{P}}_{qg}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{{\bar{q}}g}^{(0)}(z,k_\perp;\epsilon)=\delta^{ss'}C_F\left[\frac{1+z^2}{1-z}-\epsilon(1-z)\right]\\
 	&\hat{\mathbf{P}}_{gq}^{(0)}(z,k_\perp;\epsilon)=\hat{\mathbf{P}}_{g{\bar{q}}}^{(0)}(z,k_\perp;\epsilon)=\delta^{ss'}C_F\left[\frac{1+(1-z)^2}{z}-\epsilon z\right]\\
-	&\hat{\mathbf{P}}_{gg}^{(0)}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,.
+	&\hat{\mathbf{P}}_{gg}^{(0)}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,,
 \end{aligned}
 \end{equation}
-where $s,s'$ are the spins of the partons.
-Note that when taking $i$ and $j$ to be collinear to one another, it is useful to use Sudakov decomposition,
+where $\varepsilon$ is the same as that found in $d=4-2\varepsilon$ and $s,s'$ are the spins of the partons. \\ \\
+To obtain the function in Eq.~\ref{eq:AP-functions}, it is convenient to use the Sudakov decomposition for the two
+collinear momenta,
 \begin{equation}
 \begin{aligned}
-	&p_i^\mu=z\,p^\mu+k_\perp^\mu-\frac{k_\perp^\mu}{z}\frac{n^\mu}{2\,p\cdot n}\,,\\
-	&p_j^\mu=(1-z)\,p^\mu-k_\perp^\mu-\frac{k_\perp^\mu}{1-z}\frac{n^\mu}{2\,p\cdot n}\,,
+    p_i^\mu &= z\, p^\mu + k_\perp^\mu
+               - \frac{k_\perp^2}{z}\,\frac{n^\mu}{2p\cdot n}, \\
+    p_j^\mu &= (1-z)\,p^\mu - k_\perp^\mu
+               - \frac{k_\perp^2}{1-z}\,\frac{n^\mu}{2p\cdot n},
 \end{aligned}
 \end{equation}
-where $k_\perp$ is a generic space-like vector orthogonal to $n$ and $p$, $z$ is the momentum fraction carried by the parton $i$ and $k_\perp^\mu\rightarrow0$ is the collinear limit.
-
-
+where $n^\mu$ and $p^\mu$ are light-cone vectors,  $z$ is the  momentum fraction of parton $i$ and $k_\perp^\mu$ is a generic space-like vector, orthogonal to both $n^\mu$ and $p^\mu$. The collinear limit is obtained by $k_\perp^\mu \rightarrow 0$. \\ \\
+{\color{red} (Should there be a discussion of subtraction/slicing here?)}
 
 \section{IRC Safety} 
-\label{sec: IRC}
-The cross-section falls into a category of inclusive observables. For such observables, the soft and collinear divergences cancel completely between the real and virtual diagrams in the IR limit (where $E_g\ll E_q,E_{\bar{q}}$) \cite{Campbell:2017hsr}. Exclusive observables, on the other hand, contain singularities and therefore unphysical results. Therefore, in order to avoid the issue of infinities we must define these to be IRC safe observables, which ensure the divergences cancel \cite{Luisoni:2015xha}. \\ \\
-An IRC safe observable is one that does not change regardless of the number of soft or collinear emissions, such that it obeys the following:
+\label{sec:IRC}
+
+An observable is said to be infrared and collinear (IRC) safe if all soft and
+collinear singularities cancel at every order in perturbation theory, so that the
+final result remains finite order by order.  
+
+Fully inclusive observables, such as the total cross section, correspond to the choice
+$F_J^{(m)} = 1$. In this case there is an exact cancellation between the soft and
+collinear contributions arising from real emission and those from virtual diagrams, as
+discussed in Sec.~\ref{sec:divergences}. In other words, adding an arbitrarily soft or
+collinear particle does not change the value of the observable.
+
+More generally, an observable defined by a jet function $F_J$ is IRC safe if it obeys
 \begin{equation}
-V(\{q\},k_1,\cdots ,k_n)=V(\{q\},k_1,\cdots , k_{j+1},\cdots ,k_n),\quad \text{when}\quad E_{j+1}\rightarrow0\quad\text{or}\quad\vec{k}_{j+1}\parallel \vec{q}_{\text{emit}}
-	\label{eq:IRC-safety}
+\begin{aligned}
+F_J^{(m+1)}(p_1,\ldots, p_i,\ldots ,p_m)
+&\;\longrightarrow\;
+F_J^{(m)}(p_1,\ldots, \cancel{p_i},\ldots ,p_m),
+\qquad \text{for } E_i \rightarrow 0 \\
+F_J^{(m+1)}(p_1,\ldots, p_i, p_j,\ldots ,p_m)
+&\;\longrightarrow\;
+F_J^{(m)}(p_1,\ldots, \cancel{p_i}, \cancel{p_j}, p_{ij},\ldots ,p_m),
+\qquad \text{for } p_i \parallel p_j
+\end{aligned}
 \end{equation}
-where $V$ is the observable in question, $\{q\}$ are the hard partons, $k_{j+1}$ is the additional emission and ${q}_{\text{emit}}$ is the parent parton which emits the additional gluon. While equation~\eqref{eq:IRC-safety} holds for a single emission, the above must be true for any number of emissions. Therefore, IRC safe observables can be calculated to all orders in perturbation theory.
+where in the collinear limit the two partons are replaced by their parent momentum
+$p_{ij}$.
+
+An example of an IRC–safe quantity is the total cross section, event-shape distributions (see in Chapter~4).  
+A simple example of an IRC–unsafe observable is the number of final--state partons, which
+changes whenever a soft or collinear emission occurs.
+
+ADD IN:
+1. Luosisni/Marzani: \\
+These limits have to hold not only for a single particle, but for an ensamble of
+partons becoming soft and/or collinear. \\
+
+ in the case of inclusive observables, for which $Um (k1, . . . , km) = 1$ for all m, the
+cancellation is complete. Consequently, the total cross-section remains unchanged
+by the emission of soft particles, as it should. \\
+in case of an exclusive (but IRC safe) measurement, although the singularities
+cancel, the kinematic dependence of the observable can cause an unbalance
+between real and virtual contributions, which manifests itself with the appearance
+of potentially large logarithmic corrections to any orders in perturbation theory. \\
+Thus, if we limit ourselves to the aforementioned class of safe observables,
+perturbation theory will provide us with a finite result. However, as we shall discuss
+below, the cancellation of IRC singularities can leave behind a finite, but potentially
+large contribution, making the perturbative expansion unreliable at any finite order. \\ \\ \\
+2. PDG
+These two sources of infinities
+have the same soft and collinear origins and cancel after the integration only if the
+observable satisfies the property of infrared and collinear safety,
+
 
 \section{The Parton Model/ Factorisation}
 High-energy hadronic collisions can be described by the QCD improved parton model. In this process, the hard scattering between two hadrons is the result of an interaction between quarks and gluons which are the constituents of the incoming hadrons. These partons take fractions of momenta of the parent hadron's momenta.  \\ \\
