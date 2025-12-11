@@ -680,12 +680,11 @@ where $z_i+z_j=1$ are the longitudinal momentum fractions, $p^\mu$ and $n^\mu$ a
 
 \section{IRC Safety} 
 \label{sec:IRC}
-In Sec.~\ref{sec:divergences} we saw, through the explicit NLO calculation of the total cross-section for $e^+e^- \to q\bar{q}g$, that the infrared divergences from the real and virtual contributions cancel exactly, leaving a finite result. This observable is an example of an \emph{inclusive} observable, corresponding to a jet function
-$F_J^{(m)} = 1$ for any number of final--state particles $m$, as discussed in Sec.~{sec:2-to-m-x-sec}. For such observables the cancellation of soft and collinear singularities is automatic. \\ \\
-For more general observables the situation is different. A complete cancellation of the
-infrared and collinear singularities only occurs if the observable is what is known as
-\emph{infrared and collinear} (IRC) safe. Physically speaking, an IRC-safe observable is one whose
-value does not change when under the admission of a parton, if that parton is: soft or collinear to another parton. This requirement can be shown by the jet function:
+{\color{RoyalBlue}
+In Sec.~\ref{sec:divergences} we saw, through the explicit NLO calculation of $e^{+}e^{-}\!\to q\bar q g$, that the infrared singularities from the real and virtual  contributions cancel, yielding a finite result. This relies on the fact that the total cross section is an \emph{inclusive} observable, for which 
+$F_J^{(m)} = 1$  for any number of final-state particles $m$ (see Sec.~\ref{sec:2-to-m-x-sec}). \\ \\
+For more general observables such a cancellation is not guaranteed. To obtain a finite prediction order by order in perturbation theory, the observable must be \emph{infrared and collinear safe} (IRC safe). An IRC safe observable is one whose value is insensitive to the emission of an 
+additional soft/collinear parton. This may be expressed in terms of the jet function:
 \begin{equation}
 \begin{aligned}
 F_J^{(m+1)}(p_1,\ldots,p_i,\ldots,p_{m+1})
@@ -697,11 +696,10 @@ F_J^{(m+1)}(p_1,\ldots,p_i,p_j,\ldots,p_{m+1})
 F_J^{(m)}(p_1,\ldots,\cancel{p_i},\cancel{p_j},p_{ij},\ldots,p_{m+1})\,,
 \qquad &&p_i \parallel p_j\,,
 \end{aligned}
+\label{eq:IRC-safety}
 \end{equation}
-and the same conditions must hold when several partons simultaneously become soft or
-collinear. A schematic representation of these limits is shown in
-Fig.~\ref{fig:IRC_safety}.
-
+where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_safety}. 
+\newpage
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=2]
@@ -749,32 +747,46 @@ Fig.~\ref{fig:IRC_safety}.
 
 \end{feynman}
 \end{tikzpicture}
-\caption{Diagrammatic representation of a $2\to m$ hard scattering with an additional soft/collinear emission $p_i$ to parton $p_j$, obeying IRC safety.}
+\caption{Diagrammatic representation of a $2\to m$ hard scattering with an additional soft/collinear emission $p_i$. {\color{blue} (Change this-do we need to ad $\Phi^{(m+1)}\neq\Phi^{(m)}$? Also do we need to explain the $\mathcal{H}$ and should it actually be $|\mathcal{M}|^2$)?}}
 \label{fig:IRC_safety}
 \end{figure}
-From this definition we immediately see that inclusive observables with
-$F_J^{(m)} = 1$ are IRC safe. Other examples include event-shape variables (event-shapes), which will be discussed in Chapter~4, while a simple example of an IRC-unsafe observable is the number of final-state partons, which changes whenever a soft or collinear emission occurs.\\ \\
-While IRC safety guarantees that the perturbative prediction is finite order by order,
-it does not prevent the appearance of large logarithms that can spoil the convergence of
-the perturbative series. This happens for many \emph{exclusive} observables, even when they
-are IRC safe. The resummation of such logarithms will be a key theme in
-Chapters~4 and~5.
-
-
-
+We emphasise that although Eq.~\ref{eq:IRC-safety} is written for a single additional parton, the same behaviour holds for any number of additional soft/collinear partons. From this definition it follows immediately that inclusive observables with $F_J^{(m)} = 1$ are IRC safe. Other examples include event-shape variables (event-shapes), discussed in Chapter~4. A simple example of an IRC-unsafe observable is the number of final-state partons, which of course changes whenever a soft or collinear emission occurs. \\ \\
+Although IRC safety ensures a finite results at every order in perturbation theory, it does not guarantee a well-behaved perturbative expansion. Many \emph{exclusive} observables, despite being IRC safe, receive large logarithmic contributions which originate from emissions in the soft and/or collinear regions. These large corrections can spoil the convergent nature of the perturbative expansion and in such cases one must perform \emph{resummation}, which will be the focus of Chapters~4 and~5. \\ \\
+}
+{\color{red} I have a few questions on this:
+\begin{enumerate}
+\item In this sense is the KNL theorem only for inclusive observables? I ask since it states that there will be finite results at every order of perturbation theory if we sum over all initial and final states - I presume this summing over is what makes it an inclusive observable?
+\item Checking that exclusive observables are those that give large logarithms i.e. inclusive observables don't get receive these? This is what essentially distinguishes these two types of observables in a resummation sense?
+\item I need a reference for this section I think i.e. not a book or review
+\end{enumerate}}
 {\color{orange} Luoisiani/Marzani, powerpoints, A. Banfi book, Black Book.}
 
 
-\section{High-energy Colliders}
+\section{Energy Scales (High-energy Collisions)}
+Throughout this thesis so far, we have spent a large amount of time discussing partons and physics at the parton-level. In Sec.~\ref{sec:divergences}, there was a small discussion of how we could calculate the parton-level cross-section of $e^+e^-\rightarrow q\bar{q}$ to approximate the hadron-level $e^+e^-\rightarrow\mathrm{hadrons}$. In addition to this we have discussed asymptotic freedom and how at high-energies we can model partons as free particles and thus use perturbation theory. 
+In this section, we wish to discuss a high-energy hadronic collision and discuss all elements from the initial incoming hadrons to the final hadrons seen in our detectors. while the initial collision occurs at a high-energy the final-state hadrons occur at a far lower energy. In this capacity we can divide our discussion into sections depending on what their energy scale is. For reference we will discuss the proton-proton collision which gives rise to a $t\bar{t}h$ event as shown in Fig.~\ref{fig:high-energy-event}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/High-energy-event.jpeg}
-    \caption{High energy event taken from Ref.~\cite{Gleisberg:2008ta}}
+    \caption{Pictorial representaion of a $t\bar{t}h$ event produced in a high-energy hadronic collision, taken from Ref.~\cite{Gleisberg:2008ta}}
     \label{fig:high-energy-event}
 \end{figure}
-
-
-\subsection*{The Parton Model/ Factorisation}
+\begin{enumerate}
+\item{$Q\gg\lambda_{\mathrm{QCD}}$:} At this scale we have the hard process which is modelled by the red blob. In this hard process, two partons lets call them $p_a$ and $p_b$ coming from each proton scatters. The partons inside the proton can be modelled by a funciton known as the parton distribution function (PDF) $f_{i,h_1}(x_1,\mu_F^2)$ which gives the probability of finding a parton $i$ with longitudinal momentum fraction $x_1$ inside the hadron $h_1$. The factorisation scale $\mu_F^2$ and more about these PDFs will be described in the following.  After this initial hadron process, primary partons are produced in the form of $t,\bar{t}$ quarks and the Higgs boson as shown by the smaller red blobs shown in Fig~.\ref{fig:high-energy-event}. Since it is at such a high-energy, one can used fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}).
+The computations here are based on matrix element calculations which can be produced via matrix element generators. 
+\item{$Q\gtrsim\lambda_{\mathrm{QCD}}$:} This is the scale at which QCD evolution occurs. This essentially means that there is a lot of radiation occuring in the form of soft and collinear emissions as shown in Fig~.\ref{fig:high-energy-event} by the red gluon and quark propagators. {\color{pink}It is this radiation that connects the hard scale with the coloured parton creation of the hadronisation scale where the transition of colourless hadrons occur (see point 3 - shown by the light and dark green blobs in this figure). In this capacity this section is the bridge between perturbative and non-perturbative physics. (You might want to move this further down.)}  {\color{red}(Why is this radiation soft/collinear? )}
+We can approach this radiation with a variety of different methods: a semi-numerical resummer (described in Chapter~4.) - a QCD resummation, effective fields like SCET, and parton-showers like PanScales etc. {\color{blue}(Need to add in different showers and what ARES/CAESAR, SCET, and parton showers do and advantages e.g. ARES completely general, PS are numerical, SCET observable dependent. Also mention, NLL vs. NNLL etc. and cite relevant papers.)}
+\item{$Q\sim\lambda_{\mathrm{QCD}}$} At this scale the partons undergo hadronisation. This is demonstrated by the light green blobs and dark green blobs in Fig~.\ref{fig:high-energy-event} where the light green blobs are the primary hadrons and decay into hadrons which are observed in our detectors - the darker green blobs. At this scale perturbation theory breaks down since the coupling is too high. We need to calculate these effects with non-perturbative physics e.g. models {\color{blue}(add in what models and how to do this - also work out if the light green discs are partons or hadrons? Also a mention of jets here.)}
+\end{enumerate}
+Couple of additional notes about Fig~.\ref{fig:high-energy-event}: the yellow lines are the QED radiation i.e. photons which can occur at any stage. Moreover, secondary hard emissions can occur via the hadron remnants which is shown in the purple. Finally, something worth mentioning is the initial-state radiation {\color{blue}(work out where this is in the diagram)} and has dependency on PDF/DGLAP:
+{\color{blue} Add here:
+\begin{enumerate}
+\item ISR and dependency on PDFs
+\item DGLAP
+\item Factorisation scale and if ISR/FSR where divergence is absorbed
+\item Focus on part 2 for this thesis (or is it with the jet algorithms - maybe a question to ask A. Banfi?)
+\item Factorisation formula and how we use this to approximate our theory such that we can essentially calculate hadronic processes I think??
+\end{enumerate}}
 High-energy hadronic collisions can be described by the QCD improved parton model. In this process, the hard scattering between two hadrons is the result of an interaction between quarks and gluons which are the constituents of the incoming hadrons. These partons take fractions of momenta of the parent hadron's momenta.  \\ \\
 Because of this, we can take advantage of the factorisation formula
 \begin{equation}
