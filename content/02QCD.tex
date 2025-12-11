@@ -520,7 +520,7 @@ From the integrand we see that divergences arise in the following limits:
     \item \(x_q \to 1\) \emph{or} \(x_{\bar{q}} \to 1\): collinear emission 
           (\(\theta_{\bar{q}g},\, \theta_{qg} \to 0\)).
 \end{enumerate}
-These are infrared and collinear singularities, collectively referred to as IR divergences. Using dimensional regularisation to isolate them, Eq.~\ref{eq:qqg-real} becomes
+These are infrared and collinear singularities, collectively referred to as IR (or IRC) divergences. Using dimensional regularisation to isolate them, Eq.~\ref{eq:qqg-real} becomes
 \begin{equation}
     \sigma^{q\bar{q}g}
     = \sigma_{\mathrm{LO}}\, \frac{\alpha_s}{2\pi}\,
@@ -576,6 +576,7 @@ Lee:1964is}. This theorem guarantees that IR divergences cancel between real and
 
 
 \section{The $2\rightarrow m$ partonic cross-section}
+\label{sec:2-to-m-x-sec}
 {\color{RoyalBlue}
 {\color{red} (Would it be better to have this section in an earlier section, such that after discussing IR divergences we can jump straight into soft and collinear factorisation?)} \\ \\
 In the previous section, we computed the NLO cross-section for a specific process and saw explicitly how soft and collinear singularities arise. To understand this behaviour in a more general context, it is useful to step back and consider the structure of a generic partonic cross section. For a $2\rightarrow m$ hard scattering process,
@@ -679,81 +680,89 @@ where $z_i+z_j=1$ are the longitudinal momentum fractions, $p^\mu$ and $n^\mu$ a
 
 \section{IRC Safety} 
 \label{sec:IRC}
-\section{IRC Safety}
-\label{sec:IRC}
-
-The total cross section is an example of an \emph{inclusive} observable, for which
-$F_J^{(m)} = 1$ for any number of final--state partons. In this case the soft and
-collinear contributions from real emission cancel exactly against those from the virtual
-diagrams (see Sec.~\ref{sec:divergences}). In other words, adding a soft particle or
-replacing a parton by a collinear pair does not change the value of the observable.
-
-For more exclusive measurements the cancellation still takes place, but the observable
-may weight different regions of phase space differently. This can upset the balance
-between real and virtual terms and produce large logarithms, even though the final answer
-remains finite. This leads to the standard definition of infrared and collinear (IRC)
-safety.
-
-An observable defined through a jet function $F_J$ is IRC safe if it is unchanged when a
-parton becomes soft, or when two partons become collinear. Concretely,
+In Sec.~\ref{sec:divergences} we saw, through the explicit NLO calculation of the total cross-section for $e^+e^- \to q\bar{q}g$, that the infrared divergences from the real and virtual contributions cancel exactly, leaving a finite result. This observable is an example of an \emph{inclusive} observable, corresponding to a jet function
+$F_J^{(m)} = 1$ for any number of final--state particles $m$, as discussed in Sec.~{sec:2-to-m-x-sec}. For such observables the cancellation of soft and collinear singularities is automatic. \\ \\
+For more general observables the situation is different. A complete cancellation of the
+infrared and collinear singularities only occurs if the observable is what is known as
+\emph{infrared and collinear} (IRC) safe. Physically speaking, an IRC-safe observable is one whose
+value does not change when under the admission of a parton, if that parton is: soft or collinear to another parton. This requirement can be shown by the jet function:
 \begin{equation}
 \begin{aligned}
 F_J^{(m+1)}(p_1,\ldots,p_i,\ldots,p_{m+1})
 &\;\longrightarrow\;
-F_J^{(m)}(p_1,\ldots,\cancel{p_i},\ldots,p_m),
+F_J^{(m)}(p_1,\ldots,\cancel{p_i},\ldots,p_{m+1})\,,
 \qquad &&E_i \to 0, \\[6pt]
 F_J^{(m+1)}(p_1,\ldots,p_i,p_j,\ldots,p_{m+1})
 &\;\longrightarrow\;
-F_J^{(m)}(p_1,\ldots,\cancel{p_i},\cancel{p_j},p_{ij},\ldots,p_m),
-\qquad &&p_i \parallel p_j,
+F_J^{(m)}(p_1,\ldots,\cancel{p_i},\cancel{p_j},p_{ij},\ldots,p_{m+1})\,,
+\qquad &&p_i \parallel p_j\,,
 \end{aligned}
 \end{equation}
-with the same behaviour when several partons become soft or collinear at once.
+and the same conditions must hold when several partons simultaneously become soft or
+collinear. A schematic representation of these limits is shown in
+Fig.~\ref{fig:IRC_safety}.
 
-Examples of IRC--safe quantities include the total cross section and event--shape
-variables (see Chapter~4). A simple example of an IRC--unsafe observable is the number of
-final--state partons, which changes whenever a soft or collinear emission occurs.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=2]
+\begin{feynman}
 
-Restricting to IRC--safe observables ensures that perturbation theory gives finite
-results order by order, although the sensitivity to soft or collinear radiation can still
-produce large logarithms that may require resummation.
+    \vertex (a) at (-1, 0.6) {\(p_a\)};
+    \vertex (b) at (-1,-0.6) {\(p_b\)};
 
-\bigskip
-\bigskip
-The total cross-section is a special sort of observable known as an \emph{inclusive} observable. These are when $F_J^{(m)}(p_1,\ldots, p_i,\ldots ,p_m)=1$ for any $m$. In this case there is an exact cancellation between the soft and
-collinear contributions arising from real emission and those from virtual diagrams, as
-discussed in Sec.~\ref{sec:divergences}. In other words, adding an arbitrarily soft or
-collinear particle does not change the value of the observable. 
-In the case of an exclusive (but IRC safe) measurement, although the singularities
-cancel, the kinematic dependence of the observable can cause an unbalance
-between real and virtual contributions, which manifests itself with the appearance
-of potentially large logarithmic corrections to any orders in perturbation theory.
+    \vertex[blob, minimum size=0.8cm] (H) at (0,0) {\(\mathcal{H}\)};
 
-An observable is said to be infrared and collinear (IRC) safe if all soft and collinear singularities cancel at every order in perturbation theory, so that the final result remains finite order by order.  
+    \vertex (p1) at (1.5, 1.2) {\(p_1\)};
+    \vertex (pj) at (1.5, 0.4) {\(p_j\)};  
+    \vertex (pm) at (1.5,-1.0) {\(p_{m}\)};
 
-More generally speaking, an observable defined by a jet function $F_J$ is IRC safe if it obeys
-\begin{equation}
-\begin{aligned}
-F_J^{(m+1)}(p_1,\ldots, p_i,\ldots ,p_{m+1})
-&\;\longrightarrow\;
-F_J^{(m)}(p_1,\ldots, \cancel{p_i},\ldots ,p_m),
-\qquad \text{for } E_i \rightarrow 0 \\
-F_J^{(m+1)}(p_1,\ldots, p_i, p_j,\ldots ,p_{m+1})
-&\;\longrightarrow\;
-F_J^{(m)}(p_1,\ldots, \cancel{p_i}, \cancel{p_j}, p_{ij},\ldots ,p_m),
-\qquad \text{for } p_i \parallel p_j
-\end{aligned}
-\end{equation}
-where in the collinear limit the two partons are replaced by their parent momentum
-$p_{ij}$ and these limits have to hold not only for a single particle, but for an ensemble of
-partons becoming soft and/or collinear. 
+    \vertex (x) at (0.72, 0.2);
+    
+    \vertex (pi) at (1.5, 0.65) {\(p_i\)};
 
-An example of an IRC–safe quantity is the total cross section, event-shape distributions (see in Chapter~4).  
-A simple example of an IRC–unsafe observable is the number of final--state partons, which
-changes whenever a soft or collinear emission occurs.\\
+    \diagram*{
+        (a) -- [fermion] (H) -- [fermion] (p1),
+        (b) -- [fermion] (H) -- [fermion] (pm),
 
-IRC safe observables will provide us with finite results in perturbation theory. 
-Thus, if we limit ourselves to the  class of safe observables,
+        (H) -- [fermion] (pj),
+        
+    };
+
+
+    \draw[gluon] (x) -- (pi);
+
+
+    \node at (1.5, 0.9) {\(\cdots\)};
+    \node at (1.5, -0.3) {\(\cdots\)};
+\node[
+    draw=black!30,
+    fill=gray!5,
+    rounded corners=3pt,
+    font=\scriptsize,
+    inner sep=4pt
+] at (3.0,0.50)
+{
+    \shortstack{$F_J^{(m+1)}(\Phi^{(m+1)}) \;\longrightarrow\; F_J^{(m)}(\Phi^{(m)})$\\[2pt]
+                $\text{if } E_i \to 0 \;\text{or}\; p_i \parallel p_j$}
+};
+
+
+\end{feynman}
+\end{tikzpicture}
+\caption{Diagrammatic representation of a $2\to m$ hard scattering with an additional soft/collinear emission $p_i$ to parton $p_j$, obeying IRC safety.}
+\label{fig:IRC_safety}
+\end{figure}
+From this definition we immediately see that inclusive observables with
+$F_J^{(m)} = 1$ are IRC safe. Other examples include event-shape variables (event-shapes), which will be discussed in Chapter~4, while a simple example of an IRC-unsafe observable is the number of final-state partons, which changes whenever a soft or collinear emission occurs.\\ \\
+While IRC safety guarantees that the perturbative prediction is finite order by order,
+it does not prevent the appearance of large logarithms that can spoil the convergence of
+the perturbative series. This happens for many \emph{exclusive} observables, even when they
+are IRC safe. The resummation of such logarithms will be a key theme in
+Chapters~4 and~5.
+
+
+
+{\color{orange} Luoisiani/Marzani, powerpoints, A. Banfi book, Black Book.}
 
 
 \section{High-energy Colliders}
