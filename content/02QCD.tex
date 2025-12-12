@@ -1,30 +1,4 @@
 \chapter{Quantum Chromodynamics}
-\emph{Include: perturbation theory, UV/IR divergences, subtraction schemes (might need this for explaining the hard function in ARES)}
-{\color{green} 
-\begin{enumerate}
-	\item QCD: quarks, gluons, matrices, Lagrangian, Feynman rules
-	\begin{itemize}
-	\item The running coupling: asymptotic freedom vs. confinement 
-	\end{itemize}
-	\item Perturbation theory (refer back to the Feynman rules)
-	\begin{itemize}
-	\item Divergences: UV and IR
-	\item KLN theorem
-	\end{itemize}
-	\item High-energy physics
-	\begin{itemize}
-	\item Big picture of HEP + explanation
-	\item Factorisation
-	\item IRC Safety
-	\end{itemize}
-	\item Jet Physics
-	\begin{itemize}
-	\item Jet definition
-	\item Types of algorithms
-	\item Examples of algorithms
-	\end{itemize}	
-\end{enumerate}}
-
 \section{QCD: The basics}
 {\color{RoyalBlue}
 In the 1940s, a number of unstable, strongly interacting particles—collectively known as hadrons—were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interpreted hadrons as composite states built from more fundamental spin-$\tfrac{1}{2}$ constituents called \emph{quarks}. The six known quarks are organised into three generations—light, intermediate, and heavy—as listed in Table~\ref{table:quark-properties}. In this picture, hadrons fall into two classes: mesons ($q\bar q$) and baryons ($qqq$).
@@ -255,6 +229,7 @@ Since $\alpha_s$ becomes small at high energies (as discussed in the next sectio
 {\color{orange} No reference for this section.}
 
 \section{The running of the strong coupling $\alpha_s$}
+\label{sec:running-coupling}
 {\color{RoyalBlue}
 As noted in the previous section, pQCD relies on the strong coupling becoming small at high energies. This behaviour reflects the fact that $\alpha_s$ is not a fixed constant but instead \emph{runs} with the renormalisation scale $\mu_R$ -- an unphysical scale introduced by the renormalisation procedure, which will be discussed in the following section. The scale dependence of the coupling is governed by the renormalisation group equation
 \begin{equation}
@@ -281,6 +256,7 @@ It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–schem
     {1 + \alpha_s(Q^2)\,\beta_0\,\ln\!\left(\tfrac{\mu_R^2}{Q^2}\right)}\, .
 \end{equation}
 From the sign of $\beta_0$ and the form equation~\ref{eq:scale-dependence}, the scale dependence of the strong coupling becomes apparent. As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. Conversely, as $\mu_R \to 0$, the coupling grows large, signalling the breakdown of perturbation theory and the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. This phenomenon is known as \emph{confinement}. \\\\The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom. \\ \\
+{\color{blue}(Need to add in something about $\Lambda_{\mathrm{QCD}}$.)}\\ \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{figures/strong_coupling.pdf}
@@ -699,7 +675,6 @@ F_J^{(m)}(p_1,\ldots,\cancel{p_i},\cancel{p_j},p_{ij},\ldots,p_{m+1})\,,
 \label{eq:IRC-safety}
 \end{equation}
 where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_safety}. 
-\newpage
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=2]
@@ -762,9 +737,12 @@ Although IRC safety ensures a finite results at every order in perturbation theo
 {\color{orange} Luoisiani/Marzani, powerpoints, A. Banfi book, Black Book.}
 
 
-\section{Energy Scales (High-energy Collisions)}
-Throughout this thesis so far, we have spent a large amount of time discussing partons and physics at the parton-level. In Sec.~\ref{sec:divergences}, there was a small discussion of how we could calculate the parton-level cross-section of $e^+e^-\rightarrow q\bar{q}$ to approximate the hadron-level $e^+e^-\rightarrow\mathrm{hadrons}$. In addition to this we have discussed asymptotic freedom and how at high-energies we can model partons as free particles and thus use perturbation theory. 
-In this section, we wish to discuss a high-energy hadronic collision and discuss all elements from the initial incoming hadrons to the final hadrons seen in our detectors. while the initial collision occurs at a high-energy the final-state hadrons occur at a far lower energy. In this capacity we can divide our discussion into sections depending on what their energy scale is. For reference we will discuss the proton-proton collision which gives rise to a $t\bar{t}h$ event as shown in Fig.~\ref{fig:high-energy-event}.
+\section{The full picture: high-energy collisions}
+Up until this point, the discussion in this thesis has largely focused on physics at the
+parton level. In particular, we have relied on concepts such as quark-hadron duality (see Sec.~\ref{sec:divergences}) to relate partonic cross-sections to hadronic observables. We have also worked predominantly in the high-energy regime, where asymptotic freedom (see Sec.~\ref{sec:running-coupling}) ensures that perturbative QCD is applicable. \\ \\
+In realistic collider experiments, however, the picture is far more involved. Consider, for
+example, a hadronic collision at the LHC. The incoming particles are hadrons opposed to partons, and the final-state particles observed in the detector consists of hadrons produced at energy scales far below those of the hard interaction. As a result, a complete description of a high--energy collision necessarily involves physics beyond the perturbative regime.\\ \\
+The aim of this section is to outline the various stages of a high-energy hadronic collision. To illustrate this, we will refer to Fig.~\ref{fig:high-energy-event}, produced by the \textsc{SHERPA} collaboration in Ref.~\cite{Gleisberg:2008ta}, which shows a $t\bar t h$ event produced by a proton-proton collision. {\color{blue} (Potentially discuss what \textsc{SHERPA} is?)}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/High-energy-event.jpeg}
@@ -772,12 +750,18 @@ In this section, we wish to discuss a high-energy hadronic collision and discuss
     \label{fig:high-energy-event}
 \end{figure}
 \begin{enumerate}
-\item{$Q\gg\lambda_{\mathrm{QCD}}$:} At this scale we have the hard process which is modelled by the red blob. In this hard process, two partons lets call them $p_a$ and $p_b$ coming from each proton scatters. The partons inside the proton can be modelled by a funciton known as the parton distribution function (PDF) $f_{i,h_1}(x_1,\mu_F^2)$ which gives the probability of finding a parton $i$ with longitudinal momentum fraction $x_1$ inside the hadron $h_1$. The factorisation scale $\mu_F^2$ and more about these PDFs will be described in the following.  After this initial hadron process, primary partons are produced in the form of $t,\bar{t}$ quarks and the Higgs boson as shown by the smaller red blobs shown in Fig~.\ref{fig:high-energy-event}. Since it is at such a high-energy, one can used fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}).
-The computations here are based on matrix element calculations which can be produced via matrix element generators. 
-\item{$Q\gtrsim\lambda_{\mathrm{QCD}}$:} This is the scale at which QCD evolution occurs. This essentially means that there is a lot of radiation occuring in the form of soft and collinear emissions as shown in Fig~.\ref{fig:high-energy-event} by the red gluon and quark propagators. {\color{pink}It is this radiation that connects the hard scale with the coloured parton creation of the hadronisation scale where the transition of colourless hadrons occur (see point 3 - shown by the light and dark green blobs in this figure). In this capacity this section is the bridge between perturbative and non-perturbative physics. (You might want to move this further down.)}  {\color{red}(Why is this radiation soft/collinear? )}
-We can approach this radiation with a variety of different methods: a semi-numerical resummer (described in Chapter~4.) - a QCD resummation, effective fields like SCET, and parton-showers like PanScales etc. {\color{blue}(Need to add in different showers and what ARES/CAESAR, SCET, and parton showers do and advantages e.g. ARES completely general, PS are numerical, SCET observable dependent. Also mention, NLL vs. NNLL etc. and cite relevant papers.)}
-\item{$Q\sim\lambda_{\mathrm{QCD}}$} At this scale the partons undergo hadronisation. This is demonstrated by the light green blobs and dark green blobs in Fig~.\ref{fig:high-energy-event} where the light green blobs are the primary hadrons and decay into hadrons which are observed in our detectors - the darker green blobs. At this scale perturbation theory breaks down since the coupling is too high. We need to calculate these effects with non-perturbative physics e.g. models {\color{blue}(add in what models and how to do this - also work out if the light green discs are partons or hadrons? Also a mention of jets here.)}
+\item[$Q\gg\lambda_{\mathrm{QCD}}$:] At this scale, the interaction is dominated by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. Two partons, denoted $p_i$ and $p_j$, are extracted from the incoming protons $P_1$ and $P_2$ and undergo a short-distance interaction.\\ \\
+These partons are described by the parton distribution functions (PDFs), which encode the internal structure of the proton, where a PDF $f_{i,P_1}(x_1,\mu_F^2)$ gives the probability of finding a parton of type $i$ inside the proton $P_1$ carrying a longitudinal momentum fraction $x_1$, evaluated at the
+factorisation scale $\mu_F$. The determination of PDFs and their dependence on $\mu_F$ will be discussed in more detail below. \\ \\
+The hard interaction produces the primary particles of the event, in this case a
+$t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the characteristic scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, fixed--order perturbation theory is applicable (see Sec.~\ref{sec:pert-theory}). Predictions at this stage are obtained from
+matrix--element calculations, typically provided by matrix--element generators.
+\item[$Q \gtrsim \Lambda_{\mathrm{QCD}}$:]
+At this scale, we are looking at the red gluon and quark propagators as depicted in Fig~.\ref{fig:high-energy-event}. Essentially what happens here is that the various partons produced from the hard event will radiate soft and/or collinear secondary emissions and will radiate until the hadronisation scale is reached. {\color{red}(Why is this radiation soft/collinear? )} In this sense, it is the radiation between the hard scale of the coloured parton to the hadronisation scale where the colourless hadrons appear in our final-state detectors, see below. 
+There are a variety of ways that these emissions can be dealt with. They can be modelled by parton showers, which model the emissions down to the hadronisation scale. Examples of parton showers are: PanScales, PYTHIA, and many more {\color{blue}(Add in references and check with showers to use and cite - also discuss what accuracy these go up to. Also is Pythia a shower? Fully numerical??)}. Another way to look at these is through an effective field theory (EFT) known as SCET (soft-collinear effective field theory). While we will not discuss EFTs in this thesis the idea of SCET is based on a factorisation formula and is an observable-dependent formalism. {\color{red} (Does SCET deal with soft/collinear emissions?)} The final way one can deal with these emissions is through a semi-numerical resummer, more will be discussed in Chapters~4 and ~5 {\color{blue} (Add in that these go up to NNLL for hadronic collisions. Maybe a way to introduce each is talk about how one is numeral, the other is analytical (SCET I vs SCET II- add this into a footnote), and the last is the best if both and is semi-numerical.)} 
+\item[$Q\sim\lambda_{\mathrm{QCD}}$:] At this scale the partons undergo hadronisation. This is demonstrated by the light green blobs and dark green blobs in Fig~.\ref{fig:high-energy-event} where the light green blobs are the primary hadrons and decay into hadrons which are observed in our detectors - the darker green blobs. At this scale perturbation theory breaks down since the coupling is too high. We need to calculate these effects with non-perturbative physics e.g. models {\color{blue}(add in what models and how to do this - also work out if the light green discs are partons or hadrons? Also a mention of jets here.)}
 \end{enumerate}
+
 Couple of additional notes about Fig~.\ref{fig:high-energy-event}: the yellow lines are the QED radiation i.e. photons which can occur at any stage. Moreover, secondary hard emissions can occur via the hadron remnants which is shown in the purple. Finally, something worth mentioning is the initial-state radiation {\color{blue}(work out where this is in the diagram)} and has dependency on PDF/DGLAP:
 {\color{blue} Add here:
 \begin{enumerate}
@@ -801,6 +785,13 @@ There is a scale not yet mentioned here, namely the factorisation scale $\mu_F$.
 	\item If $p_\perp>\mu_F$: it is considered to be part of the partonic cross-section.
 \end{itemize}
 Finally, the term $\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)$ refers to the fact that this formula holds in the high-energy limit. \\ \\
+The focus of this thesis is in the intermediate energy scale, where $Q\sim\lambda_{\mathrm{QCD}}$. This is the regime in which we use Resummation and is an all-order bridge between perturbative
+and non-perturbative physics.
+
+
+
+
+
 {\color{orange}Used pink book, Edinburgh notes, and A Banfi powerpoint recommendation for this mainly.}
   
 
