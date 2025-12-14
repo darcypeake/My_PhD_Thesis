@@ -746,22 +746,23 @@ The aim of this section is to outline the various stages of a high-energy hadron
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/High-energy-event.jpeg}
-    \caption{Pictorial representaion of a $t\bar{t}h$ event produced in a high-energy hadronic collision, taken from Ref.~\cite{Gleisberg:2008ta}}
+    \caption{Pictorial representaion of a $t\bar{t}h$ event produced in a high-energy hadronic collision, taken from Ref.~\cite{Gleisberg:2008ta}}.
     \label{fig:high-energy-event}
 \end{figure}
-\begin{enumerate}
-\item[$Q\gg\lambda_{\mathrm{QCD}}$:] At this scale, the interaction is dominated by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. Two partons, denoted $p_i$ and $p_j$, are extracted from the incoming protons $P_1$ and $P_2$ and undergo a short-distance interaction.\\ \\
-These partons are described by the parton distribution functions (PDFs), which encode the internal structure of the proton, where a PDF $f_{i,P_1}(x_1,\mu_F^2)$ gives the probability of finding a parton of type $i$ inside the proton $P_1$ carrying a longitudinal momentum fraction $x_1$, evaluated at the
-factorisation scale $\mu_F$. 
-The evolution of the PDF is given by the DGLAP equations:
+Since the initial collision occurs at high energies and the energy of the system decreases from here until we reach hadronisation scales of far lower energy, it is natural for us to organise the following discussion according to the energy scale $Q$ of the process. 
+\subsection*{Hard scattering $(Q \gg \Lambda_{\mathrm{QCD}})$}
+At the highest energy scale, the dynamics of the collision are governed by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. In this process, two partons, denoted $p_i$ and $p_j$, are extracted from the incoming
+protons $P_1$ and $P_2$ and undergo a short-distance interaction.\\ \\
+The partonic content of the proton is described by parton distribution functions (PDFs), which encode its internal structure. A PDF $f_{i,P_1}(x_1,\mu_F^2)$ gives the probability of finding a parton of type $i$ inside the proton $P_1$ carrying a longitudinal momentum fraction $x_1$, evaluated at the factorisation scale $\mu_F$.
+The scale dependence of the PDFs is governed by the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) equation
 \begin{equation}
 	\frac{df_{i,P_1}(x_1,\mu_F^2)}{d\mu_F^2}=\sum_{j}\int_{x_1}^1dz\,\frac{\alpha_s}{2\pi}P_{ij}(z,\mu_F^2)f_j\left(\frac{x_1}{z},\mu_F^2\right)\,,
 \end{equation}
-where $P_{ij}(z,\mu_F^2)$ admits the following perturbative expansion
+where the splitting functions $P_{ij}(z)$ admit a perturbative expansion,
 \begin{equation}
-	P_{ij}(z,\mu_F^2) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,,
+	P_{ij}(z,\mu_F^2) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-where $P_{ij}^{(0)}$ are the regularised form of those found in Eq.~\ref{eq:AP-functions}: {\color{red}(Is the hat notion used previously OK, also are these the regularised form?)}
+At leading order, the \emph{regularised} Altarelli-Parisi (see Eq.~\ref{eq:AP-functions} for unregularised forms) splitting functions are given by 
 \begin{equation}
 \begin{aligned}
 &P_{q\bar{q}}^{(0)}(z)=C_F\left[\frac{1+z^2}{(1-z)_+}+\frac{3}{2}\delta(1-z)\right]\\
@@ -770,25 +771,39 @@ where $P_{ij}^{(0)}$ are the regularised form of those found in Eq.~\ref{eq:AP-f
 &P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+x(1-z)\right]+\delta(1-z)\frac{11C_A-4T_Rn_f}{6}\,.
 \end{aligned}
 \end{equation}
-The factorisation scale $\mu_F$ is an arbitary parameter and is thought of a scale which separates long and short distance physics where by considering a parton with transverse momenta $p_\perp$:
-\begin{itemize}
-	\item If $p_\perp<\mu_F$: it is considered to be part of the hadron structure and is absorbed into the PDF.
-	\item If $p_\perp>\mu_F$: it is considered to be part of the partonic cross-section.
-\end{itemize}
+\\ \\
+The factorisation scale $\mu_F$ is an arbitrary scale that separates long--distance physics from short--distance dynamics. Emissions with transverse momentum $p_\perp$ below $\mu_F$ are absorbed into the PDFs and treated as part of the hadron structure,while emissions with $p_\perp > \mu_F$ are included in the partonic cross section. \\ \\ 
 The hard interaction produces the primary particles of the event, in this case a
-$t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the characteristic scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, fixed--order perturbation theory is applicable (see Sec.~\ref{sec:pert-theory}). Predictions at this stage are obtained from
-matrix--element calculations, typically provided by matrix--element generators.
-\item[$Q \gtrsim \Lambda_{\mathrm{QCD}}$:]
-At this scale, we are looking at the red gluon and quark propagators as depicted in Fig~.\ref{fig:high-energy-event}. Essentially what happens here is that the various partons produced from the hard event will radiate soft and/or collinear secondary emissions and will radiate until the hadronisation scale is reached. {\color{red}(Why is this radiation soft/collinear? )} In this sense, it is the radiation between the hard scale of the coloured parton to the hadronisation scale where the colourless hadrons appear in our final-state detectors, see below. 
-There are a variety of ways that these emissions can be dealt with which we will describe below:
+$t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the characteristic scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, fixed-order perturbation theory is applicable (see Sec.~\ref{sec:pert-theory}). Predictions at this stage are obtained from matrix-element calculations, typically provided by matrix-element generators. {\color{blue} (Put in some references for examples of matrix element generators?)}
+
+\subsection*{QCD evolution $(Q \gtrsim \Lambda_{\mathrm{QCD}})$}
+Following the hard scattering, the coloured partons produced in the event undergo further QCD radiation, illustrated by the red quark and gluon lines in Fig.~\ref{fig:high-energy-event}. This radiation is dominated by soft and collinear emissions, reflecting the infrared structure of QCD discussed in Sec.~\ref{sec:divergences}.
+For many observables, these emissions give rise to logarithmically enhanced contributions (see Sec.~\ref{sec:IRC}) which can become large and spoil the convergence of fixed-order perturbation theory. As a result, methods are required to deal with these emissions such that we can work within the perturbative regime. Approaches which are commonly used are:
+{\color{green} Go from here please.}
 \begin{itemize}
-	\item Parton Showers: these model the emissions down to the hadronisation scale. Examples of parton showers are: PanScales, PYTHIA, and many more {\color{blue}(Add in references and check with showers to use and cite - also discuss what accuracy these go up to. Also is Pythia a shower? Fully numerical??)}.
-	\item Resummation: this essentially resums the soft and collinear emissions. Examples of semi-numerical resummers are CAESAR and ARES. The work of Chapter~5, focusses on extending ARES to hadronic collisions for the first time. 
-	\item Effective field theory (EFT) known as SCET (soft-collinear effective field theory). While we will not discuss EFTs in this thesis the idea of SCET is based on a factorisation formula and is an observable-dependent formalism. These take care of the soft and collinear emissions by producing new Feynman rules with a dependence on the soft and collinear emissions.
+	\item \emph{Parton showers}, which model the
+	soft and collinear emissions down to the hadronisation scale. Well-known examples
+	include \textsc{PanScales} and \textsc{Pythia}. Current parton showers achieve
+	next--to--leading logarithmic (NLL) accuracy for a broad class of observables, with
+	ongoing work aimed at extending this to higher logarithmic accuracy. {\color{red} Numerical? Pythia? Broad class of observables?}
+	\item \emph{Resummation}, where logarithmically enhanced contributions from soft and
+	collinear radiation are essentially \emph{resummed} to all orders in perturbation theory. Semi-numerical
+	resummation frameworks such as \textsc{CAESAR} and \textsc{ARES} fall into this
+	category. For $e^+e^-$ observables, resummation is known up to next--to--next--to--leading
+	logarithmic (NNLL) accuracy, while hadronic observables are currently known up to NLL.
+	The work presented in Chapter~5 focuses on extending the \textsc{ARES} framework to
+	hadronic collisions at NNLL accuracy.
+		\item \emph{Effective field theory} approaches, most notably soft--collinear effective
+	theory (SCET), which describe soft and collinear degrees of freedom through an
+	observable--dependent factorisation formula. In this framework, the relevant dynamics
+	are encoded in separate hard, collinear, and soft functions, allowing resummation to
+	be performed analytically for a range of observables, in some cases up to NNLL
+	accuracy. {\color{blue} Note on if it is SCET I or SCET II.}{\color{red} (Does SCET deal with soft/collinear emissions?)} 
 \end{itemize}
-{\color{red} (Does SCET deal with soft/collinear emissions?)} The final way one can deal with these emissions is through a semi-numerical resummer, more will be discussed in Chapters~4 and ~5 {\color{blue} (Add in that these go up to NNLL for hadronic collisions. Maybe a way to introduce each is talk about how one is numeral, the other is analytical (SCET I vs SCET II- add this into a footnote), and the last is the best if both and is semi-numerical.)} 
-\item[$Q\sim\lambda_{\mathrm{QCD}}$:]  At around $\lambda_{\mathrm{QCD}}$, the radiated final-state partons (light green blobs) undergo hadronisation and are transformed into primary hadrons (dark green blobs) which decay into final-state hadrons (smaller dark green blobs), these are the particles observed in our detectors. The collimated sprays of final-state hadrons are referred to as \emph{jets}, which are also observed in our detector- more on this in the next section. At this scale perturbation theory breaks. We need to calculate these effects with non-perturbative models. {\color{red}(I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.)}
-\end{enumerate}
+The various partons produced from the hard event will radiate soft and/or collinear secondary emissions and will radiate until the hadronisation scale is reached. {\color{red}(Why is this radiation soft/collinear? )} In this sense, it is the radiation between the hard scale of the coloured parton to the hadronisation scale where the colourless hadrons appear in our final-state detectors, see below. 
+
+\subsection*{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
+ At around $\lambda_{\mathrm{QCD}}$, the radiated final-state partons (light green blobs) undergo hadronisation and are transformed into primary hadrons (dark green blobs) which decay into final-state hadrons (smaller dark green blobs), these are the particles observed in our detectors. The collimated sprays of final-state hadrons are referred to as \emph{jets}, which are also observed in our detector- more on this in the next section. At this scale perturbation theory breaks. We need to calculate these effects with non-perturbative models. {\color{red}(I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.)} \\ \\ \\ \\
 There are a couple of other things that occur here that must be mentioned. The yellow lines are QED radiation i.e. photons which can occur at any stage of the process. The \emph{underlying event} of a process occurs when the incoming proton remnants experience a secondary hard/semi-hard interaction - shown by the purple blob. These radiate in the same as the primary hard (red) event leading to final-state hadrons in our detectors also. It is noted in Ref.~\cite{Gleisberg:2008ta} that for these processes, we need to employ modelling as the such effects are beyond QCD factorisation theorems. Finally, prior to the hard-process, the partons from the incoming protons may emit initial-state radiation. These will form final-state hadrons as shown by the dark green blobs.  \\ \\
 High-energy hadronic collisions can be described by the QCD improved parton model. In this process, the hard scattering between two hadrons is the result of an interaction between quarks and gluons which are the constituents of the incoming hadrons. These partons take fractions of momenta of the parent hadron's momenta.  \\ \\
 Because of this, we can take advantage of the factorisation formula
