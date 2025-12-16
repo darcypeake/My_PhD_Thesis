@@ -820,6 +820,9 @@ Equation~\ref{eq:factorisation-formula} is referred to as a factorisation formul
 hadrons, and the perturbatively calculable partonic cross section $\hat{\sigma}_{ij}$. The term
 $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that
 this separation is valid in the high-energy limit.\\ \\
+It should be noted that in this thesis we are mainly working within the $(Q \gg \Lambda_{\mathrm{QCD}})$ regime - particularly in Chapter~4 and~5, where we discuss resummation techniques. {\color{red} Do we use this regime for jet algorithms - I don't really think we do?}
+
+
 {\color{orange}Used pink book, Edinburgh notes, and A Banfi powerpoint recommendation for this mainly.}
   
 
@@ -887,7 +890,13 @@ The first sequential recombination algorithm was introduced by the JADE Collabor
     \item \textbf{Identify the smallest $d_{ij}$ value.} If this minimum satisfies $d_{ij} < d_{\mathrm{cut}}$, the two particles are recombined into a pseudo-particle according to the chosen recombination scheme.
     \item \textbf{Repeat the procedure} from step 2 until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The remaining objects are then defined as jets.
 \end{enumerate}
-A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the $k_\perp$ algorithm.
+A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the $k_\perp$ algorithm.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/JADE.jpeg}
+    \caption{JADE algorithm issues from Ref.~\cite{Banfi:2016yyq}}
+    \label{fig:JADE}
+\end{figure}
 }
 
 
@@ -920,32 +929,48 @@ This clustering procedure effectively reconstructs the sequence of gluon emissio
 \subsection{Jet Algorithms for Deep-Inelastic Scattering}
 \label{subsec: DIS-alg}
 {\color{RoyalBlue}
- Deep-inelastic scattering (DIS) is the process:
+
+Deep inelastic scattering (DIS) is defined by the process
 \begin{equation}
-\label{eq: DIS}
-    e^-(k) + N(P) \rightarrow e^-(k') + X(p_X)\,,
+\label{eq:DIS-Process}
+    e^-(k) + P \rightarrow e^-(k') + X\,,
 \end{equation}
-where $N$ denotes the incoming hadron (usually a proton) and $X$ represents all final-state hadrons produced. In DIS processes, three lorentz invariants are often used to describe the kinematics:
+where $P^\mu$ is the momentum of the incoming proton and $X$ denotes the hadronic final state. The standard DIS invariants are
+\begin{equation}
+\label{eq:DIS-invariants}
+    Q^2 = -q^2\,, \qquad
+    \xB = \frac{Q^2}{2 P\!\cdot q}\,, \qquad
+    \ydis = \frac{P\!\cdot q}{P\!\cdot k}\,,
+\end{equation}
+with $q^\mu = k^\mu - k'^\mu$ the momentum of the exchanged virtual photon. Here $Q^2$ is the virtuality of the photon, $x$ is the Bjorken $x$ variable (fraction of momentum taken by the struck quark from the the incoming hadron), and $y$ is the energy transferred between leptonic and hadronic systems~\cite{Devenish:2004pb}.  {\color{blue}(Need to get some more information on invariants (particularly $y$.)} At leading order, the hadronic final state consists of a single outgoing parton,
+\begin{equation}
+\label{eq:DIS-LO}
+    e^-(k) + p_{\mathrm{in}} \rightarrow e^-(k') + p_{\mathrm{out}}\,,
+\end{equation}
+where $p_{\mathrm{in}}^\mu$ and $p_{\mathrm{out}}^\mu$ are the momenta of the incoming and
+outgoing partons, respectively.
+The \emph{Breit frame} plays a central role in many DIS jet algorithms~\cite{Webber:1993bm}. It is defined such that the virtual photon carries no energy component,
+\begin{equation}
+\label{eq:DIS-photon}
+    q^\mu = (0,0,0,-Q)\,,
+\end{equation}
+and is therefore purely space-like.  In this frame the proton momentum satisfies
+$P^\mu = p_{\mathrm{in}}^\mu/x$, and the incoming and outgoing parton momenta take the simple form
 \begin{equation}
 \begin{aligned}
-Q^2=-q^2\,, \qquad x=\frac{Q^2}{2P\cdot q}\,, \qquad y=\frac{P\cdot q}{P\cdot k}\,,
+\label{eq:DIS-partons}
+     p_{\mathrm{in}} ^\mu &= \frac{Q}{2}(1,0,0,+1)\,, \quad
+    p_{\mathrm{out}}^{\mu} &= \frac{Q}{2}(1,0,0,-1)\,.
 \end{aligned}
 \end{equation}
-where $Q^2$ is the virtuality of the photon, $x$ is the Bjorken $x$ variable (fraction of momentum taken by the struck quark from the the incoming hadron), and $y$ is the energy transferred between leptonic and hadronic systems~\cite{Devenish:2004pb}.  {\color{blue}(Need to get some more information on invariants (particularly $y$.)}
- \\ \\
-At LO, the process produces a single outgoing parton in its final hadronic state:
-\begin{equation}
-    e^-(k) + N(P) \rightarrow e^-(k') + p_{\mathrm{out}}(p')\,.
-\end{equation}
-DIS processes are often analysed in the \emph{Breit frame}, defined as the reference frame in which the exchanged virtual photon carries no energy component, with four-momentum $q^{\mu} = (0, 0, 0, -Q)$. In this frame $P^{\mu} = p^{\mu}/x$, where  $ p^{\mu}$ is the momentum of the incoming parton, $p_{\mathrm{in}}$. In the Breit frame, the momenta of the incoming and outgoing partons are:  
-\begin{equation}
-\begin{aligned}
-    p^{\mu} &= \frac{Q}{2}(1, 0, 0, +1)\,, \qquad
-    p'^{\mu} = \frac{Q}{2}(1, 0, 0, -1)\,.
-\end{aligned}
-\end{equation}
-In this frame, the proton and the virtual photon collide head-on, providing a clear separation between the incoming proton and the struck quark.\\ \\
- The presence of an initial-state hadron requires a modification of the $e^+e^-$ jet algorithms described previously to account for the incoming beam. In sequential recombination algorithms, this can be achieved by introducing an additional quantity, the \emph{beam distance}, $d_{iB}$~\cite{Salam:2010nqg}
+Thus, in the Breit frame the proton and virtual photon collide head-on, as illustrated in Fig~\ref{fig:Breit-frame}. Within this frame, the proton remnant appears in the $\eta > 0$ region (the \emph{target hemisphere}), while the struck quark lies in the $\eta < 0$ region (the \emph{current hemisphere}). In practice, the jet clustering in this frame can lead to radiation from the proton remnant  being absorbed into the struck-quark jet, making the separation between the two hemispheres an important feature of DIS jet algorithms.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/Breit-frame.jpeg}
+    \caption{Breit frame from Ref.~\cite{Arratia:2020ssx}}
+    \label{fig:Breit-frame}
+\end{figure}
+The presence of an initial-state hadron requires a modification of the $e^+e^-$ jet algorithms described previously to account for the incoming beam. In sequential recombination algorithms, this can be achieved by introducing an additional quantity, the \emph{beam distance}, $d_{iB}$~\cite{Salam:2010nqg}
 \footnote{In hadron–hadron collisions, two beam distances are defined, $d_{iB}$ and $d_{i\bar{B}}$, corresponding to the two incoming beams.}.} \\ \\
 {\color{blue} (I think we need some information on the variables i.e. $x$, $y$, and $Q^2$, along with a few images of the lab frame DIS and the Breit frame DIS, and also some information on TFR and CFR.)}
 

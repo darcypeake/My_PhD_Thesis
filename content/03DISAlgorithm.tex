@@ -1,0 +1,73 @@
+\chapter{Generalised Deep Inelastic Scattering Algorithm}
+\label{chapter: DIS}
+The Electron--Ion Collider (EIC), currently under construction at Brookhaven National Laboratory, is expected to begin operation in the early 2030s.  It will provide new opportunities to study the structure of QCD, including the spin structure of the proton, the dynamics of confinement, and gluon saturation~\cite{Accardi:2012qut}. Deep inelastic scattering (DIS) will be one of the key processes at the EIC, and its jet-rich final states make jet reconstruction an essential part of many analyses. Jet algorithms therefore play a central role in DIS studies. 
+Most developments in jet algorithms over the past decades have been driven by hadron collider applications, in particular at the LHC, where the anti-$k_\perp$ algorithm~\cite{Cacciari:2008gp} has become the standard choice. Jet algorithms for DIS were developed around the same time as those for hadronic collisions. The DIS $k_\perp$ algorithm was introduced in Ref.~\cite{Catani:1992zp}, in the same work that presented the hadronic $k_\perp$ algorithm, both extending the Durham algorithm for $e^+e^-$ collisions~\cite{Catani:1991hj}. An angular-ordered DIS algorithm -- both the Cambridge and Aachen variant -- was later proposed in Ref.~\cite{Webber:1993bm}. These algorithms were direct extensions of the Cambridge algorithm for $e^+e^-$~\cite{Dokshitzer:1997in} and, in the Aachen case, of the inclusive $k_\perp$ algorithms for hadronic collisions introduced independently in Refs.~\cite{Ellis:1993tq,Catani:1993hr}. More recently, the Centauro algorithm~\cite{Arratia:2020ssx} was proposed, combining features of longitudinally invariant $k_\perp$ algorithms~\cite{Ellis:1993tq,Catani:1993hr} with those of spherically invariant algorithms~\cite{Catani:1992zp}. A Cambridge/Aachen-based DIS algorithm designed for the study of Lund variables was introduced in Ref.~\cite{vanBeekveld:2023chs}, and forms the starting point for our work. In this paper we introduce a generalised $k_\perp$ algorithm adapted to DIS. It follows the structure of the generalised $k_\perp$ algorithm used in $e^+e^-$ collisions as implemented in  \textsc{FASTJET}~\cite{Cacciari:2011ma}, but is formulated in the Breit frame and does not have an anti-$k_\perp$ variant. \\ \\
+{\color{blue} (This is the introduction of the \emph{first draft} of the DIS paper - this will almost definitely be changed in the draft and should be changed here accordingly. Phenomenology papers tend to have long introductions that will not need here, however we must mention the history of algorithms as we have here along with other ideas that MvB/SFR/AK will edit in the draft. Also when the time comes please cite this published paper.)}
+\section{Jet Clustering Procedure}
+In this section we present the generalised $k_\perp$ algorithm. The clustering proceeds as follows:
+\begin{enumerate}
+    \item For every final-state parton $i$, define the beam distance
+    \begin{equation}
+    	\label{eq:viB}
+        v_{iB} = E_i^{2p}\,(1 - \cos\theta_{iB})\,,
+    \end{equation}
+    where $E_i$ is the energy of the parton and $\theta_{iB}$ is the angle between parton $i$ and the beam $B$ in the Breit frame. The exponent $p$ selects the variant of the algorithm, ranging from $p=0$ (Cambridge) to $p=1$ ($k_\perp$). \\ \\ 
+ For every pair of particles $i$ and $j$, define the angular ordering measure
+    \begin{equation}
+    	\label{eq:vij}
+        v_{ij} = \min\!\left(E_i^{2p},\,E_j^{2p}\right)(1 - \cos\theta_{ij})\,,
+    \end{equation}
+    where $\theta_{ij}$ is the angle between $i$ and $j$.
+    \vspace{1em}
+
+    \item Identify the smallest value among all $\{v_{ij},\,v_{iB}\}$:
+    \begin{itemize}
+        \item If the minimum is a beam distance $v_{iB}$, remove parton $i$ from the list and declare it a candidate jet.
+        \vspace{0.5em}
+        \item If the minimum is the angular ordering measure $v_{ij}$, proceed to step~3.
+    \end{itemize}
+
+    \vspace{1em}
+
+    \item Compute the distance measure
+    \begin{equation}
+   	\label{eq:dij}
+        d_{ij} = 2\min\!\left(E_i^{2},\,E_j^{2}\right)(1 - \cos\theta_{ij})\,.
+    \end{equation}
+    Then:
+    \begin{itemize}
+        \item If $d_{ij} < k_T^2$, merge particles $i$ and $j$ into a pseudo-particle using the $E$-scheme  
+        ($p^\mu = p_i^\mu + p_j^\mu$).
+        \vspace{0.5em}
+        \item If $d_{ij} > k_T^2$, declare the softer of the two partons a candidate jet.
+    \end{itemize}
+
+    \vspace{1em}
+
+    \item Repeat the above procedure until only one pseudo-particle remains.  
+    This final object is also declared a candidate jet.
+     \vspace{1em}
+\end{enumerate}
+The jet-resolution parameter $k_T^2$ determines the number of jets identified in the clustering procedure and plays a role analogous to the jet-resolution parameter, $d_{\mathrm{cut}}$, introduced in Section~\ref{subsec: e+e-}. Since the distance measure $d_{ij}$ is \emph{dimensionful}, the parameter $k_T^2$ is likewise a dimensionful quantity.
+
+
+
+In this way we end up with one final-state macrojet and a collection of beam jets. 
+{\color{red} I think we end up with one macrojet and one beam jet. Need to re-read Catani and Wobbish paper on what they exactly cluster in terms of the macrojet.}\\ \\
+{\color{blue}We want to add in that this is similar to Catanis/Wobbish  but dimensionful distance measure and cut and also like MvB/SFR but not an observable - look at what they say here about $y_\mathrm{cut}$.}
+
+The final-state macrojet is defined to be the one which consists of all radiation which comes from the original final-state struck quark. This can be found to be the jet with the largest $P\cdot p_\mathrm{jet}$.
+
+\subsection{Final-state Macro-jet}
+\label{subsec:FS-macro-jet}
+Having obtained a list of candidate jets, we next identify the jet that carries the largest light-cone momentum of the struck quark in the Breit frame. This jet, referred to as the \emph{final-state macro-jet}, is defined as the one that maximises the quantity $P \cdot p_{\mathrm{jet}}$, and is therefore the jet most closely aligned with the struck quark. 
+The properties of the macro-jet provide a useful way to characterise the behaviour of the algorithm. As discussed earlier, clustering in the Breit frame can lead to contamination between the current and target hemispheres. Studying the macro-jet provides a direct way to assess how effectively the algorithm separates these regions and  how well it reconstructs the struck-quark jet.
+
+\section{The Centauro Algorithm}
+This is another algorithm implemented for DIS within \verb|fjcontrib|. We will describe this algorithm such that we can outline 
+
+
+
+
+
+
