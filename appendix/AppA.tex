@@ -1,0 +1,110 @@
+\chapter{Relevant Algorithms}
+\label{app:algorithms}
+
+For completeness, we summarise the relevant DIS clustering algorithms.
+\section{The $k_\perp$ algorithm for DIS}
+\label{subsec:DIS-kT}
+The DIS $k_\perp$ algorithm is a two-step procedure as follows:
+\begin{enumerate}
+    \item \textbf{Pre-clustering into beam jet and macro-jets}
+    \begin{enumerate}
+        \item Define a hard-scattering scale, $E_t$, such that $Q^2\geq E_t^2 \gg \Lambda_{\mathrm{QCD}}^2$.
+        \vspace{1em}
+        
+        \item For each particle $i$, compute the beam distance
+        \begin{equation}
+        	    \label{eq:kT-diB}
+            d_{iB} = \frac{2 E_i^2 (1 - \cos\theta_{iB})}{E_t^2}\,,
+        \end{equation}
+        and for each pair $(i,j)$ compute the distance measure
+        \begin{equation}
+        	    \label{eq:kT-dij}
+            d_{ij} = \frac{2 (1 - \cos\theta_{ij})}{E_t^2} \min(E_i^2, E_j^2)\,.
+        \end{equation}
+        \vspace{1em}
+        
+        \item Identify the smallest value among all $\{d_{ij}, d_{iB}\}$:
+        \begin{itemize}
+            \item If the minimum is of type $d_{ij}$ and  $d_{ij} < 1$, merge $(p_i, p_j)$ into a pseudo-particle $p_{ij}$.
+            \vspace{0.5em}
+            \item If instead, it is of type $d_{iB}$ and $d_{iB} < 1$, assign $p_i$ to the beam jet.
+        \end{itemize}
+        \vspace{1em}
+        
+        \item Repeat the above steps for all particles and pseudo-particles until all
+              remaining distances satisfy $d_{ij}, d_{iB} > 1$.
+              The result is a beam jet and a set of final-state macro-jets. 
+              {\color{red}{Assume the $d_{ij}, d_{iB} > 1$ get assigned to the beam jet.}}
+        \end{enumerate}
+ \vspace{1em}
+    \item \textbf{Resolving the macro-jets substructure}
+    \begin{enumerate}
+        \item Define a resolution parameter, $d_{\mathrm{cut}}=\frac{Q_0^2}{E_t^2}<1$.
+        \item For each particle within the final-state macro-jet, evaluate the distance measures $d_{ij}$ and apply the same clustering procedure as the $k_\perp$ algorithm for $e^+e^-$ annihilation, described in Ref.~\cite{Catani:1991hj}.
+    \end{enumerate}
+\end{enumerate}
+{\color{red}{This algorithm has a different macro-jet meaning to what we have - should perhaps refer to these as pseudo-jets.}}
+
+\section{Cambridge/Aachen algorithms for DIS and Lund variables}
+\label{subsec:C/A-DIS-Lund}
+The Cambridge/Aachen extension of the DIS algorithm is the following:
+\begin{enumerate}
+	\item For every final-state parton $i$, define the beam distance
+    \begin{equation}
+    	\label{eq:Lund-diB}
+        d_{iB} = (1 - \cos\theta_{iB})\,,
+    \end{equation}
+    and for every pair of particles $i$ and $j$, define the angular distance  
+    \begin{equation}
+    	\label{eq:Lund-dij}
+        d_{ij} = (1 - \cos\theta_{ij})\,.
+    \end{equation}
+   \item Identify the smallest value among all distances in the set $\{d_{ij},\,d_{iB}\}$:
+    \begin{itemize}
+        \item If the minimum is of type $d_{iB}$, remove parton $i$ from the list and declare it a candidate jet.
+        \vspace{0.5em}
+        \item If the minimum is of type $d_{ij}$, merge particles $i$ and $j$ into a pseudo-particle using the $E$-scheme ($p^\mu = p_i^\mu + p_j^\mu$) and remove $i$ and $j$ from the list
+    \end{itemize}
+    \vspace{1em}
+    \item Repeat this procedure until only one pseudo-particle remains.  
+    This final object is also declared a candidate jet.
+\end{enumerate}
+
+
+\section{Centauro algorithm}
+\label{subsec:Centauro}
+The Centauro algorithm proceeds analogously to the algorithm described ins~\ref{subsec:C/A-DIS-Lund}, but with a modified distance measure.  
+For completeness, we outline its construction.  
+Starting from the distance measure in Eq.~\ref{eq:Lund-dij}, one rewrites
+\[
+1 - \cos\theta_{ij}
+    = 1 - \hat{n}_i \!\cdot\! \hat{n}_j
+    = 1
+      - \sin\theta_i \sin\theta_j \cos\Delta\phi_{ij}
+      - \cos\theta_i \cos\theta_j \,.
+\]
+Expanding in the limit where $\bar{\theta}_i \equiv \pi - \theta_i \ll 1$ yields
+\[
+1 - \cos\theta_{ij}
+   \simeq \frac{1}{2}(\bar{\theta}_i - \bar{\theta}_j)^2
+         + \bar{\theta}_i \bar{\theta}_j\, (1 - \cos\Delta\phi_{ij})\,.
+\]
+Next, the following replacements are made:
+\[
+\bar{\theta}_i \to f_i \equiv f(\bar{\eta}_i)\,, \qquad
+\bar{\eta}_i \equiv -\frac{2Q}{\bar{n}\!\cdot q}\,
+                     \frac{p_i^\perp}{n\!\cdot p_i}\,,
+\]
+with $n^\mu = (1,0,0,+1)$ and $\bar{n}^\mu = (1,0,0,-1)$.  
+The function $f(x)$ must satisfy $f(x) = x + \mathcal{O}(x^2)$.
+With these definitions, the Centauro distance measure is
+\[
+d_{ij}
+   = \frac{(\Delta f_{ij})^2 + 2 f_i f_j (1 - \cos\Delta\phi_{ij})}{R^2}\,,
+\]
+and the beam distance is taken to be
+\[
+d_{iB} = 1\,.
+\]
+
+

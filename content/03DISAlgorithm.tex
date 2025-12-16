@@ -56,16 +56,22 @@ In this way we end up with one final-state macrojet and a collection of beam jet
 {\color{red} I think we end up with one macrojet and one beam jet. Need to re-read Catani and Wobbish paper on what they exactly cluster in terms of the macrojet.}\\ \\
 {\color{blue}We want to add in that this is similar to Catanis/Wobbish  but dimensionful distance measure and cut and also like MvB/SFR but not an observable - look at what they say here about $y_\mathrm{cut}$.}
 
-The final-state macrojet is defined to be the one which consists of all radiation which comes from the original final-state struck quark. This can be found to be the jet with the largest $P\cdot p_\mathrm{jet}$.
-
-\subsection{Final-state Macro-jet}
+\subsection*{Final-state Macro-jet}
 \label{subsec:FS-macro-jet}
 Having obtained a list of candidate jets, we next identify the jet that carries the largest light-cone momentum of the struck quark in the Breit frame. This jet, referred to as the \emph{final-state macro-jet}, is defined as the one that maximises the quantity $P \cdot p_{\mathrm{jet}}$, and is therefore the jet most closely aligned with the struck quark. 
 The properties of the macro-jet provide a useful way to characterise the behaviour of the algorithm. As discussed earlier, clustering in the Breit frame can lead to contamination between the current and target hemispheres. Studying the macro-jet provides a direct way to assess how effectively the algorithm separates these regions and  how well it reconstructs the struck-quark jet.
 
 \section{The Centauro Algorithm}
-This is another algorithm implemented for DIS within \verb|fjcontrib|. We will describe this algorithm such that we can outline 
+The Centauro algorithm is a longitudinally invariant jet algorithm designed to capture jets close to the Born configuration in the Breit frame. Longitudinally invariant $k_\perp$-type algorithms such as those in Refs.~\cite{Cacciari:2008gp, Ellis:1993tq, Wobisch:1998wt, Catani:1993hr} also preserve longitudinal invariance, however since they cluster in the $(y,\phi)$ plane they are unable to form a jet along the beam axis, where $y \to -\infty$. Conversely, spherically invariant algorithms~\cite{Catani:1992zp} can cluster around the beam axis but do not preserve longitudinal invariance. \\ \\
+The Centauro algorithm is designed to address both of these limitations. It is built around the variable $\bar{\eta}_i$ (see~\ref{subsec:Centauro}), which behaves differently in the two hemispheres:
+\begin{itemize}
+\item \textbf{Current hemisphere:}  
+      $\bar{\eta}_i$ decreases as particles become closer in angle, allowing particles in this hemisphere to cluster.
+\item \textbf{Target hemisphere:}  
+      $\bar{\eta}_i$ becomes large and diverges. This prevents clustering in the proton beam region, similar to the behaviour of the anti-$k_\perp$-algorithm.
+\end{itemize}
 
+\section{Results and Discussion}
 
 
 
