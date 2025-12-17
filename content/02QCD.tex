@@ -1,7 +1,6 @@
 \chapter{Quantum Chromodynamics}
 \section{QCD: The basics}
-{\color{RoyalBlue}
-In the 1940s, a number of unstable, strongly interacting particles—collectively known as hadrons—were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interpreted hadrons as composite states built from more fundamental spin-$\tfrac{1}{2}$ constituents called \emph{quarks}. The six known quarks are organised into three generations—light, intermediate, and heavy—as listed in Table~\ref{table:quark-properties}. In this picture, hadrons fall into two classes: mesons ($q\bar q$) and baryons ($qqq$).
+In the 1940s, a number of unstable, strongly interacting particles -- collectively referred to as hadrons -- were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interprets hadrons as composite objects built from fundamental spin-$\tfrac{1}{2}$ constituents known as \emph{quarks}. The six known quarks are organised into three generations -- light, intermediate, and heavy -- as listed in Table~\ref{table:quark-properties}. In this picture, hadrons fall into two classes: mesons ($q\bar q$) and baryons ($qqq$).
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
@@ -14,7 +13,7 @@ $d$   (down)	& $s$ (strange)    & $b$ (bottom)  & $-\tfrac{1}{3}$  \\ \hline
 \label{table:quark-properties}
 \end{table}
 
-Quantum Chromodynamics (QCD) is an $\mathrm{SU}(3)$ non-Abelian gauge theory that governs the strong interaction. It describes how quarks bind together to form hadrons, with the interaction mediated by the gauge bosons known as gluons. Quarks and gluons are collectively referred to as \emph{partons}, and they carry a conserved charge called colour. Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour states typically labelled red, green, and blue. The associated antiquarks are written as $\bar{q}^a$. Gluons, denoted $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight colour degrees of freedom characteristic of the gauge group.\\ \\
+Quantum Chromodynamics (QCD) is an $\mathrm{SU}(3)$ non-Abelian gauge theory that governs the strong interaction. It describes how quarks are bound together to form hadrons, with the interaction mediated by gauge bosons known as gluons. Quarks and gluons are collectively referred to as \emph{partons} and carry a conserved charge called colour. Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour labels: red, green, and blue. The associated antiquark fields are written as $\bar q^a$. Gluons, denoted by $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight colour degrees of freedom of the gauge group.\\ \\
 The QCD Lagrangian density describes the dynamics of massless gluons and quarks of mass $m$:
 \begin{equation}
 \label{eq: L-QCD}
@@ -23,7 +22,7 @@ The QCD Lagrangian density describes the dynamics of massless gluons and quarks 
 + \mathcal{L}_{\mathrm{GF}}
 + \mathcal{L}_{\mathrm{ghost}}\,,
 \end{equation}
-where the classical part contains the kinetic terms for the gluon and quark fields, together with their interactions:
+where the classical contribution contains the kinetic and interaction terms for the quark and gluon fields:
 \begin{equation}
 \label{eq: L-Classical}
 \mathcal{L}_{\mathrm{classical}}
@@ -37,18 +36,18 @@ F_{\alpha\beta}^{A}
 - \partial_\beta A_\alpha^A
 - g_s f^{ABC} A_\alpha^B A_\beta^C \,,
 \end{equation}
-where the strength of the interaction is governed by the strong coupling $g_s$ which is commonly expressed in terms of the strong coupling constant, {\color{blue}(re-word this, done sloppily)}
+where the strength of the interaction is governed by the strong coupling $g_s$ which can be expressed in terms of the coupling constant, 
 \begin{equation}
     \alpha_s \equiv \frac{g_s^2}{4\pi}\,.
     \label{eq:coupling-constant}
 \end{equation}
-We use the Feynman slash notation $\slashed{D} = \gamma_\mu D^\mu$ for the covariant derivative,
+The covariant derivative is written using Feynman slash notation, $\slashed{D} = \gamma_\mu D^\mu$, with
 \begin{equation}
 (D_\mu)_{ab}
 = \partial_\mu \delta_{ab}
 + ig_s (t^C A_\mu^C)_{ab}\,,
 \end{equation}
-where the gamma matrices satisfy the anti-commutation relation $\{\gamma^\mu,\gamma^\nu\} = 2 g^{\mu\nu}$. Throughout this work we adopt the metric convention $g^{\mu\nu} = (1,-1,-1,-1)$. The matrices $t^C$ denote the generators of the fundamental representation of $\mathrm{SU}(3)$. An explicit representation of these are given by the eight traceless and Hermitian Gell-Mann matrices, $\lambda^C$:
+where the gamma matrices satisfy the anti-commutation relation $\{\gamma^\mu,\gamma^\nu\} = 2 g^{\mu\nu}$. Throughout this work we adopt the metric convention $g^{\mu\nu} = (1,-1,-1,-1)$. The matrices $t^C$ denote the generators of the fundamental representation of $\mathrm{SU}(3)$. An explicit representation is given by the eight traceless and Hermitian Gell-Mann matrices, $\lambda^C$, such that
 \begin{equation}
 	t^C=\frac{1}{2}\lambda^C\,.
 \end{equation}
@@ -56,8 +55,7 @@ These colour matrices satisfy the commutation relation
 \begin{equation}
 [t^A, t^B] = i f^{ABC} t^C\,,
 \end{equation}
-where $f^{ABC}$ are the structure constants of the $\mathrm{SU}(3)$ gauge group. \\ 
-In addition to the commutation relation above, the generators obey the identities
+where $f^{ABC}$ are the structure constants of the $\mathrm{SU}(3)$ gauge group. In addition to the commutation relation above, the generators obey the identities
 \begin{equation}
 \begin{aligned}
 \mathrm{Tr}(t^A t^B) &= T_R\, \delta^{AB}, \qquad T_R = \frac{1}{2}, \\
@@ -70,18 +68,14 @@ In addition to the commutation relation above, the generators obey the identitie
     \mathcal{L}_{\mathrm{GF}}
     = -\frac{1}{2\xi} \left( \partial^\mu A_\mu^{A} \right)^{2}\,.
 \end{equation}
-This is required since the QCD Lagrangian is invariant under local $\mathrm{SU}(3)$ gauge transformations, which in turn introduces redundant degrees of freedom. This gauge fixing term removes this redundancy. The parameter $\xi$ specifies the choice of gauge; for example, $\xi = 1$ corresponds to Feynman gauge and $\xi = 0$ to Landau gauge.{\color{blue} (Double check that this is correct motivation.)}\\
-The third term in Eq.~\ref{eq: L-QCD} is the ghost term,
+This term is required due to the local $\mathrm{SU}(3)$ gauge invariance of the QCD Lagrangian, which leads to redundant gauge degrees of freedom. The gauge-fixing term removes this redundancy, and the parameter $\xi$ specifies the choice of gauge; for example, $\xi = 1$ corresponds to Feynman gauge, while $\xi = 0$ corresponds to Landau gauge.
+\\\\
+The final term in Eq.~\ref{eq: L-QCD} is the ghost term,
 \begin{equation}
 \mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
 \end{equation}
-where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they appear as a consequence of the gauge-fixing procedure in non-Abelian gauge theories.\\ \\
-The Feynman rules extracted from the full QCD Lagrangian are shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. {\color{blue} (Add: the propagators come from the kinetic terms, while the vertices come from the interaction terms and show how various particles couple to one another.)}
-For brevity, the ghost Feynman rules are omitted, as they are not required for the calculations presented in this thesis. {\color{red} (Think about whether to say full or not as think it's actually only from the classical part.)}
-
-
-
-
+where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they arise as a consequence of the gauge-fixing procedure in non-Abelian gauge theories.\\ \\
+The Feynman rules derived from the QCD Lagrangian are shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. The propagators follow from the kinetic terms of the Lagrangian, while the interaction terms give rise to the vertices. For brevity, the ghost Feynman rules are omitted, as they are not required for the calculations presented in this thesis.
 
 \begin{figure}[h!]
 \centering
@@ -206,31 +200,28 @@ $
 \caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and the four--gluon vertex.}
 \label{fig:QCD-Vertex-Rules}
 \end{figure}
-}
-{\color{orange}This section mainly used the pink book and lecture notes.}
+
+\reference{~\cite{Ellis:1996mzs}}
+\newpage
 
 \section{Perturbation Theory}
 \label{sec:pert-theory}
-{\color{RoyalBlue}
-With the QCD Lagrangian and corresponding Feynman rules established in the previous section, we can now outline how  calculations are performed in practice. Using the propagators and interaction vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules} respectively, we can construct Feynman diagrams. These diagrams offer a visual representation of the scattering (probability) amplitude (matrix element) $\mathcal{M}$ for a given process and by applying the Feynman rules we are able to calculate its value. \\ \\
-From the structure of the interaction vertices, it is evident that either the emission of an additional gluon (a real correction) or the appearance of a loop (a virtual correction) within the Feynman diagram introduces extra powers of the strong coupling $\alpha_s$. This indicates that the scattering amplitude follows a perturbative expansion,
+With the QCD Lagrangian and corresponding Feynman rules established, we can now outline how calculations are performed in practice. Using the propagators and interaction vertices shown in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}, Feynman diagrams can be constructed. These diagrams represent the \emph{scattering (probability) amplitude} $\mathcal{M}$ for a given process and can be evaluated using the Feynman rules. \\ \\
+From the structure of the interaction vertices, it is evident that either the emission of an additional gluon (a real correction) or the appearance of a loop (a virtual correction) within a Feynman diagram introduces additional powers of the strong coupling $\alpha_s$. This indicates that the scattering amplitude admits a perturbative expansion,
 \begin{equation}
 \label{eq:M-pert-theory}
     \mathcal{M}
     = \mathcal{M}^{(0)}
     + \alpha_s\,\mathcal{M}^{(1)}
     + \alpha_s^2\,\mathcal{M}^{(2)}
-    + \cdots\,,
+    + \dots\,,
 \end{equation}
-where $\mathcal{M}^{(0)}$ is the tree-level (classical) contribution, often referred to as the leading-order (LO) or Born term, while the terms $\mathcal{M}^{(1)}$, $\mathcal{M}^{(2)}$, etc.\ represent higher-order (quantum) corrections to the Born and are often referred to as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on. 
-{\color{red} (I am wondering whether it should be like, `the first non-zero term is LO/classical etc.')}\\ \\ 
-Since $\alpha_s$ becomes small at high energies (as discussed in the next section), higher-order terms are increasingly suppressed in this regime. As a result, the perturbative series can be well approximated by its first few terms, yielding a \emph{fixed-order} (FO) prediction. This approach is known as perturbation theory, and its application to QCD is referred to as perturbative QCD (pQCD). Throughout this thesis, we will work within the framework of pQCD.
-} \\ \\
-{\color{orange} No reference for this section.}
+where $\mathcal{M}^{(0)}$ denotes the tree-level (classical) contribution, commonly referred to as the leading-order (LO) or Born term. \question{I am wondering if here if there should be a mention of the leading order term being the first non-zero term?}
+ The terms $\mathcal{M}^{(1)},\mathcal{M}^{(2)},\dots$ represent higher-order (quantum) corrections known as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on.  \\ \\ Since $\alpha_s$ becomes small at high energies (as discussed in the next section), higher-order contributions are increasingly suppressed in this regime. As a result, the perturbative expansion can be well approximated by retaining only the first few terms, yielding a \emph{fixed-order} (FO) prediction. This approach is known as perturbation theory, and its application to QCD is referred to as perturbative QCD (pQCD). Throughout this thesis, calculations are performed within the framework of pQCD. \\
+\reference{none} \\ 
 
 \section{The running of the strong coupling $\alpha_s$}
 \label{sec:running-coupling}
-{\color{RoyalBlue}
 As noted in the previous section, pQCD relies on the strong coupling becoming small at high energies. This behaviour reflects the fact that $\alpha_s$ is not a fixed constant but instead \emph{runs} with the renormalisation scale $\mu_R$ -- an unphysical scale introduced by the renormalisation procedure, which will be discussed in the following section. The scale dependence of the coupling is governed by the renormalisation group equation
 \begin{equation}
 \label{eq:coupling-DE}
@@ -248,24 +239,22 @@ with coefficients
     \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
 \end{aligned}
 \end{equation}
-It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–scheme independent; the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme (here the $\overline{\mathrm{MS}}$ scheme, discussed later). Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
+It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–scheme independent; the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme, taken here to be the $\overline{\mathrm{MS}}$ scheme (discussed later). \add{A reference for $\overline{\mathrm{MS}}$.} Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
 \begin{equation}
 \label{eq:scale-dependence}
     \alpha_s(\mu_R^2)
     = \frac{\alpha_s(Q^2)}
     {1 + \alpha_s(Q^2)\,\beta_0\,\ln\!\left(\tfrac{\mu_R^2}{Q^2}\right)}\, .
 \end{equation}
-From the sign of $\beta_0$ and the form equation~\ref{eq:scale-dependence}, the scale dependence of the strong coupling becomes apparent. As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. Conversely, as $\mu_R \to 0$, the coupling grows large, signalling the breakdown of perturbation theory and the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. This phenomenon is known as \emph{confinement}. \\\\The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom. \\ \\
-{\color{blue}(Need to add in something about $\Lambda_{\mathrm{QCD}}$.)}\\ \\
+From the sign of $\beta_0$ and the form of Eq.~\eqref{eq:scale-dependence}, the scale dependence of the strong coupling becomes apparent. As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. Conversely, as $\mu_R$ becomes small and approaches a scale known as $\Lambda_{\mathrm{QCD}}$, the coupling grows large, signalling the breakdown of perturbation theory and the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. This phenomenon is known as \emph{confinement}. \question{Is this strictly speaking true of should I be saying $\mu_R\rightarrow 0$ instead here?}\\\\
+The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom.  \\ \\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{figures/strong_coupling.pdf}
-    \caption{Summary of determinations of $\alpha_s$ as a function of the energy scale $Q$, compared to the running of the coupling computed at five loops using the current PDG average $\alpha_s(m_Z^2) = 0.1180 \pm 0.0009$~\cite{ParticleDataGroup:2024cfk}. {\color{blue}(Need to change this.)}}
+    \includegraphics[width=0.75\linewidth]{figures/strong_coupling.pdf}
+    \caption{Measurements of $\alpha_s$ as a function of the energy scale $Q$, taken from Ref.~\cite{ParticleDataGroup:2024cfk}.}
     \label{fig:strong-coupling}
 \end{figure}
-}
-{\color{orange} This section used the pink and black book.}
-
+\reference{~\cite{Ellis:1996mzs, Campbell:2017hsr}}
 \section{Divergences}
 \label{sec:divergences}
 {\color{RoyalBlue} While perturbation theory is highly effective at high energies, it also introduces
@@ -966,7 +955,7 @@ $P^\mu = p_{\mathrm{in}}^\mu/x$, and the incoming and outgoing parton momenta ta
 Thus, in the Breit frame the proton and virtual photon collide head-on, as illustrated in Fig~\ref{fig:Breit-frame}. Within this frame, the proton remnant appears in the $\eta > 0$ region (the \emph{target hemisphere}), while the struck quark lies in the $\eta < 0$ region (the \emph{current hemisphere}). In practice, the jet clustering in this frame can lead to radiation from the proton remnant  being absorbed into the struck-quark jet, making the separation between the two hemispheres an important feature of DIS jet algorithms.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.65\linewidth]{figures/Breit-frame.jpeg}
+    \includegraphics[width=0.5\linewidth]{figures/Breit-frame.jpeg}
     \caption{Breit frame from Ref.~\cite{Arratia:2020ssx}}
     \label{fig:Breit-frame}
 \end{figure}

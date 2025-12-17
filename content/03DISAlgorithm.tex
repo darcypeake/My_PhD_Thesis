@@ -18,17 +18,11 @@ In this section we present the generalised $k_\perp$ algorithm. The clustering p
         v_{ij} = \min\!\left(E_i^{2p},\,E_j^{2p}\right)(1 - \cos\theta_{ij})\,,
     \end{equation}
     where $\theta_{ij}$ is the angle between $i$ and $j$.
-    \vspace{1em}
-
     \item Identify the smallest value among all $\{v_{ij},\,v_{iB}\}$:
     \begin{itemize}
         \item If the minimum is a beam distance $v_{iB}$, remove parton $i$ from the list and declare it a candidate jet.
-        \vspace{0.5em}
         \item If the minimum is the angular ordering measure $v_{ij}$, proceed to step~3.
     \end{itemize}
-
-    \vspace{1em}
-
     \item Compute the distance measure
     \begin{equation}
    	\label{eq:dij}
@@ -38,19 +32,14 @@ In this section we present the generalised $k_\perp$ algorithm. The clustering p
     \begin{itemize}
         \item If $d_{ij} < k_T^2$, merge particles $i$ and $j$ into a pseudo-particle using the $E$-scheme  
         ($p^\mu = p_i^\mu + p_j^\mu$).
-        \vspace{0.5em}
         \item If $d_{ij} > k_T^2$, declare the softer of the two partons a candidate jet.
     \end{itemize}
 
-    \vspace{1em}
 
     \item Repeat the above procedure until only one pseudo-particle remains.  
     This final object is also declared a candidate jet.
-     \vspace{1em}
 \end{enumerate}
 The jet-resolution parameter $k_T^2$ determines the number of jets identified in the clustering procedure and plays a role analogous to the jet-resolution parameter, $d_{\mathrm{cut}}$, introduced in Section~\ref{subsec: e+e-}. Since the distance measure $d_{ij}$ is \emph{dimensionful}, the parameter $k_T^2$ is likewise a dimensionful quantity.
-
-
 
 In this way we end up with one final-state macrojet and a collection of beam jets. 
 {\color{red} I think we end up with one macrojet and one beam jet. Need to re-read Catani and Wobbish paper on what they exactly cluster in terms of the macrojet.}\\ \\
@@ -70,7 +59,8 @@ The Centauro algorithm is designed to address both of these limitations. It is b
 \item \textbf{Target hemisphere:}  
       $\bar{\eta}_i$ becomes large and diverges. This prevents clustering in the proton beam region, similar to the behaviour of the anti-$k_\perp$-algorithm.
 \end{itemize}
-
+\add{Flesh this out a bit.}
+\question{A.Banfi: should we have the Centauro algorithm in an appendix?}
 \section{Results and Discussion}
 
 

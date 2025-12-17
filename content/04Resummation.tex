@@ -1,16 +1,25 @@
 \chapter{Resummation}
 
+{\color{green}
+\begin{enumerate}
+\item Need for resummation: thrust example with logarithms
+\item Event-shapes
+\item Introduction of CAESAR/ARES as event-shape resummation frameworks: rIRC continuously global observables
+\item NLL: Introduction of the cumulant for NLL
+\item NNLL: Formalism + ISR prescription 
+\end{enumerate}}
+
+\section{Introduction}
 The ARES (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. {\color{purple} For the very first time NNLL resummation has been performed for Hadronic collisions using the ARES method.} In this section we will discuss the need for resummation, observables which are often used in resummation, along with a description of both formalisms (CAESAR and ARES). We will also present new work in this chapter - showing how initial state radiation has been calculated in ARES for the first time.
 
-\section{Motivation}
-\emph{Include: need for resummation, event-shapes explanation and examples, plots showing}
+\section{Motivation: the need for resummation}
 
-\subsection{Resummation and event-shapes}
 Despite the clear advantage of IRC safe observables, issues still arise. Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
 Every power of $\alpha_s$ and therefore each emission can give up to two logarithms, coming from either the soft or collinear divergence. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$.
 \\\\The ARES method (discussed in section \ref{sec: Resummation}) looks at event-shape resummation.
-Event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. \emph{18/09/2024 Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.} 
+Event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.
 
+\subsection*{Event-shapes}
 Examples of event shapes (and the ones we are looking at in our paper) are: one-jettiness, transverse thrust, and thrust minor. More information on event shapes can be found in \cite{Banfi:2016yyq}. 
 The cumulative distribution for an event-shape is defined as the integral of the differential distribution up to some value $v$, normalised by the total cross-section:
 \begin{equation}
@@ -26,23 +35,20 @@ Here, the exponent takes into account terms to all orders in $\alpha_s$, to a gi
 With all the necessary components in place, we can now proceed to the main task at hand: discussing the ARES method.
 
 
+\subsection*{Thrust: worked example}
 
 
-\section{CAESAR}
-\emph{Include: introducing the formalism, explaining what it has been used for}
-
-\section{ARES}
-\emph{Include: stating some of the things done by Luke, not as much detail necessary I think, mention ISR and exactly how this is done as this is new.}
-
-\subsection{Observable Requirements}
-For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties \cite{McAslan:2017bqp}, \cite{Arpino:2020smn}:
+\section{NNL Resummation: CAESAR}
+\subsection*{Observable Requirements}
+For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties:
 \begin{description}
    \item[Continuously global] A global observable is one which is sensitive to all of the emissions in an event. An observable which is continuously global adds another feature such that the scaling of the observable with respect to the energy of the emission is the same everywhere in the phase space. If an observable is not continuously global, it results in the presence of additional large logarithms known as non-global logarithms (these will not be discussed in this report).
  \item[rIRC safety] In section \ref{sec: IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
  
 \end{description}
 
-\subsection{Formulation}
+\section{NNL Resummation: ARES}
+\subsection*{Formulation}
 The ARES method begins by understanding that any rIRC safe observable $V$, in the presence of a single soft emission collinear to leg $\ell$, can be parameterised in the following way \cite{Arpino:2019ozn}:
 \begin{equation}
 	V(\{p\},k)\simeq V_{\text{sc}}(k)\equiv d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^ae^{-b_\ell\eta^{(\ell)}}g_\ell(\phi^{(\ell)})\,,
@@ -140,7 +146,7 @@ Note that the three-jet event introduces two new functions $\Delta\mathcal{F}_{\
 \end{itemize}
 
 
-\subsection{The Radiator}
+\subsection*{The Radiator}
 \label{sec: radiator}
 At NNLL accuracy, with more than two emitting legs, it is convenient
 to split the radiator $R_{\NNLL}(v)$ into the sum of a soft part $R_s(v)$ and a hard-collinear part $R_{\mathrm hc}(v)$:
@@ -167,25 +173,17 @@ such that
 \end{equation}
 where the functions $h_2^{(\ell)}, h_3^{(\ell)}$ depend solely on $a$ and $b_{\ell}$ and are again contained within \cite{Arpino:2019ozn}.
 
-\subsubsection{The contributions to $\delta\mathcal{F}_{\mathrm{NNLL}}$}
+\subsection*{$\delta\mathcal{F}_{\mathrm{NNLL}}$}
 %Re-word this title
 The corrections, $\delta\mathcal{F}_{\mathrm{sc}}, \delta\mathcal{F}_{\mathrm{wa}}, \Delta\mathcal{F}_{\mathrm{wa}}, \delta\mathcal{F}_{\mathrm{correl}}$ all have origin in resolved soft emissions, whereas the terms $\delta\mathcal{F}_{\mathrm{hc}}, \delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$ have hard-collinear nature. 
 % Each resolved real emission is found by requiring that $V(\{\tilde{p}\},k_i)>\epsilon v$ such that there is a lower bound on the phase-space where a resolved emission can take place and because of rIRC safety, $\epsilon$ is independent of $v$. 
 
-\begin{description}
+\begin{enumerate}
 \item[Soft emissions]: $\delta\mathcal{F}_{\mathrm sc}$ represents the running coupling corrections to the real emissions in the CMW scheme. It also accounts for the correct rapidity boundary for a single soft-collinear emission. $\delta\mathcal{F}_{\mathrm wa}$ arises from a soft emission near $\eta=0$ and accounts for the variation between the observable and its soft-collinear parametrisation for a single soft wide-angle emission accompanied by an ensemble of soft-collinear gluons. $\Delta\mathcal{F}_{\mathrm wa}$ is the NNLL contribution arising from wide angled resolved emissions. Finally, $\delta\mathcal{F}_{\mathrm correl}$ addresses the treatment of the splitting of a single soft and collinear gluon.
-
 \item[Hard-collinear emissions]: $\delta\mathcal{F}_{\mathrm hc}$ originates from the emission of a hard-collinear parton at the level of the squared matrix element. $\delta\mathcal{F}_{\mathrm rec}$ is due to a hard-collinear emission (at the level of the kinematics) recoiling against the soft-collinear ensemble of emissions. This includes contributions due to spin correlations and hence may depend on the underlying Born momenta. $\Delta\mathcal{F}_{\mathrm rec}$ appears for the first time in near-to-planar three jet events. This accounts for correlations which occur between the spin of a hard collinear gluon and the event plane. 
-\end{description}
-\subsection{Initial State Radiation}
+\end{enumerate}
+\subsection*{Initial State Radiation}
  {\color{purple} For the very first time NNLL resummation has been performed for Hadronic collisions using the ARES method.}
 
-
-
-
-
-
-
-
-\section{Matching}
+\section{Validation and Matching}
 \emph{Include something on matching with fixed order i.e. something to essentially show that resummation is necessary. I think here we can add in some of the plots calculated from the numerical work done in hhHjet project.}
