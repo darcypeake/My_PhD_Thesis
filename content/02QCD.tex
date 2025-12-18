@@ -534,6 +534,7 @@ The cancellation of singularities between the real and virtual diagrams is a dir
 \reference{~\cite{Ellis:1996mzs, Luisoni:2015xha, Schwartz:2014sze} }
 
 \section{Soft and collinear factorisation of $|\mathcal{M}_m|^2$}
+\label{sec:M-factorisation}
 We now consider the general structure of infrared singularities by introducing
 the partonic cross section for a generic $2\rightarrow m$ hard-scattering
 process,
@@ -630,15 +631,11 @@ where $z_i+z_j=1$ are the longitudinal momentum fractions, $p^\mu$ and $n^\mu$ a
 \add{References for the fully \emph{regularised} form of the Altarelli-Parisi splitting function}\\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze} }
 
-
-
 \section{IRC Safety} 
 \label{sec:IRC}
-{\color{RoyalBlue}
-In Sec.~\ref{sec:divergences} we saw, through the explicit NLO calculation of $e^{+}e^{-}\!\to q\bar q g$, that the infrared singularities from the real and virtual  contributions cancel, yielding a finite result. This relies on the fact that the total cross section is an \emph{inclusive} observable, for which 
-$F_J^{(m)} = 1$  for any number of final-state particles $m$ (see Sec.~\ref{sec:2-to-m-x-sec}). \\ \\
-For more general observables such a cancellation is not guaranteed. To obtain a finite prediction order by order in perturbation theory, the observable must be \emph{infrared and collinear safe} (IRC safe). An IRC safe observable is one whose value is insensitive to the emission of an 
-additional soft/collinear parton. This may be expressed in terms of the jet function:
+In Sec.~\ref{sec:divergences} we saw, through the explicit NLO calculation of $e^{+}e^{-}\to q\bar q$, that the IR singularities from the real and virtual  contributions cancel, yielding a finite result. This relies on the fact that the total cross section is an \emph{inclusive} observable, for which $F_J^{(m)} = 1$  for $m$ final-state particles (see Sec.~\ref{sec:M-factorisation}). \\ \\
+For more general observables, such a cancellation is not guaranteed. To obtain finite predictions order by order in perturbation theory, the observable must be \emph{infrared and collinear safe} (IRC safe). An IRC safe observable is one whose value is insensitive to the emission of an 
+additional soft and/or collinear parton. \add{Wording: double use of IRC safe here.} This requirement can be expressed in terms of the jet function as
 \begin{equation}
 \begin{aligned}
 F_J^{(m+1)}(p_1,\ldots,p_i,\ldots,p_{m+1})
@@ -652,7 +649,7 @@ F_J^{(m)}(p_1,\ldots,\cancel{p_i},\cancel{p_j},p_{ij},\ldots,p_{m+1})\,,
 \end{aligned}
 \label{eq:IRC-safety}
 \end{equation}
-where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_safety}. 
+where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_safety}. \add{Unsure about the formatting of the diagram and the equation.}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=2]
@@ -691,7 +688,7 @@ where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_
     rounded corners=3pt,
     font=\scriptsize,
     inner sep=4pt
-] at (3.0,0.50)
+] at (3.2,0.50)
 {
     \shortstack{$F_J^{(m+1)}(\Phi^{(m+1)}) \;\longrightarrow\; F_J^{(m)}(\Phi^{(m)})$\\[2pt]
                 $\text{if } E_i \to 0 \;\text{or}\; p_i \parallel p_j$}
@@ -700,68 +697,68 @@ where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_
 
 \end{feynman}
 \end{tikzpicture}
-\caption{Diagrammatic representation of a $2\to m$ hard scattering with an additional soft/collinear emission $p_i$. {\color{blue} (Change this-do we need to ad $\Phi^{(m+1)}\neq\Phi^{(m)}$? Also do we need to explain the $\mathcal{H}$ and should it actually be $|\mathcal{M}|^2$)?}}
+\caption{Diagrammatic representation of a $2\to m$ hard scattering process, $\mathcal{H}$, with an additional soft or collinear emission $p_i$.}
 \label{fig:IRC_safety}
 \end{figure}
-We emphasise that although Eq.~\ref{eq:IRC-safety} is written for a single additional parton, the same behaviour holds for any number of additional soft/collinear partons. From this definition it follows immediately that inclusive observables with $F_J^{(m)} = 1$ are IRC safe. Other examples include event-shape variables (event-shapes), discussed in Chapter~4. A simple example of an IRC-unsafe observable is the number of final-state partons, which of course changes whenever a soft or collinear emission occurs. \\ \\
-Although IRC safety ensures a finite results at every order in perturbation theory, it does not guarantee a well-behaved perturbative expansion. Many \emph{exclusive} observables, despite being IRC safe, receive large logarithmic contributions which originate from emissions in the soft and/or collinear regions. These large corrections can spoil the convergent nature of the perturbative expansion and in such cases one must perform \emph{resummation}, which will be the focus of Chapters~4 and~5. \\ \\
-}
-{\color{red} I have a few questions on this:
+
+\FloatBarrier
+\noindent
+We emphasise that although Eq.~\ref{eq:IRC-safety} is written for a single additional parton, the same behaviour holds for any number of additional soft/collinear partons. From this definition it follows immediately that inclusive observables with $F_J^{(m)} = 1$ are IRC safe. Other examples include event-shape variables (event-shapes), which will be discussed in Chapter~4. A simple example of an IRC-unsafe observable is the number of final-state partons. \\ \\
+Although IRC safety ensures finite results at every order in perturbation theory, it does not guarantee a well-behaved perturbative expansion. Many \emph{exclusive} observables, despite being IRC safe, receive large logarithmic contributions which originate from emissions in the soft and/or collinear regions. These logarithms can spoil the convergent nature of the perturbative expansion and must be \emph{resummed}. Resummation techniques will be the focus of Chapters~4 and~5.\\ 
+\question{
 \begin{enumerate}
 \item In this sense is the KNL theorem only for inclusive observables? I ask since it states that there will be finite results at every order of perturbation theory if we sum over all initial and final states - I presume this summing over is what makes it an inclusive observable?
-\item Checking that exclusive observables are those that give large logarithms i.e. inclusive observables don't get receive these? This is what essentially distinguishes these two types of observables in a resummation sense?
-\item I need a reference for this section I think i.e. not a book or review
+\item Exclusive observables are those that give large logarithms i.e. inclusive observables don't  receive these? This is essentially what distinguishes these two types of observables in a resummation sense?
 \end{enumerate}}
-{\color{orange} Luoisiani/Marzani, powerpoints, A. Banfi book, Black Book.}
-
+\noindent
+\add{Reference a paper for which IRC safety was first introduced.}\\ \\
+\reference{~\cite{Campbell:2017hsr, Luisoni:2015xha, Banfi:2016yyq}}
 
 \section{The full picture: high-energy collisions}
-Up until this point, the discussion in this thesis has largely focused on physics at the
-parton level. In particular, we have relied on concepts such as quark-hadron duality (see Sec.~\ref{sec:divergences}) to relate partonic cross-sections to hadronic observables. We have also worked predominantly in the high-energy regime, where asymptotic freedom (see Sec.~\ref{sec:running-coupling}) ensures that perturbative QCD is applicable. \\ \\
-In realistic collider experiments, however, the picture is far more involved. Consider, for
-example, a hadronic collision at the LHC. The incoming particles are hadrons opposed to partons, and the final-state particles observed in the detector consists of hadrons produced at energy scales far below those of the hard interaction. As a result, a complete description of a high--energy collision necessarily involves physics beyond the perturbative regime.\\ \\
-The aim of this section is to outline the various stages of a high-energy hadronic collision. To illustrate this, we will refer to Fig.~\ref{fig:high-energy-event}, produced by the \textsc{SHERPA} collaboration in Ref.~\cite{Gleisberg:2008ta}, which shows a $t\bar t h$ event produced by a proton-proton collision. {\color{blue} (Potentially discuss what \textsc{SHERPA} is?)}
+Up to this point, the discussion has largely focused on physics at the parton level.
+In particular, we have relied on concepts such as quark--hadron duality (see Sec.~\ref{sec:divergences}) to relate partonic cross-sections to hadronic observables and have worked predominantly in the high-energy regime, where asymptotic freedom (see Sec.~\ref{sec:running-coupling}) allows us to use perturbative QCD. \add{Reword.} \\ \\
+In realistic collider experiments, however, the situation is far more
+complex. Consider, for example, a hadronic collision at the LHC. The incoming particles are hadrons opposed to partons, and the final-state particles observed in the detector consists of hadrons produced at energy scales far below those of the hard interaction. As a result, a complete description of a high--energy collision necessarily involves physics beyond the perturbative regime.\\ \\
+The aim of this section is to outline the various stages of a high-energy hadronic collision. To illustrate this, we will refer to Fig.~\ref{fig:high-energy-event}, produced by the \textsc{SHERPA} collaboration in Ref.~\cite{Gleisberg:2008ta}, which shows a $t\bar t h$ event produced by a proton-proton collision. 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/High-energy-event.jpeg}
     \caption{Pictorial representaion of a $t\bar{t}h$ event produced in a high-energy hadronic collision, taken from Ref.~\cite{Gleisberg:2008ta}}.
     \label{fig:high-energy-event}
 \end{figure}
-Since the initial collision occurs at high energies and the energy of the system decreases from here until we reach hadronisation scales of far lower energy, it is natural for us to organise the following discussion according to the energy scale $Q$ of the process. 
+Since the initial collision occurs at high energies and the energy of the system decreases from here until we reach hadronisation scales of far lower energy, it is natural for us to organise the following discussion according to the energy scale $Q$ of the process.  \add{Reword and generally make this part more concise.}
 \subsection*{Hard scattering $(Q \gg \Lambda_{\mathrm{QCD}})$}
-At the highest energy scale, the dynamics of the collision are governed by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. In this process, two partons, denoted $p_i$ and $p_j$, are extracted from the incoming
-protons $P_1$ and $P_2$ and undergo a short-distance interaction.\\ \\
-The partonic content of the proton is described by parton distribution functions (PDFs), which encode its internal structure. A PDF $f_{i,P_1}(x_1,\mu_F^2)$ gives the probability of finding a parton of type $i$ inside the proton $P_1$ carrying a longitudinal momentum fraction $x_1$, evaluated at the factorisation scale $\mu_F$.  These are non-perturbative functions which are extracted from data and depend on the scale they are probed at. The scale dependence of the PDFs is governed by the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) equation
+At the highest energy scale, the dynamics of the collision are governed by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. In this process, two partons, denoted $p_i$ and $p_j$, are extracted from the incoming protons $P_1$ and $P_2$ and undergo a short-distance interaction. The proton's partonic content is encoded in parton distribution functions (PDFs), $f_{i,P_1}(x_1,\mu_F^2)$, which give the probability of finding a parton of type $i$ carrying a longitudinal fraction $x_1$ of the proton’s momentum at the factorisation scale $\mu_F$. PDFs are non-perturbative functions which are extracted from data and depend on the scale they are probed at. The scale dependence of the PDFs is governed by the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) equation
 \begin{equation}
 	\frac{df_{i,P_1}(x_1,\mu_F^2)}{d\mu_F^2}=\sum_{j}\int_{x_1}^1dz\,\frac{\alpha_s}{2\pi}P_{ij}(z,\mu_F^2)f_j\left(\frac{x_1}{z},\mu_F^2\right)\,,
 \end{equation}
-where the splitting functions $P_{ij}(z)$ admit a perturbative expansion,
+where the splitting functions $P_{ij}(z)$ admit a perturbative expansion:
 \begin{equation}
 	P_{ij}(z,\mu_F^2) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-At leading order, the \emph{regularised} Altarelli-Parisi (see Eq.~\ref{eq:AP-functions} for unregularised forms) splitting functions are given by 
+At leading order, the Altarelli-Parisi splitting functions (see Eq.~\ref{eq:AP-functions} for fully regularised forms) are given by 
 \begin{equation}
 \begin{aligned}
-&P_{q\bar{q}}^{(0)}(z)=C_F\left[\frac{1+z^2}{(1-z)_+}+\frac{3}{2}\delta(1-z)\right]\\
-&P_{qg}^{(0)}(z)=T_R\left[z^2+(1-z)^2\right]\\
-&P_{gq}^{(0)}(z)=C_F\left[\frac{1+(1-z)^2}{z}\right]\\
-&P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+x(1-z)\right]+\delta(1-z)\frac{11C_A-4T_Rn_f}{6}\,.
+&P_{q\bar{q}}^{(0)}(z)=C_F\left[\frac{1+z^2}{(1-z)_+}+\frac{3}{2}\delta(1-z)\right]\,,\\
+&P_{qg}^{(0)}(z)=T_R\left[z^2+(1-z)^2\right]\,,\\
+&P_{gq}^{(0)}(z)=C_F\left[\frac{1+(1-z)^2}{z}\right]\,,\\
+&P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+\delta(1-z)\frac{11C_A-4T_Rn_f}{6}\,.
 \end{aligned}
 \end{equation}
+\question{Do we need to define the plus distributions?}
 \\ \\
-The factorisation scale $\mu_F$ is an arbitrary scale that separates long--distance physics from short--distance dynamics. Emissions with transverse momentum $p_\perp$ below $\mu_F$ are absorbed into the PDFs and treated as part of the hadron structure,while emissions with $p_\perp > \mu_F$ are included in the partonic cross section. \\ \\ 
+The factorisation scale $\mu_F$ is an arbitrary scale that separates long and short distance physics. Emissions with transverse momentum $p_\perp$ below $\mu_F$ are absorbed into the PDFs and treated as part of the hadron structure, while emissions with $p_\perp > \mu_F$ are included in the partonic cross section. \\ \\ 
 The hard interaction produces the primary particles of the event, in this case a
-$t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the characteristic scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, fixed-order perturbation theory is applicable (see Sec.~\ref{sec:pert-theory}). Predictions at this stage are obtained from matrix-element calculations, typically provided by matrix-element generators. {\color{blue} (Put in some references for examples of matrix element generators?)}
-
+$t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the characteristic scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, fixed-order perturbation theory is applicable (see Sec.~\ref{sec:pert-theory}). Predictions at this stage are obtained from matrix-element calculations, typically provided by matrix-element generators. \add{Give some examples and get a reference for these.}
 \subsection*{QCD evolution $(Q \gtrsim \Lambda_{\mathrm{QCD}})$}
-Following the hard scattering, the coloured partons produced in the event undergo further QCD radiation, illustrated by the red quark and gluon lines in Fig.~\ref{fig:high-energy-event}. This radiation is dominated by soft and collinear emissions, reflecting the infrared structure of QCD discussed in Sec.~\ref{sec:divergences}.
-For many observables, these emissions give rise to logarithmically enhanced contributions (see Sec.~\ref{sec:IRC}) which can become large and spoil the convergence of fixed-order perturbation theory. As a result, methods are required to deal with these emissions such that we can work within the perturbative regime. Approaches which are commonly used are:
+Following the hard scattering, the coloured partons produced in the event undergo further QCD radiation, illustrated by the red quark and gluon propagators in Fig.~\ref{fig:high-energy-event}. This radiation is dominated by soft and collinear emissions, and for many observables, these emissions give rise to logarithmically enhanced contributions (see Sec.~\ref{sec:IRC}) which can become large and spoil the convergence of fixed-order perturbation theory. As a result, methods are required to deal with these emissions such that we can work within the perturbative regime. Approaches which are commonly used are:
 \begin{itemize}
 	\item \emph{Parton showers}, which model the
 	soft and collinear emissions down to the hadronisation scale. Well-known examples
 	include: \textsc{Pythia}, \textsc{Herwig}, and \textsc{PanScales}. Currently parton showers achieve next-to-leading logarithmic (NLL) accuracy for a broad class of observables, with
-	ongoing work aimed at extending this to higher logarithmic accuracy. {\color{red} Is it completely numerical? Are these the correct panscales to reference?}
-	\item \emph{Resummation}, where logarithmically enhanced contributions from soft and
+	ongoing work aimed at extending this to higher logarithmic accuracy. \question{Are PS completely numerical?}
+	\add{Work out most popular PS and reference them. Also work out if it is just PanScales which gives NNLL accuracy. Potentially mention that they have done for hh and DIS.}
+		\item \emph{Resummation}, where logarithmically enhanced contributions from soft and
 	collinear radiation are essentially \emph{resummed} to all orders in perturbation theory. Semi-numerical
 	resummation frameworks such as \textsc{CAESAR}~\cite{Banfi:2004yd} and \textsc{ARES}~\cite{Banfi:2014sua} fall into this
 	category. For $e^+e^-$ observables, resummation is known up to next-to-next-to-leading
@@ -773,18 +770,18 @@ For many observables, these emissions give rise to logarithmically enhanced cont
 	observable-dependent factorisation formula. In this framework, the relevant dynamics
 	are encoded in separate hard, collinear, soft, and jet functions, allowing resummation to
 	be performed analytically for a range of observables, in some cases up to $\mathrm{N^3LL}$
-	accuracy. {\color{red} (Is SCET I analytical while SCET II requires numerical techniques?)} 
+	accuracy. \add{References for these high accuracy resummed observables.} \question{Is SCET I analytical while SCET II requires numerical techniques?} 
 \end{itemize}
-The radiation described in this regime connects the short-distance hard interaction to the non-perturbative hadronisation process. As the characteristic scale of the event continues to decrease, perturbative methods eventually break down, and the dynamics become dominated by confinement effects, which are discussed next.
 
 \subsection*{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
-As the characteristic scale of process approaches $\lambda_{\mathrm{QCD}}$, perturbation theory breaks down. In this regime, the radiated final-state partons (light green blobs in Fig.~\ref{fig:high-energy-event}) undergo hadronisation and transform into primary hadrons (dark green blobs). These hadrons subsequently decay into the long-lived 
+As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occur. In this regime, the radiated final-state partons (light green blobs in Fig.~\ref{fig:high-energy-event}) transform into primary hadrons (dark green blobs). These hadrons subsequently decay into the long-lived 
 final-state particles (smaller dark green blobs) that are ultimately observed 
-in the detector. Experimentally, these particles appear as \emph{jets}: collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Since hadronisation occurs in the non-perturbative regime of QCD, it cannot be calculated from first principles. Instead, we must use numerical models to calculate its effects. {\color{red}(I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.)} 
+in the detector. Experimentally, these particles appear as \emph{jets}: collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Since hadronisation occurs in the non-perturbative regime of QCD, it cannot be calculated from first principles. Instead, we must use numerical models to calculate its effects. \question{I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.} 
+\add{Reword this section and also maybe only mention PT once at the end.}
 \\ \\ 
 The three stages described above capture the main features of the QCD dynamics, but several other ingredients contribute to the structure of a realistic hadronic event and must be briefly mentioned. 
 First, electromagnetic radiation (shown as yellow lines in Fig.~\ref{fig:high-energy-event}) may occur at any stage of the process. Second, proton remnants may undergo additional semi-hard interactions, giving rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These secondary interactions produce further radiation and hadrons, much like the primary hard process, but they lie outside the scope of standard QCD factorisation
-theorems and therefore require modelling as discussed in Ref.~\cite{Gleisberg:2008ta}. Finally, before the hard interaction occurs, the incoming partons can radiate, leading to \emph{initial-state radiation}.  This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
+theorems and therefore require modelling as discussed in Ref.~\cite{Gleisberg:2008ta}. \add{Change this - sounds too much like RW.} Finally, before the hard interaction occurs, the incoming partons can radiate, leading to \emph{initial-state radiation}.  This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
 \subsection*{The QCD Factorisation Formula}
 To relate the partonic dynamics discussed so far to experimentally measured hadronic cross sections, we can employ the QCD factorisation formula,
 \begin{equation}
