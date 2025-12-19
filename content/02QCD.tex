@@ -626,7 +626,7 @@ where $z_i+z_j=1$ are the longitudinal momentum fractions, $p^\mu$ and $n^\mu$ a
 \label{sec:IRC}
 In Sec.~\ref{sec:divergences} we saw, through the explicit NLO calculation of $e^{+}e^{-}\to q\bar q$, that the IR singularities from the real and virtual  contributions cancel, yielding a finite result. This relies on the fact that the total cross section is an \emph{inclusive} observable, for which $F_J^{(m)} = 1$  for $m$ final-state particles (see Sec.~\ref{sec:M-factorisation}). \\ \\
 For more general observables, such a cancellation is not guaranteed. To obtain finite predictions order by order in perturbation theory, the observable must be \emph{infrared and collinear safe} (IRC safe). An IRC safe observable is one whose value is insensitive to the emission of an 
-additional soft and/or collinear parton. \add{Wording: double use of IRC safe here.} This requirement can be expressed in terms of the jet function as
+additional soft and/or collinear parton. This requirement can be expressed in terms of the jet function as
 \begin{equation}
 \begin{aligned}
 F_J^{(m+1)}(p_1,\ldots,p_i,\ldots,p_{m+1})
@@ -698,8 +698,8 @@ We emphasise that although Eq.~\ref{eq:IRC-safety} is written for a single addit
 Although IRC safety ensures finite results at every order in perturbation theory, it does not guarantee a well-behaved perturbative expansion. Many \emph{exclusive} observables, despite being IRC safe, receive large logarithmic contributions which originate from emissions in the soft and/or collinear regions. These logarithms can spoil the convergent nature of the perturbative expansion and must be \emph{resummed}. Resummation techniques will be the focus of Chapters~4 and~5.\\ 
 \question{
 \begin{enumerate}
-\item In this sense is the KLN theorem only for inclusive observables? I ask since it states that there will be finite results at every order of perturbation theory if we sum over all initial and final states - I presume this summing over is what makes it an inclusive observable?
-\item Exclusive observables are those that give large logarithms i.e. inclusive observables don't  receive these? This is essentially what distinguishes these two types of observables in a resummation sense?
+\item In this sense is the KLN theorem only for inclusive observables, where the idea of inclusivity comes from the fact that there will be a finite result at every order of perturbation theory \emph{provided} we sum over all initial and final states?
+\item In this sense, exclusive observables are the only observables those that give rise to large logarithms?
 \end{enumerate}}
 \noindent
 \reference{~\cite{Campbell:2017hsr, Luisoni:2015xha, Banfi:2016yyq}}
@@ -762,13 +762,11 @@ Following the hard scattering, the coloured partons produced in the event underg
 \end{itemize}
 
 \subsection*{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
-As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into long-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Hadronisation occurs in the non-perturbative regime and therefore cannot be calculated from first principles within QCD. Its effects are therefore modelled using numerical models which are  implemented in Monte Carlo event generators. \question{I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.} 
+As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into long-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Hadronisation occurs in the non-perturbative regime and therefore cannot be calculated from first principles within QCD. Its effects are therefore modelled using numerical models. \question{I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.} 
 \\ \\ 
+The three stages described above capture the main features of the QCD dynamics in a high-energy hadronic collision, but several additional ingredients contribute to the structure of a realistic event. Electromagnetic radiation, shown as yellow lines in Fig.~\ref{fig:high-energy-event}, may occur at any stage of the process. In addition, secondary semi-hard interactions between the proton remnants give rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These interactions generate further radiation and hadrons, however are not described by standard QCD factorisation and require modelling. \add{Find a reference for this modelling.} \\ \\
+Finally, prior to the hard interaction, the incoming partons may radiate, leading to \emph{initial-state radiation}. This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
 
-The three stages described above capture the main features of the QCD dynamics in a high-energy hadronic collision, but several additional ingredients contribute to the structure of a realistic event. Electromagnetic radiation, shown as yellow lines in Fig.~\ref{fig:high-energy-event}, may occur at any stage of the process. In addition, secondary semi-hard interactions between the proton remnants give rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These interactions generate further radiation and hadrons, however are not described by standard QCD factorisation, requiring dedicated modelling.
-
-Second, proton remnants may undergo additional semi-hard interactions, giving rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These secondary interactions produce further radiation and hadrons, much like the primary hard process, but they lie outside the scope of standard QCD factorisation
-theorems and therefore require modelling as discussed in Ref.~\cite{Gleisberg:2008ta}. \add{Change this - sounds too much like RW.} Finally, before the hard interaction occurs, the incoming partons can radiate, leading to \emph{initial-state radiation}.  This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
 \subsection*{The QCD Factorisation Formula}
 To relate the partonic dynamics discussed so far to experimentally measured hadronic cross sections, we can employ the QCD factorisation formula,
 \begin{equation}
@@ -777,10 +775,7 @@ To relate the partonic dynamics discussed so far to experimentally measured hadr
 \end{equation}
 Here $f_{i,P_1}$ and $f_{j,P_2}$ are the PDFs introduced earlier, and the integration runs over the momentum fractions carried by the partons inside the incoming hadrons. The sum over $i,j$ accounts for all possible parton flavours,
 while $\hat{\sigma}_{ij}$ is the corresponding partonic cross section. \\ \\
-Equation~\ref{eq:factorisation-formula} is referred to as a factorisation formula because it separates the hadronic cross section into two distinct components: the non-perturbative PDFs, which encode the partonic structure of the incoming
-hadrons, and the perturbatively calculable partonic cross section $\hat{\sigma}_{ij}$. The term
-$\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that
-this separation is valid in the high-energy limit.\\ \\
+Equation~\ref{eq:factorisation-formula} is referred to as a factorisation formula because it separates the hadronic cross section into two distinct components: the non-perturbative PDFs, which encode the partonic structure of the incoming hadrons, and the perturbatively calculable partonic cross section $\hat{\sigma}_{ij}$. The power-suppressed term $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that this separation is valid only in the high-energy limit. \\ \\
 \reference{~\cite{Ellis:1996mzs, Banfi:2016yyq}}
 \section{Jet Physics}
 As described above, jets appear as highly collimated sprays of hadrons resulting from the hadronisation of energetic quarks and gluons produced in high-energy processes. They are among the most frequently observed objects in proton–proton collisions at the LHC and are complex, messy, and inherently ambiguous objects. To be able to describe them in a well-defined and reproducible way, we must introduce a \emph{jet definition}, which consists of the following components:
@@ -801,7 +796,7 @@ In 1990, there was significant discussion within the high-energy physics communi
     \item Yields a finite cross section at any order in perturbation theory;
     \item Yields a cross section that is relatively insensitive to hadronisation effects.
 \end{enumerate}
-IRC safety ensures that jets defined at the detector, hadron, and parton levels are essentially equivalent, thereby satisfying the final three requirements outlined above. For IRC-safe observables, the effects of hadronisation are suppressed by inverse powers of the energy scale used in the process. Consequently, at higher energies, the correspondence between hadronic and partonic observables becomes increasingly accurate.
+IRC safety ensures that jets defined at the detector, hadron, and parton levels are essentially equivalent, thereby satisfying the final three requirements outlined above. For IRC-safe observables, the effects of hadronisation are suppressed by inverse powers of the energy scale used in the process. Consequently, at higher energies, the correspondence between hadronic and partonic observables becomes increasingly accurate. \add{Link this back to quark-hadron duality allows quarks=hadrons at high-energies.} 
 Overall, these requirements allow us to regard jets as well-defined objects whose properties can be either determined by their constituent hadrons or underlying partons. This enables direct comparison between experimental measurements and theoretical calculations at the parton level. \\ \\
 A wide variety of jet algorithms exist, each with its own advantages and limitations. The choice of algorithm depends on the specific physics question being addressed and the type of information one seeks to extract from an event. In general, jet algorithms can be divided into two broad classes: \emph{sequential recombination algorithms} and \emph{cone algorithms}:
 \begin{itemize}
@@ -957,8 +952,9 @@ The procedure follows the same steps as the $k_\perp$ DIS algorithm described ab
 The clustering proceeds by finding the smallest value among $\{v_{ij}, v_{iB}\}$ and determining whether the corresponding object is associated with a final-state macro-jet or the beam jet. Once the pre-clustering is complete, the algorithm proceeds as in the $e^+e^-$ Cambridge algorithm to resolve the jet substructure within each macro-jet.
 
 \noindent
-\question{The reference I have given above is a bit of a vague one as it is the reference which introduces the the Cambridge and the Aachen algorithm.}\\
-\question{I am actually wondering if it would better to discuss DIS algorithms and DIS in general in the next section i.e. where my paper belongs. This way I can keep the DIS $k_\perp$ algorithm and DIS Cambridge algorithm in the appendices. In that sense I could replace the DIS algorithm section here with a subsection on algorithms for hadronic collisions so it is a bit more complete?}
+\question{The reference used here (Ref.~\cite{Wobisch:1998wt}) is a bit awkward, since it both introduces the Aachen algorithm (for the first time) in DIS and proposes the Cambridge variant for DIS. Given that there is some confusion in the literature about the Cambridge versus Aachen algorithms, I am not sure whether it is worth getting into this distinction here. Would it be reasonable to avoid this discussion in this section and instead just note, in the earlier $k_\perp$ section, that the Cambridge variant for DIS was introduced in Ref.~\cite{Wobisch:1998wt}?} \\ \\
+\question{Related to this, I am also unsure whether DIS should appear in this chapter at all. Since Chapter~3 will contain the DIS paper and will likely discuss~\cite{Catani:1992zp,Wobisch:1998wt} in the introduction, I am considering removing the DIS discussion from this chapter. In that case, would it make more sense to put the DIS $k_\perp$ algorithm in an appendix, or to include it briefly in the next section for completeness? See the beginning of Chapter~3 for how the paper is looking so far. Moreover, if I do remove this, I think it would be a good idea to discuss hadronic algorithms here?}
+
 
 
 
