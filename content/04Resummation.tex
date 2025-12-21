@@ -1,20 +1,19 @@
 \chapter{Resummation}
 
-{\color{green}
+\todo{
 \begin{enumerate}
 \item Need for resummation: thrust example with logarithms
 \item Event-shapes
 \item Introduction of CAESAR/ARES as event-shape resummation frameworks: rIRC continuously global observables
 \item NLL: Introduction of the cumulant for NLL
 \item NNLL: Formalism + ISR prescription 
-\end{enumerate}}
+\end{enumerate}
+}
 
 \section{Introduction}
-The ARES (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. {\color{purple} For the very first time NNLL resummation has been performed for Hadronic collisions using the ARES method.} In this section we will discuss the need for resummation, observables which are often used in resummation, along with a description of both formalisms (CAESAR and ARES). We will also present new work in this chapter - showing how initial state radiation has been calculated in ARES for the first time.
-
+In this chapter, we wish to discuss \emph{resummation}, particularly focussing on explaining the semi-numerical mentioned in Chapter~2, known as CAESAR and ARES. The ARES (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. We begin by explaining why resummation is required on certain observables, giving a worked example of a specific observable to demonstrate why it is necessary before describing both the CAESAR and then the ARES formalism. Included in this chapter, we discuss how we have extended ARES to hadronic collisions and lay out the formalism for which initial state radiation is calculated with ARES, with the details discussed in Chapter~5.
 \section{Motivation: the need for resummation}
-
-Despite the clear advantage of IRC safe observables, issues still arise. Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
+As discussed in Chapter~2, despite the clear advantage of IRC safe observables, issues still arise. Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
 Every power of $\alpha_s$ and therefore each emission can give up to two logarithms, coming from either the soft or collinear divergence. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$.
 \\\\The ARES method (discussed in section \ref{sec: Resummation}) looks at event-shape resummation.
 Event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.
@@ -31,11 +30,22 @@ In the region $\alpha_sL\sim1$, we can expand $\Sigma(v)$ in terms of the coupli
 	\Sigma(v)\simeq\exp\{Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)+\cdots\}\,.
 	\label{eq:resummed-cummulant}
 \end{equation}
-Here, the exponent takes into account terms to all orders in $\alpha_s$, to a given logarithmic order. This is where a LL calculation determines the term $g_1(\alpha_sL)$, which resums contributions of the form $\alpha_s^nL^{n+1}$ in $\ln\Sigma(v)$ to all orders in perturbation theory. Next, NLL corresponds to computing the terms $g_1$ and $g_2$, hence resumming $\alpha_s^nL^{n}$. \\\\
-With all the necessary components in place, we can now proceed to the main task at hand: discussing the ARES method.
+Here, the exponent takes into account terms to all orders in $\alpha_s$, to a given logarithmic order. This is where a LL calculation determines the term $g_1(\alpha_sL)$, which resums contributions of the form $\alpha_s^nL^{n+1}$ in $\ln\Sigma(v)$ to all orders in perturbation theory. Next, NLL corresponds to computing the terms $g_1$ and $g_2$, hence resumming $\alpha_s^nL^{n}$.
 
 
 \subsection*{Thrust: worked example}
+We will now look at a specific event-shape, known as thrust, which is most widely discussed in the literature, is define as,
+\begin{equation}
+	T\equiv\max_{\vec{n}}\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}\,,\quad \tau=1-T\,.
+\end{equation}
+where $p_j$ are the number of particles in the event.
+
+
+
+
+
+
+
 
 
 \section{NNL Resummation: CAESAR}
