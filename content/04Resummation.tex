@@ -12,14 +12,44 @@
 
 \section{Introduction}
 In this chapter, we wish to discuss \emph{resummation}, particularly focussing on explaining the semi-numerical mentioned in Chapter~2, known as CAESAR and ARES. The ARES (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. We begin by explaining why resummation is required on certain observables, giving a worked example of a specific observable to demonstrate why it is necessary before describing both the CAESAR and then the ARES formalism. Included in this chapter, we discuss how we have extended ARES to hadronic collisions and lay out the formalism for which initial state radiation is calculated with ARES, with the details discussed in Chapter~5.
-\section{Motivation: the need for resummation}
-As discussed in Chapter~2, despite the clear advantage of IRC safe observables, issues still arise. Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
-Every power of $\alpha_s$ and therefore each emission can give up to two logarithms, coming from either the soft or collinear divergence. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$.
-\\\\The ARES method (discussed in section \ref{sec: Resummation}) looks at event-shape resummation.
-Event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.
+\section{Motivation}
+As discussed in Chapter~2, when performing fixed-order calculations on exclusive observables, we end up with large logarithms that can spoil perturbation theory. To be able to see this thoroughly, we wish to look at a specific observable, \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa}, to understand how these logarithms occur and how we can \emph{resum} them.
 
-\subsection*{Event-shapes}
-Examples of event shapes (and the ones we are looking at in our paper) are: one-jettiness, transverse thrust, and thrust minor. More information on event shapes can be found in \cite{Banfi:2016yyq}. 
+\subsection*{Thrust: leading-order calculation}
+We will now look at a specific event-shape, known as thrust~\cite{Farhi:1977sg, Brandt:1964sa}, which is most widely discussed in the literature, is define as,
+\begin{equation}
+	T\equiv\max_{\vec{n}}\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}\,,\quad \tau=1-T\,.
+\end{equation}
+where $p_j$ are the number of particles in the event. Thrust is a measure of how $2$-jettiness an event is, where an event is perfect $2$-jet like i.e. the jets are back to back when $\tau=0$ and they are perfectly spherically distributed when $\tau\rightarrow1$ as shown in Fig.~\ref{fig:thrust}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/thrust.png}
+    \caption{Thrust, taken from Ref.~\cite{Collaboration:2865014}}
+    \label{fig:thrust}
+\end{figure}
+ In general the fixed-order result for thrust looks something like
+\begin{equation}
+	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}=\delta(1-T)+\frac{\alpha_s}{2\pi}A(T)+\mathcal{O}(\alpha_s^2)\,,
+\end{equation}
+where the $\delta(1-T)$ indicates that when the event is $e^+e^-\rightarrow q\bar{q}$, the differential cross-section is non-zero only if $T=1$. \\ \\
+Note that at higher-orders that if this event-shape is not equal to its $2$-jet limit i.e. $T<1$, then this distribution will be finite as the soft and collinear configurations are excluded from the integration range. Therefore, if $\frac{2}{3}<T<1$, where the minimum is $\frac{2}{3}$, when we are looking at 3 particles $e^+e^-\rightarrow q\bar{q}g$, we find that
+\begin{equation}
+A(T)=C_F\left[\frac{2(2-3T+3T^2)}{T(1-T)}\ln\frac{2T-1}{T(1-T)}-\frac{3(2-T)(3T-2)}{1-T}\right]\,,
+\end{equation}
+where we can see that if $T\rightarrow1$ then the distribution has divergences which are due to the soft and collinear divergences which occur in the matrix element. 
+\todo{
+\begin{enumerate}
+	\item Put in terms of $\tau$
+	\item Find singularities - explain where they come from and where they cancel (plus distirbutions)
+	\item Cumulant
+	\item Resum expansion
+	\item Explain how its general for event-shapes (I think event shapes or maybe all exclusive observables)
+	\item Other types of event-shapes - the ones we are using for our paper
+\end{enumerate}}
+
+
+Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
+Every power of $\alpha_s$ and therefore each emission can give up to two logarithms, coming from either the soft or collinear divergence. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$. \\ \\
 The cumulative distribution for an event-shape is defined as the integral of the differential distribution up to some value $v$, normalised by the total cross-section:
 \begin{equation}
 	\Sigma(v)\equiv\frac{1}{\sigma}\int_0^vdV\frac{d\sigma}{dV}.
@@ -33,12 +63,15 @@ In the region $\alpha_sL\sim1$, we can expand $\Sigma(v)$ in terms of the coupli
 Here, the exponent takes into account terms to all orders in $\alpha_s$, to a given logarithmic order. This is where a LL calculation determines the term $g_1(\alpha_sL)$, which resums contributions of the form $\alpha_s^nL^{n+1}$ in $\ln\Sigma(v)$ to all orders in perturbation theory. Next, NLL corresponds to computing the terms $g_1$ and $g_2$, hence resumming $\alpha_s^nL^{n}$.
 
 
-\subsection*{Thrust: worked example}
-We will now look at a specific event-shape, known as thrust, which is most widely discussed in the literature, is define as,
-\begin{equation}
-	T\equiv\max_{\vec{n}}\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}\,,\quad \tau=1-T\,.
-\end{equation}
-where $p_j$ are the number of particles in the event.
+
+\subsection*{Event-shapes}
+Thrust is an observable known as an event shape variable (event-shapes), where event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.The CAESAR and ARES method (discussed in the following sections) looks at event-shape resummation.
+Examples of event shapes (and the ones we are looking at in our paper) are: 
+\begin{itemize}
+\item one-jettiness
+\item transverse thrust
+\item thrust minor
+\end{itemize}
 
 
 
@@ -53,7 +86,7 @@ where $p_j$ are the number of particles in the event.
 For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties:
 \begin{description}
    \item[Continuously global] A global observable is one which is sensitive to all of the emissions in an event. An observable which is continuously global adds another feature such that the scaling of the observable with respect to the energy of the emission is the same everywhere in the phase space. If an observable is not continuously global, it results in the presence of additional large logarithms known as non-global logarithms (these will not be discussed in this report).
- \item[rIRC safety] In section \ref{sec: IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
+ \item[rIRC safety] In section \ref{sec:IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
  
 \end{description}
 
