@@ -72,30 +72,22 @@ that the large logarithms arise, where the terms originate from those
 &\left[\frac{1}{\tau}\right]_+\rightarrow -\ln\frac{1}{\tau}\equiv-L\,,
 \end{aligned}
 \end{equation}
-where we have denoted $L\equiv \ln\frac{1}{\tau}$. These logarithms provide us with issues, not only in that they spoil the convergent nature of perturbation theory but also because we expect the probability of measuring an event with $\tau=0$ to be exactly zero. This is because this is in essence like measuring bare \question{free} quarks, which indicates that the fixed-order perturbative approach fails. \add{Plot of experimental vs. theory FO.} The terms which exists in the cumulant are
+where we have denoted $L\equiv \ln\frac{1}{\tau}$. \add{Say something soft/collinear divergence.} These logarithms provide us with issues, not only in that they spoil the convergent nature of perturbation theory but also because we expect the probability of measuring an event with $\tau=0$ to be exactly zero. This is because this is in essence like measuring bare \question{free} quarks, which indicates that the fixed-order perturbative approach fails. \add{Plot of experimental vs. theory FO.} The terms which exists in the cumulant are
 \begin{equation}
 \begin{aligned}
 \Sigma(\tau)\supset\quad&\alpha_sL^2 \qquad \alpha_s L \qquad \alpha_s \\
 &\alpha_s^2L^4 \qquad \alpha_s^2 L^3 \qquad \alpha_s^2 L^3\qquad \alpha_s^2 L^2 \qquad \alpha_s^2 L \qquad \alpha_s^2 \\
 &\alpha_s^3 L^6 \qquad \alpha_s^3 L^5 \qquad \dots \\
 &\,\,\vdots \\
-&\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad \alpha_s^n
+&\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad  \qquad  \qquad  \qquad \qquad  \qquad \qquad \alpha_s^n
 \end{aligned}
 \end{equation}
+\question{unsure if it should be formatted like this.} 
+As one can see, for every power of $\alpha_s$ and therefore each emission can give up to two logarithms, which originate from either the soft or collinear divergence. Essentially, what needs to be done is to reorganise and \emph{resum} this perturbative expansion in manner that gives the correct behaviour in the limit where $\tau\rightarrow0$. 
 
-\todo{
-\begin{enumerate}
-	\item Put in terms of $\tau$
-	\item Find singularities - explain where they come from and where they cancel (plus distirbutions)
-	\item Cumulant
-	\item Resum expansion
-	\item Explain how its general for event-shapes (I think event shapes or maybe all exclusive observables)
-	\item Other types of event-shapes - the ones we are using for our paper
-\end{enumerate}}
+\todo{Go from here and work in the text below into the text above.}
 
-
-Finite terms left over from this cancellation come in the form of a logarithm, $L\equiv\ln\left(\frac{1}{v}\right)$. which can become large in the region where the observable $v$ is small. These can occur at any order in pQCD and hence can spoil the convergent perturbative expansion we have in $\alpha_s$. Because of this, the fixed-order approach can no longer be used and we need to use another expansion. \\ \\
-Every power of $\alpha_s$ and therefore each emission can give up to two logarithms, coming from either the soft or collinear divergence. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$. \\ \\
+ Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$. \\ \\
 The cumulative distribution for an event-shape is defined as the integral of the differential distribution up to some value $v$, normalised by the total cross-section:
 \begin{equation}
 	\Sigma(v)\equiv\frac{1}{\sigma}\int_0^vdV\frac{d\sigma}{dV}.
@@ -111,15 +103,28 @@ Here, the exponent takes into account terms to all orders in $\alpha_s$, to a gi
 
 
 \subsection*{Event-shapes}
-Thrust is an observable known as an event shape variable (event-shapes), where event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state.The CAESAR and ARES method (discussed in the following sections) looks at event-shape resummation.
-Examples of event shapes (and the ones we are looking at in our paper) are: 
+Thrust is an observable known as an event shape variable (event-shapes), where event-shapes are a class of IRC safe observables which measure the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state. Examples of event shapes (and the ones we are looking at in our paper) are: 
 \begin{itemize}
-\item one-jettiness
-\item transverse thrust
-\item thrust minor
+\item {One-jettiness}:
+\begin{equation}
+		\mathcal{T}_1\equiv  \sum_{i} \min\left[\frac{2q_a\cdot p_i}{Q_a}, \frac{2q_b\cdot p_i}{Q_b}, \frac{2q_c\cdot p_i}{Q_c}\right]\,,
+	\end{equation}
+and normalising by scale $Q$ to give a dimensionless $\tau_1\equiv\frac{\mathcal{T}_1}{Q}$. \add{Define other variables here.}
+\item Transverse thrust
+\begin{equation}
+  T_t\equiv \frac{\sum_i |\vec q_{t,i}\cdot \vec q_T|}{ H_T q_T}\,.
+\end{equation}
+\add{We look at one minus the transverse thrust.} \add{Add in variables definition.}
+\item Thrust minor
+\begin{equation}
+  T_m \equiv \frac{\sum_i |\vec q_{t,i}\times \vec q_T|}{H_T q_T}\,.
+\end{equation}
+\add{Add in variables definition.}
 \end{itemize}
+\add{Add from the hhHjet draft.}
 
 
+The CAESAR and ARES method (discussed in the following sections) looks at event-shape resummation.
 
 
 
