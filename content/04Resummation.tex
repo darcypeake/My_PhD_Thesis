@@ -11,32 +11,78 @@
 }
 
 \section{Introduction}
-In this chapter, we wish to discuss \emph{resummation}, particularly focussing on explaining the semi-numerical mentioned in Chapter~2, known as CAESAR and ARES. The ARES (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. We begin by explaining why resummation is required on certain observables, giving a worked example of a specific observable to demonstrate why it is necessary before describing both the CAESAR and then the ARES formalism. Included in this chapter, we discuss how we have extended ARES to hadronic collisions and lay out the formalism for which initial state radiation is calculated with ARES, with the details discussed in Chapter~5.
+In this chapter, we wish to discuss \emph{resummation}, particularly focussing on explaining the semi-numerical mentioned in Sec.~\ref{sec:high-energy-picture}, known as \textsc{CAESAR} and \textsc{ARES}. The \textsc{ARES} (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. We begin by explaining why resummation is required on certain observables, giving a worked example of a specific observable to demonstrate why it is necessary before describing both the CAESAR and then the ARES formalism. Included in this chapter, we discuss how we have extended ARES to hadronic collisions and lay out the formalism for which initial state radiation is calculated with ARES, with the details discussed in Chapter~5.
 \section{Motivation}
 As discussed in Chapter~2, when performing fixed-order calculations on exclusive observables, we end up with large logarithms that can spoil perturbation theory. To be able to see this thoroughly, we wish to look at a specific observable, \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa}, to understand how these logarithms occur and how we can \emph{resum} them.
 
 \subsection*{Thrust: leading-order calculation}
 We will now look at a specific event-shape, known as thrust~\cite{Farhi:1977sg, Brandt:1964sa}, which is most widely discussed in the literature, is define as,
 \begin{equation}
-	T\equiv\max_{\vec{n}}\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}\,,\quad \tau=1-T\,.
+	T\equiv\max_{\vec{n}}\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}\,,
 \end{equation}
-where $p_j$ are the number of particles in the event. Thrust is a measure of how $2$-jettiness an event is, where an event is perfect $2$-jet like i.e. the jets are back to back when $\tau=0$ and they are perfectly spherically distributed when $\tau\rightarrow1$ as shown in Fig.~\ref{fig:thrust}
+where $\vec{p}_j$ is the 3-momenta of all particles within the event, and $\vec{n}$ is an arbitrary unit vector that maximises $\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}$ which has the same direction as that of the particle with largest momentum. This direction \question{and axis?} is known as the \emph{thrust axis}. For the process of $e^+e^-\rightarrow \mathrm{hadrons}$, the thrust is considered to be a measure of how `pencil-like' the jets are. When $T\sim1$, the jets are pencil like, while the jets are spherically distributed when $T\sim\frac{1}{2}$ \question{or zero?} as shown in Fig.~\ref{fig:thrust}. Standard convention is to use thrust as $\tau$, where $\tau=1-T$.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/thrust.png}
-    \caption{Thrust, taken from Ref.~\cite{Collaboration:2865014}}
+    \caption{Diagram showing the geometry of thrust ranging from $\tau=0$ to $\tau = 1$, taken from Ref.~\cite{Collaboration:2865014} \add{change this}.}
     \label{fig:thrust}
 \end{figure}
- In general the fixed-order result for thrust looks something like
+\FloatBarrier
+\noindent
+In general the fixed-order result for the normalised differential distribution w.r.t $T$ looks something like
 \begin{equation}
-	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}=\delta(1-T)+\frac{\alpha_s}{2\pi}A(T)+\mathcal{O}(\alpha_s^2)\,,
+	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}=\delta(1-T)+\frac{\alpha_s}{2\pi}A(T)+\mathcal{O}(\alpha_s^2)\,,
 \end{equation}
-where the $\delta(1-T)$ indicates that when the event is $e^+e^-\rightarrow q\bar{q}$, the differential cross-section is non-zero only if $T=1$. \\ \\
-Note that at higher-orders that if this event-shape is not equal to its $2$-jet limit i.e. $T<1$, then this distribution will be finite as the soft and collinear configurations are excluded from the integration range. Therefore, if $\frac{2}{3}<T<1$, where the minimum is $\frac{2}{3}$, when we are looking at 3 particles $e^+e^-\rightarrow q\bar{q}g$, we find that
+where $\sigma_{\mathrm{LO}}$ \question{I am unsure if we should actually change this to $\sigma_0$} is that found in Eq.~\ref{eq:sigma-LO}. The term $\delta(1-T)$ indicates that the Born process \question{and virtual} $e^+e^-\rightarrow q\bar{q}$, gives pencil-like events i.e. $T=1$. At higher-orders the event comes away from the pencil-like limit i.e. $T<1$. And so the first-order $e^+e^-\rightarrow q\bar{q}g$ gives rise to the term $A(T)$. This can be calculated from the Eq.~\ref{eq:qqg-real}, where
+\begin{equation}
+\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{dx_qdx_{\bar{q}}}=C_F\frac{\alpha_s}{2\pi}\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,.
+\end{equation}
+Using geometry and energy conservation, we find that $T=\max\left[x_q,x_{\bar{q}},x_g\right]$ where in a 3-particle event \question{is the sum over the final-state particles} the minimum value will be $T=\tfrac{2}{3}$, when all three momenta are equal. Here we find that
+\begin{equation}
+	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{dT}=C_F\frac{\alpha_s}{2\pi}\int dx_q \int dx_{\bar{q}}\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,\delta\left(T-\max\left[x_q,x_{\bar{q}},x_g\right]\right)\,,
+\end{equation}
+\question{unsure about the limits here} such that we find that
 \begin{equation}
 A(T)=C_F\left[\frac{2(2-3T+3T^2)}{T(1-T)}\ln\frac{2T-1}{T(1-T)}-\frac{3(2-T)(3T-2)}{1-T}\right]\,,
 \end{equation}
-where we can see that if $T\rightarrow1$ then the distribution has divergences which are due to the soft and collinear divergences which occur in the matrix element. 
+where in terms of $\tau$, we find that it is equal to
+\begin{equation}
+	A(\tau)=\frac{3(1+\tau)(3\tau-1)}{\tau}+\frac{(4+6\tau(\tau-1)\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)}\,.
+\end{equation}
+Here we can see that there is an IR divergence when $\tau=0$, however this is cancelled by the IR divergence in the virtual contribution i.e. the one-loop correction to $e^+e^-\rightarrow q\bar{q}$. The sum of this gives a finite result, since thrust is an IRC safe observable, see Sec.~\ref{sec:IRC}. The overall contribution up to first-order \question{unsure whether to call this NLO?} is
+\begin{equation}
+\begin{aligned}
+	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}=\sigma(\tau)+&\,C_F\frac{\alpha_s}{2\pi}\Bigg[\delta(\tau)\left(\frac{\pi^2}{3}-1\right)+3(1+\tau)(3\tau-1)+\frac{(4+6\tau(\tau-1)\ln(1-2\tau)}{1-\tau}\left[\frac{1}{\tau}\right]_+ \\ \\
+&-\frac{4+6\tau(\tau-1)}{1-\tau}\left[\frac{\ln\tau}{\tau}\right]_+\Bigg]\,.
+\end{aligned}
+\end{equation}
+\add{Put in definition of plus distribution somewhere.}
+Now the terms which become large when $\tau$ becomes small we referred to as singular terms
+\begin{equation}
+\left(\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}\right)_{\mathrm{SING}}=\sigma(\tau)+\,C_F\frac{\alpha_s}{2\pi}\left[\delta(\tau)\left(\frac{\pi^2}{3}-1\right)-3\left[\frac{1}{\tau}\right]_+-4\left[\frac{\ln\tau}{\tau}\right]_+\right]\,.
+\end{equation}
+It is the cumulative distribution \question{is this what it is called} (cumulant)
+\begin{equation}
+\Sigma(\tau)=\frac{1}{\sigma_{\mathrm{LO}}}\int_0^\tau d\tau'\frac{d\sigma}{d\tau'}\,,
+\end{equation}
+that the large logarithms arise, where the terms originate from those
+\begin{equation}
+\begin{aligned}
+&\left[\frac{\ln\frac{t}{\tau}}{\tau}\right]_+\rightarrow -\frac{1}{2}\ln^2\frac{1}{\tau}\equiv-\frac{L^2}{2} \\
+&\left[\frac{1}{\tau}\right]_+\rightarrow -\ln\frac{1}{\tau}\equiv-L\,,
+\end{aligned}
+\end{equation}
+where we have denoted $L\equiv \ln\frac{1}{\tau}$. These logarithms provide us with issues, not only in that they spoil the convergent nature of perturbation theory but also because we expect the probability of measuring an event with $\tau=0$ to be exactly zero. This is because this is in essence like measuring bare \question{free} quarks, which indicates that the fixed-order perturbative approach fails. \add{Plot of experimental vs. theory FO.} The terms which exists in the cumulant are
+\begin{equation}
+\begin{aligned}
+\Sigma(\tau)\supset\quad&\alpha_sL^2 \qquad \alpha_s L \qquad \alpha_s \\
+&\alpha_s^2L^4 \qquad \alpha_s^2 L^3 \qquad \alpha_s^2 L^3\qquad \alpha_s^2 L^2 \qquad \alpha_s^2 L \qquad \alpha_s^2 \\
+&\alpha_s^3 L^6 \qquad \alpha_s^3 L^5 \qquad \dots \\
+&\,\,\vdots \\
+&\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad \alpha_s^n
+\end{aligned}
+\end{equation}
+
 \todo{
 \begin{enumerate}
 	\item Put in terms of $\tau$
