@@ -1,98 +1,87 @@
 \chapter{Resummation}
-
-\todo{
-\begin{enumerate}
-\item Need for resummation: thrust example with logarithms
-\item Event-shapes
-\item Introduction of CAESAR/ARES as event-shape resummation frameworks: rIRC continuously global observables
-\item NLL: Introduction of the cumulant for NLL
-\item NNLL: Formalism + ISR prescription 
-\end{enumerate}
-}
-
 \section{Introduction}
-In this chapter, we wish to discuss \emph{resummation}, particularly focussing on explaining the semi-numerical mentioned in Sec.~\ref{sec:high-energy-picture}, known as \textsc{CAESAR} and \textsc{ARES}. The \textsc{ARES} (Automated Resummation for Event Shapes) is the formalism for generic-observable NNLL resummation. It is an extension of CAESAR (Computer Automated Expert Semi-Analytical Resummer) which calculates results to NLL precision. So far CAESAR has been used for both $e^+e^-$ and hadronic collisions whereas ARES has only been calculated in $e^+e^-$ collisions. We begin by explaining why resummation is required on certain observables, giving a worked example of a specific observable to demonstrate why it is necessary before describing both the CAESAR and then the ARES formalism. Included in this chapter, we discuss how we have extended ARES to hadronic collisions and lay out the formalism for which initial state radiation is calculated with ARES, with the details discussed in Chapter~5.
+In this chapter we present a detailed discussion of \emph{resummation}, with particular emphasis on the semi-numerical approaches first mentioned in Sec.~\ref{sec:high-energy-picture}, namely the \textsc{CAESAR}  (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd} and \textsc{ARES} (\emph{Automated Resummation for Event Shapes}) ~\cite{Banfi:2014sua} formalisms. These frameworks provide systematic methods for resumming logarithmically enhanced contributions that appear in perturbative QCD calculations for a broad class of IRC safe observables known as \emph{event-shape observables} (event shapes). As discussed in Sec.~\ref{sec:IRC} as well as Sec.~\ref{sec:high-energy-picture}, the need for resummation arises when fixed-order perturbative predictions become unreliable due to the presence of large logarithms which occur when the observable becomes small. Such logarithms can spoil the convergence of the perturbative expansion and must be resummed to all orders in the strong coupling to obtain meaningful theoretical predictions. In order to see this explicitly, we wish to illustrate this by looking at the fixed-order calculation of a specific observable, thereby motivating the need for resummation. We then introduce the \textsc{CAESAR} framework, which enables the automated resummation of a general event-shape observable to next-to-leading logarithmic (NLL) accuracy. \textsc{CAESAR} has been successfully applied to both $e^+e^-$ and hadronic collision processes~\cite{Banfi:2004yd, Banfi:2004nk} \question{check these are the correct references}. Building upon this, we describe the \textsc{ARES} formalism, which extends the \textsc{CAESAR} approach to achieve next-to-next-to-leading logarithmic (NNLL) precision. To date, \textsc{ARES} has been developed and applied to $e^+e^-$ collisions~\cite{Banfi:2014sua, Banfi:2018mcq, Arpino:2019ozn} \question{check these are the correct references}. Work done in Chapter~5 consists of original research where the \textsc{ARES} formalism is applied to hadronic collisions for the \emph{very first time}. In this chapter, we will discuss and outline how this extension is applied and thus show how the treatment of initial-state radiation within \textsc{ARES} is applied.
+
+
 \section{Motivation}
-As discussed in Chapter~2, when performing fixed-order calculations on exclusive observables, we end up with large logarithms that can spoil perturbation theory. To be able to see this thoroughly, we wish to look at a specific observable, \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa}, to understand how these logarithms occur and how we can \emph{resum} them.
+Here we will now consider a specific observable, which is one of the most widely studied observables in the literature, known as  thrust~\cite{Farhi:1977sg, Brandt:1964sa}. This is a type of IRC safe observable known as an event-shape (discussed later), and we will see its fixed-order calculation such that we can explicitly how the logarithms occur. In turn we will be able to understand why resummation is necessary and from there understand how resumation is used to resolve these logarithms. We will be able to understand from this specific observable, how this can be applied generally.
+
+
 
 \subsection*{Thrust: leading-order calculation}
-We will now look at a specific event-shape, known as thrust~\cite{Farhi:1977sg, Brandt:1964sa}, which is most widely discussed in the literature, is define as,
+The observable thrust is defined as,
 \begin{equation}
 	T\equiv\max_{\vec{n}}\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}\,,
 \end{equation}
-where $\vec{p}_j$ is the 3-momenta of all particles within the event, and $\vec{n}$ is an arbitrary unit vector that maximises $\frac{\sum_j|\vec{p}_j\cdot\vec{n}|}{\sum_j|\vec{p}_j|}$ which has the same direction as that of the particle with largest momentum. This direction \question{and axis?} is known as the \emph{thrust axis}. For the process of $e^+e^-\rightarrow \mathrm{hadrons}$, the thrust is considered to be a measure of how `pencil-like' the jets are. When $T\sim1$, the jets are pencil like, while the jets are spherically distributed when $T\sim\frac{1}{2}$ \question{or zero?} as shown in Fig.~\ref{fig:thrust}. Standard convention is to use thrust as $\tau$, where $\tau=1-T$.
+where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the maximisation is performed over all unit vectors $\vec{n}$. The direction $\vec{n}$ that maximises this quantity defines the \emph{thrust axis}. For the process $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how pencil-like an event is. Events with $T \simeq 1$ correspond to two narrow back-to-back jets, while more spherically distributed events have smaller values of $T$. It is conventional to work instead with the variable
+\begin{equation}
+	\tau \equiv 1 - T \,,
+\end{equation}
+so that the two-jet limit corresponds to $\tau \to 0$, as illustrated in Fig.~\ref{fig:thrust}. 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/thrust.png}
-    \caption{Diagram showing the geometry of thrust ranging from $\tau=0$ to $\tau = 1$, taken from Ref.~\cite{Collaboration:2865014} \add{change this}.}
+    \caption{Diagram showing the geometry of thrust ranging from $\tau\in[0,1]$, taken from Ref.~\cite{Collaboration:2865014} \add{change this}.}
     \label{fig:thrust}
 \end{figure}
 \FloatBarrier
 \noindent
-In general the fixed-order result for the normalised differential distribution w.r.t $T$ looks something like
+At fixed order in $\alpha_s$, the normalised differential thrust distribution takes the form
 \begin{equation}
-	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}=\delta(1-T)+\frac{\alpha_s}{2\pi}A(T)+\mathcal{O}(\alpha_s^2)\,,
+	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}
+	= \delta(\tau) + \frac{\alpha_s}{2\pi}\left( A(\tau)+ B\,\delta(\tau)\right) + \mathcal{O}(\alpha_s^2)\,,
 \end{equation}
-where $\sigma_{\mathrm{LO}}$ \question{I am unsure if we should actually change this to $\sigma_0$} is that found in Eq.~\ref{eq:sigma-LO}. The term $\delta(1-T)$ indicates that the Born process \question{and virtual} $e^+e^-\rightarrow q\bar{q}$, gives pencil-like events i.e. $T=1$. At higher-orders the event comes away from the pencil-like limit i.e. $T<1$. And so the first-order $e^+e^-\rightarrow q\bar{q}g$ gives rise to the term $A(T)$. This can be calculated from the Eq.~\ref{eq:qqg-real}, where
+where $\sigma_0$ denotes the Born-level cross section for $e^+e^- \to q\bar{q}$. The $\delta(\tau)$ term corresponds to the Born process, which produces exactly pencil-like events. At $\mathcal{O}(\alpha_s)$, real radiation from $e^+e^- \to q\bar{q}g$ generates a non-trivial thrust distribution through the function $A(\tau)$, while virtual corrections contribute to $B \, \delta(\tau)$. The combination of real and virtual contributions ensures a finite result, despite the infrared singularities present in each separately.
+The real emission term can be calculated from Eq.~\ref{eq:qqg-real},
 \begin{equation}
-\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{dx_qdx_{\bar{q}}}=C_F\frac{\alpha_s}{2\pi}\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,.
+\frac{1}{\sigma_0}\frac{d\sigma}{dx_q dx_{\bar{q}}} = C_F \frac{\alpha_s}{2\pi} \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})} \,,
 \end{equation}
-Using geometry and energy conservation, we find that $T=\max\left[x_q,x_{\bar{q}},x_g\right]$ where in a 3-particle event \question{is the sum over the final-state particles} the minimum value will be $T=\tfrac{2}{3}$, when all three momenta are equal. Here we find that
+where $x_i$ are the energy fractions of the final-state partons. Using energy conservation and the event geometry, the thrust in a three-particle event is given by
 \begin{equation}
-	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{dT}=C_F\frac{\alpha_s}{2\pi}\int dx_q \int dx_{\bar{q}}\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,\delta\left(T-\max\left[x_q,x_{\bar{q}},x_g\right]\right)\,,
+	T = \max[x_q, x_{\bar{q}}, x_g] \,,
 \end{equation}
-\question{unsure about the limits here} such that we find that
+so that the minimum value of $T$ is $2/3$ when all three partons momenta are equal, such that
 \begin{equation}
-A(T)=C_F\left[\frac{2(2-3T+3T^2)}{T(1-T)}\ln\frac{2T-1}{T(1-T)}-\frac{3(2-T)(3T-2)}{1-T}\right]\,,
+	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{dT}=C_F\frac{\alpha_s}{2\pi}\int dx_q \int dx_{\bar{q}}\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,\delta\left(T-\max\left[x_q,x_{\bar{q}},x_g\right]\right)\,.
 \end{equation}
-where in terms of $\tau$, we find that it is equal to
+Integrating over the allowed phase space yields
 \begin{equation}
 	A(\tau)=\frac{3(1+\tau)(3\tau-1)}{\tau}+\frac{(4+6\tau(\tau-1)\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)}\,.
 \end{equation}
-Here we can see that there is an IR divergence when $\tau=0$, however this is cancelled by the IR divergence in the virtual contribution i.e. the one-loop correction to $e^+e^-\rightarrow q\bar{q}$. The sum of this gives a finite result, since thrust is an IRC safe observable, see Sec.~\ref{sec:IRC}. The overall contribution up to first-order \question{unsure whether to call this NLO?} is
+Here we can see that there is an IR divergence when $\tau=0$, however this is cancelled by the IR divergence in the virtual contribution i.e. the one-loop correction to $e^+e^-\rightarrow q\bar{q}$. 
+The sum of this gives a finite result, since thrust is an IRC safe observable, see Sec.~\ref{sec:IRC}. One can see this cancellation by using regularisation techniques on the real and virtual diagrams as we saw in Sec.~\ref{sec:divergences}, however an easier way to find the combined answer is to use the fact that the combined regulated answer must give that found in Eq.~\ref{eq:sigma-full}, such that the full answer to first-order is
 \begin{equation}
 \begin{aligned}
-	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}=\sigma(\tau)+&\,C_F\frac{\alpha_s}{2\pi}\Bigg[\delta(\tau)\left(\frac{\pi^2}{3}-1\right)+3(1+\tau)(3\tau-1)+\frac{(4+6\tau(\tau-1)\ln(1-2\tau)}{1-\tau}\left[\frac{1}{\tau}\right]_+ \\ \\
+	\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}=\delta(\tau)+&\,C_F\frac{\alpha_s}{2\pi}\Bigg[\delta(\tau)\left(\frac{\pi^2}{3}-1\right)+3(1+\tau)(3\tau-1)+\frac{(4+6\tau(\tau-1)\ln(1-2\tau)}{1-\tau}\left[\frac{1}{\tau}\right]_+ \\ \\
 &-\frac{4+6\tau(\tau-1)}{1-\tau}\left[\frac{\ln\tau}{\tau}\right]_+\Bigg]\,.
 \end{aligned}
 \end{equation}
-\add{Put in definition of plus distribution somewhere.}
 Now the terms which become large when $\tau$ becomes small we referred to as singular terms
 \begin{equation}
-\left(\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}\right)_{\mathrm{SING}}=\sigma(\tau)+\,C_F\frac{\alpha_s}{2\pi}\left[\delta(\tau)\left(\frac{\pi^2}{3}-1\right)-3\left[\frac{1}{\tau}\right]_+-4\left[\frac{\ln\tau}{\tau}\right]_+\right]\,.
+\left(\frac{1}{\sigma_{\mathrm{LO}}}\frac{d\sigma}{d\tau}\right)_{\mathrm{sing}}=\delta(\tau)+\,C_F\frac{\alpha_s}{2\pi}\left[\delta(\tau)\left(\frac{\pi^2}{3}-1\right)-3\left[\frac{1}{\tau}\right]_+-4\left[\frac{\ln\tau}{\tau}\right]_+\right]\,.
 \end{equation}
-It is the cumulative distribution \question{is this what it is called} (cumulant)
+Isolating the plus distributions, we consider the cumulative distribution (cumulant)
 \begin{equation}
-\Sigma(\tau)=\frac{1}{\sigma_{\mathrm{LO}}}\int_0^\tau d\tau'\frac{d\sigma}{d\tau'}\,,
+	\Sigma(\tau) = \frac{1}{\sigma_0} \int_0^\tau d\tau' \frac{d\sigma}{d\tau'}
 \end{equation}
-that the large logarithms arise, where the terms originate from those
+which transforms the distributions as the large logarithms explicit i.e. 
 \begin{equation}
 \begin{aligned}
 &\left[\frac{\ln\frac{t}{\tau}}{\tau}\right]_+\rightarrow -\frac{1}{2}\ln^2\frac{1}{\tau}\equiv-\frac{L^2}{2} \\
 &\left[\frac{1}{\tau}\right]_+\rightarrow -\ln\frac{1}{\tau}\equiv-L\,,
 \end{aligned}
 \end{equation}
-where we have denoted $L\equiv \ln\frac{1}{\tau}$. \add{Say something soft/collinear divergence.} These logarithms provide us with issues, not only in that they spoil the convergent nature of perturbation theory but also because we expect the probability of measuring an event with $\tau=0$ to be exactly zero. This is because this is in essence like measuring bare \question{free} quarks, which indicates that the fixed-order perturbative approach fails. \add{Plot of experimental vs. theory FO.} The terms which exists in the cumulant are
+These  terms arise from soft and collinear emissions, and their appearance in the fixed-order distribution signals the breakdown of the perturbative expansion in the small-$\tau$ region. The cumulant gives rise to these logarithms at all orders such that it contains
 \begin{equation}
 \begin{aligned}
 \Sigma(\tau)\supset\quad&\alpha_sL^2 \qquad \alpha_s L \qquad \alpha_s \\
-&\alpha_s^2L^4 \qquad \alpha_s^2 L^3 \qquad \alpha_s^2 L^3\qquad \alpha_s^2 L^2 \qquad \alpha_s^2 L \qquad \alpha_s^2 \\
+&\alpha_s^2L^4 \qquad \alpha_s^2 L^3 \qquad \alpha_s^2 L^2 \qquad \alpha_s^2 L \qquad \alpha_s^2 \\
 &\alpha_s^3 L^6 \qquad \alpha_s^3 L^5 \qquad \dots \\
 &\,\,\vdots \\
 &\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad  \qquad  \qquad  \qquad \qquad  \qquad \qquad \alpha_s^n
 \end{aligned}
 \end{equation}
-\question{unsure if it should be formatted like this.} 
-As one can see, for every power of $\alpha_s$ and therefore each emission can give up to two logarithms, which originate from either the soft or collinear divergence. Essentially, what needs to be done is to reorganise and \emph{resum} this perturbative expansion in manner that gives the correct behaviour in the limit where $\tau\rightarrow0$. 
-
-\todo{Go from here and work in the text below into the text above.}
-
- Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. Resummation takes place in the region of small $v$. \\ \\
-The cumulative distribution for an event-shape is defined as the integral of the differential distribution up to some value $v$, normalised by the total cross-section:
-\begin{equation}
-	\Sigma(v)\equiv\frac{1}{\sigma}\int_0^vdV\frac{d\sigma}{dV}.
-	\label{eq:total-cummulant}
-\end{equation}
+Each power of $\alpha_s$ can generate up to two logarithms from soft and collinear divergences. These logarithms provide us with issues, not only in that they spoil the convergent nature of perturbation theory but also because we expect the probability of measuring an event with $\tau=0$ to be exactly zero. This is because this is in essence like measuring bare \question{free} quarks, which indicates that the fixed-order perturbative approach fails. \add{Plot of experimental vs. theory FO.} Essentially, what needs to be done is to reorganise and \emph{resum} this perturbative expansion in manner that gives the correct behaviour in the limit where $\tau\rightarrow0$. Resummation is the process of re-ordering the expansion. Instead of having an expansion in terms of increasing powers of $\alpha_s$ we now have an expansion in terms of increasing powers of $L$. The first and largest terms in this expansion are known as leading-logarithm terms (LL), they have the form $\alpha_s^nL^{n+1}$.  The next contribution is termed next-to-leading logarithm (NLL) and has the form $\alpha_s^nL^{n}$ etc. 
 In the region $\alpha_sL\sim1$, we can expand $\Sigma(v)$ in terms of the coupling $\alpha_s$ and logarithms $L$ in the following way:
 \begin{equation}
 	\Sigma(v)\simeq\exp\{Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)+\cdots\}\,.
@@ -123,16 +112,8 @@ and normalising by scale $Q$ to give a dimensionless $\tau_1\equiv\frac{\mathcal
 \end{itemize}
 \add{Add from the hhHjet draft.}
 
-
+\section{Event shape resummation}
 The CAESAR and ARES method (discussed in the following sections) looks at event-shape resummation.
-
-
-
-
-
-
-
-\section{NNL Resummation: CAESAR}
 \subsection*{Observable Requirements}
 For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties:
 \begin{description}
@@ -141,7 +122,12 @@ For both CAESAR and ARES, the observable we are considering needs to be both con
  
 \end{description}
 
+\section{NNL Resummation: CAESAR}
+\todo{NLL: Introduction of the cumulant for NLL}
+
 \section{NNL Resummation: ARES}
+\todo{NNLL: Formalism + ISR prescription }
+
 \subsection*{Formulation}
 The ARES method begins by understanding that any rIRC safe observable $V$, in the presence of a single soft emission collinear to leg $\ell$, can be parameterised in the following way \cite{Arpino:2019ozn}:
 \begin{equation}
