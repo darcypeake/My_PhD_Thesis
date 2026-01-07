@@ -5,12 +5,13 @@ In this chapter we discuss the resummation of logarithmically enhanced contribut
 
 \section{Motivation: Thrust and the Need for Resummation}
 \done{
-The event shape \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa} is widely used in the literature and at the Large Electron-Positron Collider (LEP) for precise determinations of the strong coupling $\alpha_s$~\cite{Aglietti:2025jdj, Abbate:2010xh}. Thrust is defined as
+The event shape \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa} is widely used in the literature and at the Large Electron-Positron Collider (LEP) for precise determinations of the strong coupling $\alpha_s$~\cite{Aglietti:2025jdj, Abbate:2010xh} \question{Unsure if these are the correct references to use due to the controversy?}. Thrust is defined as
 \begin{equation}
 \label{eq:thrust}
 	T \equiv \max_{\vec{n}} \frac{\sum_j |\vec{p}_j \cdot \vec{n}|}{\sum_j |\vec{p}_j|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
-where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\ref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.}
+where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\ref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.
+} % Uncomment here
 \begin{figure}[h]
 \begin{tikzpicture}[scale=0.9, >=Stealth]
 \begin{scope}
@@ -66,6 +67,7 @@ with $T_\text{min} = 2/3$ for equal momenta and $T_\text{max} = 1$. The correspo
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{dT} = C_F \frac{\alpha_s}{2\pi} \int dx_q \int dx_{\bar{q}} \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})} \, \delta\big(T - \max[x_q, x_{\bar{q}}, x_g]\big),
 \end{equation}
+\question{Same limits as in Sec.~\ref{sec:divergences} - also should we be referring to the equation in this section to give insight into where this equation came from?}
 subject to the kinematic constraint $x_q + x_{\bar{q}} + x_g = 2$. Integrating over the available phase space yields
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = C_F \frac{\alpha_s}{2\pi} \left\{ \frac{3(1+\tau)(3\tau-1)}{\tau} + \frac{(4+6\tau(\tau-1))\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)} \right\}.
@@ -114,32 +116,58 @@ To restore predictive power, the perturbative expansion must therefore be reorga
 	\Big\},
 	\label{eq:resummed-cummulant}
 \end{equation}
-where the functions $g_i$ resum logarithms at successive logarithmic accuracies. The leading-logarithmic contributions $\alpha_s^n L^{n+1}$ are contained in $g_1(\alpha_s L) $, next-to-leading logarithms $\alpha_s^n L^{n}$ in $g_2(\alpha_s L) $, and so on.}
+where the functions $g_i$ resum logarithms at successive logarithmic accuracies. The leading-logarithmic contributions $\alpha_s^n L^{n+1}$ are contained in $g_1(\alpha_s L) $, next-to-leading logarithms $\alpha_s^n L^{n}$ in $g_2(\alpha_s L) $, and so on. \\ \\
+\question{Unsure if the structure is OK here?}
+} \\ \\ %Uncomment here when draft is done. 
+\reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
+
 
 \section{Event-shapes}
-\question{Still unsure if it is exclusive, IRC, rIRC, event shapes, global rIRC etc.?} 
-The logarithms and the necessity for the resummed distribution is not unique to thrust and in fact will occur for any exclusive IRC safe observables. Thrust is a special type of IRC safe observable known as an event shape. An event shape measures the hadronic energy-flow in an event. Like many observables in QCD, an event-shape is an observable that provides us with precise measurements of the strong coupling. Furthermore, they are observables which measure the "shape" of the hadronic final state. Examples of event shapes are: 
-\begin{itemize}
-\item {One-jettiness}:
-\begin{equation}
-		\mathcal{T}_1\equiv  \sum_{i} \min\left[\frac{2q_a\cdot p_i}{Q_a}, \frac{2q_b\cdot p_i}{Q_b}, \frac{2q_c\cdot p_i}{Q_c}\right]\,,
-	\end{equation}
-and normalising by scale $Q$ to give a dimensionless $\tau_1\equiv\frac{\mathcal{T}_1}{Q}$. \add{Define other variables here.}
-\item Transverse thrust
-\begin{equation}
-  T_t\equiv \frac{\sum_i |\vec q_{t,i}\cdot \vec q_T|}{ H_T q_T}\,.
-\end{equation}
-\add{We look at one minus the transverse thrust.} \add{Add in variables definition.}
-\item Thrust minor
-\begin{equation}
-  T_m \equiv \frac{\sum_i |\vec q_{t,i}\times \vec q_T|}{H_T q_T}\,.
-\end{equation}
-\add{Add in variables definition.}
-\end{itemize}
-\add{Add from the hhHjet draft.}
+\done{
+The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\ref{eq:resummed-cummulant} applies to all IRC safe observables \question{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. Event shapes are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including: \add{I am unsure if I like how this is written and also I find that maybe the event shape isn't described correctly.}
+} %Uncomment after
 
-\section{Event shape resummation}
-The CAESAR and ARES method (discussed in the following sections) looks at event-shape resummation.
+
+\begin{itemize}
+\item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
+\begin{equation}
+  T_\perp \equiv \max_{\vec{n}_\perp}
+  \frac{\sum_i \left| \vec{p}_{\perp i} \cdot \vec{n}_\perp \right|}
+       {\sum_i \left| \vec{p}_{\perp i} \right|},
+  \qquad
+  \tau \equiv 1 - T_\perp \,,
+\end{equation}
+where $\vec{p}_{\perp i}$ denotes the transverse momentum of final-state particle $i$ with respect to the beam direction, and the unit vector $\vec{n}_\perp$ that maximises this quantity is referred to as the \emph{transverse thrust axis}.
+
+\item \textbf{One-jettiness} is a special case of the more general $N$-jettiness event shape~\cite{Stewart:2010tn}, $\tau_N$, which quantifies how well the final state can be described by $N$ narrow jets. For $N=1$, one-jettiness is defined as
+\begin{equation}
+  \mathcal{T}_1 \equiv
+  \sum_i
+  \min\!\left[
+    \frac{2 q_a \cdot p_i}{Q_a},
+    \frac{2 q_b \cdot p_i}{Q_b},
+    \frac{2 q_J \cdot p_i}{Q_J}
+  \right] \,,
+\end{equation}
+where $q_{a,b,J}$ are the four-momenta of the incoming beams and the observed jet, and the sum runs over the final-state partons $p_i$. The normalisation factors are $Q_i = 2 \rho_i E_i$, with $\rho_i$ depending on the reference frame (e.g., $\rho_i = 1$ in the laboratory frame). While $\mathcal{T}_1$ is dimensionful, it is often convenient to define the dimensionless variable $\tau_1 \equiv \mathcal{T}_1 / Q$, where $Q$ is the hard scale of the interaction.
+
+\item \textbf{Thrust minor}, also introduced in Ref.~\cite{Banfi:2004nk}, is a measure of out-of-plane radiation and is defined as
+\begin{equation}
+  T_m \equiv \frac{\sum_i |\vec p_{\perp i}\times \vec n_\perp|}{\sum_i p_{\perp i}}\,.
+\end{equation}
+\end{itemize}
+\question{Are the references correct for transverse thrust and thrust minor?} \\ \\
+\done{
+Beyond their use in extracting parameters such as $\alpha_s$ and the QCD $\beta$-function, event shapes characterise the structure of final-state events. Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. In this thesis, we focus on an observable-independent, \emph{semi-numerical} formalism. At NLL accuracy, this is implemented in \textsc{CAESAR}, which has been applied to both $e^+e^-$ and hadronic collisions~\cite{Banfi:2004yd, Banfi:2004nk}. At NNLL accuracy, the formalism is extended in \textsc{ARES}~\cite{Banfi:2014sua, Banfi:2018mcq, Arpino:2019ozn}, which has only been used for $e^+e^-$ case so far \question{and jet veto?}. In Chapter~5, we show how the ARES method is extended to hadronic collisions. We first review the \textsc{CAESAR} framework and then describe its extension to \textsc{ARES}. \\ \\
+\add{There is a lot of repetition between the sections in this chapter so far. There are all repitions between these and the work in Chapter~2.} \\ \\
+} %Uncoment after \\ \\
+\question{Am unsure by this last paragraph.} \\ \\
+\question{The reference~\cite{Dasgupta:2003iq}, is a paper but was used merely for the background of event shapes - am unsure if necessary to cite or not?} \\ \\
+\reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq}}
+
+
+\section{NNL Resummation: CAESAR}
+
 \subsection*{Observable Requirements}
 For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties:
 \begin{description}
@@ -148,7 +176,6 @@ For both CAESAR and ARES, the observable we are considering needs to be both con
  
 \end{description}
 
-\section{NNL Resummation: CAESAR}
 \todo{NLL: Introduction of the cumulant for NLL}
 
 \section{NNL Resummation: ARES}
