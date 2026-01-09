@@ -429,13 +429,14 @@ To understand the structure of the IR divergences, we now consider the NLO contr
 The corresponding real-emission contribution to the cross section is
 \begin{equation}
 \label{eq:qqg-real}
-	\sigma^{q\bar{q}g}=\sigma_{\mathrm{LO}}\,\,C_F\,\frac{\alpha_s}{2\pi}\int_0^1dx_q\int_{1-x_q}^{1}dx_{\bar{q}}\,\,\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,,
+	\sigma^{q\bar{q}g}=\sigma_0\,\,C_F\,\frac{\alpha_s}{2\pi}\int_0^1dx_q\int_{0}^{1}dx_{\bar{q}}\,\,\frac{x_q^2+x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}\,\Theta\left(x_q+x_{\bar{q}}-1\right)
+\,,
 \end{equation}
 where the energy fractions are defined as 
 \[
     x_i = \frac{2 p_i \cdot p}{s}\,, \qquad p=(p_q+p_{\bar{q}}+p_g)\,,
     \]
- and $s=(p_{e^+}+p_{e^-})^2$ is the centre-of-mass (CoM) energy squared. 
+ and $s=(p_{e^+}+p_{e^-})^2$ is the centre-of-mass (CoM) energy squared. The Heaviside theta function enforces the kinematic constraint\(x_q + x_{\bar{q}} \geq 1\), which follows directly from energy conservation in the three-particle final state.
 From the structure of the integrand, divergences arise in the following limits:
 \begin{enumerate}
     \item \(x_q \to 1\) \emph{and} \(x_{\bar{q}} \to 1\): soft emission (\(E_g \to 0\));
@@ -443,7 +444,15 @@ From the structure of the integrand, divergences arise in the following limits:
           (\(\theta_{\bar{q}g},\, \theta_{qg} \to 0\))\,,
 \end{enumerate}
 where $\theta_{qg}, \theta_{\bar{q}g}$ are the angles between the (anti) quark and gluon respectively.
-These are infrared and collinear singularities, collectively referred to as IR (or IRC) divergences. Using dimensional regularisation to isolate these singularities, Eq.~\ref{eq:qqg-real} becomes
+These are infrared and collinear singularities, collectively referred to as IR (or IRC) divergences. To regulate the divergences, we use dimensional regularisation, which gives the following regularised expression
+\begin{equation}
+\begin{aligned}
+	\sigma^{q\bar{q}g}=&\sigma_0\,C_F\frac{\alpha_s}{2\pi}\left(\frac{4\pi\mu_R^2}{s}\right)^\varepsilon\frac{1}{\Gamma(1-\varepsilon)}\int_0^1dx_q\int_0^1dx_{\bar{q}}\\
+	&\times\frac{(x_q^2+x_{\bar{q}}^2)-\varepsilon(2-x_q-x_{\bar{q}})^2}{(1-x_q)^{1+\varepsilon}\,(1-x_{\bar{q}})^{1+\varepsilon}\,(x_q+x_{\bar{q}}-1)^\varepsilon}\,\Theta\left(x_q+x_{\bar{q}}-1\right)\,.
+	\end{aligned}
+\end{equation}
+\vspace{1em}
+Performing the integral over $x_q$ and $x_{\bar{q}}$, we find
 \begin{equation}
     \sigma^{q\bar{q}g}
     = \sigma_{\mathrm{LO}}\, \frac{\alpha_s}{2\pi}\,
