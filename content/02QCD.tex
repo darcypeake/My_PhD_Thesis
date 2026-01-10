@@ -436,7 +436,7 @@ where the energy fractions are defined as
 \[
     x_i = \frac{2 p_i \cdot p}{s}\,, \qquad p=(p_q+p_{\bar{q}}+p_g)\,,
     \]
- and $s=(p_{e^+}+p_{e^-})^2$ is the centre-of-mass (CoM) energy squared. The Heaviside theta function enforces the kinematic constraint\(x_q + x_{\bar{q}} \geq 1\), which follows directly from energy conservation in the three-particle final state.
+ and $s=(p_{e^+}+p_{e^-})^2$ is the centre-of-mass (CoM) energy squared. The Heaviside theta function enforces the kinematic constraint \(x_q + x_{\bar{q}} \geq 1\), which follows directly from energy conservation in the three-particle final state.
 From the structure of the integrand, divergences arise in the following limits:
 \begin{enumerate}
     \item \(x_q \to 1\) \emph{and} \(x_{\bar{q}} \to 1\): soft emission (\(E_g \to 0\));
@@ -535,8 +535,6 @@ The cancellation of singularities between the real and virtual diagrams is a dir
 
 \section{Soft and collinear factorisation of $|\mathcal{M}_m|^2$}
 \label{sec:M-factorisation}
-\add{Pier Monni's notes here.}
-\add{Webber paper for DIS.}
 We now consider the general structure of infrared singularities by introducing
 the partonic cross section for a generic $2\rightarrow m$ hard-scattering
 process,
@@ -567,9 +565,10 @@ factors, it can describe: cross-sections, differential cross sections or expecta
 With the general form of the partonic cross section established, we now turn to the behaviour
 of the squared scattering amplitude $|\mathcal{M}_m|^2$.  
 In the soft and collinear limits, this quantity factorises into a remarkably simple and universal form. The relevant expressions are summarised below.
+\todo{The soft and collinear sections, the wording needs to be checked.}
 \subsection*{Soft limit}
 Suppressing the initial–state momenta $(p_a,p_b)$ for brevity, the squared matrix
-element for the emission of an additional soft parton of momentum $q$ behaves as
+element for the emission of an additional soft parton \question{gluon} of momentum $q$ behaves as
 \begin{equation}
     |\mathcal{M}_{m+1}^{(0)}(q,p_1,\ldots,p_m)|^2
     \simeq
@@ -584,30 +583,42 @@ element for the emission of an additional soft parton of momentum $q$ behaves as
             \mathcal{M}_m^{(0)}(p_1,\ldots,p_m)
         \big\rangle,
 \end{equation}
-where the colour operators satisfy
+where the colour-charge operators satisfy
 \begin{equation}
 \begin{aligned}
     \mathbf{T}_i \cdot \mathbf{T}_j &= \mathbf{T}_j \cdot \mathbf{T}_i \qquad (i\neq j),\\[4pt]
     \mathbf{T}_i^2 &= C_i \qquad (C_i = C_F \text{ for a quark, } C_A \text{ for a gluon}),
 \end{aligned}
 \end{equation}
-and the eikonal factor
-\[
+and the eikonal factor for the emission of a single soft gluon is
+\begin{equation}
     S_{ij}(q) = \frac{p_i \cdot p_j}{(p_i \cdot q)(p_j \cdot q)}
-    \]
-encodes the soft dynamics of QCD.
+             = \frac{2\,s_{ij}}{s_{iq}\,s_{jq}},
+\end{equation}
+with $s_{ab}=(p_a+p_b)^2$.
 
 \subsection*{Collinear limit}
-
-When two partons $i$ and $j$ become collinear, the squared matrix element factorises as
+The collinear limit arises when two final-state \question{final-state?} partons $i$ and $j$ become parallel.
+This limit is conveniently described using the Sudakov parameterisation
+\begin{equation}
+\begin{aligned}
+    p_i^\mu &= z_i\, p^\mu + k_\perp^\mu
+               - \frac{k_\perp^2}{z_i}\,\frac{n^\mu}{2p\cdot n}, \\
+    p_j^\mu &= z_j\,p^\mu - k_\perp^\mu
+               - \frac{k_\perp^2}{z_j}\,\frac{n^\mu}{2p\cdot n},
+\end{aligned}
+\end{equation}
+where the collinear limit is defined by taking $k_\perp^\mu \to 0$.
+The longitudinal momentum fractions satisfy $z_i+z_j=1$, and the light-like reference
+vectors obey $p^2=n^2=0$ with $k_\perp\cdot p = k_\perp\cdot n = 0$.\\ \\
+In the collinear limit for partons $i$ and $j$, the squared matrix element factorises as
 \begin{equation} 
 \begin{aligned}
 |\mathcal{M}_{m+1}^{(0)}&(p_1,\cdots p_i, p_j, \cdots p_{m+1})|^2\simeq\\
-&\frac{2}{s_{ij}}4\pi\mu_R^{2\varepsilon}\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{\mathbf{P}}^{(0)}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,,
+&\frac{2}{s_{ij}}4\pi\mu_R^{2\varepsilon}\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{P}^{(0)}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,,
 \end{aligned}
 \end{equation}
-where $s_{ij}\equiv2p_i\cdot p_j$
-The operators $\hat{\mathbf{P}}^{(0)}_{ij}$ are the fully \emph{regularised} form of the Altarelli-Parisi splitting function, whose explicit forms are \question{Should we be saying these regularised AP functions are \emph{produced} by the operator?}
+where the kernel $\hat{P}^{(0)}_{ij}$ is the fully \emph{regularised} form of the Altarelli-Parisi splitting function describing the splitting $(ij)\to i+j$. Its explicit forms are
 \begin{equation}
 \begin{aligned}
 \label{eq:AP-functions}
@@ -617,19 +628,7 @@ The operators $\hat{\mathbf{P}}^{(0)}_{ij}$ are the fully \emph{regularised} for
 	&\hat{P}_{gg}^{(0)}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,,
 \end{aligned}
 \end{equation}
-where $s,s'$ denote the spins of the two partons.
-
-\noindent
-To derive these expressions, it is convenient to employ a Sudakov decomposition for the two collinear momenta,
-\begin{equation}
-\begin{aligned}
-    p_i^\mu &= z_i\, p^\mu + k_\perp^\mu
-               - \frac{k_\perp^2}{z_1}\,\frac{n^\mu}{2p\cdot n}, \\
-    p_j^\mu &= z_j\,p^\mu - k_\perp^\mu
-               - \frac{k_\perp^2}{z_j}\,\frac{n^\mu}{2p\cdot n},
-\end{aligned}
-\end{equation}
-where $z_i+z_j=1$ are the longitudinal momentum fractions, $p^\mu$ and $n^\mu$ are light-like reference vectors, $k_\perp^\mu$ is transverse to both, and the collinear limit corresponds to $k_\perp^\mu \to 0$. \\ \\
+where $s,s'$ denote the spins of the two partons. \\ \\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze} }
 
 \section{IRC Safety} 
@@ -731,7 +730,7 @@ The aim of this section is to outline the various stages of a high-energy hadron
 \noindent
 Since the initial collision occurs at high energies and the energy of the system decreases as the event evolves towards hadronisation, it is natural for us to organise the discussion according to the relevant energy scale $Q$.
 \subsection*{Hard scattering $(Q \gg \Lambda_{\mathrm{QCD}})$}
-At the highest energy scale, the dynamics of the collision are governed by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. In this process, two partons, denoted $p_i$ and $p_j$, are extracted from the incoming protons $P_1$ and $P_2$ and undergo a short-distance interaction. The partonic content of the proton is encoded in parton distribution functions (PDFs), $f_{i,P_1}(x_1,\mu_F^2)$, which give the probability of finding a parton of type $i$ carrying a longitudinal momentum fraction $x_1$ of the proton $P_1$ at the factorisation scale~$\mu_F$.  PDFs are non-perturbative functions which are extracted from experimental data but their dependence on the scale $\mu_F$ is governed by perturbative QCD through the Dokshitzer--Gribov--Lipatov--Altarelli--Parisi (DGLAP) evolution equations~\cite{Gribov:1972ri,Dokshitzer:1977sg,Altarelli:1977zs},
+At the highest energy scale, the dynamics of the collision are governed by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. In this process, two partons, denoted $p_i$ and $p_j$, are extracted from the incoming protons $P_1$ and $P_2$ and undergo a short-distance interaction. The partonic content of the proton is encoded in parton distribution functions (PDFs), $f_{i,P_1}(x_1,\mu_F^2)$, which give the probability of finding a parton of type $i$ carrying a longitudinal momentum fraction $x_1$ of the proton $P_1$ at the factorisation scale~$\mu_F$.  PDFs are non-perturbative functions which are extracted from experimental data but their dependence on the scale $\mu_F$ is governed by perturbative QCD through the Dokshitzer--Gribov--Lipatov--Altarelli--Parisi (DGLAP) evolution equations~\cite{Gribov:1972ri,Dokshitzer:1977sg,Altarelli:1977zs}, \question{Add in a $P_1=p_i x$?}
 \begin{equation}
 	\frac{df_{i,P_1}(x_1,\mu_F^2)}{d\mu_F^2}=\sum_{j}\int_{x_1}^1dz\,\frac{\alpha_s}{2\pi}P_{ij}(z,\mu_F^2)f_j\left(\frac{x_1}{z},\mu_F^2\right)\,,
 \end{equation}
@@ -750,7 +749,7 @@ At leading order, the Altarelli-Parisi splitting functions (see Eq.~\ref{eq:AP-f
 \end{equation}
 The factorisation scale $\mu_F$ separates long- and short-distance physics.
 Radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in the partonic cross section. \\ \\ 
-The hard interaction produces the primary particles of the event, in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators, for example \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}.
+The hard interaction produces the primary particles of the event, in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators, for example \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}. \question{Confirm these are correct?}
 
 
 \subsection*{QCD evolution $(Q \gtrsim \Lambda_{\mathrm{QCD}})$}
@@ -784,6 +783,7 @@ The three stages described above capture the main features of the QCD dynamics i
 Finally, prior to the hard interaction, the incoming partons may radiate, leading to \emph{initial-state radiation}. This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
 
 \subsection*{The QCD Factorisation Formula}
+\add{Alberto's diagram.}
 To relate the partonic dynamics discussed so far to experimentally measured hadronic cross sections, we can employ the QCD factorisation formula,
 \begin{equation}
 \label{eq:factorisation-formula}
@@ -820,7 +820,7 @@ A wide variety of jet algorithms exist, each with its own advantages and limitat
 
     \item \textbf{Sequential recombination algorithms:} These iteratively cluster the closest particles according to a chosen distance measure until a stopping criterion is reached. Variations arise from different definitions of the distance measure (e.g.\ relative transverse momentum or angular separation between particles) and from the choice of stopping condition. Sequential recombination algorithms are often referred to as \emph{bottom-up} algorithms.
 \end{itemize}
-In this thesis, we focus exclusively on sequential recombination algorithms. The following sections discuss several of these algorithms to provide background for the new DIS algorithm introduced in Chapter~\ref{chapter: DIS}. For a comprehensive review of jets and jet algorithms across different processes, see Refs.~\cite{Salam:2010nqg}.\\ \\
+In this thesis, we focus exclusively on sequential recombination algorithms. The following sections discuss several of these algorithms to provide background for the new DIS algorithm introduced in Chapter~\ref{chapter: DIS}. For a comprehensive review of jets and jet algorithms across different processes, see Refs.~\cite{Banfi:2016yyq, Salam:2010nqg}.\\ \\
 \reference{~\cite{Banfi:2016yyq},~\cite{Salam:2010nqg}.}
 
 
