@@ -760,21 +760,22 @@ Following the hard scattering, the coloured partons produced in the event underg
 \begin{itemize}
 	\item \emph{Parton showers}, which model the
 	soft and collinear emissions down to the hadronisation scale. Well-known examples
-	include: \textsc{pythia}~\cite{Bierlich:2022pfr}, \textsc{herwig}~\cite{Bahr:2008pv, Bellm:2015jjp}, and \textsc{PanScales}~\cite{vanBeekveld:2023ivn}. While \textsc{pythia} and \textsc{herwig} parton showers have both achieved an LL accuracy, the \textsc{PanScales} parton shower has demonstrated NLL accuracy for a broad class of observables in both hadronic collisions~\cite{vanBeekveld:2022zhl, vanBeekveld:2022ukn} and deep-inelastic scattering~\cite{vanBeekveld:2023chs}, with ongoing work aimed at extending this to higher logarithmic accuracy.
+	include: \textsc{Sherpa}~\cite{Gleisberg:2008ta}, \textsc{Pythia}~\cite{Bierlich:2022pfr}, \textsc{Herwig}~\cite{Bahr:2008pv, Bellm:2015jjp}, and \textsc{PanScales}~\cite{vanBeekveld:2023ivn}. While \textsc{Pythia} and \textsc{Herwig} parton showers have both achieved an LL accuracy, the \textsc{Sherpa}~\cite{Herren:2022jej, Sherpa:2024mfk} and \textsc{PanScales} parton showers have demonstrated NLL accuracy for a broad class of observables in both hadronic collisions~\cite{vanBeekveld:2022zhl, vanBeekveld:2022ukn} and deep-inelastic scattering~\cite{vanBeekveld:2023chs}, with ongoing work aimed at extending this to higher logarithmic accuracy.
+	\question{Should we be saying also for $e^+e^-$ collision for PanScales also? \\ Does Sherpa do the Alaric for all: $e^+e^-$, hadronic and DIS also?}
 	\item \emph{Resummation}, where logarithmically enhanced contributions from soft and
 	collinear radiation are resummed to all orders in perturbation theory. Semi-numerical
 	resummation frameworks such as \textsc{CAESAR}~\cite{Banfi:2004yd} and \textsc{ARES}~\cite{Banfi:2014sua} fall into this
 	category. For $e^+e^-$ observables, resummation is known up to next-to-next-to-leading
-	logarithmic (NNLL) accuracy~\cite{Arpino:2019ozn}, while hadronic collisions are currently known up to NLL. \question{which citation do we use for NLL hadronic collisions for ARES - there are many to choose from - is there a particular one?}
+	logarithmic (NNLL) accuracy~\cite{Arpino:2019ozn}, while hadronic collisions are generally known up to NLL~\cite{Banfi:2004nk}. 
 	The work presented in Chapter~5 focuses on extending the \textsc{ARES} framework to
-	hadronic collisions at NNLL accuracy. \add{Mention of event shapes.}
+	hadronic collisions at NNLL accuracy. \question{Mention it is an event shape resummer? And check this is the correct hadronic reference?}
 		\item \emph{Effective field theory} approaches, most notably soft-collinear effective
 	theory (SCET)~\cite{Bauer:2000ew, Bauer:2000yr, Bauer:2001ct, Bauer:2001yt} which describe soft and collinear degrees of freedom through an
 	observable-dependent factorisation formula. In this framework, the relevant dynamics
 	are encoded in separate hard, collinear, soft, and jet functions, allowing resummation to
-	be performed analytically \question{SCET is fully analytical?} for a range of observables, in some cases up to $\mathrm{N^3LL}$
-	accuracy as seen in Ref.~\cite{Abbate:2010xh}. \question{There are many papers on observables with high accuracy - I presumed, since this is one Iain Stewart's papers it was safe to cite this?} 
-\end{itemize}
+	be performed analytically \question{`allowing the factorisation formula for the resummation to be determined analytically'} for a range of observables, in some cases up to $\mathrm{N^3LL}$
+	accuracy as seen in Ref.~\cite{Abbate:2010xh}. \question{Only M.Lim's paper has gone up to NNNL in~\cite{Alioli:2023rxx}? What about the paper I have referenced?\\ What about the references I gave for SCET above, are these OK?} 
+	\end{itemize}
 
 \subsection*{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
 As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into long-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Hadronisation occurs in the non-perturbative regime and therefore cannot be calculated from first principles within QCD. Its effects are therefore modelled using numerical models. \question{I see that there are a lot of references for what models in the black book and~\cite{Gleisberg:2008ta} - however am unsure if these are out of date now.} 
