@@ -535,13 +535,12 @@ The cancellation of singularities between the real and virtual diagrams is a dir
 
 \section{Soft and collinear factorisation of $|\mathcal{M}_m|^2$}
 \label{sec:M-factorisation}
-We now consider the general structure of infrared singularities by introducing
-the partonic cross section for a generic $2\rightarrow m$ hard-scattering
-process,
+In the previous section, we illustrated the cancellation of IRC divergences for the process $e^+e^- \to \mathrm{hadrons}$ at next-to-leading order. We now consider the general structure of these divergences, focusing on the behaviour of partonic matrix elements in the soft and collinear limits. Understanding these factorisation properties is essential for characterising the singular structure of QCD  to all orders in perturbation theory. \question{Is it all orders if we are just looking at one extra emission?}\\ \\
+To this end, we introduce the partonic cross section for a generic $2\to m$ hard-scattering process,
 \[
     p_a + p_b \rightarrow p_1 + \cdots + p_m\,.
 \]
-The corresponding partonic cross section is given by
+The corresponding partonic cross section can be written as
 \begin{equation}
 \label{eq:2-to-m-xsec}
    \hat{ \sigma}= \frac{1}{2s}\int d\Phi^{(m)}(p_1,\ldots,p_m)\,|\mathcal{M}_m(p_a,p_b; p_1,\ldots,p_m)|^2\,F_J^{(m)}(p_1,\ldots,p_m)\,,
@@ -556,19 +555,18 @@ where the individual components are defined as follows:
     \[
         |\mathcal{M}_m|^2 = \langle \mathcal{M}_m | \mathcal{M}_m \rangle\,,
     \]
-    which implicitly sums over the colour and spin degrees of freedom of the $m$ final-state particles.
+    where the sum over colour and spin degrees of freedom of the $m$ final-state partons is implicit.
 \item $F_J^{(m)}$ is the \emph{jet function}, which specifies the observable under consideration.
  Depending on the choice of $\Theta$–functions, $\delta$–functions, or numerical
-factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\ref{eq:2-to-m-xsec} reduces to the total cross-section.
+factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\ref{eq:2-to-m-xsec} reduces to the \question{fully inclusive} total cross-section.
 \end{itemize}
 \add{A reference for this section - particularly Eq.~\ref{eq:2-to-m-xsec}.} \\\\
-With the general form of the partonic cross section established, we now turn to the behaviour
-of the squared scattering amplitude $|\mathcal{M}_m|^2$.  
-In the soft and collinear limits, this quantity factorises into a remarkably simple and universal form. The relevant expressions are summarised below.
-\todo{The soft and collinear sections, the wording needs to be checked.}
-\subsection*{Soft limit}
-Suppressing the initial–state momenta $(p_a,p_b)$ for brevity, the squared matrix
-element for the emission of an additional soft parton \question{gluon} of momentum $q$ behaves as
+With the general form of the partonic cross-section established, we now turn to the behaviour of
+the squared scattering amplitude $|\mathcal{M}_m|^2$. In the soft and collinear limits, this quantity factorises
+into a remarkably simple and universal form. The relevant expressions are summarised below.
+\subsection{Soft limit}
+Suppressing the initial-state momenta $(p_a,p_b)$ for brevity, the squared matrix element for the
+emission of an additional soft parton of momentum $q$ behaves as
 \begin{equation}
     |\mathcal{M}_{m+1}^{(0)}(q,p_1,\ldots,p_m)|^2
     \simeq
@@ -581,25 +579,25 @@ element for the emission of an additional soft parton \question{gluon} of moment
             \mathbf{T}_i \cdot \mathbf{T}_j
         \big|
             \mathcal{M}_m^{(0)}(p_1,\ldots,p_m)
-        \big\rangle,
+        \big\rangle\,,
 \end{equation}
-where the colour-charge operators satisfy
+Here, $\mathbf{T}_i$ are the colour-charge operators acting on parton $i$, which satisfy
 \begin{equation}
 \begin{aligned}
-    \mathbf{T}_i \cdot \mathbf{T}_j &= \mathbf{T}_j \cdot \mathbf{T}_i \qquad (i\neq j),\\[4pt]
-    \mathbf{T}_i^2 &= C_i \qquad (C_i = C_F \text{ for a quark, } C_A \text{ for a gluon}),
+    \mathbf{T}_i \cdot \mathbf{T}_j &= \mathbf{T}_j \cdot \mathbf{T}_i
+    \qquad (i\neq j),\\[4pt]
+    \mathbf{T}_i^2 &= C_i
+    \qquad (C_i = C_F \text{ for quarks, } C_A \text{ for gluons})\,.
 \end{aligned}
 \end{equation}
-and the eikonal factor for the emission of a single soft gluon is
+The eikonal factor $S_{ij}(q)$ encodes the kinematic dependence of the soft emission:
 \begin{equation}
-    S_{ij}(q) = \frac{p_i \cdot p_j}{(p_i \cdot q)(p_j \cdot q)}
-             = \frac{2\,s_{ij}}{s_{iq}\,s_{jq}},
+    S_{ij}(q) = \frac{p_i \cdot p_j}{(p_i \cdot q)(p_j \cdot q)} = \frac{2 s_{ij}}{s_{iq} s_{jq}}\,, 
 \end{equation}
-with $s_{ab}=(p_a+p_b)^2$.
+with $s_{ab} = (p_a + p_b)^2$.
 
-\subsection*{Collinear limit}
-The collinear limit arises when two final-state \question{final-state?} partons $i$ and $j$ become parallel.
-This limit is conveniently described using the Sudakov parameterisation
+\subsection{Collinear limit}
+When two final-state partons, $i$ and $j$, become collinear, their momenta can be parametrised using a Sudakov decomposition,
 \begin{equation}
 \begin{aligned}
     p_i^\mu &= z_i\, p^\mu + k_\perp^\mu
@@ -608,17 +606,17 @@ This limit is conveniently described using the Sudakov parameterisation
                - \frac{k_\perp^2}{z_j}\,\frac{n^\mu}{2p\cdot n},
 \end{aligned}
 \end{equation}
-where the collinear limit is defined by taking $k_\perp^\mu \to 0$.
+where the collinear limit corresponds to $k_\perp^\mu \to 0$.
 The longitudinal momentum fractions satisfy $z_i+z_j=1$, and the light-like reference
-vectors obey $p^2=n^2=0$ with $k_\perp\cdot p = k_\perp\cdot n = 0$.\\ \\
-In the collinear limit for partons $i$ and $j$, the squared matrix element factorises as
+vectors obey $p^2=n^2=0$ with $k_\perp\cdot p = k_\perp\cdot n = 0$. \\ \\
+In this limit, the squared matrix element factorises as
 \begin{equation} 
 \begin{aligned}
 |\mathcal{M}_{m+1}^{(0)}&(p_1,\cdots p_i, p_j, \cdots p_{m+1})|^2\simeq\\
 &\frac{2}{s_{ij}}4\pi\mu_R^{2\varepsilon}\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{P}^{(0)}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,,
 \end{aligned}
 \end{equation}
-where the kernel $\hat{P}^{(0)}_{ij}$ is the fully \emph{regularised} form of the Altarelli-Parisi splitting function describing the splitting $(ij)\to i+j$. Its explicit forms are
+\question{where $p_{ij}=p_i+p_j$} where the kernel $\hat{P}^{(0)}_{ij}$ denotes the fully regularised Altarelli--Parisi splitting function associated with the splitting $(ij)\to i+j$. The explicit forms of these splitting functions are
 \begin{equation}
 \begin{aligned}
 \label{eq:AP-functions}
@@ -628,7 +626,8 @@ where the kernel $\hat{P}^{(0)}_{ij}$ is the fully \emph{regularised} form of th
 	&\hat{P}_{gg}^{(0)}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,,
 \end{aligned}
 \end{equation}
-where $s,s'$ denote the spins of the two partons. \\ \\
+where $s,s'$ denote the spins of the two partons.
+\question{These are fully regularised or just AP splitting functions? We need to reference the Catani paper.} \\ \\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze} }
 
 \section{IRC Safety} 
