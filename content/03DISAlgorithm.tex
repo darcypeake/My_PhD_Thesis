@@ -1,8 +1,9 @@
 \chapter{Generalised Deep Inelastic Scattering Algorithm}
 \label{chapter: DIS}
-The Electron--Ion Collider (EIC), currently under construction at Brookhaven National Laboratory, is expected to begin operation in the early 2030s.  It will provide new opportunities to study the structure of QCD, including the spin structure of the proton, the dynamics of confinement, and gluon saturation~\cite{Accardi:2012qut}. Deep inelastic scattering (DIS) will be one of the key processes at the EIC, and its jet-rich final states make jet reconstruction an essential part of many analyses. Jet algorithms therefore play a central role in DIS studies. 
-Most developments in jet algorithms over the past decades have been driven by hadron collider applications, in particular at the LHC, where the anti-$k_\perp$ algorithm~\cite{Cacciari:2008gp} has become the standard choice. Jet algorithms for DIS were developed around the same time as those for hadronic collisions. The DIS $k_\perp$ algorithm was introduced in Ref.~\cite{Catani:1992zp}, in the same work that presented the hadronic $k_\perp$ algorithm, both extending the Durham algorithm for $e^+e^-$ collisions~\cite{Catani:1991hj}. An angular-ordered DIS algorithm -- both the Cambridge and Aachen variant -- was later proposed in Ref.~\cite{Webber:1993bm}. These algorithms were direct extensions of the Cambridge algorithm for $e^+e^-$~\cite{Dokshitzer:1997in} and, in the Aachen case, of the inclusive $k_\perp$ algorithms for hadronic collisions introduced independently in Refs.~\cite{Ellis:1993tq,Catani:1993hr}. More recently, the Centauro algorithm~\cite{Arratia:2020ssx} was proposed, combining features of longitudinally invariant $k_\perp$ algorithms~\cite{Ellis:1993tq,Catani:1993hr} with those of spherically invariant algorithms~\cite{Catani:1992zp}. A Cambridge/Aachen-based DIS algorithm designed for the study of Lund variables was introduced in Ref.~\cite{vanBeekveld:2023chs}, and forms the starting point for our work. In this paper we introduce a generalised $k_\perp$ algorithm adapted to DIS. It follows the structure of the generalised $k_\perp$ algorithm used in $e^+e^-$ collisions as implemented in  \textsc{FASTJET}~\cite{Cacciari:2011ma}, but is formulated in the Breit frame and does not have an anti-$k_\perp$ variant. \\ \\
-{\color{blue} (This is the introduction of the \emph{first draft} of the DIS paper - this will almost definitely be changed in the draft and should be changed here accordingly. Phenomenology papers tend to have long introductions that will not need here, however we must mention the history of algorithms as we have here along with other ideas that MvB/SFR/AK will edit in the draft. Also when the time comes please cite this published paper.)}
+The Electron--Ion Collider (EIC), currently under construction at Brookhaven National Laboratory, is expected to begin operation in the early 2030s.  It will provide new opportunities to study the structure of QCD, including the spin structure of the proton, the dynamics of confinement, and gluon saturation~\cite{Accardi:2012qut}. Deep inelastic scattering (DIS) will be one of the key processes at the EIC, and its jet-rich final states make jet reconstruction an essential part of many analyses. Jet algorithms therefore play a central role in DIS studies. \\ \\
+Most developments in jet algorithms over the past decades have been driven by hadron collider applications, in particular at the LHC, where the anti-$k_\perp$ algorithm~\cite{Cacciari:2008gp} has become the standard choice. Jet algorithms for DIS were developed around the same time as those for hadronic collisions. The DIS $k_\perp$ algorithm was introduced in Ref.~\cite{Catani:1992zp}, in the same work that presented the hadronic $k_\perp$ algorithm, both extending the Durham algorithm for $e^+e^-$ collisions~\cite{Catani:1991hj}. An angular-ordered DIS algorithm -- both the Cambridge and Aachen variant -- was later proposed in Ref.~\cite{Webber:1993bm}. These algorithms were direct extensions of the Cambridge algorithm for $e^+e^-$~\cite{Dokshitzer:1997in} and, in the Aachen case, of the inclusive $k_\perp$ algorithms for hadronic collisions introduced independently in Refs.~\cite{Ellis:1993tq,Catani:1993hr}. More recently, the Centauro algorithm~\cite{Arratia:2020ssx} was proposed, combining features of longitudinally invariant $k_\perp$ algorithms~\cite{Ellis:1993tq,Catani:1993hr} with those of spherically invariant algorithms~\cite{Catani:1992zp}. A Cambridge/Aachen-based DIS algorithm designed for the study of Lund variables was introduced in Ref.~\cite{vanBeekveld:2023chs}, and forms the starting point for our work. \\ \\
+In this paper we introduce a generalised $k_\perp$ algorithm adapted to DIS. It follows the structure of the generalised $k_\perp$ algorithm used in $e^+e^-$ collisions as implemented in  \textsc{fastjet}~\cite{Cacciari:2011ma}, but is formulated in the Breit frame and does not have an anti-$k_\perp$ variant. \\ \\
+
 \section{Jet Clustering Procedure}
 In this section we present the generalised $k_\perp$ algorithm. The clustering proceeds as follows:
 \begin{enumerate}
@@ -41,10 +42,6 @@ In this section we present the generalised $k_\perp$ algorithm. The clustering p
 \end{enumerate}
 The jet-resolution parameter $k_T^2$ determines the number of jets identified in the clustering procedure and plays a role analogous to the jet-resolution parameter, $d_{\mathrm{cut}}$, introduced in Section~\ref{subsec: e+e-}. Since the distance measure $d_{ij}$ is \emph{dimensionful}, the parameter $k_T^2$ is likewise a dimensionful quantity.
 
-In this way we end up with one final-state macrojet and a collection of beam jets. 
-{\color{red} I think we end up with one macrojet and one beam jet. Need to re-read Catani and Wobbish paper on what they exactly cluster in terms of the macrojet.}\\ \\
-{\color{blue}We want to add in that this is similar to Catanis/Wobbish  but dimensionful distance measure and cut and also like MvB/SFR but not an observable - look at what they say here about $y_\mathrm{cut}$.}
-
 \subsection*{Final-state Macro-jet}
 \label{subsec:FS-macro-jet}
 Having obtained a list of candidate jets, we next identify the jet that carries the largest light-cone momentum of the struck quark in the Breit frame. This jet, referred to as the \emph{final-state macro-jet}, is defined as the one that maximises the quantity $P \cdot p_{\mathrm{jet}}$, and is therefore the jet most closely aligned with the struck quark. 
@@ -60,9 +57,10 @@ The Centauro algorithm is designed to address both of these limitations. It is b
       $\bar{\eta}_i$ becomes large and diverges. This prevents clustering in the proton beam region, similar to the behaviour of the anti-$k_\perp$-algorithm.
 \end{itemize}
 \add{Flesh this out a bit.}
-\question{A.Banfi: should we have the Centauro algorithm in an appendix?}
+\question{Should we have the Centauro algorithm in an appendix?}
 \section{Results and Discussion}
 
+\section{Conclusion}
 
 
 
