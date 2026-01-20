@@ -535,8 +535,8 @@ The cancellation of singularities between the real and virtual diagrams is a dir
 
 \section{Soft and collinear factorisation of $|\mathcal{M}_m|^2$}
 \label{sec:M-factorisation}
-In the previous section, we illustrated the cancellation of IRC divergences for the process $e^+e^- \to \mathrm{hadrons}$ at next-to-leading order. We now consider the general structure of these divergences, focusing on the behaviour of the partonic matrix elements in the soft and collinear limits~\cite{Catani:1999ss} \question{Is this the appropriate place to cite?}. Understanding these factorisation properties is essential for characterising the singular structure of QCD. \\ \\
-For the sake of this demonstration, we introduce to the partonic cross section for a hard-scattering of $2\to m$ massless partons \footnote{This can generalised to the case where there are colour singlets in the final state.} \question{Check footnote}
+In the previous section, we illustrated the cancellation of IRC divergences for the process $e^+e^- \to \mathrm{hadrons}$ at next-to-leading order. We now consider the general structure of these divergences, focusing on the behaviour of the partonic matrix elements in the soft and collinear limits~\cite{Catani:1999ss}. Understanding these factorisation properties is essential for characterising the singular structure of QCD. \\ \\
+For the sake of this demonstration, we introduce the partonic cross section for a hard-scattering of $2\to m$ massless partons 
 \[
     p_a + p_b \rightarrow p_1 + \cdots + p_m\,.
 \]
@@ -547,9 +547,9 @@ The corresponding partonic cross section can be written as
 \end{equation}
 where the individual components are defined as follows:
 \begin{itemize}
-	\item $d\Phi^{(m)}$ is the $m$-parton phase space, \question{Check}
+    \item $d\Phi^{(m)}$ denotes the $m$-parton phase space\footnote{This expression can be generalised to include colour-singlet final states by replacing the delta function $\delta(p_i^2)$ with $\delta(p_i^2 - m_i^2)$.},
 \begin{equation}
-d\Phi^{(m)} = \prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, (2\pi) \, \delta_{+}(p_i^2) \, (2\pi)^D \, \delta^{(D)}\bigl(p_a + p_b - \sum_{j=1}^{m} p_j\bigr)\,.
+d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, \left(2\pi\right) \, \delta\left(p_i^2\right)\,\Theta\left(p_i^0\right)\right]\left(2\pi\right)^D\delta^{(D)}\Big(p_a + p_b - \sum_{j=1}^{m} p_j\Big)\,.
 \end{equation}
 \item $\mathcal{M}_m$ is the scattering amplitude for the $2\!\rightarrow\! m$ process. It admits the perturbative expansion shown in Eq.~\ref{eq:M-pert-theory}. Its modulus squared is written as
     \[
@@ -558,7 +558,7 @@ d\Phi^{(m)} = \prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, (2\pi) \, \delta_{+}(p
     where the sum over colour and spin degrees of freedom of the $m$ final-state partons is implicit.
 \item $F_J^{(m)}$ is the \emph{jet function}, which specifies the observable under consideration.
  Depending on the choice of $\Theta$–functions, $\delta$–functions, or numerical
-factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\ref{eq:2-to-m-xsec} reduces to the fully inclusive total cross-section. \question{fully inclusive cross section?}
+factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\ref{eq:2-to-m-xsec} reduces to the total cross-section. 
 \end{itemize}
 With the general form of the partonic cross-section established, we now turn to the behaviour of
 the squared scattering amplitude $|\mathcal{M}_m|^2$. In the soft and collinear limits, this quantity factorises
@@ -723,12 +723,11 @@ At the highest energy scale, the dynamics of the collision are governed by the h
 \begin{equation}
 	\frac{df_{i,P_1}(x_1,\mu_F^2)}{d\mu_F^2}=\sum_{j}\int_{x_1}^1dz\,\frac{\alpha_s}{2\pi}P_{ij}(z,\mu_F^2)f_j\left(\frac{x_1}{z},\mu_F^2\right)\,,
 \end{equation}
-where the splitting functions $P_{ij}(z)$ admit a perturbative expansion:
+where the Altarelli-Parisi splitting functions $P_{ij}(z)$ admit a perturbative expansion:
 \begin{equation}
 	P_{ij}(z,\mu_F^2) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-At leading order, the Altarelli-Parisi splitting functions consist of the real-emission terms in Eq.~\ref{eq:AP-functions} together with the associated virtual corrections.
-\question{check this is correct}
+At leading order, these splitting functions include the terms in Eq.~\ref{eq:AP-functions} and the associated virtual corrections:
 \begin{equation}
 \begin{aligned}
 &P_{q\bar{q}}^{(0)}(z)=C_F\left[\frac{1+z^2}{(1-z)_+}+\frac{3}{2}\delta(1-z)\right]\,,\\
@@ -737,6 +736,7 @@ At leading order, the Altarelli-Parisi splitting functions consist of the real-e
 &P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+\delta(1-z)\frac{11C_A-4T_Rn_f}{6}\,.
 \end{aligned}
 \end{equation}
+\ABquestion{Still need some understanding here - Catani calls the splitting functions in Eq~\ref{eq:AP-functions} AP splitting functions but these are also the AP splitting functions here? Also I believe the $q\bar{q}$ here comes from the $gq$ in the Eq~\ref{eq:AP-functions} - does this need to be explicit? Should we also be noting that we take $\varepsilon\to 0$ and also adding virtual corrections only to two of them I think? }
 The factorisation scale $\mu_F$ separates long- and short-distance physics.
 Radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in the partonic cross section. \\ \\ 
 The hard interaction produces the primary particles of the event, in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators, for example \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}. 
@@ -755,11 +755,11 @@ Following the hard scattering, the coloured partons produced in the event underg
 	logarithmic (NNLL) accuracy~\cite{Arpino:2019ozn}, while hadronic collisions are generally known up to NLL. 
 	The work presented in Chapter~5 focuses on extending the \textsc{ARES} framework to
 	hadronic collisions at NNLL accuracy. 
-			\item \emph{Effective field theory} approaches, most notably soft-collinear effective theory (SCET)~\cite{Bauer:2000ew, Bauer:2000yr, Bauer:2001ct, Bauer:2001yt}, describe soft and collinear degrees of freedom through an observable-dependent factorisation formula. In this framework, the relevant dynamics are encoded in separate hard, collinear, soft, and jet functions, which enables the resummation to be carried out analytically for a wide range of observables. In some cases, this can be performed up to $\mathrm{N^3LL}$ accuracy, as demonstrated in Refs.~\cite{Abbate:2010xh, Alioli:2023rxx}. \question{Check the analytical statement here and check Refs. with Andrea.}
+			\item \emph{Effective field theory} approaches, most notably soft-collinear effective theory (SCET)~\cite{Bauer:2000ew, Bauer:2000yr, Bauer:2001ct, Bauer:2001yt}, describe soft and collinear degrees of freedom through an observable-dependent factorisation formula. In this framework, the relevant dynamics are encoded in separate hard, collinear, soft, and jet functions, which enables the resummation to be carried out analytically for a wide range of observables. In some cases, this can be performed up to $\mathrm{N^3LL}$ accuracy, as demonstrated in Refs.~\cite{Becher:2008cf, Abbate:2010xh, Alioli:2023rxx}. \ABquestion{Should I be saying that the `factorisation formula' can be determined analytically rather than the `resummation' can be determined analytically? Also unsure if the Abbate/Stewart ref is necessary?}
 	\end{itemize}
 
 \subsection*{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
-As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into longer-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Hadronisation occurs in the non-perturbative regime and therefore cannot be calculated from first principles within QCD. Its effects are therefore modelled using numerical models~\cite{Sjostrand:1982fn, Andersson:1983jt, Webber:1983if}.
+As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into longer-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Hadronisation occurs in the non-perturbative regime and therefore cannot be calculated from first principles within QCD. Its effects can be simulated through various models such as those found in Refs.~\cite{Sjostrand:1982fn, Andersson:1983jt, Webber:1983if,Dokshitzer:1995qm}. \ABquestion{Do I need to be more specific on these hadronisation models and what they do?}
 \\ \\ 
 The three stages described above capture the main features of the QCD dynamics in a high-energy hadronic collision, but several additional ingredients contribute to the structure of a realistic event. Electromagnetic radiation, shown as yellow lines in Fig.~\ref{fig:high-energy-event}, may occur at any stage of the process. In addition, secondary semi-hard interactions between the proton remnants give rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These interactions generate further radiation and hadrons, however are not described by standard QCD factorisation and require modelling. \\ \\
 Finally, prior to the hard interaction, the incoming partons may radiate, leading to \emph{initial-state radiation}. This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
