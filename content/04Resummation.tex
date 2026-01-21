@@ -1,17 +1,14 @@
 \chapter{Resummation}
-\done{
-In this chapter we discuss the resummation of logarithmically enhanced contributions in perturbative QCD, focusing on the semi-numerical frameworks \textsc{CAESAR} (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd} and \textsc{ARES} (\emph{Automated Resummation for Event Shapes})~\cite{Banfi:2014sua}. These frameworks provide systematic methods to resum large logarithms that arise when fixed-order predictions become unreliable for a class of IRC safe observables known as event shapes. To illustrate the origin of such logarithms, we first examine a fixed-order calculation for the event shape known as thrust. We discuss what event shapes are, describing examples which we will use in Chapter~5. We then outline the \textsc{CAESAR} framework, which automates resummation to next-to-leading logarithmic (NLL) accuracy, and the \textsc{ARES} framework, which extends this to next-to-next-to-leading logarithmic (NNLL) precision. \textsc{CAESAR} has been applied to both $e^+e^-$ and hadronic collisions~\cite{Banfi:2004yd, Banfi:2004nk}, while \textsc{ARES} has been developed primarily for $e^+e^-$ collisions~\cite{Banfi:2014sua, Banfi:2018mcq, Arpino:2019ozn}. In Chapter~5, we present the first application of \textsc{ARES} to hadronic collisions, including the treatment of initial-state radiation. At the end of Chapter~4 we will outline how initial-state radiation is taken care of in \textsc{ARES}. \question{Unsure if I need to repeat this as have it in Chapter 2?}
-}
+In this chapter we discuss the resummation of logarithmically enhanced contributions in perturbative QCD, focusing on the semi-numerical frameworks \textsc{CAESAR} (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd} and \textsc{ARES} (\emph{Automated Resummation for Event Shapes})~\cite{Banfi:2014sua}. These frameworks provide systematic methods to resum large logarithms that arise when fixed-order predictions become unreliable for a class of IRC safe observables known as event shapes. To illustrate the origin of such logarithms, we first examine a fixed-order calculation for the event shape known as thrust. We discuss what event shapes are, describing examples which we will use in Chapter~5. We then outline the \textsc{CAESAR} framework - firstly illustrated as an idea and then implemented into a code -  which automates resummation to next-to-leading logarithmic (NLL) accuracy, and the \textsc{ARES} framework, which extends this to next-to-next-to-leading logarithmic (NNLL) precision. \textsc{CAESAR} has been applied to both $e^+e^-$ and hadronic collisions~\cite{Banfi:2004yd, Banfi:2004nk}, while \textsc{ARES} has been developed primarily for $e^+e^-$ collisions~\cite{Banfi:2014sua, Banfi:2018mcq, Arpino:2019ozn}. In Chapter~5, we present the first application of \textsc{ARES} to hadronic collisions, including the treatment of initial-state radiation. \question{jet-veto for ARES also?}
+
 
 \section{Motivation: Thrust and the Need for Resummation}
-\done{
 The event shape \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa} is widely used in the literature and at the Large Electron-Positron Collider (LEP) for precise determinations of the strong coupling $\alpha_s$~\cite{Aglietti:2025jdj, Abbate:2010xh} \question{Unsure if these are the correct references to use due to the controversy?}. Thrust is defined as
 \begin{equation}
 \label{eq:thrust}
 	T \equiv \max_{\vec{n}} \frac{\sum_j |\vec{p}_j \cdot \vec{n}|}{\sum_j |\vec{p}_j|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
 where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\ref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.
-} % Uncomment here
 \begin{figure}[h]
 \begin{tikzpicture}[scale=0.9, >=Stealth]
 \begin{scope}
@@ -52,7 +49,6 @@ where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state,
 \add{Maybe make the 2 jet limit arrows a bit shorter.}
 
 \subsection*{Thrust: Fixed-order Calculation}
-\done{
 For the process $e^+e^- \to q\bar{q}$, the final state consists of two back-to-back partons, yielding the Born-level contribution
 \begin{equation}
     \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = \delta(\tau),
@@ -117,17 +113,12 @@ To restore predictive power, the perturbative expansion must therefore be reorga
 	\label{eq:resummed-cummulant}
 \end{equation}
 where the functions $g_i$ resum logarithms at successive logarithmic accuracies. The leading-logarithmic contributions $\alpha_s^n L^{n+1}$ are contained in $g_1(\alpha_s L) $, next-to-leading logarithms $\alpha_s^n L^{n}$ in $g_2(\alpha_s L) $, and so on. \\ \\
-\question{Unsure if the structure is OK here?}
-} \\ \\ %Uncomment here when draft is done. 
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
 
 
 \section{Event-shapes}
-\done{
-The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\ref{eq:resummed-cummulant} applies to all IRC safe observables \question{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. Event shapes are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including: \add{I am unsure if I like how this is written and also I find that maybe the event shape isn't described correctly.}
-} %Uncomment after
-
-
+The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\ref{eq:resummed-cummulant} applies to all IRC safe observables \question{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. Event shapes are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including: \question{Correct description of event shape?} \\ \\
+\question{The reference~\cite{Dasgupta:2003iq}, is a paper but was used merely for the background of event shapes - am unsure if necessary to cite or not?} 
 \begin{itemize}
 \item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
 \begin{equation}
@@ -156,21 +147,52 @@ where $q_{a,b,J}$ are the four-momenta of the incoming beams and the observed je
   T_m \equiv \frac{\sum_i |\vec p_{\perp i}\times \vec n_\perp|}{\sum_i p_{\perp i}}\,.
 \end{equation}
 \end{itemize}
-\question{Are the references correct for transverse thrust and thrust minor?} \\ \\
-\done{
-Beyond their use in extracting parameters such as $\alpha_s$ and the QCD $\beta$-function, event shapes characterise the structure of final-state events. Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. In this thesis, we focus on an observable-independent, \emph{semi-numerical} formalism. At NLL accuracy, this is implemented in \textsc{CAESAR}, which has been applied to both $e^+e^-$ and hadronic collisions~\cite{Banfi:2004yd, Banfi:2004nk}. At NNLL accuracy, the formalism is extended in \textsc{ARES}~\cite{Banfi:2014sua, Banfi:2018mcq, Arpino:2019ozn}, which has only been used for $e^+e^-$ case so far \question{and jet veto?}. In Chapter~5, we show how the ARES method is extended to hadronic collisions. We first review the \textsc{CAESAR} framework and then describe its extension to \textsc{ARES}. \\ \\
-\add{There is a lot of repetition between the sections in this chapter so far. There are all repitions between these and the work in Chapter~2.} \\ \\
-} %Uncoment after \\ \\
-\question{Am unsure by this last paragraph.} \\ \\
-\question{The reference~\cite{Dasgupta:2003iq}, is a paper but was used merely for the background of event shapes - am unsure if necessary to cite or not?} \\ \\
+\question{Correct description for all of them? \\ Are the references correct for transverse thrust and thrust minor?} \\ \\
+Beyond their use in extracting parameters such as $\alpha_s$ and the QCD $\beta$-function, event shapes characterise the structure of final-state events. Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. In this thesis, we focus on an observable-independent, \emph{semi-numerical} formalisms - \textsc{CAESAR} and \textsc{ARES}. We first review the \textsc{CAESAR} framework and then describe its extension to \textsc{ARES}. \\ \\
 \reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq}}
 
 
 \section{NNL Resummation: CAESAR}
+Traditionally resummation up to NLL for final-state radiation was calculated for each observable manually. \textsc{CAESAR}, which was first outlined in ~\cite{} resums LL results for generic class of observables (requirements discussed below) where the resummation formula is expressed in terms of certain well-defined characteristics of the observable. The associated computer programme, presented in ~\cite{}, given a subroutine for an arbitrary observable observable, determines those characteristics enabling full automation of a large class of final state resummation in a range of processes. Take a born event consisting of $n$ hard partons where $n_i$ are the incoming legs. The observable $V(p_1,\dots p_n)$ are a function of the final-state momenta. Considering the resummation in the $n$-jet limit where essentially $n$-jet IRC safe observables measure the extent to which an event's energy flow departs from that of an $n$-parton event. For the resummation approaches to be valid, the observable $V$ should
+\begin{enumerate}
+	\item{vanish smoothly} as an extra $(n+1)^{\textrm{th}}$ with momentum $k$ is soft and or collinear to leg $\ell$. This can be parameterised as
+	\begin{equation}
+	V(\{\tilde{p}\},k)\simeq V_{\text{sc}}(k)\equiv d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^ae^{-b_\ell\eta^{(\ell)}}g_\ell(\phi^{(\ell)})\,,
+	\label{eq:general-sc-V}
+\end{equation}
+where $k_t^{(\ell)},\eta^{(\ell)},$ and $\phi^{(\ell)}$ are the transverse momentum, rapidity, and azimuthal angle of the emission $k$ with respect to the parent emitter $p_\ell$ and $a, b_{\ell}$ and $d_\ell$ are parameters. Note that $d_\ell$ is a coefficient which depends on the underlying Born kinematics, and we have introduced and arbitrary hard scale $Q$ which we use as a reference normalisation scale for transverse momenta. Please note that IRC safety guarantees that $a>0$ and $b_\ell>-a$.
+\item{recursively IRC safe} which is essentially one step above IRC safety (see Sec.~\ref{sec:IRC}) and is that given an ensemble of arbitrary soft and collinear emissions, an additional emission which is relatively much softer and/or collinear should not significantly alter the value of the observable. Formally, the definition of rIRC safety can be seen as the following~\cite{}. Given the momenta $\kappa_i(\lambda_i)$, such that the observable is 
+\begin{equation}
+\label{eq:rIRC1}
+	V(\{\tilde{p}\},\kappa_i(\lambda_i))=\lambda_i
+\end{equation}
+where in the soft and/or collinear limits, $\lambda_i\to0$, the azimuthal angle $\phi_i$ of the momenta $\kappa_i(\lambda_i)$ is fixed. The momentum functions $\kappa_i(\lambda_i)$ can all be different but must satisfy~\eqref{eq:rIRC1}. Now the conditions for rIRC safety are the two following
+\begin{enumerate}
+	\item The following limit must be well-defined and non-zero
+	\begin{equation}
+	\lim_{\varepsilon\to0}\frac {1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
+	\end{equation}
+	where this can be interpreted as the requirement that the soft and collinear scaling properties of the observable must be the same regardless of how many emissions there are.
+	\item The following must hold
+	\begin{equation}
+	\begin{aligned}\lim_{\lambda_{m+1}\to0}\lim_{\varepsilon\to0}\frac {1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m), \kappa_{m+1}(\varepsilon\lambda_{m+1}))\\
+		= \lim_{\varepsilon\to0}\frac {1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
+	\end{aligned}
+	\end{equation}
+	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable.
+\end{enumerate}
+\item cont global \todo{go from here}
 
-\subsection*{Observable Requirements}
-For both CAESAR and ARES, the observable we are considering needs to be both continuously global and rIRC safe. Let us discuss these properties:
+
+
+\end{enumerate}
+
+
+
+
+The specific observable requirements are 
 \begin{description}
+\item{}
    \item[Continuously global] A global observable is one which is sensitive to all of the emissions in an event. An observable which is continuously global adds another feature such that the scaling of the observable with respect to the energy of the emission is the same everywhere in the phase space. If an observable is not continuously global, it results in the presence of additional large logarithms known as non-global logarithms (these will not be discussed in this report).
  \item[rIRC safety] In section \ref{sec:IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
  
