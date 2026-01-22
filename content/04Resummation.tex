@@ -181,27 +181,33 @@ where in the soft and/or collinear limits, $\lambda_i\to0$, the azimuthal angle 
 	\end{equation}
 	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable.
 \end{enumerate}
-\item cont global \todo{go from here}
-
-
-
+\item {Continuously global} where an observable is said to be global if it departs from zero for any emission of an $(n+1)^{\textrm{th}}$ parton that is not infinitely soft or collinear. Continuously global means that for a single soft emission, the observable's parametric dependence on the emission's transverse momentum should be the same everywhere in the phase-space, meaning that that the power $k_t$ should be the same everywhere.
 \end{enumerate}
+\add{Look at P.Monni Thesis for observable conditions. \\ Discuss event shape being 0 at $n$ narrow jets and refer to thrust.} \\ \\
+Let us begin by looking at the $n$-jet cross section,
+\begin{equation}
+	\sigma_{\mathcal{H}}=\sum_{N=n-n_i}^\infty\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\mathcal{H}(q_1,\dots,q_N)\,,
+\end{equation}
+where $d\sigma_N/d\Phi_N$ is the differential cross section for producing $N$ final-state particles and $\mathcal{H}(q_1,\cdots,q_N)$ is \add{explain the cuts.}
+The cumulant, $\Sigma_{\mathcal{H}}$, satisfying the cut as well as for events for which the observable is smaller than some value $v$
+\begin{equation}
+	\Sigma_{\mathcal{H}}(v)=\sum_N\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(q_1,\dots,q_N)\right)\mathcal{H}(q_1,\dots,q_N)
+\end{equation}
+While we have introduced this for a general above \question{is it a above} $N$ jet event, in order to proceed more carefully it is convenient for us to look at a specific process namely that of $e^+e^-\to 3+\textrm{jet}$ events. We will discuss both \textsc{CAESAR} and \textsc{ARES} in the context of this, however please note that in Refs.~\cite{}, that these have been done for other processes. We wish to look at this process, since we use the resummation here as the premise of our final-state radiation for the resummation of hadronic collision for $H+\textrm{jet}$ events, as discussed in Chapter.~5 hence it is convenient to discuss it here. 
+\todo{Add in the exact N jet cumulant and explain all a bit more throughly. Then talk about how we want to look at 3-jet specifically as it gives the foundation for the FSR for Chapter 5. Then discuss CAESAR for this process and then ARES for this procedure also. The radiator and hard collinear counter term may need to change a bit as we have changed them slightly in our paper - but we can just clarify this a bit. I think it is better to keep the CAESAR and FSR ARES in this chapter regardless as that is not original research - at the most its a reformulation. The next chapter should include the ISR (maybe - need to discuss with A Banfi) and the observables that we calculated and the phenomenology. \\ \\ Also add cumulant in front of $|\mathcal{M}|^2$ and then go to give exact expression for $\mathcal{F}_{\mathrm{NLL}}$ and the radiator. Also give the kinematics.}
 
 
 
-
-The specific observable requirements are 
 \begin{description}
-\item{}
    \item[Continuously global] A global observable is one which is sensitive to all of the emissions in an event. An observable which is continuously global adds another feature such that the scaling of the observable with respect to the energy of the emission is the same everywhere in the phase space. If an observable is not continuously global, it results in the presence of additional large logarithms known as non-global logarithms (these will not be discussed in this report).
  \item[rIRC safety] In section \ref{sec:IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
  
 \end{description}
 
-\todo{NLL: Introduction of the cumulant for NLL}
+
 
 \section{NNL Resummation: ARES}
-\todo{NNLL: Formalism + ISR prescription }
+\todo{NNLL: Formalism + ISR prescription \\ At the very least here we need to discuss the hard collinear thing which helps us with ISR for our project.}
 
 \subsection*{Formulation}
 The ARES method begins by understanding that any rIRC safe observable $V$, in the presence of a single soft emission collinear to leg $\ell$, can be parameterised in the following way \cite{Arpino:2019ozn}:
