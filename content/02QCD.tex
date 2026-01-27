@@ -63,14 +63,14 @@ where $f^{ABC}$ are the structure constants of the $\mathrm{SU}(3)$ gauge group.
 \sum_{A,B} f^{ABC} f^{ABD} &= C_A\, \delta^{CD}, \qquad C_A = 3.
 \end{aligned}
 \end{equation}
-\\The second term in Eq.~\ref{eq: L-QCD} is the gauge-fixing term:
+\\The second term in Eq.~\eqref{eq: L-QCD} is the gauge-fixing term:
 \begin{equation}
     \mathcal{L}_{\mathrm{GF}}
     = -\frac{1}{2\xi} \left( \partial^\mu A_\mu^{A} \right)^{2}\,.
 \end{equation}
 This term is required due to the local $\mathrm{SU}(3)$ gauge invariance of the QCD Lagrangian, which leads to redundant gauge degrees of freedom. The gauge-fixing term removes this redundancy, and the parameter $\xi$ specifies the choice of gauge; for example, $\xi = 1$ corresponds to Feynman gauge, while $\xi = 0$ corresponds to Landau gauge.
 \\\\
-The final term in Eq.~\ref{eq: L-QCD} is the ghost term,
+The final term in Eq.~\eqref{eq: L-QCD} is the ghost term,
 \begin{equation}
 \mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
 \end{equation}
@@ -551,14 +551,14 @@ where the individual components are defined as follows:
 \begin{equation}
 d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, \left(2\pi\right) \, \delta\left(p_i^2\right)\,\Theta\left(p_i^0\right)\right]\left(2\pi\right)^D\delta^{(D)}\Big(p_a + p_b - \sum_{j=1}^{m} p_j\Big)\,.
 \end{equation}
-\item $\mathcal{M}_m$ is the scattering amplitude for the $2\!\rightarrow\! m$ process. It admits the perturbative expansion shown in Eq.~\ref{eq:M-pert-theory}. Its modulus squared is written as
+\item $\mathcal{M}_m$ is the scattering amplitude for the $2\!\rightarrow\! m$ process. It admits the perturbative expansion shown in Eq.~\eqref{eq:M-pert-theory}. Its modulus squared is written as
     \[
         |\mathcal{M}_m|^2 = \langle \mathcal{M}_m | \mathcal{M}_m \rangle\,,
     \]
     where the sum over colour and spin degrees of freedom of the $m$ final-state partons is implicit.
 \item $F_J^{(m)}$ is the \emph{jet function}, which specifies the observable under consideration.
  Depending on the choice of $\Theta$–functions, $\delta$–functions, or numerical
-factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\ref{eq:2-to-m-xsec} reduces to the total cross-section. 
+factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\eqref{eq:2-to-m-xsec} reduces to the total cross-section. 
 \end{itemize}
 With the general form of the partonic cross-section established, we now turn to the behaviour of
 the squared scattering amplitude $|\mathcal{M}_m|^2$. In the soft and collinear limits, this quantity factorises
@@ -593,7 +593,7 @@ The eikonal factor $S_{ij}(q)$ encodes the kinematic dependence of the soft emis
 \begin{equation}
     S_{ij}(q) = \frac{p_i \cdot p_j}{(p_i \cdot q)(p_j \cdot q)} = \frac{2\,s_{ij}}{s_{iq}\,s_{jq}}\,, 
 \end{equation}
-with $s_{ab} = (p_a + p_b)^2$.
+with $s_{ab} = (p_a + p_b)^2$. \question{Unsure if $s_{ab}$ is a bit misleading here - may indicate that I am talking about the initial state particles $p_a$ and $p_b$ instead?}
 
 \subsection{Collinear limit}
 When two final-state partons, $i$ and $j$, become collinear, their momenta can be parametrised using a Sudakov decomposition,
@@ -697,11 +697,12 @@ where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_
 \caption{Diagrammatic representation of a $2\to m$ hard scattering process, $\mathcal{H}$, with an additional soft or collinear emission $p_i$.}
 \label{fig:IRC_safety}
 \end{figure}
+\question{Should I replace $\mathcal{H}\to\mathcal{M}_H$ instead? Just thinking that I have spent a lot of time discussing matrix elements but also this could mean I need to replace all $\mathcal{M}$ with $\mathcal{M}_H$? Just wanting to keep consistent mainly.)}
 
 \FloatBarrier
 \noindent
-We emphasise that although Eq.~\ref{eq:IRC-safety} is written for a single additional parton, the same behaviour holds for any number of additional soft/collinear partons. From this definition it follows immediately that fully inclusive observables with $F_J^{(m)} = 1$ are IRC safe. A simple example of an IRC-unsafe observable is the number of final-state partons. \\ \\
-Although IRC safety ensures finite results at every order in perturbation theory, it does not guarantee a well-behaved perturbative expansion. Many observables, while IRC safe, do not display a complete cancellation between real and virtual contributions - only enough to remove divergences. This incomplete cancellation generates large logarithmic terms arising from emissions in the soft and/or collinear regions. We refer to such quantities as \emph{semi-inclusive} observables~\cite{Bassetto:1983mvz}. Examples include event-shape variables (event shapes), which will be discussed in Chapter~4. These logarithms can spoil the convergent nature of the perturbative expansion and must be \emph{resummed}. Resummation techniques will be the focus of Chapters~4 and~5. \\ \\
+We emphasise that although Eq.~\eqref{eq:IRC-safety} is written for a single additional parton, the same behaviour holds for any number of additional soft/collinear partons. From this definition it follows immediately that fully inclusive observables with $F_J^{(m)} = 1$ are IRC safe. A simple example of an IRC-unsafe observable is the number of final-state partons. \question{Does this last sentence sound a bit weird i.e. throwing in an example of IRC-UNsafe - Andrea liked it but am unsure?} \\ \\
+Although IRC safety ensures finite results at every order in perturbation theory, it does not guarantee a well-behaved perturbative expansion. Many observables, while IRC safe, do not display a complete cancellation between real and virtual contributions - only enough to remove divergences. \question{Am wondering if the first few sentences up to here sound a bit weird?} This incomplete cancellation generates large logarithmic terms arising from emissions in the soft and/or collinear regions. We refer to such quantities as \emph{semi-inclusive} observables~\cite{Bassetto:1983mvz}. Examples include event-shape variables (event shapes), which will be discussed in Chapter~4. These logarithms can spoil the convergent nature of the perturbative expansion and must be \emph{resummed}. Resummation techniques will be the focus of Chapters~4 and~5. \\ \\
 \reference{~\cite{Campbell:2017hsr, Luisoni:2015xha, Banfi:2016yyq}}
 
 \section{The full picture: high-energy collisions}
@@ -723,11 +724,12 @@ At the highest energy scale, the dynamics of the collision are governed by the h
 \begin{equation}
 	\frac{df_{i,P_1}(x_1,\mu_F^2)}{d\mu_F^2}=\sum_{j}\int_{x_1}^1dz\,\frac{\alpha_s}{2\pi}P_{ij}(z,\mu_F^2)f_j\left(\frac{x_1}{z},\mu_F^2\right)\,,
 \end{equation}
+\ABquestion{Compare to R.Wood's thesis - slightly different ($\ln$ in denominator or not?)}
 where the Altarelli-Parisi splitting functions $P_{ij}(z)$ admit a perturbative expansion:
 \begin{equation}
 	P_{ij}(z,\mu_F^2) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-At leading order, these splitting functions include the terms in Eq.~\ref{eq:AP-functions} and the associated virtual corrections:
+At leading order, these splitting functions include the terms in Eq.~\eqref{eq:AP-functions} and the associated virtual corrections:
 \begin{equation}
 \begin{aligned}
 &P_{q\bar{q}}^{(0)}(z)=C_F\left[\frac{1+z^2}{(1-z)_+}+\frac{3}{2}\delta(1-z)\right]\,,\\
@@ -736,10 +738,10 @@ At leading order, these splitting functions include the terms in Eq.~\ref{eq:AP-
 &P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+\delta(1-z)\frac{11C_A-4T_Rn_f}{6}\,.
 \end{aligned}
 \end{equation}
-\ABquestion{Still need some understanding here - Catani calls the splitting functions in Eq~\ref{eq:AP-functions} AP splitting functions but these are also the AP splitting functions here? Also I believe the $q\bar{q}$ here comes from the $gq$ in the Eq~\ref{eq:AP-functions} - does this need to be explicit? Should we also be noting that we take $\varepsilon\to 0$ and also adding virtual corrections only to two of them I think? }
+\ABquestion{Still need some understanding here - Catani calls the splitting functions in Eq~\eqref{eq:AP-functions} AP splitting functions but these are also the AP splitting functions here? Also I believe the $q\bar{q}$ here comes from the $gq$ in the Eq~\eqref{eq:AP-functions} - does this need to be explicit? Should we also be noting that we take $\varepsilon\to 0$ and also adding virtual corrections only to two of them I think? }
 The factorisation scale $\mu_F$ separates long- and short-distance physics.
 Radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in the partonic cross section. \\ \\ 
-The hard interaction produces the primary particles of the event, in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators, for example \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}. 
+The hard interaction produces the primary particles of the event, in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators, for example \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}.  \question{Am I correct in thinking Madgraph is correct and not Madgraph@NLO?}
 
 \subsection*{QCD evolution $(Q \gtrsim \Lambda_{\mathrm{QCD}})$}
 \label{subsec:QCD-ev}
@@ -772,7 +774,7 @@ To relate the partonic dynamics discussed so far to experimentally measured hadr
 \end{equation}
 Here $f_{i,P_1}$ and $f_{j,P_2}$ are the PDFs introduced earlier, and the integration runs over the momentum fractions carried by the partons inside the incoming hadrons. The sum over $i,j$ accounts for all possible parton flavours,
 while $\hat{\sigma}_{ij}$ is the corresponding partonic cross section. \\ \\
-Equation~\ref{eq:factorisation-formula} is referred to as a factorisation formula because it separates the hadronic cross section into two distinct components: the non-perturbative PDFs, which encode the partonic structure of the incoming hadrons, and the perturbatively calculable partonic cross section $\hat{\sigma}_{ij}$. The power-suppressed term $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that this separation is valid only in the high-energy limit. \\ \\
+Equation~\eqref{eq:factorisation-formula} is referred to as a factorisation formula because it separates the hadronic cross section into two distinct components: the non-perturbative PDFs, which encode the partonic structure of the incoming hadrons, and the perturbatively calculable partonic cross section $\hat{\sigma}_{ij}$. The power-suppressed term $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that this separation is valid only in the high-energy limit. \\ \\
 \reference{~\cite{Ellis:1996mzs, Banfi:2016yyq}}
 \section{Jet Physics}
 As described above, jets appear as highly collimated sprays of hadrons resulting from the hadronisation of energetic quarks and gluons produced in high-energy processes. They are among the most frequently observed objects in proton–proton collisions at the LHC and are complex, messy, and inherently ambiguous objects. To be able to describe them in a well-defined and reproducible way, we must introduce a \emph{jet definition}, which consists of the following components:
