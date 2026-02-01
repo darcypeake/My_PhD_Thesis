@@ -193,7 +193,29 @@ The cumulant, $\Sigma_{\mathcal{H}}$, satisfying the cut as well as for events f
 \begin{equation}
 	\Sigma_{\mathcal{H}}(v)=\sum_N\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(q_1,\dots,q_N)\right)\mathcal{H}(q_1,\dots,q_N)
 \end{equation}
-While we have introduced this for a general above \question{is it a above} $N$ jet event, in order to proceed more carefully it is convenient for us to look at a specific process namely that of $e^+e^-\to 3+\textrm{jet}$ events. We will discuss both \textsc{CAESAR} and \textsc{ARES} in the context of this, however please note that in Refs.~\cite{}, that these have been done for other processes. We wish to look at this process, since we use the resummation here as the premise of our final-state radiation for the resummation of hadronic collision for $H+\textrm{jet}$ events, as discussed in Chapter.~5 hence it is convenient to discuss it here. 
+The factorised form
+\begin{equation}
+\Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Sigma\left(\{q_1,\dots,q_N\},v\right)\mathcal{H}(q_1,\dots,q_N)
+\end{equation}
+While we have introduced this for a general above \question{is it a above} $N$ jet event, in order to proceed more carefully it is convenient for us to look at a specific process namely that of $e^+e^-\to 3+\textrm{jet}$ events. We will discuss both \textsc{CAESAR} and \textsc{ARES} in the context of this, however please note that in Refs.~\cite{}, that these have been done for other processes. We wish to look at this process, since we use the resummation here as the premise of our final-state radiation for the resummation of hadronic collision for $H+\textrm{jet}$ events, as discussed in Chapter.~5 hence it is convenient to discuss it here. \\ 
+At NLL accuracy for three-jet observables, we find that the cumulant is
+\begin{equation}
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq-v\frac{dR_{\mathrm{NLL}}}{dv}\,,
+\end{equation}
+where $R_{\mathrm{NLL}}$ is the NLL radiator. This encodes the probability of observing no emissions $k_i$ with $V(\{\tilde{p}\}, k_i)>v$. The expression is a sum of contributions from the three dipoles which build up a three-jet configuration $q\bar{q}, qg, g\bar{q}$:
+\begin{equation}
+\label{eq:NLL-radiator}
+\begin{split}
+	R_{\mathrm{NLL}}(v)=\sum_{(ij)\in\{(q\bar{q}), (qg), (g\bar{q})\}}C_{(ij)}\left(\sum_{\ell=i,j}\left[r_\ell(L)+r'_\ell(L)\left(\langle \ln(d_\ell g_\ell)\rangle - b_\ell\ln\frac{2E_\ell}{Q}\right) \right. \right. & \\
+	\left. \left. +B_\ell T\left(\frac{L}{a+b_\ell}\right)\right] +2\ln\frac{Q_{ij}}{Q}T\left(\frac{L}{a}\right)\right)\,,
+\end{split}
+\end{equation}
+where $L\equiv\ln(1/v)$ and $C_{(ij)}$ is the colour factor associated with the dipole. 
+
+
+
+
+
 \todo{Add in the exact N jet cumulant and explain all a bit more throughly. Then talk about how we want to look at 3-jet specifically as it gives the foundation for the FSR for Chapter 5. Then discuss CAESAR for this process and then ARES for this procedure also. The radiator and hard collinear counter term may need to change a bit as we have changed them slightly in our paper - but we can just clarify this a bit. I think it is better to keep the CAESAR and FSR ARES in this chapter regardless as that is not original research - at the most its a reformulation. The next chapter should include the ISR (maybe - need to discuss with A Banfi) and the observables that we calculated and the phenomenology. \\ \\ Also add cumulant in front of $|\mathcal{M}|^2$ and then go to give exact expression for $\mathcal{F}_{\mathrm{NLL}}$ and the radiator. Also give the kinematics.}
 
 
