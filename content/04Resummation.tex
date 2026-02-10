@@ -151,53 +151,87 @@ where $q_{a,b,J}$ are the four-momenta of the incoming beams and the observed je
 Beyond their use in extracting parameters such as $\alpha_s$ and the QCD $\beta$-function, event shapes characterise the structure of final-state events. Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. In this thesis, we focus on an observable-independent, \emph{semi-numerical} formalisms - \textsc{CAESAR} and \textsc{ARES}. We first review the \textsc{CAESAR} framework and then describe its extension to \textsc{ARES}. \\ \\
 \reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq}}
 
+\section{NLL Resummation: \textsc{CAESAR}}
+Traditionally, NLL resummation for final-state observables was performed in an observable-dependent manner, with separate analytical calculations required for each individual case. The first steps towards a more general approach were taken in~\cite{Banfi:2001bz}, where a systematic semi-numerical framework was developed to perform NLL resummation for a broad class of observables. This framework was later extended and implemented in a computer code, the \emph{Computer Automated Expert Semi-Analytical Resummer} (\textsc{CAESAR})~\cite{Banfi:2004yd}. In this approach, the resummation formula is written in terms of a set of observable-dependent parameters, which can be determined automatically by the code for an arbitrary observable. \add{Need to become a bit clearer on the history of this -- unsure if really necessary. I think see the length and come back to it later.} We will now discuss the conditions an observable must satisfy in order for this resummation approach to be valid.
 
-\section{NNL Resummation: CAESAR}
-Traditionally resummation up to NLL for final-state radiation was calculated for each observable manually. \textsc{CAESAR}, which was first outlined in ~\cite{} resums LL results for generic class of observables (requirements discussed below) where the resummation formula is expressed in terms of certain well-defined characteristics of the observable. The associated computer programme, presented in ~\cite{}, given a subroutine for an arbitrary observable observable, determines those characteristics enabling full automation of a large class of final state resummation in a range of processes. Take a born event consisting of $n$ hard partons where $n_i$ are the incoming legs. The observable $V(p_1,\dots p_n)$ are a function of the final-state momenta. Considering the resummation in the $n$-jet limit where essentially $n$-jet IRC safe observables measure the extent to which an event's energy flow departs from that of an $n$-parton event. For the resummation approaches to be valid, the observable $V$ should
+\subsection{Observable Requirements}
+Consider a Born event with $n$ hard partons, where $p_1, \dots, p_n$ denote their momenta and $n_i$ are the incoming legs, we define an observable $V(p_1, p_2, \dots)$ as a non-negative function of the final-state momenta. We assume the observable is IRC safe and that, in the $n$-jet limit, it vanishes. Such an observable is referred to as an $(n+1)$-jet observable, where the incoming beam jets $n_i$ are included alongside the outgoing jets. For the resummation approach to be valid, the observable $V(p_1, p_2, \dots)$ must satisfy the following conditions:
 \begin{enumerate}
-	\item{vanish smoothly} as an extra $(n+1)^{\textrm{th}}$ with momentum $k$ is soft and or collinear to leg $\ell$. This can be parameterised as
-	\begin{equation}
-	V(\{\tilde{p}\},k)\simeq V_{\text{sc}}(k)\equiv d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^ae^{-b_\ell\eta^{(\ell)}}g_\ell(\phi^{(\ell)})\,,
+\item \textbf{Vanish smoothly}: when an additional emission of momentum $k$ is soft and collinear to a hard leg $\ell$. In this limit, the observable can be written as
+\begin{equation}
+	V(\{\tilde{p}\},k)\simeq V_{\text{sc}}(\{\tilde{p}\},k)\equiv d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^a e^{-b_\ell\eta^{(\ell)}} g_\ell(\phi^{(\ell)})\,,
 	\label{eq:general-sc-V}
 \end{equation}
-where $k_t^{(\ell)},\eta^{(\ell)},$ and $\phi^{(\ell)}$ are the transverse momentum, rapidity, and azimuthal angle of the emission $k$ with respect to the parent emitter $p_\ell$ and $a, b_{\ell}$ and $d_\ell$ are parameters. Note that $d_\ell$ is a coefficient which depends on the underlying Born kinematics, and we have introduced and arbitrary hard scale $Q$ which we use as a reference normalisation scale for transverse momenta. Please note that IRC safety guarantees that $a>0$ and $b_\ell>-a$.
-\item{recursively IRC safe} which is essentially one step above IRC safety (see Sec.~\ref{sec:IRC}) and is that given an ensemble of arbitrary soft and collinear emissions, an additional emission which is relatively much softer and/or collinear should not significantly alter the value of the observable. Formally, the definition of rIRC safety can be seen as the following~\cite{}. Given the momenta $\kappa_i(\lambda_i)$, such that the observable is 
+where $V_{\text{sc}}$ denotes the observable evaluated in the soft and collinear limit. The set $\{\tilde{p}\}$ represents the Born momenta after recoil from the emission $k$, whose transverse momentum, rapidity, and azimuthal angle with respect to the emitting leg $p_\ell$ are given by $k_t^{(\ell)}$, $\eta^{(\ell)}$, and $\phi^{(\ell)}$, respectively.  The energy $Q$ is an arbitrary hard scale of the process and serves as a reference normalisation for the transverse momenta. \\ \\
+The parameters $a$, $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ characterise the observable in this limit. Writing observables in this form allows these parameters to be extracted for each leg, enabling the construction of the resummation formula. Further details will be discussed later. IRC safety implies that $a>0$ and $b_\ell>-a$. \ABquestion{Should I put in the reference for the: $a>0$ and $b_\ell>-a$ comment, as it is in Refs.~\cite{Banfi:2004yd, Banfi:2003je}?}
+
+
+\item \textbf{Recursively IRC (rIRC) safe}: this condition requires that, for an ensemble of soft and collinear emissions, the addition of a further emission that is relatively much softer and/or collinear should not significantly modify the value of the observable. A formal definition of rIRC safety is given in Refs.~\cite{Banfi:2004yd, Banfi:2003je} and is summarised below.
+ Consider momenta $\kappa_i(\lambda_i)$ such that the observable satisfies
 \begin{equation}
 \label{eq:rIRC1}
-	V(\{\tilde{p}\},\kappa_i(\lambda_i))=\lambda_i
+	V(\{\tilde{p}\},\kappa_i(\lambda_i))=\lambda_i\,,
 \end{equation}
-where in the soft and/or collinear limits, $\lambda_i\to0$, the azimuthal angle $\phi_i$ of the momenta $\kappa_i(\lambda_i)$ is fixed. The momentum functions $\kappa_i(\lambda_i)$ can all be different but must satisfy~\eqref{eq:rIRC1}. Now the conditions for rIRC safety are the two following
+where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal angles $\phi_i$ of the emissions $\kappa_i(\lambda_i)$ are fixed. The functions $\kappa_i(\lambda_i)$ may differ for each emission but must satisfy Eq.~\eqref{eq:rIRC1}. The conditions for rIRC safety are then:
 \begin{enumerate}
-	\item The following limit must be well-defined and non-zero
+	\item The following limit must be well-defined and non-zero:
 	\begin{equation}
-	\lim_{\varepsilon\to0}\frac {1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
+	\lim_{\varepsilon\to0}\frac{1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
 	\end{equation}
-	where this can be interpreted as the requirement that the soft and collinear scaling properties of the observable must be the same regardless of how many emissions there are.
-	\item The following must hold
+	which can be interpreted as requiring the soft and collinear scaling of the observable to be independent of the number of emissions.
+	\item The following equality must hold:
 	\begin{equation}
-	\begin{aligned}\lim_{\lambda_{m+1}\to0}\lim_{\varepsilon\to0}\frac {1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m), \kappa_{m+1}(\varepsilon\lambda_{m+1}))\\
-		= \lim_{\varepsilon\to0}\frac {1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
+	\begin{aligned}
+	\lim_{\lambda_{m+1}\to0}\lim_{\varepsilon\to0}\frac{1}{\varepsilon}V(&\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m), \kappa_{m+1}(\varepsilon\lambda_{m+1}))\\
+		&= \lim_{\varepsilon\to0}\frac{1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
 	\end{aligned}
 	\end{equation}
 	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable.
 \end{enumerate}
-\item {Continuously global} where an observable is said to be global if it departs from zero for any emission of an $(n+1)^{\textrm{th}}$ parton that is not infinitely soft or collinear. Continuously global means that for a single soft emission, the observable's parametric dependence on the emission's transverse momentum should be the same everywhere in the phase-space, meaning that that the power $k_t$ should be the same everywhere.
+\item \textbf{Continuously global}: an observable is said to be global if it is sensitive to emissions in all regions of phase space, i.e.\ it is non-zero for any emission of an $(n+1)^{\text{th}}$ parton that is not infinitely soft or collinear. Continuous globalness further requires that, for a single soft emission, the parametric dependence of the observable on the emission’s transverse momentum be uniform across phase space, implying that the parameter $a$ appearing in Eq.~\eqref{eq:general-sc-V} must be the same for each leg. This condition ensures that non-global logarithms, which arise when different regions of phase space exhibit different transverse-momentum dependences, do not appear. While these types of logarithms will not be discussed in this thesis, further discussion can be found in~\cite{Dasgupta:2001sh,Dasgupta:2002dc}. \ABquestion{Are these the correct references? Or are there more suitable ones?} \ABquestion{Have I got the right end of the stick with global, continuously global, and non-global logarithms?}
 \end{enumerate}
-\add{Look at P.Monni Thesis for observable conditions. \\ Discuss event shape being 0 at $n$ narrow jets and refer to thrust.} \\ \\
-Let us begin by looking at the $n$-jet cross section,
+\reference{~\cite{Banfi:2004yd, Banfi:2003je}.}
+
+
+\subsection{Formalism}
+We consider a specific case while explaining the \textsc{CAESAR} and the \textsc{ARES} formalism, namely that three-jet event shapes in $e^+e^-$ collisions in the near-to-planar limit~\cite{Arpino:2019ozn}. The motivation behind outlining these formalisms for this specific process is due to the fact that the work covered in Chapter.~5 is based upon the \textsc{ARES} formalism for this event. While Ref.~\cite{Arpino:2019ozn} does not go into a huge amount of detail on the \textsc{CAESAR} prescription, one can look at many other reference including Refs.~\cite{Banfi:2004yd, Banfi:2003je} for the general procedure to see how the NLL resummation of near-to-planar three-jet observables can be obtained.
+
+\subsubsection{Kinematics}
+The three-jet born kinematics for $e^+e^-$ annihilation consists of
 \begin{equation}
-	\sigma_{\mathcal{H}}=\sum_{N=n-n_i}^\infty\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\mathcal{H}(q_1,\dots,q_N)\,,
+	p_1=E_1(1,0,0,1)\,,\quad p_2=E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad p_3=E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
 \end{equation}
-where $d\sigma_N/d\Phi_N$ is the differential cross section for producing $N$ final-state particles and $\mathcal{H}(q_1,\cdots,q_N)$ is \add{explain the cuts.}
-The cumulant, $\Sigma_{\mathcal{H}}$, satisfying the cut as well as for events for which the observable is smaller than some value $v$
+where $p_1,p_2, p_3$ are the quark, anti-quark, and gluon respectively and $\theta_{ij}$ is the angle between $p_i$ and $p_j$.
+
+\subsubsection{Selection of three-jet events}
+Taking an observable that obeys the conditions previously outlined, i.e. an rIRC safe continuously global event shapes that vanishes in the three-jet limit i.e. where $V(\{\tilde{p_1},\tilde{p_2},,\tilde{p_3}\})=0$,  in order to study event shapes in the near-to-planar limit, we must find a procedure that selects hadronic events with three or more jets. A procedure of this sort could be a jet algorithm that counts the number of well separated hard jets in the event, or through a cut on some secondary two-jet observable. This constraint can be represented through the function $\mathcal{H}(p_1,p_2,\dots)$ where
 \begin{equation}
-	\Sigma_{\mathcal{H}}(v)=\sum_N\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(q_1,\dots,q_N)\right)\mathcal{H}(q_1,\dots,q_N)
+\begin{aligned}
+&\mathcal{H}(p_1,p_2,\dots)=1\,,\quad \text{events that pass the selection cuts}\\
+&\mathcal{H}(p_1,p_2,\dots)=0\,,\quad \text{otherwise}\,.
+\end{aligned}
+\end{equation}
+In this sense, once can define the total $n$-jet cross section as,
+\begin{equation}
+	\sigma_{\mathcal{H}}\equiv\sum_{3}^\infty\int d\Phi_n\frac{d\sigma_n}{d\Phi_n}\mathcal{H}(p_1,\dots,p_n)\,,
+\end{equation}
+where $d\sigma_N/d\Phi_N$ is the differential cross section for producing $N$ final-state particles. Moreover, the cumulant, $\Sigma_{\mathcal{H}}$, satisfying the cut as well as for events for which the observable is smaller than some value $v$ is
+\begin{equation}
+	\Sigma_{\mathcal{H}}(v)=\sum_N\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(p_1,\dots,p_N)\right)\mathcal{H}(p_1,\dots,p_N)
 \end{equation}
 The factorised form
 \begin{equation}
-\Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Sigma\left(\{q_1,\dots,q_N\},v\right)\mathcal{H}(q_1,\dots,q_N)
+\Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Sigma\left(\{p_1,\dots,p_N\},v\right)\mathcal{H}(p_1,\dots,p_N)
 \end{equation}
-While we have introduced this for a general above \question{is it a above} $N$ jet event, in order to proceed more carefully it is convenient for us to look at a specific process namely that of $e^+e^-\to 3+\textrm{jet}$ events. We will discuss both \textsc{CAESAR} and \textsc{ARES} in the context of this, however please note that in Refs.~\cite{}, that these have been done for other processes. We wish to look at this process, since we use the resummation here as the premise of our final-state radiation for the resummation of hadronic collision for $H+\textrm{jet}$ events, as discussed in Chapter.~5 hence it is convenient to discuss it here. \\ 
+While we have introduced this for a general above \question{is it a above} $N$ jet event, in order to proceed more carefully it is convenient for us to look at a specific process namely that of $e^+e^-\to 3+\textrm{jet}$ events. We will discuss both \textsc{CAESAR} and \textsc{ARES} in the context of this, however please note that in Refs.~\cite{}, that these have been done for other processes. We wish to look at this process, since we use the resummation here as the premise of our final-state radiation for the resummation of hadronic collision for $H+\textrm{jet}$ events, as discussed in Chapter.~5 hence it is convenient to discuss it here. \\ \\
+
+At NLL, one can simply consider an ensemble of soft-collinear partons, which are emitted independently off the hard legs, combined with the associated virtual corrections:
+\begin{equation}
+\Sigma(v) = \mathcal{H}\left(Q^2\right)\sum_{n=0}^\infty\frac{1}{n!}\int\prod_i\left[dk_i\right]M^2(k_i)\Theta\left(v-V\left(\{\tilde{p}\},k_1,\cdots,k_n\right)\right)\,,
+\end{equation}
+where $\mathcal{H}\left(Q^2\right)$ are the virtual corrections to the Born level process, normalised to the total cross section $\sigma$. 
+
+
 At NLL accuracy for three-jet observables, we find that the cumulant is
 \begin{equation}
 \Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq-v\frac{dR_{\mathrm{NLL}}}{dv}\,,
@@ -211,20 +245,17 @@ where $R_{\mathrm{NLL}}$ is the NLL radiator. This encodes the probability of ob
 \end{split}
 \end{equation}
 where $L\equiv\ln(1/v)$ and $C_{(ij)}$ is the colour factor associated with the dipole. 
+The function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, which can be computed using the general formula
+  \begin{equation}
+    \label{eq:FNLL-formula}
+    \mathcal{F}_{\mathrm{NLL}}(\lambda) = \int\! \dZ \,\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,,
+  \end{equation}
+  where we have defined the soft-collinear measure $\dZ$ through the formula
+  \begin{multline}
+    \label{eq:dZ-def}
+    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,.
+  \end{multline}
 
-
-
-
-
-\todo{Add in the exact N jet cumulant and explain all a bit more throughly. Then talk about how we want to look at 3-jet specifically as it gives the foundation for the FSR for Chapter 5. Then discuss CAESAR for this process and then ARES for this procedure also. The radiator and hard collinear counter term may need to change a bit as we have changed them slightly in our paper - but we can just clarify this a bit. I think it is better to keep the CAESAR and FSR ARES in this chapter regardless as that is not original research - at the most its a reformulation. The next chapter should include the ISR (maybe - need to discuss with A Banfi) and the observables that we calculated and the phenomenology. \\ \\ Also add cumulant in front of $|\mathcal{M}|^2$ and then go to give exact expression for $\mathcal{F}_{\mathrm{NLL}}$ and the radiator. Also give the kinematics.}
-
-
-
-\begin{description}
-   \item[Continuously global] A global observable is one which is sensitive to all of the emissions in an event. An observable which is continuously global adds another feature such that the scaling of the observable with respect to the energy of the emission is the same everywhere in the phase space. If an observable is not continuously global, it results in the presence of additional large logarithms known as non-global logarithms (these will not be discussed in this report).
- \item[rIRC safety] In section \ref{sec:IRC}, we explained the concept of IRC safety. rIRC safety further constrains the observable, such that it is unaffected by additional soft and/or collinear emissions at widely separated scales. IRC safety involves two energy scales: the hard partons and the additional soft-collinear emissions. rIRC introduces a third (softer) energy scale, requiring that the observable remains insensitive to emissions in this new region of the phase space. This allows us to split the emissions into a set that are resolved and a set that are unresolved. 
- 
-\end{description}
 
 
 
