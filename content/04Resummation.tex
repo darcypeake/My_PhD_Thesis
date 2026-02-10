@@ -48,7 +48,8 @@ where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state,
 \end{figure}
 \add{Maybe make the 2 jet limit arrows a bit shorter.}
 
-\subsection*{Thrust: Fixed-order Calculation}
+\subsection{Thrust: Fixed-order Calculation}
+\label{subsec:thrust-example}
 For the process $e^+e^- \to q\bar{q}$, the final state consists of two back-to-back partons, yielding the Born-level contribution
 \begin{equation}
     \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = \delta(\tau),
@@ -197,33 +198,35 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 We consider a specific case while explaining the \textsc{CAESAR} and the \textsc{ARES} formalism, namely that three-jet event shapes in $e^+e^-$ collisions in the near-to-planar limit~\cite{Arpino:2019ozn}. The motivation behind outlining these formalisms for this specific process is due to the fact that the work covered in Chapter.~5 is based upon the \textsc{ARES} formalism for this event. While Ref.~\cite{Arpino:2019ozn} does not go into a huge amount of detail on the \textsc{CAESAR} prescription, one can look at many other reference including Refs.~\cite{Banfi:2004yd, Banfi:2003je} for the general procedure to see how the NLL resummation of near-to-planar three-jet observables can be obtained.
 
 \subsubsection{Kinematics}
-The three-jet born kinematics for $e^+e^-$ annihilation consists of
+The Born level, three-jet event in $e^+e^-$ annihilation, kinematics are
 \begin{equation}
+\label{eq:3-born-kin}
 	p_1=E_1(1,0,0,1)\,,\quad p_2=E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad p_3=E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
 \end{equation}
 where $p_1,p_2, p_3$ are the quark, anti-quark, and gluon respectively and $\theta_{ij}$ is the angle between $p_i$ and $p_j$.
 
 \subsubsection{Selection of three-jet events}
-Taking an observable that obeys the conditions previously outlined, i.e. an rIRC safe continuously global event shapes that vanishes in the three-jet limit i.e. where $V(\{\tilde{p_1},\tilde{p_2},,\tilde{p_3}\})=0$,  in order to study event shapes in the near-to-planar limit, we must find a procedure that selects hadronic events with three or more jets. A procedure of this sort could be a jet algorithm that counts the number of well separated hard jets in the event, or through a cut on some secondary two-jet observable. This constraint can be represented through the function $\mathcal{H}(p_1,p_2,\dots)$ where
+Taking an observable that obeys the conditions previously outlined, i.e. an rIRC safe continuously global event shapes that vanishes in the three-jet limit i.e. where $V(\{\tilde{p_1},\tilde{p_2},,\tilde{p_3}\})=0$,  in order to study event shapes in the near-to-planar limit, we must find a procedure that selects hadronic events with three or more jets. A procedure of this sort could be a jet algorithm that counts the number of well separated hard jets in the event, or through a cut on some secondary two-jet observable. This constraint can be represented through $\mathcal{H}(p_1,p_2,\dots)$, a function of all hadron momenta, such that
 \begin{equation}
 \begin{aligned}
-&\mathcal{H}(p_1,p_2,\dots)=1\,,\quad \text{events that pass the selection cuts}\\
-&\mathcal{H}(p_1,p_2,\dots)=0\,,\quad \text{otherwise}\,.
+&\mathcal{H}(p_1,\dots,p_N)=1\,,\quad \text{events that pass the selection cuts}\\
+&\mathcal{H}(p_1,\dots,p_N)=0\,,\quad \text{otherwise}\,.
 \end{aligned}
 \end{equation}
 In this sense, once can define the total $n$-jet cross section as,
 \begin{equation}
-	\sigma_{\mathcal{H}}\equiv\sum_{3}^\infty\int d\Phi_n\frac{d\sigma_n}{d\Phi_n}\mathcal{H}(p_1,\dots,p_n)\,,
+	\sigma_{\mathcal{H}}\equiv\sum_{N=3}^\infty\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\mathcal{H}(p_1,\dots,p_N)\,,
 \end{equation}
 where $d\sigma_N/d\Phi_N$ is the differential cross section for producing $N$ final-state particles. Moreover, the cumulant, $\Sigma_{\mathcal{H}}$, satisfying the cut as well as for events for which the observable is smaller than some value $v$ is
 \begin{equation}
-	\Sigma_{\mathcal{H}}(v)=\sum_N\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(p_1,\dots,p_N)\right)\mathcal{H}(p_1,\dots,p_N)
+	\Sigma_{\mathcal{H}}(v)=\sum_{N=3}^{\infty}\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(p_1,\dots,p_N)\right)\mathcal{H}(p_1,\dots,p_N)
 \end{equation}
-The factorised form
+In near-to-planar kinematics, where $v\ll1$, the cumulant $\sigma_{\mathcal{H}}$ can take a factorised form:
 \begin{equation}
-\Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Sigma\left(\{p_1,\dots,p_N\},v\right)\mathcal{H}(p_1,\dots,p_N)
+\Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_3\frac{d\sigma_3}{d\Phi_3}\Sigma\left(\{p_1,p_2,p_3\},v\right)\mathcal{H}(p_1,p_2,p_3)\,,
 \end{equation}
-While we have introduced this for a general above \question{is it a above} $N$ jet event, in order to proceed more carefully it is convenient for us to look at a specific process namely that of $e^+e^-\to 3+\textrm{jet}$ events. We will discuss both \textsc{CAESAR} and \textsc{ARES} in the context of this, however please note that in Refs.~\cite{}, that these have been done for other processes. We wish to look at this process, since we use the resummation here as the premise of our final-state radiation for the resummation of hadronic collision for $H+\textrm{jet}$ events, as discussed in Chapter.~5 hence it is convenient to discuss it here. \\ \\
+where the momenta $p_1, p_2, p_3$ are the born momenta found in Eq.~\eqref{eq:3-born-kin} and the differential cross section $\tfrac{d\sigma_3}{d\Phi_3}$ can be found in Ref.~\cite{Arpino:2019ozn}. Just as we saw in the Sec.~\ref{subsec:thrust-example} for the thrust, in the region where the observable is small i.e. $v\ll1$, the logarithms  $L\equiv\ln(1/v)$ within the cumulant $\Sigma\left(\{p_1,p_2,p_3\},v\right)$ become large. It is this function that we wish to resum, to a given accuracy (for \textsc{CAESAR} to NLL), to all order in $\alpha_s$. 
+\subsubsection{NLL Resummation formulae}
 
 At NLL, one can simply consider an ensemble of soft-collinear partons, which are emitted independently off the hard legs, combined with the associated virtual corrections:
 \begin{equation}
