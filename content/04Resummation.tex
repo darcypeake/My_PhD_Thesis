@@ -84,6 +84,7 @@ Neglecting the $\delta$-function contributions, the terms that become large in t
 \end{equation}
 The corresponding cumulative distribution (cumulant) is given by
 \begin{equation}
+\label{eq:thrust-cumulant}
 	\Sigma_{\text{log-enh}}(\tau) 
 	= \frac{1}{\sigma_0} \int_0^\tau d\tau' \frac{d\sigma}{d\tau'} 
 	= C_F \frac{\alpha_s}{2\pi} 
@@ -156,7 +157,7 @@ Beyond their use in extracting parameters such as $\alpha_s$ and the QCD $\beta$
 Traditionally, NLL resummation for final-state observables was performed in an observable-dependent manner, with separate analytical calculations required for each individual case. The first steps towards a more general approach were taken in~\cite{Banfi:2001bz}, where a systematic semi-numerical framework was developed to perform NLL resummation for a broad class of observables. This framework was later extended and implemented in a computer code, the \emph{Computer Automated Expert Semi-Analytical Resummer} (\textsc{CAESAR})~\cite{Banfi:2004yd}. In this approach, the resummation formula is written in terms of a set of observable-dependent parameters, which can be determined automatically by the code for an arbitrary observable. \add{Need to become a bit clearer on the history of this -- unsure if really necessary. I think see the length and come back to it later.} We will now discuss the conditions an observable must satisfy in order for this resummation approach to be valid.
 
 \subsection{Observable Requirements}
-Consider a Born event with $n$ hard partons, where $p_1, \dots, p_n$ denote their momenta and $n_i$ are the incoming legs, we define an observable $V(p_1, p_2, \dots)$ as a non-negative function of the final-state momenta. We assume the observable is IRC safe and that, in the $n$-jet limit, it vanishes. Such an observable is referred to as an $(n+1)$-jet observable, where the incoming beam jets $n_i$ are included alongside the outgoing jets. For the resummation approach to be valid, the observable $V(p_1, p_2, \dots)$ must satisfy the following conditions:
+Consider a Born event with $n$ hard partons, where $p_1, \dots, p_n$ denote their momenta and $n_i$ are the incoming legs, we define an observable $V(p_1, p_2, \dots)$ as a non-negative function of the final-state momenta. We assume the observable is IRC safe and that, in the $n$-jet limit, it vanishes. Such an observable is referred to as an $(n+1)$-jet observable, where the incoming beam jets $n_i$ are included alongside the outgoing jets. For the resummation approach to be valid, the observable $V(p_1, p_2, \dots)$ must satisfy the following conditions: \question{Unsure about the convention here - think I need to change it since we are sticking to convention in Arpino paper.}
 \begin{enumerate}
 \item \textbf{Vanish smoothly}: when an additional emission of momentum $k$ is soft and collinear to a hard leg $\ell$. In this limit, the observable can be written as
 \begin{equation}
@@ -195,51 +196,61 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 
 
 \subsection{Formalism}
-We consider a specific case while explaining the \textsc{CAESAR} and the \textsc{ARES} formalism, namely that three-jet event shapes in $e^+e^-$ collisions in the near-to-planar limit~\cite{Arpino:2019ozn}. The motivation behind outlining these formalisms for this specific process is due to the fact that the work covered in Chapter.~5 is based upon the \textsc{ARES} formalism for this event. While Ref.~\cite{Arpino:2019ozn} does not go into a huge amount of detail on the \textsc{CAESAR} prescription, one can look at many other reference including Refs.~\cite{Banfi:2004yd, Banfi:2003je} for the general procedure to see how the NLL resummation of near-to-planar three-jet observables can be obtained.
+To illustrate the \textsc{CAESAR} and \textsc{ARES} formalisms, we consider the specific example of three-jet event shapes in $e^+e^-$ collisions in the near-to-planar limit~\cite{Arpino:2019ozn}. The motivation for focusing on this process is that the analysis presented in Chapter~5 (hadronic $Z+\text{jet}$ production) is largely based on the \textsc{ARES} formalism for this process. Although Ref.~\cite{Arpino:2019ozn} does not present a detailed derivation of the original \textsc{CAESAR} framework, the NLL construction can be obtained from the general procedure described in Refs.~\cite{Banfi:2004yd, Banfi:2003je}. \ABquestion{I want to make it clear that we use the final-state resummation here for the soft and final-state hard-collinear radiation but unsure if it is the best place to?}
 
 \subsubsection{Kinematics}
-The Born level, three-jet event in $e^+e^-$ annihilation, kinematics are
+At Born level, a three-jet event in $e^+e^-$ annihilation consists of a quark, anti-quark, and gluon with momenta
 \begin{equation}
 \label{eq:3-born-kin}
 	p_1=E_1(1,0,0,1)\,,\quad p_2=E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad p_3=E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
 \end{equation}
-where $p_1,p_2, p_3$ are the quark, anti-quark, and gluon respectively and $\theta_{ij}$ is the angle between $p_i$ and $p_j$.
+where $p_1$, $p_2$, and $p_3$ correspond to the quark, anti-quark, and gluon, respectively, and $\theta_{ij}$ denotes the angle between momenta $p_i$ and $p_j$.
 
 \subsubsection{Selection of three-jet events}
-Taking an observable that obeys the conditions previously outlined, i.e. an rIRC safe continuously global event shapes that vanishes in the three-jet limit i.e. where $V(\{\tilde{p_1},\tilde{p_2},,\tilde{p_3}\})=0$,  in order to study event shapes in the near-to-planar limit, we must find a procedure that selects hadronic events with three or more jets. A procedure of this sort could be a jet algorithm that counts the number of well separated hard jets in the event, or through a cut on some secondary two-jet observable. This constraint can be represented through $\mathcal{H}(p_1,p_2,\dots)$, a function of all hadron momenta, such that
+We consider an observable that satisfies the requirements outlined previously, namely that it is rIRC safe, continuously global, and vanishes in the three-jet limit,
+\[
+V(\{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\}) = 0\,.
+\]
+To study event shapes in the near-to-planar region, we require a procedure that selects hadronic events containing three or more well-separated hard jets. This can be achieved, for example, through a jet algorithm that counts the number of jets in the event, or by imposing a cut on some secondary, two-jet observable. We can represent this constraint through a selection function $\mathcal{H}(p_1,\dots,p_n)$, defined in terms of the hadron momenta $p_1,\dots,p_n$, such that
 \begin{equation}
-\begin{aligned}
-&\mathcal{H}(p_1,\dots,p_N)=1\,,\quad \text{events that pass the selection cuts}\\
-&\mathcal{H}(p_1,\dots,p_N)=0\,,\quad \text{otherwise}\,.
-\end{aligned}
+\mathcal{H}(p_1,\dots,p_n)=
+\begin{cases}
+1 & \text{if the event satisfies the selection criteria},\\
+0 & \text{otherwise}.
+\end{cases}
 \end{equation}
-In this sense, once can define the total $n$-jet cross section as,
+The total cross section for events satisfying this selection - i.e. the total 3-jet cross section is defined by
 \begin{equation}
-	\sigma_{\mathcal{H}}\equiv\sum_{N=3}^\infty\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\mathcal{H}(p_1,\dots,p_N)\,,
+	\sigma_{\mathcal{H}}\equiv\sum_{n=3}^\infty\int d\Phi_n\frac{d\sigma_n}{d\Phi_n}\mathcal{H}(p_1,\dots,p_n)\,,
 \end{equation}
-where $d\sigma_N/d\Phi_N$ is the differential cross section for producing $N$ final-state particles. Moreover, the cumulant, $\Sigma_{\mathcal{H}}$, satisfying the cut as well as for events for which the observable is smaller than some value $v$ is
+where $d\sigma_n/d\Phi_n$ is the differential cross section for producing $N$ final-state particles. \question{Define the phase space here also/refer to where it is in Ch2?} 
+The corresponding cumulant, restricted both by the event selection and by the requirement that the observable be smaller than some value $v$, is
 \begin{equation}
-	\Sigma_{\mathcal{H}}(v)=\sum_{N=3}^{\infty}\int d\Phi_N\frac{d\sigma_N}{d\Phi_N}\Theta\left(v-V(p_1,\dots,p_N)\right)\mathcal{H}(p_1,\dots,p_N)
+	\Sigma_{\mathcal{H}}(v)=\sum_{n=3}^{\infty}\int d\Phi_n\frac{d\sigma_n}{d\Phi_n}\Theta\left(v-V(p_1,\dots,p_n)\right)\mathcal{H}(p_1,\dots,p_n)
 \end{equation}
-In near-to-planar kinematics, where $v\ll1$, the cumulant $\sigma_{\mathcal{H}}$ can take a factorised form:
+In the near-to-planar region, where $v\ll1$, the cumulant takes a factorised form,
 \begin{equation}
 \Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_3\frac{d\sigma_3}{d\Phi_3}\Sigma\left(\{p_1,p_2,p_3\},v\right)\mathcal{H}(p_1,p_2,p_3)\,,
 \end{equation}
-where the momenta $p_1, p_2, p_3$ are the born momenta found in Eq.~\eqref{eq:3-born-kin} and the differential cross section $\tfrac{d\sigma_3}{d\Phi_3}$ can be found in Ref.~\cite{Arpino:2019ozn}. Just as we saw in the Sec.~\ref{subsec:thrust-example} for the thrust, in the region where the observable is small i.e. $v\ll1$, the logarithms  $L\equiv\ln(1/v)$ within the cumulant $\Sigma\left(\{p_1,p_2,p_3\},v\right)$ become large. It is this function that we wish to resum, to a given accuracy (for \textsc{CAESAR} to NLL), to all order in $\alpha_s$. 
-\subsubsection{NLL Resummation formulae}
+where $p_1$, $p_2$, and $p_3$ are the Born momenta given in Eq.~\eqref{eq:3-born-kin}, and the explicit expression for $d\sigma_3/d\Phi_3$ can be found in Ref.~\cite{Arpino:2019ozn}. \\ \\
+As discussed previously in Sec.~\ref{subsec:thrust-example} for the case of thrust, in the limit $v\ll1$ the logarithms $L\equiv\ln(1/v)$ appearing in the function $\Sigma\left(\{p_1,p_2,p_3\},v\right)$ become large. It is this function that must be resummed to a given logarithmic accuracy - NLL in the case of \textsc{CAESAR} - to all orders in $\alpha_s$. \\
+\ABquestion{Should I be discussing recoil a bit more?} \\ 
+\ABquestion{I need to understand how these equations are derived actually? Also need to understand difference between $\sigma$ and $\sigma_{\mathcal{H}}$? Is $\sigma(v)$ the one defined in Eq.~\eqref{eq:thrust-cumulant}?}\\
+\ABquestion{Empathise a bit more that \emph{this} is the function we are resumming?}
+\reference{\cite{Arpino:2019ozn}.}
 
-At NLL, one can simply consider an ensemble of soft-collinear partons, which are emitted independently off the hard legs, combined with the associated virtual corrections:
+
+\subsubsection{NLL Resummation}
+In the limit where $v\to 0$, the cumulant can have the following factorised form
 \begin{equation}
-\Sigma(v) = \mathcal{H}\left(Q^2\right)\sum_{n=0}^\infty\frac{1}{n!}\int\prod_i\left[dk_i\right]M^2(k_i)\Theta\left(v-V\left(\{\tilde{p}\},k_1,\cdots,k_n\right)\right)\,,
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\,,
 \end{equation}
-where $\mathcal{H}\left(Q^2\right)$ are the virtual corrections to the Born level process, normalised to the total cross section $\sigma$. 
-
-
-At NLL accuracy for three-jet observables, we find that the cumulant is
+where $S(n)$ is a symmetry factor, which is $1/n!$ for $n$ identical gluons and $\mathcal{V}\left(\{p\}\right)$ represents the virtual corrections to the Born process, normalised by the Born matrix element squared. The $\mathcal{M}^2$ represents the real corrections. At NLL, one can simply consider an ensemble of soft-collinear partons, which are emitted independently off the hard legs, together with the virtual corrections. This corresponds to the above where $[dk]M^2(k)$ is the one-gluon emission probability, which can be found in Ref.~\cite{Banfi:2004yd}. Therefore, at NLL accuracy, one find the distribution for three-jet observables to be  
 \begin{equation}
+\label{eq:NLL-cumulant}
 \Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq-v\frac{dR_{\mathrm{NLL}}}{dv}\,,
 \end{equation}
-where $R_{\mathrm{NLL}}$ is the NLL radiator. This encodes the probability of observing no emissions $k_i$ with $V(\{\tilde{p}\}, k_i)>v$. The expression is a sum of contributions from the three dipoles which build up a three-jet configuration $q\bar{q}, qg, g\bar{q}$:
+where $R_{\mathrm{NLL}}(v)$ is the NLL radiator, which encodes the probability of observing no emissions $k_i$ with $V(\{\tilde{p}\}, k_i)>v$. The term $R'_{\mathrm{NLL}}(v)$ includes all terms up to NLL order i.e. discounting any terms which are of NNLL accuracy. The NNL radiator is a sum of contributions from the three dipoles which build up a three-jet configuration $q\bar{q}, qg, g\bar{q}$:
 \begin{equation}
 \label{eq:NLL-radiator}
 \begin{split}
@@ -247,65 +258,44 @@ where $R_{\mathrm{NLL}}$ is the NLL radiator. This encodes the probability of ob
 	\left. \left. +B_\ell T\left(\frac{L}{a+b_\ell}\right)\right] +2\ln\frac{Q_{ij}}{Q}T\left(\frac{L}{a}\right)\right)\,,
 \end{split}
 \end{equation}
-where $L\equiv\ln(1/v)$ and $C_{(ij)}$ is the colour factor associated with the dipole. 
-The function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, which can be computed using the general formula
+where $L\equiv\ln(1/v)$ and $C_{(ij)}$ is the colour factor associated with the dipole
+\begin{equation}
+C_{(ij)}=
+\begin{cases}
+2C_F-C_A\,, & q\bar{q}\,,\\
+C_A\,,& qg,\,g\bar{q}\,.
+\end{cases}
+\end{equation}
+The remaining terms in Eq.~\eqref{eq:NLL-radiator} can be found in~\cite{Arpino:2019ozn}. \ABquestion{Should I be discussing any other terms?}
+In order to define the other term coming from Eq.~\eqref{eq:NLL-cumulant} we must parameterise each emission's momentum $k_i$ into the leg to $\{\ell_i,\phi_i,\zeta_i\}$, the leg to which the emission is collinear, the azimuthal angle, and the variable $\zeta_i\equiv \Vsc{k_i}/v$, such that we arrive at the expression: \ABquestion{$\phi_i$ or $\phi_i^{(\ell_i)}$? Also is it $\Vsc$ or $V$? Also should I mention how they don't need rapidity defined for event shapes?} 
   \begin{equation}
     \label{eq:FNLL-formula}
-    \mathcal{F}_{\mathrm{NLL}}(\lambda) = \int\! \dZ \,\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,,
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)= \int\! \dZ \,\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,.
   \end{equation}
-  where we have defined the soft-collinear measure $\dZ$ through the formula
+This represents the soft and collinear emissions. Since, at NLL, the main role of the real emissions is that of cancelling the IR singularities of virtual corrections, it stand that these soft and collinear emissions at NLL give the only non-trivial representation. The soft-collinear measure $\dZ$ is defined through the formula
   \begin{multline}
     \label{eq:dZ-def}
-    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,.
+    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,,
   \end{multline}
+where $\epsilon$ represents a cutoff such that all unresolved emissions i.e. with $\zeta_i<\epsilon$ combine with the virtual corrections to form $\epsilon^{R'_{\mathrm{NLL}}}$. Furthermore, the term $\Vsc{k_1,\dots,k_n}/v$ is found to be the following \ABquestion{Shall we discuss the resolved part a bit more?}
+\begin{equation}
+  \label{eq:Vsc}
+  \frac{\Vsc{k_1,\dots,k_n}}{v}\equiv \lim_{v\to 0}\frac{V({\{\tilde{p}\},k_1,\dots,k_n})}{v}\,,
+\end{equation}
+which is essentially the approximation of the observable when all emissions $k_1,\dots,k_n$ are soft {\em and} collinear. This limit in eq.~\eqref{eq:Vsc} is guaranteed to exist for all rIRC safe
+observables. For event shapes, this limit is a function of
+$\{\zeta_i,\ell_i,\phi_i\}$, with $\zeta_i\equiv \Vsc{k_i}/v$. \ABquestion{$\phi_i$ or $\phi_i^{(\ell_i)}$?} Therefore one can freely integrate over emissions' rapidities, which yields a jacobian factor $R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg. \ABquestion{Should I discuss what $R'_{\text{NLL},\ell_i}$  is? Also should I discuss how \textsc{CAESAR} performs `out of the box' - a bit unsure what this means exactly? Am a bit unsure about what boxes I need to tick here - I am presuming we need to discuss: how it is parameterised, maybe discuss about rapidity perhaps, how the computer programme works? Need some clarity.}
 
-
-
-
-\section{NNL Resummation: ARES}
+\section{NNLL Resummation: ARES}
 \todo{NNLL: Formalism + ISR prescription \\ At the very least here we need to discuss the hard collinear thing which helps us with ISR for our project.}
 
 \subsection*{Formulation}
-The ARES method begins by understanding that any rIRC safe observable $V$, in the presence of a single soft emission collinear to leg $\ell$, can be parameterised in the following way \cite{Arpino:2019ozn}:
-\begin{equation}
-	V(\{p\},k)\simeq V_{\text{sc}}(k)\equiv d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^ae^{-b_\ell\eta^{(\ell)}}g_\ell(\phi^{(\ell)})\,,
-	\label{eq:general-sc-V}
-\end{equation}
-where $k_t^{(\ell)},\eta^{(\ell)},$ and $\phi^{(\ell)}$ are the transverse momentum, rapidity, and azimuthal angle of the emission $k$ with respect to the parent emitter $p_\ell$ and $a, b_{\ell}$ and $d_\ell$ are parameters. Note that $d_\ell$ is a coefficient which depends on the underlying Born kinematics, and we have introduced and arbitrary \enquote{resummation} scale $Q$ which we use as a reference normalisation scale for transverse momenta. 
- $a, b_{\ell}, d_\ell, g_\ell$ 
-%Unsure if its best to put this here. 
-\\ \\
-Furthermore, we must consider an observable $V(\{\tilde{p}\},k_1,\cdots , k_n)$ which is a non-negative function of final-state $\{\tilde{p}\}$ and additional emissions $\{k_i\}$. Any continuously global, rIRC safe observable $V$ goes smoothly to zero for the born event such that:
-\begin{equation}
-V(\tilde{p}_1,\cdots , \tilde{p}_n)=V(p_1,\cdots ,p_n)=0\, .
-	\label{eq:Born-observable}
-\end{equation}
-It is clear to see that the tilde denotes the final-state moment recoil due to the extra emissions and that there is a mapping between the recoiled and the Born momenta.
-Additionally, in our case of the three-jet observable, we expect the observable to approach zero for momentum configurations that approach the limit of 3 narrow jets. 
-We consider the cumulative distribution of a three-jet event shape $V(p_1,\cdots ,p_n)$, defined as the following:
-\begin{equation}
-	\Sigma_{\mathcal{H}}(v)\equiv\frac{1}{\sigma_{\mathcal{H}}}\sum_{n=3}^{\infty}\int d\Phi_n\frac{d\sigma_n}{d\Phi_n}\mathcal{H}(p_1,\cdots ,p_n)\,\Theta(v-V(p_1,\cdots ,p_n))\,,
-	\label{eq:hard-cumulant}
-\end{equation}
-where $d\Phi_n$ is the $n$-particle phase space, $d\sigma_n/d\Phi_n$ is the normalised differential cross-section for producing $n$ final-state particles, and 
-$\mathcal{H}(p_1,\cdots ,p_n)$ is an event selection function which is 1 for events with 3 or more hard jets and 0 otherwise. This can be calculated through jet algorithms but we will not be discussed in this report. \\ \\
-In near-to-planar kinematics i.e. when $v\ll1$, we find that $\Sigma_{\mathcal{H}}(v)$ becomes the following:
- \begin{equation}
-	\Sigma_{\mathcal{H}}(v)\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_3\frac{d\sigma_3}{d\Phi_3}\Sigma(\{p_1,p_2,p_3\},v)\,\mathcal{H}(p_1,p_2,p_3)\,.
-	\label{eq:hard-cumulant-approx}
-\end{equation}
-In the region where $v\ll1$, large logarithms emerge in the function $\Sigma(\{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\},v)$. Our aim is to be able to resum these logarithms, up to a given logarithmic accuracy to all orders in the strong coupling (in our case NNLL). In fact, we find that this is equal to the following:
-\begin{equation}
-	\Sigma(\{p_1,p_2,p_3\},v)\equiv\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n)\int\prod_{i=1}^n[dk_i]\,|\mathcal{M}(\{\tilde{p}\},k_1,\cdots ,k_n)|^2\,\Theta(v-V(\{\tilde{p}\},k_1,\cdots ,k_n)\, ,
-	\label{eq:born-cumulant}
-\end{equation}
-where $S(n)$ is the symmetry factor e.g. $1/n!$ for $n$ identical gluons. Moreover, $\mathcal{V}(\{\tilde{p}\}$ includes all virtual corrections to the Born process, and $|\mathcal{M}(\{\tilde{p}\},k_1,\cdots ,k_n)|^2$ contains all real corrections.
 Using properties of rIRC safety and derivations found in \cite{Banfi:2018mcq}, we find that the NNLL master formula, in the presence of initial soft radiation only, is the following:
-\begin{multline}
+\begin{equation}
   \label{eq:Sigma-NNLL-fs}
   \Sigma(\{p_1,p_2,p_3\},v)= e^{-R_{\mathrm{NNLL}}(v)}\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
       +\frac{\alpha_s(Qv^{\frac{1}{a+b_3}})}{2\pi}C_{\mathrm{hc},3}^{(1)}) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
-\end{multline}
+\end{equation}
 where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and
 $\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
 In this formula, \(\mathcal{F}_{\mathrm{NLL}}\) and \(\delta\mathcal{F}_{\mathrm{NNLL}}\) have a general expression for any rIRC safe observable and are single logarithmic functions. This allows us to express them in terms of the single-logarithmic quantity \(\lambda\). We find that \(\mathcal{F}_{\mathrm NLL}\) is purely NLL, while the terms containing \(H^{(1)}, C_{\mathrm{hc},3}^{(1)}\), and \(\delta\mathcal{F}_{\mathrm NNLL}\) are of order NNLL. \\ \\
