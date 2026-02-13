@@ -286,27 +286,7 @@ which is essentially the approximation of the observable when all emissions $k_1
 observables. For event shapes, this limit is a function of
 $\{\zeta_i,\ell_i,\phi_i\}$, with $\zeta_i\equiv \Vsc{k_i}/v$. \ABquestion{$\phi_i$ or $\phi_i^{(\ell_i)}$?} Therefore one can freely integrate over emissions' rapidities, which yields a jacobian factor $R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg. \ABquestion{Should I discuss what $R'_{\text{NLL},\ell_i}$  is? Also should I discuss how \textsc{CAESAR} performs `out of the box' - a bit unsure what this means exactly? Am a bit unsure about what boxes I need to tick here - I am presuming we need to discuss: how it is parameterised, maybe discuss about rapidity perhaps, how the computer programme works? Need some clarity.}
 
-\section{NNLL Resummation: ARES}
-\todo{NNLL: Formalism + ISR prescription \\ At the very least here we need to discuss the hard collinear thing which helps us with ISR for our project.}
-
-\subsection*{Formulation}
-Using properties of rIRC safety and derivations found in \cite{Banfi:2018mcq}, we find that the NNLL master formula, in the presence of initial soft radiation only, is the following:
-\begin{equation}
-  \label{eq:Sigma-NNLL-fs}
-  \Sigma(\{p_1,p_2,p_3\},v)= e^{-R_{\mathrm{NNLL}}(v)}\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
-      +\frac{\alpha_s(Qv^{\frac{1}{a+b_3}})}{2\pi}C_{\mathrm{hc},3}^{(1)}) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
-\end{equation}
-where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and
-$\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
-In this formula, \(\mathcal{F}_{\mathrm{NLL}}\) and \(\delta\mathcal{F}_{\mathrm{NNLL}}\) have a general expression for any rIRC safe observable and are single logarithmic functions. This allows us to express them in terms of the single-logarithmic quantity \(\lambda\). We find that \(\mathcal{F}_{\mathrm NLL}\) is purely NLL, while the terms containing \(H^{(1)}, C_{\mathrm{hc},3}^{(1)}\), and \(\delta\mathcal{F}_{\mathrm NNLL}\) are of order NNLL. \\ \\
-The idea is that at NLL, there are a collection of soft-collinear emissions. 
-At NNLL, we still have this ensemble of soft-collinear emission contributing terms of $(\alpha_s^n L^n)$. However, in addition to this, there will be \emph{one} of the following: hard-collinear emission, soft wide-angle emission or, gluon splitting emission. Each one will contribute a factor of the coupling such that the terms are of order $\alpha_s^{n+1} L^n$, achieving NNLL accuracy.
-We will now describe all the quantities within this master formula:
-\begin{itemize}
-\item the ``radiator'' $R_{\mathrm{NNLL}}(v)$ includes all virtual
-  corrections of soft and/or collinear origin. These are divergent,
-  but their divergences cancel with those corrections from real radiation. We will discuss this in a little more detail later in section \ref{sec:radiator}.
-\item \emph{Resolved} soft and collinear emissions widely separated in
+\todo{\emph{Resolved} soft and collinear emissions widely separated in
   angle, and the corresponding virtual corrections, build up to the
   NLL function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$. To compute this
   function one must obtain the expression for the observable
@@ -331,21 +311,45 @@ In the above formula, we have introduced the rescaling variables
 $\zeta_i\equiv V^{\mathrm{sc}}(\{\tilde p\},k_i)/v$. With
 $\{\zeta_i,\phi_i^{(\ell_i)}\}$ fixed for event shapes, one can freely
 integrate over emissions' rapidities, which yields a jacobian factor
-$R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg.
+$R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg.}
 
-\item $H^{(1)}$ and $C_{\mathrm{hc},3}^{(1)}$ are coefficients of order $\alpha_s(Q)$ due to the virtual corrections. Multiplying these by $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, we obtain terms of order NNLL. 
+
+
+\section{NNLL Resummation: ARES}
+\todo{I think for now let's just discuss this in terms of the 3 jet case and in the next section we can repeat ourselves a tiny bit and essentially explain where the adaptions are.}
+In this section, we will present the master formula governing the \textsc{ARES} method. Full derivations can be found in~\cite{Arpino:2019ozn}, but here we will simply state the results. Note that there are a couple of things that change from Ref.~~\cite{Arpino:2019ozn} to work done for hadronic collisions, namely the addition of initial-state radiation, along with 
+
+
+\subsection{The master formula}
+Using properties of rIRC safety and derivations found in \cite{Banfi:2018mcq}, we find that the NNLL master formula, in the presence of initial soft radiation only, is the following:
+\begin{equation}
+  \label{eq:Sigma-NNLL-fs}
+  \Sigma(\{p_1,p_2,p_3\},v)= e^{-R_{\mathrm{NNLL}}(v)}\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
+      +\frac{\alpha_s(Qv^{\frac{1}{a+b_3}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
+\end{equation}
+where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and
+$\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
+In this formula, \(\mathcal{F}_{\mathrm{NLL}}\) and \(\delta\mathcal{F}_{\mathrm{NNLL}}\) have a general expression for any rIRC safe observable and are single logarithmic functions. This allows us to express them in terms of the single-logarithmic quantity \(\lambda\). We find that \(\mathcal{F}_{\mathrm NLL}\) is purely NLL, while the terms containing \(H^{(1)}, C_{\mathrm{hc},3}^{(1)}\), and \(\delta\mathcal{F}_{\mathrm NNLL}\) are of order NNLL. 
+The idea is that at NLL, there are a collection of soft-collinear emissions. 
+At NNLL, we still have this ensemble of soft-collinear emission contributing terms of $(\alpha_s^n L^n)$. However, in addition to this, there will be \emph{one} of the following: hard-collinear emission, soft wide-angle emission or, gluon splitting emission. Each one will contribute a factor of the coupling such that the terms are of order $\alpha_s^{n+1} L^n$, achieving NNLL accuracy.
+We will now describe all the quantities which have not been mentioned before within this master formula:
+\begin{itemize}
+\item the ``radiator'' $R_{\mathrm{NNLL}}(v)$ includes all virtual
+  corrections of soft and/or collinear origin. These are divergent,
+  but their divergences cancel with those corrections from real radiation. We will discuss this in a little more detail later in section \ref{subsec:radiator}.
+\item $H^{(1)}$ and $C_{\mathrm{hc},3}^{(1)}$ are coefficients of order $\alpha_s(Q)$ due to the virtual corrections. Since  $\mathcal{F}_{\mathrm{NLL}}(\lambda)$ is of order NLL, the multiplication yields terms of order NNLL. 
 
 \item All other \emph{resolved} soft or final-state hard-collinear emissions and the corresponding virtual corrections build the NNLL function
-  $\delta\mathcal{F}_{\mathrm NNLL}(\lambda)$. More precisely, these
+  $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$. More precisely, these
   consist of a single soft and/or collinear ``special'' emission,
   accompanied by an arbitrary number of soft and collinear emissions
   widely separated in angle (and the corresponding virtual
-  corrections). The function $\delta\mathcal{F}_{\mathrm NNLL}(\lambda)$
+  corrections). The function $\delta\mathcal{F}_{\mathrm{ NNLL}}(\lambda)$
   is the sum of various terms, and comes from relaxing different approximations that were used within the NLL calculation. %see what this means by the NLL calculation and reword this part.
   For a three-jet event shape we find this to be the following:
 \begin{equation}
     \label{eq:dFNNLL}
-    \delta\mathcal{F}_{\mathrm NNLL} = \delta\mathcal{F}_{\mathrm sc}+\delta\mathcal{F}_{\mathrm hc}+\delta\mathcal{F}_{\mathrm rec}+\Delta\mathcal{F}_{\mathrm rec}+\delta\mathcal{F}_{\mathrm wa}+\Delta\mathcal{F}_{\mathrm wa}+\delta\mathcal{F}_{\mathrm correl}\,,
+    \delta\mathcal{F}_{\mathrm{NNLL}} = \delta\mathcal{F}_{\mathrm {sc}}+\delta\mathcal{F}_{\mathrm {hc}}+\delta\mathcal{F}_{\mathrm {rec}}+\Delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{wa}}+\Delta\mathcal{F}_{\mathrm {wa}}+\delta\mathcal{F}_{\mathrm {correl}}\,,
 \end{equation}
 where each contribution reflects the region of phase space spanned by the special emission.%Work out what this special emission is. 
 
@@ -353,8 +357,8 @@ Note that the three-jet event introduces two new functions $\Delta\mathcal{F}_{\
 \end{itemize}
 
 
-\subsection*{The Radiator}
-\label{sec: radiator}
+\subsection{The NNLL Radiator}
+\label{subsec:radiator}
 At NNLL accuracy, with more than two emitting legs, it is convenient
 to split the radiator $R_{\NNLL}(v)$ into the sum of a soft part $R_s(v)$ and a hard-collinear part $R_{\mathrm hc}(v)$:
 \begin{equation}
@@ -380,8 +384,12 @@ such that
 \end{equation}
 where the functions $h_2^{(\ell)}, h_3^{(\ell)}$ depend solely on $a$ and $b_{\ell}$ and are again contained within \cite{Arpino:2019ozn}.
 
-\subsection*{$\delta\mathcal{F}_{\mathrm{NNLL}}$}
-%Re-word this title
+\subsection{Soft and collinear contributions}
+
+\subsection{Hard and collinear contributions}
+
+\subsection{Soft wide angle contributions}
+
 The corrections, $\delta\mathcal{F}_{\mathrm{sc}}, \delta\mathcal{F}_{\mathrm{wa}}, \Delta\mathcal{F}_{\mathrm{wa}}, \delta\mathcal{F}_{\mathrm{correl}}$ all have origin in resolved soft emissions, whereas the terms $\delta\mathcal{F}_{\mathrm{hc}}, \delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$ have hard-collinear nature. 
 % Each resolved real emission is found by requiring that $V(\{\tilde{p}\},k_i)>\epsilon v$ such that there is a lower bound on the phase-space where a resolved emission can take place and because of rIRC safety, $\epsilon$ is independent of $v$. 
 
@@ -389,8 +397,6 @@ The corrections, $\delta\mathcal{F}_{\mathrm{sc}}, \delta\mathcal{F}_{\mathrm{wa
 \item[Soft emissions]: $\delta\mathcal{F}_{\mathrm sc}$ represents the running coupling corrections to the real emissions in the CMW scheme. It also accounts for the correct rapidity boundary for a single soft-collinear emission. $\delta\mathcal{F}_{\mathrm wa}$ arises from a soft emission near $\eta=0$ and accounts for the variation between the observable and its soft-collinear parametrisation for a single soft wide-angle emission accompanied by an ensemble of soft-collinear gluons. $\Delta\mathcal{F}_{\mathrm wa}$ is the NNLL contribution arising from wide angled resolved emissions. Finally, $\delta\mathcal{F}_{\mathrm correl}$ addresses the treatment of the splitting of a single soft and collinear gluon.
 \item[Hard-collinear emissions]: $\delta\mathcal{F}_{\mathrm hc}$ originates from the emission of a hard-collinear parton at the level of the squared matrix element. $\delta\mathcal{F}_{\mathrm rec}$ is due to a hard-collinear emission (at the level of the kinematics) recoiling against the soft-collinear ensemble of emissions. This includes contributions due to spin correlations and hence may depend on the underlying Born momenta. $\Delta\mathcal{F}_{\mathrm rec}$ appears for the first time in near-to-planar three jet events. This accounts for correlations which occur between the spin of a hard collinear gluon and the event plane. 
 \end{enumerate}
-\subsection*{Initial State Radiation}
- {\color{purple} For the very first time NNLL resummation has been performed for Hadronic collisions using the ARES method.}
 
 \section{Validation and Matching}
 \emph{Include something on matching with fixed order i.e. something to essentially show that resummation is necessary. I think here we can add in some of the plots calculated from the numerical work done in hhHjet project.}
