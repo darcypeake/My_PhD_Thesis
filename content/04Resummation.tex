@@ -241,16 +241,20 @@ As discussed previously in Sec.~\ref{subsec:thrust-example} for the case of thru
 
 
 \subsubsection{NLL Resummation}
-In the limit where $v\to 0$, the cumulant can have the following factorised form
+In the limit $v\to 0$, the cumulant for a three-jet observable can be written in factorised form as
 \begin{equation}
-\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\,,
+\label{eq:3jet-cumu-gen}
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right),
 \end{equation}
-where $S(n)$ is a symmetry factor, which is $1/n!$ for $n$ identical gluons and $\mathcal{V}\left(\{p\}\right)$ represents the virtual corrections to the Born process, normalised by the Born matrix element squared. The $\mathcal{M}^2$ represents the real corrections. At NLL, one can simply consider an ensemble of soft-collinear partons, which are emitted independently off the hard legs, together with the virtual corrections. This corresponds to the above where $[dk]M^2(k)$ is the one-gluon emission probability, which can be found in Ref.~\cite{Banfi:2004yd}. Therefore, at NLL accuracy, one find the distribution for three-jet observables to be  
+where $S(n)$ is a symmetry factor (equal to $1/n!$ for $n$ identical gluons), $\mathcal{V}(\{p\})$ denotes the virtual corrections to the Born process normalised to the Born matrix element squared, and $\mathcal{M}^2$ are the real corrections. \question{Make it clear that $M^2$ is just $|M|^2$?} \\ 
+At NLL, one can simply consider an ensemble of soft-collinear partons, which are emitted independently off the hard legs, together with the virtual corrections. In this limit, $[dk]\,\mathcal{M}^2(k)$ reduces to the one-gluon emission probability \ABquestion{single soft-collinear emission probability}, whose explicit form can be found in~\cite{Banfi:2004yd}.  \\ \\
+Therefore, at NLL accuracy, the cumulant for a three-jet observable takes the form
 \begin{equation}
 \label{eq:NLL-cumulant}
 \Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq-v\frac{dR_{\mathrm{NLL}}}{dv}\,,
 \end{equation}
-where $R_{\mathrm{NLL}}(v)$ is the NLL radiator, which encodes the probability of observing no emissions $k_i$ with $V(\{\tilde{p}\}, k_i)>v$. The term $R'_{\mathrm{NLL}}(v)$ includes all terms up to NLL order i.e. discounting any terms which are of NNLL accuracy. The NNL radiator is a sum of contributions from the three dipoles which build up a three-jet configuration $q\bar{q}, qg, g\bar{q}$:
+where $R_{\mathrm{NLL}}(v)$ is the NLL radiator, encoding the probability of no emissions with $V(\{\tilde{p}\},k_i)>v$. The derivative $R'_{\mathrm{NLL}}$ includes all logarithmic contributions \question{make it clear that it is the log contributions up to NLL of the radiator i.e. just neglecting terms above NLL} up to NLL accuracy, neglecting terms beyond this order.\\ 
+For a three-jet configuration, the NLL radiator is a sum over the dipoles $(q\bar q)$, $(qg)$ and $(g\bar q)$,
 \begin{equation}
 \label{eq:NLL-radiator}
 \begin{split}
@@ -258,7 +262,7 @@ where $R_{\mathrm{NLL}}(v)$ is the NLL radiator, which encodes the probability o
 	\left. \left. +B_\ell T\left(\frac{L}{a+b_\ell}\right)\right] +2\ln\frac{Q_{ij}}{Q}T\left(\frac{L}{a}\right)\right)\,,
 \end{split}
 \end{equation}
-where $L\equiv\ln(1/v)$ and $C_{(ij)}$ is the colour factor associated with the dipole
+where $L=\ln(1/v)$, $Q_{ij}^2=2p_i\!\cdot p_j$, and $C_{(ij)}$ is the colour factor of the dipole,
 \begin{equation}
 C_{(ij)}=
 \begin{cases}
@@ -266,78 +270,71 @@ C_{(ij)}=
 C_A\,,& qg,\,g\bar{q}\,.
 \end{cases}
 \end{equation}
-The remaining terms in Eq.~\eqref{eq:NLL-radiator} can be found in~\cite{Arpino:2019ozn}. \ABquestion{Should I be discussing any other terms?}
-In order to define the other term coming from Eq.~\eqref{eq:NLL-cumulant} we must parameterise each emission's momentum $k_i$ into the leg to $\{\ell_i,\phi_i,\zeta_i\}$, the leg to which the emission is collinear, the azimuthal angle, and the variable $\zeta_i\equiv \Vsc{k_i}/v$, such that we arrive at the expression: \ABquestion{$\phi_i$ or $\phi_i^{(\ell_i)}$? Also is it $\Vsc$ or $V$? Also should I mention how they don't need rapidity defined for event shapes?} 
+Explicit expressions for the functions $r_\ell(L), r'_\ell(L)$ and $T(L)$ can be found in~\cite{Arpino:2019ozn}. \\
+To define $\mathcal{F}_{\mathrm{NLL}}$, each emission $k_i$ is parametrised by $\{\ell_i,\phi_i^{(\ell_i)},\zeta_i\}$, 
+where; $\ell_i$ denotes the leg to which the emission is collinear, $\phi_i^{(\ell_i)}$ is the azimuthal angle with respect to that leg, and
+\[
+\zeta_i \equiv \frac{V_{\mathrm{sc}}(k_i)}{v}.
+\]
+With this parametrisation,
   \begin{equation}
     \label{eq:FNLL-formula}
     \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)= \int\! \dZ \,\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,.
   \end{equation}
-This represents the soft and collinear emissions. Since, at NLL, the main role of the real emissions is that of cancelling the IR singularities of virtual corrections, it stand that these soft and collinear emissions at NLL give the only non-trivial representation. The soft-collinear measure $\dZ$ is defined through the formula
+where the soft-collinear measure is defined as
   \begin{multline}
     \label{eq:dZ-def}
-    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,,
+    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,.
   \end{multline}
-where $\epsilon$ represents a cutoff such that all unresolved emissions i.e. with $\zeta_i<\epsilon$ combine with the virtual corrections to form $\epsilon^{R'_{\mathrm{NLL}}}$. Furthermore, the term $\Vsc{k_1,\dots,k_n}/v$ is found to be the following \ABquestion{Shall we discuss the resolved part a bit more?}
+The parameter $\epsilon$ acts as a cutoff, where emissions with $\zeta_i<\epsilon$ are \emph{unresolved} and, together with virtual corrections, generate the factor $\epsilon^{R'_{\mathrm{NLL}}}$. The soft-collinear approximation to the observable is defined as
 \begin{equation}
   \label{eq:Vsc}
   \frac{\Vsc{k_1,\dots,k_n}}{v}\equiv \lim_{v\to 0}\frac{V({\{\tilde{p}\},k_1,\dots,k_n})}{v}\,,
 \end{equation}
-which is essentially the approximation of the observable when all emissions $k_1,\dots,k_n$ are soft {\em and} collinear. This limit in eq.~\eqref{eq:Vsc} is guaranteed to exist for all rIRC safe
-observables. For event shapes, this limit is a function of
-$\{\zeta_i,\ell_i,\phi_i\}$, with $\zeta_i\equiv \Vsc{k_i}/v$. \ABquestion{$\phi_i$ or $\phi_i^{(\ell_i)}$?} Therefore one can freely integrate over emissions' rapidities, which yields a jacobian factor $R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg. \ABquestion{Should I discuss what $R'_{\text{NLL},\ell_i}$  is? Also should I discuss how \textsc{CAESAR} performs `out of the box' - a bit unsure what this means exactly? Am a bit unsure about what boxes I need to tick here - I am presuming we need to discuss: how it is parameterised, maybe discuss about rapidity perhaps, how the computer programme works? Need some clarity.}
+which corresponds to approximation of the observable when all emissions $k_1,\dots,k_n$ are simultaneously soft and collinear. Recursive IRC safety guarantees that this limit exists.
+For event shapes, the dependence on emission rapidity can be integrated analytically, which in turn can yield a Jacobian factor $R'_{\mathrm{NLL},\ell} \equiv 2 C_\ell\, r'_\ell(L)$, with $C_\ell=C_F$ for quark legs and $C_\ell=C_A$ for gluon legs. 
+\ABquestion{Mention more about resolved/unresolved?}
 
-\todo{\emph{Resolved} soft and collinear emissions widely separated in
-  angle, and the corresponding virtual corrections, build up to the
-  NLL function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$. To compute this
-  function one must obtain the expression for the observable
-  $V(\{\tilde p\},k_1,\dots,k_n)$ when $k_1,\dots, k_n$ are soft
-  \emph{and} collinear. In particular, for rIRC safe observables, the
-  following limit exists
-  \begin{equation}
-    \label{eq:V-lim}
-    \lim_{v\to 0}\frac{V(\{\tilde p\},k_1,\dots,k_n)}{v} \equiv \frac{V^{\mathrm sc}(\{\tilde p\},k_1,\dots,k_n)}{v}\,.
-  \end{equation}
-  Given $V^{\mathrm{sc}}(\{\tilde p\},k_1,\dots,k_n)$, the function $\mathcal{F}_{\mathrm NLL}(\lambda)$ can be computed using the general formula
- \begin{equation}
-    \label{eq:FNLL-formula}
-    \mathcal{F}_{\mathrm{NLL}}(\lambda) = \int\! \dZ \,\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,,
-  \end{equation}
-  where we have defined the soft-collinear measure $\dZ$ through the formula
-  \begin{multline}
-    \label{eq:dZ-def}
-    \int\! \dZ \,G(\{k_i\}) \\ \equiv \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)G(k_1,\dots,k_n)\,.
-\end{multline}
-In the above formula, we have introduced the rescaling variables
-$\zeta_i\equiv V^{\mathrm{sc}}(\{\tilde p\},k_i)/v$. With
-$\{\zeta_i,\phi_i^{(\ell_i)}\}$ fixed for event shapes, one can freely
-integrate over emissions' rapidities, which yields a jacobian factor
-$R'_{\text{NLL},\ell_i}$ for each emission and for each emitting leg.}
 
 
 
 \section{NNLL Resummation: ARES}
-\todo{I think for now let's just discuss this in terms of the 3 jet case and in the next section we can repeat ourselves a tiny bit and essentially explain where the adaptions are.}
-In this section, we will present the master formula governing the \textsc{ARES} method. Full derivations can be found in~\cite{Arpino:2019ozn}, but here we will simply state the results. Note that there are a couple of things that change from Ref.~~\cite{Arpino:2019ozn} to work done for hadronic collisions, namely the addition of initial-state radiation, along with 
-
+In this section, we will present the master formula governing the \textsc{ARES} method. Full derivations can be found in~\cite{Arpino:2019ozn}, but here we will simply state the results. It was first introduced in \todo{complete history outline.}
 
 \subsection{The master formula}
+\todo{Introduce by essentially saying that before we have sea of soft and collinear emissions and now we had one special emission i.e. we relax the constraints.}
 Using properties of rIRC safety and derivations found in \cite{Banfi:2018mcq}, we find that the NNLL master formula, in the presence of initial soft radiation only, is the following:
 \begin{equation}
+\begin{aligned}
   \label{eq:Sigma-NNLL-fs}
-  \Sigma(\{p_1,p_2,p_3\},v)= e^{-R_{\mathrm{NNLL}}(v)}\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
-      +\frac{\alpha_s(Qv^{\frac{1}{a+b_3}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
+  \Sigma(\{p_1,p_2,p_3\},v)&=\; e^{-R_{\mathrm{NNLL}}(v)}\,\times
+ \\
+& \times \left(\mathcal{F}_{\mathrm{NLL}}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
+      +\sum_{\ell=1}^3\frac{\alpha_s(Qv^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
+ \end{aligned}
 \end{equation}
-where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and
-$\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
+where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
 In this formula, \(\mathcal{F}_{\mathrm{NLL}}\) and \(\delta\mathcal{F}_{\mathrm{NNLL}}\) have a general expression for any rIRC safe observable and are single logarithmic functions. This allows us to express them in terms of the single-logarithmic quantity \(\lambda\). We find that \(\mathcal{F}_{\mathrm NLL}\) is purely NLL, while the terms containing \(H^{(1)}, C_{\mathrm{hc},3}^{(1)}\), and \(\delta\mathcal{F}_{\mathrm NNLL}\) are of order NNLL. 
 The idea is that at NLL, there are a collection of soft-collinear emissions. 
 At NNLL, we still have this ensemble of soft-collinear emission contributing terms of $(\alpha_s^n L^n)$. However, in addition to this, there will be \emph{one} of the following: hard-collinear emission, soft wide-angle emission or, gluon splitting emission. Each one will contribute a factor of the coupling such that the terms are of order $\alpha_s^{n+1} L^n$, achieving NNLL accuracy.
-We will now describe all the quantities which have not been mentioned before within this master formula:
+We will now describe all the quantities which have not been mentioned before within this master formula: \todo{With the hard function just reference equation in the Arpino paper and also with the radiator discuss it a little bit but keep it brief as we will reformulate it in the future i.e. maybe unnecessary to keep in all the relevant formulas in it.}
 \begin{itemize}
 \item the ``radiator'' $R_{\mathrm{NNLL}}(v)$ includes all virtual
   corrections of soft and/or collinear origin. These are divergent,
   but their divergences cancel with those corrections from real radiation. We will discuss this in a little more detail later in section \ref{subsec:radiator}.
 \item $H^{(1)}$ and $C_{\mathrm{hc},3}^{(1)}$ are coefficients of order $\alpha_s(Q)$ due to the virtual corrections. Since  $\mathcal{F}_{\mathrm{NLL}}(\lambda)$ is of order NLL, the multiplication yields terms of order NNLL. 
+  \begin{equation}
+    \label{eq:C1hc-q}
+    C_{\mathrm{hc},3}^{(1)}=C_F\left(\frac{7}{2}\frac{b_3}{a+b_3}+\frac{3}{a+b_3}\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac 12\right)\,,
+  \end{equation}
+  while for a gluon
+  \begin{equation}
+    \label{eq:C1hc-q}
+    \begin{split}
+    C_{\mathrm{hc},3}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_3}{a+b_3}\\ & +\frac{1}{a+b_3}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac{1}{3}T_R n_f\,.
+    \end{split}
+  \end{equation}
+  \todo{replace 3 with $\ell$.}
 
 \item All other \emph{resolved} soft or final-state hard-collinear emissions and the corresponding virtual corrections build the NNLL function
   $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$. More precisely, these
