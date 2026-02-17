@@ -8,7 +8,7 @@ The event shape \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa} is widely used 
 \label{eq:thrust}
 	T \equiv \max_{\vec{n}} \frac{\sum_j |\vec{p}_j \cdot \vec{n}|}{\sum_j |\vec{p}_j|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
-where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\ref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.
+where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\eqref{fig:thrust}.
 \begin{figure}[h]
 \begin{tikzpicture}[scale=0.9, >=Stealth]
 \begin{scope}
@@ -54,7 +54,7 @@ For the process $e^+e^- \to q\bar{q}$, the final state consists of two back-to-b
 \begin{equation}
     \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = \delta(\tau),
 \end{equation}
-where $\sigma_0$ denotes the LO cross-section given in Eq.~\ref{eq:sigma-LO}. \\ \\
+where $\sigma_0$ denotes the LO cross-section given in Eq.~\eqref{eq:sigma-LO}. \\ \\
 The first non-trivial contribution arises from the real-emission process $e^+e^- \to q\bar{q}g$. For a three-particle final state, thrust is determined by the largest momentum fraction,
 \question{Should we be referencing the full cross-section example more? Also should we call it NLO real emission here? Different references say LO/NLO? Is there a difference with that and zeroth/1st order? Unsure what to call them basically.}
 \begin{equation}
@@ -69,7 +69,7 @@ subject to the kinematic constraint $x_q + x_{\bar{q}} + x_g = 2$. Integrating o
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = C_F \frac{\alpha_s}{2\pi} \left\{ \frac{3(1+\tau)(3\tau-1)}{\tau} + \frac{(4+6\tau(\tau-1))\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)} \right\}.
 \end{equation}
-As $\tau \to 0$, the distribution exhibits an IR divergence associated with soft and collinear emissions. This divergence is canceled by the virtual one-loop correction to $e^+e^- \to q\bar{q}$, in direct analogy with the cancellation discussed in Sec.~\ref{sec:divergences}, yielding a finite result as required by the IRC safety of thrust (Sec.~\ref{sec:IRC}). Using the regulated and integrated NLO cross-section given in Eq.~\ref{eq:sigma-full}, the complete distribution may be written as \question{maybe reference Schwartz here?}
+As $\tau \to 0$, the distribution exhibits an IR divergence associated with soft and collinear emissions. This divergence is canceled by the virtual one-loop correction to $e^+e^- \to q\bar{q}$, in direct analogy with the cancellation discussed in Sec.~\ref{sec:divergences}, yielding a finite result as required by the IRC safety of thrust (Sec.~\ref{sec:IRC}). Using the regulated and integrated NLO cross-section given in Eq.~\eqref{eq:sigma-full}, the complete distribution may be written as \question{maybe reference Schwartz here?}
 \begin{equation}
 \begin{aligned}
 \label{eq:full-thrust-NLO}
@@ -119,7 +119,7 @@ where the functions $g_i$ resum logarithms at successive logarithmic accuracies.
 
 
 \section{Event-shapes}
-The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\ref{eq:resummed-cummulant} applies to all IRC safe observables \question{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. Event shapes are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including: \question{Correct description of event shape?} \\ \\
+The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\eqref{eq:resummed-cummulant} applies to all IRC safe observables \question{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. Event shapes are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including: \question{Correct description of event shape?} \\ \\
 \question{The reference~\cite{Dasgupta:2003iq}, is a paper but was used merely for the background of event shapes - am unsure if necessary to cite or not?} 
 \begin{itemize}
 \item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
@@ -295,33 +295,29 @@ which corresponds to approximation of the observable when all emissions $k_1,\do
 For event shapes, the dependence on emission rapidity can be integrated analytically, which in turn can yield a Jacobian factor $R'_{\mathrm{NLL},\ell} \equiv 2 C_\ell\, r'_\ell(L)$, with $C_\ell=C_F$ for quark legs and $C_\ell=C_A$ for gluon legs. 
 \ABquestion{Mention more about resolved/unresolved?}
 
-
-
-
 \section{NNLL Resummation: ARES}
-In this section, we will present the master formula governing the \textsc{ARES} method. Full derivations can be found in~\cite{Arpino:2019ozn}, but here we will simply state the results. It was first introduced in \todo{complete history outline.}
+The \textsc{ARES} formalism was first developed for two-jet observables in $e^+e^-$ collisions in Ref.~\cite{Banfi:2014sua}, with an extension to jet-jet rates in Ref.~\cite{Banfi:2016zlc}. Moreover, the NNLL Sudakov radiator for observables with two hard legs at Born level was formulated in~\cite{Banfi:2018mcq}. The extension to the NNLL resummation for 3-jet observables  was first introduced in~\cite{Arpino:2019ozn}.  In this section, we will discuss the necessary ingredients required to form the NNLL cumulant.
 
 \subsection{The master formula}
-\todo{Introduce by essentially saying that before we have sea of soft and collinear emissions and now we had one special emission i.e. we relax the constraints.}
-Using properties of rIRC safety and derivations found in \cite{Banfi:2018mcq}, we find that the NNLL master formula, in the presence of initial soft radiation only, is the following:
+The general idea behind determining the cumulant at NNLL accuracy is to collect all contributions that give rise to a contribution of order $\alpha_s$ compare to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be done simply by relaxing the NLL approximations and in this way can be done for a single real emission at a time. For configurations where the correction is for more than one emission, it will extend beyond NNLL accuracy and so can therefore be neglected. Using these ideas, along with the explicit derivations found in Ref.~\cite{Banfi:2018mcq}, the NNLL master formula is defined as
 \begin{equation}
 \begin{aligned}
   \label{eq:Sigma-NNLL-fs}
   \Sigma(\{p_1,p_2,p_3\},v)&=\; e^{-R_{\mathrm{NNLL}}(v)}\,\times
  \\
 & \times \left(\mathcal{F}_{\mathrm{NLL}}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
-      +\sum_{\ell=1}^3\frac{\alpha_s(Qv^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)
+      +\sum_{\ell=1}^3\frac{\alpha_s(Qv^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)\,,
  \end{aligned}
 \end{equation}
-where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0=(11 C_A\!-2 n_f)/(12\pi)$. 
-In this formula, \(\mathcal{F}_{\mathrm{NLL}}\) and \(\delta\mathcal{F}_{\mathrm{NNLL}}\) have a general expression for any rIRC safe observable and are single logarithmic functions. This allows us to express them in terms of the single-logarithmic quantity \(\lambda\). We find that \(\mathcal{F}_{\mathrm NLL}\) is purely NLL, while the terms containing \(H^{(1)}, C_{\mathrm{hc},3}^{(1)}\), and \(\delta\mathcal{F}_{\mathrm NNLL}\) are of order NNLL. 
-The idea is that at NLL, there are a collection of soft-collinear emissions. 
-At NNLL, we still have this ensemble of soft-collinear emission contributing terms of $(\alpha_s^n L^n)$. However, in addition to this, there will be \emph{one} of the following: hard-collinear emission, soft wide-angle emission or, gluon splitting emission. Each one will contribute a factor of the coupling such that the terms are of order $\alpha_s^{n+1} L^n$, achieving NNLL accuracy.
-We will now describe all the quantities which have not been mentioned before within this master formula: \todo{With the hard function just reference equation in the Arpino paper and also with the radiator discuss it a little bit but keep it brief as we will reformulate it in the future i.e. maybe unnecessary to keep in all the relevant formulas in it.}
+where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}. Note that both $\mathcal{F}_{\mathrm{NLL}}$ and $\delta\mathcal{F}_{\mathrm{NNLL}}$ are single logarithmic functions and can therefore be defined in terms of the quantity $\lambda$. We will now give a brief summary and description of the ingredients in this formula:
 \begin{itemize}
-\item the ``radiator'' $R_{\mathrm{NNLL}}(v)$ includes all virtual
-  corrections of soft and/or collinear origin. These are divergent,
-  but their divergences cancel with those corrections from real radiation. We will discuss this in a little more detail later in section \ref{subsec:radiator}.
+\item The NNLL radiator, $R_{\mathrm{NNLL}}(v)$, includes all virtual corrections of soft and/or collinear origin. These are divergent, but their divergences cancel with those of real radiation. At the scope, the radiator includes also a subset of real corrections for suitably defined \emph{unresolved} emissions. The procedure to define those emissions is not unique. The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Note that its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy. \ABquestion{Unsure about the resolved emissions part/ master formula part in hhZjet tex.}
+
+\item The NLL function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, given in Eq.~\eqref{eq:FNLL-formula}, as discussed before come from \emph{resolved} soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections.
+
+\item Finite virtual corrections of relative order $\alpha_s$ are embedded in the coefficient $H^{(1)}$. This is a term of order $\alpha_s$ multiplying a NLL function, hence NNLL. The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}.
+
+
 \item $H^{(1)}$ and $C_{\mathrm{hc},3}^{(1)}$ are coefficients of order $\alpha_s(Q)$ due to the virtual corrections. Since  $\mathcal{F}_{\mathrm{NLL}}(\lambda)$ is of order NLL, the multiplication yields terms of order NNLL. 
   \begin{equation}
     \label{eq:C1hc-q}
@@ -334,52 +330,24 @@ We will now describe all the quantities which have not been mentioned before wit
     C_{\mathrm{hc},3}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_3}{a+b_3}\\ & +\frac{1}{a+b_3}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac{1}{3}T_R n_f\,.
     \end{split}
   \end{equation}
-  \todo{replace 3 with $\ell$.}
-
-\item All other \emph{resolved} soft or final-state hard-collinear emissions and the corresponding virtual corrections build the NNLL function
+\item All other soft or hard-collinear emissions and the
+  corresponding virtual corrections build the NNLL function
   $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$. More precisely, these
-  consist of a single soft and/or collinear ``special'' emission,
+  consist of a single soft and/or collinear \emph{special} emission,
   accompanied by an arbitrary number of soft and collinear emissions
   widely separated in angle (and the corresponding virtual
-  corrections). The function $\delta\mathcal{F}_{\mathrm{ NNLL}}(\lambda)$
-  is the sum of various terms, and comes from relaxing different approximations that were used within the NLL calculation. %see what this means by the NLL calculation and reword this part.
-  For a three-jet event shape we find this to be the following:
-\begin{equation}
+  corrections). The function $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$
+  is the sum of various terms, which reflect the region of phase space
+  spanned by the special emission, namely:
+  \begin{equation}
     \label{eq:dFNNLL}
-    \delta\mathcal{F}_{\mathrm{NNLL}} = \delta\mathcal{F}_{\mathrm {sc}}+\delta\mathcal{F}_{\mathrm {hc}}+\delta\mathcal{F}_{\mathrm {rec}}+\Delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{wa}}+\Delta\mathcal{F}_{\mathrm {wa}}+\delta\mathcal{F}_{\mathrm {correl}}\,,
-\end{equation}
-where each contribution reflects the region of phase space spanned by the special emission.%Work out what this special emission is. 
-
-Note that the three-jet event introduces two new functions $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ which do not occur in the two-jet scenario. All these contributions within~\ref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$ of the appropriate weight function $G(\{k_i\})$, as shown in equation~(\ref{eq:dZ-def}). 
+    \delta\mathcal{F}_{\mathrm {NNLL}} = \delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{hc}}+\delta\mathcal{F}_{\mathrm{rec}}+\Delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{wa}}+\Delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}\,.
+  \end{equation}
+  The meaning of the various contributions will become clear in the following section. Please note that in the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and were introduced for the first time in the 3-jet case in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
+  of the appropriate weight function $G(\{k_i\})$, see
+  Eq.~\eqref{eq:dZ-def}. \ABquestion{There are resolved emissions also? Also are they soft and hard-collinear or soft and collinear?}
 \end{itemize}
-
-
-\subsection{The NNLL Radiator}
-\label{subsec:radiator}
-At NNLL accuracy, with more than two emitting legs, it is convenient
-to split the radiator $R_{\NNLL}(v)$ into the sum of a soft part $R_s(v)$ and a hard-collinear part $R_{\mathrm hc}(v)$:
-\begin{equation}
-  \label{eq:nnll-radiator}
-  R_{\NNLL}(v) = R_s(v)+R_{\mathrm hc}(v)\,.
-\end{equation}
-The soft radiator $R_s$ includes contributions due to the unresolved soft and/or collinear radiation such that the radiator includes terms of order LL and above. The hard-collinear radiator, on the other hand, is due to the unresolved hard-collinear radiation and therefore contributes terms of NLL accuracy and above. In fact it is found in \cite{Arpino:2019ozn}, a master formula for  $R_{\mathrm NNLL}(v)$, whose explicit expression depends only on the observable properties with a single soft and collinear emission $a,b_\ell,d_\ell,g_\ell(\phi)$, which are found using equation~\ref{eq:general-sc-V}. The soft radiator is found to be:
-\begin{equation}
-R_s(v)=\sum_{(ij)}C_{(ij)}\sum_{\ell\in(ij)}\mathcal{R}_{\ell}^{(ij)}(v)\,,
-\label{eq:soft-radiator}
-\end{equation}
-where $C_{(ij)}$ is the Casimir operator 
-such that in our case, $C_{(q\bar{q})}=2C_F-C_A$ and $C_{(gq)}=C_{(g\bar{q})}=C_A$. The full expression for $\mathcal{R}_{\ell}^{(ij)}$ i.e. the soft radiator for each dipole is, is contained in \cite{Arpino:2019ozn}.
-The hard-collinear radiator is found to be the following:
-\begin{equation}
-	R_{\mathrm{hc}}(v)=\sum_{\ell}R_{\mathrm{hc},\ell}(v)\,,
-	\label{eq:radiator-hc}
-\end{equation}
-such that
-\begin{equation}
-	R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s}{\pi}h_3^{(\ell)}(\lambda)\,,
-	\label{eq:radiator-hc-more}
-\end{equation}
-where the functions $h_2^{(\ell)}, h_3^{(\ell)}$ depend solely on $a$ and $b_{\ell}$ and are again contained within \cite{Arpino:2019ozn}.
+In the following sections, we will provide a description for the majority of terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. We will not provide explicit expressions for $H^{(1)}$ and $R_{\mathrm{NNLL}}(v)$, and ask the reader to refer to Ref.~\cite{Arpino:2019ozn} for details, since these will change when discussing hadronic collisions for 1 jet observables in Chapter.~5 and are simply introducing the other terms as they will be discussed in the following chapter.
 
 \subsection{Soft and collinear contributions}
 
