@@ -317,17 +317,16 @@ where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.
 
 \item Finite virtual corrections of relative order $\alpha_s$ are embedded in the coefficient $H^{(1)}$. This is a term of order $\alpha_s$ multiplying a NLL function, hence NNLL. The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}.
 
-
-\item $H^{(1)}$ and $C_{\mathrm{hc},3}^{(1)}$ are coefficients of order $\alpha_s(Q)$ due to the virtual corrections. Since  $\mathcal{F}_{\mathrm{NLL}}(\lambda)$ is of order NLL, the multiplication yields terms of order NNLL. 
+\item  A single unresolved hard collinear emission emitted from one of the three final-state legs $p_\ell$ combines with the corresponding virtual corrections to give the coefficient $C_{\mathrm{hc},\ell}^{(1)}$, and a NNLL contribution. The explicit expression of $C_{\mathrm{hc},\ell}^{(1)}$ depends on the flavour of leg the emission is emitted from. \ABquestion{I am unsure whether what I have written is correct for $e^+e^-$ case?} For a quark or an antiquark
   \begin{equation}
     \label{eq:C1hc-q}
-    C_{\mathrm{hc},3}^{(1)}=C_F\left(\frac{7}{2}\frac{b_3}{a+b_3}+\frac{3}{a+b_3}\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac 12\right)\,,
+    C_{\mathrm{hc},\ell}^{(1)}=C_F\left(\frac{7}{2}\frac{b_\ell}{a+b_\ell}+\frac{3}{a+b_\ell}\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac 12\right)\,,
   \end{equation}
   while for a gluon
   \begin{equation}
     \label{eq:C1hc-q}
     \begin{split}
-    C_{\mathrm{hc},3}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_3}{a+b_3}\\ & +\frac{1}{a+b_3}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac{1}{3}T_R n_f\,.
+    C_{\mathrm{hc},\ell}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_\ell}{a+b_\ell}\\ & +\frac{1}{a+b_\ell}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac{1}{3}T_R n_f\,.
     \end{split}
   \end{equation}
 \item All other soft or hard-collinear emissions and the
@@ -350,6 +349,41 @@ where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.
 In the following sections, we will provide a description for the majority of terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. We will not provide explicit expressions for $H^{(1)}$ and $R_{\mathrm{NNLL}}(v)$, and ask the reader to refer to Ref.~\cite{Arpino:2019ozn} for details, since these will change when discussing hadronic collisions for 1 jet observables in Chapter.~5 and are simply introducing the other terms as they will be discussed in the following chapter.
 
 \subsection{Soft and collinear contributions}
+\label{sec:sc-contributions}
+\todo{Look over this and do again.}
+In this section we describe all contributions arising from soft and
+collinear emissions, as stated in the title. These are
+$\mathcal{F}_{\mathrm{NLL}}$, $\delta \mathcal{F}_{\mathrm{sc}}$ and
+$\delta \mathcal{F}_{\mathrm{hc}}$, for which all gluons are widely
+separated in angle, and $\delta \mathcal{F}_{\mathrm{correl}}$ where one
+soft and collinear gluon splits into $q\bar{q}$ or a gluon pair. Note that all these
+functions require to the approximation shown in Eq.~\ref{eq:Vsc}. \\ \\
+The soft and collinear corrections which
+contribute to the NNLL resummation are, in order of complexity,
+$\delta \mathcal{F}_{\mathrm{hc}}$, $\delta \mathcal{F}_{\mathrm{sc}}$, and
+$\delta \mathcal{F}_{\mathrm{correl}}$. On top of the soft-collinear
+emissions $k_1,\dots,k_n$ that are needed for any resummation, the two
+functions $\delta \mathcal{F}_{\mathrm{hc}}$, $\delta \mathcal{F}_{\mathrm{sc}}$
+involve the presence of an additional soft and collinear emission $k$,
+parametrised in terms of the usual variable $\zeta=\Vsc{k}/v$, as well
+as its emitter's leg $\ell$, and azimuthal angle $\phi^{(\ell)}$. For
+$\delta \mathcal{F}_{\mathrm{correl}}$, this additional emission is
+required to split into $k_a$ and $k_b$, with further dimensionsless
+variables parametrising the splitting (see later). We now compute each
+of these functions in turn, for the three considered observables.
+ The general expression for $\delta \mathcal{F}_{\mathrm{hc}}$ is given by \ABquestion{check prefactors}
+ \begin{multline}
+   \label{eq:dFhc-general}
+   \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \int_0^\infty\frac{d\zeta}{\zeta}\sum_\ell \frac{\alpha_s\left(v^{\frac{1}{a+b_\ell}}Q\right)}{(a+b_\ell)\alpha_s(Q)}\gamma_\ell^{(0)} \int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi} \int\! \dZ \,\times \\ \times \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
+       -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
+     \right] \,.
+ \end{multline}
+
+
+
+
+
+
 
 \subsection{Hard and collinear contributions}
 
