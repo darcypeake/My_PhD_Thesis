@@ -475,7 +475,7 @@ The general expression for $\delta \mathcal{F}_{\mathrm{sc}}$ for the 3-jet case
 \begin{equation}
 	\begin{aligned}
 	&\delta\mathcal{F}_{\mathrm{correl}}(v)=\\
-	&=\sum_{\ell}\frac{\lambda R''_{\ell,\mathrm{NNLL}}}{2a\beta_0\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^\infty\frac{d\mu^2}{\mu^2(1+\mu^2)}\int+0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)\times\\
+	&=\sum_{\ell}\frac{\lambda R''_{\ell,\mathrm{NNLL}}}{2a\beta_0\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^\infty\frac{d\mu^2}{\mu^2(1+\mu^2)}\int_0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)\times\\
 	&\int\dZ  \left[\Theta\left(1-\frac{\Vsc{k_a, k_b,\{k_i\}}}{v}\right)
        -\lim_{\mu^2\to0}\Theta\left(1-\frac{\Vsc{k_a+k_b,\{k_i\}}}{v}\right)
      \right] \,,
@@ -497,19 +497,32 @@ We may now turn our attention to contributions which arise from the hard and col
 	&\delta\mathcal{F}_{\mathrm{rec}}(\lambda)=\sum_{\ell=1}^3\frac{\alpha_s(Qv^{1/(a+b_\ell)})}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^1dz^{(\ell)}\left(\frac{2C_\ell}{z^{(\ell)}}+\langle P_{f_\ell}(z^{(\ell)},0)\rangle\right)\times\\
 	&\times \int \dZ  \left[\Theta\left(1-\frac{\Vhc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
-     \right] \,.
+     \right] \,,
 \end{aligned}
 \end{equation}
-
+where $C_\ell=C_F$ if quark/anti-quark and $C_\ell=C_A$ if gluon \question{if what is quark/gluon?}. Moreover, the azimuthally averaged splitting function for quark/anti-quark
+\begin{equation}
+\langle P_q(z^{(\ell)},\epsilon)\rangle\equiv C_F(-2+(1-\epsilon))\,,
+\end{equation}
+and for the gluon is
+\begin{equation}
+\langle P_g(z^{(\ell)},\epsilon)\rangle\equiv C_A(z(1-z)-2)+T_Rn_f\left[1-\frac{2z(1-z)}{1-\epsilon}\right]\,.
+\end{equation}
 
 \begin{equation}
 \begin{aligned}
-	&\Delta\mathcal{F}_{\mathrm{rec}}(\lambda)=\frac{\alpha_s(Qv^{1/(a+b_g)})}{\alpha_s(Q)(a+b_g)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^1dz^{(\ell)} \Delta P_q(z^{(\ell)},\phi^{(\ell)})\times\\
+	&\Delta\mathcal{F}_{\mathrm{rec}}(\lambda)=\frac{\alpha_s(Qv^{1/(a+b_g)})}{\alpha_s(Q)(a+b_g)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^1dz^{(\ell)} \Delta P_g(z^{(\ell)},\phi^{(\ell)})\times\\
 	&\times \int \dZ  \left[\Theta\left(1-\frac{\Vhc{k,\{k_i\}}}{v}\right)
        -\Theta(1-\zeta)\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)
-     \right] \,.
+     \right] \,,
 \end{aligned}
 \end{equation}
+where the un-averaged splitting function for the gluon \question{work out why it is only for the gluon and also why the lack of $\ell$'s here}:
+\begin{equation}
+	 \Delta P_g(z,\phi;\epsilon)=4z(1-z)(2(1-\epsilon)\cos^2\phi-1)\left(\frac{C_A}{2}-\frac{T_Rn_f}{1-\epsilon}\right)\,.
+\end{equation}
+
+
 
 \subsection{Soft wide angle contributions}
 Finally, we consider contributions originating from a soft wide-angle region. The correction $\delta\mathcal{F}_{\mathrm{wa}}$ arises from a soft emission near $\eta=0$ and accounts for the variation between the observable and its soft-collinear parametrisation for a single soft wide-angle emission, accompanied by an ensemble of soft-collinear gluons. $\Delta\mathcal{F}_{\mathrm{wa}}$ represents the NNLL contribution arising from wide angled resolved emissions.
