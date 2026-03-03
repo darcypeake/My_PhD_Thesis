@@ -57,7 +57,7 @@
 \usepackage{tikz}
 \usepackage{csquotes}
 
-\newcommand{\Vsc}[1]{V_{\mathrm sc}(\{\tilde{p}\},#1)}
+\newcommand{\Vsc}[1]{V_{\mathrm{sc}}(\{\tilde{p}\},#1)}
 \newcommand{\order}[1]{{\cal O}\left(#1\right)}
 \newcommand{\as}{\alpha_s} 
 \newcommand{\aw}{\alpha_w}
@@ -75,17 +75,16 @@
 \newcommand{\ee}{e^+e^-}
 \newcommand{\M}{$\mathrm{Milan}$}
 \newcommand{\fullF}{\mathcal{F}}
-\newcommand{\FNLL}{\mathcal{F}_{\rm NLL}}
-\newcommand{\FNNLL}{\mathcal{F}_{\rm NNLL}}
+\newcommand{\FNLL}{\mathcal{F}_{\mathrm{NLL}}}
+\newcommand{\FNNLL}{\mathcal{F}_{\mathrm{NNLL}}}
 \newcommand{\nn}{\nonumber}
 \newcommand{\qT}{q_T}
 
-\newcommand{\Vwa}{V_{\mathrm wa}}
+\newcommand{\Vwa}[1]{V_{\mathrm{wa}}(\{\tilde{p}\},#1)}
 \newcommand{\Vfull}{V}
-\newcommand{\Vhc}{V_{\mathrm hc}}
+\newcommand{\Vhc}[1]{V_{\mathrm{hc}}(\{\tilde{p}\},#1)}
 \newcommand{\Vr}{V_{r}}
 
-\newcommand{\dZ}{d{\mathcal Z}[\{R'_{\mathrm{NLL}, \ell_i}, k_i\}]}
 \newcommand{\RpNLL}{R'_{\mathrm{NLL}}}
 
 
@@ -125,6 +124,25 @@
 \usepackage{enumerate} 
 \usepackage{braket}
 \usepackage{cancel}
+\usepackage{amssymb}
+% DIS Paper commands
+\newif\ifshowcomments
+\showcommentstrue
+\newcommand{\xB}{x_{\mathrm{B}}}
+\newcommand{\ydis}{y_{\mathrm{DIS}}}
+%Comment commands 
+\newcommand{\ABquestion}[1]{\textcolor{red}{\textbf{A.B. Question:} #1}}
+\newcommand{\question}[1]{\textcolor{purple}{\textbf{Question:} #1}}
+\newcommand{\add}[1]{\textcolor{blue}{\textbf{Add in:} #1}}
+\newcommand{\done}[1]{\textcolor{RoyalBlue}{\textbf{Draft completed:} #1}}
+\newcommand{\reference}[1]{\textcolor{orange}{\textbf{Reference used:} #1}}
+\newcommand{\todo}[1]{\textcolor{webgreen}{\textbf{To do:} #1}}
+\usepackage{placeins}
+
+%ARES project commands
+\newcommand{\dZ}{\mathrm{d}{\mathcal{Z}}[\{R'_{\mathrm{NLL}, \ell_i}, k_i\}]}
+
+
 % ****************************************************************************************************
 % Setup floats: tables, (sub)figures, and captions
 % ****************************************************************************************************
@@ -153,23 +171,21 @@
 % ****************************************************************************************************
 \usepackage{listings} 
 %\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
-\lstset{language=[LaTeX]Tex,%python,
-    keywordstyle=\color{RoyalBlue},%\bfseries,
-    basicstyle=\small\ttfamily,
-    %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{Green}\ttfamily,
-    stringstyle=\rmfamily,
-    numbers=none,%left,%
-    numberstyle=\scriptsize,%\tiny
-    stepnumber=5,
-    numbersep=8pt,
-    showstringspaces=false,
-    breaklines=true,
-    frameround=ftff,
-    frame=single,
-    belowcaptionskip=.75\baselineskip
-    %frame=L
-} 
+
+
+
+\usepackage{inconsolata} % or \usepackage[scaled=0.85]{beramono}
+
+\definecolor{codebg}{HTML}{F0F4F8}       % very light blue-gray background
+\definecolor{codeframe}{HTML}{C9D6E3}    % soft blue-gray frame
+\definecolor{codekw}{HTML}{2A6496}       % muted navy blue - keywords
+\definecolor{codecomment}{HTML}{8FA8C8}  % soft mid blue - comments
+\definecolor{codestring}{HTML}{3D8A6E}   % muted teal - strings (not jarring green)
+\definecolor{codenumber}{HTML}{A0B4C8}   % light blue-gray - line numbers
+\definecolor{codeident}{HTML}{2C3E50}    % dark navy - main text (not pure black)
+
+
+
 % ****************************************************************************************************
 % PDFLaTeX, hyperreferences and citation backreferences
 % ****************************************************************************************************
@@ -189,7 +205,8 @@
 
 % Setup the bibliography
 %\PassOptionsToPackage{square,numbers}{natbib} % for natbib
-\usepackage{natbib}				
+%\usepackage{natbib}
+\usepackage[numbers,sort&compress]{natbib}				
 \usepackage{hyperref} 
 \bibliographystyle{unsrt}
 

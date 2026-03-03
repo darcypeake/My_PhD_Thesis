@@ -1,4 +1,101 @@
 \chapter{Generalised $k_t$ DIS Plugin}
-Here we will present the public code that is available on \verb|fjcontrib| which contains the generalised-$k_t$ jet
-algorithm for deep inelastic scattering discussed in Chapter.~3. \\ \add{Make the fjcontrib look better here, I don't think `verb' is the correct command to use.} \\
-\todo{Put the code here. }
+Here we present the public code available on \texttt{fjcontrib} which contains the generalised-$k_t$ jet algorithm for deep inelastic scattering discussed in Chapter.~3. \todo{This will almost certainly change with how it is uploaded to fjcontrib.} \question{Exactly what parts of the code should one add?}
+\begin{lstlisting}[
+  language=C++,
+  basicstyle=\ttfamily\small\color{codeident},
+  keywordstyle=\color{codekw}\bfseries,
+  commentstyle=\color{codecomment}\itshape,
+  stringstyle=\color{codestring},
+  numbers=left,
+  numberstyle=\tiny\color{codenumber},
+  stepnumber=1,
+  numbersep=10pt,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  framerule=0.5pt,
+  rulecolor=\color{codeframe},
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  captionpos=b,
+  aboveskip=1em,
+  belowskip=1em,
+  caption={DISCambridgePlugin.cc},
+  label={lst:discambridge-cc}
+]
+FASTJET_BEGIN_NAMESPACE  // defined in fastjet/internal/base.hh
+
+using namespace std;
+
+namespace contrib {
+
+class DISCamBriefJet {
+public:
+  void init(const PseudoJet& jet, DISCamInfo* info) {
+    double norm     = 1.0 / sqrt(jet.modp2());
+    _nx             = jet.px() * norm;
+    _ny             = jet.py() * norm;
+    _nz             = jet.pz() * norm;
+    _p              = info->p();
+    _E2p            = (_p == 0) ? 1.0 : std::pow(jet.E(), 2 * _p);
+    _pz_beam_sign   = info->pz_beam_sign();
+  }
+
+  // Angle-weighted distance between this jet and another
+  double distance(const DISCamBriefJet* jet) const {
+    double dij = 1.0 - _nx * jet->_nx
+                     - _ny * jet->_ny
+                     - _nz * jet->_nz;
+    return dij * std::min(_E2p, jet->_E2p);
+  }
+
+  // Distance to the beam (beam assumed to have pz > 0)
+  double beam_distance() const {
+    return (1.0 - _pz_beam_sign * _nz) * _E2p;
+  }
+
+private:
+  double _nx, _ny, _nz;  // unit three-momentum direction
+  double _p, _E2p;        // energy exponent p and precomputed E^{2p}
+  int    _pz_beam_sign;   // sign of beam pz (+1 or -1)
+};
+
+//------------------------------------------------------------------
+
+void DISCambridgePlugin::run_clustering(fastjet::ClusterSequence& cs) const {
+  int njets = cs.jets().size();
+
+  DISCamInfo info(p(), kT2(), pz_beam_sign());
+  NNH<DISCamBriefJet, DISCamInfo> nnh(cs.jets(), &info);
+
+  while (njets > 0) {
+    int    i, j, k;
+    double dij  = nnh.dij_min(i, j);
+    double Emin = (j >= 0)
+                    ? std::min(cs.jets()[i].E(), cs.jets()[j].E())
+                    : cs.jets()[i].E();
+    double vij  = 2.0 * dij * std::pow(Emin, 2.0 - 2.0 * p());
+
+    // Veto ij recombination if vij exceeds the kT^2 cut;
+    // force the softer prong to recombine with the beam instead.
+    if (j >= 0 && vij > kT2()) {
+      if (cs.jets()[i].E() > cs.jets()[j].E()) std::swap(i, j);
+      j = -1;
+    }
+
+    if (j >= 0) {
+      cs.plugin_record_ij_recombination(i, j, dij, k);
+      nnh.merge_jets(i, j, cs.jets()[k], k);
+    } else {
+      cs.plugin_record_iB_recombination(i, dij);
+      nnh.remove_jet(i);
+    }
+    njets--;
+  }
+}
+
+}  // namespace contrib
+
+FASTJET_END_NAMESPACE  // defined in fastjet/internal/base.hh
+\end{lstlisting}
