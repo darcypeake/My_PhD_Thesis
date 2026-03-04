@@ -301,10 +301,10 @@ $V\left(\{\tilde{p}\},k_1,\dots,k_n\right)$ are restricted to the region where $
  V(\{\tilde{p}\},k_i)\sim v$ with $\epsilon \ll v$. Together, with the corresponding virtual corrections, they build up $ \mathcal{F}_{\mathrm{NLL}}$.
 
 \section{NNLL Resummation: ARES}
-In this section, we will discuss the NNLL resummation for 3-jet observables as introduced in~\cite{Arpino:2019ozn}. For brevity, we will not go into detail of the various calculations and refer the reader to the reference, instead we will discuss the necessary ingredients required to form the NNLL cumulant.
+In this section, we will discuss the NNLL resummation for 3-jet observables as introduced in~\cite{Arpino:2019ozn}. For brevity, we will not go into detail of the various calculations and refer the reader to the reference, instead we will discuss the necessary ingredients required to form the NNLL cumulant. 
 
 \subsection{The master formula}
-The general idea behind determining the cumulant at NNLL accuracy is to collect all contributions that give rise to a contribution of order $\alpha_s$ compare to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be done simply by relaxing the NLL approximations and in this way can be done for a single real emission at a time. For configurations where the correction is for more than one emission, it will extend beyond NNLL accuracy and so can therefore be neglected. Using these ideas, along with the explicit derivations found in Ref.~\cite{Banfi:2018mcq}, the NNLL master formula is defined as
+In order to determine the NNLL accurate cumulant, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. This results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. \question{Need to understand this configuration is just for the new $\delta\mathcal{F}$ piece.} The NNLL master formula is defined as
 \begin{equation}
 \begin{aligned}
   \label{eq:Sigma-NNLL-fs}
@@ -315,14 +315,15 @@ The general idea behind determining the cumulant at NNLL accuracy is to collect 
  \end{aligned}
 \end{equation}
 where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}. Note that both $\mathcal{F}_{\mathrm{NLL}}$ and $\delta\mathcal{F}_{\mathrm{NNLL}}$ are single logarithmic functions and can therefore be defined in terms of the quantity $\lambda$. We will now give a brief summary and description of the ingredients in this formula:
+\todo{Change this from a bullet point list and space it out a bit.}
 \begin{itemize}
-\item The NNLL radiator, $R_{\mathrm{NNLL}}(v)$, includes all virtual corrections of soft and/or collinear origin. These are divergent, but their divergences cancel with those of real radiation. At the scope, the radiator includes also a subset of real corrections for suitably defined \emph{unresolved} emissions. The procedure to define those emissions is not unique. The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Note that its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy. \ABquestion{Unsure about the resolved emissions part/ master formula part in hhZjet tex.}
+\item The NNLL radiator, $R_{\mathrm{NNLL}}(v)$, just like the NLL radiator, includes all virtual corrections of soft and/or collinear origins along real corrections in the form of unresolved emissions.  The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Similarly, to the NLL radiator, its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy. 
 
-\item The NLL function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, given in Eq.~\eqref{eq:FNLL-formula}, as discussed before come from \emph{resolved} soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections.
+\item The NLL function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, given in Eq.~\eqref{eq:FNLL-formula}, as discussed before arises from \emph{resolved} soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections.
 
 \item Finite virtual corrections of relative order $\alpha_s$ are embedded in the coefficient $H^{(1)}$. This is a term of order $\alpha_s$ multiplying a NLL function, hence NNLL. The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}.
 
-\item  A single unresolved hard collinear emission emitted from one of the three final-state legs $p_\ell$ combines with the corresponding virtual corrections to give the coefficient $C_{\mathrm{hc},\ell}^{(1)}$, and a NNLL contribution. The explicit expression of $C_{\mathrm{hc},\ell}^{(1)}$ depends on the flavour of leg the emission is emitted from. \ABquestion{I am unsure whether what I have written is correct for $e^+e^-$ case?} For a quark or an antiquark
+\item  A single unresolved hard collinear emission emitted from one of the three final-state legs $p_\ell$ combines with the corresponding virtual corrections to give the coefficient $C_{\mathrm{hc},\ell}^{(1)}$, and a NNLL contribution. The explicit expression of $C_{\mathrm{hc},\ell}^{(1)}$ depends on the flavour of leg the emission is emitted from. For a quark or an antiquark
   \begin{equation}
     \label{eq:C1hc-q}
     C_{\mathrm{hc},\ell}^{(1)}=C_F\left(\frac{7}{2}\frac{b_\ell}{a+b_\ell}+\frac{3}{a+b_\ell}\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac 12\right)\,,
@@ -334,34 +335,40 @@ where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.
     C_{\mathrm{hc},\ell}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_\ell}{a+b_\ell}\\ & +\frac{1}{a+b_\ell}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac{1}{3}T_R n_f\,.
     \end{split}
   \end{equation}
+  \ABquestion{In Ref.~\cite{Arpino:2019ozn}, this has a factor of $\frac{\alpha_s\left(Qv^{1/a+b_\ell}\right)}{2\pi}$ out the front - I am pretty sure this is a typo - can you confirm?}
 \item All other soft or hard-collinear emissions and the
   corresponding virtual corrections build the NNLL function
   $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$. More precisely, these
   consist of a single soft and/or collinear \emph{special} emission,
   accompanied by an arbitrary number of soft and collinear emissions
   widely separated in angle (and the corresponding virtual
-  corrections). The function $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$
+  corrections), as discussed before. \question{So is it just here that we have the sea of s/c emissions + special emission or is it the whole thing?}The function $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$
   is the sum of various terms, which reflect the region of phase space
   spanned by the special emission, namely:
   \begin{equation}
     \label{eq:dFNNLL}
     \delta\mathcal{F}_{\mathrm {NNLL}} = \delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{hc}}+\delta\mathcal{F}_{\mathrm{rec}}+\Delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{wa}}+\Delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}\,.
   \end{equation}
-  The meaning of the various contributions will become clear in the following section. Please note that in the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and were introduced for the first time in the 3-jet case in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
+  The meaning of the various contributions will become clear in the following sections. Please note that in the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and were introduced for the first time in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
   of the appropriate weight function $G(\{k_i\})$, see
-  Eq.~\eqref{eq:dZ-def}. \ABquestion{There are resolved emissions also? Also are they soft and hard-collinear or soft and collinear?}
+  Eq.~\eqref{eq:dZ-def}. \ABquestion{These are resolved or unresolved or both?  Also are they soft and hard-collinear or soft and collinear?} \ABquestion{Maybe discuss here instead how they will all be parameterised.}
 \end{itemize}
-In the following sections, we will provide a description for the majority of terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. We will not provide explicit expressions for $H^{(1)}$ and $R_{\mathrm{NNLL}}(v)$, and ask the reader to refer to Ref.~\cite{Arpino:2019ozn} for details, since these will change when discussing hadronic collisions for 1 jet observables in Chapter.~5 and are simply introducing the other terms as they will be discussed in the following chapter.
+In the following sections, we will provide a description for the terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. We will not provide explicit expressions for $H^{(1)}$ and $R_{\mathrm{NNLL}}(v)$, and ask the reader to refer to Ref.~\cite{Arpino:2019ozn}. 
+
+\todo{Before beginning the next section, I think one could introduce the Lund plane to show where the regions all are.}
+
 
 \subsection{Soft and collinear contributions}
 \label{sec:sc-contributions}
-In this section we describe the soft and collinear corrections which contribute to the NNLL resummation. These are, in order of complexity, $\delta \mathcal{F}_{\mathrm{hc}}$ and $\delta \mathcal{F}_{\mathrm{sc}}$, for which all gluons are widely separated in angle, and $\delta \mathcal{F}_{\mathrm{correl}}$ where one
-soft and collinear gluon splits into $q\bar{q}$ or a gluon pair, as shown in Fig.~\ref{fig:splitting}. \\ \\
-All the functions require to the approximation shown in Eq.~\ref{eq:Vsc}, where on top of the soft-collinear
-emissions $k_1,\dots,k_n$ that are needed for any resummation, the two
-functions $\delta \mathcal{F}_{\mathrm{hc}}$, $\delta \mathcal{F}_{\mathrm{sc}}$
-involve the presence of an additional soft and collinear emission $k$, parametrised in terms of the usual variable $\zeta=\Vsc{k}/v$, as well as its emitter's leg $\ell$, and azimuthal angle $\phi^{(\ell)}$. For $\delta \mathcal{F}_{\mathrm{correl}}$, this additional emission is required to split into $k_a$ and $k_b$, with further dimensionsless variables parametrising the splitting (see later).
-
+In this section we describe the soft and collinear corrections which contribute 
+to the NNLL resummation. These are, in order of complexity, $\delta \mathcal{F}_{\mathrm{hc}}$, 
+$\delta \mathcal{F}_{\mathrm{sc}}$, and $\delta \mathcal{F}_{\mathrm{correl}}$. All three functions 
+require the approximation given in Eq.~\ref{eq:Vsc}. On top of the soft-collinear 
+emissions $k_1,\dots,k_n$ that enter any resummation, the functions $\delta \mathcal{F}_{\mathrm{hc}}$ 
+and $\delta \mathcal{F}_{\mathrm{sc}}$, for which all gluons are widely separated in angle, involve 
+an additional soft-collinear emission $k$, parametrised in terms of the previously discussed variables 
+$\{\zeta, \ell, \phi^{(\ell)}\}$. For $\delta \mathcal{F}_{\mathrm{correl}}$, where one 
+soft-collinear gluon splits into a $q\bar{q}$ pair or a gluon pair. This additional emission splits into $k_a$ and $k_b$, as shown in Fig.~\ref{fig:splitting}, with further dimensionless variables parametrising the splitting, as shown in Eq.~\eqref{eq:dFcorrel-general}.
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -410,37 +417,38 @@ involve the presence of an additional soft and collinear emission $k$, parametri
 \caption{Gluon splitting into two gluons (left) and into a quark-antiquark pair (right).}
 \label{fig:splitting}
 \end{figure}
-
-The general expression for $\delta \mathcal{F}_{\mathrm{hc}}$ is given by \ABquestion{check prefactors}
+The general expression for $\delta \mathcal{F}_{\mathrm{hc}}$ is 
  \begin{multline}
    \label{eq:dFhc-general}
-   \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \int_0^\infty\frac{d\zeta}{\zeta}\sum_\ell \frac{\alpha_s\left(v^{\frac{1}{a+b_\ell}}Q\right)}{(a+b_\ell)\alpha_s(Q)}\gamma_\ell^{(0)} \int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi} \int\! \dZ \,\times \\ \times \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
+   \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{\pi}\int_0^1dz^{(\ell)} \langle P_{f_\ell}\left(z^{(\ell)},0\right)\rangle\times\\
+    \times \int\! \dZ \, \times \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
      \right] \,,
  \end{multline}
-where
+where $\langle P_{f_\ell}\left(z^{(\ell)},\epsilon\right)\rangle$ is the 
+azimuthally averaged splitting function, which depends on $f_\ell$, the 
+flavour of leg $\ell$:
 \begin{equation}
-\gamma_{\ell}^{(0)}=
+\langle P_{f_\ell}(z^{(\ell)},\epsilon)\rangle \equiv 
 \begin{cases}
--\frac{3}{2}C_F\,, & p_\ell\,\, \text{is a quark}\,,\\
-\frac{-11C_A+\,4T_Rn_f}{6}\,,& p_\ell\,\, \text{is a gluon}\,.
+C_F\left(-2+(1-\epsilon)\right)\,, & f_\ell = q, \bar{q} \\[6pt]
+C_A\left(z(1-z)-2\right)+T_R n_f\left[1-\dfrac{2z(1-z)}{1-\epsilon}\right]\,, & f_\ell = g\,.
 \end{cases}
 \end{equation}
-
-The general expression for $\delta \mathcal{F}_{\mathrm{sc}}$ for the 3-jet case was generalised from the 2-jet case in Ref.~\cite{Banfi:2014sua}:
+\ABquestion{Do we have the $\ell$ in the $z$ or not?}\\
+The general expression for $\delta \mathcal{F}_{\mathrm{sc}}$ is
 \begin{equation}
 	\begin{aligned}
 		&\delta\mathcal{F}_{\mathrm{sc}}\;=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\times\\
 		&\times\int \dZ  \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
-     \right] \,.
+     \right] \,,
 	\end{aligned}
 \end{equation}
-
-
-\add{: $\delta\mathcal{F}_{\mathrm sc}$ represents the running coupling corrections to the real emissions in the CMW scheme. It also accounts for the correct rapidity boundary for a single soft-collinear emission. Finally, $\delta\mathcal{F}_{\mathrm{corre}l}$ addresses the treatment of the splitting of a single soft and collinear gluon. $\delta\mathcal{F}_{\mathrm hc}$ originates from the emission of a hard-collinear parton at the level of the squared matrix element. 
-}
+where explicit expressions for $\Delta R'_{\ell,\mathrm{NNLL}}$ and $R''_{\ell,\mathrm{NNLL}}$ can be found in Ref.~\cite{Arpino:2019ozn}. \\ \\
+Finally, the general expression for $\delta \mathcal{F}_{\mathrm{correl}}$ is
 \begin{equation}
+\label{eq:dFcorrel-general}
 	\begin{aligned}
 	&\delta\mathcal{F}_{\mathrm{correl}}(v)=\\
 	&=\sum_{\ell}\frac{\lambda R''_{\ell,\mathrm{NNLL}}}{2a\beta_0\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^\infty\frac{d\mu^2}{\mu^2(1+\mu^2)}\int_0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)\times\\
@@ -449,17 +457,16 @@ The general expression for $\delta \mathcal{F}_{\mathrm{sc}}$ for the 3-jet case
      \right] \,,
 	\end{aligned}
 \end{equation}
-where $\mathcal{A}^2\equiv C_A(2\mathcal{S}+\mathcal{H}_g)+n_f\mathcal{H}_q$ and $\mathcal{S}, \mathcal{H}_g,$ and $\mathcal{H}_q$ are defined in Appendix A of Ref.~\cite{Arpino:2019ozn}. The variable $\mu$ is essentially the rescaled invariant mass of the correlated pair i.e. $m^2\equiv (k_a+k_b)^2$ and is defined as
+where $k_a$ and $k_b$ are soft and collinear to the same leg $\ell$. Here, $\mu$ denotes the rescaled invariant mass of the correlated pair, defined via $m^2\equiv(k_a+k_b)^2$ as
 \[
 \mu^2=\frac{(k_a+k_b)^2}{(\vec{k}_a^{(ij)}+\vec{k}_b^{(ij)})^2}\,,
 \]
-where the explicit expressions of the transverse momenta \question{can we call these transverse momenta?} $\vec{k}_a^{(ij)}$ and $\vec{k}_b^{(ij)}$ can be found in Ref.~\cite{Arpino:2019ozn}.
-
-
-
-
-
-\todo{I think for the correlated one could add in a diagram of a correlated gluon.}
+and $\mathcal{A}$ is the double-emission function,
+\[\mathcal{A}^2\equiv C_A(2\mathcal{S}+\mathcal{H}_g)+n_f\mathcal{H}_q\,.
+\] 
+Explicit definitions of $\vec{k}_a^{(ij)}$, $\vec{k}_b^{(ij)}$, $\mathcal{S}$, 
+$\mathcal{H}_g$, and $\mathcal{H}_q$ can be found in Appendix~A 
+of Ref.~\cite{Arpino:2019ozn}.
 
 \subsection{Hard and collinear contributions}
 We may now turn our attention to contributions which arise from the hard and collinear region. These encompass the recoil corrections, $\delta\mathcal{F}_{\mathrm{rec}}$, which is result from a hard-collinear emission (at the level of the kinematics) recoiling against the soft-collinear ensemble of emissions \add{ This includes contributions due to spin correlations and hence may depend on the underlying Born momenta.}, and $\Delta\mathcal{F}_{\mathrm{rec}}$, which appears for the first time in near-to-planar three jet events, as in~\cite{Arpino:2019ozn}. The latter accounts for correlations which occur between the spin of a hard collinear gluon and the event plane. \add{this is subject to change when A. Banfi works on it.} \\ \\
@@ -478,14 +485,7 @@ where $k_{\mathrm{hc}}$ denotes the hard-collinear gluon.
      \right] \,,
 \end{aligned}
 \end{equation}
-where $C_\ell=C_F$ if quark/anti-quark and $C_\ell=C_A$ if gluon \question{if what is quark/gluon?}. Moreover, the azimuthally averaged splitting function for quark/anti-quark
-\begin{equation}
-\langle P_q(z^{(\ell)},\epsilon)\rangle\equiv C_F(-2+(1-\epsilon))\,,
-\end{equation}
-and for the gluon is
-\begin{equation}
-\langle P_g(z^{(\ell)},\epsilon)\rangle\equiv C_A(z(1-z)-2)+T_Rn_f\left[1-\frac{2z(1-z)}{1-\epsilon}\right]\,.
-\end{equation}
+where $C_\ell=C_F$ if quark/anti-quark and $C_\ell=C_A$ if gluon \question{if what is quark/gluon?}. 
 
 \begin{equation}
 \begin{aligned}
@@ -550,7 +550,45 @@ Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to
 Please note that the observable thrust introduced in Sec.~\ref{subsec:thrust-example} and the one-jettiness and transverse thrust introduced in Sec.~\ref{sec:event-shapes} are examples of additive observables.
 
 \section{Validation and Matching}
-\todo{Since most of the work in the validation is matching to fixed order and the expansion of coefficients, I believe it is important to write something about the matching here. Essentially one should write something for: what matching to fixed order is, the relevance of the coefficients, coefficients necessary for NLL, coefficients necessary for NNLL i.e. what we will discuss in the next section (new research calculating h10 and h21 (and h22 in part). A question to answer is does a difference in matching occur when it is $e^+e^-$ annihilation/ hadronic and how matching has been done for NNLL in other A Banfi's papers.}
+To compare the resummed results to fixed order calculations, we must write the master formula cumulant in terms of an expansion of coefficients. Let us first look at the expansion coefficients for the NLL cumulant.
+\todo{Discuss how the matching to fixed order works i.e. look at PM and RW thesis.}
+\subsection*{NLL Expansion}
+\begin{equation}
+	\Sigma_{\mathrm{NLL}}(v)=\sum_{n=1}^\infty\sum_{m=0}^{n+1}H_{nm}\frac{\alpha_s}{2\pi}L^m\,.
+\end{equation}
+The terms which arise at NLL are
+\begin{equation}
+\begin{aligned}
+H_{12} &= G_{12}\,,\\
+H_{11} &= G_{11}
++ \frac{4}{a}S_1
+- \sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,,\\
+H_{24}&=\frac{1}{2}G_{12}^2\,,\\
+H_{23}&=G_{23}+G_{12}\left(G_{11}+\frac{4}{a}S_1-\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\right)\,,\\
+H_{22}&=\frac{1}{2}G^2_{11}+C_1G_{12}+G_{22}+\frac{8\pi\beta_0}{a^2}S_1+\frac{16}{a^2}S_2+\frac{4}{a}S_1G_{11}
+\\&+\frac{16\mathcal{F}_2}{a^2}\left(\sum_\ell\frac{C_\ell}{a+b_\ell}\right)^2-\left(G_{11}+\frac{4}{a}S_1\right)\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\\
+&-\sum_{\ell=1}^{n_i}\frac{4\pi\beta_0}{(a+b_\ell)^2}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}+\sum_{\ell_1}^{n_i}\sum_{\ell_2<\ell_1}^{n_i}\left(\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_1)}\right]_i}{q^{(\ell_1)}}\right)\left(\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_2)}\right]_i}{q^{(\ell_2)}}\right)\\
+&+\frac{1}{2}\sum_{\ell=1}^{n_i}\left(\frac{2}{a+b_\ell}\right)^2\frac{\left[\mathbf{P}\otimes\mathbf{P}\otimes\mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,.
+\end{aligned}
+\end{equation}
+The terms found within the radiator are
+\begin{equation}
+\begin{aligned}
+G_{12}&= -\frac{2}{a}\sum_{\ell}\frac{C_\ell}{a+b_\ell}\,,\\
+G_{12}&=-\sum_{\ell}C_\ell\left(\frac{4B_\ell}{a+b_\ell}+\frac{4}{a(a+b_\ell)}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\,,\\
+G_{23}&=-\frac{8\pi\beta_0}{3a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\,,\\
+G_{22}&=-\frac{8\pi\beta_0}{a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)-8\pi\beta_0\sum_\ell\frac{C_\ell B_\ell}{(a+b_\ell)^2}-\frac{2K^{(1)}}{a}\sum_\ell\frac{C_\ell}{a+b_\ell}
+\end{aligned}
+\end{equation}
+
+\subsection*{NNLL Expansion}
+We will now turn our attention to the coefficients which are present at NNLL - specifically for the $e^+e^-$ case.
 
 
 
