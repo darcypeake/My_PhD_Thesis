@@ -537,61 +537,54 @@ Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to
 \section{Validation and Matching}
 One may think that once we have the resummed cumulant that this is enough. However we are not quite there. As describe in Sec.~\ref{subsec:thrust-example}, perturbation theory breaks down at small values of the observable $v$. In this capacity, it is only in this region that we cannot rely on fixed-order calculations and must turn to resummation. Therefore one must undergo a procedure known as \emph{matching} in order to incorporate both the fixed-order and resummed results into our theoretical predicitions. For a generic event shape, $v$, the fixed order predictions have the form
 \begin{equation}
+\label{eq:FO-gen}
 	\Sigma(v)=1+\frac{\alpha_s}{2\pi}\mathcal{A}(v)+\left(\frac{\alpha_s}{2\pi}\right)^2\mathcal{B}(v)\,,
 \end{equation}
 where $\mathcal{A}$ and $\mathcal{B}$ are the fixed-order coefficients up to second order, where for thrust we can see these in Sec.~\ref{subsec:thrust-example}.
-Our resummed predictions have the form
+The resummed cumulant has the form
 \begin{equation}
-	\Sigma(v)=(1+C_1\frac{\alpha_s}{2\pi}+C_2\left(\frac{\alpha_s}{2\pi}\right)^2+\dots)e^{Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)}\,.
+\label{eq:resummed-gen}
+	\Sigma(v)=\left(1+\sum_{k=1}^\infty C_k\,\bar{\alpha}_s^k\right)e^{Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)}\,,
 \end{equation}
-As discussed previously, $g_i(\alpha_sL)$ are the terms which resum the contributions at various orders. These can be written as:
+where $\bar{\alpha}_s\equiv\alpha_s/2\pi$ and $C_k$ are constants. As discussed in Sec.~\ref{subsec:thrust-example}, the terms $g_i(\alpha_sL)$ contain the resummed contributions at various orders i.e.  $\{g_1,g_2,g_3\}$ contain LL, NLL, and NNLL terms respectively. 
+In order to provide a reliable description for our observable for all regions of the observable, we must combine the fixed-order and resummed contributions i.e. Eq.~\eqref{eq:FO-gen} and~\eqref{eq:resummed-gen} through a procedure known as \emph{matching}. Put simply, this procedure involves adding the two equations together and subtracting the double counting of the logarithms. There are further subtitles after this subtraction, which we will discuss later. In order to show how this comes about, we re-expand the $g_i$ functions in powers of $\bar{\alpha}_sL$ using
+\begin{equation}
+g_n(\alpha_sL)=\sum_{i=1}^{\infty}G_{i,i+2-n}\bar{\alpha}_s^iL^{i+2-n}\,.
+\end{equation}
+Explicitly, one finds the functions to be
 \begin{equation}
 \begin{aligned}
-	&Lg_1(\alpha_s L)=G_{12}\frac{\alpha_s}{2\pi}L^2+G_{23}\left(\frac{\alpha_s}{2\pi}\right)^2L^3\\
-	&g_2(\alpha_s L)=G_{11}\frac{\alpha_s}{2\pi}L+G_{22}\left(\frac{\alpha_s}{2\pi}\right)^2L^2\\
-	&\alpha_s g_3 =G_{21}\left(\frac{\alpha_s}{2\pi}\right)^2L+\dots
+	&Lg_1(\alpha_s L)=G_{12}\bar{\alpha}_s+G_{23}\bar{\alpha}_s^2L^3+\dots\,,\\
+	&g_2(\alpha_s L)=G_{11}\bar{\alpha}_sL+G_{22}\bar{\alpha}_s^2L^2+\dots\,,\\
+	&\alpha_s g_3(\alpha_s L) =G_{21}\bar{\alpha}_s^2L+G_{32}\bar{\alpha}_s^3L^2\dots\,.
 \end{aligned}
 \end{equation}
-\todo{Mention different matching scheme i.e. log-R and also explain what we are actually doing.}
-\subsection*{NLL Expansion}
+\paragraph{R-matching scheme}
 \begin{equation}
-	\Sigma_{\mathrm{NLL}}(v)=\sum_{n=1}^\infty\sum_{m=0}^{n+1}H_{nm}\frac{\alpha_s}{2\pi}L^m\,.
+	\begin{aligned}
+	\Sigma(v)&=\left(1+C_1\bar{\alpha}_s+C_2\bar{\alpha}_s^2\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+G_{21}L\bar{\alpha}_s^2\right]\\
+	&-G_{21}L\bar{\alpha}_s^2-\left[C_1+G_{11}L+G_{21}L^2\right]\bar{\alpha}_s\\
+	&\left[C_2+C_1(G_{11}L+G_{12}L^2)+\frac{1}{2}(G_{11}L+G_{12}L^2)^2+(G_{22}L^2+G_{23}L^3)\right]\bar{\alpha}_s^2\\
+	&+\mathcal{A}(v)\bar{\alpha}_s+\mathcal{B}(v)\bar{\alpha}_s^2\,.
+	\end{aligned}
 \end{equation}
-The terms which arise at NLL are
+\paragraph{Log(R)-matching scheme}
 \begin{equation}
 \begin{aligned}
-H_{12} &= G_{12}\,,\\
-H_{11} &= G_{11}
-+ \frac{4}{a}S_1
-- \sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,,\\
-H_{24}&=\frac{1}{2}G_{12}^2\,,\\
-H_{23}&=G_{23}+G_{12}\left(G_{11}+\frac{4}{a}S_1-\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\right)\,,\\
-H_{22}&=\frac{1}{2}G^2_{11}+C_1G_{12}+G_{22}+\frac{8\pi\beta_0}{a^2}S_1+\frac{16}{a^2}S_2+\frac{4}{a}S_1G_{11}
-\\&+\frac{16\mathcal{F}_2}{a^2}\left(\sum_\ell\frac{C_\ell}{a+b_\ell}\right)^2-\left(G_{11}+\frac{4}{a}S_1\right)\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\\
-&-\sum_{\ell=1}^{n_i}\frac{4\pi\beta_0}{(a+b_\ell)^2}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}+\sum_{\ell_1}^{n_i}\sum_{\ell_2<\ell_1}^{n_i}\left(\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_1)}\right]_i}{q^{(\ell_1)}}\right)\left(\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_2)}\right]_i}{q^{(\ell_2)}}\right)\\
-&+\frac{1}{2}\sum_{\ell=1}^{n_i}\left(\frac{2}{a+b_\ell}\right)^2\frac{\left[\mathbf{P}\otimes\mathbf{P}\otimes\mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,.
-\end{aligned}
-\end{equation}
-The terms found within the radiator are
-\begin{equation}
-\begin{aligned}
-G_{12}&= -\frac{2}{a}\sum_{\ell}\frac{C_\ell}{a+b_\ell}\,,\\
-G_{12}&=-\sum_{\ell}C_\ell\left(\frac{4B_\ell}{a+b_\ell}+\frac{4}{a(a+b_\ell)}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\,,\\
-G_{23}&=-\frac{8\pi\beta_0}{3a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\,,\\
-G_{22}&=-\frac{8\pi\beta_0}{a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)-8\pi\beta_0\sum_\ell\frac{C_\ell B_\ell}{(a+b_\ell)^2}-\frac{2K^{(1)}}{a}\sum_\ell\frac{C_\ell}{a+b_\ell}
+	\ln\Sigma(v)&=Lg_1(\alpha_sL)+g_2(\alpha_sL)+(G_{11}L+G_{12}L^2)\bar{\alpha}_s\\
+	&-(G_{22}L^2+G_{23}L^3)\bar{\alpha}_s^2+\mathcal{A}(v)\bar{\alpha}_s+\left[\mathcal{B}(v)-\frac{1}{2}\mathcal{A}^2(v)\right]\bar{\alpha}_s^2\,.
 \end{aligned}
 \end{equation}
 
-\subsection*{NNLL Expansion}
-We will now turn our attention to the coefficients which are present at NNLL - specifically for the $e^+e^-$ case.
 
 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\linewidth]{figures/matched_thrust.jpeg}
+    \caption{Comparison of fixed-order distributions to matched distributions compared with the data taken from the ALEPH collaboration~\cite{ALEPH:2003obs} \todo{get other ALEPH reference sorted}, taken from Ref.~\cite{Monni:2011gb}}
+    \label{fig:matched-thrust}
+\end{figure}
 
 
 
