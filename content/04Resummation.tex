@@ -1,14 +1,17 @@
 \chapter{Resummation}
-In this chapter we discuss the resummation of logarithmically enhanced contributions in perturbative QCD, focusing on the semi-numerical frameworks \textsc{CAESAR} (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd} and \textsc{ARES} (\emph{Automated Resummation for Event Shapes})~\cite{Banfi:2014sua}. These frameworks provide systematic methods to resum large logarithms that arise when fixed-order predictions become unreliable for a class of IRC safe observables known as event shapes. To illustrate the origin of such logarithms, we first examine a fixed-order calculation for the event shape known as thrust. We discuss what event shapes are, describing examples which we will use in Chapter~5. We then outline the \textsc{CAESAR} framework - firstly illustrated as an idea and then implemented into a code -  which automates resummation to next-to-leading logarithmic (NLL) accuracy, and the \textsc{ARES} framework, which extends this to next-to-next-to-leading logarithmic (NNLL) precision. \textsc{CAESAR} has been applied to both $e^+e^-$ and hadronic collisions~\cite{Banfi:2004yd, Banfi:2004nk}, while \textsc{ARES} has been developed primarily for $e^+e^-$ collisions~\cite{Banfi:2014sua, Banfi:2018mcq, Arpino:2019ozn}. In Chapter~5, we present the first application of \textsc{ARES} to hadronic collisions, including the treatment of initial-state radiation. \question{jet-veto for ARES also?}
-
+As discussed in Sec.~\ref{subsec:QCD-ev}, after the initial hard scattering of an event, the produced coloured partons undergo QCD radiation dominated by soft and collinear emissions. For many observables, these emissions give rise to logarithmically enhanced terms, which become significantly large when the observable, $v$, is small. This can ruin fixed-order perturbation theory and therefore indicates that dedicated techniques are necessary in this region. There are several approaches that exist such as parton showers and effective field theories. In this chapter we focus on a technique known as \emph{resummation}. In particular, we discuss the semi-numerical resummation frameworks known as: \textsc{CAESAR} (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd} and \textsc{ARES} (\emph{Automated Resummation for Event Shapes})~\cite{Banfi:2014sua}. Both provide systematic methods to resum large logarithms for a class of IRC safe observables known as event shapes, though they differ in their logarithmic accuracy as will become clear later. \\ \\
+This chapter is structured as follows. We begin by motivating resummation through a fixed-order calculation of the event shape thrust, which makes explicit the origin and structure of the large logarithms. We then discuss the general properties that an event shape must possess before presenting the \textsc{CAESAR} and \textsc{ARES} methods in turn. We conclude by outlining how fixed-order and resummed calculations are used together to provide a reliable description for the observable in all regions of phase space. This chapter will provide the necessary background and context for the work presented in Chapter.~5.
 
 \section{Motivation: Thrust and the Need for Resummation}
-The event shape \emph{thrust}~\cite{Farhi:1977sg, Brandt:1964sa} is widely used in the literature and at the Large Electron-Positron Collider (LEP) for precise determinations of the strong coupling $\alpha_s$~\cite{Aglietti:2025jdj, Abbate:2010xh} \question{Unsure if these are the correct references to use due to the controversy?}. Thrust is defined as
+Thrust~\cite{Farhi:1977sg, Brandt:1964sa} is one of the most well-studied event shapes in $e^+e^-$ collisions, having been used extensively at the Large Electron-Positron Collider (LEP) for precise determinations of $\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. 
+Thrust is defined as
 \begin{equation}
 \label{eq:thrust}
 	T \equiv \max_{\vec{n}} \frac{\sum_j |\vec{p}_j \cdot \vec{n}|}{\sum_j |\vec{p}_j|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
-where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\eqref{fig:thrust}.
+where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}. 
+For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states, as illustrated in Fig.~\ref{fig:thrust}.
+%For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.
 \begin{figure}[h]
 \begin{tikzpicture}[scale=0.9, >=Stealth]
 \begin{scope}
@@ -46,17 +49,16 @@ where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state,
 \caption{Diagrammatic representation of thrust: $\tau \to 0$ corresponds to a pencil-like 2-jet configuration, while $\tau \to 1/2$ corresponds to a spherically distributed, multi-particle final state.}
 \label{fig:thrust}
 \end{figure}
-\add{Maybe make the 2 jet limit arrows a bit shorter.}
 
 \subsection{Thrust: Fixed-order Calculation}
 \label{subsec:thrust-example}
-For the process $e^+e^- \to q\bar{q}$, the final state consists of two back-to-back partons, yielding the Born-level contribution
+To understand the motivation for resummation, we now perform a fixed-order calculation for the differential distribution of the thrust.
+At Born-level, $e^+e^- \to q\bar{q}$, the distribution is found to be
 \begin{equation}
     \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = \delta(\tau),
 \end{equation}
 where $\sigma_0$ denotes the LO cross-section given in Eq.~\eqref{eq:sigma-LO}. \\ \\
-The first non-trivial contribution arises from the real-emission process $e^+e^- \to q\bar{q}g$. For a three-particle final state, thrust is determined by the largest momentum fraction,
-\question{Should we be referencing the full cross-section example more? Also should we call it NLO real emission here? Different references say LO/NLO? Is there a difference with that and zeroth/1st order? Unsure what to call them basically.}
+The first non-trivial contribution arises from the term at $\mathcal{O}(\alpha_s)$ from the real-emission process $e^+e^- \to q\bar{q}g$. For a three-particle final state, thrust is determined by the largest momentum fraction, \question{Does it seem a bit weird to suddenly use $T$ here instead of $\tau$?}
 \begin{equation}
 T = \max[x_q, x_{\bar{q}}, x_g],
 \end{equation}
@@ -64,12 +66,12 @@ with $T_\text{min} = 2/3$ for equal momenta and $T_\text{max} = 1$. The correspo
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{dT} = C_F \frac{\alpha_s}{2\pi} \int dx_q \int dx_{\bar{q}} \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})} \, \delta\big(T - \max[x_q, x_{\bar{q}}, x_g]\big),
 \end{equation}
-\question{Same limits as in Sec.~\ref{sec:divergences} - also should we be referring to the equation in this section to give insight into where this equation came from?}
-subject to the kinematic constraint $x_q + x_{\bar{q}} + x_g = 2$. Integrating over the available phase space yields
+\question{Same limits as in Sec.~\ref{sec:divergences}? Also should we be referring to the equation in this section to give insight into where this equation came from?}
+subject to the kinematic constraint $x_q + x_{\bar{q}} + x_g = 2$. Integrating over the available phase space and using $\tau \equiv 1 - T$ yields
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = C_F \frac{\alpha_s}{2\pi} \left\{ \frac{3(1+\tau)(3\tau-1)}{\tau} + \frac{(4+6\tau(\tau-1))\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)} \right\}.
 \end{equation}
-As $\tau \to 0$, the distribution exhibits an IR divergence associated with soft and collinear emissions. This divergence is canceled by the virtual one-loop correction to $e^+e^- \to q\bar{q}$, in direct analogy with the cancellation discussed in Sec.~\ref{sec:divergences}, yielding a finite result as required by the IRC safety of thrust (Sec.~\ref{sec:IRC}). Using the regulated and integrated NLO cross-section given in Eq.~\eqref{eq:sigma-full}, the complete distribution may be written as \question{maybe reference Schwartz here?}
+As $\tau \to 0$, the distribution exhibits an IR divergence associated with soft and collinear emissions. This divergence is canceled by the virtual one-loop correction to $e^+e^- \to q\bar{q}$, in direct analogy with the cancellation discussed in Sec.~\ref{sec:divergences}, yielding a finite result as required by the IRC safety of thrust (Sec.~\ref{sec:IRC}). Using the regulated and integrated NLO cross-section given in Eq.~\eqref{eq:sigma-full}, the complete distribution may be written as 
 \begin{equation}
 \begin{aligned}
 \label{eq:full-thrust-NLO}
@@ -82,28 +84,32 @@ Neglecting the $\delta$-function contributions, the terms that become large in t
 \begin{equation}
 	\left(\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}\right)_{\text{log-enh}} = C_F \frac{\alpha_s}{2\pi} \left[ -3 \left(\frac{1}{\tau}\right)_+ - 4 \left(\frac{\ln \tau}{\tau}\right)_+ \right].
 \end{equation}
-The corresponding cumulative distribution (cumulant) is given by
+The integrated distribution i.e. the cumulative distribution (cumulant) is given by the
+\begin{equation}
+\label{eq:cumulant}
+	\Sigma(\tau) 
+	= \frac{1}{\sigma_0} \int_0^\tau d\tau' \frac{d\sigma}{d\tau'}\,.
+\end{equation}
+Therefore, the cumulant for these logarithmically enhanced terms are
 \begin{equation}
 \label{eq:thrust-cumulant}
-	\Sigma_{\text{log-enh}}(\tau) 
-	= \frac{1}{\sigma_0} \int_0^\tau d\tau' \frac{d\sigma}{d\tau'} 
-	= C_F \frac{\alpha_s}{2\pi} 
+	\Sigma_{\text{log-enh}}(\tau) = C_F \frac{\alpha_s}{2\pi} 
 	\left( -2L^2 + 3L \right),
 \end{equation}
-where $L \equiv \ln(1/\tau)$. All remaining terms in Eq.~\eqref{eq:full-thrust-NLO} remain finite \add{in the cumulant} as $\tau \to 0$ and do not contribute to the logarithmic enhancement. \\ \\
-These logarithmically-enhanced terms cause issues. Physically, the divergence of the cumulant as $\tau \to 0$ signals the breakdown of the fixed-order expansion, since an exactly two-jet configuration is unphysical, corresponding to the observation of bare quarks. \add{Plot of experimental vs. theory FO.} At higher orders in perturbation theory, the cumulant contains towers of logarithms of the form \question{Unsure if we can say towers or if it is a bit misleading for other areas of QCD?}
+where $L \equiv \ln(1/\tau)$. All remaining terms in Eq.~\eqref{eq:full-thrust-NLO} would remain finite in the cumulant as $\tau \to 0$ and do not contribute to the logarithmic enhancement. \\ \\
+Meanwhile, the terms within $\Sigma_{\text{log-enh}}(\tau)$ diverge as $\tau \to 0$. This signals the breakdown of the fixed-order expansion, since one expects the distribution to vanish as $\tau\to0$ since this corresponds to an exactly two-jet configuration which is unphysical. At higher orders in perturbation theory, the cumulant contains increasing powers of logarithms, such as 
 \begin{equation}
 \begin{aligned}
 \Sigma(\tau)\supset\quad&\alpha_sL^2 \qquad \alpha_s L \qquad \alpha_s \\
 &\alpha_s^2L^4 \qquad \alpha_s^2 L^3 \qquad \alpha_s^2 L^2 \qquad \alpha_s^2 L \qquad \alpha_s^2 \\
 &\alpha_s^3 L^6 \qquad \alpha_s^3 L^5 \qquad \dots \\
 &\,\,\vdots \\
-&\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad  \qquad  \qquad  \qquad \qquad  \qquad \qquad \alpha_s^n
+&\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad  \qquad  \qquad  \qquad \qquad  \qquad \qquad \alpha_s^n\,.
 \end{aligned}
 \end{equation}
-\add{Still a bit unsure by this format, sort of loose the $\alpha_s^n$?}
-which spoil the convergence of the perturbative series in the small-$\tau$ region, where the bulk of the data lies. \\ \\
-To restore predictive power, the perturbative expansion must therefore be reorganised and \emph{resummed}. Rather than expanding solely in powers of the strong coupling $\alpha_s$, one performs an expansion in powers of the logarithms $L = \ln(1/\tau)$. This reorganisation becomes essential in the region $\tau \ll 1$, where the logarithms are large and $\alpha_s L \sim 1$, causing fixed-order perturbation theory to break down. This procedure, known as \emph{resummation}, systematically accounts for these enhanced contributions to all orders in $\alpha_s$, yielding an exponentiated form for the cumulant,
+\question{Still a bit unsure by this format, sort of loose the $\alpha_s^n$?}
+In essence, these spoil the convergence of the perturbative series in the small-$\tau$ region, where the bulk of the data lies. \\ \\
+To restore predictive power, the perturbative expansion must therefore be reorganised and \emph{resummed}. Rather than expanding solely in powers of the strong coupling $\alpha_s$, one performs an expansion in powers of the logarithms $L$. This reorganisation becomes essential in the region $\tau \ll 1$, where the logarithms are large and $\alpha_s L \sim 1$. This procedure, known as \emph{resummation}, systematically accounts for these enhanced contributions to all orders in $\alpha_s$, yielding an exponentiated form for the cumulant,
 \begin{equation}
 	\Sigma(\tau) \simeq 
 	\exp \Big\{ 
@@ -114,14 +120,12 @@ To restore predictive power, the perturbative expansion must therefore be reorga
 	\Big\},
 	\label{eq:resummed-cummulant}
 \end{equation}
-where the functions $g_i$ resum logarithms at successive logarithmic accuracies. The leading-logarithmic contributions $\alpha_s^n L^{n+1}$ are contained in $g_1(\alpha_s L) $, next-to-leading logarithms $\alpha_s^n L^{n}$ in $g_2(\alpha_s L) $, and so on. \\ \\
+where the functions $g_i$ resum logarithms at successive logarithmic accuracies. The leading-logarithmic contributions $\alpha_s^n L^{n+1}$ are contained in $g_1(\alpha_s L) $, next-to-leading logarithms $\alpha_s^n L^{n}$ in $g_2(\alpha_s L) $, and so on.  \\ \\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
-
 
 \section{Event-shapes}
 \label{sec:event-shapes}
-The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\eqref{eq:resummed-cummulant} applies to all IRC safe observables \question{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. Event shapes are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including: \question{Correct description of event shape?} \\ \\
-\question{The reference~\cite{Dasgupta:2003iq}, is a paper but was used merely for the background of event shapes - am unsure if necessary to cite or not?} 
+The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\eqref{eq:resummed-cummulant} applies to all IRC safe observables \ABquestion{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. These are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including:
 \begin{itemize}
 \item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
 \begin{equation}
@@ -133,7 +137,7 @@ The appearance of large logarithms and the need for resummation are not unique t
 \end{equation}
 where $\vec{p}_{\perp i}$ denotes the transverse momentum of final-state particle $i$ with respect to the beam direction, and the unit vector $\vec{n}_\perp$ that maximises this quantity is referred to as the \emph{transverse thrust axis}.
 
-\item \textbf{One-jettiness} is a special case of the more general $N$-jettiness event shape~\cite{Stewart:2010tn}, $\tau_N$, which quantifies how well the final state can be described by $N$ narrow jets. For $N=1$, one-jettiness is defined as
+\item \textbf{One-jettiness} is a special case of the more general $N$-jettiness event shape~\cite{Stewart:2010tn}, which quantifies how well the final state can be described by $N$ narrow jets. For $N=1$, one-jettiness is defined as
 \begin{equation}
   \mathcal{T}_1 \equiv
   \sum_i
@@ -150,12 +154,15 @@ where $q_{a,b,J}$ are the four-momenta of the incoming beams and the observed je
   T_m \equiv \frac{\sum_i |\vec p_{\perp i}\times \vec n_\perp|}{\sum_i p_{\perp i}}\,.
 \end{equation}
 \end{itemize}
-\question{Correct description for all of them? \\ Are the references correct for transverse thrust and thrust minor?} \\ \\
-Beyond their use in extracting parameters such as $\alpha_s$ and the QCD $\beta$-function, event shapes characterise the structure of final-state events. Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. In this thesis, we focus on an observable-independent, \emph{semi-numerical} formalisms - \textsc{CAESAR} and \textsc{ARES}. We first review the \textsc{CAESAR} framework and then describe its extension to \textsc{ARES}. \\ \\
-\reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq}}
+\ABquestion{Check references are correct.} \\ \\
+Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, such as extracting $\alpha_s$, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. For the remaining of this thesis, we focus on observable-independent, \emph{semi-numerical} formalisms - \textsc{CAESAR} and \textsc{ARES}.  \\ \\
+\reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq, Dasgupta:2003iq}}
+
 
 \section{NLL Resummation: \textsc{CAESAR}}
-Traditionally, NLL resummation for final-state observables was performed in an observable-dependent manner, with separate analytical calculations required for each individual case. The first steps towards a more general approach were taken in~\cite{Banfi:2001bz}, where a systematic semi-numerical framework was developed to perform NLL resummation for a broad class of observables. This framework was later extended and implemented in a computer code, the \emph{Computer Automated Expert Semi-Analytical Resummer} (\textsc{CAESAR})~\cite{Banfi:2004yd}. In this approach, the resummation formula is written in terms of a set of observable-dependent parameters, which can be determined automatically by the code for an arbitrary observable. \add{Need to become a bit clearer on the history of this -- unsure if really necessary. I think see the length and come back to it later.} We will now discuss the conditions an observable must satisfy in order for this resummation approach to be valid.
+Traditionally, NLL resummation for final-state observables was performed in an observable-dependent manner, with separate analytical calculations required for each individual case. The first steps towards a more general approach were taken in~\cite{Banfi:2001bz}, where a systematic semi-numerical framework was developed to perform NLL resummation for a broad class of observables. This framework was later extended and implemented in a computer code, known as \textsc{CAESAR}~\cite{Banfi:2004yd}. In this approach, the resummation formula is written in terms of a set of observable-dependent parameters, which can be determined automatically by the code for an arbitrary observable. 
+To begin, we must discuss the conditions an observable must satisfy in order for this resummation approach to be valid.
+
 
 \subsection{Observable Requirements}
 Consider a Born event with $n$ hard partons, where $p_1, \dots, p_n$ denote their momenta and $n_i$ are the incoming legs, we define an observable $V(p_1, p_2, \dots)$ as a non-negative function of the final-state momenta. We assume the observable is IRC safe and that, in the $n$-jet limit, it vanishes. Such an observable is referred to as an $(n+1)$-jet observable, where the incoming beam jets $n_i$ are included alongside the outgoing jets. For the resummation approach to be valid, the observable $V(p_1, p_2, \dots)$ must satisfy the following conditions: \question{Unsure about the convention here - think I need to change it since we are sticking to convention in Arpino paper.}
@@ -301,7 +308,8 @@ $V\left(\{\tilde{p}\},k_1,\dots,k_n\right)$ are restricted to the region where $
  V(\{\tilde{p}\},k_i)\sim v$ with $\epsilon \ll v$. Together, with the corresponding virtual corrections, they build up $ \mathcal{F}_{\mathrm{NLL}}$.
 
 \section{NNLL Resummation: ARES}
-In this section, we will discuss the NNLL resummation for 3-jet observables as introduced in~\cite{Arpino:2019ozn}. For brevity, we will not go into detail of the various calculations and refer the reader to the reference, instead we will discuss the necessary ingredients required to form the NNLL cumulant. 
+The \textsc{ARES} was developed primarily for the NNLL resummation of observables in $e^+e^-$ collisions, where it was first introduced for two-jet observables~\cite{Banfi:2014sua}, while later being used for jet-rates in~\cite{Banfi:2016zlc}. The most recent develiopment has been for the NNLL resummation for 3-jet observables as introduced in~\cite{Arpino:2019ozn}. For brevity, we will not go into detail of the various calculations and refer the reader to the reference, instead we will discuss the necessary ingredients required to form the NNLL cumulant. 
+ \ABquestion{What about Ref.~\cite{Banfi:2018mcq}?}
 
 \subsection{The master formula}
 In order to determine the NNLL accurate cumulant, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. This results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. \question{Need to understand this configuration is just for the new $\delta\mathcal{F}$ piece.} The NNLL master formula is defined as
