@@ -535,23 +535,18 @@ Here we will briefly discuss a certain class of observables which take an additi
 Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{subsec:thrust-example} and the one-jettiness and transverse thrust introduced in Sec.~\ref{sec:event-shapes}.
 
 \section{Validation and Matching}
-One may think that once we have the resummed cumulant that this is enough. However we are not quite there. As describe in Sec.~\ref{subsec:thrust-example}, perturbation theory breaks down at small values of the observable $v$. In this capacity, it is only in this region that we cannot rely on fixed-order calculations and must turn to resummation. Therefore one must undergo a procedure known as \emph{matching} in order to incorporate both the fixed-order and resummed results into our theoretical predicitions. For a generic event shape, $v$, the fixed order predictions have the form
+One may think that once we have the resummed cumulant that this is enough. However we are not quite there. As describe in Sec.~\ref{subsec:thrust-example}, perturbation theory breaks down at small values of the observable $v$. In this capacity, it is only in this region that we cannot rely on fixed-order calculations and must turn to resummation. Therefore one must undergo a procedure known as \emph{matching} in order to incorporate both the fixed-order and resummed results into our theoretical predicitions. We will outline this explicitly for a generic event shape $v$. As shown in Sec.~\ref{subsec:thrust-example}, the fixed-order cumulant up to second order is
 \begin{equation}
 \label{eq:FO-gen}
-	\Sigma(v)=1+\frac{\alpha_s}{2\pi}\mathcal{A}(v)+\left(\frac{\alpha_s}{2\pi}\right)^2\mathcal{B}(v)\,,
+	\Sigma(v)=1+\frac{\alpha_s}{2\pi}\mathcal{A}(v)+\left(\frac{\alpha_s}{2\pi}\right)^2\mathcal{B}(v,\mu^2)\,,
 \end{equation}
-where $\mathcal{A}$ and $\mathcal{B}$ are the fixed-order coefficients up to second order, where for thrust we can see these in Sec.~\ref{subsec:thrust-example}.
-The resummed cumulant has the form
+where $\mathcal{A}$ and $\mathcal{B}$ are the fixed-order coefficients up to second order and $\mu$ is the renormalisation scale. Moreover, as discussed previously, the resummed cumulant has the form
 \begin{equation}
 \label{eq:resummed-gen}
-	\Sigma(v)=\left(1+\sum_{k=1}^\infty C_k\,\bar{\alpha}_s^k\right)e^{Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)}\,,
+	\Sigma(v)=\left(1+\sum_{k=1}^\infty C_k\,\bar{\alpha}_s^k\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)+\dots\right]\,,
 \end{equation}
-where $\bar{\alpha}_s\equiv\alpha_s/2\pi$ and $C_k$ are constants. As discussed in Sec.~\ref{subsec:thrust-example}, the terms $g_i(\alpha_sL)$ contain the resummed contributions at various orders i.e.  $\{g_1,g_2,g_3\}$ contain LL, NLL, and NNLL terms respectively. 
-In order to provide a reliable description for our observable for all regions of the observable, we must combine the fixed-order and resummed contributions i.e. Eq.~\eqref{eq:FO-gen} and~\eqref{eq:resummed-gen} through a procedure known as \emph{matching}. Put simply, this procedure involves adding the two equations together and subtracting the double counting of the logarithms. There are further subtitles after this subtraction, which we will discuss later. In order to show how this comes about, we re-expand the $g_i$ functions in powers of $\bar{\alpha}_sL$ using
-\begin{equation}
-g_n(\alpha_sL)=\sum_{i=1}^{\infty}G_{i,i+2-n}\bar{\alpha}_s^iL^{i+2-n}\,.
-\end{equation}
-Explicitly, one finds the functions to be
+where $\bar{\alpha}_s\equiv\alpha_s/2\pi$ and $C_k$ are constants. As discussed in Sec.~\ref{subsec:thrust-example}, the terms $g_i(\alpha_sL)$ contain the resummed contributions at various orders i.e.  $\{g_1,g_2,g_3\}$ contain LL, NLL, and NNLL terms respectively. \\ \\
+The idea behind the matching procedure is to combine Eqs.~\eqref{eq:FO-gen} and~\eqref{eq:resummed-gen} and to remove any double counting of logarithmic terms. In order to show this explicitly, we first re-expand the $g_i$ functions in powers of $\bar{\alpha}_sL$ using
 \begin{equation}
 \begin{aligned}
 	&Lg_1(\alpha_s L)=G_{12}\bar{\alpha}_s+G_{23}\bar{\alpha}_s^2L^3+\dots\,,\\
@@ -559,26 +554,44 @@ Explicitly, one finds the functions to be
 	&\alpha_s g_3(\alpha_s L) =G_{21}\bar{\alpha}_s^2L+G_{32}\bar{\alpha}_s^3L^2\dots\,.
 \end{aligned}
 \end{equation}
+Substituting these into Eq.~\ref{eq:resummed-gen} and expanding the exponential function we find
+\begin{equation}
+	\Sigma(v) = 1 + \Sigma_{\mathrm{log}}^{(1)}(v)\,\bar{\alpha}_s+\Sigma_{\mathrm{log}}^{(2)}(v)\,\bar{\alpha}_s^2+\dots\,,
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+	 &\Sigma_{\mathrm{log}}^{(1)}(v)=C_1+G_{11}L+G_{12}L^2\,,\\
+	 &\Sigma_{\mathrm{log}}^{(2)}(v)=C_2+(G_{21}+C_1G_{11})L+\left(G_{22}+\frac{1}{2}G_{11}^2+C_1G_{12}\right)L^2\\
+	 &\qquad\qquad+(G_{23}+G_{12}G_{11})L^3+\frac{1}{2}G_{12}^2L^4\,.
+\end{aligned}
+\end{equation}
+There is an important comment to make about the $G_{21}\bar{\alpha}_s^2L$ piece. Even after the subtraction of logarithms which occur twice, this term will cause the event shape to diverge at small $v$, which contradicts the physical description of the event shape which should vanish. This piece is tackled by the matching schemes. There are various schemes found within the literature, however the most widely used schemes are the Log(R)- or R-matching schemes~\cite{Jones:2003yv,Catani:1992ua}. 
 \paragraph{R-matching scheme}
+In this scheme, the fixed-order and resummed contributions are matched and the logs which occur twice are subtracted
 \begin{equation}
 	\begin{aligned}
 	\Sigma(v)&=\left(1+C_1\bar{\alpha}_s+C_2\bar{\alpha}_s^2\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+G_{21}L\bar{\alpha}_s^2\right]\\
-	&-G_{21}L\bar{\alpha}_s^2-\left[C_1+G_{11}L+G_{21}L^2\right]\bar{\alpha}_s\\
-	&\left[C_2+C_1(G_{11}L+G_{12}L^2)+\frac{1}{2}(G_{11}L+G_{12}L^2)^2+(G_{22}L^2+G_{23}L^3)\right]\bar{\alpha}_s^2\\
-	&+\mathcal{A}(v)\bar{\alpha}_s+\mathcal{B}(v)\bar{\alpha}_s^2\,.
+	&+\bar{\alpha}_s\left(\mathcal{A}(v)-\Sigma_{\mathrm{log}}^{(1)}(v)\right)+\bar{\alpha}_s\left(\mathcal{B}(v)-\Sigma_{\mathrm{log}}^{(2)}(v)\right)+\dots\,,
+	%&=\left(1+C_1\bar{\alpha}_s+C_2\bar{\alpha}_s^2\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+G_{21}L\bar{\alpha}_s^2\right] \\
+	%&-G_{21}L\bar{\alpha}_s^2-\left[C_1+G_{11}L+G_{12}L^2\right]\bar{\alpha}_s\\
+	%&\left[C_2+C_1(G_{11}L+G_{12}L^2)+\frac{1}{2}(G_{11}L+G_{12}L^2)^2+(G_{22}L^2+G_{23}L^3)\right]\bar{\alpha}_s^2\\
+	%&+\mathcal{A}(v)\bar{\alpha}_s+\mathcal{B}(v)\bar{\alpha}_s^2\,.
 	\end{aligned}
 \end{equation}
+where one can notice that the $G_{21}$ placed within the exponent as well as the $G_{21}$ in the non-exponentiated part which occurs through $\Sigma_{\mathrm{log}}^{(2)}(v)$.
 \paragraph{Log(R)-matching scheme}
+This matching scheme as stated in Ref.~\cite{Jones:2003yv} is theoretically the most stable and in this sense generally preferred.
 \begin{equation}
 \begin{aligned}
-	\ln\Sigma(v)&=Lg_1(\alpha_sL)+g_2(\alpha_sL)+(G_{11}L+G_{12}L^2)\bar{\alpha}_s\\
-	&-(G_{22}L^2+G_{23}L^3)\bar{\alpha}_s^2+\mathcal{A}(v)\bar{\alpha}_s+\left[\mathcal{B}(v)-\frac{1}{2}\mathcal{A}^2(v)\right]\bar{\alpha}_s^2\,.
+	\ln\Sigma(v)&=Lg_1(\alpha_sL)+g_2(\alpha_sL)\\
+	& +\left(\mathcal{A}(v)+G_{11}L+G_{12}L^2\right)\bar{\alpha}_s\\
+	&+\left(\mathcal{B}(v)-\frac{1}{2}\mathcal{A}^2(v)-G_{22}L^2-G_{23}L^3\right)\bar{\alpha}_s^2+\dots\,,
 \end{aligned}
 \end{equation}
-
-
-
-
+where this entire result is exponentiated, such that any issue arising from an divergence from the $G_{21}$ is avoided.
+In general, the Log(R) matching scheme is used more widely. This is because one does not need to calculate $G_{21}$ and $C_2$, which involve numerical calculations.  \\ \\
+Please note that these matching schemes are presented at NLO+NLL accuracy. Ref.~\cite{Monni:2011gb} presents thrust at up to NNLL+NNLO order as shown in Fig.~\ref{fig:matched-thrust}. As one can see in this figure, the fixed order NNLO piece gives rise to a divergence at small $\tau(\equiv1-T)$ while the matched results gives rise to the turning point such that the distribution vanishes as $\tau\to0$, hence matchig the experimental data\footnote{One may notice that there is a shift between the experimental data and theoretical results. This is accounted for by non-perturbative hadronisation corrections.}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\linewidth]{figures/matched_thrust.jpeg}
