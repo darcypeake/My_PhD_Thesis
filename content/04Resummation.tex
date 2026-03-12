@@ -66,7 +66,7 @@ with $T_\text{min} = 2/3$ for equal momenta and $T_\text{max} = 1$. The correspo
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{dT} = C_F \frac{\alpha_s}{2\pi} \int dx_q \int dx_{\bar{q}} \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})} \, \delta\big(T - \max[x_q, x_{\bar{q}}, x_g]\big),
 \end{equation}
-\question{Same limits as in Sec.~\ref{sec:divergences}? Also should we be referring to the equation in this section to give insight into where this equation came from?}
+\ABquestion{Same limits as in Eq.~\eqref{eq:qqg-real}?}
 subject to the kinematic constraint $x_q + x_{\bar{q}} + x_g = 2$. Integrating over the available phase space and using $\tau \equiv 1 - T$ yields
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = C_F \frac{\alpha_s}{2\pi} \left\{ \frac{3(1+\tau)(3\tau-1)}{\tau} + \frac{(4+6\tau(\tau-1))\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)} \right\}.
@@ -160,6 +160,7 @@ Event shapes provide detailed information on the distribution of energy and mome
 
 
 \section{NLL Resummation: \textsc{CAESAR}}
+\question{I am concerned it seems as though I am repeating myself again in this section here, however am unsure how to link them without repeating.}
 Traditionally, NLL resummation for final-state observables was performed in an observable-dependent manner, with separate analytical calculations required for each individual case. The first steps towards a more general approach were taken in~\cite{Banfi:2001bz}, where a systematic semi-numerical framework was developed to perform NLL resummation for a broad class of observables. This framework was later extended and implemented in a computer code, known as \textsc{CAESAR}~\cite{Banfi:2004yd}. In this approach, the resummation formula is written in terms of a set of observable-dependent parameters, which can be determined automatically by the code for an arbitrary observable. 
 To begin, we must discuss the conditions an observable must satisfy in order for this resummation approach to be valid.
 
@@ -255,17 +256,31 @@ As discussed previously in Sec.~\ref{subsec:thrust-example} for the case of thru
 \reference{\cite{Arpino:2019ozn}.}
 
 
-\subsubsection{NLL Resummation}
+\subsection{NLL Resummation}
 In the limit $v\to 0$, the cumulant for a three-jet observable can be written in factorised form as
 \begin{equation}
 \label{eq:3jet-cumu-gen}
 \Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right),
 \end{equation}
 where $S(n)$ is a symmetry factor (equal to $1/n!$ for $n$ identical gluons), $\mathcal{V}(\{p\})$ denotes the virtual corrections to the Born process normalised to the Born matrix element squared, and $\mathcal{M}^2\equiv|\mathcal{M}|^2$ denotes the real corrections. \\ \\
-At NLL, soft-collinear partons emitted independently off the hard legs, along with their virtual corrections, contribute to the cumulant. At this order, the matrix-elements squared, $\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)$, can be factorised into the product of single-emission squared matrix-elements, radiated according to the physical CMW coupling~\cite{Catani:1990rr}. This coupling, $\alpha_s^{\mathrm{CMW}}$,  is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. It is related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$ (i.e. the one introduced in Sec.~\ref{sec:running-coupling}) by  \begin{equation} \alpha_s^{\mathrm{CMW}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi}\right)^n K^{(n)}\right)\,.\end{equation} 
-The constants necessary for up to NNLL, and hence for the scope of this thesis, are $K^{(1)}$ and $K^{(2)}$, which can be calculated perturbatively and explicit forms can be found in the appendix \add{make sure to add to the appendix}. These independently emitted soft-collinear partons factorise from the Born process such that the cumulant for a three-jet observable takes the form
- \begin{equation} \label{eq:NLL-cumulant} \Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq-v\frac{dR_{\mathrm{NLL}}}{dv}\,, \end{equation}
-where the Sudakov exponent $R_{\mathrm{NLL}}(v)$ is the NLL radiator. This encodes the probability of no emissions with $V(\{\tilde{p}\},k_i)>v$ and is formed by the combination of virtual corrections with \emph{unresolved} emissions i.e. $V(\{\tilde{p}\},k_i)<\epsilon v$, where $\epsilon$ is a cut off. The radiator is made up of contributions arising from the soft \emph{and} collinear region in the form of double logarithms, as well as single logarithms coming from virtual corrections from soft large-angle and hard-collinear regions. Note that the derivative $R'_{\mathrm{NLL}}$ only includes logarithmic contributions up to NLL accuracy. For a three-jet configuration, the NLL radiator is a sum over the dipoles $(q\bar q)$, $(qg)$ and $(g\bar q)$,
+At NLL, soft-collinear partons emitted independently off the hard legs, along with their virtual corrections, contribute to the cumulant. At this order, the matrix-elements squared, $\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)$, can be factorised into the product of single-emission squared matrix-elements, radiated according to the physical CMW coupling~\cite{Catani:1990rr}. This coupling, $\alpha_s^{\mathrm{CMW}}$,  is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. It is related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$ (i.e. the one introduced in Sec.~\ref{sec:running-coupling}) by  \begin{equation} \alpha_s^{\mathrm{CMW}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi}\right)^n K^{(n)}\right)\,,
+\end{equation} 
+where the necessary constants for up to NNLL, and hence for the scope of this thesis, are $K^{(1)}$ and $K^{(2)}$, and are defined as
+\begin{equation}
+\begin{aligned}
+	&K^{(1)}=C_A\left(\frac{67}{18}-\frac{\pi^2}{6}\right)-\frac{5}{9}n_f\,,\\
+	&K^{(2)}=C_A^2\left(\frac{245}{24}-\frac{67}{9}\zeta_2+\frac{11}{6}\zeta_3+\frac{11}{5}\zeta_2^2\right)+C_Fn_f\left(-\frac{55}{24}+2\zeta_3\right)\\
+	&\qquad+C_An_f\left(-\frac{209}{108}+\frac{10}{0}\zeta_2-\frac{7}{3}\zeta_3\right)-\frac{1}{27}n_f^2+\frac{\pi\beta_0}{2}\left(C_A\left(\frac{808}{27}-28\zeta_3\right)-\frac{224}{54}n_f\right)\,.
+\end{aligned}
+\end{equation}
+These independently emitted soft-collinear partons factorise from the Born process such that the cumulant for a three-jet observable takes the form
+ \begin{equation} \label{eq:NLL-cumulant} \Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq-v\frac{dR_{\mathrm{NLL}}}{dv}\,.
+ \end{equation}
+ %where the Sudakov exponent $R_{\mathrm{NLL}}(v)$ is the NLL radiator. This encodes the probability of no emissions with $V(\{\tilde{p}\},k_i)>v$ and is formed by the combination of virtual corrections with \emph{unresolved} emissions i.e. $V(\{\tilde{p}\},k_i)<\epsilon v$, where $\epsilon$ is a cut off. The radiator is made up of contributions arising from the soft \emph{and} collinear region in the form of double logarithms, as well as single logarithms coming from virtual corrections from soft large-angle and hard-collinear regions. Note that the derivative $R'_{\mathrm{NLL}}$ only includes logarithmic contributions up to NLL accuracy. For a three-jet configuration, the NLL radiator is a sum over the dipoles $(q\bar q)$, $(qg)$ and $(g\bar q)$,
+ One can see that the NLL cumulant takes the multiplicative form and is made up of two pieces, $R_{\mathrm{NLL}}(v)$ and $\mathcal{F}_{\mathrm{NLL}}$, we will describe them in the following.
+ 
+ \subsubsection{The NLL Radiator}
+ The Sudakov exponent $R_{\mathrm{NLL}}(v)$ is referred to as the NLL radiator. This encodes the probability of no emissions with $V(\{\tilde{p}\},k_i)>v$ and is formed by the combination of virtual corrections with \emph{unresolved} emissions i.e. $V(\{\tilde{p}\},k_i)<\epsilon v$, where $\epsilon$ is a cut off. The radiator is made up of contributions arising from the soft \emph{and} collinear region in the form of double logarithms, as well as single logarithms coming from virtual corrections from soft large-angle and hard-collinear regions. Note that the derivative $R'_{\mathrm{NLL}}$ only includes logarithmic contributions up to NLL accuracy. For a three-jet configuration, the NLL radiator is a sum over the dipoles $(q\bar q)$, $(qg)$ and $(g\bar q)$,
 \begin{equation}
 \label{eq:NLL-radiator}
 \begin{split}
@@ -285,7 +300,8 @@ The functions $r_\ell(L), r'_\ell(L)$ and $T(L)$ are integrals over the real emi
 \begin{equation}
 \langle f \rangle \equiv \int_0^{2\pi}\frac{d\phi}{2\pi}f\left(\phi\right)\,.
 \end{equation}
-\add{This part below could all be re-structured a bit.}
+
+ \subsubsection{The NLL Function}
 To define $\mathcal{F}_{\mathrm{NLL}}$, each emission $k_i$ is parametrised by $\{\ell_i,\phi_i^{(\ell_i)},\zeta_i\}$, 
 where; $\ell_i$ denotes the leg to which the emission is collinear, $\phi_i^{(\ell_i)}$ is the azimuthal angle with respect to that leg, and $\zeta_i \equiv \frac{V_{\mathrm{sc}}(k_i)}{v}$. For event shapes, the dependence on emission rapidity can be integrated analytically, which in turn can yield a Jacobian factor $R'_{\mathrm{NLL},\ell} \equiv 2 C_\ell\, r'_\ell(L)$, with $C_\ell=C_F$ for quark legs and $C_\ell=C_A$ for gluon legs. With this parametrisation,
   \begin{equation}
@@ -352,7 +368,7 @@ where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.
   \end{equation}
   The meaning of the various contributions will become clear in the following sections. Please note that in the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and are introduced for the first time in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
   of the appropriate weight function $G(\{k_i\})$, see
-  Eq.~\eqref{eq:dZ-def}. \ABquestion{These are resolved or unresolved or both?  Also are they soft and hard-collinear or soft and collinear?} \ABquestion{Maybe discuss here instead how they will all be parameterised.}
+  Eq.~\eqref{eq:dZ-def}. \ABquestion{These are resolved or unresolved or both?  Also are they soft and hard-collinear or soft and collinear?}
 In the following sections, we will provide a description for the terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. 
 
 
