@@ -1,2 +1,112 @@
-\chapter{Additional DIS plots}
-\label{app:add-DIS-plots}
+\chapter{ISR Calculations}
+\label{app:ISR-calc}
+
+\begin{equation}
+\label{eq:FISR-start}
+\begin{split}
+\mathcal{F}_{\mathrm{ISR}} & = \int \dZ \left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}\times\right. \\ 
+& \times \left[\int_x^1 \frac{dz}{z}C_F \left[\frac{1+z^2}{1-z}-\varepsilon(1-z)\right]
+\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} \right. \\
+& \left.- \int_0^1 dz \frac{2C_F}{1-z}
+\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] \\
+& \left.-\gamma_q^{(0)}\int_0^{Q^2v^{2/(a+b_q)}}\frac{dk^2}{k^2}
+\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}
++\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon}
+\frac{\alpha_s(\mu_R)}{2\pi}
+\int_x^1 \frac{dz}{z} C_F\left(\frac{1+z^2}{1-z}\right)_+
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\right] \times \\
+& \times \left. \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right\} \,.
+\end{split}
+\end{equation}
+In order for every term within $\mathcal{F}_{\mathrm{ISR}}$ to be finite in four dimensions, we must add and subtract a counterterm, $\mathrm{CT}$, which has the following form:
+\begin{equation}
+	\begin{aligned}
+	\mathrm{CT}\;&=\int \dZ \int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}C_F\times \\
+	&\times\left[\int_x^1\frac{dz}{z}\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)\frac{f_q(x/z)}{f_q(x)}-\int_0^1dz\frac{2}{1-z}\right]\times\\
+	&\times\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\}}{v}\right)\,.
+	\end{aligned}
+\end{equation}
+It must be noted that by including this counterterm, we can recast $\mathcal{F}_{\mathrm{ISR}}$ in the form of eq.~(\ref{eq:Sigma-NNLL-fs}):
+\begin{equation}
+  \label{eq:FISR-split}
+  \mathcal{F}_{\mathrm{ISR}} = \frac{\alpha_s}{\pi}\left( \delta \mathcal{F}_{\mathrm{rec,q}}+\delta\mathcal{F}_{\mathrm{hc,q}}\right)+ \frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi} C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}\,.
+\end{equation}
+The constant terms $C^{(1)}_{\mathrm{hc,q}}$ plays the same role as an integrated counterterm in fixed-order calculations, whereas the sum $\delta \mathcal{F}_{\mathrm {rec,q}}+\delta\mathcal{F}_{\mathrm{hc,q}}$ represents the subtracted contribution of real radiation. \\ \\
+In order to calculate $C^{(1)}_{\mathrm{hc, q}}$ we need to add $\mathrm{CT}$ to the last two lines of eq.~\eqref{eq:FISR-start}. This gives:
+\begin{equation}
+\begin{aligned}
+\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}&  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ \left\{ \left[-\gamma_q^{(0)}\int_0^{Q^2v^{2/(a+b_q)}}\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}+\right.\right.\\
+   &\left.\left.+\frac{1}{\varepsilon} \left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon} \frac{\alpha_s(\mu_R)}{2\pi} \int_x^1 \frac{dz}{z} C_F\left(\frac{1+z^2}{1-z}\right)_+ \frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\right] + \right. \\ 
+   &\left. +\int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}C_F\left[\int_x^1\frac{dz}{z}\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)\frac{f_q(x/z)}{f_q(x)}-\int_0^1dz\frac{2}{1-z}\right]\right.\times\\
+   &\left.\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\right\}\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\,.
+\end{aligned}
+\end{equation}
+From here, one can use the following expression
+\begin{equation}
+V_{\mathrm{sc}}(\{\tilde{p}\},k)=d_\ell g_\ell(\phi)\left(\frac{k_t}{Q}\right)^{a+b_\ell}\frac{1}{(1-z)^{b_\ell}}\,,
+\end{equation}
+along with $\gamma_q^{(0)}=-3/2 C_F$. Moreover, one can set $\mu_R=Q\,v^{1/(a+b_\ell)}$ to find
+\begin{equation}
+\begin{aligned}
+\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}&  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)  \frac{\alpha_s(Q\,v^{1/(a+b_\ell)})}{2\pi} \\
+&\times C_F\left\{-\frac{3}{2}\frac{1}{\varepsilon} + \int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} \left[ \frac{1}{\varepsilon} \left(\frac{1+z^2}{1-z}\right)_+ -\frac{1}{\varepsilon}\frac{1+z^2}{(1-z)_+}
+\right. \right. +\\
+&+ \left.\left. \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_+(1+z^2)+(1-z)\right]\right\}\,.
+\end{aligned}
+\end{equation}
+Using the plus distribution formula: $\left[f(z)\right]_+=f(z) - \delta(1-z)\int_0^1f(z')dz'$, we find
+\begin{equation}
+\begin{aligned}
+&\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\frac{\alpha_s(Q\,v^{1/(a+b_\ell)})}{2\pi} \times\\
+&\times  C_F\int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\left[ \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_+(1+z^2)+(1-z)\right]\,.
+\end{aligned}
+\end{equation}
+Therefore, one finds the integrated counter term for the incoming $q$ to be
+\newpage
+qq':
+\begin{equation}
+\begin{aligned}
+	&C_F\left\{\ln\frac{(1-z)}{z}\frac{1+z^2}{1-z}-\ln\frac{(1-z)}{z}\frac{2}{1-z}\right\} + C_F(1-z)+\\
+	&-\ln(d_1 g_1(\phi))\left[P_{qq}^{(0)}-\frac{3}{2}C_F\right]
+\end{aligned}
+\end{equation}
+qg:
+\begin{equation}
+\begin{aligned}
+T_R\left\{\left[(1-z)^2+z^2\right]\ln\frac{(1-z)}{z}+2z(1-z)\right\} -\ln\big(d_1 g_1(\phi)\big)\,P_{qg}^{(0)}
+\end{aligned}
+\end{equation}
+gq:
+\begin{equation}
+\begin{aligned}
+C_F\left\{\left[\frac{1+(1-z)^2}{z}\right]\ln\frac{(1-z)}{z}+z\right\} -\ln\big(d_1 g_1(\phi)\big)\,P_{gq}^{(0)}
+\end{aligned}
+\end{equation}
+	
+
+
+In order to calculate $\delta\mathcal{F}{_\mathrm{ISR}}$ we must subtract the counterterm $\mathrm{CT}$ to the first two lines of eq.~\eqref{eq:FISR-start}
+\begin{equation}
+\begin{aligned}
+\delta\mathcal{F}_{\mathrm{ISR}}=&\int \dZ \left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}
+\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} 
+\frac{\alpha_s(k_t)}{2\pi}\times\right. \\
+&\times \left[\int_x^1 \frac{dz}{z}C_F 
+\left[\frac{1+z^2}{1-z}-\varepsilon(1-z)\right]
+\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\right. \\
+&\left.- \int_0^1 dz \frac{2C_F}{1-z}
+\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] \\
+&- C_F \int\frac{dk_t^2}{k_t^2}
+\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon}
+\frac{\alpha_s(k_t)}{2\pi}\left[\int_x^1\frac{dz}{z}
+\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)
+\frac{f_q(x/z)}{f_q(x)}
+-\int_0^1dz\frac{2}{1-z}\right]\times \\
+&\times\left.
+\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)
+\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
+\right\}\,.
+\end{aligned}
+\end{equation}
