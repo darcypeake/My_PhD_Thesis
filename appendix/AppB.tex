@@ -110,16 +110,108 @@ $\varepsilon$ poles, leaving the finite result
 &\times  C_F\int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\left[ \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_+(1+z^2)+(1-z)\right]\,. 
 \end{aligned}
 \end{equation}
-We can now evaluate the coefficient $C^{(1)}_{\mathrm{hc}}$ for the
-different observables and partonic channels. Up to this point the
-derivation has been carried out explicitly for the $qq$ channel.
-The results for the remaining channels follow analogously and are
-summarised below. \\ \\
+We can now evaluate $C^{(1)}_{\mathrm{hc}}$ for each observable. Up to 
+this point the derivation has been carried out explicitly for the $qq$ 
+channel; the remaining channels, shown in Fig.~\ref{fig:isr_channels}, 
+follow analogously. The results for all channels and observables are 
+summarised below.
+\begin{figure}[H]
+\centering
+% ====== qq channel ======
+\begin{minipage}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{feynman}
+  \vertex (p);
+  \vertex [right=1.5cm of p] (v1);
+  \vertex [right=1.5cm of v1] (h);
+  \vertex [below=1.5cm of v1] (g);
+  \diagram*{
+    (p) -- [fermion, edge label=\(q(x/z)\)] (v1),
+    (v1) -- [fermion, edge label=\(q(x)\)] (h),
+    (v1) -- [gluon, edge label'=\(g\)] (g),
+  };
+  \draw[fill=white] (h) circle (0.4cm) node {\(\mathcal{H}\)};
+\end{feynman}
+\end{tikzpicture}
+\[qq\text{ channel: } q(x/z) \to q(x) + g\]
+\end{minipage}
+\hfill
+% ====== qg channel ======
+\begin{minipage}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{feynman}
+  \vertex (p);
+  \vertex [right=1.5cm of p] (v1);
+  \vertex [right=1.5cm of v1] (h);
+  \vertex [below=1.5cm of v1] (qbar);
+  \diagram*{
+    (p) -- [gluon, edge label=\(g(x/z)\)] (v1),
+    (v1) -- [fermion, edge label=\(q(x)\)] (h),
+    (v1) -- [anti fermion, edge label'=\(\bar{q}\)] (qbar),
+  };
+  \draw[fill=white] (h) circle (0.4cm) node {\(\mathcal{H}\)};
+\end{feynman}
+\end{tikzpicture}
+\[qg\text{ channel: } g(x/z) \to q(x) + \bar{q}\]
+\end{minipage}
+
+\vspace{2em}
+
+% ====== gq channel ======
+\begin{minipage}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{feynman}
+  \vertex (p);
+  \vertex [right=1.5cm of p] (v1);
+  \vertex [right=1.5cm of v1] (h);
+  \vertex [below=1.5cm of v1] (q);
+  \diagram*{
+    (p) -- [fermion, edge label=\(q(x/z)\)] (v1),
+    (v1) -- [gluon, edge label=\(g(x)\)] (h),
+    (v1) -- [fermion, edge label'=\(q\)] (q),
+  };
+  \draw[fill=white] (h) circle (0.4cm) node {\(\mathcal{H}\)};
+\end{feynman}
+\end{tikzpicture}
+\[gq\text{ channel: } q(x/z) \to g(x) + q\]
+\end{minipage}
+\hfill
+% ====== gg channel ======
+\begin{minipage}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{feynman}
+  \vertex (p);
+  \vertex [right=1.5cm of p] (v1);
+  \vertex [right=1.5cm of v1] (h);
+  \vertex [below=1.5cm of v1] (g);
+  \diagram*{
+    (p) -- [gluon, edge label=\(g(x/z)\)] (v1),
+    (v1) -- [gluon, edge label=\(g(x)\)] (h),
+    (v1) -- [gluon, edge label'=\(g\)] (g),
+  };
+  \draw[fill=white] (h) circle (0.4cm) node {\(\mathcal{H}\)};
+\end{feynman}
+\end{tikzpicture}
+\[gg\text{ channel: } g(x/z) \to g(x) + g\]
+\end{minipage}
+
+\caption{ISR splitting channels contributing to $\mathcal{F}_{\mathrm{ISR}}$.
+In each case the
+parent parton carries momentum fraction $x/z$ and the daughter entering the hard process $\mathcal{H}$ carries $x$, with the remaining momentum fraction
+$x(1-z)/z$ carried away by the emitted parton.}
+\label{fig:isr_channels}
+\end{figure}
 For transverse thrust and thrust minor the expressions take the same
 form, differing only in the observable-dependent coefficients
 $d_\ell$ and $g_\ell(\phi)$. This follows from the fact that for both
 observables $b_\ell=0$ for the incoming legs. \\ \\
-\ABquestion{Can we express $C^{(1)}_{\mathrm{hc,q}}$ like this or do we need to express it as $\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}$?}
+\ABquestion{Can we express $C^{(1)}_{\mathrm{hc,q}}$ like this or do we need to express it as $\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}$?} \\ \\
+\ABquestion{Unsure about the splitting functions for ISR and whether we should be describing in terms of channels or incoming $q/g$?} \\ \\
+\ABquestion{D.R. raised the point that there is a $gg$ channel for ISR?}
 
 \noindent\textbf{One-jettiness} \\ 
 \textit{$qq$ channel}
@@ -138,7 +230,7 @@ C_F\frac{1+z^2}{(1-z)_{\!+}}\ln(1-z)
 \begin{equation}
 C^{(1)}_{\mathrm{hc,q}} =
 \int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\frac{f_g(x/z,\mu_F)}{f_q(x,\mu_F)}
 \left[
 T_R\!\left((1-z)^2+z^2\right)\ln(1-z)
 -P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
@@ -149,7 +241,7 @@ T_R\!\left((1-z)^2+z^2\right)\ln(1-z)
 \begin{equation}
 C^{(1)}_{\mathrm{hc,g}} =
 \int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\frac{f_q(x/z,\mu_F)}{f_g(x,\mu_F)}
 \left[
 C_F\frac{1+(1-z)^2}{z}\ln(1-z)
 -P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
@@ -173,7 +265,7 @@ C^{(1)}_{\mathrm{hc,q}} =
 \begin{equation}
 C^{(1)}_{\mathrm{hc,q}} =
 \int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\frac{f_g(x/z,\mu_F)}{f_q(x,\mu_F)}
 \left[
 -2P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
 +2T_R\,z(1-z)
@@ -183,7 +275,7 @@ C^{(1)}_{\mathrm{hc,q}} =
 \begin{equation}
 C^{(1)}_{\mathrm{hc,g}} =
 \int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\frac{f_q(x/z,\mu_F)}{f_g(x,\mu_F)}
 \left[
 -2P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
 +C_F z
@@ -256,3 +348,4 @@ Finally, applying the plus-distribution identity of Eq.~\eqref{eq:plus-dist}, we
 The second line in Eq.~\eqref{eq:dFISR-final} gives rise to 
 $\delta \mathcal{F}_{\mathrm{rec,q}}$, while the third line corresponds to 
 $\delta \mathcal{F}_{\mathrm{hc,q}}$.
+
