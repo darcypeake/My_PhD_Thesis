@@ -1,90 +1,199 @@
 \chapter{ISR Calculations}
 \label{app:ISR-calc}
-
+In order to extend ARES to initial-state radiation, we follow the same principles as for final-state radiation, namely:
+\begin{itemize}
+\item we add one collinear emission $k$, and the corresponding virtual
+  corrections, on top of hard Born partons, accompanied by an arbitrary
+  number of soft and collinear emissions $\{k_i\}$;
+\item we subtract the double counting occurring with the soft and collinear region.
+\end{itemize}
+We use dimensional regularisation to make each contribution
+individually finite. In the case of initial-state radiation, virtual
+corrections include the counterterm arising from the renormalisation
+of PDFs. \\ \\
+To be concrete, we consider the case of an incoming quark carrying a fraction $x/z$ of the proton momentum. This emits a
+collinear gluon carrying a fraction $1-z$ of its emitter's momentum. After the emission, the quark enters the hard scattering with a
+fraction $x$ of the proton momentum. The above procedure gives a
+function that we call $\mathcal{F}_{\mathrm{ISR}}$. This function will be
+reorganised to give various NNLL functions. Our starting point is
 \begin{equation}
-\label{eq:FISR-start}
-\begin{split}
-\mathcal{F}_{\mathrm{ISR}} & = \int \dZ \left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}\times\right. \\ 
-& \times \left[\int_x^1 \frac{dz}{z}C_F \left[\frac{1+z^2}{1-z}-\varepsilon(1-z)\right]
-\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} \right. \\
-& \left.- \int_0^1 dz \frac{2C_F}{1-z}
-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] \\
-& \left.-\gamma_q^{(0)}\int_0^{Q^2v^{2/(a+b_q)}}\frac{dk^2}{k^2}
-\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}
-+\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon}
-\frac{\alpha_s(\mu_R)}{2\pi}
-\int_x^1 \frac{dz}{z} C_F\left(\frac{1+z^2}{1-z}\right)_+
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\right] \times \\
-& \times \left. \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right\} \,.
+  \label{eq:FISR-start}
+  \begin{split}
+    \mathcal{F}_{\mathrm{ISR}} & = \int \dZ \left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}\times\right. \\& \times \left[\int_x^1 \frac{dz}{z}C_F \left[\frac{1+z^2}{1-z}-\varepsilon(1-z)\right]\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\}}{v}\right) \frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} + \right. \\
+    & \left.- \int_0^1 dz \frac{2C_F}{1-z}\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\}}{v}\right)\right] + \\
+   & + \left[-\gamma_q^{(0)}\int_0^{Q^2v^{2/(a+b_q)}}\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}
+   +\frac{1}{\varepsilon} \left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon} \frac{\alpha_s(\mu_R)}{2\pi} \int_x^1 \frac{dz}{z} C_F\left(\frac{1+z^2}{1-z}\right)_+ \frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\right] \times \\ & \times \left. \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\}}{v}\right)\right\} \,.
 \end{split}
 \end{equation}
+\todo{Explain the content of the above equation.}
+The expression in eq.~\eqref{eq:FISR-start} will contain single logarithms of the form
+$\ln[Qv^{1/(a+b_q)}/\mu_R]$ and $\ln[Qv^{1/(a+b_q)}/\mu_F]$. This
+logarithms can be resummed by fixing $\mu_R=\mu_F=Qv^{1/(a+b_q)}$. Also, we can set $\alpha_s(k)=\alpha_s(k_t)=\alpha_s(Qv^{1/(a+b_q)})$ and obtain a finite expression, up to subleading terms of order $\alpha_s^2$. \\ \\
 In order for every term within $\mathcal{F}_{\mathrm{ISR}}$ to be finite in four dimensions, we must add and subtract a counterterm, $\mathrm{CT}$, which has the following form:
 \begin{equation}
-	\begin{aligned}
-	\mathrm{CT}\;&=\int \dZ \int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}C_F\times \\
-	&\times\left[\int_x^1\frac{dz}{z}\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)\frac{f_q(x/z)}{f_q(x)}-\int_0^1dz\frac{2}{1-z}\right]\times\\
-	&\times\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\}}{v}\right)\,.
-	\end{aligned}
+  \begin{aligned}
+    \mathrm{CT}&=\int \dZ \int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}\times \\
+    &\times C_F\left[\int_x^1\frac{dz}{z}\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)\frac{f_q(x/z)}{f_q(x)}-\int_0^1dz\frac{2}{1-z}\right]\times\\
+    &\times\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\}}{v}\right)\,.
+  \end{aligned}
 \end{equation}
+\ABquestion{Argument of splitting function?}
 It must be noted that by including this counterterm, we can recast $\mathcal{F}_{\mathrm{ISR}}$ in the form of eq.~(\ref{eq:Sigma-NNLL-fs}):
 \begin{equation}
   \label{eq:FISR-split}
   \mathcal{F}_{\mathrm{ISR}} = \frac{\alpha_s}{\pi}\left( \delta \mathcal{F}_{\mathrm{rec,q}}+\delta\mathcal{F}_{\mathrm{hc,q}}\right)+ \frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi} C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}\,.
 \end{equation}
-The constant terms $C^{(1)}_{\mathrm{hc,q}}$ plays the same role as an integrated counterterm in fixed-order calculations, whereas the sum $\delta \mathcal{F}_{\mathrm {rec,q}}+\delta\mathcal{F}_{\mathrm{hc,q}}$ represents the subtracted contribution of real radiation. \\ \\
-In order to calculate $C^{(1)}_{\mathrm{hc, q}}$ we need to add $\mathrm{CT}$ to the last two lines of eq.~\eqref{eq:FISR-start}. This gives:
+The constant terms $C^{(1)}_{\mathrm{hc,q}}$ plays the same role as an integrated counterterm in fixed-order calculations, whereas the sum $\delta \mathcal{F}_{\mathrm{rec,q}}+\delta\mathcal{F}_{\mathrm{hc,q}}$ represents the subtracted contribution of real radiation. In order to calculate $C^{(1)}_{\mathrm{hc, q}}$ we need to add $\mathrm{CT}$ to the last two lines of eq.~\eqref{eq:FISR-start}. This gives:
 \begin{equation}
 \begin{aligned}
-\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}&  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ \left\{ \left[-\gamma_q^{(0)}\int_0^{Q^2v^{2/(a+b_q)}}\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}+\right.\right.\\
-   &\left.\left.+\frac{1}{\varepsilon} \left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon} \frac{\alpha_s(\mu_R)}{2\pi} \int_x^1 \frac{dz}{z} C_F\left(\frac{1+z^2}{1-z}\right)_+ \frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\right] + \right. \\ 
-   &\left. +\int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}C_F\left[\int_x^1\frac{dz}{z}\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)\frac{f_q(x/z)}{f_q(x)}-\int_0^1dz\frac{2}{1-z}\right]\right.\times\\
-   &\left.\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\right\}\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\,.
+& \frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right) \times \\ & \times \left\{ -\gamma_q^{(0)}\int_0^{Q^2v^{2/(a+b_q)}}\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}+\right.\\
+&+\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon} \frac{\alpha_s(\mu_R)}{2\pi} \int_x^1 \frac{dz}{z} C_F\left(\frac{1+z^2}{1-z}\right)_+ \frac{f_q(x/z,Q v^{1/(a+b_q)})}{f_q(x,Q v^{1/(a+b_q)})} \\ 
+   &\left. +\int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}\left[\int_x^1\frac{dz}{z}\left(\frac{1+z^2}{1-z}-\varepsilon(1-z)\right)\frac{f_q(x/z)}{f_q(x)}-\int_0^1dz\frac{2}{1-z}\right]\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\right\}\,.
 \end{aligned}
 \end{equation}
-From here, one can use the following expression
+\todo{Re-format this.} \\ \\
+From here, we may use the expression
 \begin{equation}
 V_{\mathrm{sc}}(\{\tilde{p}\},k)=d_\ell g_\ell(\phi)\left(\frac{k_t}{Q}\right)^{a+b_\ell}\frac{1}{(1-z)^{b_\ell}}\,,
 \end{equation}
-along with $\gamma_q^{(0)}=-3/2 C_F$. Moreover, one can set $\mu_R=Q\,v^{1/(a+b_\ell)}$ to find
+together with $\gamma_q^{(0)}=-3/2 C_F$, and set $\mu_R=Q\,v^{1/(a+b_\ell)}$, to find
+\begin{equation}
+\begin{aligned}
+\label{eq:Chc1-mid}
+\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}&  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)  \frac{\alpha_s(Q\,v^{1/(a+b_\ell)})}{2\pi} \\
+&\times C_F\left\{-\frac{3}{2}\frac{1}{\varepsilon} + \int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} \left[ \frac{1}{\varepsilon} \left(\frac{1+z^2}{1-z}\right)_+ -\frac{1}{\varepsilon}\left(\frac{1+z^2}{1-z}\right)
+\right. \right. +\\
+&\left.+ (1-z)+\left(\frac{1+z^2}{1-z}\right)\frac{2}{a+b_\ell}\ln\left(\frac{(1-z)^{b_\ell}}{d_\ell g_\ell(\phi)}\right)\right] + \\
+&-\left. \int_0^1dz\left[-\frac{1}{\varepsilon}\frac{2}{1-z}+\frac{2}{1-z}\frac{2}{a+b_\ell}\ln\left(\frac{(1-z)^{b_\ell}}{d_\ell g_\ell(\phi)}\right)\right]\right\}\,.
+\end{aligned}
+\end{equation}
+Next, we apply the plus distribution identity 
+\begin{equation}
+\label{eq:plus-dist}
+\int_0^1 dx\,[f(x)]_{\!+}\,\phi(x) = \int_0^1 dx\,f(x)\,[\phi(x)-\phi(x_0)]\,,
+\end{equation}
+\ABquestion{Check eq. and limits} where $x_0$ is the singular point of $f(x)$, to obtain
+\vspace{1em}
+\begin{subequations}
+\begin{align}
+\int_x^1 \frac{dz}{z}\frac{f_q(x/z)}{f_q(x)}\frac{1+z^2}{(1-z)_{\!+}}
+  &= \int_x^1 \frac{dz}{z}\frac{f_q(x/z)}{f_q(x)}\frac{1+z^2}{1-z}
+   - \int_0^1 dz\,\frac{2}{1-z}\,,
+\end{align}
+\begin{multline}
+\int_x^1 \frac{dz}{z}\frac{f_q(x/z)}{f_q(x)}\,(1+z^2)
+\left(\frac{2}{a+b_\ell}
+\frac{\ln\!\left(\frac{(1-z)^{b_\ell}}{d_\ell g_\ell(\phi)}\right)}{1-z}
+\right)_{\!+} \\
+= \int_x^1 \frac{dz}{z}\frac{f_q(x/z)}{f_q(x)}
+\frac{(1+z^2)}{1-z}
+\frac{2}{a+b_\ell}\ln\!\left(\frac{(1-z)^{b_\ell}}{d_\ell g_\ell(\phi)}\right)
+- \int_0^1 dz\,\frac{2}{1-z}
+\frac{2}{a+b_\ell}\ln\!\left(\frac{(1-z)^{b_\ell}}{d_\ell g_\ell(\phi)}\right)\,.
+\end{multline}
+\end{subequations}
+Substituting these into Eq.~\ref{eq:Chc1-mid}, we find
 \begin{equation}
 \begin{aligned}
 \frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}&  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)  \frac{\alpha_s(Q\,v^{1/(a+b_\ell)})}{2\pi} \\
-&\times C_F\left\{-\frac{3}{2}\frac{1}{\varepsilon} + \int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} \left[ \frac{1}{\varepsilon} \left(\frac{1+z^2}{1-z}\right)_+ -\frac{1}{\varepsilon}\frac{1+z^2}{(1-z)_+}
+&\times C_F\left\{-\frac{3}{2}\frac{1}{\varepsilon} + \int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} \left[ \frac{1}{\varepsilon} \left(\frac{1+z^2}{1-z}\right)_+ -\frac{1}{\varepsilon}\frac{1+z^2}{(1-z)_{\!+}}
 \right. \right. +\\
-&+ \left.\left. \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_+(1+z^2)+(1-z)\right]\right\}\,.
+&+ \left.\left. \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_{\!+}(1+z^2)+(1-z)\right]\right\}\,.
 \end{aligned}
 \end{equation}
-Using the plus distribution formula: $\left[f(z)\right]_+=f(z) - \delta(1-z)\int_0^1f(z')dz'$, we find
+Applying Eq.~\eqref{eq:plus-dist} once more leads to the cancellation of the
+$\varepsilon$ poles, leaving the finite result
 \begin{equation}
 \begin{aligned}
 &\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}= \int \dZ\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\frac{\alpha_s(Q\,v^{1/(a+b_\ell)})}{2\pi} \times\\
-&\times  C_F\int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\left[ \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_+(1+z^2)+(1-z)\right]\,.
+&\times  C_F\int_x^1\frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\left[ \left(\frac{2}{a+b_\ell}\frac{1}{1-z}\left(b_\ell\ln(1-z)-\ln d_\ell g_\ell(\phi)\right)\right)_+(1+z^2)+(1-z)\right]\,. 
 \end{aligned}
 \end{equation}
-Therefore, one finds the integrated counter term for the incoming $q$ to be
-\newpage
-qq':
-\begin{equation}
-\begin{aligned}
-	&C_F\left\{\ln\frac{(1-z)}{z}\frac{1+z^2}{1-z}-\ln\frac{(1-z)}{z}\frac{2}{1-z}\right\} + C_F(1-z)+\\
-	&-\ln(d_1 g_1(\phi))\left[P_{qq}^{(0)}-\frac{3}{2}C_F\right]
-\end{aligned}
-\end{equation}
-qg:
-\begin{equation}
-\begin{aligned}
-T_R\left\{\left[(1-z)^2+z^2\right]\ln\frac{(1-z)}{z}+2z(1-z)\right\} -\ln\big(d_1 g_1(\phi)\big)\,P_{qg}^{(0)}
-\end{aligned}
-\end{equation}
-gq:
-\begin{equation}
-\begin{aligned}
-C_F\left\{\left[\frac{1+(1-z)^2}{z}\right]\ln\frac{(1-z)}{z}+z\right\} -\ln\big(d_1 g_1(\phi)\big)\,P_{gq}^{(0)}
-\end{aligned}
-\end{equation}
-	
+We can now evaluate the coefficient $C^{(1)}_{\mathrm{hc}}$ for the
+different observables and partonic channels. Up to this point the
+derivation has been carried out explicitly for the $qq$ channel.
+The results for the remaining channels follow analogously and are
+summarised below. \\ \\
+For transverse thrust and thrust minor the expressions take the same
+form, differing only in the observable-dependent coefficients
+$d_\ell$ and $g_\ell(\phi)$. This follows from the fact that for both
+observables $b_\ell=0$ for the incoming legs. \\ \\
+\ABquestion{Can we express $C^{(1)}_{\mathrm{hc,q}}$ like this or do we need to express it as $\frac{\alpha_s(Q v^{1/(a+b_q)})}{2\pi}  C^{(1)}_{\mathrm{hc,q}} \mathcal{F}_{\mathrm{NLL}}$?}
 
+\noindent\textbf{One-jettiness} \\ 
+\textit{$qq$ channel}
+\begin{equation}
+C^{(1)}_{\mathrm{hc,q}} =
+\int_x^1\frac{dz}{z}
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\left[
+C_F\frac{1+z^2}{(1-z)_{\!+}}\ln(1-z)
+-\ln(d_\ell g_\ell(\phi))
+\left(P_{qq}^{(0)}-C_F\frac{3}{2}\delta(1-z)\right)
++1-z
+\right].
+\end{equation}
+\textit{$qg$ channel}
+\begin{equation}
+C^{(1)}_{\mathrm{hc,q}} =
+\int_x^1\frac{dz}{z}
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\left[
+T_R\!\left((1-z)^2+z^2\right)\ln(1-z)
+-P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
++2T_R\,z(1-z)
+\right].
+\end{equation}
+\textit{$gq$ channel}
+\begin{equation}
+C^{(1)}_{\mathrm{hc,g}} =
+\int_x^1\frac{dz}{z}
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\left[
+C_F\frac{1+(1-z)^2}{z}\ln(1-z)
+-P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
++C_F z
+\right].
+\end{equation}
+
+\noindent\textbf{Transverse thrust and thrust minor} \\
+\textit{$qq$ channel}
+\begin{equation}
+C^{(1)}_{\mathrm{hc,q}} =
+\int_x^1\frac{dz}{z}
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\left[
+-2\ln(d_\ell g_\ell(\phi))
+\left(P_{qq}^{(0)}-C_F\frac{3}{2}\delta(1-z)\right)
++1-z
+\right].
+\end{equation}
+\textit{$qg$ channel}
+\begin{equation}
+C^{(1)}_{\mathrm{hc,q}} =
+\int_x^1\frac{dz}{z}
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\left[
+-2P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
++2T_R\,z(1-z)
+\right].
+\end{equation}
+\textit{$gq$ channel}
+\begin{equation}
+C^{(1)}_{\mathrm{hc,g}} =
+\int_x^1\frac{dz}{z}
+\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+\left[
+-2P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
++C_F z
+\right].
+\end{equation} \\ \\
+The leading-order splitting functions are given by
+\begin{align}
+P_{qq}^{(0)} &= C_F\!\left[\frac{1+z^2}{(1-z)_{\!+}}+\frac{3}{2}\delta(1-z)\right], \\
+P_{qg}^{(0)} &= T_R\!\left[(1-z)^2+z^2\right], \\
+P_{gq}^{(0)} &= C_F\!\left[\frac{1+(1-z)^2}{z}\right].
+\end{align}
 
 In order to calculate $\delta\mathcal{F}{_\mathrm{ISR}}$ we must subtract the counterterm $\mathrm{CT}$ to the first two lines of eq.~\eqref{eq:FISR-start}
 \begin{equation}
