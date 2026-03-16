@@ -54,6 +54,7 @@ The constant terms $C^{(1)}_{\mathrm{hc,q}}$ plays the same role as an integrate
 \todo{Re-format this.} \\ \\
 From here, we may use the expression
 \begin{equation}
+\label{eq:Vsc-param}
 V_{\mathrm{sc}}(\{\tilde{p}\},k)=d_\ell g_\ell(\phi)\left(\frac{k_t}{Q}\right)^{a+b_\ell}\frac{1}{(1-z)^{b_\ell}}\,,
 \end{equation}
 together with $\gamma_q^{(0)}=-3/2 C_F$, and set $\mu_R=Q\,v^{1/(a+b_\ell)}$, to find
@@ -194,11 +195,13 @@ P_{qq}^{(0)} &= C_F\!\left[\frac{1+z^2}{(1-z)_{\!+}}+\frac{3}{2}\delta(1-z)\righ
 P_{qg}^{(0)} &= T_R\!\left[(1-z)^2+z^2\right], \\
 P_{gq}^{(0)} &= C_F\!\left[\frac{1+(1-z)^2}{z}\right].
 \end{align}
-
-In order to calculate $\delta\mathcal{F}{_\mathrm{ISR}}$ we must subtract the counterterm $\mathrm{CT}$ to the first two lines of eq.~\eqref{eq:FISR-start}
+Referring back to Eq.~\eqref{eq:FISR-split}, we now evaluate the remaining contribution 
+$\frac{\alpha_s}{\pi}\left(\delta \mathcal{F}_{\mathrm{rec,q}}+\delta \mathcal{F}_{\mathrm{hc,q}}\right)$. 
+In analogy with the extraction of $C^{(1)}_{\mathrm{hc}}$, this term is obtained by subtracting the counterterm $\mathrm{CT}$ from the first two lines of Eq.~\eqref{eq:FISR-start}, yielding
 \begin{equation}
+\label{eq:dFISR+CT}
 \begin{aligned}
-\delta\mathcal{F}_{\mathrm{ISR}}=&\int \dZ \left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}
+\frac{\alpha_s}{\pi}&\left(\delta \mathcal{F}_{\mathrm{rec,q}}+\delta \mathcal{F}_{\mathrm{hc,q}}\right)=\int \dZ \left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}
 \left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} 
 \frac{\alpha_s(k_t)}{2\pi}\times\right. \\
 &\times \left[\int_x^1 \frac{dz}{z}C_F 
@@ -219,3 +222,37 @@ In order to calculate $\delta\mathcal{F}{_\mathrm{ISR}}$ we must subtract the co
 \right\}\,.
 \end{aligned}
 \end{equation}
+To simplify, we introduce the rescaled variable
+\begin{equation}
+\label{eq:zeta-Vsc}
+\zeta = \frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\,,
+\end{equation}
+where $V_{\mathrm{sc}}(\{\tilde{p}\},k)$ is defined in Eq.~\eqref{eq:Vsc-param}. At NNLL, this allows the replacement
+\begin{equation}
+	\frac{dk_t^2}{k_t^2}\frac{\alpha_s(k_t)}{2\pi}\simeq\frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\pi\left(a+b_\ell\right)}\frac{d\zeta}{\zeta}\,.
+\end{equation}
+Using this substitution and taking the limit $\varepsilon \to 0$, Eq.~\eqref{eq:dFISR+CT} simplifies to
+\begin{equation}
+\begin{aligned}
+\frac{\alpha_s}{\pi}&\left(\delta \mathcal{F}_{\mathrm{rec,q}}+\delta \mathcal{F}_{\mathrm{hc,q}}\right)=\int \dZ \frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\pi\left(a+b_\ell\right)}\left\{\int_0^\infty\frac{d\zeta}{\zeta}\times\right. \\
+&\times \left(\int_x^1 \frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)} C_F \frac{1+z^2}{1-z}
+\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]
+\right. \\
+&\left.\left.-\int_0^1 dz \frac{2C_F}{1-z}\left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\right)\right\}\,.
+\end{aligned}
+\end{equation}
+Finally, applying the plus-distribution identity of Eq.~\eqref{eq:plus-dist}, we can write
+\begin{equation}
+\label{eq:dFISR-final}
+\begin{aligned}
+\frac{\alpha_s}{\pi}&\left(\delta \mathcal{F}_{\mathrm{rec,q}}+\delta \mathcal{F}_{\mathrm{hc,q}}\right)=\int \dZ \frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\pi\left(a+b_\ell\right)}\left\{\int_0^\infty\frac{d\zeta}{\zeta}\int_x^1 \frac{dz}{z}\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}\times\right. \\
+&\times \left( C_F \frac{1+z^2}{(1-z)_{\!+}}
+\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]
+\right. \\
+&+\left.\left. C_F \frac{1+z^2}{(1-z)_{\!+}}\left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\right)\right\}\,.
+\end{aligned}
+\end{equation}
+\ABquestion{Unsure how the $\Theta(1-\zeta)$ disappears from the first term of the last line?}
+The second line in Eq.~\eqref{eq:dFISR-final} gives rise to 
+$\delta \mathcal{F}_{\mathrm{rec,q}}$, while the third line corresponds to 
+$\delta \mathcal{F}_{\mathrm{hc,q}}$.
