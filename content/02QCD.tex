@@ -249,7 +249,7 @@ From the sign of $\beta_0$ and the form of Eq.~\eqref{eq:scale-dependence}, the 
 The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom. 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/strong_coupling.pdf}
+    \includegraphics[width=1.0\linewidth]{figures/strong_coupling.pdf}
     \caption{Measurements of $\alpha_s$ as a function of the energy scale $Q$, taken from Ref.~\cite{ParticleDataGroup:2024cfk}.}
     \label{fig:strong-coupling}
 \end{figure}
@@ -550,6 +550,7 @@ where the individual components are defined as follows:
 \begin{itemize}
     \item $d\Phi^{(m)}$ denotes the $m$-parton phase space\footnote{This expression can be generalised to include colour-singlet final states by replacing the delta function $\delta(p_i^2)$ with $\delta(p_i^2 - m_i^2)$.},
 \begin{equation}
+\label{eq:m-phase-space}
 d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, \left(2\pi\right) \, \delta\left(p_i^2\right)\,\Theta\left(p_i^0\right)\right]\left(2\pi\right)^D\delta^{(D)}\Big(p_a + p_b - \sum_{j=1}^{m} p_j\Big)\,.
 \end{equation}
 \item $\mathcal{M}_m$ is the scattering amplitude for the $2\!\rightarrow\! m$ process. It admits the perturbative expansion shown in Eq.~\eqref{eq:M-pert-theory}. Its modulus squared is written as
@@ -627,6 +628,7 @@ where the kernel $\hat{P}_{ij}$ denotes the splitting function associated with t
 \end{aligned}
 \end{equation}
 where $s,s'$ denote the spins of the two partons.\\ \\
+\question{I think I have done these the wrong way around, I think it is $qg\to q$ or something like this?}
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze} }
 
 \section{IRC Safety} 
@@ -695,7 +697,7 @@ where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_
 
 \end{feynman}
 \end{tikzpicture}
-\caption{Diagrammatic representation of a $2\to m$ hard scattering process, $\mathcal{H}$, with an additional soft or collinear emission $p_i$.}
+\caption{Diagrammatic representation of a $2\to m$ hard scattering process, $\mathcal{H}$, with an additional soft or collinear emission $p_i$. \question{Shall I make this bigger?}}
 \label{fig:IRC_safety}
 \end{figure}
 \question{Should I replace $\mathcal{H}\to\mathcal{M}_H$ instead? Just thinking that I have spent a lot of time discussing matrix elements but also this could mean I need to replace all $\mathcal{M}$ with $\mathcal{M}_H$? Just wanting to keep consistent mainly.)}
@@ -720,7 +722,7 @@ The aim of this section is to outline the various stages of a high-energy hadron
     \label{fig:high-energy-event}
 \end{figure}
 Since the initial collision occurs at high energies and the energy of the system decreases as the event evolves towards hadronisation, it is natural for us to organise the discussion according to the relevant energy scale $Q$.
-\subsection*{Hard scattering $(Q \gg \Lambda_{\mathrm{QCD}})$}
+\subsection{Hard scattering $(Q \gg \Lambda_{\mathrm{QCD}})$}
 At the highest energy scale, the dynamics of the collision are governed by the hard scattering, represented by the central red blob in Fig.~\ref{fig:high-energy-event}. In this process, two partons, denoted $i$ and $j$, are extracted from the incoming protons $P_1$ and $P_2$ and undergo a short-distance interaction. The partonic content of the proton is encoded in parton distribution functions (PDFs), $f_{i,P_1}(x_1,\mu_F^2)$, which give the probability of finding a parton of type $i$ carrying a longitudinal momentum fraction $x_1$ of the proton $P_1$ at the factorisation scale~$\mu_F$.  PDFs are non-perturbative functions which are extracted from experimental data but their dependence on the scale $\mu_F$ is governed by perturbative QCD through the Dokshitzer--Gribov--Lipatov--Altarelli--Parisi (DGLAP) evolution equations~\cite{Gribov:1972ri,Dokshitzer:1977sg,Altarelli:1977zs}, 
 \begin{equation}
 	\frac{df_{i,P_1}(x_1,\mu_F^2)}{d\mu_F^2}=\sum_{j}\int_{x_1}^1dz\,\frac{\alpha_s}{2\pi}P_{ij}(z,\mu_F^2)f_j\left(\frac{x_1}{z},\mu_F^2\right)\,,
@@ -744,7 +746,7 @@ The factorisation scale $\mu_F$ separates long- and short-distance physics.
 Radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in the partonic cross section. \\ \\ 
 The hard interaction produces the primary particles of the event, in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (see Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators, for example \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}.  \question{Am I correct in thinking Madgraph is correct and not Madgraph@NLO?}
 
-\subsection*{QCD evolution $(Q \gtrsim \Lambda_{\mathrm{QCD}})$}
+\subsection{QCD evolution $(Q \gtrsim \Lambda_{\mathrm{QCD}})$}
 \label{subsec:QCD-ev}
 Following the hard scattering, the coloured partons produced in the event undergo further QCD radiation, illustrated by the red quark and gluon propagators in Fig.~\ref{fig:high-energy-event}. This radiation is dominated by soft and collinear emissions, which for many observables give rise to logarithmically enhanced contributions (see Sec.~\ref{sec:IRC}). When such logarithms become large, fixed-order perturbation theory is no longer sufficient, and dedicated techniques are required to obtain reliable results in the perturbative regime. The accuracy of these techniques is typically characterised in terms of logarithmic accuracy, such as leading logarithmic (LL), next-to-leading logarithmic (NLL), and so on. Common approaches include:
 \begin{itemize}
@@ -761,22 +763,82 @@ Following the hard scattering, the coloured partons produced in the event underg
 			\item \emph{Effective field theory} approaches, most notably soft-collinear effective theory (SCET)~\cite{Bauer:2000ew, Bauer:2000yr, Bauer:2001ct, Bauer:2001yt}, describe soft and collinear degrees of freedom through an observable-dependent factorisation formula. In this framework, the relevant dynamics are encoded in separate hard, collinear, soft, and jet functions, which enables the resummation to be carried out analytically for a wide range of observables. In some cases, this can be performed up to $\mathrm{N^3LL}$ accuracy, as demonstrated in Refs.~\cite{Becher:2008cf, Abbate:2010xh, Alioli:2023rxx}. \ABquestion{Should I be saying that the `factorisation formula' can be determined analytically rather than the `resummation' can be determined analytically? Also unsure if the Abbate/Stewart ref is necessary?}
 	\end{itemize}
 
-\subsection*{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
+\subsection{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
 As the energy scale of the event approaches $\lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into longer-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in the next section. Hadronisation occurs in the non-perturbative regime and therefore cannot be calculated from first principles within QCD. Its effects can be simulated through various models such as those found in Refs.~\cite{Sjostrand:1982fn, Andersson:1983jt, Webber:1983if,Dokshitzer:1995qm}. \ABquestion{Do I need to be more specific on these hadronisation models and what they do?}
 \\ \\ 
 The three stages described above capture the main features of the QCD dynamics in a high-energy hadronic collision, but several additional ingredients contribute to the structure of a realistic event. Electromagnetic radiation, shown as yellow lines in Fig.~\ref{fig:high-energy-event}, may occur at any stage of the process. In addition, secondary semi-hard interactions between the proton remnants give rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These interactions generate further radiation and hadrons, however are not described by standard QCD factorisation and require modelling. \\ \\
 Finally, prior to the hard interaction, the incoming partons may radiate, leading to \emph{initial-state radiation}. This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard collision.
 
-\subsection*{The QCD Factorisation Formula}
+\subsection{The QCD Factorisation Formula}
 To relate the partonic dynamics discussed so far to experimentally measured hadronic cross sections, we can employ the QCD factorisation formula, 
 \begin{equation}
 \label{eq:factorisation-formula}
 	d\sigma(P_1,P_2)=\sum_{i,j}\int_0^1dx_1\,dx_2\,f_{i,P_1}(x_1,\mu_F^2)\,f_{j,P_2}(x_2,\mu_F^2)\,d\hat{\sigma}_{ij}(\alpha_s(\mu_R^2),\mu_R^2,\mu_F^2)+\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)\,.
 \end{equation}
-Here $f_{i,P_1}$ and $f_{j,P_2}$ are the PDFs introduced earlier, and the integration runs over the momentum fractions carried by the partons inside the incoming hadrons. The sum over $i,j$ accounts for all possible parton flavours,
-while $\hat{\sigma}_{ij}$ is the corresponding partonic cross section. \\ \\
+Here $f_{i,P_1}$ and $f_{j,P_2}$ are the PDFs introduced earlier, and the integration runs over the momentum fractions carried by the partons inside the incoming hadrons. The sum over $i,j$ accounts for all possible parton flavours, while $\hat{\sigma}_{ij}$ is the corresponding partonic cross section. This is illustrated in Fig.~\ref{fig:pp_XSec_Plot}.
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        
+        %% Top proton
+        
+        \draw[thick] (-4.9,4.7) -- (-3.3,3.5);
+        \draw[thick] (-5,4.1) -- (-3.3,3.5);
+        \draw[thick, ->] (-3.3, 3.5) -- (-1.8,4.1);
+        \draw[thick, ->] (-3.3, 3.5) -- (-1.9, 4.5);
+        \draw[thick, ->] (-3.3, 3.5) -- (-2,5);
+        \draw[thick] (-3.3, 3.5) -- (-0.8,1);
+        \draw[thick, postaction={decorate}, decoration={markings, mark=at position 0.55 with {\arrow[>=stealth, scale=1.5]{>}}}] (-3.3,3.5) -- (-0.8,1);
+        \draw[fill=white,thick] (-4, 3.5) arc (180:540:0.7cm);
+        \node at (-6.5, 4.4) {\large{Proton} \LARGE{$p_1(P_1)$}};
+        \node at (-3.3, 3.5) {\fontsize{11}{10}{$\boldsymbol{f_{a}\left(x_1\right)}$}};
+        \node at (-1.4, 4.5) {\LARGE{$Y_1$}};
+        \node at (-2.2,2) {\rotatebox{-45.1073}{Parton \large{$a$}}};
+        \node at (-1.7, 2.35) {\rotatebox{-45.1073}{\large{$x_1P_1$}}};
+
+    
+        
+        %% Bottom proton
+        
+        \draw[thick] (-4.9,-2.6) -- (-3.3,-1.5);
+        \draw[thick] (-5,-2.1) -- (-3.3,-1.5);
+        \draw[thick, ->] (-3.3, -1.5) -- (-1.8,-2.1);
+        \draw[thick, ->] (-3.3, -1.5) -- (-1.9, -2.5);
+        \draw[thick, ->] (-3.3, -1.5) -- (-2,-3);
+        \draw[thick] (-3.3, -1.5) -- (-0.8,1);
+        \draw[thick, postaction={decorate}, decoration={markings, mark=at position 0.55 with {\arrow[>=stealth, scale=1.5]{>}}}]
+        (-3.3,-1.5) -- (-0.8,1);
+        \draw[fill=white,thick] (-4, -1.5) arc (180:540:0.7cm);
+        \node at (-6.5, -2.45) {\large{Proton} \LARGE{$p_2(P_2)$}};
+        \node at (-3.3, -1.5) {\fontsize{11}{10}{$\boldsymbol{f_{b}\left(x_2\right)}$}};
+        \node at (-1.4, -2.6) {\LARGE{$Y_2$}};
+        \node at (-2,-0.55) {\rotatebox{41.76}{Parton \large{$b$}}};
+        \node at (-2.2, 0) {\rotatebox{41.76}{\large{$x_2P_2$}}};
+        
+        %% Top Final State
+        
+        \draw[thick,->] (-0.8,1) -- (1.5,2);
+        \draw[thick, ->] (-0.8,1) -- (1.4, 2.2);
+        \draw[thick, ->] (-0.8,1) -- (1.3, 2.4);
+        \draw[thick, ->] (-0.8,1) -- (1.2, 2.6);
+        
+        \node at (1.8, 2.3) {\LARGE{$Y_f$}};
+        
+        %% Bottom Final State
+        
+        \draw[double, very thick, ->] (-0.8,1) -- (1.4, -0.4);
+        \node at (1.65, -0.5) {\LARGE{$F$}};       
+        \draw[fill=white,thick] (0,1) arc(0:360:0.8cm);
+        \node at (-0.75,1) {\LARGE{$\boldsymbol{\hat{\sigma}_{ab}}$}};
+    \end{tikzpicture}
+    \caption{Representation of the proton-proton cross section, in which we can see the factorisation. First we have the splitting given by $f_i(x_j)$ ($i=a,b$, $j=1,2$), which selects a parton $i$ with a fraction $x_j$ of the proton momentum. The two partons then collide with a hard cross section $\hat{\sigma}_{ab}$, which generates our final state of interest $F$. $Y_1$, $Y_2$ and $Y_f$ refer to initial and final state corrections, and together they make up for the underlying event $X=Y_1+Y_2+Y_f$ \todo{Sort the labelling, the positioning, and the caption.}}
+    \label{fig:pp_XSec_Plot}
+\end{figure}
+\FloatBarrier
+\noindent
 Equation~\eqref{eq:factorisation-formula} is referred to as a factorisation formula because it separates the hadronic cross section into two distinct components: the non-perturbative PDFs, which encode the partonic structure of the incoming hadrons, and the perturbatively calculable partonic cross section $\hat{\sigma}_{ij}$. The power-suppressed term $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that this separation is valid only in the high-energy limit. \\ \\
 \reference{~\cite{Ellis:1996mzs, Banfi:2016yyq}}
+
 \section{Jet Physics}
 As described above, jets appear as highly collimated sprays of hadrons resulting from the hadronisation of energetic quarks and gluons produced in high-energy processes. They are among the most frequently observed objects in proton–proton collisions at the LHC and are complex, messy, and inherently ambiguous objects. To be able to describe them in a well-defined and reproducible way, we must introduce a \emph{jet definition}, which consists of the following components:
 \begin{enumerate}
@@ -829,13 +891,11 @@ The first sequential recombination algorithm used experimentally was introduced 
 A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the $k_\perp$ algorithm.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/JADE.jpeg}
+    \includegraphics[width=\linewidth]{figures/JADE.jpeg}
     \caption{The JADE algorithm clustering soft gluons widely separated in angle, taken from Ref.~\cite{Banfi:2016yyq}.}
     \label{fig:JADE}
 \end{figure}
-
-
-
+\question{So the next two sections are actually discussed and outlined in the paper with Silvia etc. therefore  I need to remove them from here. The issue is that I have to reformat this as I have only talked about one $e^+e^-$ algorithm. You can see what is talked about exactly in Sec.~\ref{sec:oldDISalgo}.}
 \subsubsection{ The $k_\perp$ (Durham) algorithm}
 Also known as the Durham algorithm~\cite{Catani:1991hj}, this approach follows the same procedure as JADE but employs a modified distance measure:
 \begin{equation}

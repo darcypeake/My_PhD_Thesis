@@ -117,9 +117,11 @@
 \definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
 \definecolor{Black}{cmyk}{0, 0, 0, 0}
 
+
 % ********************************************************************                
 % D.P Add in
 % ********************************************************************
+\usepackage{float}
 \usepackage{slashed}
 \usepackage{enumerate} 
 \usepackage{braket}
@@ -128,8 +130,6 @@
 % DIS Paper commands
 \newif\ifshowcomments
 \showcommentstrue
-\newcommand{\xB}{x_{\mathrm{B}}}
-\newcommand{\ydis}{y_{\mathrm{DIS}}}
 %Comment commands 
 \newcommand{\ABquestion}[1]{\textcolor{red}{\textbf{A.B. Question:} #1}}
 \newcommand{\question}[1]{\textcolor{purple}{\textbf{Question:} #1}}
@@ -140,7 +140,23 @@
 \usepackage{placeins}
 
 %ARES project commands
-\newcommand{\dZ}{\mathrm{d}{\mathcal{Z}}[\{R'_{\mathrm{NLL}, \ell_i}, k_i\}]}
+\newcommand{\dZ}{\mathrm{d}{\mathcal{Z}}[\{R'_{\mathrm{NLL}, \ell_i}, \{k_i\}\}]}
+
+% ********************************************************************                
+% DIS Paper Add in
+% ********************************************************************
+\newcommand{\xB}{\ensuremath{x_{\mathrm{B}}}\xspace}
+\newcommand{\ydis}{\ensuremath{y_{\mathrm{DIS}}}}
+\newcommand\LambdaQCD{\Lambda_{\scriptscriptstyle \rm QCD}}
+\newcommand\FASTJET{\texttt{Fastjet}\xspace}
+\newcommand\PYTHIA{\texttt{Pythia}\xspace}
+\newcommand\PYTHIAn{\texttt{Pythia~\!\!8.3}\xspace}
+\newcommand\POWHEG{\texttt{POWHEG}}
+\newcommand\POWHEGBOX{\texttt{POWHEG-BOX}\xspace}
+\newcommand\POWHEGBOXVTWO{\texttt{POWHEG-BOX-V2}\xspace}
+\newcommand\RES{\texttt{POWHEG-BOX-RES}\xspace}
+\newcommand\OL{\texttt{OpenLoops}\xspace}
+\newcommand\ggfl{\texttt{gg4l}\xspace}
 
 
 % ****************************************************************************************************

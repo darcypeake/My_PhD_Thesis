@@ -90,14 +90,14 @@ The integrated distribution i.e. the cumulative distribution (cumulant) is given
 	\Sigma(\tau) 
 	= \frac{1}{\sigma_0} \int_0^\tau d\tau' \frac{d\sigma}{d\tau'}\,.
 \end{equation}
-Therefore, the cumulant for these logarithmically enhanced terms are
+Therefore, the cumulant for these logarithmically enhanced terms is
 \begin{equation}
 \label{eq:thrust-cumulant}
 	\Sigma_{\text{log-enh}}(\tau) = C_F \frac{\alpha_s}{2\pi} 
 	\left( -2L^2 + 3L \right),
 \end{equation}
 where $L \equiv \ln(1/\tau)$. All remaining terms in Eq.~\eqref{eq:full-thrust-NLO} would remain finite in the cumulant as $\tau \to 0$ and do not contribute to the logarithmic enhancement. \\ \\
-Meanwhile, the terms within $\Sigma_{\text{log-enh}}(\tau)$ diverge as $\tau \to 0$. This signals the breakdown of the fixed-order expansion, since one expects the distribution to vanish as $\tau\to0$ since this corresponds to an exactly two-jet configuration which is unphysical. At higher orders in perturbation theory, the cumulant contains increasing powers of logarithms, such as 
+Meanwhile, the terms within $\Sigma_{\text{log-enh}}(\tau)$ diverge as $\tau \to 0$. This signals the breakdown of the fixed-order expansion, since one expects the distribution to vanish as $\tau\to0$ since this corresponds to an exactly two-jet configuration which is unphysical \ABquestion{ because it's NLO so you need an extra quark/gluon in the final state?}. At higher orders in perturbation theory, the cumulant contains increasing powers of logarithms, such as 
 \begin{equation}
 \begin{aligned}
 \Sigma(\tau)\supset\quad&\alpha_sL^2 \qquad \alpha_s L \qquad \alpha_s \\
@@ -107,7 +107,7 @@ Meanwhile, the terms within $\Sigma_{\text{log-enh}}(\tau)$ diverge as $\tau \to
 &\alpha_s^n L^{2n}\qquad\dots \qquad \qquad \qquad  \qquad  \qquad  \qquad \qquad  \qquad \qquad \alpha_s^n\,.
 \end{aligned}
 \end{equation}
-\question{Still a bit unsure by this format, sort of loose the $\alpha_s^n$?}
+\question{Still a bit unsure by this format, sort of loose the $\alpha_s^n$? It isn't a matrix, I am more just trying to say that these exist within the cumulant but maybe it's a dangerous game because I am using sets.}
 In essence, these spoil the convergence of the perturbative series in the small-$\tau$ region, where the bulk of the data lies. \\ \\
 To restore predictive power, the perturbative expansion must therefore be reorganised and \emph{resummed}. Rather than expanding solely in powers of the strong coupling $\alpha_s$, one performs an expansion in powers of the logarithms $L$. This reorganisation becomes essential in the region $\tau \ll 1$, where the logarithms are large and $\alpha_s L \sim 1$. This procedure, known as \emph{resummation}, systematically accounts for these enhanced contributions to all orders in $\alpha_s$, yielding an exponentiated form for the cumulant,
 \begin{equation}
@@ -125,6 +125,7 @@ where the functions $g_i$ resum logarithms at successive logarithmic accuracies.
 
 \section{Event-shapes}
 \label{sec:event-shapes}
+\question{Should I actually be moving this in front of the thrust worked example? I ask because my friend said maybe I should but he isn't in theory so was unsure what you might think?}
 The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\eqref{eq:resummed-cummulant} applies to all IRC safe observables \ABquestion{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. These are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including:
 \begin{itemize}
 \item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
@@ -205,6 +206,7 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 	\end{equation}
 	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable.
 \end{enumerate}
+\ABquestion{What exactly do these conditions show i.e. both rIRC safe?}
 \item \textbf{Continuously global}: an observable is said to be global if it is sensitive to emissions in all regions of phase space, i.e.\ it is non-zero for any emission of an $(n+1)^{\text{th}}$ parton that is not infinitely soft or collinear. Continuous globalness further requires that, for a single soft emission, the parametric dependence of the observable on the emission’s transverse momentum be uniform across phase space, implying that the parameter $a$ appearing in Eq.~\eqref{eq:general-sc-V} must be the same for each leg. This condition ensures that non-global logarithms, which arise when different regions of phase space exhibit different transverse-momentum dependences, do not appear. While these types of logarithms will not be discussed in this thesis, further discussion can be found in~\cite{Dasgupta:2001sh,Dasgupta:2002dc}. \ABquestion{Check refs used for NGL are OK and that understanding of NGL are correct.}
 
 \end{enumerate}
@@ -213,7 +215,7 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 
 \subsection{Formalism}
 To illustrate the \textsc{CAESAR} and \textsc{ARES} formalisms, we consider a specific example. Since the work carried out in Chapter.~5 is largely based on the methods found in Ref.~\cite{Arpino:2019ozn}, we discuss these formalisms in the context of three-jet event shapes in $e^+e^-$ collisions in the near-to-planar limit~\cite{Arpino:2019ozn}.
-
+\question{I have not really introduced ARES yet - only in the introduction. Should I say something like ARES (which we will discuss later) or are you following enough?}
 \subsubsection{Kinematics}
 At Born level, a three-jet event in $e^+e^-$ annihilation consists of a quark, anti-quark, and gluon with momenta
 \begin{equation}
@@ -257,6 +259,7 @@ As discussed previously in Sec.~\ref{subsec:thrust-example} for the case of thru
 
 
 \subsection{NLL Resummation}
+\question{Does it make sense for this to be a new subsection, since the title is NLL Resummation:CAESAR? This next section is quite wordy so I wanted to be able to split it up nicely.}
 In the limit $v\to 0$, the cumulant for a three-jet observable can be written in factorised form as
 \begin{equation}
 \label{eq:3jet-cumu-gen}
@@ -325,10 +328,10 @@ $V\left(\{\tilde{p}\},k_1,\dots,k_n\right)$ are restricted to the region where $
 
 \section{NNLL Resummation: ARES}
 The \textsc{ARES} was developed primarily for the NNLL resummation of observables in $e^+e^-$ collisions, where it was first introduced for two-jet observables~\cite{Banfi:2014sua}, while later being used for jet-rates in~\cite{Banfi:2016zlc}. The most recent develiopment has been for the NNLL resummation for 3-jet observables as introduced in~\cite{Arpino:2019ozn}. For brevity, we will not go into detail of the various calculations and refer the reader to the reference, instead we will discuss the necessary ingredients required to form the NNLL cumulant. 
- \ABquestion{What about Ref.~\cite{Banfi:2018mcq}?}
+ \ABquestion{What about Ref.~\cite{Banfi:2018mcq}?} \question{I think I could make this a similar length to the CAESAR intro was but don't want to overdo the explanation so maybe not? Essentially ARES is just higher order CAESAR and has a different computer code.}
 
 \subsection{The master formula}
-In order to determine the NNLL accurate cumulant, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. This results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. \question{Need to understand this configuration is just for the new $\delta\mathcal{F}$ piece.} The NNLL master formula is defined as
+In order to determine the NNLL accurate cumulant, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. This results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. \ABquestion{Need to understand this configuration is just for the new $\delta\mathcal{F}$ piece.} The NNLL master formula is defined as
 \begin{equation}
 \begin{aligned}
   \label{eq:Sigma-NNLL-fs}
@@ -382,7 +385,7 @@ emissions $k_1,\dots,k_n$ that enter any resummation, the functions $\delta \mat
 and $\delta \mathcal{F}_{\mathrm{sc}}$, for which all gluons are widely separated in angle, involve 
 an additional soft-collinear emission $k$, parametrised in terms of the previously discussed variables 
 $\{\zeta, \ell, \phi^{(\ell)}\}$. For $\delta \mathcal{F}_{\mathrm{correl}}$, where one 
-soft-collinear gluon splits into a $q\bar{q}$ pair or a gluon pair. This additional emission splits into $k_a$ and $k_b$, as shown in Fig.~\ref{fig:splitting}, with further dimensionless variables parametrising the splitting, as shown in Eq.~\eqref{eq:dFcorrel-general}.
+soft-collinear gluon splits into a $q\bar{q}$ pair or a gluon pair. This additional emission splits into $k_a$ and $k_b$, as shown in Fig.~\ref{fig:splitting}, with further dimensionless variables parametrising the splitting, as shown in Eq.~\eqref{eq:dFcorrel-general}. \question{Does this diagram look OK?}
 \vspace{1em}
 \begin{figure}[h]
 \centering
@@ -484,7 +487,7 @@ and $\mathcal{A}^2$ is the double-emission function,
 \] 
 Explicit definitions of $\vec{k}_a^{(ij)}$, $\vec{k}_b^{(ij)}$, $\mathcal{S}$, 
 $\mathcal{H}_g$, and $\mathcal{H}_q$ can be found in Appendix~A 
-of Ref.~\cite{Arpino:2019ozn}.
+of Ref.~\cite{Arpino:2019ozn}. \question{I am concerned that I keep on saying - these equations are in Ref.~\cite{Arpino:2019ozn}. I am trying only to keep things that I use again for my original research in Ch5, but do you think that it is OK I keep on referring to this reference?}
 
 \subsection{Hard and collinear contributions}
 We may now turn our attention to the NNLL contributions which arise from the hard and collinear region, namely the recoil corrections, $\delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$. These corrections rely on the approximation found in Eq.~\ref{eq:Vsc} along with the following
@@ -559,6 +562,7 @@ Here we will briefly discuss a certain class of observables which take an additi
 Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{subsec:thrust-example} and the one-jettiness and transverse thrust introduced in Sec.~\ref{sec:event-shapes}.
 
 \section{Validation and Matching}
+\question{So I don't actually use these matching schemes, I just wanted to talk about matching as I am having to match to fixed order calculations from SHERPA for my project in Ch 5.}
 One may think that once we have the resummed cumulant that this is enough. However we are not quite there. As describe in Sec.~\ref{subsec:thrust-example}, perturbation theory breaks down at small values of the observable $v$. In this capacity, it is only in this region that we cannot rely on fixed-order calculations and must turn to resummation. Therefore one must undergo a procedure known as \emph{matching} in order to incorporate both the fixed-order and resummed results into our theoretical predicitions. We will outline this explicitly for a generic event shape $v$. As shown in Sec.~\ref{subsec:thrust-example}, the fixed-order cumulant up to second order is
 \begin{equation}
 \label{eq:FO-gen}
