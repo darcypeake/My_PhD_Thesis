@@ -22,10 +22,43 @@ along the direction of the transverse momentum of the $Z$ boson. There
 are various possibilities to define observables that measure radiation
 out of the plane identified by the beam and the $Z$ boson.
 \todo{Add in observables/ remind the reader of what is going on.}
+\todo{The observables were written by me but include the things from the draft here.}
+\begin{itemize}
+\item \textbf{One-jettiness} is a special case of the more general $N$-jettiness event shape~\cite{Stewart:2010tn}, which quantifies how well the final state can be described by $N$ narrow jets. For $N=1$, one-jettiness is defined as
+\begin{equation}
+\label{eq:t1-def}
+  \mathcal{T}_1 \equiv
+  \sum_i
+  \min\!\left[
+    \frac{2 q_a \cdot p_i}{Q_a},
+    \frac{2 q_b \cdot p_i}{Q_b},
+    \frac{2 q_J \cdot p_i}{Q_J}
+  \right] \,,
+\end{equation}
+where $q_{a,b,J}$ are the four-momenta of the incoming beams and the observed jet, and the sum runs over the final-state partons $p_i$. The normalisation factors are $Q_i = 2 \rho_i E_i$, with $\rho_i$ depending on the reference frame (e.g., $\rho_i = 1$ in the laboratory frame). While $\mathcal{T}_1$ is dimensionful, it is often convenient to define the dimensionless variable $\tau_1 \equiv \mathcal{T}_1 / Q$, where $Q$ is the hard scale of the interaction.
+x
+\item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
+\begin{equation}
+\label{eq:tperp-def}
+  T_\perp \equiv \max_{\vec{n}_\perp}
+  \frac{\sum_i \left| \vec{p}_{\perp i} \cdot \vec{n}_\perp \right|}
+       {\sum_i \left| \vec{p}_{\perp i} \right|},
+  \qquad
+  \tau \equiv 1 - T_\perp \,,
+\end{equation}
+where $\vec{p}_{\perp i}$ denotes the transverse momentum of final-state particle $i$ with respect to the beam direction, and the unit vector $\vec{n}_\perp$ that maximises this quantity is referred to as the \emph{transverse thrust axis}.
+
+\item \textbf{Thrust minor}, also introduced in Ref.~\cite{Banfi:2004nk}, is a measure of out-of-plane radiation and is defined as
+\begin{equation}
+\label{eq:Tmin-def}
+  T_m \equiv \frac{\sum_i |\vec p_{\perp i}\times \vec n_\perp|}{\sum_i p_{\perp i}}\,.
+\end{equation}
+\end{itemize}
+\ABquestion{Check references are correct.} 
 
 \section{NNLL resummation: soft and final-state hard-collinear radiation}
 \label{sec:NNLL-final}
-The one-jettiness, one minus the transverse and the thrust thrust
+The one-jettiness, one minus the transverse thrust and the thrust thrust
 minor are all examples of rIRC safe observables. These are generic
 functions $V(\{\tilde p\},k_1,\dots,k_n)$ of final-state momenta
 $\{\tilde p\}\equiv\{\tilde p_1,\tilde p_2,\tilde p_3\}$, accompanied
@@ -36,7 +69,7 @@ satisfies additional conditions on its scaling with an arbitrary
 number of soft and/or collinear emissions~\cite{Banfi:2004yd}.  As
 such, all the aforementioned observables fall within the scope of the
 CAESAR/ARES formalism. \todo{Relate this back to what was discussed previously and explain a bit about how we use soft/final-state collinear radiation.}
-
+The starting point is to consider the behaviour of each observable in the presence of a single soft emission collinear to leg $\ell$. We consider one observable at a time, introducing the relevant kinematical variables as we go along.
 
 
 \section{Initial State Radiation}
