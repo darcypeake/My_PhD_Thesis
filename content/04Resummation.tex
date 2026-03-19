@@ -1,32 +1,52 @@
 \chapter{Resummation}
 As discussed in Sec.~\ref{subsec:QCD-ev}, after the initial hard scattering of an event, the produced coloured partons undergo QCD radiation dominated by soft and collinear emissions. For many observables, these emissions give rise to logarithmically enhanced terms, which become significantly large when the observable, $v$, is small. This can ruin fixed-order perturbation theory and therefore indicates that dedicated techniques are necessary in this region. There are several approaches that exist such as parton showers and effective field theories. In this chapter we focus on a technique known as \emph{resummation}. In particular, we discuss the semi-numerical resummation frameworks known as: \textsc{CAESAR} (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd} and \textsc{ARES} (\emph{Automated Resummation for Event Shapes})~\cite{Banfi:2014sua}. Both provide systematic methods to resum large logarithms for a class of IRC safe observables known as event shapes, though they differ in their logarithmic accuracy as will become clear later. \\ \\
-This chapter is structured as follows. We begin by motivating resummation through a fixed-order calculation of the event shape thrust, which makes explicit the origin and structure of the large logarithms. We then discuss the general properties that an event shape must possess before presenting the \textsc{CAESAR} and \textsc{ARES} methods in turn. We conclude by outlining how fixed-order and resummed calculations are used together to provide a reliable description for the observable in all regions of phase space. This chapter will provide the necessary background and context for the work presented in Chapter.~5.
-
-\section{Motivation: Thrust and the Need for Resummation}
-Thrust~\cite{Farhi:1977sg, Brandt:1964sa} is one of the most well-studied event shapes in $e^+e^-$ collisions, having been used extensively at the Large Electron-Positron Collider (LEP) for precise determinations of $\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. 
-Thrust is defined as
+This chapter is structured as follows. We begin discussing observables known as event shapes and discuss the properties that they must possess. We then provide the motivation for resummation through a fixed-order calculation of a specific event shape known as thrust, which makes explicit the origin and structure of the large logarithms. We conclude this chapter by presenting the \textsc{CAESAR} and \textsc{ARES} methods in turn, along with explaining how resummed expansions are validated. This chapter will provide the necessary background and context for the work presented in Chapter.~5.
+\section{Event-shapes}
+\label{sec:event-shapes}
+Event shapes are infrared and collinear (IRC) safe observables constructed from the 
+four-momenta of final-state particles. They characterise the geometry of an event by 
+quantifying the distribution of its hadronic energy-momentum flow, and have been 
+extensively used in precision QCD studies. \add{Discussion of event shapes vs. jet algorithms} Notable examples include:
+\begin{itemize}
+\item{\textbf{Thrust}}~\cite{Farhi:1977sg, Brandt:1964sa} is defined as,
 \begin{equation}
 \label{eq:thrust}
 	T \equiv \max_{\vec{n}} \frac{\sum_j |\vec{p}_j \cdot \vec{n}|}{\sum_j |\vec{p}_j|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
 where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}. 
-For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states, as illustrated in Fig.~\ref{fig:thrust}.
-%For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.
+For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states, as illustrated in Fig.~\ref{fig:thrust}. Thrust is among the most well-studied event shapes in 
+$e^+e^-$ collisions, having been used extensively at LEP for precise determinations 
+of $\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}.
 \begin{figure}[h]
 \begin{tikzpicture}[scale=0.9, >=Stealth]
 \begin{scope}
 \node at (0,2.5) {$\tau = 0$};
 
+% Hemisphere shading
+\fill[blue!10] (0,0) -- (45:2.8) arc[start angle=45, end angle=225, radius=2.8] -- cycle;
+\fill[orange!10] (0,0) -- (225:2.8) arc[start angle=225, end angle=405, radius=2.8] -- cycle;
+
+% Circle outline
+\draw[thin, opacity=0.4] (0,0) circle (2.8cm);
+
+% Thrust axis
+\draw[dashed, thin, opacity=0.6] (-2.0,-2.0) -- (2.0,2.0) node[above right, opacity=0.7] {$\hat{n}_T$};
+
+% Beam line
 \draw[thick] (-3.5,0) -- (3.5,0);
 \node[left]  at (-3.5,0) {$e^+$};
 \node[right] at (3.5,0) {$e^-$};
-
 \fill (0,0) circle (2pt);
 
-\draw[very thick, ->] (0,0) -- (1.5,1.5) node[above right] {$q$};
-\draw[very thick, ->] (0,0) -- (-1.5,-1.5) node[below left] {$\bar{q}$};
+% q and qbar arrows
+\draw[very thick, ->, blue!70!black] (0,0) -- (1.5,1.5) node[above right] {$q$};
+\draw[very thick, ->, orange!70!black] (0,0) -- (-1.5,-1.5) node[below left] {$\bar{q}$};
 
-\node at (0,-2.7) {2-jet limit};
+% Hemisphere labels
+\node[blue!70!black, opacity=0.8] at (-1.2, 0.8) {$\mathcal{H}_L$};
+\node[orange!70!black, opacity=0.8] at (1.2, -0.8) {$\mathcal{H}_R$};
+
+\node at (0,-3.2) {2-jet limit};
 \end{scope}
 
 \begin{scope}[xshift=8.5cm]
@@ -49,9 +69,37 @@ For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-lik
 \caption{Diagrammatic representation of thrust: $\tau \to 0$ corresponds to a pencil-like 2-jet configuration, while $\tau \to 1/2$ corresponds to a spherically distributed, multi-particle final state.}
 \label{fig:thrust}
 \end{figure}
+\item{\textbf{Jet Broadenings}} are defined by dividing the event into two hemispheres 
+$\mathcal{H}_L$ and $\mathcal{H}_R$ with respect to the thrust axis $\vec{n}_T$, and 
+computing
+\begin{equation}
+	B_\ell\equiv\frac{\sum_{i\in\mathcal{H}_{\ell}}|\vec{p}_i\times\vec{n}_T|}{2\sum_i|\vec{p}_i|}\,,\quad \ell=L,R\,.
+\end{equation}
+From these, one defines the wide-jet broadening, narrow-jet broadening, and total 
+broadening respectively as
+\begin{equation}
+    B_W \equiv \max\{B_L, B_R\}\,, \qquad 
+    B_N \equiv \min\{B_L, B_R\}\,, \qquad 
+    B_T \equiv B_L + B_R\,.
+\end{equation}
+\item{\textbf{Jet Masses}} are defined by computing the invariant mass of each 
+hemisphere,
+\begin{equation}
+	\rho_{\ell}\equiv \frac{\left(\sum_{i\in\mathcal{H}_{\ell}}p_i\right)^2}{\left(\sum_iE_i\right)^2}\,,\quad \ell=L,R\,.
+\end{equation}
+They heavy-jet mass and light-jet mass are defined respectively as
+\begin{equation}
+	\rho_H\equiv\max\left\{\rho_L,\rho_R\right\}\,,\quad \rho_L\equiv\min\left\{\rho_L,\rho_R\right\}\,.
+\end{equation}
 
-\subsection{Thrust: Fixed-order Calculation}
-\label{subsec:thrust-example}
+\end{itemize}
+While event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure and important QCD dynamics, they also have issues in the form of large logarithms, (see Sec.~\ref{sec:event-shapes} and Sec.~\ref{subsec:QCD-ev}). Before addressing how one might go about solving these, it is important to see these logarithms arise in fixed-order calculations. We will show this through a worked example of the event shape, thrust.\ \\
+\reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq, Dasgupta:2003iq}}
+
+
+\section{Motivation: Thrust and the Need for Resummation}
+\label{sec:thrust-example}
+%For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $T \simeq 1$ corresponds to two narrow, back-to-back jets, while smaller values of $T$ indicate more spherically distributed final states. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}, such that the two-jet limit corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair ($\tau \to 0$), while a spherically distributed multi-particle event occurs near $\tau \to 1/2$, as illustrated in Fig.~\ref{fig:thrust}.
 To understand the motivation for resummation, we now perform a fixed-order calculation for the differential distribution of the thrust.
 At Born-level, $e^+e^- \to q\bar{q}$, the distribution is found to be
 \begin{equation}
@@ -121,44 +169,10 @@ To restore predictive power, the perturbative expansion must therefore be reorga
 	\label{eq:resummed-cummulant}
 \end{equation}
 where the functions $g_i$ resum logarithms at successive logarithmic accuracies. The leading-logarithmic contributions $\alpha_s^n L^{n+1}$ are contained in $g_1(\alpha_s L) $, next-to-leading logarithms $\alpha_s^n L^{n}$ in $g_2(\alpha_s L) $, and so on.  \\ \\
+Note that the appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\eqref{eq:resummed-cummulant} applies to all IRC safe observables i..e event shapes.\ABquestion{rIRC, exclusive, global observables?}. 
+ Because of event shapes importance in probing QCD dynamics, such as extracting $\alpha_s$, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. For the remaining of this thesis, we focus on observable-independent, \emph{semi-numerical} formalisms - \textsc{CAESAR} and \textsc{ARES}.
+
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
-
-\section{Event-shapes}
-\label{sec:event-shapes}
-\question{Should I actually be moving this in front of the thrust worked example? I ask because my friend said maybe I should but he isn't in theory so was unsure what you might think?}
-The appearance of large logarithms and the need for resummation are not unique to thrust. In fact, the resummed distribution shown in Eq.~\eqref{eq:resummed-cummulant} applies to all IRC safe observables \ABquestion{rIRC, exclusive, global observables?}. Thrust is one such observable and belongs to a broader class known as \emph{event shapes}. These are IRC safe observables constructed from the four-momenta of final-state particles. They characterise the ``shape'' of an event by quantifying the geometrical distribution of its hadronic energy-momentum flow. While thrust provides a well-known example of an event shape in $e^+e^-$ collisions, event shapes are also widely used in hadronic collisions, including:
-\begin{itemize}
-\item \textbf{Transverse thrust}, first introduced in Ref.~\cite{Banfi:2004nk}, is the extension of the $e^+e^-$ event-shape thrust, defined in Eq.~\eqref{eq:thrust}, to hadronic collisions. It is defined in the transverse plane as
-\begin{equation}
-  T_\perp \equiv \max_{\vec{n}_\perp}
-  \frac{\sum_i \left| \vec{p}_{\perp i} \cdot \vec{n}_\perp \right|}
-       {\sum_i \left| \vec{p}_{\perp i} \right|},
-  \qquad
-  \tau \equiv 1 - T_\perp \,,
-\end{equation}
-where $\vec{p}_{\perp i}$ denotes the transverse momentum of final-state particle $i$ with respect to the beam direction, and the unit vector $\vec{n}_\perp$ that maximises this quantity is referred to as the \emph{transverse thrust axis}.
-
-\item \textbf{One-jettiness} is a special case of the more general $N$-jettiness event shape~\cite{Stewart:2010tn}, which quantifies how well the final state can be described by $N$ narrow jets. For $N=1$, one-jettiness is defined as
-\begin{equation}
-  \mathcal{T}_1 \equiv
-  \sum_i
-  \min\!\left[
-    \frac{2 q_a \cdot p_i}{Q_a},
-    \frac{2 q_b \cdot p_i}{Q_b},
-    \frac{2 q_J \cdot p_i}{Q_J}
-  \right] \,,
-\end{equation}
-where $q_{a,b,J}$ are the four-momenta of the incoming beams and the observed jet, and the sum runs over the final-state partons $p_i$. The normalisation factors are $Q_i = 2 \rho_i E_i$, with $\rho_i$ depending on the reference frame (e.g., $\rho_i = 1$ in the laboratory frame). While $\mathcal{T}_1$ is dimensionful, it is often convenient to define the dimensionless variable $\tau_1 \equiv \mathcal{T}_1 / Q$, where $Q$ is the hard scale of the interaction.
-
-\item \textbf{Thrust minor}, also introduced in Ref.~\cite{Banfi:2004nk}, is a measure of out-of-plane radiation and is defined as
-\begin{equation}
-  T_m \equiv \frac{\sum_i |\vec p_{\perp i}\times \vec n_\perp|}{\sum_i p_{\perp i}}\,.
-\end{equation}
-\end{itemize}
-\ABquestion{Check references are correct.} \\ \\
-Event shapes provide detailed information on the distribution of energy and momentum, offering insight into features such as jet substructure. Because of their importance in probing QCD dynamics, such as extracting $\alpha_s$, accurate resummation techniques are essential. While many methods exist (see Sec.~\ref{subsec:QCD-ev}), much of the previous work on resumming event shapes has been observable-dependent. For the remaining of this thesis, we focus on observable-independent, \emph{semi-numerical} formalisms - \textsc{CAESAR} and \textsc{ARES}.  \\ \\
-\reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq, Dasgupta:2003iq}}
-
 
 \section{NLL Resummation: \textsc{CAESAR}}
 \question{I am concerned it seems as though I am repeating myself again in this section here, however am unsure how to link them without repeating.}
@@ -252,7 +266,7 @@ In the near-to-planar region, where $v\ll1$, the cumulant takes a factorised for
 \Sigma_{\mathcal{H}}\simeq\frac{1}{\sigma_{\mathcal{H}}}\int d\Phi_3\frac{d\sigma_3}{d\Phi_3}\Sigma\left(\{p_1,p_2,p_3\},v\right)\mathcal{H}(p_1,p_2,p_3)\,,
 \end{equation}
 where $p_1$, $p_2$, and $p_3$ are the Born momenta given in Eq.~\eqref{eq:3-born-kin}, and the explicit expression for $d\sigma_3/d\Phi_3$ can be found in Ref.~\cite{Arpino:2019ozn}. \\ \\
-As discussed previously in Sec.~\ref{subsec:thrust-example} for the case of thrust, in the limit $v\ll1$ the logarithms $L\equiv\ln(1/v)$ appearing in the function $\Sigma\left(\{p_1,p_2,p_3\},v\right)$ become large. It is this function that must be resummed to a given logarithmic accuracy - NLL in the case of \textsc{CAESAR} - to all orders in $\alpha_s$. \\
+As discussed previously in Sec.~\ref{sec:thrust-example} for the case of thrust, in the limit $v\ll1$ the logarithms $L\equiv\ln(1/v)$ appearing in the function $\Sigma\left(\{p_1,p_2,p_3\},v\right)$ become large. It is this function that must be resummed to a given logarithmic accuracy - NLL in the case of \textsc{CAESAR} - to all orders in $\alpha_s$. \\
 \ABquestion{Should I be discussing recoil a bit more?} \\ 
 \ABquestion{Difference between $\sigma$ and $\sigma_{\mathcal{H}}$ is that one is the partonic and one is the hadronic? Is $\sigma(v)$ the one defined in Eq.~\eqref{eq:thrust-cumulant}?}\\
 \reference{\cite{Arpino:2019ozn}.}
@@ -559,11 +573,11 @@ Here we will briefly discuss a certain class of observables which take an additi
 \begin{equation}
 \Vsc{k_1,\dots , k_n}=\sum_{i=1}^n\Vsc{k_i}\,.
 \end{equation}
-Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{subsec:thrust-example} and the one-jettiness and transverse thrust introduced in Sec.~\ref{sec:event-shapes}.
+Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{sec:thrust-example} and the one-jettiness and transverse thrust introduced in Sec.~\ref{sec:event-shapes}.
 
 \section{Validation and Matching}
 \question{So I don't actually use these matching schemes, I just wanted to talk about matching as I am having to match to fixed order calculations from SHERPA for my project in Ch 5.}
-One may think that once we have the resummed cumulant that this is enough. However we are not quite there. As describe in Sec.~\ref{subsec:thrust-example}, perturbation theory breaks down at small values of the observable $v$. In this capacity, it is only in this region that we cannot rely on fixed-order calculations and must turn to resummation. Therefore one must undergo a procedure known as \emph{matching} in order to incorporate both the fixed-order and resummed results into our theoretical predicitions. We will outline this explicitly for a generic event shape $v$. As shown in Sec.~\ref{subsec:thrust-example}, the fixed-order cumulant up to second order is
+One may think that once we have the resummed cumulant that this is enough. However we are not quite there. As describe in Sec.~\ref{sec:thrust-example}, perturbation theory breaks down at small values of the observable $v$. In this capacity, it is only in this region that we cannot rely on fixed-order calculations and must turn to resummation. Therefore one must undergo a procedure known as \emph{matching} in order to incorporate both the fixed-order and resummed results into our theoretical predicitions. We will outline this explicitly for a generic event shape $v$. As shown in Sec.~\ref{sec:thrust-example}, the fixed-order cumulant up to second order is
 \begin{equation}
 \label{eq:FO-gen}
 	\Sigma(v)=1+\frac{\alpha_s}{2\pi}\mathcal{A}(v)+\left(\frac{\alpha_s}{2\pi}\right)^2\mathcal{B}(v,\mu^2)\,,
@@ -573,7 +587,7 @@ where $\mathcal{A}$ and $\mathcal{B}$ are the fixed-order coefficients up to sec
 \label{eq:resummed-gen}
 	\Sigma(v)=\left(1+\sum_{k=1}^\infty C_k\,\bar{\alpha}_s^k\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+\alpha_sg_3(\alpha_sL)+\dots\right]\,,
 \end{equation}
-where $\bar{\alpha}_s\equiv\alpha_s/2\pi$ and $C_k$ are constants. As discussed in Sec.~\ref{subsec:thrust-example}, the terms $g_i(\alpha_sL)$ contain the resummed contributions at various orders i.e.  $\{g_1,g_2,g_3\}$ contain LL, NLL, and NNLL terms respectively. \\ \\
+where $\bar{\alpha}_s\equiv\alpha_s/2\pi$ and $C_k$ are constants. As discussed in Sec.~\ref{sec:thrust-example}, the terms $g_i(\alpha_sL)$ contain the resummed contributions at various orders i.e.  $\{g_1,g_2,g_3\}$ contain LL, NLL, and NNLL terms respectively. \\ \\
 The idea behind the matching procedure is to combine Eqs.~\eqref{eq:FO-gen} and~\eqref{eq:resummed-gen} and to remove any double counting of logarithmic terms. In order to show this explicitly, we first re-expand the $g_i$ functions in powers of $\bar{\alpha}_sL$ using
 \begin{equation}
 \begin{aligned}
@@ -594,40 +608,6 @@ where
 	 &\qquad\qquad+(G_{23}+G_{12}G_{11})L^3+\frac{1}{2}G_{12}^2L^4\,.
 \end{aligned}
 \end{equation}
-There is an important comment to make about the $G_{21}\bar{\alpha}_s^2L$ piece. Even after the subtraction of logarithms which occur twice, this term will cause the event shape to diverge at small $v$, which contradicts the physical description of the event shape which should vanish. This piece is tackled by the matching schemes. There are various schemes found within the literature, however the most widely used schemes are the Log(R)- or R-matching schemes~\cite{Jones:2003yv,Catani:1992ua}. 
-\paragraph{R-matching scheme}
-In this scheme, the fixed-order and resummed contributions are matched and the logs which occur twice are subtracted
-\begin{equation}
-	\begin{aligned}
-	\Sigma(v)&=\left(1+C_1\bar{\alpha}_s+C_2\bar{\alpha}_s^2\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+G_{21}L\bar{\alpha}_s^2\right]\\
-	&+\bar{\alpha}_s\left(\mathcal{A}(v)-\Sigma_{\mathrm{log}}^{(1)}(v)\right)+\bar{\alpha}_s\left(\mathcal{B}(v)-\Sigma_{\mathrm{log}}^{(2)}(v)\right)+\dots\,,
-	%&=\left(1+C_1\bar{\alpha}_s+C_2\bar{\alpha}_s^2\right)\exp\left[Lg_1(\alpha_sL)+g_2(\alpha_sL)+G_{21}L\bar{\alpha}_s^2\right] \\
-	%&-G_{21}L\bar{\alpha}_s^2-\left[C_1+G_{11}L+G_{12}L^2\right]\bar{\alpha}_s\\
-	%&\left[C_2+C_1(G_{11}L+G_{12}L^2)+\frac{1}{2}(G_{11}L+G_{12}L^2)^2+(G_{22}L^2+G_{23}L^3)\right]\bar{\alpha}_s^2\\
-	%&+\mathcal{A}(v)\bar{\alpha}_s+\mathcal{B}(v)\bar{\alpha}_s^2\,.
-	\end{aligned}
-\end{equation}
-where one can notice that the $G_{21}$ placed within the exponent as well as the $G_{21}$ in the non-exponentiated part which occurs through $\Sigma_{\mathrm{log}}^{(2)}(v)$.
-\paragraph{Log(R)-matching scheme}
-This matching scheme as stated in Ref.~\cite{Jones:2003yv} is theoretically the most stable and in this sense generally preferred.
-\begin{equation}
-\begin{aligned}
-	\ln\Sigma(v)&=Lg_1(\alpha_sL)+g_2(\alpha_sL)\\
-	& +\left(\mathcal{A}(v)+G_{11}L+G_{12}L^2\right)\bar{\alpha}_s\\
-	&+\left(\mathcal{B}(v)-\frac{1}{2}\mathcal{A}^2(v)-G_{22}L^2-G_{23}L^3\right)\bar{\alpha}_s^2+\dots\,,
-\end{aligned}
-\end{equation}
-where this entire result is exponentiated, such that any issue arising from an divergence from the $G_{21}$ is avoided.
-In general, the Log(R) matching scheme is used more widely. This is because one does not need to calculate $G_{21}$ and $C_2$, which involve numerical calculations.  \\ \\
-Please note that these matching schemes are presented at NLO+NLL accuracy. Ref.~\cite{Monni:2011gb} presents thrust at up to NNLL+NNLO order as shown in Fig.~\ref{fig:matched-thrust}. As one can see in this figure, the fixed order NNLO piece gives rise to a divergence at small $\tau(\equiv1-T)$ while the matched results gives rise to the turning point such that the distribution vanishes as $\tau\to0$, hence matchig the experimental data\footnote{One may notice that there is a shift between the experimental data and theoretical results. This is accounted for by non-perturbative hadronisation corrections.}.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.0\linewidth]{figures/matched_thrust.jpeg}
-    \caption{Comparison of fixed-order distributions to matched distributions compared with the data taken from the ALEPH collaboration~\cite{ALEPH:2003obs} \todo{get other ALEPH reference sorted}, taken from Ref.~\cite{Monni:2011gb}}
-    \label{fig:matched-thrust}
-\end{figure}
-
-
 
 
 
