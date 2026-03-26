@@ -803,66 +803,62 @@ A wide variety of jet algorithms exist, each with its own advantages and limitat
 
     \item \textbf{Sequential recombination algorithms:} These iteratively cluster the closest particles according to a chosen distance measure until a stopping criterion is reached. Variations arise from different definitions of the distance measure (e.g.\ relative transverse momentum or angular separation between particles) and from the choice of stopping condition. Sequential recombination algorithms are often referred to as \emph{bottom-up} algorithms.
 \end{itemize}
-In this thesis, we focus exclusively on sequential recombination algorithms. For the remainder of this chapter we will discuss several of these algorithms to provide background for the new DIS algorithm introduced in Chapter~\ref{chapter: DIS}. For a comprehensive review of jets and jet algorithms across different processes, see Refs.~\cite{Banfi:2016yyq, Salam:2010nqg}.\\ \\
+In this thesis, we focus exclusively on sequential recombination algorithms. For the remainder of this chapter we will discuss several of these algorithms to provide background for the new DIS algorithm introduced in Chapter~\ref{chapter:DIS}. For a comprehensive review of jets and jet algorithms across different processes, see Refs.~\cite{Banfi:2016yyq, Salam:2010nqg}.\\ \\
 \reference{~\cite{Banfi:2016yyq},~\cite{Salam:2010nqg}.}
 
 
+%\subsection{Jet Algorithms for $e^+e^-$ Collisions}
+%\label{subsec: e+e-}
+%Jet algorithms for electron–positron collisions follow a common iterative clustering procedure. Each pair of particles is assigned a \emph{distance measure}, $d_{ij}$, which determines how closely they are related. The closest pair is iteratively recombined until all remaining objects are separated by more than the chosen \emph{resolution parameter}, $d_{\mathrm{cut}}$.
+%This framework forms the basis of the JADE and Durham algorithms, while the Cambridge algorithm extends it by introducing an additional \emph{ordering variable}, $v_{ij}$, as discussed in the following sections.
+
+%\subsubsection{The JADE Algorithm}
+%The first sequential recombination algorithm used experimentally was introduced by the JADE Collaboration in Ref.~\cite{JADE:1988xlj} and is defined as follows:
+%\begin{enumerate}
+%    \item \textbf{Define a resolution parameter} $d_{\mathrm{cut}}$.
+%    \item \textbf{Compute the distance measure} for every pair of particles $i$ and $j$:
+%    \begin{equation}
+%        \label{eq:yij-jade}
+%        d^{\mathrm{JADE}}_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
+%    \end{equation}
+%    where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
+%    \item \textbf{Identify the smallest $d_{ij}$ value.} If this minimum satisfies $d_{ij} < d_{\mathrm{cut}}$, the two particles are recombined into a pseudo-particle according to the chosen recombination scheme.
+%    \item \textbf{Repeat the procedure} from step 2 until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The remaining objects are then defined as jets.
+%\end{enumerate}
+%A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the Durham and Cambridge Algorithms in Sec.~\ref{subsec:Cam-Dum-e+e-}.
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=\linewidth]{figures/JADE.jpeg}
+%    \caption{The JADE algorithm clustering soft gluons widely separated in angle, taken from Ref.~\cite{Banfi:2016yyq}.}
+%    \label{fig:JADE}
+%\end{figure}
+
+%\subsubsection{ The $k_\perp$ (Durham) algorithm}
+%Also known as the Durham algorithm~\cite{Catani:1991hj}, this approach follows the same procedure as JADE but employs a modified distance measure:
+%\begin{equation}
+%	 \label{eq:yij-De}
+%    	d^{\mathrm{Durham}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,.
+%\end{equation} 
+%At small angles, the numerator can be approximated to $\left[\min(E_i,E_j)\theta_{ij}\right]^2$, which corresponds to the squared relative transverse momentum of the softer particle with respect to the harder particle. The use of the $\min$ function ensures that soft emissions, widely separated in angle, have a larger distance measure than those corresponding to a hard parton radiating a nearby soft gluon. This modification prevents unphysical clustering of unrelated soft particles and produces jets that more accurately reflect the underlying partonic structure.
+
+%\subsubsection{The Cambridge algorithm}
+%The Cambridge algorithm, first introduced in Ref.~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering rather than transverse-momentum ordering. Unlike the previous two algorithms, it introduces an additional \emph{ordering variable}, $v_{ij}$, used alongside the distance measure $d^{\mathrm{Durham}}_{ij}$ from the Durham algorithm:
+%\begin{enumerate}
+%    \item \textbf{If only one particle remains,} stop the clustering and define this object as a jet.
+%    \item \textbf{Find the smallest $v_{ij}$} among all pairs of particles:
+%    \begin{equation}
+%        \label{eq:vij-cambridge}
+%        v_{ij} = 2(1 - \cos\theta_{ij})\,.
+%    \end{equation}
+%    \item \textbf{Identify the corresponding $d_{ij}$ value.} If $d_{ij} < d_{\mathrm{cut}}$, recombine the particles as in the Durham algorithm and return to step 1.
+%    \item \textbf{Otherwise,} remove the less energetic particle, label it as a jet, and return to step 1.
+%\end{enumerate}
+%This clustering procedure effectively reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}. As a result, the Cambridge algorithm is a better algorithm for the resolution of jet substructure since emissions widely separated in angles are emitted independently from the hard legs.
+
 \subsection{Jet Algorithms for $e^+e^-$ Collisions}
-\label{subsec: e+e-}
-Jet algorithms for electron–positron collisions follow a common iterative clustering procedure. Each pair of particles is assigned a \emph{distance measure}, $d_{ij}$, which determines how closely they are related. The closest pair is iteratively recombined until all remaining objects are separated by more than the chosen \emph{resolution parameter}, $d_{\mathrm{cut}}$.
-This framework forms the basis of the JADE and Durham algorithms, while the Cambridge algorithm extends it by introducing an additional \emph{ordering variable}, $v_{ij}$, as discussed in the following sections.
-
-\subsubsection{The JADE algorithm}
-The first sequential recombination algorithm used experimentally was introduced by the JADE Collaboration in Ref.~\cite{JADE:1988xlj} and is defined as follows:
-\begin{enumerate}
-    \item \textbf{Define a resolution parameter} $d_{\mathrm{cut}}$.
-    \item \textbf{Compute the distance measure} for every pair of particles $i$ and $j$:
-    \begin{equation}
-        \label{eq:yij-jade}
-        d^{\mathrm{JADE}}_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
-    \end{equation}
-    where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
-    \item \textbf{Identify the smallest $d_{ij}$ value.} If this minimum satisfies $d_{ij} < d_{\mathrm{cut}}$, the two particles are recombined into a pseudo-particle according to the chosen recombination scheme.
-    \item \textbf{Repeat the procedure} from step 2 until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The remaining objects are then defined as jets.
-\end{enumerate}
-A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the $k_\perp$ algorithm.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{figures/JADE.jpeg}
-    \caption{The JADE algorithm clustering soft gluons widely separated in angle, taken from Ref.~\cite{Banfi:2016yyq}.}
-    \label{fig:JADE}
-\end{figure}
-
-\subsubsection{ The $k_\perp$ (Durham) algorithm}
-Also known as the Durham algorithm~\cite{Catani:1991hj}, this approach follows the same procedure as JADE but employs a modified distance measure:
-\begin{equation}
-	 \label{eq:yij-De}
-    	d^{\mathrm{Durham}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,.
-\end{equation} 
-At small angles, the numerator can be approximated to $\left[\min(E_i,E_j)\theta_{ij}\right]^2$, which corresponds to the squared relative transverse momentum of the softer particle with respect to the harder particle. The use of the $\min$ function ensures that soft emissions, widely separated in angle, have a larger distance measure than those corresponding to a hard parton radiating a nearby soft gluon. This modification prevents unphysical clustering of unrelated soft particles and produces jets that more accurately reflect the underlying partonic structure.
-
-\subsubsection{The Cambridge algorithm}
-The Cambridge algorithm, first introduced in Ref.~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering rather than transverse-momentum ordering. Unlike the previous two algorithms, it introduces an additional \emph{ordering variable}, $v_{ij}$, used alongside the distance measure $d^{\mathrm{Durham}}_{ij}$ from the Durham algorithm:
-\begin{enumerate}
-    \item \textbf{If only one particle remains,} stop the clustering and define this object as a jet.
-    \item \textbf{Find the smallest $v_{ij}$} among all pairs of particles:
-    \begin{equation}
-        \label{eq:vij-cambridge}
-        v_{ij} = 2(1 - \cos\theta_{ij})\,.
-    \end{equation}
-    \item \textbf{Identify the corresponding $d_{ij}$ value.} If $d_{ij} < d_{\mathrm{cut}}$, recombine the particles as in the Durham algorithm and return to step 1.
-    \item \textbf{Otherwise,} remove the less energetic particle, label it as a jet, and return to step 1.
-\end{enumerate}
-This clustering procedure effectively reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}. As a result, the Cambridge algorithm is a better algorithm for the resolution of jet substructure since emissions widely separated in angles are emitted independently from the hard legs.
-
-
-\subsection{Durham and Cambridge jet algorithms for $e^+e^-$ collisions}
-%
-Since the exclusive jet algorithms for DIS are adapted from their
-$e^+e^-$ counterparts, and in fact use them explicitly in a
-re-clustering step, we start by reviewing the $e^+e^-$ variants before
-turning to DIS in Secs.~\ref{sec:exclktalgo} and \ref{sec:camdis}. The
-$k_t$ variant (Durham) was introduced in
+\subsubsection{The Durham and Cambridge Algorithms}
+\label{subsec:e+e--dur-cam}
+The $k_t$ variant (Durham) was introduced in
 Ref.~\cite{Catani:1991hj,Brown:1991hx} while the angular-ordered
 variant (Cambridge) was introduced in
 Ref.~\cite{Dokshitzer:1997in}. Here we present them together.
@@ -903,8 +899,8 @@ the algorithm.
 \end{enumerate}
 
 
-\subsection{Jet Algorithms for Hadronic Collisions}
-\subsubsection{Generalised inclusive $k_t$-algorithms for $pp$ and DIS}
+\subsection{Jet Algorithms for Hadronic Collision}
+\subsubsection{Generalised inclusive $k_t$-algorithms for $pp$}
 \label{sec:gen-kt}
 The inclusive longitudinally-invariant~(LI) $k_t$-algorithm was first
 introduced in Ref.~\cite{Catani:1993hr} (see Ref.~\cite{Ellis:1993tq}
@@ -915,8 +911,8 @@ then eventually the family of generalised inclusive $k_t$-algorithms
 was introduced in Ref.~\cite{Cacciari:2008gp} along the anti-$k_t$
 algorithm.
 %
-The DIS variant is in this case identical to the hadron-hadron
-variant, except that the clustering takes place in the Breit frame.
+%The DIS variant is in this case identical to the hadron-hadron
+%variant, except that the clustering takes place in the Breit frame.
 %
 As usual we define a set of distance measures $d_{ij}$ and $d_{iB}$ given by
 \begin{align}
@@ -939,7 +935,10 @@ replacing the distance measures with
 \begin{align}
   d_{ij} = \min(E_{i}^{2p},E_{j}^{2p}) \frac{1-\cos\theta_{ij}}{1-\cos R}\,,\quad d_{iB} = E_{i}^{2p}\,,
 \end{align}
-as is appropriate for $e^+e^-$ collisions~\cite{Cacciari:2011ma}. 
+as is appropriate for $e^+e^-$ collisions~\cite{Cacciari:2011ma}. \\ \\
+Please note that: The DIS variant is in this case identical to the hadron-hadron
+variant, except that the clustering takes place in the Breit frame, which we will now discuss in Sec.~\ref{sec:Kinematics}.
+
 
 \subsection{Jet Algorithms for Deep-Inelastic Scattering}
 \subsubsection{DIS Kinematics and the Breit Frame}
@@ -1006,14 +1005,20 @@ hemisphere}).
 In practice, the jet clustering in this frame can lead to radiation
 from the proton remnant being absorbed into the struck-quark jet,
 making the separation between the two hemispheres an important feature
-of DIS jet algorithms.
+of DIS jet algorithms. \\ \\
+We formulate the following DIS jet algorithms in the Breit frame, but note that
+those algorithms that are longitudinally boost invariant, such as
+Centauro and some of the inclusive $k_t$-algorithms 
+(cf.\ Secs.~\ref{sec:gen-kt} and \ref{sec:centauro}), can also be
+formulated in a frame that is connected to the Breit frame through
+a longitudinal boost.
 
 \subsubsection{Exclusive $k_t$-algorithm for DIS}
 \label{sec:exclktalgo}
 The exclusive $k_t$-algorithm for DIS was presented in
 Ref.~\cite{Catani:1992zp}.
 %
-It is based on the equivalent $e^+e^-$ variant~\cite{Catani:1991hj} that we discussed above. 
+It is based on the equivalent $e^+e^-$ variant~\cite{Catani:1991hj} that we in Sec.~\ref{subsec:e+e--dur-cam}. 
 %
 Instead of using the center-of-mass energy $\sqrt{s}$, one introduces an energy scale $E_t$ satisfying $\Lambda \ll E_t\le
 Q$\footnote{A larger value of $E_t$ will result in a ``fatter'' beam
@@ -1054,7 +1059,7 @@ $y_{\mathrm{cut}}<1$, and $E_t^2$ instead of $s$ to define $d_{ij}$.
 \label{sec:camdis}
 The Cambridge algorithm for DIS was introduced in
 Ref.~\cite{Wobisch:1998wt}. It is again inspired by the Cambridge
-algorithm for $e^+e^-$-collisions~\cite{Dokshitzer:1997in }, and is
+algorithm for $e^+e^-$-collisions~\cite{Dokshitzer:1997in}, and is
 very similar to the exclusive $k_t$-algorithm.
 Alongside the distance $d_{ij}$ between two pseudojets
 \begin{align}
@@ -1144,4 +1149,5 @@ d_{ij} = \frac{(\bar{\eta}_i - \bar{\eta}_j)^2 + 2 \bar{\eta}_i \bar{\eta}_j (1-
 The distance to the beam is always equal to $d_{iB} = 1$. 
 %
 One then clusters jet according to the procedure given in Sec.~\ref{sec:gen-kt}.
+
 
