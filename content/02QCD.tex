@@ -1,6 +1,6 @@
 \chapter{Quantum Chromodynamics}
 \section{QCD: The basics}
-In the 1940s, a number of unstable, strongly interacting particles -- collectively referred to as hadrons -- were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interprets hadrons as composite objects built from fundamental spin-$\tfrac{1}{2}$ constituents known as \emph{quarks}. The six known quarks are organised into three generations -- light, intermediate, and heavy -- as listed in Table~\ref{table:quark-properties}. % Is the formatting here a bit weird? i.e. should i just continue the sentence such that the text goes around the table instead of breaking it up?
+In the 1940s, a number of unstable, strongly interacting particles -- collectively referred to as hadrons -- were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interprets hadrons as composite objects built from fundamental spin-$\tfrac{1}{2}$ constituents known as \emph{quarks}. The six known quarks are organised into three generations -- light, intermediate, and heavy -- as listed in Table~\ref{table:quark-properties}. \question{Is the formatting of text OK around the table?}
  \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
@@ -17,12 +17,10 @@ $b$ (bottom) & Heavy & $4.183 \pm 0.007\,\mathrm{GeV}$ & $-\tfrac{1}{3}$ \\ \hli
 $t$ (top)    & Heavy & $172.56 \pm 0.31\,\mathrm{GeV}$ & $+\tfrac{2}{3}$ \\ \hline
 
 \end{tabular}
-\caption{Properties of the six quarks. Mass values are taken from the Particle Data Group~\cite{ParticleDataGroup:2024cfk}, where further details on their definitions and extractions are provided.}
+\caption{Properties of the six quarks. Mass values are taken from the Particle Data Group~\cite{ParticleDataGroup:2024cfk}, where further details on their definitions and extractions are provided. \question{Are decimal places/ sig. fig. OK?} \ABquestion{Is it OK to refer the reader to the reference i.e. no discussion on extraction.}}
 \label{table:quark-properties}
 \end{table}
-% Need to check that the decimal places on the masses/ the fact that I am simply just stating the masses and referring the reader to the reference and not discussing how different q's are extracted is OK.
-\noindent In this picture, hadrons are classified into two categories: mesons ($q\bar q$) and baryons ($qqq$). Mesons are integer-spin bosons, whereas baryons are half-integer-spin fermions. Quantum Chromodynamics (QCD) is an $\mathrm{SU}(3)$ non-Abelian gauge theory that governs the strong interaction. It describes how quarks are bound together to form hadrons, with the interaction mediated by gauge bosons known as gluons. For the purpose of this thesis, % this is to do with photons etc. being partons
- the quarks and gluons which constitute the hadron are collectively referred to as \emph{partons} and carry a conserved charge called colour. Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour labels: red, green, and blue. The associated antiquark fields are written as $\bar q^a$. Gluons, denoted by $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight colour degrees of freedom of the gauge group.\\ \\
+In this picture, hadrons are classified into two categories: mesons ($q\bar q$) and baryons ($qqq$). Mesons are integer-spin bosons, whereas baryons are half-integer-spin fermions. Quantum Chromodynamics (QCD) is an $\mathrm{SU}(3)$ non-Abelian gauge theory that governs the strong interaction. It describes how quarks are bound together to form hadrons, with the interaction mediated by gauge bosons known as gluons. For the purpose of this thesis, the quarks and gluons which constitute the hadron are collectively referred to as \emph{partons} and carry a conserved charge called colour. \ABquestion{D.G. pointed out that photons for example can be referred to as partons i.e.\ a parton is technically a parton is any theoretical constituent of a composite particle. Hence why I say `for the purpose of this thesis'.} Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour labels: red, green, and blue. The associated antiquark fields are written as $\bar q^a$. \question{Add the definition i.e. $\bar{q}=q^{\dagger}\gamma^0$?} Gluons, denoted by $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, where the index $A$ labels the eight colour degrees of freedom of the gauge group.\\ \\
 The QCD Lagrangian density describes the dynamics of massless gluons and quarks of mass $m_f$:
 \begin{equation}
 \label{eq: L-QCD}
@@ -83,8 +81,8 @@ The final term in Eq.~\eqref{eq: L-QCD} is the ghost term,
 \begin{equation}
 \mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
 \end{equation}
-where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they arise as a consequence of the gauge-fixing procedure in non-Abelian gauge theories.\\ \\
-The Feynman rules obtained from the QCD Lagrangian are illustrated in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. For the work performed in this thesis, these rules suffice, with propagators arising from the kinetic terms and vertices determined by the interaction terms. % Check this won't allude to a question on ghosts.
+where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they arise as a consequence of the gauge-fixing procedure in non-Abelian gauge theories. \ABquestion{Do I need to discuss the axial gauge?}\\ \\
+The Feynman rules obtained from the QCD Lagrangian are illustrated in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. For the work performed in this thesis, these rules suffice, with propagators arising from the kinetic terms and vertices determined by the interaction terms. \question{Check this won't allude to a question on ghosts. Am essentially trying to say we only need the rules from kinetic lagrangian \emph{I think}.}
 \begin{figure}[h!]
 \centering
 
@@ -211,11 +209,11 @@ $
 
 \reference{~\cite{Ellis:1996mzs}}
 \newpage
-% Check if we need this \newpage
+\question{Check if we need this \emph{newpage} command here?}
 
 \section{Perturbation Theory}
 \label{sec:pert-theory}
-With the QCD Lagrangian and corresponding Feynman rules established, we can outline how calculations are performed in practice. The probability for one state to transition to another through scattering is determined by considering all relevant Feynman diagrams for the incoming and outgoing particles. Each diagram can be constructed through vertices and propagators and  are translated into a mathematical expression via the Feynman rules illustrated in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. Together they yield the \emph{scattering amplitude} (or matrix element) \(\mathcal{M}\), where the transition probability is then related to the squared modulus \(|\mathcal{M}|^2\). % Unsure if it is related to the probability or it is? If so need to explicitly do the sum over spin/colour later.
+With the QCD Lagrangian and corresponding Feynman rules established, we can outline how calculations are performed in practice. The probability for one state to transition to another through scattering is determined by considering all relevant Feynman diagrams for the incoming and outgoing particles. Each diagram can be constructed through vertices and propagators and  are translated into a mathematical expression via the Feynman rules illustrated in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. Together they yield the \emph{scattering amplitude} (or matrix element) \(\mathcal{M}\), where the transition probability is then related to the squared modulus \(|\mathcal{M}|^2\). \question{Unsure if it is related to the probability or it is? If so need to explicitly do the sum over spin/colour later.}
 \\ \\
 From the structure of the interaction vertices, it is evident that either the emission of an additional gluon (a real correction) or the appearance of a loop (a virtual correction) within a Feynman diagram introduces additional powers of the strong coupling $\alpha_s$. This indicates that the scattering amplitude admits a perturbative expansion,
 \begin{equation}
@@ -226,7 +224,7 @@ From the structure of the interaction vertices, it is evident that either the em
     + \left(\frac{\alpha_s}{2\pi}\right)^2\,\mathcal{M}^{(2)}
     + \dots\,,
 \end{equation}
-where $\mathcal{M}^{(0)}$ denotes the tree-level (classical) contribution, commonly referred to as the leading-order (LO) or Born term. The terms $\mathcal{M}^{(1)},\mathcal{M}^{(2)},\dots$ represent higher-order (quantum) corrections known as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on.  \\ \\ Since $\alpha_s$ becomes small at high energies (as discussed in Sec.~\ref{sec:running-coupling}), higher-order contributions are increasingly suppressed in this regime. As a result, the perturbative expansion can be well approximated by retaining only the first few terms, yielding a \emph{fixed-order} (FO) prediction. This approach is known as perturbation theory, and its application to QCD is referred to as perturbative QCD (pQCD). Throughout this thesis, calculations are performed within the framework of pQCD.
+where $\mathcal{M}^{(0)}$ denotes the tree-level (classical) contribution, commonly referred to as the leading-order (LO) or Born term. The terms $\mathcal{M}^{(1)},\mathcal{M}^{(2)},\dots$ represent higher-order (quantum) corrections known as next-to-leading order (NLO), next-to-next-to-leading order (NNLO), and so on.  \\ \\ Since $\alpha_s$ becomes small at high energies (as discussed in Sec.~\ref{sec:running-coupling}), higher-order contributions are increasingly suppressed in this regime. As a result, the perturbative expansion can be well approximated by retaining only the first few terms, yielding a \emph{fixed-order} (FO) prediction. This approach is known as perturbation theory, and its application to QCD is referred to as perturbative QCD (pQCD). Throughout this thesis, calculations are performed within the framework of pQCD. \add{If you have time or can be bothered you could outline thealternatives such as thermal or lattice QCD and say they are usedwhen alpha becomes big.}
 
 \section{The running of the strong coupling $\alpha_s$}
 \label{sec:running-coupling}
@@ -248,15 +246,15 @@ with coefficients
     \beta_2 &= \frac{2857 C_A^3 + (54 C_F^2 - 615 C_F C_A - 1415 C_A^2)n_f + (66 C_F + 79 C_A)n_f^2}{288\pi^2\,(11 C_A - 2 n_f)}\,.
 \end{aligned}
 \end{equation}
-It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation–scheme independent; the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme, taken here to be the $\overline{\mathrm{MS}}$ scheme (discussed in Sec.~\ref{subsec:UV-div}). Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
+It is worth noting that only $\beta_0$ and $\beta_1$ are renormalisation--scheme independent; \question{Should I outline what a renormalisation--scheme is before saying things are scheme dependent?} the coefficients $\beta_2$ and higher depend on the choice of renormalisation scheme, taken here to be the $\overline{\mathrm{MS}}$ scheme (discussed in Sec.~\ref{subsec:UV-div}). Solving Eq.~\eqref{eq:coupling-DE} at leading order, using a reference scale $Q$, yields
 \begin{equation}
 \label{eq:scale-dependence}
     \alpha_s(\mu_R^2)
     = \frac{\alpha_s(Q^2)}
     {1 + \alpha_s(Q^2)\,\beta_0\,\ln\!\left(\tfrac{\mu_R^2}{Q^2}\right)}\, .
 \end{equation}
-From the sign of $\beta_0$ and the form of Eq.~\eqref{eq:scale-dependence}, the scale dependence of the strong coupling becomes apparent. As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. Conversely, as $\mu_R$ becomes small and approaches a scale known as $\Lambda_{\mathrm{QCD}}\approx200$ MeV, the coupling grows large, signalling the breakdown of perturbation theory and the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. This phenomenon is known as \emph{confinement} \\ \\
-The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom. 
+From the sign of $\beta_0$ and the form of Eq.~\eqref{eq:scale-dependence}, the scale dependence of the strong coupling becomes apparent. As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. Conversely, as $\mu_R$ becomes small and approaches a scale known as $\Lambda_{\mathrm{QCD}}\approx200$ MeV, \ABquestion{Check the value of $\Lambda_{\mathrm{QCD}}$} the coupling grows large, signalling the breakdown of perturbation theory and the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. This phenomenon is known as \emph{confinement} \\ \\
+The running of the coupling has also been confirmed experimentally, as illustrated in Fig.~\ref{fig:strong-coupling}. Throughout this thesis, we will assume that we are working in the high-energy regime, thereby exploiting asymptotic freedom. \question{D.G. made the comment: a`re you not simply exploiting the small value of the couplingconstant. You can also use perturbation theory with EW but there isno asymptotic freedom in that case.' Perhaps make a comment on this?}
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\linewidth]{figures/strong_coupling.pdf}
@@ -310,16 +308,14 @@ Feynman rules, the diagram gives rise to an integral of the form
     I = \int d^4 q \, \frac{N^{\mu\nu}}{q^2 (p+q)^2}\,,
 \end{equation}
 where $N^{\mu\nu}$ denotes a numerator whose explicit form is not required for the present
-discussion.  % The numerator does depend on p^mu, q^mu, and gamma therefore might want to add this in/ check this diagram gives the same as what L. Arpinio/ R. Wood did with theirs.
+discussion.  \question{The numerator does depend on $p^\mu, q^\mu$, and gamma therefore might want to add this in/ check this diagram gives the same as what L. Arpinio/ R. Wood did with theirs.} \ABquestion{Do you assume the top quark mass is zero or do you justremove it as a relevant flavour?}
 For large loop momenta, the integral reveals a UV divergence,
 \begin{equation}
     I \sim \lim_{\Lambda \to \infty} \int_0^\Lambda \frac{dq}{q}
       \sim \lim_{\Lambda \to \infty} \ln \Lambda\,.
 \end{equation}
 Such divergences cannot be allowed to remain in the theory, and therefore a systematic method for handling them is required. This is achieved through a procedure known as \emph{regularisation}. Although several regularisation procedures  exist, in this thesis we use \emph{dimensional regularisation}~\cite{tHooft:1972tcz, Bollini:1972ui}. This method preserves both Lorentz and gauge invariance and, as will be discussed later, can also be applied to infrared divergences. The basic idea is to promote the space--time dimension to $d = 4 - 2\varepsilon$, with $\varepsilon < 0$, such that logarithmic divergences are replaced by poles in $\varepsilon$. \\ \\
-Once these poles have been isolated, the next step is to remove them. This is achieved by redefining the parameters of the theory and introducing counterterms that cancel the divergent contributions, a procedure known as \emph{renormalisation}. Throughout this thesis, we work in the modified minimal subtraction ($\overline{\mathrm{MS}}$) renormalisation scheme. In the $\overline{\mathrm{MS}}$ scheme, the counterterms subtract not only the $1/\varepsilon$ poles but also the accompanying constants $\ln 4\pi$ and $\gamma_E$ (the Euler--Mascheroni constant, $\gamma_E \approx 0.5772$) that arise as a result of using dimensional regularisation. The renormalisation procedure introduces the renormalisation scale $\mu_R$, and consequently the strong coupling $\alpha_s$ acquires a dependence on this scale, as discussed in Sec.~\ref{sec:running-coupling}.
-% I am wondering if stating that the renormalisation scale introduced here is enough?
-\\
+Once these poles have been isolated, the next step is to remove them. This is achieved by redefining the parameters of the theory and introducing counterterms that cancel the divergent contributions, a procedure known as \emph{renormalisation}. Throughout this thesis, we work in the modified minimal subtraction ($\overline{\mathrm{MS}}$) renormalisation scheme \add{Add in reference definitely!}. In the $\overline{\mathrm{MS}}$ scheme, the counterterms subtract not only the $1/\varepsilon$ poles but also the accompanying constants $\ln 4\pi$ and $\gamma_E$ (the Euler--Mascheroni constant, $\gamma_E \approx 0.5772$) that arise as a result of using dimensional regularisation. The renormalisation procedure introduces the renormalisation scale $\mu_R$, and consequently the strong coupling $\alpha_s$ acquires a dependence on this scale, as discussed in Sec.~\ref{sec:running-coupling}.\\
 \reference{~\cite{Peskin:1995ev}}
 
 \subsection{IR Divergences}
@@ -417,7 +413,7 @@ To understand the structure of the IR divergences, we now consider the NLO contr
 \caption{Feynman diagrams for the real-emission contributions to \(e^+e^- \to \gamma^* \to q\bar{q}g\) at NLO.}
 \label{fig:photon-qqg}
 \end{figure}
-% Should we make these diagrams bigger?
+\question{ Should we make these diagrams bigger?}
 \FloatBarrier
 \noindent
 The corresponding real-emission contribution to the cross section is
@@ -550,7 +546,7 @@ d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, \left(2\pi\right
         |\mathcal{M}_m|^2 = \langle \mathcal{M}_m | \mathcal{M}_m \rangle\,,
     \]
     where the sum over colour and spin degrees of freedom of the $m$ final-state partons is implicit.
-    % Should we write these explicitly, considering we have discussed the matrix element squared before as the non-summed one?
+    \question{ Should we write these explicitly, considering we have discussed the matrix element squared before as the non-summed one?}
 \item $F_J^{(m)}$ is the \emph{jet function}, which specifies the observable under consideration.
  Depending on the choice of $\Theta$–functions, $\delta$–functions, or numerical
 factors, it can describe: cross-sections, differential cross sections or expectation values respectively. For $F_J^{(m)} = 1$, Eq.~\eqref{eq:2-to-m-xsec} reduces to the total cross-section. 
@@ -642,7 +638,7 @@ F_J^{(m)}(p_1,\ldots,\cancel{p_i},\cancel{p_j},p_{ij},\ldots,p_{m+1})\,,
 \label{eq:IRC-safety}
 \end{equation}
 where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_safety}. 
-% Might want to think about explaining what the hard process is here?
+\add{Might want to think about explaining what the hard process is here as haven't introduced it so far.}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=3]
@@ -751,9 +747,10 @@ Following the hard scattering, the coloured partons produced in the event underg
 	category. For $e^+e^-$ observables, resummation is known up to next-to-next-to-leading
 	logarithmic (NNLL) accuracy~\cite{Arpino:2019ozn}, while hadronic collisions are generally known up to NLL. 
 	The work presented in Chapter~5 focuses on extending the \textsc{ARES} framework to
-	hadronic collisions at NNLL accuracy. 
+	hadronic collisions at NNLL accuracy.
 			\item \emph{Effective field theory} approaches, most notably soft-collinear effective theory (SCET)~\cite{Bauer:2000ew, Bauer:2000yr, Bauer:2001ct, Bauer:2001yt}, describe soft and collinear degrees of freedom through an observable-dependent factorisation formula. In this framework, the relevant dynamics are encoded in separate hard, collinear, soft, and jet functions, which enables the resummation to be carried out analytically for a wide range of observables. In some cases, this can be performed up to $\mathrm{N^3LL}$ accuracy, as demonstrated in Refs.~\cite{Becher:2008cf, Abbate:2010xh, Alioli:2023rxx}. \ABquestion{Should I be saying that the `factorisation formula' can be determined analytically rather than the `resummation' can be determined analytically? Also unsure if the Abbate/Stewart ref is necessary?}
 	\end{itemize}
+\ABquestion{Technically the bottom two are \emph{resummation} where CAESAR/ARES are \emph{QCD resummation} since you are using pure QCD and EFT approaches are \emph{EFT resummation} i.e.\ using an EFT lagrangian? Is this true and should I reword the above like so or at least make a comment on it?}
 
 \subsection{Hadronisation ($Q \sim \Lambda_{\mathrm{QCD}}$)}
 As the energy scale of the event approaches $\Lambda_{\mathrm{QCD}}$,  the confinement effects dominate and hadronisation occurs. In this regime, the coloured partons produced by the hard scattering and subsequent QCD evolution (light green blobs in Fig.~\ref{fig:high-energy-event}) are transformed into colour-singlet hadrons (dark green blobs). These primary hadrons subsequently decay into longer-lived particles (smaller dark green blobs) that are ultimately observed in the detector. Experimentally, these particles appear predominantly in the form of \emph{jets}, i.e.\ collimated sprays of hadrons. Jet clustering and its implications will be discussed in Sec.~\ref{sec:jet-phys}. Hadronisation occurs in the non-perturbative regime and so one cannot exploit pQCD here. Instead, its effects can be simulated through various models such as those found in Refs.~\cite{Sjostrand:1982fn, Andersson:1983jt, Webber:1983if,Dokshitzer:1995qm}. 
@@ -771,8 +768,9 @@ cross sections, we employ the QCD factorisation formula,
     +\mathcal{O}\left(\frac{\Lambda_{\mathrm{QCD}}^2}{Q^2}\right)\,.
 \end{equation}
 Using the notation of Sec.~\ref{subsec:hard-scattering}, $f_{i,P_1}(x_1,\mu_F^2)$ and $f_{j,P_2}(x_2,\mu_F^2)$ are the PDFs for partons $i$ and $j$ inside the incoming protons $P_1$ and $P_2$, and the integration runs over their longitudinal momentum fractions $x_1$ and $x_2$. The sum over $i,j$ accounts for all possible parton flavours, while $\hat{\sigma}_{ij}$ is the corresponding partonic cross section. 
-This formula separates the long-distance, non-perturbative physics, encoded in the PDFs, from the short-distance hard scattering, captured by $\hat{\sigma}_{ij}$.  % Think about mentioning how the scales $\mu_F$ and $\mu_R$ are unphysical and cancel? Also maybe worth explaining what long/short physics is?
-The power-suppressed term $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that this factorised description is valid only in the high-energy limit. \\ \\
+This formula separates the long-distance, non-perturbative physics, encoded in the PDFs, from the short-distance hard scattering, captured by $\hat{\sigma}_{ij}$.  \question{ Think about mentioning how the scales $\mu_F$ and $\mu_R$ are unphysical and cancel? Also maybe worth explaining what long/short physics is?}
+The power-suppressed term $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflects the fact that this factorised description is valid only in the high-energy limit. 
+\question{D.G. made a comment that The power suppressed term also includes the case where more than two partons participate in the Hard event which is sometimes calculated and has ~1\% contribution. In general, we can assume only two partons participate in the Hard event, since each parton needs to carry a large fraction of the energy and then be located in the same place for a large momentum transfer to take place. Also the fact that Each propagator carries $\frac{1}{Q^2}$, therefore inverse-square law with the number of partons. Not sure I entirely understand all but might want to add?}\\ \\
 \reference{~\cite{Ellis:1996mzs, Banfi:2016yyq}}
 
 \section{Jet Physics}
@@ -807,347 +805,52 @@ In this thesis, we focus exclusively on sequential recombination algorithms. For
 \reference{~\cite{Banfi:2016yyq},~\cite{Salam:2010nqg}.}
 
 
-%\subsection{Jet Algorithms for $e^+e^-$ Collisions}
-%\label{subsec: e+e-}
-%Jet algorithms for electron–positron collisions follow a common iterative clustering procedure. Each pair of particles is assigned a \emph{distance measure}, $d_{ij}$, which determines how closely they are related. The closest pair is iteratively recombined until all remaining objects are separated by more than the chosen \emph{resolution parameter}, $d_{\mathrm{cut}}$.
-%This framework forms the basis of the JADE and Durham algorithms, while the Cambridge algorithm extends it by introducing an additional \emph{ordering variable}, $v_{ij}$, as discussed in the following sections.
-
-%\subsubsection{The JADE Algorithm}
-%The first sequential recombination algorithm used experimentally was introduced by the JADE Collaboration in Ref.~\cite{JADE:1988xlj} and is defined as follows:
-%\begin{enumerate}
-%    \item \textbf{Define a resolution parameter} $d_{\mathrm{cut}}$.
-%    \item \textbf{Compute the distance measure} for every pair of particles $i$ and $j$:
-%    \begin{equation}
-%        \label{eq:yij-jade}
-%        d^{\mathrm{JADE}}_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
-%    \end{equation}
-%    where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
-%    \item \textbf{Identify the smallest $d_{ij}$ value.} If this minimum satisfies $d_{ij} < d_{\mathrm{cut}}$, the two particles are recombined into a pseudo-particle according to the chosen recombination scheme.
-%    \item \textbf{Repeat the procedure} from step 2 until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The remaining objects are then defined as jets.
-%\end{enumerate}
-%A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the Durham and Cambridge Algorithms in Sec.~\ref{subsec:Cam-Dum-e+e-}.
-%\begin{figure}[h]
-%    \centering
-%    \includegraphics[width=\linewidth]{figures/JADE.jpeg}
-%    \caption{The JADE algorithm clustering soft gluons widely separated in angle, taken from Ref.~\cite{Banfi:2016yyq}.}
-%    \label{fig:JADE}
-%\end{figure}
-
-%\subsubsection{ The $k_\perp$ (Durham) algorithm}
-%Also known as the Durham algorithm~\cite{Catani:1991hj}, this approach follows the same procedure as JADE but employs a modified distance measure:
-%\begin{equation}
-%	 \label{eq:yij-De}
-%    	d^{\mathrm{Durham}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,.
-%\end{equation} 
-%At small angles, the numerator can be approximated to $\left[\min(E_i,E_j)\theta_{ij}\right]^2$, which corresponds to the squared relative transverse momentum of the softer particle with respect to the harder particle. The use of the $\min$ function ensures that soft emissions, widely separated in angle, have a larger distance measure than those corresponding to a hard parton radiating a nearby soft gluon. This modification prevents unphysical clustering of unrelated soft particles and produces jets that more accurately reflect the underlying partonic structure.
-
-%\subsubsection{The Cambridge algorithm}
-%The Cambridge algorithm, first introduced in Ref.~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering rather than transverse-momentum ordering. Unlike the previous two algorithms, it introduces an additional \emph{ordering variable}, $v_{ij}$, used alongside the distance measure $d^{\mathrm{Durham}}_{ij}$ from the Durham algorithm:
-%\begin{enumerate}
-%    \item \textbf{If only one particle remains,} stop the clustering and define this object as a jet.
-%    \item \textbf{Find the smallest $v_{ij}$} among all pairs of particles:
-%    \begin{equation}
-%        \label{eq:vij-cambridge}
-%        v_{ij} = 2(1 - \cos\theta_{ij})\,.
-%    \end{equation}
-%    \item \textbf{Identify the corresponding $d_{ij}$ value.} If $d_{ij} < d_{\mathrm{cut}}$, recombine the particles as in the Durham algorithm and return to step 1.
-%    \item \textbf{Otherwise,} remove the less energetic particle, label it as a jet, and return to step 1.
-%\end{enumerate}
-%This clustering procedure effectively reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}. As a result, the Cambridge algorithm is a better algorithm for the resolution of jet substructure since emissions widely separated in angles are emitted independently from the hard legs.
-
 \subsection{Jet Algorithms for $e^+e^-$ Collisions}
-\subsubsection{The Durham and Cambridge Algorithms}
-\label{subsec:e+e--dur-cam}
-The $k_t$ variant (Durham) was introduced in
-Ref.~\cite{Catani:1991hj,Brown:1991hx} while the angular-ordered
-variant (Cambridge) was introduced in
-Ref.~\cite{Dokshitzer:1997in}. Here we present them together.
-%
-Given the list of objects undergoing the clustering procedure, that are conventionally called pseudojets, one defines a distance measure  $d_{ij}$
-\begin{align}
-d_{i j} = \frac{2 (1 - \cos \theta_{i j})}{s^p} \min (E_i^{2p}, E_j^{2p})\,,
-\end{align}
-where $s$ is the center-of-mass squared energy, and $p=1$ corresponds to the Durham algorithm and $p=0$ to the Cambridge one. 
-%
-One also introduces a resolution parameter
-\begin{eqnarray}
-  y_{ij} = \frac{2 (1 - \cos \theta_{i j})}{s} \min (E_i^{2}, E_j^{2}),
-\end{eqnarray}
-which coincides with $d_{ij}$ when $p=1$, i.e. for the Durham variant, 
-and a parameter $y_{\mathrm{cut}}\leq 1$. The algorithm then proceeds as follows
+\label{subsec: e+e-}
+Jet algorithms for electron–positron collisions follow a common iterative clustering procedure. Each pair of particles is assigned a \emph{distance measure}, $d_{ij}$, which determines how closely they are related. The closest pair is iteratively recombined until all remaining objects are separated by more than the chosen \emph{resolution parameter}, $d_{\mathrm{cut}}$.
+This framework forms the basis of the JADE and Durham algorithms, while the Cambridge algorithm extends it by introducing an additional \emph{ordering variable}, $v_{ij}$, as discussed in the following sections.
+
+\subsubsection{The JADE Algorithm}
+The first sequential recombination algorithm used experimentally was introduced by the JADE Collaboration in Ref.~\cite{JADE:1988xlj} and is defined as follows:
 \begin{enumerate}
-\item \label{item1eekt}For every pair of pseudojets compute $d_{ij}$.
-%
-\item The pair with the smallest $d_{ij}$ is clustered together
-  if $y_{ij}<y_{\mathrm{cut}}$, and an object with momentum equal to
-  the sum of the pseudojet $i$ and $j$ momenta is inserted in the list
-  of pseudojets instead of $i$ and $j$.
-%
-This recombination is dubbed the $E$-scheme but other alternatives
-exist~\cite{JADE:1986kta,JADE:1988xlj,Catani:1991hj}.
-%
-If instead $y_{ij}>y_{\mathrm{cut}}$, the softest (i.e. less energetic)
-pseudojet is removed from the list and is promoted to a jet: this
-mechanism is called soft freezing, and acts to prevent the algorithm
-from returning a large number of soft jets.\footnote{Here we present the algorithm as implemented in
-    \textsc{FastJet}~\cite{Cacciari:2011ma}. In the original formulation, one moves to the second smallest $d_{ij}$ if the smallest has
-    $y_{ij}>1$.} In effect, the parameter
-$y_{\mathrm{cut}}$ therefore defines the transverse momentum resolution of
-the algorithm.
-%
-\item Repeat \ref{item1eekt} until there are no more pseudojets to be clustered. 
+    \item \textbf{Define a resolution parameter} $d_{\mathrm{cut}}$.
+    \item \textbf{Compute the distance measure} for every pair of particles $i$ and $j$:
+    \begin{equation}
+        \label{eq:yij-jade}
+        d^{\mathrm{JADE}}_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
+    \end{equation}
+    where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
+    \item \textbf{Identify the smallest $d_{ij}$ value.} If this minimum satisfies $d_{ij} < d_{\mathrm{cut}}$, the two particles are recombined into a pseudo-particle according to the chosen recombination scheme.
+    \item \textbf{Repeat the procedure} from step 2 until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The remaining objects are then defined as jets.
 \end{enumerate}
+A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the Durham and Cambridge Algorithms in the following.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{figures/JADE.jpeg}
+    \caption{The JADE algorithm clustering soft gluons widely separated in angle, taken from Ref.~\cite{Banfi:2016yyq}.}
+    \label{fig:JADE}
+\end{figure}
 
+\subsubsection{ The $k_\perp$ (Durham) algorithm}
+Also known as the Durham algorithm~\cite{Catani:1991hj}, this approach follows the same procedure as JADE but employs a modified distance measure:
+\begin{equation}
+	 \label{eq:yij-De}
+    	d^{\mathrm{Durham}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,.
+\end{equation} 
+At small angles, the numerator can be approximated to $\left[\min(E_i,E_j)\theta_{ij}\right]^2$, which corresponds to the squared relative transverse momentum of the softer particle with respect to the harder particle. The use of the $\min$ function ensures that soft emissions, widely separated in angle, have a larger distance measure than those corresponding to a hard parton radiating a nearby soft gluon. This modification prevents unphysical clustering of unrelated soft particles and produces jets that more accurately reflect the underlying partonic structure.
 
-\subsection{Jet Algorithms for Hadronic Collision}
-\subsubsection{Generalised inclusive $k_t$-algorithms for $pp$}
-\label{sec:gen-kt}
-The inclusive longitudinally-invariant~(LI) $k_t$-algorithm was first
-introduced in Ref.~\cite{Catani:1993hr} (see Ref.~\cite{Ellis:1993tq}
-for the exclusive version) for hadron-hadron collisions. 
-An angular-ordered variant, often referred to as the Aachen or Cambridge/Aachen algorithm,
-was since introduced in Ref.~\cite{Wobisch:1998wt} and
-then eventually the family of generalised inclusive $k_t$-algorithms
-was introduced in Ref.~\cite{Cacciari:2008gp} along the anti-$k_t$
-algorithm.
-%
-%The DIS variant is in this case identical to the hadron-hadron
-%variant, except that the clustering takes place in the Breit frame.
-%
-As usual we define a set of distance measures $d_{ij}$ and $d_{iB}$ given by
-\begin{align}
-  d_{ij} = \min(p_{Ti}^{2p},p_{Tj}^{2p}) \frac{\Delta R_{ij}^2}{R^2}\,,\quad d_{iB} = p_{Ti}^{2p}\,,
-\end{align}
-where $\Delta R_{ij}^2 = (y_i -y_j)^2 + (\phi_i - \phi_j^2)$, with
-$y_i$ the rapidity and $\phi_i$ the azimuthal angle of pseudojet
-$i$. The procedure is then given by
+\subsubsection{The Cambridge algorithm}
+The Cambridge algorithm, first introduced in Ref.~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering rather than transverse-momentum ordering. Unlike the previous two algorithms, it introduces an additional \emph{ordering variable}, $v_{ij}$, used alongside the distance measure $d^{\mathrm{Durham}}_{ij}$ from the Durham algorithm:
 \begin{enumerate}
-\item Compute all the distances $d_{ij}$ and $d_{iB}$. If a $d_{ij}$
-  is the smallest, cluster $i$ and $j$, if $d_{iB}$ is the smallest
-  call $i$ a jet.
-\item Repeat until no more pseudojets remain.
+    \item \textbf{If only one particle remains,} stop the clustering and define this object as a jet.
+    \item \textbf{Find the smallest $v_{ij}$} among all pairs of particles:
+    \begin{equation}
+        \label{eq:vij-cambridge}
+        v_{ij} = 2(1 - \cos\theta_{ij})\,.
+    \end{equation}
+    \item \textbf{Identify the corresponding $d_{ij}$ value.} If $d_{ij} < d_{\mathrm{cut}}$, recombine the particles as in the Durham algorithm and return to step 1.
+    \item \textbf{Otherwise,} remove the less energetic particle, label it as a jet, and return to step 1.
 \end{enumerate}
-We note that the $k_t$-algorithm corresponds to $p=1$,
-C/A to $p=0$ and anti-$k_t$ to $p=-1$.
-
-The algorithm can be made spherically invariant~(SI) instead of LI by
-replacing the distance measures with
-\begin{align}
-  d_{ij} = \min(E_{i}^{2p},E_{j}^{2p}) \frac{1-\cos\theta_{ij}}{1-\cos R}\,,\quad d_{iB} = E_{i}^{2p}\,,
-\end{align}
-as is appropriate for $e^+e^-$ collisions~\cite{Cacciari:2011ma}. \\ \\
-Please note that: The DIS variant is in this case identical to the hadron-hadron
-variant, except that the clustering takes place in the Breit frame, which we will now discuss in Sec.~\ref{sec:Kinematics}.
-
-
-\subsection{Jet Algorithms for Deep-Inelastic Scattering}
-\subsubsection{DIS Kinematics and the Breit Frame}
-\label{sec:Kinematics}
-The DIS process is defined by the partonic scattering process
-\begin{equation}
-\label{eq:DIS-Process}
-    \ell_i(k) + h(P) \rightarrow \ell'_f(k') + X\,,
-\end{equation}
-where $P^\mu$ is the momentum of the incoming nucleon $h$,
-$k^\mu$ is the momentum of the lepton beam $\ell_i$,
-$k'^\mu$ is the momentum of the outgoing lepton $\ell'_f$,
-and $X$ denotes the hadronic final state. 
-The standard DIS invariants are
-\begin{equation}
-\label{eq:DIS-invariants}
-    Q^2 = -q^2\,, \qquad
-    \xB = \frac{Q^2}{2 P\!\cdot q}\,, \qquad
-    \ydis = \frac{P\!\cdot q}{P\!\cdot k}\,,
-\end{equation}
-with $q^\mu = k^\mu - k'^\mu$ the momentum of the exchanged virtual photon.
-At the lowest perturbative order, the hadronic final state consists of a single outgoing parton,
-\begin{equation}
-\label{eq:DIS-LO}
-    \ell_i(k) + p_{\mathrm{in}} \rightarrow \ell_f(k') + p_{\mathrm{out}}\,,
-\end{equation}
-where $p_{\mathrm{in}}^\mu = \xB P^\mu$ and $p_{\mathrm{out}}^\mu = q^\mu
--p_{\mathrm{in}}^\mu$ are the momenta of the incoming and outgoing
-partons, respectively.  The \emph{Breit frame}\footnote{The frame was
-first introduced in Ref.~\cite{Breit:1929zz} in the context of
-relativistic scattering kinematics. The term `Breit frame' was
-first coined by Ernst, Sachs, and Wali in
-Refs.~\cite{Ernst:1960zza,Sachs:1962zzc}. For an explicit
-implementation we refer the reader to Appendix 7.11 in
-Ref.~\cite{Devenish:2004pb}.} plays a central role in many DIS jet
-algorithms~\cite{Webber:1993bm}.
-%
-It is defined by
-\begin{equation}
-  2\xB \vec{P} + \vec{q} = 0\,,
-\end{equation}
-such that the virtual photon carries no energy component and is aligned along the $z$-axis, i.e.
-\begin{equation}
-\label{eq:DIS-photon}
-    q^\mu = (0,0,0,-Q)\,,
-\end{equation}
-and is therefore purely space-like.  
-In this frame, the incoming and outgoing parton momenta take the simple form
-\begin{equation}
-\begin{aligned}
-\label{eq:DIS-partons}
-    p_{\mathrm{in}} ^\mu &= \frac{Q}{2}(1,0,0,+1)\,, \quad
-    p_{\mathrm{out}}^{\mu} &= \frac{Q}{2}(1,0,0,-1)\,.
-\end{aligned}
-\end{equation}
-Thus, in the Breit frame the proton and virtual photon collide
-head-on.
-%
-Within this frame, the proton remnant appears in the region at
-positive rapidity (the \emph{target hemisphere}), while the struck
-quark lies in the negative rapidity region (the \emph{current
-hemisphere}).
-%
-In practice, the jet clustering in this frame can lead to radiation
-from the proton remnant being absorbed into the struck-quark jet,
-making the separation between the two hemispheres an important feature
-of DIS jet algorithms. \\ \\
-We formulate the following DIS jet algorithms in the Breit frame, but note that
-those algorithms that are longitudinally boost invariant, such as
-Centauro and some of the inclusive $k_t$-algorithms 
-(cf.\ Secs.~\ref{sec:gen-kt} and \ref{sec:centauro}), can also be
-formulated in a frame that is connected to the Breit frame through
-a longitudinal boost.
-
-\subsubsection{Exclusive $k_t$-algorithm for DIS}
-\label{sec:exclktalgo}
-The exclusive $k_t$-algorithm for DIS was presented in
-Ref.~\cite{Catani:1992zp}.
-%
-It is based on the equivalent $e^+e^-$ variant~\cite{Catani:1991hj} that we in Sec.~\ref{subsec:e+e--dur-cam}. 
-%
-Instead of using the center-of-mass energy $\sqrt{s}$, one introduces an energy scale $E_t$ satisfying $\Lambda \ll E_t\le
-Q$\footnote{A larger value of $E_t$ will result in a ``fatter'' beam
-jet.} and defines the distance measure $d_{ij}$ between two pseudojets
-as
-\begin{align}
-d_{i j} = \frac{2 (1 - \cos \theta_{i j})}{E_t^2} \min (E_i^2, E_j^2)\,,
-\end{align}
-as well as a beam distance for each pseudojet
-\begin{align}
-  d_{iB} = \frac{2 (1 - \cos \theta_{i B})}{E_t^2} E_i^2\,,
-\end{align}
-where $\theta_{ij}$ is the angular separation between two pseudojets,
-$\theta_{iB}$ is the angle of the pseudojet with respect to the beam, and
-$E_{k}$ is the energy of the pseudojets.
-%
-We remind the reader that energies and angles are defined in the Breit frame.
-%
-The cluster procedure works in two steps.  For the first step:
-%
-\begin{enumerate}
-  \item \label{exclkt1} For every pseudojet $i$ compute $d_{iB}$ and for every pair
-    $i,j$ compute $d_{ij}$.
-  \item Take the smallest value of all $d_{ij}$ and $d_{iB}$. If the
-    smallest value is a $d_{ij}$ and $d_{ij}<1$, combine their momenta
-    into a new pseudojet. If $d_{iB}<1$ is the smallest, include $i$
-    as a beam jet, and remove it from the list of pseudojets. 
-  \item Repeat the procedure from step \ref{exclkt1} for all
-    pseudojets, until all distance measures $d_{ij}, d_{iB}>1$. The
-    resulting pseudojets are called the macro jets.
-\end{enumerate}
-In the second step of the algorithm we remove the beam jet and undo
-the clustering of the macro jets, and re-cluster the constituents
-using the $e^+e^-$ exclusive $k_t$-algorithm (Durham), introducing
-$y_{\mathrm{cut}}<1$, and $E_t^2$ instead of $s$ to define $d_{ij}$.
-
-\subsubsection{Cambridge algorithm for DIS}
-\label{sec:camdis}
-The Cambridge algorithm for DIS was introduced in
-Ref.~\cite{Wobisch:1998wt}. It is again inspired by the Cambridge
-algorithm for $e^+e^-$-collisions~\cite{Dokshitzer:1997in}, and is
-very similar to the exclusive $k_t$-algorithm.
-Alongside the distance $d_{ij}$ between two pseudojets
-\begin{align}
-d_{i j} = 2 (1 - \cos \theta_{i j})\,,
-\end{align}
-one includes the beam distance
-\begin{align}
-d_{i B} = 2 (1 - \cos \theta_{i B})\,.
-\end{align}
- We also define the resolution variable 
-$y_{ij}$
-\begin{align}
-  y_{i j} = d_{ij} \frac{\min (E_i^2, E_j^2)}{Q^2}.
-\end{align}
-that in the case of a recombination with a beam takes the form
-\begin{align}
-  y_{i B} = d_{iB} \frac{E_i^2}{Q^2}\,,
-\end{align}
-because the beam is assumed to have infinite
-energy.\footnote{Similarly to the $k_t$-variant one could introduce
-$E_t$ instead of $Q$. }
-
-
-Also in this case the algorithm then proceeds through two steps. 
-The first step is
-\begin{enumerate}
-  \item \label{cam1} For every pseudojet $i$ compute $d_{iB}$ and for every pair
-    $i,j$ compute $d_{ij}$.
-  \item Take the smallest value of all $d_{ij}$ and $d_{iB}$.
-    If the
-    smallest value is a $d_{ij}$, combine their momenta
-    into a new pseudojet if $y_{ij}<1$ otherwise call the softest (less energetic) a jet. 
-    %
-    If $d_{iB}$ is the smallest include $i$ as a beam jet, and remove
-    it from the list of pseudojets if $y_{iB}<1$, otherwise promote it
-    to a jet.
-  \item Repeat the procedure from step \ref{cam1} for all
-    pseudojets, until all resolution variables $y_{ij}, y_{iB}>1$,
-    at which point we promote all the remaining pseudojets to jets and proceed with the second step. 
-\end{enumerate}
-In the second step of the algorithm we undo the clustering of all the
-jets (excluding the beam jet), and re-cluster the constituents using
-the $e^+e^-$ Cambridge algorithm using a resolution parameter
-$y_{\text{cut}} < 1$.
-
-\subsubsection{Centauro algorithm}
-\label{sec:centauro}
-The Centauro algorithm~\cite{Arratia:2020ssx} is a longitudinally
-invariant jet algorithm designed to capture jets close to the Born
-configuration in the Breit frame. Longitudinally invariant $k_t$-type
-algorithms such as those presented in Sec.~\ref{sec:gen-kt} cluster in the
-$(y,\phi)$ plane and are unable to form a jet along the beam axis,
-where $y \to -\infty$. Conversely, the spherically invariant
-algorithms can cluster around the beam axis but do not preserve
-longitudinal invariance. \\ \\
-The Centauro algorithm
-is designed to address both of these limitations. It is built around
-the variable $\bar{\eta}_i$, which behaves
-differently in the two hemispheres:
-\begin{itemize}
-\item \textbf{Current hemisphere:}  
-      $\bar{\eta}_i$ decreases as particles become closer in angle, allowing particles in this hemisphere to cluster.
-\item \textbf{Target hemisphere:}  
-      $\bar{\eta}_i$ becomes large and diverges. This prevents clustering in the proton beam region, similar to the behaviour of the anti-$k_t$-algorithm.
-\end{itemize}
-%
-Working in the Breit frame, for every momentum $p_i^\mu$ we define the variable $\bar{\eta}_i$ as
-\begin{align}
-\bar{\eta}_i = -2\frac{Q^2}{q\cdot n_{\mathrm{out}}} \frac{2 p_{T,i}}{p_i \cdot n_{\mathrm{in}}}\,,
-\end{align}
-with 
-\begin{subequations}
-  \begin{align}
-  n_{\mathrm{in}}^\mu =& \frac{2}{Q}\xB P^\mu \\
-  n_{\mathrm{out}}^\mu =& \frac{2}{Q} \left(q^\mu -\xB P^\mu \right)\\
-  p_{T,i}^2 =& \frac{2 (p_i \cdot n_{\mathrm{in}})(p_i \cdot n_{\mathrm{out}})}{ n_{\mathrm{in}}\cdot n_{\mathrm {out}}},
-\end{align}
-\end{subequations}
-meaning that $p_{T,i}$ the transverse component of the momentum in the Breit frame (or any other frame that only differs by a longitudinal boost from the Breit frame).
-%
-From this, one constructs the inter-pseudojet distance measure as
-\footnote{Note that we are reporting the definition used in the \texttt{fjcontrib} implementation, that is the one we have also used in this work.}
-\begin{align}
-\label{eq:cent-dij}
-d_{ij} = \frac{(\bar{\eta}_i - \bar{\eta}_j)^2 + 2 \bar{\eta}_i \bar{\eta}_j (1- \cos \Delta \phi_{ij})}{R^2}\,.
-\end{align}
-The distance to the beam is always equal to $d_{iB} = 1$. 
-%
-One then clusters jet according to the procedure given in Sec.~\ref{sec:gen-kt}.
-
+This clustering procedure effectively reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}. As a result, the Cambridge algorithm is a better algorithm for the resolution of jet substructure since emissions widely separated in angles are emitted independently from the hard legs. \\ \\
+\add{This is a later issue but need to sort out how you want to include the background of jet algorithms in the thesis. }
 
