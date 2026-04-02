@@ -11,6 +11,8 @@ The \textsc{ARES} was developed primarily for the NNLL resummation of observable
 
 The structure of this chapter is as follows. We begin by introducing event-shape observables and the properties they must satisfy. We then motivate the need for resummation through a fixed-order calculation of a standard event shape, thrust, making explicit the origin and structure of the large logarithms. Finally, we present the \textsc{CAESAR} and \textsc{ARES} frameworks. This chapter provides the necessary background and context for the original research presented in Chapter~5.
 
+\todo{Modify this introduction such that we discuss CAESAR but only say we are outlining ARES.}
+
 \section{Event-shapes}
 \label{sec:event-shapes}
 Event shapes are IRC safe observables constructed 
@@ -62,7 +64,7 @@ For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-lik
 \node at (0,-2.7) {spherically distributed events};
 \end{scope}
 \end{tikzpicture}
-\caption{Diagrammatic representation of thrust: $\tau \to 0$ corresponds to a pencil-like 2-jet configuration, while $\tau \to 1/2$ corresponds to a spherically distributed, multi-particle final state.}
+\caption{Diagrammatic representation of thrust: $\tau \to 0$ corresponds to a pencil-like 2-jet configuration, while $\tau \to 1/2$ corresponds to a spherically distributed, multi-particle final state. \todo{change diagrams}}
 \label{fig:thrust}
 \end{figure}
 \item{\textbf{Jet Broadenings}}~\cite{Clavelli:1979md, Rakow:1981qn, Catani:1992jc} are defined by dividing the event into two hemispheres 
@@ -186,7 +188,7 @@ importance in probing QCD dynamics, accurate and systematic resummation
 techniques are essential. While many approaches exist, much of the 
 previous work has been observable-dependent. For the remainder of this 
 thesis, we focus on observable-independent, semi-numerical formalisms: 
-\textsc{CAESAR} and \textsc{ARES}. \\ \\
+\textsc{CAESAR} and \textsc{ARES}. \todo{Change the transition here to next paragraph - remember we are discussing ARES only.}\\ \\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
 
 \section{Problem Specification}
@@ -273,20 +275,34 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 \section{Kinematics}
 To illustrate the semi-numerical formalism \textsc{ARES}, we consider a specific example. Since the work carried out in Chapter.~5 is largely based on the methods found in Ref.~\cite{Arpino:2019ozn}, we discuss these formalisms in the context of three-jet event shapes in $e^+e^-$ collisions in the near-to-planar limit~\cite{Arpino:2019ozn}.
 
+In this case, we consider a 3-jet rIRC safe and continuously global observable, that vanishes in the 3-jet limit, i.e.\ $V(\{\tilde{p}\})=0$ where $\{\tilde{p}\}=\{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\}$ are the final-state momenta. These coincide with the Born level momenta $\{p_1,p_2,p_3\}$  after the emission of $k_1,\dots k_n$ soft/collinear emissions. Essentially, the momenta $\{\tilde{p}\}$ are the final-state momenta after the recoil.
+
 At Born level, a three-jet event in $e^+e^-$ annihilation consists of a quark, anti-quark, and gluon with momenta
 \begin{equation}
 \label{eq:3-born-kin}
 	p_1=E_1(1,0,0,1)\,,\quad p_2=E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad p_3=E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
 \end{equation}
 where $p_1$, $p_2$, and $p_3$ correspond to the quark, anti-quark, and gluon, respectively, and $\theta_{ij}$ denotes the angle between momenta $p_i$ and $p_j$.
-\todo{Put in the stuff about $V$ going to 0 in the 3 jet limit and stuff about soft/collinear emissions $k$. This will allow us to talk about Sudakov variables.}
-
+Moreover, one can use Sudakov variables to describe a single emission $k$, such that it can be  decomposed along a pair of light-like momenta $(p_i,p_j)$, which constitute the $(ij)$ dipole, as follows:
+\begin{equation}
+k^{(ij)}=z^{(i)}p_i+z^{(j)}p_j+\kappa^{(ij)}\cos\phi^{(ij)}n_{\mathrm{in}}^{(ij)}+\kappa^{(ij)}\sin\phi^{(ij)}n_{\mathrm{out}}^{(ij)}\,.
+\label{eq:Sudakov-decomp}
+\end{equation}
+Here the momenta $p_i$ and $p_j$ are those given in Eq.~\eqref{eq:3-born-kin} and $z^{(i)}$ and $z^{(j)}$ are the energy fractions. The quantity $\kappa^{(ij)}$ denotes the invariant transverse momentum with respect to the $(ij)$ dipole, defined as
+\begin{equation}
+\left(\kappa^{(ij)}\right)^2=\frac{(2p_i\cdot k)(2p_j\cdot k)}{(2p_i\cdot p_j)}\,,
+\end{equation}
+where $k$ is the four-momentum of the emission. The vectors $n_{\mathrm{in}}^{(ij)}$ and $n_{\mathrm{out}}^{(ij)}$ are given by
+\begin{equation}
+n_{\mathrm{in}}^{(ij)}=\left(\cot\frac{\theta_{ij}}{2},\frac{\vec{n}_i+\vec{n}_j}{\sin\theta_{ij}}\right)\,,\quad n_{\mathrm{out}}^{(ij)}=\left(0,\frac{\vec{n}_i\times\vec{n}_j}{\sin\theta_{ij}}\right)\,,
+\end{equation}
+where $\vec{n}_\ell\equiv\vec{p}_\ell/E_\ell$ for $\ell=i,j$. For further work, it is important to introduce the rapidity with respect to the dipole, defined as
+\begin{equation}
+	\eta^{(ij)}\equiv\frac{1}{2}\ln\frac{z^{(i)}}{z^{(j)}}\,.
+\end{equation}
 
 \section{NLL Resummation}
-
-
-
-In the limit $v\to 0$, the cumulant for a three-jet observable can be written in factorised form as
+In the near-to-planar limit i.e. where the observable $V(\{p\},k_1,\dots,k_n)\ll 1$, the cumulant for a three-jet observable can be written in factorised form as
 \begin{equation}
 \label{eq:3jet-cumu-gen}
 \Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right),
@@ -543,21 +559,7 @@ where the un-averaged splitting function for the gluon
 \end{equation}
 
 \subsection{Soft wide angle contributions}
-Finally, we consider NNLL contributions originating from soft wide-angled emissions, $\delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{wa}}$. Both of these again rely on the assumption from Eq.~\ref{eq:Vsc}, while $\delta\mathcal{F}_{\mathrm{wa}}$ also depends on  $V_{\mathrm{wa}}$, i.e. the observable in the limit when a single soft gluon $k$ is emitted at large angles. Both functions make use of Sudakov variables. Both functions involve dipoles $k^{(ij)}$ and therefore naturally call for the use of Sudakov variables, whereby a single emission $k$ is decomposed along a pair of light-like momenta $(p_i,p_j)$, which constitute the $(ij)$ dipole, as follows:
-\begin{equation}
-k^{(ij)}=z^{(i)}p_i+z^{(j)}p_j+\kappa^{(ij)}\cos\phi^{(ij)}n_{\mathrm{in}}^{(ij)}+\kappa^{(ij)}\sin\phi^{(ij)}n_{\mathrm{out}}^{(ij)}\,.
-\label{eq:Sudakov-decomp}
-\end{equation}
-Here the momenta $p_i, p_j$ are given in Eq.~\ref{eq:3-born-kin}. The quantity $\kappa^{(ij)}$ denotes the invariant transverse momentum with respect to the $(ij)$ dipole, defined as
-\begin{equation}
-\left(\kappa^{(ij)}\right)^2=\frac{(2p_i\cdot k)(2p_j\cdot k)}{(2p_i\cdot p_j)}\,,
-\end{equation}
-where $k$ is the four-momentum of the emission. The vectors $n_{\mathrm{in}}^{(ij)}$ and $n_{\mathrm{out}}^{(ij)}$ are given by
-\begin{equation}
-n_{\mathrm{in}}^{(ij)}=\left(\cot\frac{\theta_{ij}}{2},\frac{\vec{n}_i+\vec{n}_j}{\sin\theta_{ij}}\right)\,,\quad n_{\mathrm{out}}^{(ij)}=\left(0,\frac{\vec{n}_i\times\vec{n}_j}{\sin\theta_{ij}}\right)\,,
-\end{equation}
-where $\vec{n}_\ell\equiv\vec{p}_\ell/E_\ell$ for $\ell=i,j$.
-The function $\delta\mathcal{F}_{\mathrm{wa}}$ arises when a soft gluon is emitted at wide angles. The general expression for $\delta\mathcal{F}_{\mathrm{wa}}$ is given by
+Finally, we consider NNLL contributions originating from soft wide-angled emissions, $\delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{wa}}$. Both of these again rely on the assumption from Eq.~\ref{eq:Vsc}, while $\delta\mathcal{F}_{\mathrm{wa}}$ also depends on  $V_{\mathrm{wa}}$, i.e. the observable in the limit when a single soft gluon $k$ is emitted at large angles. Both functions make use of Sudakov variables, $k^{(ij)}$ as defined in Eq.~\eqref{eq:Sudakov-decomp}. The function $\delta\mathcal{F}_{\mathrm{wa}}$ arises when a soft gluon is emitted at wide angles. The general expression for $\delta\mathcal{F}_{\mathrm{wa}}$ is given by
 \begin{equation}
 \begin{aligned}
 	&\delta\mathcal{F}_{\mathrm{wa}}(\lambda)=\sum_{(ij)}C_{(ij)}\frac{\alpha_s(v^{1/a}\,Q)}{a\,\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_{-\infty}^\infty d\eta^{(ij)}\int_0^{2\pi}\frac{d\phi^{(ij)}}{2\pi}\times\\
