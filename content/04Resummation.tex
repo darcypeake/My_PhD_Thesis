@@ -412,12 +412,16 @@ In order to determine the NNLL accurate cumulant, one must collect all terms whi
       +\sum_{\ell=1}^3\frac{\alpha_s(Qv^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)\,,
  \end{aligned}
 \end{equation}
-where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}. Note that both $\mathcal{F}_{\mathrm{NLL}}$ and $\delta\mathcal{F}_{\mathrm{NNLL}}$ are single logarithmic functions and can therefore be defined in terms of the quantity $\lambda$. We will now give a brief summary and description of the ingredients in this formula. \\ \\
-\noindent\textbf{The NNLL Radiator}, $R_{\mathrm{NNLL}}(v)$, just like the NLL radiator, includes all virtual corrections of soft and/or collinear origins along real corrections in the form of unresolved emissions.  The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Similarly, to the NLL radiator, its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy. \\ \\
-\noindent\textbf{The NLL function}, $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, given in Eq.~\eqref{eq:FNLL-formula}, as discussed before arises from resolved soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections. \\ \\
-\noindent\textbf{The hard coefficient}, $H^{(1)}$, arise from finite virtual corrections of relative order $\alpha_s$. As illustrated in the master formula, this coefficient of order $\alpha_s$ multiples an NLL function, giving rise to an NNLL order term. In Chapter.~5, we outline how this can be calculated from UV-renormalised virtual corrections. \ABquestion{Is this true that we do this in Ch 5? Also can we call this the hard coefficient?} The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}. 
-.\\ \\
-\noindent\textbf{The hard-collinear coefficient}, $C_{\mathrm{hc},\ell}^{(1)}$, originates from the combination of a single unresolved hard collinear emission emitted from one of the three final-state legs $p_\ell$ with the corresponding virtual corrections. Again, this is an coefficient of order $\alpha_s$ multiplying an NLL function, hence an NNLL contribution. The explicit expression of $C_{\mathrm{hc},\ell}^{(1)}$ depends on the flavour of leg the emission is emitted from. For a quark or an antiquark
+where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}. Both $\mathcal{F}_{\mathrm{NLL}}$ and $\delta\mathcal{F}_{\mathrm{NNLL}}$ are single-logarithmic functions and can therefore be defined in terms of the quantity $\lambda$. 
+
+\subsection*{Ingredients of the NNLL formula}
+The terms appearing in Eq.~\eqref{eq:Sigma-NNLL-fs} can be summarised as follows:
+\begin{enumerate}
+	\item \textbf{NNLL Radiator, $R_{\mathrm{NNLL}}(v)$:} just like the NLL radiator, includes all virtual corrections of soft and/or collinear origins along real corrections in the form of unresolved emissions.  The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Similarly, to the NLL radiator, its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy.
+\item \textbf{The NLL function, $\mathcal{F}_{\mathrm{NLL}}(\lambda)$:} given in Eq.~\eqref{eq:FNLL-formula}, as discussed before arises from resolved soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections.
+\item \textbf{The hard coefficient, $H^{(1)}$:} arise from finite virtual corrections of relative order $\alpha_s$. As illustrated in the master formula, this coefficient of order $\alpha_s$ multiples an NLL function, giving rise to an NNLL order term. In Chapter.~5, we outline how this can be calculated from UV-renormalised virtual corrections. \ABquestion{Is this true that we do this in Ch 5? Also can we call this the hard coefficient?} The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}. 
+\item \textbf{The hard-collinear coefficient, $C_{\mathrm{hc},\ell}^{(1)}$:}
+originates from the combination of a single unresolved hard collinear emission emitted from one of the three final-state legs $p_\ell$ with the corresponding virtual corrections. Again, this is an coefficient of order $\alpha_s$ multiplying an NLL function, hence an NNLL contribution. The explicit expression of $C_{\mathrm{hc},\ell}^{(1)}$ depends on the flavour of leg the emission is emitted from. For a quark or an antiquark
   \begin{equation}
     \label{eq:C1hc-q}
     C_{\mathrm{hc},\ell}^{(1)}=C_F\left(\frac{7}{2}\frac{b_\ell}{a+b_\ell}+\frac{3}{a+b_\ell}\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac 12\right)\,,
@@ -429,8 +433,8 @@ where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.
     C_{\mathrm{hc},\ell}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_\ell}{a+b_\ell}\\ & +\frac{1}{a+b_\ell}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac{1}{3}T_R n_f\,.
     \end{split}
   \end{equation}
-  \ABquestion{In Ref.~\cite{Arpino:2019ozn}, this has a factor of $\frac{\alpha_s\left(Qv^{1/a+b_\ell}\right)}{2\pi}$ out the front - I am pretty sure this is a typo - can you confirm? Also can we call it the hard-collinear coefficient? } \\ \\
-\noindent\textbf{The NNLL function}, $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$, emerges from the remaining soft or hard-collinear emissions and the corresponding virtual corrections. More precisely, these remaining terms consist of a single soft and/or collinear \emph{special} emission,
+  \ABquestion{In Ref.~\cite{Arpino:2019ozn}, this has a factor of $\frac{\alpha_s\left(Qv^{1/a+b_\ell}\right)}{2\pi}$ out the front - I am pretty sure this is a typo - can you confirm? Also can we call it the hard-collinear coefficient? }
+  \item \textbf{The NNLL function, $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$:} emerges from the remaining soft or hard-collinear emissions and the corresponding virtual corrections. More precisely, these remaining terms consist of a single soft and/or collinear \emph{special} emission,
   accompanied by an arbitrary number of soft and collinear emissions
   widely separated in angle (and the corresponding virtual
   corrections), as discussed before. The function $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$
@@ -440,10 +444,22 @@ where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.
     \label{eq:dFNNLL}
     \delta\mathcal{F}_{\mathrm {NNLL}} = \delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{hc}}+\delta\mathcal{F}_{\mathrm{rec}}+\Delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{wa}}+\Delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}\,.
   \end{equation}
-  The meaning of the various contributions will become clear in the following sections. Please note that in the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and are introduced for the first time in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
+  Each term can be interpreted physically: \todo{change these to what they are.}
+    \begin{itemize}
+      \item $\delta \mathcal{F}_{\mathrm{hc}}$: hard-collinear emissions affecting the squared matrix element.
+      \item $\delta \mathcal{F}_{\mathrm{sc}}$: running-coupling and rapidity-boundary corrections for soft-collinear emissions.
+      \item $\delta \mathcal{F}_{\mathrm{correl}}$: correlated splittings of soft-collinear gluons into $gg$ or $q\bar q$, accounting for the non-inclusive nature of the observable.
+      \item $\delta\mathcal{F}_{\mathrm{rec}}$, $\Delta\mathcal{F}_{\mathrm{rec}}$: recoil and spin-correlation corrections from hard-collinear emissions.
+      \item $\delta\mathcal{F}_{\mathrm{wa}}$, $\Delta\mathcal{F}_{\mathrm{wa}}$: contributions from soft emissions at wide angles and the dipole structure of the event. 
+    \end{itemize}
+    In the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and are introduced for the first time in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
   of the appropriate weight function $G(\{k_i\})$, see
   Eq.~\eqref{eq:dZ-def}. \ABquestion{These are resolved or unresolved or both?  Also are they soft and hard-collinear or soft and collinear?}
 In the following sections, we will provide a description for the terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. 
+\end{enumerate}
+
+The NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} can be split into two pieces, namely the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. \todo{Re-word this.}
+
 
 
 \subsection{Soft and collinear contributions}
