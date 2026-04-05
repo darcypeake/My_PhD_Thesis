@@ -246,12 +246,15 @@ While we understand that IRC safe event shapes undergo resummation, there are a 
 where $V_{\text{sc}}$ denotes the observable evaluated in the soft and collinear limit. The set $\{\tilde{p}\}$ represents the Born momenta after recoil from the emission $k$, whose transverse momentum, rapidity, and azimuthal angle with respect to the emitting leg $p_\ell$ are given by $k_t^{(\ell)}$, $\eta^{(\ell)}$, and $\phi^{(\ell)}$, respectively.  The energy $Q$ is an arbitrary hard scale of the process and serves as a reference normalisation for the transverse momenta. \\ \\
 The parameters $a$, $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ characterise the observable in this limit. Writing observables in this form allows these parameters to be extracted for each leg, enabling the construction of the resummation formula. Further details will be discussed later. IRC safety implies that $a>0$ and $b_\ell>-a$ (see also Refs.~\cite{Berger:2002ig, Berger:2003iw}). \ABquestion{Check I have used these refs properly.}
 
-
-For example, one can show that the observable thrust has the parameters
+For example, one can show that the observable thrust in the presence of soft/collinear emissions, the thrust can be approximated as 
 \begin{equation}
-a=b_\ell=d_\ell=g_\ell(\phi)=1\,,\quad \ell=1,2\,,
+	\tau\simeq\tau_{sc}=\sum_{\ell=1,2}\sum_{i\in\mathcal{H}_\ell}\frac{k_{ti}^{(\ell)}}{Q}e^{-\eta^{(\ell)}}\,,
 \end{equation}
-producing a remarkably simple resummation structure.
+and so for a single soft/collinear emission it has the form of Eq.~\eqref{eq:general-sc-V}, with the parameters
+\begin{equation}
+a=b_\ell=d_\ell=g_\ell(\phi)=1\,,\quad \ell=1,2\,.
+\end{equation}
+These parameters produce a remarkably simple resummation structure.
 
 \item \textbf{Recursively IRC (rIRC) safe}: this condition requires that, for an ensemble of soft and collinear emissions, the addition of a further emission that is relatively much softer and/or collinear should not significantly modify the value of the observable. A formal definition of rIRC safety is given in Refs.~\cite{Banfi:2004yd, Banfi:2003je} and is summarised below.
  Consider momenta $\kappa_i(\lambda_i)$ such that the observable satisfies
@@ -319,6 +322,11 @@ Finally, the rapidity of the emission relative to the dipole is defined as
 \begin{equation}
 	\eta^{(ij)}\equiv\frac{1}{2}\ln\frac{z^{(i)}}{z^{(j)}}\,.
 \end{equation}
+For an emission $k$ collinear to $p_i$ or $p_j$, one can relate the dipole rapidity $\eta^{(ij)}$ to the rapidity $\eta^{(\ell)}$ with respect to the leg $p_\ell$ is
+\begin{equation}
+	\eta^{(i)}\simeq\eta^{(ij)}+\ln\frac{2E_i}{Q_{ij}}\,,\quad \eta^{(j)}\simeq-\eta^{(ij)}+\ln\frac{2E_j}{Q_{ij}}\,,\quad Q_{ij}^2=2(p_i\cdot p_j)\,.
+\end{equation}
+
 
 
 \section{NLL Resummation}
@@ -443,7 +451,7 @@ originates from the combination of a single unresolved hard collinear emission e
     \label{eq:dFNNLL}
     \delta\mathcal{F}_{\mathrm {NNLL}} = \delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{hc}}+\delta\mathcal{F}_{\mathrm{rec}}+\Delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{wa}}+\Delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}\,.
   \end{equation}
-  Each term can be interpreted physically: \todo{change these to what they are.}
+  Each term can be interpreted physically: 
     \begin{itemize}
       \item $\delta \mathcal{F}_{\mathrm{hc}}$: results from a hard-collinear emission at the level of the squared matrix element. 
            \item $\delta \mathcal{F}_{\mathrm{sc}}$: accounts for running coupling corrections to the real emissions in the CMW scheme, described above. Additionally, it also accounts for the correct rapidity boundary for a single soft-collinear emission. Since rapidity dependence can always be handled analytically for event shapes, this correction is remarkably simple. For other observables, such as jet rates, these two corrections must be handled separately. 
@@ -464,14 +472,172 @@ splittings of a soft-collinear gluon. \ABquestion{Understand what this inclusive
 In the following sections, we will provide a description for the terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. 
 \end{enumerate}
 
-The NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} can be split into two pieces, namely the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. \todo{Re-word this.}
+The NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} can be split into two pieces, namely the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. \todo{Re-word this/move this.}
+
+\subsection{The coefficient $\mathbf{H^{(1)}(Q)}$}
+\label{sec:H1}
+
+It is instructive to start from the calculation of $H^{(1)}(Q)$, because this makes it possible to
+introduce the main ingredients for all the calculations that will
+follow, as well as set conventions. We will try to follow the widely used
+notation of~\cite{Catani:1998bh}, slightly adapted to our needs.
+
+The starting point to compute $H^{(1)}(Q)$ is the following representation of UV-renormalised virtual corrections~\cite{Banfi:2018mcq,Arpino:2019ozn}:
+\begin{multline}
+  \label{eq:HQ}
+  \mathcal{H}(Q;\varepsilon) = H(\alpha_s(\mu_R),Q) \exp\left\{\int^{Q^2}\!\!\frac{dk^2}{k^2}\sum_{\ell=1}^3 \gamma_\ell\left[\alpha_s(k^2;\varepsilon)\right]\right\}\times \\ \times \exp\left\{-\int \frac{d^dk}{(2\pi)^2}\sum_{\ell=1}^3 \sum_{\bar \ell\ne \ell} w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon) \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar \ell}}{m^2+\kappa_{\ell\bar \ell}^2}-|\eta^{(\ell\bar \ell)}| \right) \Theta(Q_{\ell \bar \ell}-\kappa_{\ell\bar \ell})\right\}\,,
+\end{multline}
+with $Q_{\ell\bar \ell}^2=2(p_\ell p_{\bar \ell})$.  Here dimensional
+regularisation is used to regulate soft and collinear divergences,
+with $d=4-2\varepsilon$ the number of space-time dimensions. Other
+important quantities entering eq.~\eqref{eq:HQ} are:
+\begin{itemize}
+\item
+  the ``hard'' function $H(\alpha_s,Q)$ which has the following expansion in powers of $\alpha_s(Q)$:
+  \begin{equation}
+    \label{eq:HQ-exp}
+    H(\alpha_s) = 1+\frac{\alpha_2}{2\pi}H^{(1)}(Q) +\left(\frac{\alpha_2}{2\pi}\right)^2H^{(2)}(Q)+\dots 
+  \end{equation}
+\item the $d$-dimensional strong coupling $\alpha_s(k^2;\varepsilon)$, defined as the solution of the renormalisation-group equation
+\begin{equation}
+  \label{eq:RG-coupling}
+  k^2\frac{d\alpha_s}{dk^2} = - \varepsilon \alpha_s+\beta(\alpha_s)\,,
+\end{equation}
+where $\beta(\alpha_s)$ is the QCD beta function, and renormalisation
+is performed in the $\overline{\mathrm{MS}}$ scheme. The collinear anomalous dimension $\gamma_\ell(\alpha_s)$ has the expansion
+\begin{equation}
+  \label{eq:gammal}
+  \gamma_\ell (\alpha_s) = \gamma^{(0)}_\ell \frac{\alpha_s}{2\pi} + \gamma^{(1)}_\ell \left(\frac{\alpha_s}{2\pi} \right)^2+\dots
+\end{equation}
+where
+\begin{equation}
+  \label{eq:gammal-flav}
+  \gamma_\ell^{(0)} = \left\{
+    \begin{split}
+      & \frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
+      & 2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon;}
+    \end{split}
+    \right.
+\end{equation}
+;
+\item the ``web'' function
+  $w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon)$
+  which consistently resum the contribution of multiple soft real
+  emissions from the dipole made up from the legs $\ell$ and
+  $\bar \ell$. Physically, the web function is the weight associated
+  with the emission of a gluon of mass $m$, inclusive with respect to
+  all its splittings. Since Feynman rules are invariant under
+  rescaling of the emitters' four-momenta, the web function can only
+  depend on variables that are invariant under such rescalings. These
+  are $m^2$ and \ABquestion{You made a comment in the draft of `Maybe a better notation is $\kappa^{(\ell\bar \ell)}$' but unsure?}
+  \begin{equation}
+    \label{eq:kappa}
+    \kappa_{\ell\bar\ell}^2 = 2 \frac{(p_\ell k)(k p_{\bar \ell})}{(p_\ell p_{\bar\ell})}\,. 
+  \end{equation}
+  The web function admits an expansion in
+  powers of the strong coupling,
+  $w_{\ell \bar \ell} = \alpha_s(\mu_R) w_{\ell \bar
+    \ell}^{(1)}+\alpha_s^2(\mu_R) w_{\ell \bar \ell}^{(2)}+\dots$, and
+  \begin{equation}
+    \label{eq:w1}
+    w_{\ell \bar \ell}^{(1)}(m^2,m^2+\kappa^2;\varepsilon) = (4\pi)^2\frac{C_{\ell\bar\ell}}{\kappa^2}\,\mu_R^{2\epsilon}\frac{e^{\varepsilon\gamma_E}}{(4\pi)^{\varepsilon}}\,\delta(m^2)\,,
+  \end{equation}
+  where $C_{\ell\bar \ell}=C_A/2$ if either leg is a gluon and $C_{\ell\bar \ell}=C_F-C_A/2$ otherwise. Note also that
+  \begin{equation}
+    \label{eq:Cl}
+    \sum_{\bar \ell \ne \ell} C_{\ell \bar \ell}= C_\ell\,,
+  \end{equation}
+  where $C_\ell$ is the colour factor of leg $\ell$, $C_F$ for a quark and $C_A$ for a gluon;
+\item the $d$-dimensional phase space, given by
+  \begin{equation}
+    \label{eq:dk}
+%    \frac{d^d k}{(2\pi)^d} = \frac{d\eta^{(\ell\bar \ell)}}{2\pi}\, dm^2 \,\frac{d\kappa^2_{\ell\bar \ell}}{(4\pi)^2}\left(\frac{4\pi}{\kappa^2_{\ell\bar\ell}}\right)^\varepsilon\frac{d\phi\,(\sin^2\phi)^{-\varepsilon}}{\sqrt \pi\,\Gamma(1/2-\varepsilon)}\,\Theta(\sin\phi)\,.
+    \frac{d^d k}{(2\pi)^d} = \frac{d\eta^{(\ell\bar \ell)}}{2\pi}\, dm^2 \,\frac{d\kappa^2_{\ell\bar \ell}}{(4\pi)^2}\left(\frac{\pi}{\kappa^2_{\ell\bar\ell}}\right)^\varepsilon\frac{\Gamma(1-\varepsilon)}{\Gamma(1-2\varepsilon)}\frac{d\phi}{\pi}\,(\sin^2\phi)^{-\varepsilon}\,\Theta(\sin\phi)\,. 
+  \end{equation}
+\end{itemize}
+With everything in place, we obtain $H^{(1)}$ by expanding both sides of eq.~\eqref{eq:HQ} and comparing the result. In particular:
+\begin{multline}
+  \label{eq:w-exp}
+  -\alpha_s(\mu_R)  \int \frac{d^dk}{(2\pi)^d} w^{(1)}_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon) \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar \ell}}{m^2+\kappa_{\ell\bar \ell}^2}-|\eta^{(\ell\bar \ell)}| \right) \Theta(Q_{\ell \bar\ell}-\kappa_{\ell\bar \ell}) \\ = -\frac{\alpha_s(\mu_R)}{2\pi}
+  \left(\frac{\mu_R^2}{Q^2_{\ell\bar \ell}}\right)^\varepsilon \frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)} \frac{C_{\ell\bar \ell}}{\varepsilon^2}\,,
+\end{multline}
+and
+\begin{equation}
+  \label{eq:gamma0-int}
+  \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s(k^2;\varepsilon)}{2\pi} = \frac{\alpha_s(\mu_R)}{2\pi}\gamma_\ell^{(0)} \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon} = -\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{Q^2}\right)^{\varepsilon} \gamma_\ell^{(0)}\frac{\alpha_s(\mu_R)}{2\pi}\,.
+\end{equation}
+Now, using the fact that $\mathcal{H}(Q;\varepsilon)$ has the universal structure~\cite{Catani:1998bh}\footnote{Note that the general formula of~\cite{Catani:1998bh} includes also phase factors (Coulomb phases) that arise when the two legs $\ell$ and $\bar \ell$ are both incoming or outgoing. In the case of three emitters, these phase factors give rise to a finite contribution, included in $\mathcal{H}_1$.}
+\begin{equation}
+  \label{eq:HQ-expanded}
+  \mathcal{H}(Q;\varepsilon) = 1+\frac{\alpha_s(\mu_R)}{2\pi}\left[-\frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\sum_\ell\left(\frac{1}{\varepsilon^2}+\frac{1}{\varepsilon}\frac{\gamma_\ell^{(0)}}{C_\ell}\right)\sum_{\bar \ell\ne \ell} C_{\ell\bar\ell}\left(\frac{\mu_R^2}{Q_{\ell\bar \ell}^2}\right)^{\varepsilon}+\mathcal{H}_1\right]\,,
+\end{equation}
+and comparing the above result with the right-hand side of eq.~(\ref{eq:HQ})
+\begin{equation}
+  \label{eq:HQ-rep-expanded}
+  \mathcal{H}(Q;\varepsilon) = 1+\frac{\alpha_s(\mu_R)}{2\pi}\left\{-\frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\sum_\ell\left[\sum_{\bar \ell\ne \ell}\left(\frac{\mu_R^2}{Q^2_{\ell\bar\ell}}\right)^{\varepsilon}\frac{C_{\ell\bar \ell}}{\varepsilon^2}+\left(\frac{\mu_R^2}{Q^2}\right)^{\varepsilon}\frac{\gamma_\ell^{(0)}}{\varepsilon}\right]+H_1\right\}\,,
+\end{equation}
+we find
+\begin{equation}
+  \label{eq:H1-final}
+  H^{(1)}(Q) = \mathcal{H}_1+ \sum_\ell\frac{\gamma_\ell^{(0)}}{C_\ell}\sum_{\bar \ell\ne \ell} C_{\ell\bar \ell}\ln\left(\frac{Q^2_{\ell\bar\ell}}{Q^2}\right)
+    \,.
+\end{equation}
+
+
+\subsection{The NNLL Radiator}
+The NNLL radiator, $R_{\mathrm{NNLL}}(v)$ can be broken into two pieces, the soft radiator $R_{\mathrm{s}}(v)$ and the hard-collinear radiator $R_{\mathrm{hc}}(v)$:
+\begin{equation}
+	R_{\mathrm{NNLL}}(v)= R_{\mathrm{s}}(v)+R_{\mathrm{hc}}(v)\,.
+\end{equation}
+
+The soft radiator is defined as 
+\begin{equation}
+	R_{\mathrm{s}}(v)=\sum_{(ij)}C_{(ij)}\sum_{\ell\in(ij)}\mathcal{R}_{\ell}^{(ij)}(v)\,,
+\end{equation}
+where for each dipole $\mathcal{R}_{\ell}^{(ij)}(v)$ is
+\begin{equation}
+\label{eq:RS-ell}
+	\mathcal{R}_{\ell}^{(ij)}(v)=\mathcal{R}_{\ell,0}^{(ij)}(v)+\delta R_{\ell}^{(ij)}(v)\,.
+\end{equation}
+The $\mathcal{R}_{\ell,0}^{(ij)}(v)$ is calculated to be
+\begin{equation}
+	\mathcal{R}_{\ell,0}^{(ij)}(v)=R_{\ell,0}^{(ij)}(v)+\left(R_{\ell,0}^{(ij)}\right)'(v)\Big\langle\ln\left(d_\ell^{(ij)}g_\ell(\phi)\right)\Big\rangle+\frac{1}{2}\left(R_{\ell,0}^{(ij)}\right)''(v)\Big\langle\ln^2\left(d_\ell^{(ij)}g_\ell(\phi)\right)\Big\rangle+\dots\,,
+\end{equation}
+where 
+\begin{equation}
+	R_{\ell,0}^{(ij)}(v)=-\frac{\lambda}{\alpha_s(Q)\beta_0}g_1^{(\ell)}(\lambda)-g_2^{(\ell)}(\lambda)-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{ij})-\frac{\alpha_s(Q)}{\pi}\left(g_3^{(\ell)}+\mathfrak{g}_3^{(\ell)}(\lambda,Q_{ij})\right)\,,
+\end{equation}
+and 
+\begin{equation}
+	d_{\ell}^{(ij)}=d_\ell\left(\frac{Q_{ij}}{Q}\right)^a\left(\frac{Q_{ij}}{2E_\ell}\right)^{b_\ell}\,.
+\end{equation}
+The second term in Eq.~\eqref{eq:RS-ell} is defined to be
+\begin{equation}
+	\delta R_{\ell}^{(ij)}(v)=-\frac{\alpha_s(Q)}{\pi}\delta g_3^{(\ell)}(\lambda)\,.
+\end{equation}
+ The functions $g_1^{(\ell)}(\lambda), g_2^{(\ell)}(\lambda), \mathfrak{g}_2^{(\ell)}(\lambda,Q_{ij}),g_3^{(\ell)}(\lambda) \mathfrak{g}_3^{(\ell)}(\lambda,Q_{ij}),$ and $\delta g_3^{(\ell)}(\lambda)$ are defined in Ref.~\cite{Arpino:2019ozn}.
+The hard-collinear radiator is defined as
+\begin{equation}
+	R_{\mathrm{hc}}(v)=\sum_{\ell}R_{\mathrm{hc},\ell}(v)\,,
+\end{equation}
+where 
+\begin{equation}
+R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s}{\pi}h_3^{(\ell)}(\lambda)\,.
+\end{equation}
+The functions $h_2^{(\ell)}(\lambda),h_3^{(\ell)}(\lambda)$ can be found in Ref.~\cite{Arpino:2019ozn}.
+
 
 \subsection{Soft Cumulative Distribution}
 The master formula for the soft cumulant at NNLL accuracy is the following: 
 \begin{equation}
-	\Sigma_{\mathrm{soft}}^{\mathrm{NNLL}}(v)=e^{-R_{\mathrm{NNL}}(v)}H\left(\{p\},\alpha_s(Q)\right)\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)+\frac{\alpha_s}{\pi}\left(\delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}+\Delta\mathcal{F}_{\mathrm{wa}}\right)\right)\,,
+	\Sigma_{\mathrm{soft}}^{\mathrm{NNLL}}(v)=e^{-R_{\mathrm{NNLL}}(v)}H\left(\{p\},\alpha_s(Q)\right)\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)+\frac{\alpha_s}{\pi}\left(\delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}+\Delta\mathcal{F}_{\mathrm{wa}}\right)\right)\,,
 \end{equation}
-where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event and the origins of the remaining $\mathcal{F}$-functions are found in the above section. We will now outline how these functions are calculated.
+where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event:
+\begin{equation}
+	H\left(\{p\},\alpha_s(Q)\right)=1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}+\mathcal{O}(\alpha_s^2)\,,
+\end{equation}
+where $H^{(1)}$ is the finite function of order $\alpha_s$ which appears is Eq.~\eqref{eq:Sigma-NNLL-fs}.
+The origins of the remaining $\mathcal{F}$-functions are found in the above section. We will now outline how these functions are calculated.
 
 The correction $\delta \mathcal{F}_{\mathrm{sc}}$ requires the approximation given in Eq.~\ref{eq:Vsc}. Additionally, on top of the soft-collinear 
 emissions $k_1,\dots,k_n$ that enter any resummation, this function, for which all gluons are widely separated in angle, involve 
@@ -647,5 +813,5 @@ Here we will briefly discuss a certain class of observables which take an additi
 \begin{equation}
 \Vsc{k_1,\dots , k_n}=\sum_{i=1}^n\Vsc{k_i}\,.
 \end{equation}
-Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{sec:thrust-example} and the one-jettiness and transverse thrust introduced in Sec.~\ref{sec:event-shapes}.
+Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{sec:thrust-example} and the one-jettiness and transverse thrust introduced in Ch~\ref{ch:hhZjet}.
 
