@@ -28,7 +28,7 @@ strong coupling constant $\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. Notable
 	T \equiv \max_{\vec{n}} \frac{\sum_j |\vec{p}_j \cdot \vec{n}|}{\sum_j |\vec{p}_j|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
 where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}. 
-For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states, as illustrated in Fig.~\ref{fig:thrust}. 
+For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states, as illustrated in Fig.~\ref{fig:thrust}. \todo{Discuss the hemispheres.}
 \begin{figure}[H]
 \begin{tikzpicture}[scale=0.9, >=Stealth]
 \begin{scope}
@@ -62,7 +62,7 @@ For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-lik
 \node at (0,-2.7) {spherically distributed events};
 \end{scope}
 \end{tikzpicture}
-\caption{Diagrammatic representation of thrust: $\tau \to 0$ corresponds to a pencil-like 2-jet configuration, while $\tau \to 1/2$ corresponds to a spherically distributed, multi-particle final state. \todo{change diagrams}}
+\caption{Diagrammatic representation of thrust: $\tau \to 0$ corresponds to a pencil-like 2-jet configuration, while $\tau \to 1/2$ corresponds to a spherically distributed, multi-particle final state. \todo{change diagrams -- add in the two hemispheres.}}
 \label{fig:thrust}
 \end{figure}
 \item{\textbf{Jet Broadenings}}~\cite{Clavelli:1979md, Rakow:1981qn, Catani:1992jc} quantify the transverse momentum of final-state hadrons relative to the thrust axis by dividing the event into two hemispheres, $\mathcal{H}_L$ and $\mathcal{H}_R$, defined with respect to the thrust axis $\vec{n}_T$. For each hemisphere, the broadening is defined as
@@ -194,7 +194,7 @@ The appearance of large logarithms and the need for resummation are not
 unique to thrust -- the structure of Eq.~\eqref{eq:resummed-cumulant} 
 applies broadly to all IRC safe observables i.e.\ event-shape observables. Given their 
 importance in probing QCD dynamics, accurate and systematic resummation 
-techniques are essential. There are a few ways in which one could go about resumming thrust, however we will focus on an observable-independent semi-numerical formalism known as \textsc{ARES}, which we will now discuss. \todo{Make this lead into the next paragraph better}. \\ \\
+techniques are essential. There are a few ways in which one could go about resumming thrust, however we will focus on an observable-independent semi-numerical formalism known as \textsc{ARES}, which we will now discuss. \todo{I think we should add in some plots of what the data vs. the LO/NLO distributions of thrust looks like.} \todo{Make this lead into the next paragraph better}. \\ \\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
 
 \section{Problem Specification}
@@ -229,13 +229,14 @@ Following the approach of \textsc{CAESAR}~\cite{Banfi:2004yd}, the cumulant can 
 \Sigma\big(\{p_{n_i+1},\dots,p_n\},v\big) \,
 \mathcal{H}(p_{n_i+1},\dots,p_n) \,,
 \end{equation}
-where $d\sigma_N/d\Phi_N$ now corresponds to the leading-order cross section for the Born configuration, and the function $\Sigma(\{p\},v)$ encodes the dependence on the observable. \ABquestion{Unsure in the change of momenta from $q\to p$? The notation perhaps is not quite right.}
+where $d\sigma_N/d\Phi_N$ now corresponds to the leading-order cross section for the Born configuration, and the function $\Sigma(\{p\},v)$ encodes the dependence on the observable. \ABquestion{Unsure in the change of momenta from $q\to p$? I have been reading from the original CAESAR paper.}
 
 In this context, $\Sigma(\{p\},v)$ can be interpreted as the probability that a given Born configuration $\{p_{n_i+1},\dots,p_n\}$ produces a value of the observable smaller than $v$. As shown in Sec.~\ref{sec:thrust-example} for thrust, large logarithms appear in the cumulant in the region $v \ll 1$, and so $\Sigma(\{p\},v)$ needs to be resummed to all orders in order to provide reliable results. 
 
 \ABquestion{Difference between $\sigma$ and $\sigma_{\mathcal{H}}$ is that one is the partonic and one is the hadronic? Is $\sigma(v)$ the one defined in Eq.~\eqref{eq:thrust-cumulant}?}
 
 \section{Observable Requirements}
+\todo{I think we could expand on these a little more.}
 While we understand that IRC safe event shapes undergo resummation, there are a few additional properties that observables must have in order to be resummed by the \textsc{ARES} method. Specifically, the observable $V(p_1, p_2, \dots)$ must satisfy the following conditions: 
 \begin{enumerate}
 \item \textbf{Vanish smoothly}: when an additional emission of momentum $k$ is soft and collinear to a hard leg $\ell$. In this limit, the observable can be written as
@@ -333,7 +334,7 @@ For an emission $k$ collinear to $p_i$ or $p_j$, one can relate the dipole rapid
 In the near-to-planar limit, $v \ll 1$, the cumulant for a three-jet observable can be written in factorised form as
 \begin{equation}
 \label{eq:3jet-cumu-gen}
-\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)|\mathcal{M}\left(\{\tilde{p}\},k_1,\dots,k_n\right)|^2\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\sum_{i=1}^n\left[dk_i\right]\right)|\mathcal{M}\left(\{\tilde{p}\},k_1,\dots,k_n\right)|^2\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
 where:
 \begin{itemize}
@@ -407,9 +408,10 @@ $V\left(\{\tilde{p}\},k_1,\dots,k_n\right)$ are restricted to the region where $
  V(\{\tilde{p}\},k_i)\sim v$ with $\epsilon \ll v$. Together, with the corresponding virtual corrections, they build up $ \mathcal{F}_{\mathrm{NLL}}$.
  
  
-\todo{Make a comment about CAESAR here I think.}
+\todo{Make a comment about CAESAR here I think.} \todo{I think it would be interesting to put in some plots here on the F-function/radiator with the CAESAR code vs. analytical result for thrust.}
 
 \section{NNLL Resummation}
+\todo{Need to work out what is expressed generally and what is expressed in terms of 3-jet case.}
 In order to determine the NNLL accurate cumulant, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. This results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. \ABquestion{Need to understand this configuration is just for the new $\delta\mathcal{F}$ piece.} The NNLL master formula is defined as
 \begin{equation}
 \begin{aligned}
@@ -476,7 +478,7 @@ The NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} can be split into two pieces, 
 
 \subsection{The coefficient $\mathbf{H^{(1)}(Q)}$}
 \label{sec:H1}
-
+\todo{Need to expand the work done here and state what it is for the $e^+e^-$ case.}
 It is instructive to start from the calculation of $H^{(1)}(Q)$, because this makes it possible to
 introduce the main ingredients for all the calculations that will
 follow, as well as set conventions. We will try to follow the widely used
@@ -632,7 +634,7 @@ The master formula for the soft cumulant at NNLL accuracy is the following:
 \begin{equation}
 	\Sigma_{\mathrm{soft}}^{\mathrm{NNLL}}(v)=e^{-R_{\mathrm{NNLL}}(v)}H\left(\{p\},\alpha_s(Q)\right)\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)+\frac{\alpha_s}{\pi}\left(\delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}+\Delta\mathcal{F}_{\mathrm{wa}}\right)\right)\,,
 \end{equation}
-where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event:
+where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event: \todo{change this here}
 \begin{equation}
 	H\left(\{p\},\alpha_s(Q)\right)=1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}+\mathcal{O}(\alpha_s^2)\,,
 \end{equation}
