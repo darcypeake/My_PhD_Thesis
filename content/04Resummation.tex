@@ -93,7 +93,7 @@ of large logarithms arising from soft and collinear emissions in the limit
 $v \to 0$, as discussed in Sec.~\ref{subsec:QCD-ev}. In this regime, 
 fixed-order calculations are insufficient, and dedicated resummation 
 techniques are required. To make this concrete, we next examine how these 
-logarithms emerge explicitly in a fixed-order calculation of thrust. \ABquestion{Do I need to discuss how the distribution of event shapes tend to zero when $v\to0$.}\\ \\
+logarithms emerge explicitly in a fixed-order calculation of thrust. \question{Do I need to discuss how the distribution of event shapes tend to zero when $v\to0$.}\\ \\
 \reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2024cfk, Banfi:2016yyq, Dasgupta:2003iq}}
 
 
@@ -116,21 +116,43 @@ with $T_\text{min} = 2/3$ (for equal momenta) and $T_\text{max} = 1$. The corres
 \ABquestion{Same limits as in Eq.~\eqref{eq:qqg-real} i.e.\ do we need the $\Theta$-function here also?}
 subject to the kinematic constraint $x_q + x_{\bar{q}} + x_g = 2$. 
 
-Performing the phase-space integration and expressing the result in terms of $\tau \equiv 1 - T$ yields
+We can vary the orderings of the momentum fractions and use the integration over the $\delta$-function to find that the differential distribution is composed of the following terms
+\begin{equation}
+\begin{aligned}
+    \frac{1}{\sigma_0}\frac{d\sigma}{dT}=\;&C_F \frac{\alpha_s}{2\pi}\int_{1-T/2}^T dx_{\bar{q}}\left[\frac{T^2+x_{\bar{q}}^2}{(1-T)(1-x_{\bar{q}})}\right]_{x_q>x_{\bar{q}}>x_g}\\
+    &+C_F \frac{\alpha_s}{2\pi}\int_{1-T/2}^T dx_q\left[\frac{T^2+x_q^2}{(1-T)(1-x_q)}\right]_{x_{\bar{q}}>x_q>x_g}\\
+    &+C_F \frac{\alpha_s}{2\pi}\int_{2-2T}^{1-T/2} dx_{\bar{q}}\left[\frac{T^2+x_{\bar{q}}^2}{(1-T)(1-x_{\bar{q}})}\right]_{x_q>x_g>x_{\bar{q}}}\\
+    &+C_F \frac{\alpha_s}{2\pi}\int_{2-2T}^{1-T/2} dx_q\left[\frac{T^2+x_q^2}{(1-T)(1-x_q)}\right] _{x_{\bar{q}}>x_g>x_q} \\
+    &+C_F \frac{\alpha_s}{2\pi}\int_{1-T/2}^T dx_{\bar{q}}\left[\frac{(2-T-x_{\bar{q}})^2+x_{\bar{q}}^2}{(T+x_{\bar{q}}-1)(1-x_{\bar{q}})}\right]_{x_g>x_{\bar{q}}>x_q} \\
+    &+ C_F \frac{\alpha_s}{2\pi}\int_{1-T/2}^T dx_q\left[\frac{(2-T-x_q)^2+x_q^2}{(T+x_q-1)(1-x_q)}\right]_{x_g>x_{\bar{q}}>x_q}\,.
+\end{aligned}
+\end{equation}
+By performing the integrations over $x_q$ and $x_{\bar{q}}$ we obtain:
+\begin{equation}
+	\frac{1}{\sigma_0}\frac{d\sigma}{dT}=C_F\frac{\alpha_s}{2\pi}\left[\frac{2(3T^2-3T+2)}{T(1-T)}\ln\frac{2T-1}{1-T}-\frac{3(3T-2)(2-T)}{1-T}\right]\,.
+\end{equation}
+Finally, by using $\tau \equiv 1 - T$, we find that the NLO contribution is \ABquestion{I am confused if this is LO or NLO - different pieces of literature are telling me different things.}
 \begin{equation}
 	\frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = C_F \frac{\alpha_s}{2\pi} \left\{ \frac{3(1+\tau)(3\tau-1)}{\tau} + \frac{(4+6\tau(\tau-1))\ln\frac{1-2\tau}{\tau}}{\tau(\tau-1)} \right\}.
 \end{equation}
 
-As $\tau \to 0$, the distribution develops IR divergences associated with soft and collinear emissions. These divergences are cancelled by the virtual one-loop correction to $e^+e^- \to q\bar{q}$, in direct analogy with the cancellation process discussed in Sec.~\ref{sec:divergences}, yielding a finite result as required by the IRC safety of thrust (Sec.~\ref{sec:IRC}). Using the regulated and integrated NLO cross-section given in Eq.~\eqref{eq:sigma-full}, the complete distribution can be written as 
+As $\tau \to 0$, the distribution develops IR divergences associated with soft and collinear emissions. These divergences are cancelled by the virtual one-loop correction to $e^+e^- \to q\bar{q}$, in direct analogy with the cancellation process discussed in Sec.~\ref{sec:divergences}, yielding a finite result as required by the IRC safety of thrust (Sec.~\ref{sec:IRC}). Using the regulated and integrated NLO cross-section given in Eq.~\eqref{eq:sigma-full}, the complete distribution can be written as \todo{understand what is going on here i.e.\ with the plus distributions.}
 \begin{equation}
 \begin{aligned}
 \label{eq:full-thrust-NLO}
     \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} =\;& \delta(\tau) + C_F\frac{\alpha_s}{2\pi} \Bigg\{ \delta(\tau) \left( \frac{\pi^2}{3} - 1 \right) \\
     & + \left[ 3(1+\tau)(3\tau-1) + \frac{(4+6\tau(\tau-1))\ln(1-2\tau)}{1-\tau}\right] \left( \frac{1}{\tau} \right)_+  \\
-    & - \frac{4+6\tau(\tau-1)}{1-\tau} \left( \frac{\ln \tau}{\tau} \right)_+ \Bigg\}.
+    & - \frac{4+6\tau(\tau-1)}{1-\tau} \left( \frac{\ln \tau}{\tau} \right)_+ \Bigg\}\,,
 \end{aligned}
 \end{equation}
-
+where the \emph{plus distribution} is defined as
+\begin{equation}
+	\int_0^1 d\tau\left[\frac{\ln^k\tau}{\tau}\right]_{\!+}g(\tau)\equiv\int_0^1d\tau\frac{\ln^k\tau}{\tau}[g(\tau)-g(0)]\,,
+\end{equation}
+such that for $\tau>0$ it is
+\begin{equation}
+	\left[\frac{\ln^k\tau}{\tau}\right]_{\!+}=\frac{\ln^k\tau}{\tau}\,.
+\end{equation}
 Neglecting the $\delta$-function contributions, the terms that become large in the $\tau \to 0$ limit are the \emph{logarithmically enhanced terms},
 \begin{equation}
 	\left(\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}\right)_{\text{log-enh}} = C_F \frac{\alpha_s}{2\pi} \left[ -3 \left(\frac{1}{\tau}\right)_+ - 4 \left(\frac{\ln \tau}{\tau}\right)_+ \right].
@@ -159,7 +181,7 @@ cannot occur beyond Born level. \ABquestion{ i.e. because it's NLO so you need a
 
 At higher orders in perturbation theory, the cumulant receives contributions of the form 
 $\alpha_s^n L^m$ with $m \leq 2n$, which grow as $\tau \to 0$ and spoil the convergence of the perturbative series in precisely the region where most of the data lies. The structure of these logarithms has a clear physical origin. Since each power of the strong coupling constant $\alpha_s$ corresponds to an additional emission, and each emission can generate up to two logarithms -- one from the soft limit and one from the collinear limit --the perturbative expansion at order $\alpha_s^n$ contains terms with up to $2n$ powers of the logarithm, i.e.\ $\alpha_s^n L^m$ with $m \leq 2n$.
-\ABquestion{Perhaps I am over-explaining here?}
+\question{Perhaps I am over-explaining here?}
 
 To restore predictive power, the perturbative expansion must be 
 reorganised and \emph{resummed}. Rather than expanding purely in powers of 
@@ -245,7 +267,7 @@ While we understand that IRC safe event shapes undergo resummation, there are a 
 	\label{eq:general-sc-V}
 \end{equation}
 where $V_{\text{sc}}$ denotes the observable evaluated in the soft and collinear limit. The set $\{\tilde{p}\}$ represents the Born momenta after recoil from the emission $k$, whose transverse momentum, rapidity, and azimuthal angle with respect to the emitting leg $p_\ell$ are given by $k_t^{(\ell)}$, $\eta^{(\ell)}$, and $\phi^{(\ell)}$, respectively.  The energy $Q$ is an arbitrary hard scale of the process and serves as a reference normalisation for the transverse momenta. \\ \\
-The parameters $a$, $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ characterise the observable in this limit. Writing observables in this form allows these parameters to be extracted for each leg, enabling the construction of the resummation formula. Further details will be discussed later. IRC safety implies that $a>0$ and $b_\ell>-a$ (see also Refs.~\cite{Berger:2002ig, Berger:2003iw}). \ABquestion{Check I have used these refs properly.}
+The parameters $a$, $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ characterise the observable in this limit. Writing observables in this form allows these parameters to be extracted for each leg, enabling the construction of the resummation formula. Further details will be discussed later. IRC safety implies that $a>0$ and $b_\ell>-a$ (see also Refs.~\cite{Berger:2002ig, Berger:2003iw}). \question{Check I have used these refs properly.}
 
 For example, one can show that the observable thrust in the presence of soft/collinear emissions, the thrust can be approximated as 
 \begin{equation}
@@ -279,7 +301,7 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 	\end{equation}
 	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable.
 \end{enumerate}
-\ABquestion{What exactly do these conditions show i.e. both rIRC safe?}
+\question{What exactly do these conditions show i.e. both rIRC safe?}
 \item \textbf{Continuously global}: an observable is said to be global if it is sensitive to emissions in all regions of phase space, i.e.\ it is non-zero for any emission of an $(n+1)^{\text{th}}$ parton that is not infinitely soft or collinear. Continuous globalness further requires that, for a single soft emission, the parametric dependence of the observable on the emission’s transverse momentum be uniform across phase space, implying that the parameter $a$ appearing in Eq.~\eqref{eq:general-sc-V} must be the same for each leg. This condition ensures that non-global logarithms, which arise when different regions of phase space exhibit different transverse-momentum dependences, do not appear. While these types of logarithms will not be discussed in this thesis, further discussion can be found in~\cite{Dasgupta:2001sh,Dasgupta:2002dc}. \ABquestion{Check refs used for NGL are OK and that understanding of NGL are correct.}
 \end{enumerate}
 \reference{~\cite{Banfi:2004yd, Banfi:2003je}.}
@@ -338,16 +360,16 @@ In the near-to-planar limit, $v \ll 1$, the cumulant for a three-jet observable 
 \end{equation}
 where:
 \begin{itemize}
-    \item $\mathcal{V}(\{p\})$ encodes the virtual corrections to the Born process, normalised to the Born matrix element squared.
-    \item $|\mathcal{M}(\{\tilde{p}\},k_1,\dots,k_n)|^2$ is the squared matrix element for $n$ real emissions off the three-particle Born configuration $\{\tilde{p}\}$.
-    \item $S(n)$ is a symmetry factor e.g., $1/n!$ for $n$ identical gluons.
+    \item $\mathcal{V}(\{p\})$ encodes the virtual corrections to the Born process, normalised to the Born matrix element squared\,,
+    \item $|\mathcal{M}(\{\tilde{p}\},k_1,\dots,k_n)|^2$ is the squared matrix element for $n$ real emissions off the three-particle Born configuration $\{\tilde{p}\}$\,,
+    \item $S(n)$ is a symmetry factor e.g., $1/n!$ for $n$ identical gluons\,,
     \item The Lorentz-invariant phase space in $d=4-2\varepsilon$ dimensions is
     \begin{equation}
     [dk] \equiv \frac{d^d k}{(2\pi)^{d-1}} \delta(k^2) \Theta(k^0)\,.
     \end{equation}
 \end{itemize}
 
-At NLL, soft-collinear partons emitted independently off the hard legs, along with their virtual corrections, contribute to the cumulant. At this order, the matrix-elements squared, $\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)$, can be factorised into the product of single-emission squared matrix-elements, radiated according to the physical CMW coupling~\cite{Catani:1990rr}. This coupling, $\alpha_s^{\mathrm{CMW}}$,  is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. It is related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$ (i.e. the one introduced in Sec.~\ref{sec:running-coupling}) by\footnote{Please note that the generalisation of the CMW coupling can be found in Ref.~\cite{Banfi:2018mcq}, such that it includes the $K$ terms relevant to NNLL.}
+At NLL, soft-collinear partons emitted independently off the hard legs, along with their virtual corrections, contribute to the cumulant. At this order, the matrix-elements squared, $\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)$, can be factorised into the product of single-emission squared matrix-elements, radiated according to the physical CMW coupling~\cite{Catani:1990rr}. This coupling, $\alpha_s^{\mathrm{CMW}}$,  is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. It is related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$ (i.e. the one introduced in Sec.~\ref{sec:running-coupling}) by\footnote{Please note that the generalisation of the CMW coupling can be found in Ref.~\cite{Banfi:2018mcq}, such that it includes the $K$ terms relevant to NNLL. \todo{explain this a bit better.}}
  \begin{equation} \alpha_s^{\mathrm{CMW}} = \alpha_s\left(1+\frac{\alpha_s}{2\pi} K\right)+\mathcal{O}(\alpha_s^3)\,,
 \end{equation} 
 where
@@ -408,7 +430,7 @@ $V\left(\{\tilde{p}\},k_1,\dots,k_n\right)$ are restricted to the region where $
  V(\{\tilde{p}\},k_i)\sim v$ with $\epsilon \ll v$. Together, with the corresponding virtual corrections, they build up $ \mathcal{F}_{\mathrm{NLL}}$.
  
  
-\todo{Make a comment about CAESAR here I think.} \todo{I think it would be interesting to put in some plots here on the F-function/radiator with the CAESAR code vs. analytical result for thrust.}
+\todo{Make a comment about CAESAR here I think.} \todo{I think it would be interesting to put in some plots here on the F-function/radiator with the CAESAR code vs. analytical result for thrust -this would be the additive case so it works.}
 
 \section{NNLL Resummation}
 \todo{Need to work out what is expressed generally and what is expressed in terms of 3-jet case.}
@@ -429,7 +451,7 @@ The terms appearing in Eq.~\eqref{eq:Sigma-NNLL-fs} can be summarised as follows
 \begin{enumerate}
 	\item \textbf{NNLL Radiator, $R_{\mathrm{NNLL}}(v)$:} just like the NLL radiator, includes all virtual corrections of soft and/or collinear origins along real corrections in the form of unresolved emissions.  The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Similarly, to the NLL radiator, its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy.
 \item \textbf{The NLL function, $\mathcal{F}_{\mathrm{NLL}}(\lambda)$:} given in Eq.~\eqref{eq:FNLL-formula}, as discussed before arises from resolved soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections.
-\item \textbf{The hard coefficient, $H^{(1)}$:} arise from finite virtual corrections of relative order $\alpha_s$. As illustrated in the master formula, this coefficient of order $\alpha_s$ multiples an NLL function, giving rise to an NNLL order term. In Chapter.~5, we outline how this can be calculated from UV-renormalised virtual corrections. \ABquestion{Is this true that we do this in Ch 5? Also can we call this the hard coefficient?} The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}. 
+\item \textbf{The hard coefficient, $H^{(1)}$:} arise from finite virtual corrections of relative order $\alpha_s$. As illustrated in the master formula, this coefficient of order $\alpha_s$ multiples an NLL function, giving rise to an NNLL order term. In Chapter.~5, we outline how this can be calculated from UV-renormalised virtual corrections. \ABquestion{Is this true that we do this in Ch 5? Also can we call this the hard coefficient?} The explicit formula for this can be found in Ref.~\cite{Arpino:2019ozn}. \todo{need to change this}
 \item \textbf{The hard-collinear coefficient, $C_{\mathrm{hc},\ell}^{(1)}$:}
 originates from the combination of a single unresolved hard collinear emission emitted from one of the three final-state legs $p_\ell$ with the corresponding virtual corrections. Again, this is an coefficient of order $\alpha_s$ multiplying an NLL function, hence an NNLL contribution. The explicit expression of $C_{\mathrm{hc},\ell}^{(1)}$ depends on the flavour of leg the emission is emitted from. For a quark or an antiquark
   \begin{equation}
@@ -587,6 +609,7 @@ we find
 
 
 \subsection{The NNLL Radiator}
+\todo{Add in from the draft}
 The NNLL radiator, $R_{\mathrm{NNLL}}(v)$ can be broken into two pieces, the soft radiator $R_{\mathrm{s}}(v)$ and the hard-collinear radiator $R_{\mathrm{hc}}(v)$:
 \begin{equation}
 	R_{\mathrm{NNLL}}(v)= R_{\mathrm{s}}(v)+R_{\mathrm{hc}}(v)\,.
@@ -815,5 +838,5 @@ Here we will briefly discuss a certain class of observables which take an additi
 \begin{equation}
 \Vsc{k_1,\dots , k_n}=\sum_{i=1}^n\Vsc{k_i}\,.
 \end{equation}
-Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{sec:thrust-example} and the one-jettiness and transverse thrust introduced in Ch~\ref{ch:hhZjet}.
+Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{sec:thrust-example} and the one-jettiness and transverse thrust introduced in Ch~\ref{ch:hhZjet}. \todo{Add in the FNLL case.}
 
