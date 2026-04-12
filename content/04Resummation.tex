@@ -29,9 +29,9 @@ strong coupling constant $\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. Notable
 \end{equation}
 where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. The thrust axis separates the event into two distinct hemispheres, $\mathcal{H}_L$ and $\mathcal{H}_R$, as shown in Fig.~\ref{fig:thrust}. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}. 
 For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states. 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\begin{tikzpicture}[scale=0.9, >=Stealth]
+\begin{tikzpicture}[scale=1.0, >=Stealth]
 
 \begin{scope}
 
@@ -422,6 +422,7 @@ The functions $r_\ell(L), r'_\ell(L)$ and $T(L)$ are integrals over the real emi
 \end{equation}
 
  \subsection{The NLL Function}
+ \label{subsec:FNLL}
 To define the NLL-function, $\mathcal{F}_{\mathrm{NLL}}$ in Eq.~\eqref{eq:NLL-cumulant}, each emission $k_i$ is parametrised by $\{\ell_i,\phi_i^{(\ell_i)},\zeta_i\}$, 
 where; $\ell_i$ denotes the leg to which the emission is collinear, $\phi_i^{(\ell_i)}$ is the azimuthal angle with respect to that leg, and $\zeta_i \equiv \frac{V_{\mathrm{sc}}(k_i)}{v}$. For event shapes, the dependence on emission rapidity can be integrated analytically, which in turn can yield a Jacobian factor $R'_{\mathrm{NLL},\ell} \equiv 2 C_\ell\, r'_\ell(L)$, with $C_\ell=C_F$ for quark legs and $C_\ell=C_A$ for gluon legs. With this parametrisation,
   \begin{equation}
@@ -506,19 +507,19 @@ splittings of a soft-collinear gluon. \ABquestion{Does it mean all \emph{types} 
       
       \item  $\Delta\mathcal{F}_{\mathrm{rec}}$:  occurs due spin-correlations that are ubiquitous in the presence of a hard gluon in the Born configuration. The correction accounts for when the underlying gluon recoils against a hard emission.       
      \item $\delta\mathcal{F}_{\mathrm{wa}}$: arises when a soft gluon is emitted at wide angles.
-       \item $\Delta\mathcal{F}_{\mathrm{wa}}$:  originates from resolved emissions which occur due to the dipole structure. \ABquestion{Is there anything else I can add here?}     
+       \item $\Delta\mathcal{F}_{\mathrm{wa}}$:  originates from resolved emissions which occur due to the dipole structure. \ABquestion{For the wide angle corrections,  is there more I can add to where they come from?}     
        \end{itemize}
-       \todo{FINISHED HERE.}
     In the 2-jet case~\cite{Banfi:2014sua}, the terms $\Delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\mathcal{F}_{\mathrm{rec}}$ are not present and are introduced for the first time in Ref.~\cite{Arpino:2019ozn}. All of the terms in Eq.~\eqref{eq:dFNNLL} can be expressed in terms of integrals over the soft-colliner measure $\dZ$
   of the appropriate weight function $G(\{k_i\})$, see
   Eq.~\eqref{eq:dZ-def}. \ABquestion{These are resolved or unresolved or both?}
 In the following sections, we will provide a description for the terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. 
 \end{enumerate}
 
-The NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} can be split into two pieces, namely the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. \todo{Re-word this/move this.}
+We will now discuss the explicit formulas for all terms which make up Eq.~\eqref{eq:Sigma-NNLL-fs}, beginning with the hard coefficient, $H^{(1)}$.
 
 \subsection{The coefficient $\mathbf{H^{(1)}(Q)}$}
 \label{sec:H1}
+\todo{need to pad this a bit i.e. write in what the web is etc. fill in any gaps you don't personally understand.}
 \todo{Need to expand the work done here and state what it is for the $e^+e^-$ case.}
 It is instructive to start from the calculation of $H^{(1)}(Q)$, because this makes it possible to
 introduce the main ingredients for all the calculations that will
@@ -670,17 +671,16 @@ R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s}{\pi}h_3^{(\ell)}(
 \end{equation}
 The functions $h_2^{(\ell)}(\lambda),h_3^{(\ell)}(\lambda)$ can be found in Ref.~\cite{Arpino:2019ozn}.
 
+We will outline the remaining terms by splitting the NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} into two pieces: the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. \todo{Re-word this/move this.}
+
 
 \subsection{Soft Cumulative Distribution}
 The master formula for the soft cumulant at NNLL accuracy is the following: 
 \begin{equation}
 	\Sigma_{\mathrm{soft}}^{\mathrm{NNLL}}(v)=e^{-R_{\mathrm{NNLL}}(v)}H\left(\{p\},\alpha_s(Q)\right)\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)+\frac{\alpha_s}{\pi}\left(\delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}+\Delta\mathcal{F}_{\mathrm{wa}}\right)\right)\,,
 \end{equation}
-where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event: \todo{change this here}
-\begin{equation}
-	H\left(\{p\},\alpha_s(Q)\right)=1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}+\mathcal{O}(\alpha_s^2)\,,
-\end{equation}
-where $H^{(1)}$ is the finite function of order $\alpha_s$ which appears is Eq.~\eqref{eq:Sigma-NNLL-fs}.
+where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event given in Eq.~\eqref{eq:HQ-exp}.
+
 The origins of the remaining $\mathcal{F}$-functions are found in the above section. We will now outline how these functions are calculated.
 
 The correction $\delta \mathcal{F}_{\mathrm{sc}}$ requires the approximation given in Eq.~\ref{eq:Vsc}. Additionally, on top of the soft-collinear 
@@ -744,7 +744,7 @@ soft-collinear gluon splits into a $q\bar{q}$ pair or a gluon pair. This additio
   \filldraw[black] (d) circle (1.5pt);
 \end{feynman}
 \end{tikzpicture}
-\caption{Gluon splitting into two gluons (left) and into a quark-antiquark pair (right). \question{Does this diagram look OK?}}
+\caption{Gluon splitting into two gluons (left) and into a quark-antiquark pair (right).}
 \label{fig:splitting}
 \end{figure}
  The general expression for $\delta \mathcal{F}_{\mathrm{correl}}$ is 
@@ -846,17 +846,91 @@ where the un-averaged splitting function for the gluon
 	 \Delta P_g(z,\phi;\epsilon)=4z(1-z)(2(1-\epsilon)\cos^2\phi-1)\left(\frac{C_A}{2}-\frac{T_Rn_f}{1-\epsilon}\right)\,.
 \end{equation}
 
-
-
-
-
-
-
 \subsection{Additive Observables}
 \label{subsec:additive-observables}
-Here we will briefly discuss a certain class of observables which take an additive form. Additivity is the concept that an observable can be written as a the sum of contributions of individual emissions i.e. for soft and collinear emissions $k_1,\dots , k_n$, this means 
+In this section, we briefly discuss a class of observables that exhibit an additive structure. Additivity refers to the property that an observable can be expressed as a sum of contributions from individual emissions. For a set of soft and collinear emissions $k_1,\dots , k_n$, this implies
 \begin{equation}
+\label{eq:additive-def}
 \Vsc{k_1,\dots , k_n}=\sum_{i=1}^n\Vsc{k_i}\,.
 \end{equation}
-Additive observables allow $\FNLL$ and for all terms in Eq.~\eqref{eq:dFNNLL} to be calculated analytically. The equations which govern these observables can be found in Ref.~\cite{Arpino:2019ozn}. Examples of additive observables are: thrust introduced in Sec.~\ref{sec:thrust-example} and the one-jettiness and transverse thrust introduced in Ch~\ref{ch:hhZjet}. \todo{Add in the FNLL case.}
+Additive observables are particularly important because they allow $\mathcal{F}_{\mathrm{NLL}}$ and all contributions appearing in Eq.~\eqref{eq:dFNNLL} to be computed analytically. 
 
+To illustrate how this structure simplifies calculations, we outline the derivation of $\mathcal{F}_{\mathrm{NLL}}$ for a generic additive observable. Although this contribution has already been discussed for thrust in Sec.~\ref{subsec:FNLL}, the result derived below holds universally for all additive observables. This universality does not extend to the terms in Eq.~\eqref{eq:dFNNLL}, which remain observable dependent. A set of equations for additive observables in the three-jet case can be found in Ref.~\cite{Arpino:2019ozn}. We will see in Ch.~\ref{ch:hhZjet} that two of the observables studied there, namely one-jettiness and transverse thrust, are also additive. We now proceed with the explicit derivation.
+
+Substituting Eq.~\eqref{eq:additive-def} into Eq.~\eqref{eq:FNLL-formula}, we obtain
+  \begin{equation}
+  \label{eq:FNLL-add-1}
+  \begin{aligned}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)\times\\
+    & \times \Theta\left(1-\sum_{i=1}^n\frac{\Vsc{\{k_i\}}}{v}\right)\,.
+    \end{aligned}
+  \end{equation}
+
+We now introduce the rescaled variable, which is ubiquitous in the \textsc{ARES} formalism,
+\begin{equation}
+    \zeta_i = \frac{\Vsc{k_i}}{v}\,,
+\end{equation}
+such that Eq.~\eqref{eq:FNLL-add-1} becomes
+  \begin{equation}
+   \label{eq:FNLL-add-2}
+  \begin{aligned}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)\times\\
+    & \times \Theta\left(1-\sum_{i=1}^n\zeta_i\right)\,.
+    \end{aligned}
+  \end{equation}
+  
+We employ the Mellin representation of the Heaviside function,
+\begin{equation}
+\label{eq:mellin-transform}
+    \Theta\left(1-\sum_{i=1}^n\zeta_i\right)=\int_{\mathcal{C}}
+    \frac{d\nu}{2\pi i}\frac{e^\nu}{\nu}\prod_{i=1}^ne^{-\nu\zeta_i}\,,
+\end{equation}
+where $\mathcal{C}$ denotes a contour in the complex $\nu$-plane running from $c-i\infty$ to $c+i\infty$.
+
+Substituting this into Eq.~\eqref{eq:FNLL-add-2}, we obtain
+  \begin{equation}
+   \label{eq:FNLL-add-3}
+  \begin{aligned}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{\mathcal{C}}\frac{d\nu}{2\pi i}\frac{e^\nu}{\nu}\ \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i} e^{-\nu\zeta_i} \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right) \,.
+            \end{aligned}
+  \end{equation}
+
+Since the observable is additive, each emission contributes an identical factor. The single-emission integral is therefore
+\begin{equation}
+    \mathcal{I}(\nu,\epsilon)\equiv\sum_{\ell}R'_{\mathrm{NLL},\ell}
+    \int_\epsilon^\infty \frac{d\zeta}{\zeta}\,e^{-\nu\zeta}
+    \int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}
+    = R'_{\mathrm{NLL}}\,\Gamma(0,\nu\epsilon)\,,
+\end{equation}
+where $R'_{\mathrm{NLL}}\equiv\sum_\ell R'_{\mathrm{NLL},\ell}$.
+
+The sum over emissions exponentiates, yielding
+\begin{equation}
+  \label{eq:FNLL-add-4}
+  \begin{aligned}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{\mathcal{C}}\frac{d\nu}{2\pi i}\frac{e^\nu}{\nu} e^{R'_{\mathrm{NLL}}\Gamma\left[0,\nu\epsilon\right]}\,.
+            \end{aligned}
+  \end{equation}
+  
+In the limit $\epsilon \to 0$, we use the small-argument expansion
+\begin{equation}
+    \Gamma(0,\nu\epsilon)=-\ln(\nu\epsilon)-\gamma_E+\mathcal{O}(\nu\epsilon)\,,
+\end{equation}
+where $\gamma_E$ is the Euler--Mascheroni constant. Substituting this into Eq.~\eqref{eq:FNLL-add-4}, gives rise to 
+\begin{equation}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right) = e^{-\gamma_E R'_{\mathrm{NLL}}}
+    \int_{\mathcal{C}}\frac{d\nu}{2\pi i}\,
+    \nu^{-1-R'_{\mathrm{NLL}}}\,e^{\nu}\,.
+\end{equation}
+
+Using the identity
+\begin{equation}
+\int_\mathcal{C}\frac{d\nu}{2\pi i}\nu^{-z}e^\nu = \frac{1}{\Gamma(z)}\,,
+\end{equation}
+we obtain the final result
+\begin{equation}
+\label{eq:FNLL-add-final}
+\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)
+= \frac{e^{-\gamma_E R'_{\mathrm{NLL}}}}{\Gamma\left(1+R'_{\mathrm{NLL}}\right)}\,,
+\end{equation}
+which agrees with the result shown in Fig.~\ref{fig:FNLL-CAESAR-comp}.
