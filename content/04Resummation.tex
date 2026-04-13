@@ -29,7 +29,7 @@ strong coupling constant $\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. Notable
 \end{equation}
 where $\vec{p}_j$ denotes the three-momentum of particle $j$ in the final state, and the unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}. The thrust axis separates the event into two distinct hemispheres, $\mathcal{H}_L$ and $\mathcal{H}_R$, as shown in Fig.~\ref{fig:thrust}. It is conventional to work with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}. 
 For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final states. 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=1.0, >=Stealth]
 
@@ -181,9 +181,21 @@ contribute to the logarithmic enhancement.
 The terms in $\Sigma_{\mathrm{log\text{-}enh}}(\tau)$ diverge as 
 $\tau \to 0$ which, as discussed in Sec.~\ref{sec:event-shapes}, corresponds to an exactly back-to-back $q\bar{q}$ pair. In QCD, this configuration and so the cumulant in this limit \emph{should} tend to zero, \ABquestion{Is is the fact that: in QCD, the appearance of free quarks cannot occur so the distribution must be zero when $\tau\to0$?}. In fact, this feature of the distribution tending to zero when the observable vanishes is present for all event shapes. The divergence signifies the break down of perturbation theory and needs to be resolved. \todo{Re-word this.}
 
-
-At higher orders in perturbation theory, the cumulant receives contributions of the form 
-$\alpha_s^n L^m$ with $m \leq 2n$, which grow as $\tau \to 0$ and spoil the convergence of the perturbative series in precisely the region where most of the data lies \ABquestion{Why does most of the data lie here?}. The structure of these logarithms has a clear physical origin. Since each power of the strong coupling constant $\alpha_s$ corresponds to an additional emission, and each emission can generate up to two logarithms -- one from the soft limit and one from the collinear limit --the perturbative expansion at order $\alpha_s^n$ contains terms with up to $2n$ powers of the logarithm, i.e.\ $\alpha_s^n L^m$ with $m \leq 2n$. \todo{Reword this.}
+At higher orders in perturbation theory, the cumulant receives contributions 
+of the form $\alpha_s^n L^m$ with $m \leq 2n$, which grow as $\tau \to 0$ 
+and spoil the convergence of the perturbative series in precisely the region 
+where most of the data lies. This is a consequence of the fact that, at 
+leading order, $e^+e^-$ annihilation produces a quark--antiquark pair 
+back-to-back, and the dominant soft and collinear radiation does not 
+significantly alter the thrust axis, keeping $\tau \approx 0$. Additional 
+hard wide-angle radiation, which would drive $\tau$ away from zero, is 
+suppressed by powers of $\alpha_s$, so the bulk of events are dijet-like 
+with small $\tau$. The structure of these logarithms has a clear 
+physical origin: each power of $\alpha_s$ corresponds to an additional 
+emission, and each emission can generate up to two logarithms, one from the 
+soft limit and one from the collinear limit, so the perturbative expansion at 
+order $\alpha_s^n$ contains terms with up to $2n$ powers of $L$, i.e.\ 
+$\alpha_s^n L^m$ with $m \leq 2n$.
 
 To restore predictive power, the perturbative expansion must be 
 reorganised and \emph{resummed}. Rather than expanding purely in powers of 
@@ -300,46 +312,53 @@ where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal a
 	\end{equation}
 	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable. \ABquestion{And this is now rIRC safety?}
 \end{enumerate}
+\todo{Add in about JADE observable.}
 \item \textbf{Continuously global}: an observable is said to be global if it is sensitive to emissions in all regions of phase space, i.e.\ it is non-zero for any emission of an $(n+1)^{\text{th}}$ parton that is not infinitely soft or collinear. Continuous globalness further requires that, for a single soft emission, the parametric dependence of the observable on the emission’s transverse momentum be uniform across phase space, implying that the parameter $a$ appearing in Eq.~\eqref{eq:general-sc-V} must be the same for each leg. This condition ensures that non-global logarithms, which arise when different regions of phase space exhibit different transverse-momentum dependences, do not appear. While these types of logarithms will not be discussed in this thesis, further discussion can be found in~\cite{Dasgupta:2001sh,Dasgupta:2002dc}. 
 \end{enumerate}
 \reference{~\cite{Banfi:2004yd, Banfi:2003je}.}
 
 \section{Kinematics}
-\todo{Reword the whole thing.}
-To illustrate the \textsc{ARES} formalism, we focus on a specific example. Since the research in Chapter~5 largely follows the methods of Ref.~\cite{Arpino:2019ozn}, we present the formalism in the context of three-jet event shapes in $e^+e^-$ collisions, in the near-to-planar limit~\cite{Arpino:2019ozn}. We will try to give the formalism as general as possible and will note clearly when we have displayed in the 3-jet case.
+\label{sec:kinematics}
 
-We consider a generic, continuously global, rIRC-safe observable 
-$V(\{\tilde{p}\},k_1,\dots,k_n)$, which vanishes in the three-jet limit:
+To illustrate the \textsc{ARES} formalism, we consider a concrete example. Since the analysis in Chapter~5 closely follows the approach of Ref.~\cite{Arpino:2019ozn}, we present the formalism in the context of three-jet event shapes in $e^+e^-$ collisions, in the near-to-planar limit~\cite{Arpino:2019ozn}. Wherever possible, we keep the discussion general, and specialise to the three-jet configuration only when necessary.
+
+We consider a generic, continuously global and rIRC-safe observable 
+$V(\{\tilde{p}\},k_1,\dots,k_n)$, which vanishes in the three-jet limit,
 \begin{equation}
 V(\{\tilde{p}\}) = 0\,,
-\end{equation} 
-where $\{\tilde{p}\} = \{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\}$ are the recoiled Born-level momenta after $n$ soft or collinear emissions $k_1,\dots,k_n$. 
-At Born level, a three-jet event consists of a quark, an anti-quark, and a gluon, with momenta parameterised as 
+\end{equation}
+where $\{\tilde{p}\} = \{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\}$ denote the recoiled Born-level momenta after the emission of $n$ soft and/or collinear partons $k_1,\dots,k_n$. 
+
+At Born level, a three-jet event consists of a quark, an anti-quark, and a gluon. Their momenta can be parameterised as
 \begin{equation}
 \label{eq:3-born-kin}
 p_1 = E_1(1,0,0,1)\,,\quad
 p_2 = E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad
 p_3 = E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
 \end{equation}
-where $\theta_{ij}$ is the angle between $p_i$ and $p_j$. An emission $k$ with respect to leg $\ell$, can be written as a decomposition along a single light-like momentum $p_\ell$:
+where $\theta_{ij}$ denotes the angle between the momenta $p_i$ and $p_j$.
+
+An emission $k$ with respect to to a hard leg $\ell$ can be expressed through a Sudakov decomposition along the corresponding light-like direction $p_\ell$:
 \begin{equation}
-	k^{(\ell)} = x^{(\ell)}p_\ell+\bar{x}^{(\ell)}+\bar{p}_\ell+k_\perp^{(\ell)}\,,
+k^{(\ell)} = x^{(\ell)} p_\ell + \bar{x}^{(\ell)} \bar{p}_\ell + k_\perp^{(\ell)}\,,
 \end{equation}
-where $\bar{p}_\ell=(E_\ell,-\vec{p}_\ell)$ and $x_\ell,\bar{x}_\ell$ are the momentum fractions the emission can take along each vector. \ABquestion{checking this is true - they aren't defined in~\cite{Arpino:2019ozn}?} The two-dimensional space-like vector $k_\perp^{(\ell)}$ lies in the transverse plane to $\vec{p}_\ell$ and has the magnitude
+where $\bar{p}_\ell = (E_\ell,-\vec{p}_\ell)$, and $x^{(\ell)}$, $\bar{x}^{(\ell)}$ are longitudinal momentum fractions.  \ABquestion{checking this is true - they aren't defined in~\cite{Arpino:2019ozn}?} The  two-dimensional space-like vector $k_\perp^{(\ell)}$ lies in the plane orthogonal to $\vec{p}_\ell$ and has magnitude
 \begin{equation}
-	-\left(k_\perp^{(\ell)2}\right)=\frac{(2p_\ell k)(2k\bar{p}_\ell)}{(2p_\ell\bar{p}_\ell)}\equiv\left(k_t^{(\ell)}\right)^2\,,
+-\left(k_\perp^{(\ell)}\right)^2
+= \frac{(2p_\ell \cdot k)(2k \cdot \bar{p}_\ell)}{2p_\ell \cdot \bar{p}_\ell}
+\equiv \left(k_t^{(\ell)}\right)^2\,,
 \end{equation}
-where $k_t^{(\ell)}$ is the transverse momentum of emission $k$ off hard leg $p_\ell$. Moreover, the rapidity, i.e.\ the measure of how aligned a particle is to the beam of an emission with respect to leg $p_\ell$ is
+where $k_t^{(\ell)}$ is the transverse momentum with respect to leg $\ell$. The corresponding rapidity is defined as
 \begin{equation}
-	\eta^{(\ell)}=\frac{1}{2}\ln\frac{x^{(\ell)}}{\bar{x}^{(\ell)}}\,.
+\eta^{(\ell)} = \frac{1}{2}\ln\frac{x^{(\ell)}}{\bar{x}^{(\ell)}}\,.
 \end{equation}
-We can also express the additioanl emissions in terms of dipole kinematics.
-The additional emissions $k$ can be conveniently described using Sudakov variables, such that it can be  decomposed along a pair of light-like momenta $(p_i,p_j)$, which constitute the $(ij)$ dipole, as follows:
+
+It is often convenient to describe emissions using dipole kinematics. In this case, the emission $k$ can be conveniently described using Sudakov variables such that it is decomposed along a pair of light-like momenta $(p_i,p_j)$ forming the $(ij)$ dipole:
 \begin{equation}
 k^{(ij)}=z^{(i)}p_i+z^{(j)}p_j+\kappa^{(ij)}\cos\phi^{(ij)}n_{\mathrm{in}}^{(ij)}+\kappa^{(ij)}\sin\phi^{(ij)}n_{\mathrm{out}}^{(ij)}\,.
 \label{eq:Sudakov-decomp}
 \end{equation}
-where $z^{(i)}$ and $z^{(j)}$ are energy fractions, and the invariant transverse momentum $\kappa^{(ij)}$ is
+where $z^{(i)}$ and $z^{(j)}$ are energy fractions. The invariant transverse momentum $\kappa^{(ij)}$ is given by 
 \begin{equation}
 \left(\kappa^{(ij)}\right)^2=\frac{(2p_i\cdot k)(2p_j\cdot k)}{(2p_i\cdot p_j)}\,.
 \end{equation}
@@ -350,17 +369,17 @@ n_{\mathrm{in}}^{(ij)}=\left(\cot\frac{\theta_{ij}}{2},\frac{\vec{n}_i+\vec{n}_j
 \end{equation}
 where $\vec{n}_\ell\equiv\vec{p}_\ell/E_\ell$ for $\ell=i,j$. 
 
-Finally, the rapidity of the emission relative to the dipole is defined as
+The rapidity of the emission with respect to the dipole is defined as
 \begin{equation}
-	\eta^{(ij)}\equiv\frac{1}{2}\ln\frac{z^{(i)}}{z^{(j)}}\,.
+\eta^{(ij)} = \frac{1}{2}\ln\frac{z^{(i)}}{z^{(j)}}\,.
 \end{equation}
-For an emission $k$ collinear to $p_i$ or $p_j$, one can relate the dipole rapidity $\eta^{(ij)}$ to the rapidity $\eta^{(\ell)}$ with respect to the leg $p_\ell$ is
+In the limit where the emission becomes collinear to one of the dipole legs, this quantity is related to the single-leg rapidity via
 \begin{equation}
-	\eta^{(i)}\simeq\eta^{(ij)}+\ln\frac{2E_i}{Q_{ij}}\,,\quad \eta^{(j)}\simeq-\eta^{(ij)}+\ln\frac{2E_j}{Q_{ij}}\,,\quad Q_{ij}^2=2(p_i\cdot p_j)\,.
+\eta^{(i)} \simeq \eta^{(ij)} + \ln\frac{2E_i}{Q_{ij}}\,,\quad 
+\eta^{(j)} \simeq -\eta^{(ij)} + \ln\frac{2E_j}{Q_{ij}}\,,\quad 
+Q_{ij}^2 = 2(p_i \cdot p_j)\,.
 \end{equation}
-Finally, in the limit where $k$ is collinear to $\vec{p}_\ell$, we have $\kappa^{(ij)}\to k_t^{(\ell)}$.
-
-
+In the same collinear limit, the dipole transverse momentum reduces to the transverse momentum with respect to the emitting leg, $\kappa^{(ij)} \to k_t^{(\ell)}$.
 
 \section{NLL Resummation}
 \label{sec:NLL-resum}
@@ -519,8 +538,7 @@ We will now discuss the explicit formulas for all terms which make up Eq.~\eqref
 
 \subsection{The coefficient $\mathbf{H^{(1)}(Q)}$}
 \label{sec:H1}
-\todo{need to pad this a bit i.e. write in what the web is etc. fill in any gaps you don't personally understand.}
-\todo{Need to expand the work done here and state what it is for the $e^+e^-$ case.}
+\ABquestion{I have included here what was written in the draft. There is a bit of inconsistency as the notation is varying a bit between here and Sec.~\ref{sec:kinematics}. I can change this but I wanted to understand what the notation should be here before.}
 It is instructive to start from the calculation of $H^{(1)}(Q)$, because this makes it possible to
 introduce the main ingredients for all the calculations that will
 follow, as well as set conventions. We will try to follow the widely used
@@ -671,8 +689,7 @@ R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s}{\pi}h_3^{(\ell)}(
 \end{equation}
 The functions $h_2^{(\ell)}(\lambda),h_3^{(\ell)}(\lambda)$ can be found in Ref.~\cite{Arpino:2019ozn}.
 
-We will outline the remaining terms by splitting the NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} into two pieces: the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. \todo{Re-word this/move this.}
-
+We will outline the remaining terms by splitting the NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} into two pieces: the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. 
 
 \subsection{Soft Cumulative Distribution}
 The master formula for the soft cumulant at NNLL accuracy is the following: 
