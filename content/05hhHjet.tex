@@ -1,4 +1,5 @@
 \chapter{NNLL Resummation in $Z+\,$jet Events with the ARES Method}
+\label{ch:hhZjet}
 \section{Introduction}
 Here we present original research on the \textsc{ARES} method for $hh\to Z+\mathrm{jet}$ production.
 
@@ -249,7 +250,9 @@ This gives the two contributions $\delta \mathcal{F}_{\mathrm{rec,q}}$ and $\del
 &\times \int_0^\infty\frac{d\zeta}{\zeta} \int \dZ \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
 \end{aligned}
 \end{equation}
-\question{Subject to change from here}
+\question{Subject to change from here} 
+\subsection{The $q\bar{q}\to Z+g$ channel contribution}
+\label{subsec:ISR-qqZg}
 Up to this point, we have considered configurations in which the parton entering the hard process is a quark originating from a $q \to qg$ initial-state splitting. This configuration is shown in Fig.~\ref{fig:q-incoming-qqg}, and corresponds to the expressions derived so far. However, this does not exhaust all possible configurations leading to an incoming quark. In particular, for the $q\bar{q} \to Z + g$ channel, there is an additional contribution in which the quark entering the hard process originates from a $g \to q\bar{q}$ splitting, as shown in Fig.~\ref{fig:q-incoming-gqq}. Both splitting channels must therefore be included in order to obtain the complete initial-state radiation contribution to the $q\bar{q}$ channel of $Z$+jet production.
 \begin{figure}[H]
 \centering
@@ -323,55 +326,93 @@ Contributions arise from both the $q \to qg$ splitting (left), along with $g \to
 \noindent We are now in a position to calculate the initial-state radiation contributions to the $q\bar{q}$ channel: $C^{(1)}_{\mathrm{hc,q}}$, $\delta \mathcal{F}_{\mathrm{rec,q}}$, and $\delta \mathcal{F}_{\mathrm{hc,q}}$. The hard-collinear coefficient is
 \begin{equation}
 \begin{aligned}
-C^{(1)}_{\mathrm{hc, q}}&= \int_x^1\frac{dz}{z}C_F
+C^{(1)}_{\mathrm{hc}, \ell}&= \int_x^1\frac{dz}{z}C_F
 \left[ \left(\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln d_\ell g_\ell(\phi)}{(1-z)_+}\right)\right)(1+z^2)+(1-z)\right]\frac{f_q(x/z,Qv^{\frac{1}{a+b_q}})}{f_q(x,Qv^{\frac{1}{a+b_q}})}+\\
 &+\int_x^1\frac{dz}{z}T_R
-\left[\left((1-z)^2+z^2\right)\left(\ln(1-z)
--\ln d_\ell g_\ell(\phi)\right)
+\left[\left(\frac{2}{a+b_\ell}\left(b_\ell\ln(1-z)
+-\ln d_\ell g_\ell(\phi)\right)\left((1-z)^2+z^2\right)\right)
 +2z(1-z)\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_q(x,Qv^{\frac{1}{a+b_q}})}\,.
 \end{aligned}
 \end{equation}
 The remaining terms can be expressed more generally. The recoil correction is
 \begin{equation}
 \begin{aligned}
-\delta \mathcal{F}_{\mathrm{rec,q}}& =\int \dZ \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left\{\int_0^\infty\frac{d\zeta}{\zeta}\times\right. \\
+\delta \mathcal{F}_{\mathrm{rec,q}}& =\int \dZ \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left\{\int_0^\infty\frac{d\zeta}{\zeta}\int_0^\pi\frac{d\phi}{\pi}\int_0^1 dz\times\right. \\
 &\times P^{\mathrm{rec}}_q(z)
 \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
 \end{aligned}
 \end{equation}
 where
 \begin{equation}
-  P^{\mathrm{rec}}_q(z) = \int_x^1 \frac{dz}{z}\frac{1}{f_q(x,\mu_F)}\left[ f_q(x/z,\mu_F)C_F\frac{1+z^2}{1-z}+ f_g(x/z,\mu_F)T_R(z^2+(1-z)^2)\right]\,.
+  P^{\mathrm{rec}}_q(z) = \frac{1}{z}\frac{1}{f_q(x,\mu_F)}\left[ f_q(x/z,\mu_F)C_F\frac{1+z^2}{1-z}+ f_g(x/z,\mu_F)T_R(z^2+(1-z)^2)\right]\Theta\left(z-x\right)\,.
 \end{equation}
 For final-state radiation, this reduces to
-\begin{equation}
-	P^{\mathrm{rec}}_q(z)=\int_0^\pi\frac{d\phi^{(\ell)}}{\pi}\int_0^1dz^{(\ell)}\left(\frac{2C_\ell}{z^{(\ell)}}+\langle P_{f_\ell}(z^{(\ell)},0)\rangle\right)\,,
-\end{equation}
-with
 \begin{equation} 
-\label{eq:P}
-  \langle P_{f_\ell}(z;\varepsilon) \rangle \equiv
-  \begin{cases}
-    C_F(-2+(1-\varepsilon)z)\,, & f_\ell = q\,,\\
-    C_A(z(1-z)-2)+T_R n_f\left[1-\frac{2z(1-z)}{1-\varepsilon}\right]\,, & f_\ell = g\,.
+\label{eq:P-avg}
+ P^{\mathrm{rec}}_{f_\ell}(z)\equiv
+   \begin{cases}
+    C_F\frac{1+z^2}{1-z}\,, & f_\ell = q\,,\\
+    C_A\left(\frac{2}{1-z}+z(1-z)-2\right)+T_R n_f\left(1-2z(1-z)\right)\,, & f_\ell = g\,.
   \end{cases}
 \end{equation}
 Finally, the hard-collinear correction is
 \begin{equation}
 \begin{aligned}
-\delta \mathcal{F}_{\mathrm{hc,q}}& = \int \dZ\frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}  \, P^{\mathrm{hc}}_q(z) \\
+\delta \mathcal{F}_{\mathrm{hc,q}}& = \int \dZ\frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^\pi\frac{d\phi}{\pi}\int_0^1 dz  \, P^{\mathrm{hc}}_q(z) \\
 &\times \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,,
 \end{aligned}
 \end{equation}
 with
 \begin{equation}
-P^{\mathrm{hc}}_q(z)=\int_x^1 \frac{dz}{z}\frac{1}{f_q(x,\mu_F)}\left[ f_q(x/z,\mu_F)C_F\frac{1+z^2}{(1-z)_{+}}+ f_g(x/z,\mu_F)T_R(z^2+(1-z)^2)\right]\,.
+P^{\mathrm{hc}}_q(z)=\frac{1}{z}\frac{1}{f_q(x,\mu_F)}\left[ f_q(x/z,\mu_F)C_F\frac{1+z^2}{(1-z)_{+}}+ f_g(x/z,\mu_F)T_R(z^2+(1-z)^2)\right]\Theta\left(z-x\right)\,.
 \end{equation}
-In the context of final-state radiation, this becomes
+In the context of final-state radiation, $P^{\mathrm{hc}}_q(z)\equiv P^{\mathrm{rec}}_q(z)$. \\ \\
+We will now discuss each of the contributions making up the ISR component of the $q\bar{q}\to Z+g$ channel for each observable.
+
+\paragraph{One-jettiness} 
 \begin{equation}
-	P^{\mathrm{rec}}_q(z)=\int_0^\pi\frac{d\phi^{(\ell)}}{\pi}\int_0^1dz^{(\ell)}\langle P_{f_\ell}(z^{(\ell)},0)\rangle\,.
+\begin{aligned}
+C^{(1)}_{\mathrm{hc}, \ell}&= \int_x^1\frac{dz}{z}C_F
+\left[ \left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln d_\ell g_\ell(\phi)}{(1-z)_+}\right)(1+z^2)+(1-z)\right]\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}+\\
+&+\int_x^1\frac{dz}{z}T_R
+\left[\left((1-z)^2+z^2\right)\left(\ln(1-z)
+-\ln d_\ell g_\ell(\phi)\right)
++2z(1-z)\right]\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\,,
+\end{aligned}
 \end{equation}
-We now turn to the $gq$ channel, which provides an additional contribution to $Z$+jet production, as illustrated in Fig.~\ref{fig:g-incoming}.
+
+\begin{equation}
+\delta \mathcal{F}_{\mathrm{rec,q}} = -\mathcal{F}_{\mathrm{NLL}}
+\frac{\alpha_s\left(Q v^{1/2}\right)}{2\alpha_s(Q)}\int_0^1 dz\, P^{\mathrm{rec}}_q(z)\ln z\,,
+\end{equation}
+
+\begin{equation}
+\delta \mathcal{F}_{\mathrm{hc,q}} = -\mathcal{F}_{\mathrm{NLL}}
+\frac{\alpha_s\left(Q v^{1/2}\right)}{2\alpha_s(Q)}\int_0^1 dz\, P^{\mathrm{hc}}_q(z)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}+\gamma_E\right)\right)\,.
+\end{equation}
+
+\paragraph{Thrust minor} 
+\begin{equation}
+\begin{aligned}
+C^{(1)}_{\mathrm{hc}, \ell}&= \int_x^1\frac{dz}{z}C_F\left(-2(1+z^2)\frac{\ln d_\ell g_\ell(\phi)}{(1-z)_+}+(1-z)\right)\frac{f_q(x/z,Qv)}{f_q(x,Qv)}
++\\&+\int_x^1\frac{dz}{z}T_R
+\left[\left((1-z)^2+z^2\right)\left(
+-2\ln d_\ell g_{\ell}(\phi) \right)
++2z(1-z)\right]\frac{f_g(x/z,Qv)}{f_q(x,Qv^)}\,,
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\delta \mathcal{F}_{\mathrm{rec,q}} = 0
+\end{equation}
+
+\begin{equation}
+\delta \mathcal{F}_{\mathrm{hc,q}} = -\mathcal{F}_{\mathrm{NLL}}
+\frac{\alpha_s\left(Q v\right)}{2\alpha_s(Q)}\int_0^1 dz\, P^{\mathrm{hc}}_q(z)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}+\gamma_E\right)\right)\,.
+\end{equation}
+
+\subsection{The $gq\to Z+q$ channel contribution}
+We now turn to the $gq$ channel, which provides an additional contribution to $Z$+jet production, as illustrated in Fig.~\ref{fig:g-incoming}. 
 \begin{figure}[H]
 \centering
 
@@ -442,92 +483,270 @@ The left panel shows a $q \to gq$ splitting, while the right panel shows $g \to 
 The hard scattering is denoted by $\mathcal{H}_{gq}$, where the subscripts indicate the incoming partons.}
 \label{fig:g-incoming}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\noindent\textbf{One-jettiness} \\ 
-$q\to qg$
+\subsubsection{Averaged Contributions}
+Analogously to sec.~\ref{subsec:ISR-qqZg}, we will now discuss each of the contributions making up the ISR component of the $gq\to Z+q$ channel. The hard-collinear coefficient is:
 \begin{equation}
-C^{(1)}_{\mathrm{hc,q}} =
-\int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
-\left[
-C_F(1+z^2)\left(\frac{\ln(1-z)}{(1-z)}\right)_{\!+}
--\ln(d_\ell g_\ell(\phi))
-\left(P_{qq}^{(0)}-C_F\frac{3}{2}\delta(1-z)\right)
-+1-z
-\right].
+\begin{aligned}
+C^{(1)}_{\mathrm{hc}, \ell}&= \int_x^1\frac{dz}{z}2C_A
+\left[ \left(\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln d_\ell g_\ell(\phi)}{(1-z)_+}\right)\right)\frac{(1-z+z^2)^2}{z}\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_g(x,Qv^{\frac{1}{a+b_q}})}+\\
+&+\int_x^1\frac{dz}{z}C_F
+\left[\left(\frac{2}{a+b_\ell}\left(b_\ell\ln(1-z)
+-\ln d_\ell g_\ell(\phi)\right)\frac{1+(1-z)^2}{z}\right)
++z\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_q(x,Qv^{\frac{1}{a+b_q}})}\,.
+\end{aligned}
 \end{equation}
-$g\to q\bar{q}$
+Again, we find the recoil correction to be
 \begin{equation}
-C^{(1)}_{\mathrm{hc,q}} =
-\int_x^1\frac{dz}{z}
-\frac{f_g(x/z,\mu_F)}{f_q(x,\mu_F)}
-\left[
-T_R\!\left((1-z)^2+z^2\right)\ln(1-z)
--P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
-+2T_R\,z(1-z)
-\right].
+\begin{aligned}
+\delta \mathcal{F}_{\mathrm{rec,g}}& =\int \dZ \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left\{\int_0^\infty\frac{d\zeta}{\zeta}\int_0^\pi\frac{d\phi}{\pi}\int_0^1 dz\times\right. \\
+&\times P^{\mathrm{rec}}_q(z)
+\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
+\end{aligned}
 \end{equation}
-$q\to gq$
+where
 \begin{equation}
-C^{(1)}_{\mathrm{hc,g}} =
-\int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_g(x,\mu_F)}
-\left[
-C_F\frac{1+(1-z)^2}{z}\ln(1-z)
--P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
-+C_F z
-\right].
+  P^{\mathrm{rec}}_g(z) = \frac{1}{z}\frac{1}{f_g(x,\mu_F)}\left[ f_g(x/z,\mu_F)2C_A\frac{(1-z+z^2)^2}{z(1-z)}+ f_q(x/z,\mu_F)C_F\frac{(1+(1-z)^2)}{z}\right]\Theta\left(z-x\right)\,.
 \end{equation}
-\noindent\textbf{Transverse thrust and thrust minor} \\
-$q\to qg$
+Finally, the hard-collinear correction is
 \begin{equation}
-C^{(1)}_{\mathrm{hc,q}} =
-\int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
-\left[
--2\ln(d_\ell g_\ell(\phi))
-\left(P_{qq}^{(0)}-C_F\frac{3}{2}\delta(1-z)\right)
-+1-z
-\right].
+\begin{aligned}
+\delta \mathcal{F}_{\mathrm{hc,g}}& = \int \dZ\frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^\pi\frac{d\phi}{\pi}\int_0^1 dz  \, P^{\mathrm{hc}}_q(z) \\
+&\times \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,,
+\end{aligned}
 \end{equation}
-$g\to q\bar{q}$
+with
 \begin{equation}
-C^{(1)}_{\mathrm{hc,q}} =
-\int_x^1\frac{dz}{z}
-\frac{f_g(x/z,\mu_F)}{f_q(x,\mu_F)}
-\left[
--2P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
-+2T_R\,z(1-z)
-\right].
+P^{\mathrm{hc}}_g(z)= \frac{1}{z}\frac{1}{f_g(x,\mu_F)}\left[ f_g(x/z,\mu_F)2C_A\frac{(1-z+z^2)^2}{z(1-z)_{\!+}}+ f_q(x/z,\mu_F)C_F\frac{(1+(1-z)^2)}{z}\right]\Theta\left(z-x\right)\,.
 \end{equation}
-$q\to gq$
+For the relevant observables, $\delta \mathcal{F}_{\mathrm{rec,g}}$ and $\delta \mathcal{F}_{\mathrm{hc,g}}$ take the same form as the quark contribution discussed in the previous section, with the replacement $P_q^{\mathrm{rec/hc}} \to P_g^{\mathrm{rec/hc}}$. Explicitly, we can show $C^{(1)}_{\mathrm{hc}, \ell}$ for each observable.
+\paragraph{One-jettiness} 
 \begin{equation}
-C^{(1)}_{\mathrm{hc,g}} =
-\int_x^1\frac{dz}{z}
-\frac{f_q(x/z,\mu_F)}{f_g(x,\mu_F)}
+\begin{aligned}
+C^{(1)}_{\mathrm{hc}, \ell}&= \int_x^1\frac{dz}{z}2C_A
+\left[ \left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln d_\ell g_\ell(\phi)}{(1-z)_+}\right)\frac{(1-z+z^2)^2}{z}\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_g(x,Qv^{\frac{1}{a+b_q}})}+\\
+&+\int_x^1\frac{dz}{z}C_F
+\left[\left(\left(\ln(1-z)
+-\ln d_\ell g_\ell(\phi)\right)\frac{1+(1-z)^2}{z}\right)
++z\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_q(x,Qv^{\frac{1}{a+b_q}})}\,.
+\end{aligned}
+\end{equation}
+
+\paragraph{Thrust minor} 
+\begin{equation}
+\begin{aligned}
+C^{(1)}_{\mathrm{hc}, \ell}&= \int_x^1\frac{dz}{z}2C_A
+\left[-2\frac{\ln d_\ell g_\ell(\phi)}{(1-z)_+}\frac{(1-z+z^2)^2}{z}\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_g(x,Qv^{\frac{1}{a+b_q}})}+\\
+&+\int_x^1\frac{dz}{z}C_F
 \left[
--2P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
-+C_F z
-\right].
-\end{equation} \\ \\
-The leading-order splitting functions are given by
-\begin{align}
-P_{qq}^{(0)} &= C_F\!\left[\frac{1+z^2}{(1-z)_{\!+}}+\frac{3}{2}\delta(1-z)\right], \\
-P_{qg}^{(0)} &= T_R\!\left[(1-z)^2+z^2\right], \\
-P_{gq}^{(0)} &= C_F\!\left[\frac{1+(1-z)^2}{z}\right].
-\end{align}
+-\ln d_\ell g_\ell(\phi)\frac{1+(1-z)^2}{z}
++z\right]\frac{f_g(x/z,Qv^{\frac{1}{a+b_q}})}{f_q(x,Qv^{\frac{1}{a+b_q}})}\,.
+\end{aligned}
+\end{equation}
+Please note that the expressions for transverse thrust take the same form as thrust minor, differing only in the observable-dependent coefficients $d_\ell$ and $g_\ell(\phi)$. This follows from the fact that for both
+observables $b_\ell=0$ for the incoming legs.
+
+\subsubsection{Un-averaged Contributions}
+The spin-density matrix is:
+\begin{equation}
+	\rho^{\mu\nu}=-\left(\frac{1}{2}g_T^{\mu\nu}+\mathcal{P}_L\left(\frac{p_T^\mu p_T^\nu}{p_T^2}-\frac{1}{2}g_T^{\mu\nu}\right)+\mathcal{P}_C^{\mu\nu}\epsilon_T^{\mu\nu}\right)\,,
+\end{equation}
+where
+\begin{equation}
+g_T^{\mu\nu}=g^{\mu\nu}-\frac{p_1^\mu p_2^\nu+p_2^\mu p_1^\nu}{p_1\cdot p_2}\,,
+\end{equation}
+and $\mathcal{P}_{L}$ and $\mathcal{P}_{C}$ are defined as the following for the $gq\to Zq$ channel
+\begin{equation}
+\begin{aligned}
+	&\mathcal{P}_L=\frac{2su}{s^2+u^2+2M^2t}\,,\\
+	&\mathcal{P}_C=\frac{g_Vg_A}{g_V^2+g_A^2}\frac{s^2-u^2}{s^2+u^2+2M^2t}\,.
+\end{aligned}
+\end{equation}
+In order to find $\Delta P_g$, we must contract the tensor $\rho^{\mu\nu}$ with the following splitting functions
+\begin{equation}
+\begin{aligned}
+ 	&\left[\hat{P}_{gg}^{(1)}(z,\mathbf{p_T})\right]^{\mu\nu}=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+z(1-z)\right)+2\frac{p_T^\mu p_T^\nu}{\mathbf{q_T}^2}\frac{1-z}{z}\right]\,,\\
+	&\left[\hat{P}_{gq}^{(1)}(z,\mathbf{p_T})\right]^{\mu\nu}=\left[\hat{P}_{g\bar{q}}^{(1)}(z,\mathbf{p_T})\right]^{\mu\nu}=2C_F\left[-g^{\mu\nu}\frac{z}{2}+2\frac{p_T^\mu p_T^\nu}{\mathbf{q_T}^2}\frac{1-z}{z}\right]\,.
+\end{aligned}	
+\end{equation}
+In fact, we find that it is convenient to write these gluon splitting functions as:
+\begin{equation}
+	\left[\hat{P}_{ga}^{(1)}(z,\mathbf{p_T})\right]^{\mu\nu}=-g^{\mu\nu}\hat{P}_{ga}^{(1)}+\left(g^{\mu\nu}+2\frac{q_T^\mu q_T^\nu}{\mathbf{q_T}^2}2G_{ga}^{(1)}(z)\right)\,,\quad a=g,q,\bar{q}\,,
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+	&G_{gg}^{(1)}=C_A\frac{1-z}{z}\,,\quad\\
+	&G_{gq}^{(1)}=G_{g\bar{q}}^{(1)}=C_F\frac{1-z}{z}\,,
+\end{aligned}
+\end{equation}
+and $\hat{P}_{ga}^{(1)}$ are the azimuthally averaged splitting functions:
+\begin{equation}
+\begin{aligned}
+	&\hat{P}_{gg}^{(1)}=2C_A\left[\frac{z}{1-z}+\frac{1-z}{z}+z(1-z)\right]\,,\\
+	&\hat{P}_{gq}^{(1)}=\hat{P}_{g\bar{q}}^{(1)}=2C_F\frac{1+(1-z)^2}{z}\,.
+\end{aligned}
+\end{equation}
+From here, we find that the contraction is:
+\begin{equation}
+	\rho^{\mu\nu}\left[\hat{P}_{ga}^{(1)}(z,\mathbf{p_T})\right]_{\mu\nu}=\hat{P}_{ga}^{(1)}+2\mathcal{P}_LG_{ga}^{(1)}\left[2\cos^2\phi-1\right]\,,\quad a=g,q,\bar{q}\,.
+\end{equation}
+The $\hat{P}_{ga}^{(1)}$ term contributes to the $\delta\mathcal{F}_{\mathrm{rec}}$ while the spin correlation effects come from the term dependent on $G_{ga}^{(1)}$ such that we find:
+\begin{equation}
+\begin{aligned}
+\Delta\mathcal{F}_{\mathrm{rec}}& =\frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^\pi\frac{d\phi}{\pi}\int_x^1 \frac{dz}{z}\frac{1}{f_g(x,\mu_F)}\Delta P_{g}(z)\times\\&\times\int \dZ \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,,
+\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+\Delta P_g =2\mathcal{P}_L\left(\frac{1-z}{z}\right)\left[2\cos^2\phi-1\right](C_Af_g(x/z,\mu_F)+C_Ff_q(x/z,\mu_F))\,.
+\end{aligned}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+%\noindent\textbf{One-jettiness} \\ 
+%$q\to qg$
+%\begin{equation}
+%C^{(1)}_{\mathrm{hc,q}} =
+%\int_x^1\frac{dz}{z}
+%\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+%\left[
+%C_F(1+z^2)\left(\frac{\ln(1-z)}{(1-z)}\right)_{\!+}
+%-\ln(d_\ell g_\ell(\phi))
+%\left(P_{qq}^{(0)}-C_F\frac{3}{2}\delta(1-z)\right)
+%+1-z
+%\right].
+%\end{equation}
+%$g\to q\bar{q}$
+%\begin{equation}
+%C^{(1)}_{\mathrm{hc,q}} =
+%\int_x^1\frac{dz}{z}
+%\frac{f_g(x/z,\mu_F)}{f_q(x,\mu_F)}
+%\left[
+%T_R\!\left((1-z)^2+z^2\right)\ln(1-z)
+%-P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
+%+2T_R\,z(1-z)
+%\right].
+%\end{equation}
+%$q\to gq$
+%\begin{equation}
+%C^{(1)}_{\mathrm{hc,g}} =
+%\int_x^1\frac{dz}{z}
+%\frac{f_q(x/z,\mu_F)}{f_g(x,\mu_F)}
+%\left[
+%C_F\frac{1+(1-z)^2}{z}\ln(1-z)
+%-P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
+%+C_F z
+%\right].
+%\end{equation}
+
+%\noindent\textbf{Transverse thrust and thrust minor} \\
+%$q\to qg$
+%\begin{equation}
+%C^{(1)}_{\mathrm{hc,q}} =
+%\int_x^1\frac{dz}{z}
+%\frac{f_q(x/z,\mu_F)}{f_q(x,\mu_F)}
+%\left[
+%-2\ln(d_\ell g_\ell(\phi))
+%\left(P_{qq}^{(0)}-C_F\frac{3}{2}\delta(1-z)\right)
+%+1-z
+%\right].
+%\end{equation}
+%$g\to q\bar{q}$
+%\begin{equation}
+%C^{(1)}_{\mathrm{hc,q}} =
+%\int_x^1\frac{dz}{z}
+%\frac{f_g(x/z,\mu_F)}{f_q(x,\mu_F)}
+%\left[
+%-2P_{qg}^{(0)}\ln(d_\ell g_\ell(\phi))
+%+2T_R\,z(1-z)
+%\right].
+%\end{equation}
+%$q\to gq$
+%\begin{equation}
+%C^{(1)}_{\mathrm{hc,g}} =
+%\int_x^1\frac{dz}{z}
+%\frac{f_q(x/z,\mu_F)}{f_g(x,\mu_F)}
+%\left[
+%-2P_{gq}^{(0)}\ln(d_\ell g_\ell(\phi))
+%+C_F z
+%\right].
+%\end{equation} \\ \\
+%The leading-order splitting functions are given by
+%\begin{align}
+%P_{qq}^{(0)} &= C_F\!\left[\frac{1+z^2}{(1-z)_{\!+}}+\frac{3}{2}\delta(1-z)\right], \\
+%P_{qg}^{(0)} &= T_R\!\left[(1-z)^2+z^2\right], \\
+%P_{gq}^{(0)} &= C_F\!\left[\frac{1+(1-z)^2}{z}\right].
+%\end{align}
+
+\subsection{h10 implementation}
+\paragraph{$q\bar{q}\to Z+g$}
+\begin{itemize}
+ \item{One-jettiness}
+\begin{equation}
+ \begin{aligned}
+ 	h_{10,q\bar{q}}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}C_F\left\{2\left[(1-z)+\left(\frac{\ln(1-z)}{1-z}\right)_{\!+}(1+z^2)-\frac{1+z^2}{1-z}\ln z\right]\right.\\
+	&\left.-\frac{1+z^2}{(1-z)_{\!+}}(\ln(d_1)+\ln(d_2))\right\}+\\
+	&+\int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}T_R\left\{2\left[z(1-z)+((1-z)^2+z^2)\ln\frac{1-z}{z}\right]\right.\\
+	&\left.-((1-z)^2+z^2)(\ln d_1+\ln d_2)\right\}
+ \end{aligned}
+\end{equation}
+ \item{Thrust minor}
+ \begin{equation}
+ \begin{aligned}
+ 	h_{10,q\bar{q}}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\left\{2C_F\left[-\frac{(1+z^2)}{(1-z)_{\!+}}\left(\ln d_1 g_1(\phi)+\ln d_2 g_2(\phi)\right)+(1-z)\right]\right\}
+	\\
+	&+\int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\left\{2\left[-T_R((1-z)^2+z^2)\left(\ln d_1 g_1(\phi)+\ln d_2 g_2(\phi)\right)+2T_Rz(1-z)\right]\right\}
+	 \end{aligned}
+\end{equation}
+\end{itemize}
+\paragraph{$gq\to Z+q$}
+\begin{itemize}
+ \item{One-jettiness}
+\begin{equation}
+ \begin{aligned}
+ 	h_{10,qg}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_g(x,Qv^{\frac{1}{2}})}2C_A\left\{2\left[\left(\frac{\ln(1-z)}{1-z}\right)_{\!+}\frac{(1-z+z^2)^2}{z}-\frac{(1-z+z^2)^2}{z(1-z)}\ln z\right]\right.\\
+	&\left.-\frac{(1-z+z^2)^2}{z(1-z)_{\!+}}(\ln(d_1)+\ln(d_2))\right\}+\\
+	&+\int_x^1\frac{dz}{z}\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_g(x,Qv^{\frac{1}{2}})}C_F\left\{2\left[2z+\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}\right]-\frac{(1+(1-z)^2)}{z}(\ln d_1+\ln d_2)\right\}
+ \end{aligned}
+\end{equation}
+ \item{Thrust minor}
+ \begin{equation}
+ \begin{aligned}
+ 	h_{10,qg}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_g(x,Qv^{\frac{1}{2}})}\left\{4C_A\left[-\frac{(1-z+z^2)^2}{z(1-z)_{\!+}}(\ln(d_1)+\ln(d_2))\right]\right\}
+	\\
+	&+\int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\left\{2C_F\left[-\frac{(1+(1-z)^2)}{z}(\ln d_1g_1(\phi)+\ln d_2g_2(\phi))+z\right]\right\}
+	 \end{aligned}
+\end{equation}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
