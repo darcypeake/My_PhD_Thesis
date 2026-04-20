@@ -213,7 +213,7 @@ where we have used the fact that, in the presence of soft emissions,
 $p_{\mathrm{t,jet}}\simeq q_T$, and that $\tilde p_{3x}$ can be obtained
 from conservation of transverse momentum. For a soft emission $k$
 collinear to leg $\ell$, $T^{\mathrm{sc}}_m(\{\tilde p\},k)$ is given by
-eq.~(\ref{eq:Tm-sc-1emsn}).
+eq.~(\ref{eq:Tm-sc-1emsn}). \todo{Work out if we want this here.}
 
 \end{itemize}
 
@@ -345,7 +345,7 @@ functions require to compute the quantity
 \todo{Discuss the situation with $\delta \mathcal{F}_{\mathrm{hc}}$ and mention that we just do NLL also here since it contains the same limit. Think about if this structure is appealing for a thesis.}
 
 \paragraph{NLL resummation.}
-Soft and collinear emissions widely separated in angle give the only NLL function embodying the effect of resolved emission. This is the well-known function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, which can be computed using the general formula shown in Eq.~\eqref{eq:FNLL-formula}. We now proceed to the calculation of $\mathcal{F}_{\mathrm{NLL}}(\lambda)$ for the three considered observables.
+Soft and collinear emissions widely separated in angle give the only NLL function embodying the effect of resolved emission. This is the well-known function $\mathcal{F}_{\mathrm{NLL}}(\lambda)$, which can be computed using the general formula shown in Eq.~\eqref{eq:FNLL-formula}. We now proceed to the calculation of $\mathcal{F}_{\mathrm{NLL}}(\lambda)$ for the three considered observables. \todo{Relate back to previous section, i.e. `` Since the ...''.}
 
 \begin{itemize}
 \item {\textbf{One-jettiness.}} One-jettiness is additive meaning that
@@ -403,6 +403,86 @@ appendix~\ref{sec:FNLL}, and gives
 \end{itemize}
 
 The above results can be validated against the Monte-Carlo calculations provided by ARES and CAESAR.
+\add{Add a plot with the comparison of the functions with ARES and CAESAR for at least thrust minor (maybe the additive observables, however we already have this in terms of CAESAR before.)}
 
-\add{Add a plot with the comparison of the functions with ARES and CAESAR}
+\paragraph{NNLL resummation.} The soft and collinear corrections which
+contribute to the NNLL resummation are, in order of complexity,
+$\delta \mathcal{F}_{\mathrm{hc}}$, $\delta \mathcal{F}_{\mathrm{sc}}$, and
+$\delta \mathcal{F}_{\mathrm{correl}}$. On top of the soft-collinear
+emissions $k_1,\dots,k_n$ that are needed for any resummation, the two
+functions $\delta \mathcal{F}_{\mathrm{hc}}$, $\delta \mathcal{F}_{\mathrm{sc}}$
+involve the presence of an additional soft and collinear emission $k$,
+parametrised in terms of the usual variable $\zeta=\Vsc{k}/v$, as well
+as its emitter's leg $\ell$, and azimuthal angle $\phi^{(\ell)}$. For
+$\delta \mathcal{F}_{\mathrm{correl}}$, this additional emission is
+required to split into $k_a$ and $k_b$, with further dimensionsless
+variables parametrising the splitting (see later). We now compute each
+of these functions in turn, for the three considered observables. \todo{I think we could be repeating ourself a bit here from Ch4 and previously in this section so make sure.}
+
+\todo{Maybe say that we start from the expression in Ch4 and can get the following equation.}
+The general expression for $\delta \mathcal{F}_{\mathrm{hc}}$ is given by
+ \begin{multline}
+   \label{eq:dFhc-general}
+   \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \int_0^\infty\frac{d\zeta}{\zeta}\sum_\ell \frac{\alpha_s\left(v^{\frac{1}{a+b_\ell}}Q\right)}{(a+b_\ell)\alpha_s(Q)}\gamma_\ell^{(0)} \int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi} \int\! \dZ \,\times \\ \times \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
+       -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
+     \right] \,.
+ \end{multline}
+Note that this is slightly different from that shown for $e^+e^-$ in Eq.~\eqref{eq:dFhc-general}, as we have simply performed the $z^{(\ell)}$-integration to go from $\langle P_{f_\ell}(z^{(\ell)},\epsilon)\rangle$ and produce the $\gamma^{(0)}_\ell$ coefficient. \todo{Reword.}
+
+\question{Unsure how the $\sum$ works? Also don't really understand the ``cut'' here for thrust minor?}
+ \begin{itemize}
+ \item{\textbf{One-jettiness.}}
+ One-jettiness is an additive observable. Therefore, using the
+   general formula for additive
+   observalbes~\cite{Banfi:2014sua,Banfi:2018mcq}, we obtain
+ \begin{equation}
+  \label{eq:dFhc-tau_1}
+  \begin{split}
+    \delta \mathcal{F}_{\mathrm{hc}}(\lambda) & = -\FNLL(\lambda)\frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}(2 \gamma_q^{(0)}+\gamma_g^{(0)})\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\\
+     &= \frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}(2 \gamma_q^{(0)}+\gamma_g^{(0)})\frac{d\FNLL}{d\RpNLL}
+    \,.
+  \end{split}
+  \end{equation}
+  
+ \item{\textbf{Transverse thrust.}} The observable is still additive, but we need to take into account the fact that $b_\ell=0$ for the initial state legs $\ell=1,2$, and $b_\ell=1$ for the final-state leg $\ell=3$. This gives
+   \begin{equation}
+  \label{eq:dFhc-tau_perp}
+  \begin{split}
+    \delta \mathcal{F}_{\mathrm{hc}}(\lambda) & = -\FNLL(\lambda)\left[\frac{\alpha_s(\tau_t\,Q)}{\alpha_s(Q)}(\gamma_1^{(0)}+\gamma_2^{(0)})+\frac{\alpha_s(\sqrt{\tau_t}\,Q)}{2\,\alpha_s(Q)}\gamma_3^{(0)}\right]\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\\
+    &= \left[\frac{\alpha_s(\tau_t\,Q)}{\alpha_s(Q)}(\gamma_1^{(0)}+\gamma_2^{(0)})+\frac{\alpha_s(\sqrt{\tau_t}\,Q)}{2\,\alpha_s(Q)}\gamma_3^{(0)}\right]
+    \frac{d\FNLL}{d\RpNLL}
+    \,.
+  \end{split}
+  \end{equation}
+  
+  \item{\textbf{Thrust minor.}} This observable is not additive, therefore we
+  need to use the full expression in
+  eq.~(\ref{eq:dFhc-general}). Using the fact that the contribution of
+  all legs is identical, we obtain:
+\begin{multline}
+  \label{eq:dFhc}
+  \delta \mathcal{F}_{\mathrm{hc}}(\lambda)=  \frac{\alpha_s(T^{\mathrm{cut}}_mQ)}{\alpha_s(Q)}(2 \gamma^{(0)}_q+\gamma^{(0)}_g) \int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\lim_{\epsilon\to 0} \epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!} \\ \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i}{2\pi}\right)  \times
+  \left[
+    \Theta\left(1-\frac 12 \left(\zeta+\zeta\frac{\sin\phi}{|\sin\phi|}+\sum_{i=1}^n \zeta_i + \left|\sum_{i=1}^n \zeta_i\frac{\sin\phi_i}{|\sin\phi_i|}\right|\right)\right)\right. \\ \left. -\Theta\left(1-\frac 12 \left(\sum_{i=1}^n \zeta_i + \left|\sum_{i=1}^n \zeta_i\frac{\sin\phi_i}{|\sin\phi_i|}\right|\right)\right)\Theta(1-\zeta)
+\right]\,.
+\end{multline}
+We can isolate a useful integral that enters also $\delta \mathcal{F}_{\mathrm{sc}}$:
+\begin{multline}
+  \label{eq:dF-integral}
+\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\lim_{\epsilon\to 0} \epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!} \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i}{2\pi}\right) \times \\ \times
+  \left[
+    \Theta\left(1-\frac 12 \left(\zeta+\zeta\frac{\sin\phi}{|\sin\phi|}+\sum_{i=1}^n \zeta_i + \left|\sum_{i=1}^n \zeta_i\frac{\sin\phi_i}{|\sin\phi_i|}\right|\right)\right)\right. \\ \left. -\Theta\left(1-\frac 12 \left(\sum_{i=1}^n \zeta_i + \left|\sum_{i=1}^n \zeta_i\frac{\sin\phi_i}{|\sin\phi_i|}\right|\right)\right)\Theta(1-\zeta)
+  \right]
+  = \frac{d\FNLL}{d\RpNLL}\,,
+\end{multline}
+where the last equality is evident once one computes the integral
+analytically (see appendix~\ref{sec:analytic}). This gives 
+\begin{equation}
+  \label{eq:dFhc-final}
+    \delta \mathcal{F}_{\mathrm{hc}}(\lambda)=  \frac{\alpha_s(T^{\mathrm{cut}}_m Q)}{\alpha_s(Q)}(2 \gamma^{(0)}_q+\gamma^{(0)}_g) \frac{d\FNLL}{d\RpNLL}\,. 
+  \end{equation}
+  \todo{Do this calculation again and see if theres anything else to add from the appendix. Add the appendix also.}
+\end{itemize}
+\add{Add in the MC plots for these with ARES/CAESAR.}
+
 
