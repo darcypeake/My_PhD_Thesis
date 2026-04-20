@@ -1,4 +1,5 @@
 \chapter{Resummation}
+\label{ch:resum}
 In this chapter, we discuss the technique of \emph{resummation}. As outlined in Sec.~\ref{subsec:QCD-ev}, following the initial hard scattering, the produced coloured partons undergo QCD radiation dominated by soft and collinear emissions. For many observables, these emissions give rise to logarithmically enhanced contributions that become large in the limit where the observable, $v$, is small. In this regime, fixed-order perturbation theory breaks down, indicating the need for dedicated resummation techniques.
 
 Traditionally, resummation for final-state observables was performed in an observable-dependent manner, requiring separate analytical calculations for each case. \add{References for observable-dependent resummations?} The first steps towards a more general approach were taken in~\cite{Banfi:2001bz}, where a systematic semi-numerical framework was developed to achieve NLL accuracy for a broad class of observables. This framework was subsequently extended and implemented in the computer code \textsc{CAESAR} (\emph{Computer Automated Expert Semi-Analytical Resummer})~\cite{Banfi:2004yd}. In this approach, the resummation formula is expressed in terms of a set of observable-dependent parameters, which can be determined automatically and numerically for a given observable. This method has been used to determine the resummation of a broad class of observables, such as: event-shape observables and jet-rates.
@@ -494,23 +495,23 @@ A comparison between the analytical result and the numerical output of \textsc{C
 \caption{Comparison of the analytical result for $\mathcal{F}_{\mathrm{NLL}}$ with the numerical result obtained from the \textsc{CAESAR} code for thrust.}
   \label{fig:FNLL-CAESAR-comp}
 \end{figure}
-\ABquestion{Should I create a plot for $e^{-R_{\mathrm{NLL}}}$?}
+
 
 \section{NNLL Resummation}
 In order to develop our NLL cumulant to an NNLL accurate prediction, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. Just as the NLL distribution consisted of soft and collinear partons widely separated in angle, the NNLL cumulant's configuration results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. The NNLL master formula for the $e^+e^-\to3\,\text{jet}$ case, is defined as 
 \begin{equation}
 \begin{aligned}
-  \label{eq:Sigma-NNLL-fs}
+  \label{eq:Sigma-NNLL-fs-ee}
   \Sigma(\{p_1,p_2,p_3\},v)&=\; e^{-R_{\mathrm{NNLL}}(v)}\,\times
  \\
 & \times \left(\mathcal{F}_{\mathrm{NLL}}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H^{(1)}
       +\sum_{\ell=1}^3\frac{\alpha_s(Qv^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},3}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)\right)\,,
  \end{aligned}
 \end{equation}
-where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}. Both $\mathcal{F}_{\mathrm{NLL}}$ and $\delta\mathcal{F}_{\mathrm{NNLL}}$ are single-logarithmic functions and can therefore be defined in terms of the quantity $\lambda$. 
-
-\subsection*{Ingredients of the NNLL formula}
-The terms appearing in Eq.~\eqref{eq:Sigma-NNLL-fs} can be summarised as follows:
+where $\lambda\equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}. Both $\mathcal{F}_{\mathrm{NLL}}$ and $\delta\mathcal{F}_{\mathrm{NNLL}}$ are single-logarithmic functions and can therefore be defined in terms of the quantity $\lambda$.  It is possible to recover all ingredients in
+the above equation from~\cite{Arpino:2019ozn,Banfi:2018mcq,Banfi:2004yd}, but for completeness we will give a short summary and description of all of them. \todo{Work out which way we like more.}
+%\subsection*{Ingredients of the NNLL formula}
+%The terms appearing in Eq.~\eqref{eq:Sigma-NNLL-fs-ee} can be summarised as follows:
 \begin{enumerate}
 	\item \textbf{NNLL Radiator, $R_{\mathrm{NNLL}}(v)$:} just like the NLL radiator, includes all virtual corrections of soft and/or collinear origins along real corrections in the form of unresolved emissions.  The explicit formula of $R_{\mathrm{NNLL}}(v)$ for three emitting legs can be found explicitly in Ref.~\cite{Arpino:2019ozn}. Similarly, to the NLL radiator, its expression depends only on the observable properties with a single soft and collinear emission, more precisely $a,b_\ell,d_\ell,g_\ell(\phi)$. It should be noted that, with the knowledge we have acquired so far, the radiator could be computed for a generic observable at N$^3$LL accuracy.
 \item \textbf{The NLL function, $\mathcal{F}_{\mathrm{NLL}}(\lambda)$:} given in Eq.~\eqref{eq:FNLL-formula}, as discussed before arises from resolved soft and collinear emissions widely separated in angle, along with the the corresponding virtual corrections.
@@ -523,7 +524,7 @@ originates from the combination of a single unresolved hard collinear emission e
   \end{equation}
   while for a gluon
   \begin{equation}
-    \label{eq:C1hc-q}
+    \label{eq:C1hc-g}
     \begin{split}
     C_{\mathrm{hc},\ell}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_\ell}{a+b_\ell}\\ & +\frac{1}{a+b_\ell}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_\ell g_\ell\rangle-b_\ell\ln\frac{2E_\ell}{Q}\right)+\frac{1}{3}T_R n_f\,.
     \end{split}
@@ -558,7 +559,7 @@ splittings of a soft-collinear gluon. \ABquestion{Does it mean all \emph{types} 
 In the following sections, we will provide a description for the terms making up the $\delta\mathcal{F}_{\mathrm{NNLL}}(\lambda)$ function. 
 \end{enumerate}
 
-We will now discuss the explicit formulas for all terms which make up Eq.~\eqref{eq:Sigma-NNLL-fs}, beginning with the hard coefficient, $H^{(1)}$.
+We will now discuss the explicit formulas for all terms which make up Eq.~\eqref{eq:Sigma-NNLL-fs-ee}, beginning with the hard coefficient, $H^{(1)}$.
 
 \subsection{The coefficient $\mathbf{H^{(1)}(Q)}$}
 \label{sec:H1}
@@ -713,11 +714,12 @@ R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s}{\pi}h_3^{(\ell)}(
 \end{equation}
 The functions $h_2^{(\ell)}(\lambda),h_3^{(\ell)}(\lambda)$ can be found in Ref.~\cite{Arpino:2019ozn}.
 
-We will outline the remaining terms by splitting the NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs} into two pieces: the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. 
+We will outline the remaining terms by splitting the NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs-ee} into two pieces: the hard-collinear cumulant $\Sigma_{\mathrm{hc}}$ and the soft-collinear cumulant $\Sigma_{\mathrm{sc}}$. By separating the two, we will be able to identify physically how the contributions arise to form the NNLL cumulative distribution. We will discuss these two cumulants in the following. 
 
 \subsection{Soft Cumulative Distribution}
 The master formula for the soft cumulant at NNLL accuracy is the following: 
 \begin{equation}
+\label{eq:Sigma-NNLL-soft}
 	\Sigma_{\mathrm{soft}}^{\mathrm{NNLL}}(v)=e^{-R_{\mathrm{NNLL}}(v)}H\left(\{p\},\alpha_s(Q)\right)\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)+\frac{\alpha_s}{\pi}\left(\delta\mathcal{F}_{\mathrm{sc}}+\delta\mathcal{F}_{\mathrm{wa}}+\delta\mathcal{F}_{\mathrm{correl}}+\Delta\mathcal{F}_{\mathrm{wa}}\right)\right)\,,
 \end{equation}
 where $H\left(\{p\},\alpha_s(Q)\right)$ is the finite hard function which captures all finite terms in the one-loop corrections to the Born event given in Eq.~\eqref{eq:HQ-exp}.
@@ -832,6 +834,7 @@ The general expression for $\Delta\mathcal{F}_{\mathrm{wa}}$ is given by
 \subsection{Hard-collinear Cumulative Distribution}
 At NNLL accuracy, the hard-collinear cumulant is
 \begin{equation}
+\label{eq:Sigma-NNLL-hc}
 	\Sigma_{\mathrm{hc}}^{\mathrm{NNLL}}(v)=e^{-R_{\mathrm{NNL}}(v)}H\left(\{p\},\alpha_s(Q)\right)\left(\mathcal{F}_{\mathrm{NLL}}(\lambda)\sum_{\ell=1}^3 C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s}{\pi}\left(\delta\mathcal{F}_{\mathrm{rec}}+\delta\mathcal{F}_{\mathrm{hc}}+\mathcal{T}\left(\{p\}\right)\Delta\mathcal{F}_{\mathrm{rec}}\right)\right)\,,
 \end{equation}
 where $\mathcal{T}(\{p\})$ is the pre-factor found from the spin correlations and the description ofthe  $\mathcal{F}$-functions are found in the above section.
@@ -855,7 +858,6 @@ C_F\left(-2+(1-\epsilon)\right)\,, & f_\ell = q, \bar{q} \\[6pt]
 C_A\left(z(1-z)-2\right)+T_R n_f\left[1-\dfrac{2z(1-z)}{1-\epsilon}\right]\,, & f_\ell = g\,.
 \end{cases}
 \end{equation}
-\ABquestion{Do we have the $\ell$ in the $z$ or not?}
 The recoil corrections, $\delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$ rely on the approximation found in Eq.~\ref{eq:Vsc} along with the following
 \begin{equation}
   \label{eq:Vhc}

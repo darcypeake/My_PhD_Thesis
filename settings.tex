@@ -81,7 +81,7 @@
 \newcommand{\qT}{q_T}
 
 \newcommand{\Vwa}[1]{V_{\mathrm{wa}}(\{\tilde{p}\},#1)}
-\newcommand{\Vfull}{V}
+\newcommand{\Vfull}[1]{V(\{\tilde{p}\},#1)}
 \newcommand{\Vhc}[1]{V_{\mathrm{hc}}(\{\tilde{p}\},#1)}
 \newcommand{\Vr}{V_{r}}
 
@@ -127,6 +127,7 @@
 \usepackage{braket}
 \usepackage{cancel}
 \usepackage{amssymb}
+\usepackage{subcaption}
 % DIS Paper commands
 \newif\ifshowcomments
 \showcommentstrue
@@ -168,7 +169,7 @@
 \newcommand{\myfloatalign}{\centering} % to be used with each float for alignment
 \usepackage{caption}
 \captionsetup{format=hang,font=small}
-\usepackage{subfig} 
+%\usepackage{subfig} 
 \newsubfloat{figure} % Allow subfloats in figure environment
  
 % Also allow sidewaystables
