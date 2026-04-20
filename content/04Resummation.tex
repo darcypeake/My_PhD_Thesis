@@ -842,7 +842,7 @@ We will now define these functions explicitly.
 
 The general expression for $\delta \mathcal{F}_{\mathrm{hc}}$ is 
  \begin{multline}
-   \label{eq:dFhc-general}
+   \label{eq:dFhc-general-ee}
    \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{\pi}\int_0^1dz^{(\ell)} \langle P_{f_\ell}\left(z^{(\ell)},0\right)\rangle\times\\
     \times \int\! \dZ \, \times \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
@@ -854,10 +854,11 @@ flavour of leg $\ell$:
 \begin{equation}
 \langle P_{f_\ell}(z^{(\ell)},\epsilon)\rangle \equiv 
 \begin{cases}
-C_F\left(-2+(1-\epsilon)\right)\,, & f_\ell = q, \bar{q} \\[6pt]
+C_F\left(-2+(1-\epsilon)z\right)\,, & f_\ell = q, \bar{q} \\[6pt]
 C_A\left(z(1-z)-2\right)+T_R n_f\left[1-\dfrac{2z(1-z)}{1-\epsilon}\right]\,, & f_\ell = g\,.
 \end{cases}
 \end{equation}
+\question{Add $\ell$'s in the z's here?}
 The recoil corrections, $\delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$ rely on the approximation found in Eq.~\ref{eq:Vsc} along with the following
 \begin{equation}
   \label{eq:Vhc}
