@@ -536,12 +536,27 @@ There is no $\phi$-dependence for this observable and so $2\cos^2\phi-1$ integra
 \begin{equation}
 	\Delta\mathcal{F}_{\mathrm{rec}}=0\,.
 \end{equation}
+
 \paragraph{Thrust minor}
 For this observable, we find that it is half the value for the D-parameter as shown in Ref.~\cite{Arpino:2019ozn} due to for Thrust minor $g_\ell(\phi)=|\sin\phi|$, while for the D-parameter it is $g_\ell(\phi)=\sin^2\phi$. This yields result of
 \begin{equation}
 	\Delta\mathcal{F}_{\mathrm{rec}}=\FNLL(\lambda)\frac{\alpha_s\left(\sqrt{\tau_m}Q\right)}{2\alpha_s(Q)}\int_x^1\frac{dz}{z}\frac{1}{f_g(x,\mu_F)} \mathcal{P}_L\left(\frac{1-z}{z}\right)(C_Af_g(x/z,\mu_F)+C_Ff_q(x/z,\mu_F))
 \end{equation}
 
+\paragraph{Transverse thrust.}
+Following Ref.~\cite{Arpino:2019ozn}, the relevant azimuthal dependence for this observable is $g_\ell(\phi) = 1 - |\cos\phi|$ (for $\ell = 1,2$). This induces a non-trivial azimuthal dependence, leading to an overall factor of $(4+\pi)/\pi$ after integration over $\phi$. The resulting contribution reads
+\begin{equation}
+\begin{aligned}
+\Delta\mathcal{F}_{\mathrm{rec}} =&
+\mathcal{F}_{\mathrm{NLL}}(\lambda)\,
+\frac{\alpha_s\left(\sqrt{\tau_m}\,Q\right)}{2\,\alpha_s(Q)}
+\left(\frac{4+\pi}{\pi}\right)\times\\
+&\times\int_x^1 \frac{dz}{z}
+\frac{1}{f_g(x,\mu_F)} \,
+\mathcal{P}_L \left(\frac{1-z}{z}\right)
+\left(C_A f_g(x/z,\mu_F) + C_F f_q(x/z,\mu_F)\right)\,.
+\end{aligned}
+\end{equation}
 
 
 
@@ -626,59 +641,230 @@ For this observable, we find that it is half the value for the D-parameter as sh
 %P_{gq}^{(0)} &= C_F\!\left[\frac{1+(1-z)^2}{z}\right].
 %\end{align}
 
+\newpage
+\section{Numerical Implementation}
 
-\section{h10 implementation}
-\paragraph{$q\bar{q}\to Z+g$}
-\begin{itemize}
- \item{One-jettiness}
+At NLL accuracy, the relevant contributions are of the form $\alpha_s^n L^{2n}$ and $\alpha_s^n L^{2n-1}$. These logarithmic terms are encoded in the coefficients $h_{12}, h_{11}, h_{24}$, and $h_{23}$, whose explicit expressions can be found in~\cite{Banfi:2004yd}.
+
+At NNLL accuracy, one must additionally include contributions of order $\alpha_s^n L^{2n-2}$, corresponding to the coefficients $h_{10}$ and $h_{22}$. While $h_{22}$ is also provided in~\cite{Banfi:2004yd}, the coefficient $h_{10}$ must be obtained by expanding Eq.~\ref{eq:Sigma-NNLL-fs}.
+
+We find that the contributions to $h_{10}$ arise from several terms, including final-state radiation terms -- $\delta\mathcal{F}_{\mathrm{rec}}$, $\delta\mathcal{F}_{\mathrm{wa}}$, $R_s$, $C_{\mathrm{hc},\ell}^{(1)}$, and $H^{(1)}$ -- as well as terms originating from initial-state radiation. In what follows, we first discuss the latter and present the corresponding expressions channel by channel for each observable.
+
+
+\subsection{Inital-state Radiation}
+We will explicitly express these contributions for each observable. Note that the thrust minor and transverse thrust share the same structure, since they both take $b_\ell=0$ for $\ell=1,2$. 
+
+We also present the results channel by channel. In the $qg \to Z + q$ and $gq \to Z + q$ channels, a sum over quark flavours $q'$ appears. This reflects the structure of collinear splittings: when a quark of flavour $q$ undergoes a splitting $q \to q + g$, the flavour is conserved, and only the same quark flavour can appear in the final state. In contrast, a gluon splitting $g \to q'\bar{q}'$ can produce a quark--antiquark pair of any flavour.
+
+\paragraph{One-jettiness}
+		\begin{equation}
+  \begin{aligned}
+    h_{10,q\bar{q}}^{\mathrm{ISR}} &= \int_x^1 \frac{dz}{z}
+    \left[ C_F \left(
+      (1 - z)
+      + \left(\frac{\ln(1-z)}{1-z}\right)_{\!+} (1 + z^2)
+      - \frac{1 + z^2}{1-z} \ln z \right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[  \left(\frac{3}{2}C_F\,\delta(1-z) - P_{q\bar{q}}^{(0)}\right)\ln d_1 \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ T_R \left( 2z(1-z) + ((1-z)^2+z^2)\ln\frac{1-z}{z} \right)\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ \left(-P_{qg}^{(0)}\,\ln d_1 \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\[6pt]
+    &+ \int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right) 
+    \left[ C_F \left(
+      (1 - z)
+      + \left(\frac{\ln(1-z)}{1-z}\right)_{\!+} (1 + z^2)
+      - \frac{1 + z^2}{1-z} \ln z \right)  \otimes f_{\bar{q}}\!\left(\frac{x}{z}, \mu_F\right) \right]\\
+    &+ \int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right) 
+    \left[ \left(\frac{3}{2}C_F\,\delta(1-z) - P_{q\bar{q}}^{(0)}\right)\ln d_2 \otimes f_{\bar{q}}\!\left(\frac{x}{z}, \mu_F\right)\right]\\
+    &+\int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right)
+    \left[ T_R \left( 2z(1-z) + ((1-z)^2+z^2)\ln\frac{1-z}{z}\right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right]\\
+    &+\int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right)
+   \left[ \left(-P_{qg}^{(0)}\,\ln d_2 \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right]\,.
+  \end{aligned}
+\end{equation}
+
 \begin{equation}
- \begin{aligned}
- 	h_{10,q\bar{q}}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}C_F\left\{2\left[(1-z)+\left(\frac{\ln(1-z)}{1-z}\right)_{\!+}(1+z^2)-\frac{1+z^2}{1-z}\ln z\right]\right.\\
-	&\left.-\frac{1+z^2}{(1-z)_{\!+}}(\ln(d_1)+\ln(d_2))\right\}+\\
-	&+\int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}T_R\left\{2\left[z(1-z)+((1-z)^2+z^2)\ln\frac{1-z}{z}\right]\right.\\
-	&\left.-((1-z)^2+z^2)(\ln d_1+\ln d_2)\right\}
- \end{aligned}
+\begin{aligned}
+h_{10,qg}^{\mathrm{ISR}} &= \int_x^1 \frac{dz}{z}
+    \left[ C_F \left(
+      (1 - z)
+      + \left(\frac{\ln(1-z)}{1-z}\right)_{\!+} (1 + z^2)
+      - \frac{1 + z^2}{1-z} \ln z \right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{g}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[  \left(\frac{3}{2}C_F\,\delta(1-z) - P_{q\bar{q}}^{(0)}\right)\ln d_1 \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{g}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ T_R \left( 2z(1-z) + ((1-z)^2+z^2)\ln\frac{1-z}{z} \right)\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{g}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ \left(-P_{qg}^{(0)}\,\ln d_1 \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{g}\!\left(x, \mu_F\right)\\[6pt]
+&+ \int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+2C_A \left(
+\left(\frac{\ln(1-z)}{1-z}\right)_{\!+}\frac{(1-z+z^2)^2}{z}
+- \frac{(1-z+z^2)^2}{z(1-z)} \ln z
+\right)
+\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)
+\right]\\
+%
+&+ \int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+\left( \frac{\beta_0}{2} - P_{gg}^{(0)} \right)\ln d_2
+\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)
+\right]\\
+%
+&+\int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+C_F \left(z+\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}
+\right)
+\otimes \sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right)
+\right]\\
+%
+&+\int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+\left(-P_{gq}^{(0)}\,\ln d_2\right)
+\otimes \sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right)
+\right]\,.
+\end{aligned}
 \end{equation}
- \item{Thrust minor}
- \begin{equation}
- \begin{aligned}
- 	h_{10,q\bar{q}}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\left\{2C_F\left[-\frac{(1+z^2)}{(1-z)_{\!+}}\left(\ln d_1 g_1(\phi)+\ln d_2 g_2(\phi)\right)+(1-z)\right]\right\}
-	\\
-	&+\int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\left\{2\left[-T_R((1-z)^2+z^2)\left(\ln d_1 g_1(\phi)+\ln d_2 g_2(\phi)\right)+2T_Rz(1-z)\right]\right\}
-	 \end{aligned}
-\end{equation}
-\end{itemize}
-\paragraph{$gq\to Z+q$}
-\begin{itemize}
- \item{One-jettiness}
+
 \begin{equation}
- \begin{aligned}
- 	h_{10,qg}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_g(x,Qv^{\frac{1}{2}})}2C_A\left\{2\left[\left(\frac{\ln(1-z)}{1-z}\right)_{\!+}\frac{(1-z+z^2)^2}{z}-\frac{(1-z+z^2)^2}{z(1-z)}\ln z\right]\right.\\
-	&\left.-\frac{(1-z+z^2)^2}{z(1-z)_{\!+}}(\ln(d_1)+\ln(d_2))\right\}+\\
-	&+\int_x^1\frac{dz}{z}\frac{f_q(x/z,Qv^{\frac{1}{2}})}{f_g(x,Qv^{\frac{1}{2}})}C_F\left\{2\left[2z+\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}\right]-\frac{(1+(1-z)^2)}{z}(\ln d_1+\ln d_2)\right\}
- \end{aligned}
+\begin{aligned}
+h_{10,gq}^{\mathrm{ISR}} &=  \int_x^1 \frac{dz}{z}
+\left[ f_g\!\left(\frac{x}{z}, \mu_F\right) \otimes
+2C_A \left(
+\left(\frac{\ln(1-z)}{1-z}\right)_{\!+}\frac{(1-z+z^2)^2}{z}
+- \frac{(1-z+z^2)^2}{z(1-z)} \ln z
+\right)
+\right]f_q(x,\mu_F)\\
+%
+&+ \int_x^1 \frac{dz}{z}
+\left[ f_g\!\left(\frac{x}{z}, \mu_F\right) \otimes
+\left( \frac{\beta_0}{2} - P_{gg}^{(0)} \right)\ln d_1
+\right]f_q(x,\mu_F)\\
+%
+&+\int_x^1 \frac{dz}{z}
+\left[\sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right) \otimes
+C_F \left(z+\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}
+\right)
+\right]f_q(x,\mu_F)\\
+%
+&+\int_x^1 \frac{dz}{z}
+\left[\sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right) \otimes
+\left(-P_{gq}^{(0)}\,\ln d_1\right)
+\right] f_q(x,\mu_F) \\[6pt]
+&\int_x^1 \frac{dz}{z}f_{g}\!\left(x, \mu_F\right)
+    \left[ C_F \left(
+      (1 - z)
+      + \left(\frac{\ln(1-z)}{1-z}\right)_{\!+} (1 + z^2)
+      - \frac{1 + z^2}{1-z} \ln z \right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] \\
+    &+\int_x^1 \frac{dz}{z} f_{g}\!\left(x, \mu_F\right)
+    \left[  \left(\frac{3}{2}C_F\,\delta(1-z) - P_{q\bar{q}}^{(0)}\right)\ln d_2 \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] \\
+    &+\int_x^1 \frac{dz}{z} f_{g}\!\left(x, \mu_F\right)
+    \left[ T_R \left( 2z(1-z) + ((1-z)^2+z^2)\ln\frac{1-z}{z} \right)\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] \\
+    &+\int_x^1 \frac{dz}{z} f_{g}\!\left(x, \mu_F\right)
+    \left[ \left(-P_{qg}^{(0)}\,\ln d_2 \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] \,.
+    \end{aligned}
+\end{equation}		
+
+	
+\paragraph{Thrust minor/ Transverse thrust}
+
+		\begin{equation}
+  \begin{aligned}
+    h_{10,q\bar{q}}^{\mathrm{ISR}} &= \int_x^1 \frac{dz}{z}
+    \left[ C_F \left(
+      1 - z \right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ 2\left(3C_F\,\delta(1-z) - 2P_{q\bar{q}}^{(0)}\right)\ln \left(d_1 g_1(\phi)\right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ T_R \left( 2z(1-z)  \right)\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ \left(-2P_{qg}^{(0)}\,\ln \left(d_1 g_1(\phi)\right)  \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{\bar{q}}\!\left(x, \mu_F\right)\\[6pt]
+    &+ \int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right) 
+    \left[ C_F \left(
+      1 - z \right)  \otimes f_{\bar{q}}\!\left(\frac{x}{z}, \mu_F\right) \right]\\
+    &+ \int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right) 
+    \left[ \left(3C_F\,\delta(1-z) - 2P_{q\bar{q}}^{(0)}\right)\ln \left(d_2 g_2(\phi)\right)  \otimes f_{\bar{q}}\!\left(\frac{x}{z}, \mu_F\right)\right]\\
+    &+\int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right)
+    \left[ T_R \left( 2z(1-z) \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right]\\
+    &+\int_x^1 \frac{dz}{z} f_{q}\!\left(x, \mu_F\right)
+   \left[ \left(-2P_{qg}^{(0)}\,\ln \left(d_2 g_2(\phi)\right)  \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right]\,.
+  \end{aligned}
 \end{equation}
- \item{Thrust minor}
- \begin{equation}
- \begin{aligned}
- 	h_{10,qg}^{\mathrm{ISR}} &= \int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_g(x,Qv^{\frac{1}{2}})}\left\{4C_A\left[-\frac{(1-z+z^2)^2}{z(1-z)_{\!+}}(\ln(d_1)+\ln(d_2))\right]\right\}
-	\\
-	&+\int_x^1\frac{dz}{z}\frac{f_g(x/z,Qv^{\frac{1}{2}})}{f_q(x,Qv^{\frac{1}{2}})}\left\{2C_F\left[-\frac{(1+(1-z)^2)}{z}(\ln d_1g_1(\phi)+\ln d_2g_2(\phi))+z\right]\right\}
-	 \end{aligned}
+
+\begin{equation}
+\begin{aligned}
+h_{10,qg}^{\mathrm{ISR}} &= \int_x^1 \frac{dz}{z}
+    \left[ C_F \left(
+      1 - z \right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{g}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[  \left(3C_F\,\delta(1-z) - 2P_{q\bar{q}}^{(0)}\right)\ln \left(d_1 g_1(\phi)\right)  \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] f_{g}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ T_R \left( 2z(1-z) \right)\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{g}\!\left(x, \mu_F\right)\\
+    &+\int_x^1 \frac{dz}{z}
+    \left[ \left(-2P_{qg}^{(0)}\,\ln \left(d_1 g_1(\phi)\right)  \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] f_{g}\!\left(x, \mu_F\right)\\[6pt]
+&+ \int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+\left( \beta_0 - 2P_{gg}^{(0)} \right)\ln \left(d_2 g_2(\phi)\right) 
+\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)
+\right]\\
+%
+&+\int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+C_F z
+\otimes \sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right)
+\right]\\
+%
+&+\int_x^1 \frac{dz}{z}
+f_q(x,\mu_F)
+\left[
+\left(-2P_{gq}^{(0)}\,\ln \left(d_2 g_2(\phi)\right) \right)
+\otimes \sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right)
+\right]\,.
+\end{aligned}
 \end{equation}
-\end{itemize}
 
-
-
-
-
-
-
-
-
-
-
-
+\begin{equation}
+\begin{aligned}
+h_{10,gq}^{\mathrm{ISR}} &=   \int_x^1 \frac{dz}{z}
+\left[ f_g\!\left(\frac{x}{z}, \mu_F\right) \otimes
+\left( \beta_0 - 2P_{gg}^{(0)} \right)\ln \left(d_1 g_1(\phi)\right) 
+\right]f_q(x,\mu_F)\\
+%
+&+\int_x^1 \frac{dz}{z}
+\left[\sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right) \otimes
+C_F z
+\right]f_q(x,\mu_F)\\
+%
+&+\int_x^1 \frac{dz}{z}
+\left[\sum_{q'}\left(f_{q'}\!\left(\frac{x}{z}, \mu_F\right)
++ f_{\bar{q}'}\!\left(\frac{x}{z}, \mu_F\right)\right) \otimes
+\left(-2P_{gq}^{(0)}\,\ln \left(d_1 g_1(\phi)\right) \right)
+\right] f_q(x,\mu_F) \\[6pt]
+&\int_x^1 \frac{dz}{z}f_{g}\!\left(x, \mu_F\right)
+    \left[ C_F \left(
+      1 - z\right) \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] \\
+    &+\int_x^1 \frac{dz}{z} f_{g}\!\left(x, \mu_F\right)
+    \left[  \left(3C_F\,\delta(1-z) - 2P_{q\bar{q}}^{(0)}\right)\ln \left(d_2 g_2(\phi)\right)  \otimes f_q\!\left(\frac{x}{z}, \mu_F\right) \right] \\
+    &+\int_x^1 \frac{dz}{z} f_{g}\!\left(x, \mu_F\right)
+    \left[ T_R \left( 2z(1-z)  \right)\otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] \\
+    &+\int_x^1 \frac{dz}{z} f_{g}\!\left(x, \mu_F\right)
+    \left[ \left(-2P_{qg}^{(0)}\,\ln \left(d_2 g_2(\phi)\right)  \right) \otimes f_g\!\left(\frac{x}{z}, \mu_F\right)  \right] \,.
+    \end{aligned}
+\end{equation}	
 
 
 
