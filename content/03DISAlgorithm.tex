@@ -1,5 +1,6 @@
 \chapter{A generalised-$k_t$ jet algorithm for Deep Inelastic Scattering}
 \label{chapter:DIS}
+\add{Refer to Ch.~\ref{ch:QCD} and Appendix.~\ref{ap:DIS-code}.}
 \section{Introduction}
 
 Lepton-hadron colliders such as the Hadron Elektron
@@ -29,7 +30,8 @@ saturation~\cite{Accardi:2012qut,AbdulKhalek:2021gbh}.
 %The aim of the present paper is to introduce a family of DIS jet algorithms that are 1. simple to use; 2. allow for a  
 Since jet production is the dominant process at hadron-lepton
 colliders, jet reconstruction will play an essential part in many
-(re)-analysis for both the EIC and HERA. \\ \\
+(re)-analysis for both the EIC and HERA.
+
 Most developments in jet algorithms over the past decades have been
 driven by hadron collider applications, in particular at the LHC,
 where the anti-$k_t$ algorithm~\cite{Cacciari:2008gp} has become
@@ -65,32 +67,46 @@ experiment~\cite{E665:1992xqj,E665:1993vlk,H1:1994lps,ZEUS:1994jfw,ZEUS:1995tgg,
 highlighting the importance of jet finding algorithms in DIS. The
 modern Centauro algorithm has also recently been used by the H1
 collaboration to perform the first determination of groomed event
-shapes~\cite{H1:2024pvu}. \\ \\
-Unlike at the LHC, where one of the main requirements of a good jet
-algorithm is the insensitivity to pile-up and underlying events, in
-DIS, where these effects are absent, a good jet algorithm is one that
+shapes~\cite{H1:2024pvu}.
+
+
+\mvb{TODO: rewrite this section to match anti-kt}\sfr{done?}  Unlike
+at the LHC, where one of the main requirements of a good jet algorithm
+is the insensitivity to pile-up and underlying event, in DIS, where
+these effects are suppressed, a good jet algorithm is one that
 preserves a meaningful clustering sequence and allows soft radiation
 to influence jet boundaries while respecting the natural hemisphere
 structure of the Breit frame. For this reason it is natural to
-consider $k_t$ and Cambridge/Aachen~(C/A) type algorithms in DIS, rather
-than anti-$k_t$. A C/A-based DIS algorithm designed for
-the study of Lund variables~\cite{Dreyer:2018nbf,vanBeekveld:2025zjh}
-and parton shower logarithmic accuracy was introduced in
+consider $k_t$ and Cambridge/Aachen~(C/A) type algorithms in DIS, in
+addition to anti-$k_t$. A C/A-based DIS algorithm designed for the
+study of Lund variables~\cite{Dreyer:2018nbf,vanBeekveld:2025zjh} and
+parton shower logarithmic accuracy was introduced in
 Ref.~\cite{vanBeekveld:2023chs}, and forms the starting point for a
 spherically-invariant generalised-$k_t$ algorithm adapted to DIS,
-which we present and study in more detail in the present paper.  The formulation
-of the jet algorithm itself follows the structure of the generalised
-$k_t$ algorithm used in $e^+e^-$ collisions as implemented and
-introduced in \FASTJET~\cite{Cacciari:2011ma}.  It is formulated in
-the Breit frame and does not have an anti-$k_t$ variant. We also
-discuss a prescription to select the jet that is most likely to
-contain the struck quark based on the lightcone fraction that the jet
-is carrying. This allows for a clean separation between \emph{target}
-and \emph{current} hemisphere jets. Finally, we study the robustness
-of the new jet algorithm against hadronisation corrections. \\ \\
-The structure of this chapter is as follows: in Section~\ref{sec:ourDISalgo} we present our new
-family of inclusive, spherically-invariant generalised-$k_t$ jet
-algorithms.
+which we present and study in more detail in the present paper.  The
+formulation of the jet algorithm itself follows the structure of the
+generalised $k_t$ algorithm used in $e^+e^-$ collisions as implemented
+and introduced in \FASTJET~\cite{Cacciari:2011ma}, \ak{but is
+  formulated in the Breit frame and uses a beam distance that is
+  sensitive to the angular separation between the proton and the
+  particles taking part in the clustering}.  We also discuss a
+prescription to select the jet that is most likely to contain the
+struck quark based on the lightcone fraction that the jet is
+carrying. This allows for a clean separation between \emph{target} and
+\emph{current} hemisphere jets. Finally, we study the robustness of
+the new jet algorithm against hadronisation corrections.
+
+The structure of this paper is as follows.
+%
+In Section~\ref{sec:Kinematics} we introduce the kinematics relevant
+to DIS and define the Breit frame.
+%
+In Section~\ref{sec:oldDISalgo} we summarise 
+%already existings DIS jet algorithms,
+historical DIS jet algorithms and the recently proposed Centauro one,
+ while in Section~\ref{sec:ourDISalgo} we present our new
+family of generalised-$k_t$ jet algorithms.
+\mvb{be careful that we keep the same name}
 %
 In Section~\ref{sec:pheno} we examine the behaviour of the new
 algorithms and we provide a comparison with the Centauro one.
@@ -98,111 +114,467 @@ algorithms and we provide a comparison with the Centauro one.
 Finally, we present our conclusions in Section~\ref{sec:concl}.
 
 
-\section{A new generalised-$k_t$ algorithm for DIS}
-\label{sec:ourDISalgo}
-\subsection{The algorithm}
-We now introduce the inclusive spherically-invariant generalised-$k_t$ algorithm for DIS, implemented as  a \textsc{Fastjet} plugin in \texttt{fjcontrib}.
+
+\section{DIS Kinematics and the Breit Frame}
+\label{sec:Kinematics}
+The DIS process is defined by the partonic scattering process
+\begin{equation}
+\label{eq:DIS-Process}
+    \ell_i(k) + h(P) \rightarrow \ell'_f(k') + X\,,
+\end{equation}
+where $P^\mu$ is the momentum of the incoming nucleon $h$,
+$k^\mu$ is the momentum of the lepton beam $\ell_i$,
+$k'^\mu$ is the momentum of the outgoing lepton $\ell'_f$,
+and $X$ denotes the hadronic final state. 
+The standard DIS invariants are
+\begin{equation}
+\label{eq:DIS-invariants}
+    Q^2 = -q^2\,, \qquad
+    \xB = \frac{Q^2}{2 P\!\cdot q}\,, \qquad
+    \ydis = \frac{P\!\cdot q}{P\!\cdot k}\,,
+\end{equation}
+with $q^\mu = k^\mu - k'^\mu$ the momentum of the exchanged virtual photon.
+At the lowest perturbative order, the hadronic final state consists of a single outgoing parton,
+\begin{equation}
+\label{eq:DIS-LO}
+    \ell_i(k) + p_{\mathrm{in}} \rightarrow \ell_f(k') + p_{\mathrm{out}}\,,
+\end{equation}
+where $p_{\mathrm{in}}^\mu = \xB P^\mu$ and $p_{\mathrm{out}}^\mu = q^\mu
+-p_{\mathrm{in}}^\mu$ are the momenta of the incoming and outgoing
+partons, respectively.  The \emph{Breit frame}\footnote{The frame was
+first introduced in Ref.~\cite{Breit:1929zz} in the context of
+relativistic scattering kinematics. The term `Breit frame' was
+first coined by Ernst, Sachs, and Wali in
+Refs.~\cite{Ernst:1960zza,Sachs:1962zzc}. For an explicit
+implementation we refer the reader to Appendix 7.11 in
+Ref.~\cite{Devenish:2004pb}.} plays a central role in many DIS jet
+algorithms~\cite{Webber:1993bm}.
 %
-The algorithm shares the essential structure of its $e^+e^-$ counterpart, with the key modification that an infinite-energy parton aligned along the proton direction is included in the cluster sequence.
+It is defined by
+\begin{equation}
+  2\xB \vec{P} + \vec{q} = 0\,,
+\end{equation}
+such that the virtual photon carries no energy component and is aligned along the $z$-axis, i.e.\
+\begin{equation}
+\label{eq:DIS-photon}
+    q^\mu = (0,0,0,-Q)\,,
+\end{equation}
+and is therefore purely space-like.  
+In this frame, the incoming and outgoing parton momenta take the simple form
+\begin{equation}
+\begin{aligned}
+\label{eq:DIS-partons}
+    p_{\mathrm{in}} ^\mu &= \frac{Q}{2}(1,0,0,+1)\,, \quad
+    p_{\mathrm{out}}^{\mu} &= \frac{Q}{2}(1,0,0,-1)\,.
+\end{aligned}
+\end{equation}
+Thus, in the Breit frame the proton and virtual photon collide
+head-on.
 %
-Because of this modification, only values $p\geq 0$ are physical, and no anti-$k_t$ variant exists. 
+Within this frame, the proton remnant appears in the region at
+positive rapidity (the \emph{target hemisphere}), while the struck
+quark lies in the negative rapidity region (the \emph{current
+hemisphere}).
 %
-The angular-ordered variant of the algorithm ($p=0$) was already presented by some of us in Ref.~\cite{vanBeekveld:2023chs}, and used to define Lund Tree Event shapes with remarkably simple all-orders structure~\cite{vanBeekveld:2025zjh}. \\ \\
-We define the distances
-\begin{subequations}
+In practice, the jet clustering in this frame can lead to radiation
+from the proton remnant being absorbed into the struck-quark jet,
+making the separation between the two hemispheres an important feature
+of DIS jet algorithms.
+
+
+\section{Existing DIS jet algorithms}
+\label{sec:oldDISalgo}
+Before presenting a generalised-$k_t$ algorithm for DIS in
+Section~\ref{sec:ourDISalgo}, it is instructive to first discuss
+existing jet algorithms that have historically been used for DIS,
+focusing on sequential-recombination jet algorithms.
+%
+The overview we present here serves to explain how jet algorithms are formulated in general,
+but will also allow us to highlight similarities and differences
+between existing jet algorithms and the new generalised $k_t$ jet algorithm for DIS.
+%
+We formulate the jet algorithms in the Breit frame, but note that
+those algorithms that are longitudinally boost invariant, such as
+Centauro and some of the inclusive $k_t$-algorithms 
+(cf.\ Secs.~\ref{sec:gen-kt} and \ref{sec:centauro}), can also be
+formulated in a frame that is connected to the Breit frame through
+a longitudinal boost.
+
+\subsection{Exclusive jet algorithms for  $e^+e^-$ collisions}
+Since some of the existing DIS jet algorithms are adapted from their $e^+e^-$ counterparts, and in fact use  $e^+e^-$ clustering explicitly in a re-clustering step, we start by reviewing the $e^+e^-$ variants before turning to DIS.
+\subsubsection{The Durham jet algorithm}
+\label{sec:dum-ee}
+%
+The Durham algorithm was introduced in Ref.~\cite{Catani:1991hj,Brown:1991hx}. 
+%
+Given a list of objects undergoing the clustering procedure, which are conventionally called pseudojets, one introduces a dimensionless resolution parameter $y_{ij}$ that reads
 \begin{align}
-	d_{ij}& = \min(E_{i}^{2p},E_{j}^{2p}) (1-\cos\theta_{ij}) \,, \\
-	d_{iB} &= E_{i}^{2p}(1-\cos\theta_{iB})\,,
+	y_{i j} = \frac{\min (E_i^{2}, E_j^{2})}{s} 2(1 - \cos \theta_{i j})\,,
+\end{align}
+with $E_i, E_j$ the energies of the two pseudojets, $\theta_{ij}$ the angle between them, and $\sqrt{s}$ the center-of-mass energy of the collision.
+%
+One also introduces a parameter $y_{\mathrm{cut}} \leq 1$.
+%
+The algorithm then proceeds as follows. 
+\begin{enumerate}
+	\item \label{item1eekt}For every pair of pseudojets compute $y_{ij}$.
+	%
+	\item The pair with the smallest $y_{ij}$ is clustered together
+	if $y_{ij}<y_{\mathrm{cut}}$, meaning that a pseudojet with momentum $p_{ij} = p_i + p_j$ is inserted in the list
+	of pseudojets, which replaces $i$ and $j$.%
+	%
+	\footnote{This recombination is dubbed the $E$-scheme but other alternatives
+	exist~\cite{JADE:1986kta,JADE:1988xlj,Catani:1991hj}.}
+	\item Repeat from \ref{item1eekt} until there are no more pseudojets to be clustered (i.e.\ all $y_{ij} \geq y_{\mathrm{cut}}$). 
+\end{enumerate}
+After the clustering terminates, each particle in the event is either merged into a jet, or it remains as a single-particle jet, making it an exclusive algorithm. 
+\subsubsection{The Cambridge jet algorithm}
+\label{sec:cam-ee}
+The Cambridge algorithm, introduced in
+Ref.~\cite{Dokshitzer:1997in}, differs from the Durham algorithm by introducing, next to a merging condition, also a distance measure $d_{ij}$, which reads
+\begin{align}
+	d_{i j} = 2 (1 - \cos \theta_{i j})\,.
+\end{align}
+This choice was motivated by the aim of producing a clustering sequence that closely follows the coherent pattern of QCD radiation, where a possible merging of two partons that are close in angle is considered before the possible merge of two particles that are more widely separated. 
+%
+The merging of two particles is decided on the Durham distance measure $y_{ij}$.
+%
+Secondly, the clustering algorithm itself is modified with a `soft freezing' mechanism, which prevents the softer of two pseudojets to attract any additional pseudojets.
+%
+The Cambridge algorithm proceeds as follows. 
+\begin{enumerate}
+	%
+	\item \label{item1eeca} Compute $d_{ij}$ for all pairs and select the pair of pseudojets with the smallest $d_{ij}$.
+	\item For this pair, if $y_{ij}<y_{\mathrm{cut}}$, delete $i$ and $j$ and introduce a new pseudojet with momentum $p_{ij} = p_i + p_j$. 
+	%
+	If instead $y_{ij} \geq y_{\mathrm{cut}}$, the softer (i.e.\ less energetic)
+	pseudojet is removed from the list and is promoted to a jet: this
+	mechanism is called soft freezing. 
+	%
+	\item Repeat from \ref{item1eeca} until there are no more pseudojets to be clustered. 
+\end{enumerate}
+The last pseudojet that remains in the list of pseudojets is also promoted to a jet. 
+
+
+
+
+\subsection{Exclusive jet algorithms for DIS collisions}
+\subsubsection{Exclusive $k_t$-algorithm for DIS}
+\label{sec:exclktalgo}
+The exclusive $k_t$-algorithm for DIS was presented in
+Ref.~\cite{Catani:1992zp}.
+%
+It is based on the equivalent $e^+e^-$ variant~\cite{Catani:1991hj} that we discussed above, but treats also the additional initial-state (and beam remnant) collinear singularities. 
+%
+The algorithm is formulated in the Breit frame. 
+%
+Instead of using the center-of-mass energy $\sqrt{s}$, one introduces an transverse-momentum-like scale $E_t$ satisfying $\Lambda \ll E_t\le
+Q$ and defines a resolution variable $y_{ij}$ between two pseudojets
+as
+\begin{align}
+\label{eq:disyij}
+y_{i j} = \frac{\min (E_i^2, E_j^2)}{E_t^2} 2 (1 - \cos \theta_{i j})\,,
+\end{align}
+as well as a beam resolution parameter for each pseudojet
+\begin{align}
+	\label{eq:disyB}
+  y_{iB} = \frac{ E_i^2}{E_t^2} 2(1 - \cos \theta_{i B})\,,
+\end{align}
+where $\theta_{ij}$ is the angular separation between two pseudojets,
+$\theta_{iB}$ is the angle of the pseudojet with respect to the beam, and
+$E_{k}$ is the energy of the pseudojets.
+%
+The $E_t$ variable determines how close to the beam direction (in the Breit frame) resulting jets are allowed to be formed, with the transverse momentum of the resulting jets satisfying $p_t > E_t$. 
+%
+The clustering procedure works in two steps.  
+%
+In the first step, a pre-clustering takes place, with the aim of separating particles into a \emph{beam} and a set of \emph{macro-jets}, and operates as follows.
+%
+\begin{enumerate}
+  \item \label{exclkt1} For every pseudojet $i$ compute $y_{iB}$ and for every pair
+    $i,j$ compute $y_{ij}$.
+  \item Take the smallest value of all $y_{ij}$ and $y_{iB}$. If the
+    smallest value is a $y_{ij}$ and $y_{ij}<1$, combine their momenta
+    into a new pseudojet. If $y_{iB}<1$ is the smallest, include $i$
+    into the beam jet, and remove it from the list of pseudojets. 
+  \item Repeat the procedure from step \ref{exclkt1} for all
+    pseudojets, until all distance measures are $y_{ij}, y_{iB}>1$. 
+\end{enumerate}
+The resulting objects that remain at this stage are the final-state macro-jets, and does not include the beam jet. 
+%
+In the second step of the algorithm we resolve the structure of the final-state macro-jets. 
+%
+The input for this second step consists of all the consistuents of these jest. 
+%
+At this stage, a resolution parameter $y_{\mathrm{cut}} = Q_0^2/E_t^2 < 1$ is introduced, with $Q_0 < E_t$, and the algorithm proceeds by clustering the constituents using the $e^+e^-$ Durham algorithm (Sec.~\ref{sec:dum-ee}). 
+% 
+The objects that remain at the end are the final-state jets. 
+%
+The full two-step procedure produces jets with relative transverse momenta $k_t$ in the range $\sqrt{y_{\mathrm{cut}}}E_t < k_t < E_t$, and with a Breit-frame transverse momentum $p_t > E_t$. 
+%
+Every particle in the event ends up either in the list of final-state jets or in the beam jet. 
+
+\subsubsection{Cambridge algorithm for DIS}
+\label{sec:camdis}
+The Cambridge algorithm for DIS was introduced in
+Ref.~\cite{Wobisch:1998wt}. It is an exclusive algorithm, inspired by the Cambridge
+algorithm for $e^+e^-$-collisions~\cite{Dokshitzer:1997in }, and
+very similar to the exclusive $k_t$-algorithm presented in Sec.~\ref{sec:exclktalgo}.
+%
+Like in $e^+e^-$, one decouples the merging step from the ordering step, now by introducing  two distance measures: $d_{ij}$ and $d_{iB}$, which read
+\begin{align}
+d_{i j} = 2 (1 - \cos \theta_{i j})\,,
+\end{align}
+and 
+\begin{align}
+d_{i B} = 2 (1 - \cos \theta_{i B})\,.
+\end{align}
+Like for the exclusive $k_t$-algorithm presented in Sec.~\ref{sec:exclktalgo}, also in this case the algorithm proceeds in two steps. 
+%
+The first step is
+\begin{enumerate}
+  \item \label{cam1} For every pseudojet $i$ compute $d_{iB}$ and for every pair
+    $i,j$ compute $d_{ij}$.
+  \item Take the smallest value of all $d_{ij}$ and $d_{iB}$.
+    If the
+    smallest value is a $d_{ij}$, combine their momenta
+    into a new pseudojet if $y_{ij}<1$ otherwise call the softest (less energetic) a jet (i.e.\ apply the freezing mechanism). 
+    %
+    If $d_{iB}$ is the smallest include $i$ as a beam jet, and remove
+    it from the list of pseudojets if $y_{iB}<1$, otherwise promote it
+    to a jet.
+  \item Repeat the procedure from step \ref{cam1} for all
+    pseudojets, until all resolution variables $y_{ij}, y_{iB}>1$,
+    at which point we promote all the remaining pseudojets to jets and proceed with the second step. 
+\end{enumerate}
+In the second step of the algorithm we undo the clustering of all the
+jets (excluding the beam jet), and re-cluster the constituents using
+the $e^+e^-$ Cambridge algorithm using a resolution parameter
+$y_{\text{cut}}$.
+
+\subsection{Generalised inclusive $k_t$-algorithms for DIS}
+\label{sec:gen-kt}
+%
+The inclusive longitudinally-invariant~(LI) $k_t$-algorithm was first
+introduced in Ref.~\cite{Catani:1993hr} (see Ref.~\cite{Ellis:1993tq}
+for the exclusive version) for hadron-hadron collisions. 
+An angular-ordered variant, often referred to as the Aachen or Cambridge/Aachen algorithm,
+was since introduced in Ref.~\cite{Wobisch:1998wt} and
+then eventually the family of generalised inclusive $k_t$-algorithms
+was introduced in Ref.~\cite{Cacciari:2008gp} along with the anti-$k_t$
+algorithm.
+%
+The DIS variant is in this case identical to the hadron-hadron
+variant, except that the clustering takes place in the Breit frame.
+%
+We define a set of distance measures $d_{ij}$ and $d_{iB}$, which are dimensionful for $p\neq 0$,  given by
+\begin{align}
+  d_{ij} = \min(p_{Ti}^{2p},p_{Tj}^{2p}) \frac{\Delta R_{ij}^2}{R^2}\,,\quad d_{iB} = p_{Ti}^{2p}\,,
+\end{align}
+where $\Delta R_{ij}^2 = (y_i -y_j)^2 + (\phi_i - \phi_j^2)$, with
+$y_i$ the rapidity and $\phi_i$ the azimuthal angle of pseudojet
+$i$. The procedure is then given by
+\begin{enumerate}
+\item Compute all the distances $d_{ij}$ and $d_{iB}$. If a $d_{ij}$
+  is the smallest, cluster $i$ and $j$, if $d_{iB}$ is the smallest
+  call $i$ a jet.
+\item Repeat until no more pseudojets remain.
+\end{enumerate}
+We note that the $k_t$-algorithm corresponds to $p=1$,
+C/A to $p=0$ and anti-$k_t$ to $p=-1$.
+%
+\sfr{Following is new text mostly by MvB + some minor mods}
+The jet algorithms for DIS discussed so far were all \textbf{exclusive}.
+For an \textbf{inclusive} aglorithm, when the smallest distance is the one between the beam(s) and a pseudo-jet, such pseudo-jet is promoted to a jet rather than being absorbed into a beam remnant collection. 
+\sfr{I do not understand this sentence (which I would also remove): \emph{This means that particles not clustered into a hard final-state jet can disappear as they fall below some mimimum energy threshold}}. 
+The size of the resulting list of jets is therefore infrared unsafe,
+because it includes jets that can be either very soft or collinear with the beam. Only after introducing a suitable resolution parameter (like a minimum transverse momentum with respect to the beam) and removing jets that fall below this resolution parameter, it will be infrared safe. 
+
+Note that one is not restricted to using distances that are natural for $pp$ collisions. 
+%
+Indeed, the inclusive algorithm can be made spherically invariant~(SI) instead of LI, which is more appropriate for $e^+e^-$ collisions~\cite{Cacciari:2011ma}, by
+replacing the distance measures with
+\begin{align}
+\label{eq:eegen}
+  d_{ij} = \min(E_{i}^{2p},E_{j}^{2p}) \frac{1-\cos\theta_{ij}}{f(R)}\,,\quad d_{iB} = E_{i}^{2p}\,,
+\end{align}
+with
+\begin{equation}
+  f(R) = \begin{cases}
+    &1-\cos R \qquad 0< R < \pi \\
+    &3+\cos R \qquad  \pi < R < 2\pi.
+  \end{cases}
+  \label{eq:fR}
+\end{equation}
+\sfr{added $f(R)$}
+In this case, the beam distance $d_{iB}$ is not sensitive to the angular separation between the pseudo-jet $i$ and the beam, but only on the energy of the pseudo-jet.
+%
+This feature is not desireable in the context of $ep$ collisions, which is an asymmetrical collision, where we need to distinguish between a collinear and an anti-collinear direction, as there is only one hadronic beam.
+
+\subsection{Centauro algorithm}
+\label{sec:centauro}
+The Centauro algorithm~\cite{Arratia:2020ssx} is a longitudinally
+invariant jet algorithm designed to capture jets close to the Born
+configuration in the Breit frame. Longitudinally invariant $k_t$-type
+algorithms such as those presented in Sec.~\ref{sec:gen-kt} cluster in the
+$(y,\phi)$ plane and are unable to form a jet along the beam axis,
+where $y \to -\infty$. Conversely, the spherically invariant
+algorithms can cluster around the beam axis but do not preserve
+longitudinal invariance.
+
+The Centauro algorithm
+is designed to address both of these aspects. It is built around
+the variable $\bar{\eta}_i$ that behaves
+differently in the two hemispheres:
+\begin{itemize}
+\item \textbf{Current hemisphere:}  
+      $\bar{\eta}_i$ decreases as particles become closer in angle, allowing particles in this hemisphere to cluster.
+\item \textbf{Target hemisphere:}  
+      $\bar{\eta}_i$ becomes large and diverges. This prevents clustering in the proton beam region, similar to the behaviour of the anti-$k_t$-algorithm.
+\end{itemize}
+%
+Working in the Breit frame, for every momentum $p_i^\mu$ we define the variable $\bar{\eta}_i$ as
+\begin{align}
+\bar{\eta}_i = -2\frac{Q}{q\cdot n_{\mathrm{out}}} \frac{p_{T,i}}{p_i \cdot n_{\mathrm{in}}}\,,
+\end{align}
+with 
+\begin{subequations}
+  \begin{align}
+  n_{\mathrm{in}}^\mu =& \frac{2}{Q}\xB P^\mu \\
+  n_{\mathrm{out}}^\mu =& \frac{2}{Q} \left(q^\mu -\xB P^\mu \right)\\
+  p_{T,i}^2 =& \frac{2 (p_i \cdot n_{\mathrm{in}})(p_i \cdot n_{\mathrm{out}})}{ n_{\mathrm{in}}\cdot n_{\mathrm{out}}},
 \end{align}
 \end{subequations}
-with $p \geq 0$,
-% 
-as well as dimensionful resolution variable for clusterings between two final-state pseudo-jets
+meaning that $p_{T,i}$ the transverse component of the momentum in the Breit frame (or any other frame that only differs by a longitudinal boost from the Breit frame).
+%
+From this, one constructs the inter-pseudojet distance measure as
+\footnote{Note that we are reporting the definition used in the \texttt{fjcontrib} implementation, which is the one we have also used in this work.}
 \begin{align}
-	v_{ij}& = \min(E_{i}^{2},E_{j}^{2}) (1-\cos\theta_{ij}).
+\label{eq:cent-dij}
+d_{ij} = \frac{(\bar{\eta}_i - \bar{\eta}_j)^2 + 2 \bar{\eta}_i \bar{\eta}_j (1- \cos \Delta \phi_{ij})}{R^2}\,.
 \end{align}
-The clustering proceeds as follows.
+The distance to the beam is always equal to $d_{iB} = 1$. 
+%
+One then clusters jet according to the procedure given in Sec.~\ref{sec:gen-kt}.
+
+\section{A generalised-$k_t$ algorithm for DIS}
+\label{sec:ourDISalgo}
+\subsection{The algorithm}
+We now introduce a generalised-$k_t$ algorithm for DIS, implemented as  a \textsc{FastJet} plugin in \texttt{fjcontrib}.
+%
+The algorithm shares the essential structure of its $e^+e^-$ counterpart, introduced at the end of Sec.~\ref{sec:gen-kt}, with the key modification that \sfr{remove: \emph{an infinite-energy parton aligned along the proton direction is included in the cluster sequence, which effectively changes the distance to the beam.} the beam distance is now sensitive to the angular separation with respect to the proton beam.} 
+%
+The angular-ordered variant of the algorithm ($p=0$) was already presented by some of us in Ref.~\cite{vanBeekveld:2023chs}, and used to define Lund Tree Event shapes with remarkably simple all-orders structure~\cite{vanBeekveld:2025zjh}.
+%
+Here we present the extension for $p\neq 0$, and include two parameters, $R$ and $y_{\mathrm{cut}}$ (to be detailed below) \sfr{changed $v_{\mathrm{cut}}\to y_{\mathrm{cut}}$, to reflect the code }, that control the behaviour of the algorithm. 
+%
+We first define the distances
+\begin{subequations}
+\begin{align}
+	d_{ij}& = \min(E_{i}^{2p},E_{j}^{2p}) \frac{(1-\cos\theta_{ij})}{f(R)} \,, \\
+	d_{iB} &= E_{i}^{2p}(1-\cos\theta_{iB})\,.
+\end{align}
+\end{subequations}
+%
+where $f(R)$ is like in the $e^+e^-$ case and given in Eq.~\eqref{eq:fR}.
+%
+In particular, for $0<R<\pi$, $f(R)=1-\cos R$. \mvb{would remove foregoing sentence}
+%
+The inclusive version of the algorithm is then as follows.
 \begin{enumerate}
-  \item Introduce a dimensionful parameter $v_{\mathrm{cut}}^2>0$, which can be of the order of $Q^2$, or even infinite.%
-  \footnote{Technically one needs to set the \texttt{v2cut} parameter in the \texttt{FastJet} plugin to -1 when one aims to set $v_{\\mathrm{cut}} = \infty$.}
+	\item Compute all $d_{ij}$ and $d_{iB}$. If the smallest is a $d_{iB}$, call $i$ a jet, and remove it from the list of pseudojets. If the smallest is a $d_{ij}$, cluster $i$ and $j$. 
+	\item Continue until there are no pseudojets left in the list. 
+\end{enumerate}
+The introduction of the distance $d_{iB}$ measuring both the energy and the closeness in angle to the beam direction, allows one to cluster jets in the current hemisphere while promoting remnant hemisphere particles to jets early in the cluster sequence. 
+%
+\sfr{Note that the angular-ordered variant presented in Ref.~\cite{vanBeekveld:2023chs} uses $R=\pi/2$, which yields a symmetric treatment of soft, wide-angle radiation in the beam and current hempispheres.}
+
+We also introduce another version of the algorithm, which allows for an exclusive jet clustering. \sfr{WWARN: it is not $y_{\mathrm{cut}}$ between 2 final-states that makes it exclusive, but the 2nd step procedure after}
+%
+To this end we  set $R = \pi/2$ and use $p \geq 0$. \sfr{I think this is not true, one can choose any $R$ and any $p$}
+%
+We define a dimensionless resolution variable for clusterings between two final-state pseudo-jets
+\begin{align}
+	y_{ij}& = 2\frac{\min(E_{i}^{2},E_{j}^{2}) }{Q^2}(1-\cos\theta_{ij}),
+\end{align}
+%
+We also introduce a dimensionless parameter $y_{\mathrm{cut}} \geq 0$.
+\sfr{I removed the comment about  $y_{\mathrm{cut}}<1$, as $y_{\mathrm{cut}}<(1-x_{dis})/x_{dis}$ which can be larger then 1}
+%$y_{\rm cut} \leq 1$, since the maximum value for $y_{ij}$ is $Q$.%
+%
+The clustering proceeds as follows. 
+\begin{enumerate}
   \item Find the smallest $d_{ij}$ or $d_{iB}$.
   \item If the smallest is a $d_{iB}$, call $i$ a jet, and remove it from the list of pseudojets.
-  \item If the smallest is a $d_{ij}$, if $v_{ij}<v_{\mathrm{cut}}^2$, merge $i$ and $j$, otherwise call the softest pseudojet a jet, and remove it from the list of pseudojets.
-  \item Continue until there are no particles in the list. 
+  \item If the smallest is a $d_{ij}$, if $y_{ij}<y_{\mathrm{cut}}$, merge $i$ and $j$, otherwise call the softest (less energetic) pseudojet a jet, and remove it from the list of pseudojets.
+  \item Continue until there are no pseudojets left in the list. 
 \end{enumerate}
-As in the standard inclusive (LI)
-algorithms for $pp$ collisions, some reconstructed jets may originate
-entirely from initial-state radiation or from soft large-angle emissions. 
-In $pp$ collisions, such
-jets are removed by imposing a transverse-momentum (and a rapidity)
-cut.
+\sfr{
+As in the standard inclusive (LI) algorithms for $pp$ collisions, some reconstructed jets may originate entirely from initial-state radiation or from soft large-angle emissions. 
+%
+In $pp$ collisions, such jets are removed by imposing a transverse-momentum (and a rapidity) cut.
 %
 This however cannot be applied to DIS, as the jet originating from the
 fragmentation of the struck quark does not necessarily carry a large
 transverse momentum (in fact, in the case where no additional
 radiation is produced, this jet will carry zero transverse momentum).
 %
-We therefore have to define a different procedure for how to identify 
-the jet that is most likely associated with the struck quark.
+To remove only soft jets or jets collinear to the beam, one can define a (scaled) effective transverse momentum
+\begin{equation}
+  y_{iB} = 2\frac{E_i^2 }{Q^2}(1-\cos\theta_{iB}),
+\end{equation}
+and discard these with $y_{iB} < y_{\mathrm{cut}}'$.
+Notice that $y_{\mathrm{cut}}'$ can in principle differ from the $y_{\mathrm{cut}}$ used in the clustering procedure.
+%
+Alternatively, one might discard jets that contain a small light-cone fraction of the original struck-quark momentum carried by the $i^{\mathrm{th}}$ jet.
+To do so, one may compute
+\begin{equation}
+  z_{i} = \frac{2 p_i \cdot P}{\xB \,Q^2},\label{eq:zi}
+\end{equation}
+where $P$ is the proton momentum, and discard jets with $z_i < z_{\mathrm{cut}}$, with $0<z_{\mathrm{cut}}<1$.
+}
+
+%This version of the algorithm is akin to those detailed in Sec.~\ref{sec:camdis} (for $p=0$) and \ref{sec:exclktalgo} (for $p=1$), but differ in the fact that we do not use a two-step procedure. 
+%
+%If one decides to keep all jets, one ends up again with an inclusive jet algorithm, where $y_{\rm cut}$ acts as a parameter that controls the `size' of the jet. 
+%
+%In this sense it has a role similar to introducing a jet radius $R$ (as is done in e.g.\ Sec.~\ref{sec:gen-kt}), and controls how much radiation gets clustered with a final-state jet. 
+%
+%A smaller value for $y_{\rm cut}$ prevents clustering between two final-state pseudojets, and thereby leads to a larger number of final-state jets. 
+%
+%\mvb{We introduce $z_{\rm cut}$ below which would make it exclusive. I really do not see how this is an exclusive jet algo, am I missing something? Please also look at the fastjet implementation, in particular storing the distance because that would be used by people if you ask for exclusive jets above $d_{\rm cut}$ and I don't quite know what to put there... I also think that exclusive as gavin explained it is misleading, I do not see how all particles belong to jets in the end... If you ask for jets above dcut, which is the exclusive mode, you will remove some jets!}
+
+
+%As in the standard inclusive (LI) algorithms for $pp$ collisions, some reconstructed jets may originate entirely from initial-state radiation or from soft large-angle emissions. In $pp$ collisions, such jets are removed by imposing a transverse-momentum (and a rapidity) cut.
+%
+%This however cannot be applied to DIS, as the jet originating from the fragmentation of the struck quark does not necessarily carry a large transverse momentum (in fact, in the case where no additional radiation is produced, this jet will carry zero transverse momentum).
+%
+
+After having obtained our list of inclusive or exclusive jets,
+the next step is to identify the jet that is most likely associated with the struck quark.
 %
 In Sec.~\ref{sec:macrojet} we describe a procedure for how to identify
 this jet, that we call the macrojet, that can be applied to our
-generalised $k_t$ algorithm and the Centauro algorithm.
+generalised $k_t$ algorithms and the Centauro algorithm.
+
+%\mvb{remove this section: } Before moving to Sec.~\ref{sec:macrojet}, let us first briefly comment on the main differences between this jet algorithm and the pre-existing jet algorithms.
 %
-The variable $v_{\mathrm{cut}}$ introduced in the first step of the clustering algorithm
-has a role similar to introducing a jet radius $R$ (as is done in e.g.\ Sec.~\ref{sec:gen-kt}),
-and controls how much radiation gets clustered with a final-state jet. 
-%
-A smaller value for $v_{\mathrm{cut}}$ prevents clustering between two final-state pseudojets, 
-and thereby leads to a larger number of final-state jets. \\ \\
-Before moving to Sec.~\ref{sec:macrojet}, let us first briefly comment
-on the main differences between this jet algorithm and the
-pre-existing jet algorithms.
-%
-Compared to the Cambridge algorithm for DIS (Sec.~\ref{sec:camdis}),
-which shares most similarities with our algorithm, the present
-algorithm does not 
-include a second stage in
-which beam jets are removed and the remaining jets are reclustered
-with the $e^+e^-$ Cambridge algorithm. 
-As a consequence our algorithm
-is significantly simpler. \\ \\
-Compared to the algorithm of Section~\ref{sec:gen-kt}, the present
-algorithm does not contain a $1-\cos R$ in the inter-pseudojet
-distance $d_{ij}$.
-%
-Including such a factor would introduce a fixed jet radius $R$,
-limiting the angular reach of each jet and allowing final-state
-radiation at angles larger than $R$ to be left unclustered or absorbed
-into a neighbouring jet.
-%
-In the Breit frame, where the natural geometry is spherical rather
-than cylindrical, this is undesirable: a radius parameter breaks this
-spherical symmetry.
-%
-By omitting it, our algorithm ensures that every final-state particle
-is either clustered into a jet or assigned to the beam, with no
-radiation falling between jets due to an (arbitrary) angular cutoff.
-%
-This makes the algorithm better suited to capturing the full structure
-of the hadronic final state in the Breit frame, and provides a cleaner
-correspondence with the $e^+e^-$ algorithm.
-%
-As explained before, the size of the resulting jets in the present jet
-algorithm may instead be controlled by the $v_{\mathrm{cut}}$ parameter. \\ \\
-Differences between Centauro (Sec.~\ref{sec:centauro}) and our new jet
-algorithm will be explored explicitly in Sec.~\ref{sec:pheno}.
+%Compared to the Cambridge algorithm for DIS (Sec.~\ref{sec:camdis}), which shares most similarities with our algorithm, the present algorithm does not include a second stage in which beam jets are removed and the remaining jets are reclustered with the $e^+e^-$ Cambridge algorithm.  As a consequence our algorithm is significantly simpler.
+
+Differences between Centauro (Sec.~\ref{sec:centauro}) and the generalised-$k_t$ jet
+algorithm presented here will be explored in Sec.~\ref{sec:pheno}\sfr{, where we will focus on the inclusive variant.}.
+\mvb{should we say we do not consider further the $y_{\mathrm{cut}}$ parameter?}
 
 \subsection{Identifying the macrojet}
 \label{sec:macrojet}
 \begin{figure}[t!]
-\includegraphics[width=\textwidth,page=7]{figs_new/paper_rivet_cmp_algos.pdf}
-\caption{Normalised Breit-frame energy distribution of the final-state macrojet for neutral-current DIS, $\sqrt{s}$=300~GeV using the Centauro~(left) jet algorithm, as well as our variant of the C/A~(center) and $k_t$ jet algorithm~(right).
+\includegraphics[width=\textwidth,page=8]{figs_new/paper_rivet_cmp_algos_R0p8.pdf}
+\caption{Normalised Breit-frame energy distribution of the final-state macrojet for neutral-current DIS, $\sqrt{s}$=300~GeV using, from left to right, the Centauro jet algorithm, and the inclusive version of the generalised $k_t$ algorithms with $R = 0.8$ with $p=0$ (C/A), $1$ ($k_t$), and $p=-1$ (anti-$k_t$). 
 %
-The final-state macrojet is identified as the one which maximises the light-cone component opposite in direction to the proton ($z_{\mathrm{jet}}$, solid line) or the Breit-frame pseudo-rapidity ($\eta_{\mathrm{jet}}$, dash-dotted lines).
+The final-state macrojet is identified as the one that maximises the light-cone component opposite in direction to the proton ($z_{\mathrm{jet}}$, solid line) or the Breit-frame pseudo-rapidity ($\eta_{\mathrm{jet}}$, dash-dotted lines).
 %
 Events are generated using the \PYTHIAn~\cite{Bierlich:2022pfr} default shower, with dipole recoil option~\cite{Cabouat:2017rzi}.
-See Tab.~\ref{tab:input-params} for the precise settings.
+See Tab.~\ref{tab:input-params} for further settings.
  }
  \label{fig:jetEIR}
 \end{figure}
@@ -217,26 +589,29 @@ the original struck quark.
 To make this precise, we perform a Sudakov decomposition of each
 jet momentum (see also Sec.~\ref{sec:Kinematics} and Ref.~\cite{Makris:2021drz})
 \begin{equation}
+	\label{eq:sudakov}
   p_{\mathrm{jet}}^\mu = \frac{|k_\perp^2|}{z_{\mathrm{jet}} x_{\mathrm{B}} Q^2} P^\mu + z_{\mathrm{jet}} \, p_{\mathrm{out}}^\mu + k_\perp^\mu,
 \end{equation}
 where $P^\mu$ is the proton momentum, $p_{\mathrm{out}}^\mu = q^\mu -
 x_{\mathrm{B}} P^{\mu}$ can be identified as the original struck-quark
 momentum, and $k_\perp^\mu$ is a space-light vector orthogonal to
-$P^\mu$ and $p_{\mathrm{out}}^\mu$.
+$P^\mu$ and $p_{\mathrm{out}}^\mu$.%
+%
+\footnote{Note that in Eq.~\eqref{eq:sudakov} we have adopted the notation of Ref.~\cite{Makris:2021drz} to label the lightcone component in the `$-$' direction.}
 %
 Maximising $z_{\mathrm{jet}}$ is then equivalent to selecting the jet whose
 momentum $p_{\mathrm{jet}}^{\mu}$ has the largest dot product with
 $P^\mu$. As discussed in Ref.~\cite{vanBeekveld:2023chs}, this
 prescription is infrared safe.
 %
-This prescription is in principle independent of the jet clustering
-algorithm employed, although the exclusive jet algorithms have a
-potential to throw away the jet that is most likely to contain the
-struck quark. \\ \\
+\mvb{Note that the in the inclusive version of the algorithm described in Sec.~\ref{sec:ourDISalgo},
+one may order the list of jets according to how large their $z_{\mathrm{jet}}$ is, and apply a selection on
+those jets keeping only those with $z_{\mathrm{jet}}>z_{\mathrm{cut}}$, making the number of jets an infrared safe observable. }\sfr{now this is said in the algo description on how to make it exclusive, either this or the $y_{iB}$ cut.}
+
 A natural alternative is to identify the macrojet as the jet with the
 most negative rapidity.
 %
-However, this prescription is not infrared safe, as illustrated in Fig.~\ref{fig:jetEIR}.
+However, this prescription is not infrared safe, as illustrated in Fig.~\ref{fig:jetEIR}. 
 %
 There, one can observe that both for the new family
 of jet algorithms introduced here and for the Centauro jet algorithm, identifying the
@@ -251,34 +626,30 @@ most negative rapidity, but there is no exponential decrease in the tail.
 %
 Maximising the light-cone component in the direction of the 
 original struck quark (solid curves) exponentially suppresses the tail for all
-algorithms. \\ \\
+algorithms.
+
 Beyond macrojet identification, the properties of the macrojet itself provide a useful way
 to characterise the behaviour of the algorithm.
 %
-In particular, since clustering in the Breit frame can lead to contamination 
-between the current and target hemispheres, the macrojet offers a 
-direct handle on how well the algorithm separates these regions 
-and how faithfully it reconstructs the struck-quark jet. 
+In particular, the macrojet offers a 
+direct handle seperating the remnant hemisphere from the current hemisphere.
+\mvb{what do we want to say more here?} \sfr{nothing =p}
 %
-We will explore this further in Section~\ref{sec:pheno}.
-%
-Note that, similarly to the exclusive algorithms in Secs.~\ref{sec:exclktalgo} and
-\ref{sec:camdis}, one can choose to recluster the final-state macrojet with
-a dimensionful $v_{\mathrm{cut}}'$ parameter, smaller than the original
-$v_{\mathrm{cut}}$ used in the first clustering procedure (which can also
-be set to $\infty$), to resolve jet substructure.
-%
-This will not be explored further in this paper. 
+We will explore this further in the next section. 
 
 \section{Phenomenological results}
 \label{sec:pheno}
 In this section we explore a few macrojet distributions obtained with
-our jet algorithms. To avoid confusion we will simply call the $p=0$
-variant for C/A and the $p=1$ variant for $k_t$. We
-compare to the Centauro algorithm to highlight differences and
-similarities. \\ \\
+our jet algorithms, \sfr{focusing on the inclusive definition}. In what follows we will simply label the $p=-1$ variant of the
+algorithm with anti-$k_t$, $p=0$ with C/A, and $p=1$ with $k_t$. We
+compare them to the Centauro algorithm to highlight differences and
+similarities. 
+
 DIS neutral-current events are produced using the
-\PYTHIAn~\cite{Bierlich:2022pfr} event generator, with the native \PYTHIA shower with dipole local
+\PYTHIAn~\cite{Bierlich:2022pfr} event generator, with 
+%, and the parton showers are produced
+%with either PanGlobal~\cite{vanBeekveld:2023chs,vanBeekveld:2023ivn} or
+the native \PYTHIA shower with dipole local
 recoil~\cite{Cabouat:2017rzi}. 
 The analysis is performed with \textsc{Rivet~3.1.8}~\cite{Bierlich:2019rhm}. 
 The parameters, unless otherwise stated, used for the results presented 
@@ -293,8 +664,7 @@ Input Parameter & Value \\
 PDF & NNPDF40MC\_nlo\_as\_01180 \\
 $\sqrt{s}$ & $300\,\mathrm{GeV}$\\
 $Q_{\mathrm{min}}$ & $12\,\mathrm{GeV}$ \\
-$v_{\mathrm{cut}}$ (SI generalised-$k_t$) & $\infty$ \\
-$R$ (Centauro) & $0.8$ \\
+%$y_{\rm cut}$ (SI generalised-$k_t$) & 1 \\
 Hadronisation effects & On \\
 Beam remnants & On \\
 QED & Off \\
@@ -306,14 +676,15 @@ Tune & Monash~\cite{Skands:2014pea}\\
 \label{tab:input-params}
 \end{table}
 
+
 \subsection{Properties of the reconstructed jets}
 \label{sec:all}
 \begin{figure}[th!]
 	\includegraphics[width=\textwidth,page=15]{figures/events_repo.pdf}
 	\includegraphics[width=\textwidth,page=16]{figures/events_repo.pdf}
-	\caption{ Jet clustering in the Breit frame using the SI $k_t$ (left),
+	\caption{  the SI $k_t$ (left),
 		SI C/A (center), and Centauro (right) jet algorithms. Each particle is
-		represented by a disk whose area is proportional to its energy,
+		represented by a disc whose area is proportional to its energy,
 		while its position corresponds to the direction of its momentum
 		projected onto the unfolded sphere around the hard-scattering
 		vertex. Vertical lines indicate constant $\theta$, and curved lines
@@ -325,7 +696,7 @@ Tune & Monash~\cite{Skands:2014pea}\\
 		highlighted in red and are encircled by a black line.
 		%
 		The top row displays the original showered event, whereas for the bottom row
-		we have added a sea of $1000$ ultra-soft partons to
+		we have added a sea of $2000$ ghosts~\cite{Cacciari:2008gn} to
 		illustrate how soft emissions affect the jet boundaries. 
 		%
 		The soft particles that are not part of any physical jet are coloured gray. 
@@ -345,9 +716,9 @@ we show in the top panel of Figs.~\ref{fig:events} and \ref{fig:events2} the
 $(\theta,\phi)$ distribution of particles from two DIS events obtained
 after showering.
 %
-The location of the central point in each disk corresponds to the
+The location of the central point in each disc corresponds to the
 particle's position in the $\theta$ and $\phi$ plane, while the size
-of the disk illustrates the particle's energy, with
+of the disc illustrates the particle's energy, with
 larger radii corresponding to higher relative energies.
 %
 Particles in the remnant hemisphere lie at $\theta<\pi/2$ (i.e.\ the
@@ -360,13 +731,15 @@ Those forming the final-state macrojet are coloured in red and are encircled
 by a thick black line.
 %
 For each figure, the bottom row represents the same event, but placed in a sea
-of 1000 additional ultra-soft particles. 
+of 2000 additional ultra-soft particles, \mvb{dubbed ghosts in Ref.~\cite{Cacciari:2008gn},
+where this idea to illustrate the jet boundaries was originally introduced. } 
 %
-We generate these ultra-soft particles with a fixed energy and with a uniform 
+We generate these ghosts with a fixed energy and with a uniform 
 distribution in $\theta$ and $\phi$. 
 %
 We stress here that the exact location of the jet boundaries depend
-on the exact location of the soft particles. \\ \\
+on the exact location of the soft particles. 
+
 In Fig.~\ref{fig:events} we show an event with relatively large $x_B$ and $Q$. 
 %
 We clearly observe that the Centauro algorithm tends to cluster fewer particles together.
@@ -379,7 +752,9 @@ However, when we add the sea of ultra-soft emissions, one starts seeing the diff
 for which soft large-angle radiation gets pulled inside other jets. 
 %
 The feature of the Centauro algorithm of suppressing clustering in the remnant
-hemisphere is even more manifest when the sea of ultra-soft particles is included, as soft radiation that enters the final-state macrojet is predominantly at larger rapidities (i.e.\ larger $\theta$). \\ \\
+hemisphere is even more manifest when the sea of ultra-soft particles is included, as soft radiation that enters the final-state macrojet is predominantly at larger rapidities (i.e.\ larger $\theta$).
+
+
 In Fig.~\ref{fig:events2} we show an event with a slightly smaller value for $x_B$ and $Q$. 
 %
 We again observe that the Centauro algorithm leads to a larger number of jets.
@@ -391,17 +766,20 @@ angular ordering, while for the $k_t$ one first merges around
 soft particles.
 %
 These clustering features of the C/A is what makes it particularly
-suited for the design of resolution variables with simple all-orders
-corrections~\cite{vanBeekveld:2025zjh}. \\ \\
+suited for the design of resolution variables with simple all-order
+corrections~\cite{vanBeekveld:2025zjh}.
+
 We now describe the properties of the clustered jets.
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=0.8\textwidth,page=3]{figs_new/paper_plot2d_showers.pdf}
-\caption{The $z-\eta$-plane for the all jets constructed with the Centauro (grey), C/A (blue), and $k_t$-algorithms. Dash-dotted: $68\%$ of the points ($z_{\mathrm{score}}$=1), dashed $38\%$ ($z_{\mathrm{score}}=0.5$), solid  $20\%$ ($z_{\mathrm{score}}=0.25$).}
+  \includegraphics[width=0.45\textwidth,page=3]{figs_new/paper_plot2d_showers_R0.8.pdf}
+  \includegraphics[width=0.45\textwidth,page=3]{figs_new/paper_plot2d_showers_Rpiover2.pdf}
+\caption{The $z-\eta$-plane for the all jets constructed with the Centauro (pink), C/A (orange), $k_t$ (green) and anti-$k_t$ (blue) algorithms for $R = 0.8$ (left) and $R = \pi / 2$ (right). The inclusive variant of the generalised $k_t$ algorithms is employed.
+Dash-dotted: $68\%$ of the points ($z_{\mathrm{score}}$=1), dashed $38\%$ ($z_{\mathrm{score}}=0.5$), solid  $20\%$ ($z_{\mathrm{score}}=0.25$).}
   \label{fig:zeta}
 \end{figure}
 Fig.~\ref{fig:zeta} shows the $z-\eta$ plane for all final-state jets constructed with the
-three algorithms considering $10^6$ events. 
+four algorithms considering $10^6$ events. 
 %
 Here, $z_{\mathrm{jet}}$, the  lightcone-momentum fraction carried by each of the final-state jets, is defined as
 \begin{equation}
@@ -412,19 +790,189 @@ Here, $z_{\mathrm{jet}}$, the  lightcone-momentum fraction carried by each of th
 where the last equation holds in the Breit frame. We show contours
 corresponding to areas that contain $68\%$ (dash-dotted), $38\%$
 (dashed), and $20\%$ (solid) of the total number of points in the
-plot, for each of the three considered jet algorithms.
+plot, for each of the four considered jet algorithms, and for $R = 0.8$ 
+and $R = \pi/2$. 
+
+
+We observe that the jet algorithms behave relatively similar for $R=0.8$, where we observe
+two dense regions:  one at small $z_{\mathrm{jet}}$ and (large and) positive pseudo-rapidity, and one at large  $z_{\mathrm{jet}}$ and negative rapidity.
 %
-For this plot, and all plots that follow, we will show Centauro in
-grey, C/A in blue and $k_t$ in orange. \\ \\
-We observe that there are two more dense regions: one at small  $z_{\mathrm{jet}}$ and (large and) positive pseudo-rapidity, and one at large $z_{\mathrm{jet}}$ and negative rapidity.
+However, for $R = \pi/2$, there are larger differences between the algorithms. 
 %
-The Centauro algorithm, which suppresses clustering in the remnant hemisphere, yields more jets in the former region compared to the other jet algorithms, which can be seen by the gray area extending to somewhat larger $z_{\mathrm{jet}}$ values.
+The Centauro algorithm, which suppresses clustering in the remnant hemisphere, yields somewhat more jets in the small-$z_{\mathrm{jet}}$ region compared to the other jet algorithms.
 %
-The central region is populated by soft wide-angle radiation that form stand-alone jets.
+The central region is populated by soft wide-angle radiation that forms stand-alone jets.
 It is therefore not surprising that the $k_t$ algorithm yields more jets in this region, as it tends to cluster soft particles first.
 
+\subsection{Energy and $z_{\mathrm{jet}}$ of the macro jet}
+\label{sec:obs-macrojet}
+%
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.48\textwidth,page=1]{figs_new/paper_rivet_cmp_algos_R0p8.pdf}
+    \includegraphics[width=0.48\textwidth,page=3]{figs_new/paper_rivet_cmp_algos_R0p8.pdf}
+    %\includegraphics[width=\linewidth]{figures/link_E_kT_CA.pdf}
+    \caption{Normalised energy distribution~(left panel) and $z_{\mathrm{jet}}$ of the final-state macro jet in the Breit frame for the Centauro~(pink) jet algorithm, as well as the inclusive versions of the C/A ($p=0$, orange), $k_t$ ($p=1$, green) and anti-$k_t$ ($p=1$, blue) algorithms, all with $R=0.8$.}
+    \label{fig:E-z-algs}
+\end{figure}
+
+We now investigate the properties of the final-state macrojet, identified as the jet that maximises the light-cone component of the original struck quark, as explained in Sec.~\ref{sec:macrojet}.
+%
+We begin by examining the energy of the macrojet, $E_{\mathrm{jet}}$,
+normalised to $Q/2$. At the Born-level this variable is exactly
+$1$. 
+
+\sfr{new text to include akt}
+The normalised energy distributions of the macro jet for the Centauro~(pink),
+C/A~(orange), $k_t$~(green) and anti-$k_t$~(blue) algorithms, with $R=0.8$,are shown in the left panel of Fig.~\ref{fig:E-z-algs}.
+%
+Let us first compare our three generalised $k_t$ versions. 
+Both the $k_t$ and the anti-$k_t$ variants display a loger 
+high-$E_{\mathrm{jet}}$ tail compared to the C/A variant.  
+%
+This behaviour reflects the $k_t$ algorithm's tendency to cluster softer  particles first, allowing more soft radiation to be included in the
+hard jets.
+%
+This happens also for the anti-$k_t$ algorithm, where energetic partons attracts other partons in the jet.
+%
+Consequently, the macro jet becomes more energetic, incorporating additional radiation. We  note that in the region around the peak, the three algorithms give very similar results.
+Differences are more visible below the peak, where the $k_t$ algorithm displays an intermediate behaviour between C/A and anti-$k_t$.
+
+The Centauro distribution displays a longer tail at small
+$E_{\mathrm{jet}}$ than all the generalised-$k_t$ variants. This
+suggests that the Centauro algorithm tends to not cluster any of
+the soft radiation and instead returns a large number of softer
+jets. This can be understood by inspecting the distance measure of the Centauro algorithm
+(cf.\ eq.~\eqref{eq:cent-dij}), which effectively prevents partons from
+clustering in the target hemisphere, and prevents the recoiled 
+struck quark (which may lie at a more central rapidity) from clustering 
+with anything that is not very close in angle.
+%
+This feature was also seen in Sec.~\ref{sec:all}.
 
 
 
+To further investigate the behaviour of soft radiation, we examine $z_{\mathrm{jet}}$ (cf.\ eq.~\eqref{eq:zjet}).
+The resulting distributions are shown in the right panel of Fig.~\ref{fig:E-z-algs}.
+%
+One can notice the presence of three regions:
+\begin{itemize}
+  \item a peak region, around $z_{\mathrm{jet}} = 0.95$, characterised by only soft and collinear emissions;
+  \item a ``dijet" region, with $0.5 < z_{\mathrm{jet}} \lesssim 0.8$, where the final-state macrojet still carries most of the original momentum, but a non-negligible fraction has been distributed to other jets;
+  \item a ``multi-jet" region, with $z_{\mathrm{jet}} <0.5$, where the struck quark lost the majority of its energy.
+\end{itemize}
+We notice that our generalised-$k_t$ algorithms behave quite similarly in the peak and dijet region, which terminates with a shoulder around $z_{\mathrm{jet}} =0.5$.
+%
+This similarity is expected, as these regions are dominated by configuration with at most one hard emission, and the two algorithms behave identically at $\mathcal{O}(\alpha_s)$.
+%
+Below this shoulder the distributions fall off very quickly, although we observe larger differences between the three algorithms, with the $k_t$ algorithm lying between the C/A and the anti-$k_t$, as it happens for the energy spectrum.
+%
+The Centauro algorithm produces a quite different distribution, where the peak region being noticeably smeared. We however
+notice that the slope of the distribution again agrees well with the
+generalised-$k_t$ variants in the ``dijet" region. This is
+perhaps not surprising, as this is the region that is dominated by two
+well-separated jets. Towards $z_{\mathrm{jet}} \to 1$, the spectrum
+differs significantly, which can again be attributed to the
+behaviour of the $\bar{\eta}$ variable of that algorithm, which prevents the clustering
+of soft radiation carrying away a fraction of the energy. Similarly,
+for $z_{\mathrm{jet}} < 0.5$ the spectrum is dominated by soft jets in
+the target hemisphere. 
+
+
+
+\subsection{Impact of hadronisation and beam remnants}
+\label{sec:hadronisation}
+In this section we study the impact of hadronisation and beam remnants on the final-state macrojet. Given the amount of high quality DIS data that
+currently exists, with more to come from the EIC, it is worth
+considering if it is possible to use jets to constrain fundamental QCD
+parameters, like the value of $\alpha_s$ and parameters of various
+hadronisation models, as is often done with historical $e^+e^-$
+collider data and LHC data. Although it is beyond the scope of this
+paper to carry out a fit of such parameters, we here discuss how one
+might use the jet algorithms to perform them.
+
+\begin{figure}[t!]
+  \includegraphics[width=\textwidth,page=13]{figs_new/paper_rivet_hadr_effects_R0p8.pdf}\\
+  \includegraphics[width=\textwidth,page=14]{figs_new/paper_rivet_hadr_effects_R0p8.pdf}\\
+  \includegraphics[width=\textwidth,page=13]{figs_new/paper_rivet_hadr_effects_Rpiover2.pdf}\\
+  \includegraphics[width=\textwidth,page=14]{figs_new/paper_rivet_hadr_effects_Rpiover2.pdf}
+  \caption{
+Normalised energy~(first and third rows) and $z_{\mathrm{jet}}$ 
+(second and fourth row) distributions of the final-state macro jet in the Breit frame for the Centauro~(first column), C/A~(second column), $k_t$~(third column) and anti-$k_t$ (fourth column) jet algorithm, with $R=0.8$ (first and second rows) and $R=\pi/2$ (third and fourth row).
+%
+We show results at the parton shower level (labeled PS, dotted), parton shower with beam remnants (labeled PS+remn, dashed), and parton shower with beam remnants and hadronisation (labeled PS+remn+hadr, solid).}
+  \label{fig:hadron}
+\end{figure}
+In Fig.~\ref{fig:hadron} we show the normalised energy distribution and lightcone fraction of the final-state macrojet for the Centauro jet algorihm, as well the inclusive version of our generalised $k_t$ algorithms, for two values of the jet radius. 
+
+For each plot we show results at the parton shower level (PS, dotted), parton shower with beam remnants (PS+remn, dashed), and parton shower with beam remnants and hadronisation (PS+remn+hadr, solid). The latter distributions, which also include unstable hadrons decay, coincide with the ones showed in the previous section. 
+%
+We remind the reader, that unlike in hadron-hadron
+collisions, there are no underlying events in DIS.
+
+Starting with the normalised energy fraction we see that the beam
+remnants do not contaminate the jet spectra much, irrespectively on the jet radius parameter, although there is some distortion to the right of the peak. The hadronisation on the other hand has a larger effect. 
+%
+To the left of the peak the distortions are very sizeable for all algorithms. 
+%
+To the right of the peak the C/A and $k_t$-algorithms are
+surprisingly insensitive to hadronisation until the spectrum becomes
+very hard. 
+%
+Centauro receives very large corrections here too, but the
+distribution is rather flat, so we attribute the large shift to the
+normalisation of the plots.
+%
+\sfr{The anti-$k_t$ algorithm behaves similarly to the C/A and $k_t$ for $R=0.8$, while for $R=\pi/2$ the peak is noticeably distorted already at the parton level, and hadronisation corrections become large and opposite in size to those displayed by Centauro. 
+%
+This is an indication that this algorithm and its hadronisation corrections are more sensitive to the jet radius.}
+
+Turning now to the lightcone component $z_{\mathrm{jet}}$ we see again
+that the beam remnants have very little effect on the plots, except
+for $z_{\mathrm{jet}}$ close to $1$. 
+%
+Hadronisation on the other hand has once again a large effect, which induces shape differences to be
+found across all the spectrum, except for just above
+$z_{\mathrm{jet}}=0.5$.
+%
+We also notice that for all jet algorithms, the peak at $z_{\mathrm{jet}}\approx 1$ present at parton level moves at lower values, especially for Centauro.
+%
+For $R=0.8$, all the generalised $k_t$ algorithms behave similarly, but not for $R=\pi/2$, where the peak is noticeably less displaced in the anti-$k_t$ case.
+%
+In general a larger jet radius leads to smaller hadronisation corrections in the peak region, but larger corrections in the soft tail.
+
+Taken together it seems that the jet algorithms discussed here could
+be used to constrain hadronisation parameters.  In particular, the
+region $0.65<z_{\mathrm{jet}}<0.9$ can be used to fit non-perturbative
+models.  On the other hand the region just above the shoulder $z_{\mathrm
+ {jet}} =0.5$ seems more insensitive to hadronisation effects and could
+be used to determine $\alpha_s$ from higher-order analytical
+calculations.
+
+\section{Conclusion}
+\label{sec:concl}
+In this paper we have presented a generalisation of the
+angular-ordered jet algorithm which was first presented in
+Ref.~\cite{vanBeekveld:2023chs}. 
+The generalisation follows the 
+idea of introducing an exponent to control how much to weight the
+energy of each pseudojet in the clustering. The algorithm is very
+simple, and gives jets that are naturally separated in the
+current and target hemispheres. 
+We also compared the 
+angulared-orderd variant, as well as the $k_t$ and anti-$k_t$ variant of our new inclusive
+algorithms to the
+recently-proposed Centauro jet algorithm. One application that we have in mind, is to use the
+new jet algorithms to re-analyse old HERA data, with the aim of
+1.\ fitting $\alpha_s$ from jets, and 2.\ to constrain hadronisation
+parameters in parton shower models. Whereas the $\alpha_s$ extraction
+is unlikely to be competitive with other extractions on its own, we
+think there is value in studying hadronisation in DIS data. This is in
+part due to the fact that DIS allows for studying jets in bins of
+$Q$. This could provide a natural handle on the energy dependence of
+hadronisation parameters. We leave this to future studies.
+%
+The algorithm has been implemented as the \href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}} plugin to
+\textsc{FastJet} as part of \texttt{fjcontrib}.
 
 
