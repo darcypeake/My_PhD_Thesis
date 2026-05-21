@@ -536,24 +536,25 @@ We define $R(v)$ to be:
 \begin{equation}
 	R(v)\equiv \int_v[dk]M^2(k)=\int [dk] M^2(k)\Theta\left(V\left(\{ \tilde{p}\},k\right)-v\right)\,,
 \end{equation}
-\add{Discuss the no emission probability with $e^{-R(v)}$.}
+where $e^{-R(v)}$ is the Sudakov form factor known as the radiator. This encodes the probability
+that no emissions occur $v$. \ABquestion{check the probability thing.}
+From here the cumulant can take the form
+ \begin{equation}
+ 	\label{eq:cumu-factor-combine}
+ 	\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R(v)} e^{-\int_{\epsilon v}^v[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int^v_{\epsilon v}\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
+ \end{equation}
+ \ndp{Stopped here. 
+ I think we should do the rescaling first to give the $\mathcal{F}$-function
+ and then define the multiplicative form i.e. general formula for NLL 
+ cumulant and then give $R$ and the $\mathcal{F}$-function 
+ explicitly.}
+ 
 
-\ndp{The radiator is equal to
-\begin{equation}
-	R(v)\equiv \int_v[dk]M^2(k)=\int [dk] M^2(k)\Theta\left(V\left(\{ \tilde{p}\},k\right)-v\right)\,,
-\end{equation}
-such that $e^{-R(v)}$ is the Sudakov form factor which is essentially the probability that all emissions
-are $V\left(\{ \tilde{p}\},k\right) <v$.
-We can re-write the cumulant in Eq.~\eqref{eq:3jet-cumu-factor} as
-\begin{equation}
-\label{eq:3jet-cumu-rad}
-\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R(v)} \left\{e^{-\int^v[dk]M^2(k)}\sum_{n=0}^\infty S(n) \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\right\}\,.
-\end{equation}
-We can then separate the emissions into \emph{resolved} and \emph{unresolved} regions. 
-The \emph{unresolved} emissions i.e.\ where $V(\{\tilde{p}\},k_i)<\epsilon v$ do not contribute
-to the value of the observable and so will combine with the virtual corrections. The resolved emissioi.e.\  $\epsilon v\lesssim
- V(\{\tilde{p}\},k_i)\sim v$, on the other hand do contribute to the value of the observable and are combined with the real emission.
-}
+ 
+ 
+ 
+
+
 
 
 Separating emissions into \emph{resolved} and \emph{unresolved} regions, and combining them with the corresponding virtual corrections, the cumulant can be written in a multiplicative form,
@@ -566,7 +567,7 @@ which is general and not specific to the three-jet case. We now discuss the two 
 \ndp{--------------------------------------------------------old version ------------------------------------------------------------------}
 \section{NLL Resummation}
 \label{sec:NLL-resum}
-In the near-to-planar limit, $v \ll 1$, the \ndp{general expression for the} cumulant for a three-jet observable can be written in factorised form as
+In the near-to-planar limit, $v \ll 1$, the cumulant for a three-jet observable can be written in factorised form as
 \begin{equation}
 \label{eq:3jet-cumu-gen}
 \Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\prod_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
@@ -585,15 +586,6 @@ where:
 This expression provides the starting point for constructing the cumulant at NLL accuracy. At this level, only soft and collinear emissions widely separated in angle contribute to the cumulant, such that the matrix-element squared can be factorised into the product of single-emission squared matrix-elements, radiated according to the physical coupling~\cite{Banfi:2018mcq} \add{Add in something about coherence here and possibly about the correlated term which gives rise to the CMW/physical coupling scheme. Must write something
 in the footnote/ check it with A. Banfi.}
 
-\ndp{
-\begin{equation}
-\label{eq:3jet-cumu-factor}
-\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
-\end{equation}
-where these soft emissions factor from the Born process and give rise to the factorised form in ..
-}
-\ABquestion{Understand if this is the soft matrix element or not?}
-
 This coupling, $\alpha_s^{\mathrm{phys}}$, is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. It is related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{Please note that the first interpretation of this factorisation was present in Ref.~\cite{Catani:1990rr}, in which the CMW coupling, $\alpha_s^{\mathrm{CMW}}$ was introduced through: $\alpha_s^{\mathrm{CMW}} = \alpha_s\left(1+\frac{\alpha_s}{2\pi} K^{(1)}\right)+\mathcal{O}(\alpha_s^3)$.}:
  \begin{equation} \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
 \end{equation} 
@@ -605,31 +597,6 @@ where
 	&+C_An_f\left(-\frac{209}{108}+\frac{10}{9}\zeta_2-\frac{7}{3}\zeta_3\right)-\frac{1}{27}n_f^2+\frac{\pi\beta_0}{2}\left(C_A\left(\frac{808}{27}-28\zeta_3\right)-\frac{224}{54}n_f\right)\,.
 \end{aligned}
 \end{equation}
-\ndp{The virtual correction, for which there is no real emission
-in phase space is equal to:
- \begin{equation}
- \mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}\,.
- \end{equation}
- This can be split into a term with emissions above $v$ and another with emissions below $v$:
-\begin{equation}
-\int [dk]M^2(k) = \int_v[dk]M^2(k)+ \int^v[dk]M^2(k)\,.
-\end{equation}
-The radiator is equal to
-\begin{equation}
-	R(v)\equiv \int_v[dk]M^2(k)=\int [dk] M^2(k)\Theta\left(V\left(\{ \tilde{p}\},k\right)-v\right)\,,
-\end{equation}
-such that $e^{-R(v)}$ is the Sudakov form factor which is essentially the probability that all emissions
-are $V\left(\{ \tilde{p}\},k\right) <v$.
-We can re-write the cumulant in Eq.~\eqref{eq:3jet-cumu-factor} as
-\begin{equation}
-\label{eq:3jet-cumu-rad}
-\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R(v)} \left\{e^{-\int^v[dk]M^2(k)}\sum_{n=0}^\infty S(n) \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\right\}\,.
-\end{equation}
-We can then separate the emissions into \emph{resolved} and \emph{unresolved} regions. 
-The \emph{unresolved} emissions i.e.\ where $V(\{\tilde{p}\},k_i)<\epsilon v$ do not contribute
-to the value of the observable and so will combine with the virtual corrections. The resolved emissioi.e.\  $\epsilon v\lesssim
- V(\{\tilde{p}\},k_i)\sim v$, on the other hand do contribute to the value of the observable and are combined with the real emission.
-}
 
 Separating emissions into \emph{resolved} and \emph{unresolved} regions, and combining them with the corresponding virtual corrections, the cumulant can be written in a multiplicative form,
 \begin{equation} 
