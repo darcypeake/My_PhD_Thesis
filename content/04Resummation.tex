@@ -255,9 +255,9 @@ techniques are essential. A formalism known as \textsc{ARES} provides us with an
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
 
 \section{Problem Specification}
-We consider events with $n_i$ incoming partons and an arbitrary number $N$ of final-state particles, whose momenta are denoted by $q_1, \dots, q_N$. At Born level, the process consists of $n$ hard partons (including both incoming and outgoing legs), which define the underlying hard configuration.
+We consider events with $n_i$ incoming partons and an arbitrary number $N$ \ndp{$n$} of final-state particles, whose momenta are denoted by $q_1, \dots, q_N$ \ndp{$q_n$}. At Born level, the process consists of $n$ \ndp{$N$}  hard partons (including both incoming and outgoing legs), which define the underlying hard configuration.
 
-We define an observable $V(q_1, q_2, \dots)$ as a non-negative function of the final-state momenta. We assume that the observable is IRC safe and that it vanishes smoothly in the limit where the event approaches an $n$-jet configuration. Observables with these properties are commonly referred to as $(n+1)$-jet observables, where both the outgoing jets and the incoming beam jets are included in the jet counting.
+We define an observable $V(q_1, q_2, \dots)$ as a non-negative function of the final-state momenta. We assume that the observable is IRC safe and that it vanishes smoothly in the limit where the event approaches an $n$-jet configuration. Observables with these properties are commonly referred to as $(n+1)$-jet observables \ndp{$N+1$-jet observable?}, where both the outgoing jets and the incoming beam jets are included in the jet counting.
 
 To select events containing $n$ or more well-separated hard jets, we introduce a selection procedure. \ABquestion{Could I add in something a little more pedological i.e. `we expect expect there to be at least $n$-jets since jets occur from the hard legs within the Born level configuration or is it unnecessary?} 
 This can be implemented, for instance, through a jet algorithm that counts the number of jets in the event, or by imposing a cut on a suitable $n$-jet observable. We encode this requirement in a selection function $\mathcal{H}(q_1,\dots,q_N)$, defined as
@@ -314,26 +314,54 @@ More examples will be shown in Ch.~\ref{ch:hhZjet}. Note that IRC safety implies
 
 \item \textbf{Recursively IRC (rIRC) safe}: this condition requires that, for an ensemble of soft and collinear emissions, the addition of a further emission that is relatively much softer and/or collinear should not significantly modify the value of the observable. A formal definition of rIRC safety is given in Refs.~\cite{Banfi:2004yd, Banfi:2003je} and is summarised below.
 
- Consider momenta $\kappa_i(\lambda_i)$ such that the observable satisfies
+ Consider momenta $\kappa_i(\zeta_i)$ such that the observable satisfies
 \begin{equation}
-\label{eq:rIRC1}
-	V(\{\tilde{p}\},\kappa_i(\lambda_i))=\lambda_i\,,
+\label{eq:rIRCa}
+	V(\{\tilde{p}\},\kappa_i(\zeta_i))=\zeta_i\,,
 \end{equation}
-where $\lambda_i\to0$ in the soft and/or collinear limits, while the azimuthal angles $\phi_i$ of the emissions $\kappa_i(\lambda_i)$ are fixed. The functions $\kappa_i(\lambda_i)$ may differ for each emission but must satisfy Eq.~\eqref{eq:rIRC1}. The conditions for rIRC safety are then:
+such that in the soft and/or collinear limits i.e.\ when $\zeta_i\to0$, the azimuthal angle $\phi_i$ of the emission $\kappa_i(\zeta_i)$ is fixed. The functions $\kappa_i(\zeta_i)$ may differ for each emission but must satisfy Eq.~\eqref{eq:rIRCa}. Moreover, the collinear splitting
+of an existing emission can be denoted as: 
+\begin{equation}
+	\kappa_i(\zeta)\to\{\kappa_{i_a},\kappa_{i_b}\}(\zeta,\mu)\,,
+\end{equation}
+where $\mu^2$ is the re-scaled invariant mass of the emissions \ABquestion{check this is true}, such that it is defined as
+\begin{equation}
+	\mu^2=\frac{(\kappa_{i_a}+\kappa_{i_b})^2}{\kappa_{ti}^2}\,,\quad \lim_{\mu\to0}(\kappa_{i_a}+\kappa_{i_ab})=\kappa_{i}\,.
+\end{equation}
+
+he conditions for rIRC safety are the following:
 \begin{enumerate}
-	\item The following limit must be well-defined and non-zero:
-	\begin{equation}
-	\lim_{\varepsilon\to0}\frac{1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
-	\end{equation}
-	which can be interpreted as requiring the soft and collinear scaling of the observable to be independent of the number of emissions.
-	\item The following equality must hold:
-	\begin{equation}
-	\begin{aligned}
-	\lim_{\lambda_{m+1}\to0}\lim_{\varepsilon\to0}\frac{1}{\varepsilon}V(&\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m), \kappa_{m+1}(\varepsilon\lambda_{m+1}))\\
-		&= \lim_{\varepsilon\to0}\frac{1}{\varepsilon}V(\{\tilde{p}\},\kappa_1(\varepsilon\lambda_1),\dots,\kappa_m(\varepsilon\lambda_m))\,,
-	\end{aligned}
-	\end{equation}
-	showing that the addition of an additional much softer and/or collinear emission must not affect the value of the observable. 
+\item The following limit must be finite and non-zero:
+\begin{equation}
+\label{eq:rIRC-a}
+\lim_{\bar{v}\to0}\frac{1}{\bar{v}}V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,\kappa_m(\bar{v}\zeta_m))\,,
+\end{equation}
+for any choice of (non-zero) $\zeta_i$. The parameter  $\bar{v}$ is introduced to distinguish it from
+$v$ - the value of the observable we wish to resum. This requirement in Eq.~\eqref{eq:rIRC-a} can be 
+interpreted as requiring the soft and collinear scaling of the observable to be independent of the number of emissions.
+%	
+\item
+\begin{enumerate}
+\item The following equality must hold:
+\begin{multline}
+\label{eq:rIRC-b-i}
+\lim_{\zeta_{m+1}\to0}\lim_{\bar{v}\to0}\frac{1}{\bar{v}}
+V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,\kappa_m(\bar{v}\zeta_m),
+\kappa_{m+1}(\bar{v}\zeta_{m+1}))\\
+=\lim_{\bar{v}\to0}\frac{1}{\bar{v}}V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,
+\kappa_m(\bar{v}\zeta_m))\,,
+\end{multline}
+showing that the addition of a much softer and/or collinear emission must not affect the value of the observable. 
+%
+\item Analogous to Eq.~\eqref{eq:rIRC-b-i}, the same must hold for a collinear splitting of an already present emission:
+\begin{multline}
+\label{eq:rIRC-b-ii}
+\lim_{\mu\to0}\lim_{\bar{v}\to0}\frac{1}{\bar{v}}
+V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,\{\kappa_{i_a},\kappa_{i_b}\}(\bar{v}\zeta_i,\mu),\dots,\kappa_m(\bar{v}\zeta_m))\\
+=\lim_{\bar{v}\to0}\frac{1}{\bar{v}}V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,
+\kappa_m(\bar{v}\zeta_m))\,.
+\end{multline}
+\end{enumerate}
 \end{enumerate}
 The condition of rIRC safety allows for the leading-logarithmic terms to exponentiate. Observables which are rIRC un-safe e.g.\ the \textsc{JADE} 3-jet resolution parameter in $e^+e^-$ do not exponentiate. 
 
@@ -343,71 +371,199 @@ The condition of rIRC safety allows for the leading-logarithmic terms to exponen
 \end{enumerate}
 \reference{~\cite{Banfi:2004yd, Banfi:2003je}.}
 
-\section{Kinematics}
-\label{sec:kinematics}
+%\section{Kinematics}
+%\label{sec:kinematics}
+%
+%To illustrate the \textsc{ARES} formalism, we consider a concrete example. Since the analysis in Chapter~\ref{ch:hhZjet} closely follows the approach of Ref.~\cite{Arpino:2019ozn}, we present the formalism in the context of three-jet event shapes in $e^+e^-$ collisions, in the near-to-planar limit~\cite{Arpino:2019ozn}. Wherever possible, we keep the discussion general, and specialise to the three-jet configuration only when necessary.
+%
+%We consider a generic, continuously global and rIRC-safe observable 
+%$V(\{\tilde{p}\},k_1,\dots,k_n)$, which vanishes in the three-jet limit,
+%\begin{equation}
+%V(\{\tilde{p}\}) = 0\,,
+%\end{equation}
+%where $\{\tilde{p}\} = \{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\}$ denote the recoiled Born-level momenta after the emission of $n$ soft and/or collinear partons $k_1,\dots,k_n$. 
+%
+%At Born level, a three-jet event consists of a quark, an anti-quark, and a gluon. Their momenta can be parameterised as
+%\begin{equation}
+%\label{eq:3-born-kin}
+%p_1 = E_1(1,0,0,1)\,,\quad
+%p_2 = E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad
+%p_3 = E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
+%\end{equation}
+%where $\theta_{ij}$ denotes the angle between the momenta $p_i$ and $p_j$.
+%
+%An emission $k$ with respect to to a hard leg $\ell$ can be expressed through a Sudakov decomposition along the corresponding light-like direction $p_\ell$:
+%\begin{equation}
+%k^{(\ell)} = x^{(\ell)} p_\ell + \bar{x}^{(\ell)} \bar{p}_\ell + k_\perp^{(\ell)}\,,
+%\end{equation}
+%where $\bar{p}_\ell = (E_\ell,-\vec{p}_\ell)$, and $x^{(\ell)}$, $\bar{x}^{(\ell)}$ are longitudinal momentum fractions.  
+%The  two-dimensional space-like vector $k_\perp^{(\ell)}$ lies in the plane orthogonal to $\vec{p}_\ell$ and has magnitude
+%\begin{equation}
+%-\left(k_\perp^{(\ell)}\right)^2
+%= \frac{(2p_\ell \cdot k)(2k \cdot \bar{p}_\ell)}{2p_\ell \cdot \bar{p}_\ell}
+%\equiv \left(k_t^{(\ell)}\right)^2\,,
+%\end{equation}
+%where $k_t^{(\ell)}$ is the transverse momentum with respect to leg $\ell$. The corresponding rapidity is defined as
+%\begin{equation}
+%\eta^{(\ell)} = \frac{1}{2}\ln\frac{x^{(\ell)}}{\bar{x}^{(\ell)}}\,.
+%\end{equation}
+%
+%It is often convenient to describe emissions using dipole kinematics. In this case, the emission $k$ can be conveniently described using Sudakov variables such that it is decomposed along a pair of light-like momenta $(p_i,p_j)$ forming the $(ij)$ dipole:
+%\begin{equation}
+%k^{(ij)}=z^{(i)}p_i+z^{(j)}p_j+\kappa^{(ij)}\cos\phi^{(ij)}n_{\mathrm{in}}^{(ij)}+\kappa^{(ij)}\sin\phi^{(ij)}n_{\mathrm{out}}^{(ij)}\,.
+%\label{eq:Sudakov-decomp}
+%\end{equation}
+%where $z^{(i)}$ and $z^{(j)}$ are energy fractions. The invariant transverse momentum $\kappa^{(ij)}$ is given by 
+%\begin{equation}
+%\left(\kappa^{(ij)}\right)^2=\frac{(2p_i\cdot k)(2p_j\cdot k)}{(2p_i\cdot p_j)}\,.
+%\end{equation}
+%
+%The unit vectors $n_{\mathrm{in}}^{(ij)}$ and $n_{\mathrm{out}}^{(ij)}$ define the directions in and orthogonal to the dipole plane:
+%\begin{equation}
+%n_{\mathrm{in}}^{(ij)}=\left(\cot\frac{\theta_{ij}}{2},\frac{\vec{n}_i+\vec{n}_j}{\sin\theta_{ij}}\right)\,,\quad n_{\mathrm{out}}^{(ij)}=\left(0,\frac{\vec{n}_i\times\vec{n}_j}{\sin\theta_{ij}}\right)\,,
+%\end{equation}
+%where $\vec{n}_\ell\equiv\vec{p}_\ell/E_\ell$ for $\ell=i,j$. 
+%
+%The rapidity of the emission with respect to the dipole is defined as
+%\begin{equation}
+%\eta^{(ij)} = \frac{1}{2}\ln\frac{z^{(i)}}{z^{(j)}}\,.
+%\end{equation}
+%In the limit where the emission becomes collinear to one of the dipole legs, this quantity is related to the single-leg rapidity via
+%\begin{equation}
+%\eta^{(i)} \simeq \eta^{(ij)} + \ln\frac{2E_i}{Q_{ij}}\,,\quad 
+%\eta^{(j)} \simeq -\eta^{(ij)} + \ln\frac{2E_j}{Q_{ij}}\,,\quad 
+%Q_{ij}^2 = 2(p_i \cdot p_j)\,.
+%\end{equation}
+%In the same collinear limit, the dipole transverse momentum reduces to the transverse momentum with respect to the emitting leg, $\kappa^{(ij)} \to k_t^{(\ell)}$.
 
-To illustrate the \textsc{ARES} formalism, we consider a concrete example. Since the analysis in Chapter~\ref{ch:hhZjet} closely follows the approach of Ref.~\cite{Arpino:2019ozn}, we present the formalism in the context of three-jet event shapes in $e^+e^-$ collisions, in the near-to-planar limit~\cite{Arpino:2019ozn}. Wherever possible, we keep the discussion general, and specialise to the three-jet configuration only when necessary.
 
-We consider a generic, continuously global and rIRC-safe observable 
-$V(\{\tilde{p}\},k_1,\dots,k_n)$, which vanishes in the three-jet limit,
-\begin{equation}
-V(\{\tilde{p}\}) = 0\,,
-\end{equation}
-where $\{\tilde{p}\} = \{\tilde{p}_1,\tilde{p}_2,\tilde{p}_3\}$ denote the recoiled Born-level momenta after the emission of $n$ soft and/or collinear partons $k_1,\dots,k_n$. 
 
-At Born level, a three-jet event consists of a quark, an anti-quark, and a gluon. Their momenta can be parameterised as
+\section{NLL Resummation}
+\label{sec:NLL-resum}
+The cumulant for an observable $v$ in a process 
+of $\{p\}$ hard legs and $n$ soft and/or collinear emissions $k_i$
+is
 \begin{equation}
-\label{eq:3-born-kin}
-p_1 = E_1(1,0,0,1)\,,\quad
-p_2 = E_2(1,0,\sin\theta_{12},\cos\theta_{12})\,,\quad
-p_3 = E_3(1,0,-\sin\theta_{13},\cos\theta_{13})\,,
+\label{eq:cumu-gen}
+\Sigma\left(\{p\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\left(\prod_{i=1}^n\left[dk_i\right]\right)\mathcal{M}^2\left(\{\tilde{p}\},k_1,\dots,k_n\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
-where $\theta_{ij}$ denotes the angle between the momenta $p_i$ and $p_j$.
+where: \ABquestion{should I just call the virtual $e^{-\int [dk]M^2(k)}$ and $S(n)=1/n!$ instead of giving this
+more complicated formula?}
+\begin{itemize}
+    \item $\mathcal{V}(\{p\})$ encodes the virtual corrections to the Born process, normalised to the Born matrix element squared\,,
+    \item $S(n)$ is a symmetry factor e.g.\ $1/n!$ for $n$ identical gluons\,,
+    \item The Lorentz-invariant phase space in $d=4-2\varepsilon$ dimensions is
+    \begin{equation}
+    [dk] \equiv \frac{d^d k}{(2\pi)^{d-1}} \delta(k^2) \Theta(k^0)\,,
+    \end{equation}
+    \item $\mathcal{M}^2(\{\tilde{p}\},k_1,\dots,k_n)$ is the squared matrix element for $n$ real emissions off the three-particle Born configuration $\{\tilde{p}\}$\,.
+\end{itemize}
 
-An emission $k$ with respect to to a hard leg $\ell$ can be expressed through a Sudakov decomposition along the corresponding light-like direction $p_\ell$:
+At NLL accuracy, one finds that it is only soft and collinear emissions widely separated in angle that contribute to the cumulant. 
+\add{Maybe want to talk about colour coherence here/ gluon correlated clusters giving rise 
+to a non-abelian part which is taken to be part of the strong coupling.}
+As such, the the squared matrix element for $n$ emissions can be factorised into the product of $n$ single-emission 
+squared matrix-elements. Therefore, the cumulant at NLL accuracy is
 \begin{equation}
-k^{(\ell)} = x^{(\ell)} p_\ell + \bar{x}^{(\ell)} \bar{p}_\ell + k_\perp^{(\ell)}\,,
+\label{eq:cumu-factor}
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=\mathcal{V}(\{p\})\sum_{n=0}^\infty S(n) \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
 \end{equation}
-where $\bar{p}_\ell = (E_\ell,-\vec{p}_\ell)$, and $x^{(\ell)}$, $\bar{x}^{(\ell)}$ are longitudinal momentum fractions.  
-The  two-dimensional space-like vector $k_\perp^{(\ell)}$ lies in the plane orthogonal to $\vec{p}_\ell$ and has magnitude
+This factorisation holds so long as the emissions are considered to be radiated according to the 
+physical coupling~\cite{Banfi:2018mcq}. This coupling, $\alpha_s^{\mathrm{phys}}$, is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. It is related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{Please note that the first interpretation of this factorisation was present in Ref.~\cite{Catani:1990rr}, in which the CMW coupling, $\alpha_s^{\mathrm{CMW}}$ was introduced through: $\alpha_s^{\mathrm{CMW}} = \alpha_s\left(1+\frac{\alpha_s}{2\pi} K^{(1)}\right)+\mathcal{O}(\alpha_s^3)$. \add{I think sort this out.}}:
+ \begin{equation} \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
+\end{equation} 
+where
 \begin{equation}
--\left(k_\perp^{(\ell)}\right)^2
-= \frac{(2p_\ell \cdot k)(2k \cdot \bar{p}_\ell)}{2p_\ell \cdot \bar{p}_\ell}
-\equiv \left(k_t^{(\ell)}\right)^2\,,
+\begin{aligned}
+	\label{eq:alpha-phys-K}
+	&K^{(1)}=C_A\left(\frac{67}{18}-\frac{\pi^2}{6}\right)-\frac{5}{9}n_f\,,\\
+	&K^{(2)}=C_A^2\left(\frac{245}{24}-\frac{67}{9}\zeta_2+\frac{11}{6}\zeta_3+\frac{11}{5}\zeta_2^2\right)+C_Fn_f\left(-\frac{55}{24}+2\zeta_3\right)+\\
+	&+C_An_f\left(-\frac{209}{108}+\frac{10}{9}\zeta_2-\frac{7}{3}\zeta_3\right)-\frac{1}{27}n_f^2+\frac{\pi\beta_0}{2}\left(C_A\left(\frac{808}{27}-28\zeta_3\right)-\frac{224}{54}n_f\right)\,.
+\end{aligned}
 \end{equation}
-where $k_t^{(\ell)}$ is the transverse momentum with respect to leg $\ell$. The corresponding rapidity is defined as
-\begin{equation}
-\eta^{(\ell)} = \frac{1}{2}\ln\frac{x^{(\ell)}}{\bar{x}^{(\ell)}}\,.
-\end{equation}
+\add{Add something about the colour coherence e.g.\
+This factorisation holds since QCD colour coherence guarantees 
+that emissions widely separated in angle are effectively independent.}
 
-It is often convenient to describe emissions using dipole kinematics. In this case, the emission $k$ can be conveniently described using Sudakov variables such that it is decomposed along a pair of light-like momenta $(p_i,p_j)$ forming the $(ij)$ dipole:
+The virtual correction, for which there is no real emission in phase space
+is equal to: \ABquestion{Add in that the virtual corrections ensure
+that the inclusive sum over all emissions is=1?}
+ \begin{equation}
+ \mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}\,.
+ \end{equation}
+ Therefore we can take the cumulant at NLL accuracy to be
+ \begin{equation}
+ 	\label{eq:cumu-factor-more}
+ 	\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-\int[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
+ \end{equation}
+ \ABquestion{Should I be saying that the real and virtual emissions should be understood to
+ be regularised and that within this expression the running coupling effects have been resummed already
+ i.e.\ in the above. }
+ We are able to split the real emission part of the cumulant i.e. the term not in the exponent into 
+ \emph{resolved} and \emph{unresolved} emissions, where 
+ \begin{itemize}
+ 	\item Resolved emissions: $\epsilon v\lesssim V(\{\tilde{p}\},k_i)\sim v$\,,
+	\item Unresolved emissions: $V(\{\tilde{p}\},k_i)<\epsilon v$\,,
+ \end{itemize}
+for some cut off $\epsilon$. 
+This allows us to split the sum into two pieces:
+\begin{multline}
+\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right) =\\
+=\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)
+\Theta\!\left(V\left(\{\tilde{p}\},k_1,\dots,k_n\right)-\epsilon v\right)+\\
++\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)
+\Theta\!\left(\epsilon v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
+\end{multline}
+which simplifies to
 \begin{equation}
-k^{(ij)}=z^{(i)}p_i+z^{(j)}p_j+\kappa^{(ij)}\cos\phi^{(ij)}n_{\mathrm{in}}^{(ij)}+\kappa^{(ij)}\sin\phi^{(ij)}n_{\mathrm{out}}^{(ij)}\,.
-\label{eq:Sudakov-decomp}
+\sum_{n=0}^\infty \frac{1}{n!} \int_{\epsilon v}^v\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)
++\sum_{n=0}^\infty \frac{1}{n!} \int^{\epsilon v}\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right) \,.
 \end{equation}
-where $z^{(i)}$ and $z^{(j)}$ are energy fractions. The invariant transverse momentum $\kappa^{(ij)}$ is given by 
+Substituting this into Eq.~\eqref{eq:cumu-factor-more}, we find that the unresolved emissions 
+exponentiate \ABquestion{why?} to form
+ \begin{multline}
+ 	\label{eq:cumu-factor-unres}
+ 	\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-\int[dk]M^2(k)\left[1-\Theta(\epsilon v - V(\{p\},k))\right]}\times \\
+	\times \sum_{n=0}^\infty \frac{1}{n!} \int^v_{\epsilon v}\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
+ \end{multline}
+ 
+ We can split the first virtual corrections i.e. the first term in the exponent
+ into a term with emissions above $v$ and another with emissions below $v$:
 \begin{equation}
-\left(\kappa^{(ij)}\right)^2=\frac{(2p_i\cdot k)(2p_j\cdot k)}{(2p_i\cdot p_j)}\,.
+\int [dk]M^2(k) = \int_v[dk]M^2(k)+ \int^v[dk]M^2(k)\,.
 \end{equation}
+We define $R(v)$ to be:
+\begin{equation}
+	R(v)\equiv \int_v[dk]M^2(k)=\int [dk] M^2(k)\Theta\left(V\left(\{ \tilde{p}\},k\right)-v\right)\,,
+\end{equation}
+\add{Discuss the no emission probability with $e^{-R(v)}$.}
 
-The unit vectors $n_{\mathrm{in}}^{(ij)}$ and $n_{\mathrm{out}}^{(ij)}$ define the directions in and orthogonal to the dipole plane:
+\ndp{The radiator is equal to
 \begin{equation}
-n_{\mathrm{in}}^{(ij)}=\left(\cot\frac{\theta_{ij}}{2},\frac{\vec{n}_i+\vec{n}_j}{\sin\theta_{ij}}\right)\,,\quad n_{\mathrm{out}}^{(ij)}=\left(0,\frac{\vec{n}_i\times\vec{n}_j}{\sin\theta_{ij}}\right)\,,
+	R(v)\equiv \int_v[dk]M^2(k)=\int [dk] M^2(k)\Theta\left(V\left(\{ \tilde{p}\},k\right)-v\right)\,,
 \end{equation}
-where $\vec{n}_\ell\equiv\vec{p}_\ell/E_\ell$ for $\ell=i,j$. 
+such that $e^{-R(v)}$ is the Sudakov form factor which is essentially the probability that all emissions
+are $V\left(\{ \tilde{p}\},k\right) <v$.
+We can re-write the cumulant in Eq.~\eqref{eq:3jet-cumu-factor} as
+\begin{equation}
+\label{eq:3jet-cumu-rad}
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R(v)} \left\{e^{-\int^v[dk]M^2(k)}\sum_{n=0}^\infty S(n) \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\right\}\,.
+\end{equation}
+We can then separate the emissions into \emph{resolved} and \emph{unresolved} regions. 
+The \emph{unresolved} emissions i.e.\ where $V(\{\tilde{p}\},k_i)<\epsilon v$ do not contribute
+to the value of the observable and so will combine with the virtual corrections. The resolved emissioi.e.\  $\epsilon v\lesssim
+ V(\{\tilde{p}\},k_i)\sim v$, on the other hand do contribute to the value of the observable and are combined with the real emission.
+}
 
-The rapidity of the emission with respect to the dipole is defined as
-\begin{equation}
-\eta^{(ij)} = \frac{1}{2}\ln\frac{z^{(i)}}{z^{(j)}}\,.
-\end{equation}
-In the limit where the emission becomes collinear to one of the dipole legs, this quantity is related to the single-leg rapidity via
-\begin{equation}
-\eta^{(i)} \simeq \eta^{(ij)} + \ln\frac{2E_i}{Q_{ij}}\,,\quad 
-\eta^{(j)} \simeq -\eta^{(ij)} + \ln\frac{2E_j}{Q_{ij}}\,,\quad 
-Q_{ij}^2 = 2(p_i \cdot p_j)\,.
-\end{equation}
-In the same collinear limit, the dipole transverse momentum reduces to the transverse momentum with respect to the emitting leg, $\kappa^{(ij)} \to k_t^{(\ell)}$.
 
+Separating emissions into \emph{resolved} and \emph{unresolved} regions, and combining them with the corresponding virtual corrections, the cumulant can be written in a multiplicative form,
+\begin{equation} 
+\label{eq:NLL-cumulant}
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R_{\mathrm{NLL}}(v)}\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)\,,\quad R'_{\mathrm{NLL}}\simeq -v\frac{dR_{\mathrm{NLL}}}{dv}\,,
+\end{equation}
+which is general and not specific to the three-jet case. We now discuss the two components that enter this expression.
+
+\ndp{--------------------------------------------------------old version ------------------------------------------------------------------}
 \section{NLL Resummation}
 \label{sec:NLL-resum}
 In the near-to-planar limit, $v \ll 1$, the \ndp{general expression for the} cumulant for a three-jet observable can be written in factorised form as
@@ -467,7 +623,7 @@ are $V\left(\{ \tilde{p}\},k\right) <v$.
 We can re-write the cumulant in Eq.~\eqref{eq:3jet-cumu-factor} as
 \begin{equation}
 \label{eq:3jet-cumu-rad}
-\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R(v)}\sum_{n=0}^\infty S(n)  e^{-\int^v[dk]M^2(k)}\int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
+\Sigma\left(\{p_1,p_2,p_3\},v\right)=e^{-R(v)} \left\{e^{-\int^v[dk]M^2(k)}\sum_{n=0}^\infty S(n) \int\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\right\}\,.
 \end{equation}
 We can then separate the emissions into \emph{resolved} and \emph{unresolved} regions. 
 The \emph{unresolved} emissions i.e.\ where $V(\{\tilde{p}\},k_i)<\epsilon v$ do not contribute
@@ -846,7 +1002,8 @@ In this section, we briefly discuss a class of observables that exhibit an addit
 \label{eq:additive-def}
 \Vsc{k_1,\dots , k_n}=\sum_{i=1}^n\Vsc{k_i}\,.
 \end{equation}
-Additive observables are particularly important because they allow $\mathcal{F}_{\mathrm{NLL}}$ and all contributions appearing in Eq.~\eqref{eq:dFNNLL} to be computed analytically. 
+Additive observables are particularly important because they allow $\mathcal{F}_{\mathrm{NLL}}$ and all contributions appearing in Eq.~\eqref{eq:dFNNLL} to be computed analytically. \ABquestion{This is not actually true since $\delta\mathcal{F}_{\mathrm{wa}}$
+needs to be computed numerically in the end.}
 
 To illustrate how this structure simplifies calculations, we outline the derivation of $\mathcal{F}_{\mathrm{NLL}}$ for a generic additive observable. Although this contribution has already been discussed for thrust in Sec.~\ref{subsec:FNLL}, the result derived below holds universally for all additive observables. This universality does not extend to the terms in Eq.~\eqref{eq:dFNNLL}, which remain observable dependent. A set of equations for additive observables in the three-jet case can be found in Ref.~\cite{Arpino:2019ozn}. We will see in Ch.~\ref{ch:hhZjet} that two of the observables studied there, namely one-jettiness and transverse thrust, are also additive. We now proceed with the explicit derivation.
 
