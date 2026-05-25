@@ -251,7 +251,10 @@ unique to thrust -- the structure of Eq.~\eqref{eq:resummed-cumulant}
 applies broadly to all IRC safe observables e.g.\ event-shape observables. Given their 
 importance in probing QCD dynamics, accurate and systematic resummation 
 techniques are essential. A formalism known as \textsc{ARES} provides us with an observable-independent semi-numerical method to resum event shapes, which we will now discuss. 
-\add{Discuss the Sudakov form factor (and if it relates to the Sudakov peak), leading-log resummation, and exponentiation (JADE observables).} \\ \\
+\add{Discuss the Sudakov form factor (and if it relates to the Sudakov peak), leading-log resummation, and exponentiation (JADE observables).}
+ 
+ \ABquestion{I want to add the following.}
+ \ndp{It is important to understand the distinction between logarithmic and fixed-order accuracy. In FO calculations, we move up an order by computing an additional Feynman diagram, whereas at each logarithmic order there is already the summation of an infinite number of diagrams, and so to move from one logarithmic order to the next, this requires the understanding of which sets of diagrams and therefore which physical effects are relevant at that order, as well as computing the corresponding contributions at the necessary accuracy.} \ABquestion{Need to understand this better.} \\ \\
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
 
 \section{Problem Specification}
@@ -458,13 +461,13 @@ where:
 \end{itemize}
 To compute the cumulant at NLL accuracy, several approximations can be made.
 
-\paragraph{Colour coherence.}
+\paragraph{Colour coherence.} \ABquestion{Explain for what colour coherence is.\\ Explain what angular ordering is.}
 QCD colour coherence guarantees that emissions widely separated in
 angle are effectively independent. Gluon-correlated clusters -- in
 which a primary emission subsequently branches -- give rise to a
-correction to the single-gluon emission probability; this correction
+correction to the single-gluon emission probability. At NLL, this correction
 can be absorbed into a redefinition of the coupling, giving rise to
-the physical coupling $\alpha_s^{\mathrm{phys}}$, related to the strong coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: \add{Add in a diagram and comments below.}
+the physical coupling $\alpha_s^{\mathrm{phys}}$, which is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. This is related to the coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: 
  \begin{equation} \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
 \end{equation} 
 where the first two coefficients are 
@@ -476,26 +479,21 @@ where the first two coefficients are
 	&+C_An_f\left(-\frac{209}{108}+\frac{10}{9}\zeta_2-\frac{7}{3}\zeta_3\right)-\frac{1}{27}n_f^2+\frac{\pi\beta_0}{2}\left(C_A\left(\frac{808}{27}-28\zeta_3\right)-\frac{224}{54}n_f\right)\,.
 \end{aligned}
 \end{equation}
+\ABquestion{Mention $\delta\mathcal{F}_{\mathrm{correl}}$ and add diagrams for the clusters?}
 
 At NLL accuracy, correlated clusters contribute only through this
 coupling redefinition, and the squared matrix element for $n$ widely
 separated soft and collinear emissions factorises into a product of $n$
-independent single-emission matrix elements, $M^2(k_i)$, in which the
-running of the coupling has already been resummed. At NLL, the virtual
+independent single-emission matrix elements, $M^2(k_i)$. At NLL, the virtual
 correction, for which there is no real emission in phase space, takes
 the form $\mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}$, ensuring
 that the inclusive sum over all real and virtual contributions equals
-unity. \add{The real and virtual contributions are separately regulated. Virtual corrections have coupling resummed also.} Setting $S(n)=1/n!$, the cumulant becomes
+unity. Both the real and virtual contributions are separately regulated \ABquestion{and so give finite contributions?} and  the effects of running of the coupling has already been resummed \ABquestion{Is this sentence necessary about coupling being resummed?}. Setting $S(n)=1/n!$, \ABquestion{when would there not be $n$-identical gluons?} the cumulant becomes
 \begin{equation}
     \label{eq:cumu-factor-more}
     \Sigma\left(\{p\},v\right)=e^{-\int[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]M^2\left(k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
 \end{equation}
 
-
-% Note, here is a calligraphic M used in the general because it implies a mapping between the momenta and a Born-like event which is used to set up the kinematics
-
-%This factorisation holds provided the emissions are considered to be radiated according to the 
-%physical coupling~\cite{Banfi:2018mcq}. This coupling, $\alpha_s^{\mathrm{phys}}$, is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. 
 
 \paragraph{The radiator and Sudakov form factor.}
 The exponent in Eq.~\eqref{eq:cumu-factor-more} can be split
@@ -515,7 +513,7 @@ R(v) \equiv \int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)\,,
 which integrates the emission probability over the region of phase
 space where the observable value exceeds $v$. Its exponential
 $e^{-R(v)}$ is the \emph{Sudakov form factor},  a function which
-gives the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs. \ABquestion{Need to add more to the Sudakov form factor. Don't quite understand how the exponential gives rise to the opposite constraints?}
+gives the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs. The Sudakov form factor resums all LL contributions. \ABquestion{Is this correct re LL contributions? Exponent with the constraints?}
 The cumulant then separates into
 \begin{equation}
   \label{eq:cumu-factor-combine}
@@ -574,7 +572,7 @@ We can re-write $\mathcal{F}(v)$ as: \ABquestion{What about the $\phi$-dependenc
   \int_{\epsilon}^\infty\!\prod_{i=1}^n\frac{d\zeta_i}{\zeta_i}\,R'\left(\zeta_i v\right) \!\left(\{\tilde{p}\},k_i\right)
   \,\Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
-where we have introduced a cut off $\epsilon$ .. \add{Add in from the PhD book i.e.\ from, eq 3.66 to eq. 3.67.}
+where we have introduced a cut off $\epsilon$ .. \ABquestion{unsure exactly from, eq 3.66 to eq. 3.67 in Hadronic Jet book.}
 
 
 
@@ -731,7 +729,8 @@ resorting to Monte Carlo methods only where necessary.
 
 A comparison between the analytical result and the numerical output
 of \textsc{CAESAR} and \textsc{ARES} for $\mathcal{F}_{\mathrm{NLL}}$ in the case of thrust is shown in Fig.~\ref{fig:FNLL-CAESAR-comp}, where excellent agreement is observed. The analytical result for thrust is discussed in detail in Sec.~\ref{subsec:additive-observables}.
-\add{Discuss computing numerically i.e. that there needs to be a cut off $\epsilon$ and split into resolved vs. unresolved emissions.}
+\add{Discuss computing numerically i.e. that there needs to be a cut off $\epsilon$ and split into resolved vs. unresolved emissions. \\
+Also add in what is in the Hadronic Jets book.}
 
 \begin{figure}[htbp!]
   \centering
@@ -1038,6 +1037,7 @@ where the un-averaged splitting function for the gluon
 
 \section{Additive Observables}
 \label{subsec:additive-observables}
+\todo{Check the wording again.} \\
 In this section, we briefly discuss a class of observables that exhibit an additive structure. Additivity refers to the property that an observable can be expressed as a sum of contributions from individual emissions. For a set of soft and collinear emissions $k_1,\dots , k_n$, this implies
 \begin{equation}
 \label{eq:additive-def}
@@ -1046,133 +1046,153 @@ In this section, we briefly discuss a class of observables that exhibit an addit
 Additive observables are particularly important because they allow $\mathcal{F}_{\mathrm{NLL}}$ and all contributions appearing in Eq.~\eqref{eq:dFNNLL} to be computed analytically. \ABquestion{This is not actually true since $\delta\mathcal{F}_{\mathrm{wa}}$
 needs to be computed numerically in the end.}
 
-Thrust is an example of an additive result, and we will see in Ch.~\ref{ch:hhZjet} that two of the observables studied there, namely one-jettiness and transverse thrust, are also additive. \ABquestion{Are the other event shapes we mentioned in the beginning of this section additive?}
+Thrust is one such example, and we will see in Ch.~\ref{ch:hhZjet} that two 
+of the observables studied there --- namely one-jettiness and transverse 
+thrust --- are also additive. \ABquestion{Are the other event shapes mentioned 
+at the beginning of this section additive?}
+
 
 To illustrate how this structure simplifies calculations, we outline the derivation of two contributions. Firstly the NLL function, $\mathcal{F}_{\mathrm{NLL}}$, and then the NNLL soft-collinear contribution, $\delta\mathcal{F}_{\mathrm{sc}}$.
 
-These contributions have the same result for all additive observables, regardless of what the observable is. This universality does not extend to the remaining terms in Eq.~\eqref{eq:dFNNLL}, which remain observable dependent. A set of equations for additive observables in the three-jet case can be found in Ref.~\cite{Arpino:2019ozn}. We now proceed with the explicit derivation of these both. 
-
-
+Importantly, the results for both of these contributions are the same across 
+all additive observables, independent of the specific observable under 
+consideration. This does not extend to the remaining terms in 
+Eq.~\eqref{eq:dFNNLL}, which remain observable-dependent. A complete set of 
+equations for additive observables in the three-jet case can be found in 
+Ref.~\cite{Arpino:2019ozn}.
 
 
 
 \subsection{The NLL Function $\mathcal{F}_{\mathrm{NLL}}(\RpNLL)$}
-Although this contribution has already been discussed for thrust in Sec.~\ref{sec:NLL-resum}, the result derived below holds universally for all additive observables. This universality does not extend to the terms in Eq.~\eqref{eq:dFNNLL}, which remain observable dependent.  We now proceed with the explicit derivation.
-
-Substituting Eq.~\eqref{eq:additive-def} into Eq.~\eqref{eq:FNLL-formula}, we obtain
-  \begin{equation}
-  \label{eq:FNLL-add-1}
-  \begin{aligned}
-    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)\times\\
-    & \times \Theta\left(1-\sum_{i=1}^n\frac{\Vsc{\{k_i\}}}{v}\right)\,.
-    \end{aligned}
-  \end{equation}
-
-We now introduce the rescaled variable, which is ubiquitous in the \textsc{ARES} formalism,
+Substituting Eq.~\eqref{eq:additive-def} into Eq.~\eqref{eq:FNLL-formula} and introducing the rescaled variable
 \begin{equation}
     \zeta_i = \frac{\Vsc{k_i}}{v}\,,
 \end{equation}
-such that Eq.~\eqref{eq:FNLL-add-1} becomes
-  \begin{equation}
-   \label{eq:FNLL-add-2}
-  \begin{aligned}
-    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)\times\\
-    & \times \Theta\left(1-\sum_{i=1}^n\zeta_i\right)\,.
-    \end{aligned}
-  \end{equation}
-  
-We employ the Mellin representation of the Heaviside function,
+we obtain
+\begin{equation}
+ \label{eq:FNLL-add-1}
+ \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i}{2\pi}\right) \Theta\left(1-\sum_{i=1}^n\zeta_i\right)\,,
+\end{equation}
+where $\RpNLL\equiv \sum_{\ell_i} R'_{\mathrm{NLL},\ell_i}$, which we can use since the only dependence on hard leg $\ell_i$ in this contribution is on the radiator, and where we have relabelled $\phi_i^{(\ell_i)} \to \phi_i$ for brevity.
+
+We next re-write the Heaviside function using the Mellin transform,
 \begin{equation}
 \label{eq:mellin-transform}
-    \Theta\left(1-\sum_{i=1}^n\zeta_i\right)=\int_{\mathcal{C}}
-    \frac{d\nu}{2\pi i}\frac{e^\nu}{\nu}\prod_{i=1}^ne^{-\nu\zeta_i}\,,
+    \Theta\left(1-\sum_{i=1}^n\zeta_i\right)=\int_{c-i\infty}^{c+i\infty}
+    \frac{d\nu}{2\pi i\nu} e^\nu\prod_{i=1}^ne^{-\nu\zeta_i}\,, \quad c>0\,,
 \end{equation}
-where $\mathcal{C}$ denotes a contour in the complex $\nu$-plane running from $c-i\infty$ to $c+i\infty$.
-
-Substituting this into Eq.~\eqref{eq:FNLL-add-2}, we obtain
-  \begin{equation}
-   \label{eq:FNLL-add-3}
-  \begin{aligned}
-    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{\mathcal{C}}\frac{d\nu}{2\pi i}\frac{e^\nu}{\nu}\ \sum_{n=0}^\infty\frac{1}{n!} \int \prod_{i=1}^n \left(\sum_{\ell_i} R'_{\text{NLL},\ell_i}\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i} e^{-\nu\zeta_i} \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right) \,.
-            \end{aligned}
+so that Eq.~\eqref{eq:FNLL-add-1} becomes,
+\begin{equation}
+\label{eq:FNLL-add-2}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}\frac{e^\nu}{\nu}\ \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i} \int_0^{2\pi}\frac{d\phi_i}{2\pi} e^{-\nu\zeta_i}\right) \,.
+\end{equation}
+Since the integrand contains no $\phi$-dependence, the azimuthal integrals are trivial. The sum over $n$ exponentiates, giving
+\begin{equation}
+\label{eq:FNLL-add-3}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \exp\left[ \RpNLL \int_{\epsilon}^\infty \frac{d\zeta}{\zeta} e^{-\nu\zeta}\right] \,.
+\end{equation}
+The limit $\epsilon\to 0$ becomes finite only after combining the prefactor
+$\epsilon^{\RpNLL}$ with the exponent. Writing
+\begin{equation}
+  \epsilon^{\RpNLL}=\exp\left[-\RpNLL\int_{\epsilon}^1\frac{d\zeta}{\zeta}\right]\,,
   \end{equation}
-
-Since the observable is additive, each emission contributes an identical factor. The single-emission integral is therefore
+and combining with the exponentiated integral gives rise to the convergent expression
 \begin{equation}
-    \mathcal{I}(\nu,\epsilon)\equiv\sum_{\ell}R'_{\mathrm{NLL},\ell}
-    \int_\epsilon^\infty \frac{d\zeta}{\zeta}\,e^{-\nu\zeta}
-    \int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}
-    = R'_{\mathrm{NLL}}\,\Gamma(0,\nu\epsilon)\,,
+\label{eq:FNLL-add-4}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \exp\left[ \RpNLL \int_{0}^\infty \frac{d\zeta}{\zeta} \left(e^{-\nu\zeta} - \Theta(1-\zeta)\right)\right] \,.
 \end{equation}
-where $R'_{\mathrm{NLL}}\equiv\sum_\ell R'_{\mathrm{NLL},\ell}$.
-
-The sum over emissions exponentiates, yielding
+The remaining $\zeta$-integral evaluates to
 \begin{equation}
-  \label{eq:FNLL-add-4}
-  \begin{aligned}
-    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)=&\; \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{\mathcal{C}}\frac{d\nu}{2\pi i}\frac{e^\nu}{\nu} e^{R'_{\mathrm{NLL}}\Gamma\left[0,\nu\epsilon\right]}\,.
-            \end{aligned}
-  \end{equation}
-  
-In the limit $\epsilon \to 0$, we use the small-argument expansion
-\begin{equation}
-    \Gamma(0,\nu\epsilon)=-\ln(\nu\epsilon)-\gamma_E+\mathcal{O}(\nu\epsilon)\,,
+	 \int_{0}^\infty \frac{d\zeta}{\zeta} \left(e^{-\nu\zeta} - \Theta(1-\zeta)\right) = -\gamma_E -\ln\nu\,,
 \end{equation}
-where $\gamma_E$ is the Euler--Mascheroni constant. Substituting this into Eq.~\eqref{eq:FNLL-add-4}, gives rise to 
+so that Eq.~\eqref{eq:FNLL-add-4} reduces to
 \begin{equation}
-    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right) = e^{-\gamma_E R'_{\mathrm{NLL}}}
-    \int_{\mathcal{C}}\frac{d\nu}{2\pi i}\,
-    \nu^{-1-R'_{\mathrm{NLL}}}\,e^{\nu}\,.
+\label{eq:FNLL-add-4}
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= e^{-\gamma_E \RpNLL} \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i}\frac{e^\nu}{\nu^{1+\RpNLL}}\,.
 \end{equation}
-
-Using the identity
+Applying the standard inverse Mellin formula \ABquestion{Is this the standard inverse Mellin formula?}
 \begin{equation}
-\int_\mathcal{C}\frac{d\nu}{2\pi i}\nu^{-z}e^\nu = \frac{1}{\Gamma(z)}\,,
+    \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i\,\nu}\,\frac{e^\nu}{\nu^{z}} 
+    = \frac{1}{\Gamma(1+z)}\,,
 \end{equation}
-we obtain the final result
+we arrive at the final well-known result
 \begin{equation}
 \label{eq:FNLL-add-final}
-\mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}(v)\right)
-= \frac{e^{-\gamma_E R'_{\mathrm{NLL}}}}{\Gamma\left(1+R'_{\mathrm{NLL}}\right)}\,,
+    \mathcal{F}_{\mathrm{NLL}}\!\left(R'_{\mathrm{NLL}}\right) 
+    = \frac{e^{-\gamma_E R'_{\mathrm{NLL}}}}{\Gamma\!\left(1+R'_{\mathrm{NLL}}\right)}\,.
 \end{equation}
-which agrees with the result shown in Fig.~\ref{fig:FNLL-CAESAR-comp}.
+This is in agreement with the result shown in Fig.~\ref{fig:FNLL-CAESAR-comp}.
 
 \subsection{The Soft Collinear Correction $\delta \mathcal{F}_{\mathrm{sc}}(\RpNLL)$}
-We begin by looking at the first Heaviside function in Eq.~\eqref{eq:dFsc-general}, and by using the fact that for additive observables
+On top of the soft-collinear emissions $k_1,\dots,k_n$ widely separated in angle/rapidity which are present for $\FNLL$, this soft-collinear correction has the presence of an additional soft and collinear emission $k$. For additive observables, this can be expressed via
 \begin{equation}
-	\Vsc{k,\{k_i\}}=\zeta v+ \Vsc{\{k_i\}}\,,
+    \Vsc{k,\{k_i\}} = \zeta v + \Vsc{\{k_i\}}\,,
 \end{equation}
-such that
+so that
 \begin{equation}
-	\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)=\Theta\left(1-\zeta-\frac{\Vsc{\{k_i\}}}{v}\right)\,.
+    \Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right) 
+    = \Theta\left(1 - \zeta - \frac{\Vsc{\{k_i\}}}{v}\right)\,.
 \end{equation}
-Using this result along with the fact that the second Heaviside function, take the form  exactly like that in the $\FNLL$ shown in Eq.~\eqref{eq:FNLL-add-1}, we obtain:
+Noting that the second Heaviside function in Eq.~\eqref{eq:dFsc-general} 
+takes precisely the form appearing in the $\FNLL$ calculation of 
+Eq.~\eqref{eq:FNLL-add-1}, we obtain
 \begin{multline}
-\delta\mathcal{F}_{\mathrm{sc}}\;=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\times\\
-\times\int \dZ  \left[\Theta\left(1-\zeta-\frac{\Vsc{\{k_i\}}}{v}\right)
-       -\Theta(1-\zeta)\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)
-     \right] \,.
+    \delta\mathcal{F}_{\mathrm{sc}} = \frac{\pi}{\alpha_s(Q)}
+    \int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
+    \sum_{\ell=1}^3\left(\Delta R'_{\ell,\mathrm{NNLL}} 
+    + R''_{\ell,\mathrm{NNLL}}\!\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}
+    - b_\ell\ln\frac{2E_\ell}{Q}\right)\right) \\
+    \times \int \dZ \left[\Theta\!\left(1-\zeta-\frac{\Vsc{\{k_i\}}}{v}\right)
+    - \Theta(1-\zeta)\,\Theta\!\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\right].
 \end{multline}
-
-Since rIRC safety ensures that a rescaling of the emissions' contribution to the observable will not affect the value of the observable itself \ABquestion{is this true?}, we can re-express the first Heaviside function, using a re-scaling of the momenta i.e.\ $\tilde{k}_1,\cdots,\tilde{k}_n$, such that we have: \ABquestion{Unsure how we have this.}
+Using the fact that rIRC safety of the observable $V$ guarantees that the rescaling of the emissions' contribution will not affect the observable itself \ABquestion{is this true?}, we may introduce the
+rescaled momenta $\tilde{k}_1,\dots,\tilde{k}_n$ defined by, $ \Vsc{\tilde{k}_i} = \Vsc{k_i}/(1-\zeta)$. We are able to define,
 \begin{equation}
-	\Vsc{\tilde{k}_i}=\frac{\Vsc{k_i}}{1-\zeta}\,,
+    \Vsc{\{k_i\}} = (1-\zeta)\,\Vsc{\{\tilde{k}_i\}}\,,
 \end{equation}
-and so we find that
-\begin{equation}
-	\Vsc{\{k_i\}}=(1-\zeta)\Vsc{\{\tilde{k}_i\}}\,.
-\end{equation}
-Therefore, by defining $\tilde{\zeta}_i=\Vsc{\tilde{k}_i}/v$, we find
+where we can use the parameter $\tilde{\zeta}_i = \Vsc{\tilde{k}_i}/v$, to obtain
 \begin{multline}
-\delta\mathcal{F}_{\mathrm{sc}}\;=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\Theta(1-\zeta)\times\\
-\times \left\{ \epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{1}{n!}\prod_{i=1}^n\!\left(\sum_{\ell_i}R'_{\mathrm{NLL},\ell_i}
+\delta\mathcal{F}_{\mathrm{sc}}\;=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\Theta(1-\zeta)\times\\
+\times \left\{ \lim_{\epsilon\to0}\epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{1}{n!}\prod_{i=1}^n\!\left(\sum_{\ell_i}R'_{\mathrm{NLL},\ell_i}
     \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\int_{\frac{\epsilon}{1-\zeta}}^\infty\frac{d\tilde{\zeta}_i}{\tilde{\zeta}_i}\right) 
-   \Theta\left(1-\frac{\Vsc{\{\tilde{k}_i\}}}{v}\right)\right. +\\
-      \left. -\epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{1}{n!}\prod_{i=1}^n\!\left(\sum_{\ell_i}R'_{\mathrm{NLL},\ell_i}
-    \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\int_0^\infty\frac{d\zeta_i}{\zeta_i}\right)\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\right\} \,.
+   \Theta\left(1-\sum_i\tilde{\zeta}_i\right)\right. +\\
+      \left. -\lim_{\epsilon\to0}\epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{1}{n!}\prod_{i=1}^n\!\left(\sum_{\ell_i}R'_{\mathrm{NLL},\ell_i}
+    \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\int_0^\infty\frac{d\zeta_i}{\zeta_i}\right)\Theta\left(1-\sum_i\zeta_i\right)\right\} \,.
 \end{multline}
-
-
-
+\ABquestion{I split these into two parts due to the product over $n$.}
+Applying the Mellin 
+transformation in Eq.~\eqref{eq:mellin-transform}, the first line of the curly bracket 
+yields
+\begin{equation}
+\int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu\epsilon^{\RpNLL}\sum_{n=0}^\infty\frac{1}{n!}\prod_{i=1}^n\!\left(\sum_{\ell_i}R'_{\mathrm{NLL},\ell_i}
+    \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\int_{\frac{\epsilon}{1-\zeta}}^\infty\frac{d\tilde{\zeta}_i}{\tilde{\zeta}_i}    e^{-\nu\tilde{\zeta}_i}\right)\,,
+\end{equation}
+which, after exponentiation and evaluation of the $\tilde\zeta$-integral, 
+reduces to
+\begin{equation}
+\int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \exp\left[R'_{\mathrm{NLL}}\left(-\gamma_E-\ln\nu +\ln\left(1-\zeta\right)\right)\right]\,.
+\end{equation}
+The second term in the curly bracket reproduces exactly the expression 
+encountered in the calculation of $\FNLL$ (cf.\ Eq.~\eqref{eq:FNLL-add-4}). 
+\ABquestion{Is it $\FNLL(\RpNLL)$ or $\FNLL(\lambda)$? This is a question for the subsection titles also.}
+Combining the two contributions gives
+\begin{multline}
+\delta\mathcal{F}_{\mathrm{sc}}=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\Theta(1-\zeta)\times\\
+\times \int_{c-i\infty}^{c+i\infty} \frac{d\nu}{2\pi i \nu}e^\nu e^{-\gamma_E \RpNLL}\nu^{-\RpNLL}\left((1-\zeta)^{\RpNLL}-1\right)\,.
+\end{multline}
+Recognising that the term multiplying the bracket on the second line gives $\FNLL$, and using the $\Theta(1-\zeta)$ to restrict the 
+$\zeta$-integration, we obtain
+\begin{multline}
+\delta\mathcal{F}_{\mathrm{sc}}=\FNLL\frac{\pi}{\alpha_s(Q)}\int_0^1\frac{d\zeta}{\zeta}\sum_{\ell=1}^3\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{\langle d_\ell g_\ell(\phi)\rangle}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\times \\
+\times\left((1-\zeta)^{\RpNLL}-1\right)\,,
+\end{multline}
+where $\langle\cdots\rangle$ denotes the azimuthal average.
+Performing the 
+$\zeta$-integration finally yields
+\begin{multline}
+\delta\mathcal{F}_{\mathrm{sc}}=-\FNLL\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\langle d_\ell g_\ell(\phi)-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\right. \times\\
+\times \left.\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,.
+\end{multline}
+This result holds for every additive observable.
 
 
