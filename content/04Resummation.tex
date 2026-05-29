@@ -280,7 +280,7 @@ The total cross section for events passing this selection, i.e.\ the total $n$-j
 where $d\sigma_N/d\Phi_N$ denotes the differential cross section for producing $N$ final-state particles, and $d\Phi_N$ is the corresponding $N$-particle phase space, defined in Eq.~\eqref{eq:m-phase-space}. 
 We are particularly interested in the cumulative distribution for events that satisfy the selection and for which the observable takes a value smaller than $v$:
 \begin{equation}
-	\Sigma_{\mathcal{H}}(v) = \sum_{N=n-n_i}^\infty \int d\Phi_N \frac{d\sigma_N}{d\Phi_N}\, \Theta(v - V(q_1,\dots,q_N)) \, \mathcal{H}(q_1,\dots,q_N) \,.
+	\Sigma_{\mathcal{H}}(v) = \frac{1}{\sigma_\mathcal{H}}\sum_{N=n-n_i}^\infty \int d\Phi_N \frac{d\sigma_N}{d\Phi_N}\, \Theta(v - V(q_1,\dots,q_N)) \, \mathcal{H}(q_1,\dots,q_N) \,.
 \end{equation}
 
 Following the approach of \textsc{CAESAR}~\cite{Banfi:2004yd}, the cumulant can be rewritten in a factorised form as
@@ -328,7 +328,7 @@ of an existing emission can be denoted as:
 \begin{equation}
 	\kappa_i(\zeta)\to\{\kappa_{i_a},\kappa_{i_b}\}(\zeta,\mu)\,,
 \end{equation}
-where $\mu^2$ is the re-scaled invariant mass of the emissions \ABquestion{check this is true}, such that it is defined as
+\ndp{where $\mu^2$ is the re-scaled invariant mass of the emissions}, such that it is defined as
 \begin{equation}
 	\mu^2=\frac{(\kappa_{i_a}+\kappa_{i_b})^2}{\kappa_{ti}^2}\,,\quad \lim_{\mu\to0}(\kappa_{i_a}+\kappa_{i_ab})=\kappa_{i}\,.
 \end{equation}
@@ -451,23 +451,25 @@ $\{p\}$ and $n$ real emissions $k_1,\dots,k_n$ is
 \end{equation}
 where: 
 \begin{itemize}
-    \item $\mathcal{V}(\{p\})$ encodes the virtual corrections to the Born process, normalised to the Born matrix element squared\,,
-    \item $S(n)$ is a symmetry factor e.g.\ $1/n!$ for $n$ identical gluons\,,
+    \item $\mathcal{V}(\{p\})$ encodes the virtual corrections to the Born process, normalised to the Born matrix element squared,
+    \item $S(n)$ is a symmetry factor,
     \item the Lorentz-invariant phase space in $d=4-2\varepsilon$ dimensions is
     \begin{equation}
     [dk] \equiv \frac{d^d k}{(2\pi)^{d-1}} \delta(k^2) \Theta(k^0)\,,
     \end{equation}
-    \item $\mathcal{M}^2(\{\tilde{p}\},k_1,\dots,k_n)$ is the squared matrix element for $n$ real emissions off the three-particle Born configuration $\{\tilde{p}\}$\,.
+    \item $\mathcal{M}^2(\{\tilde{p}\},k_1,\dots,k_n)$ is the squared matrix element for $n$ real emissions off the Born configuration $\{\tilde{p}\}$.
 \end{itemize}
 To compute the cumulant at NLL accuracy, several approximations can be made.
 
-\paragraph{Colour coherence.} \ABquestion{Explain for what colour coherence is.\\ Explain what angular ordering is.}
-QCD colour coherence guarantees that emissions widely separated in
-angle are effectively independent. Gluon-correlated clusters -- in
+To begin, we use the notion of colour coherence to simplify the matrix element squared. 
+Colour coherence is the idea that a soft gluon emitted at large angles from a set of 
+collinear partons only identifies the total colour of the collinear ensemble, rather than
+the individual colour charges. In this capacity, colour coherence guarantees that emissions
+widely separated in angle are effectively independent. Gluon-correlated clusters -- in
 which a primary emission subsequently branches -- give rise to a
 correction to the single-gluon emission probability. At NLL, this correction
 can be absorbed into a redefinition of the coupling, giving rise to
-the physical coupling $\alpha_s^{\mathrm{phys}}$, which is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission. This is related to the coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: 
+the physical coupling $\alpha_s^{\mathrm{phys}}$, which is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission \add{Add in reference}. This is related to the coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: 
  \begin{equation} \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
 \end{equation} 
 where the first two coefficients are 
@@ -479,130 +481,123 @@ where the first two coefficients are
 	&+C_An_f\left(-\frac{209}{108}+\frac{10}{9}\zeta_2-\frac{7}{3}\zeta_3\right)-\frac{1}{27}n_f^2+\frac{\pi\beta_0}{2}\left(C_A\left(\frac{808}{27}-28\zeta_3\right)-\frac{224}{54}n_f\right)\,.
 \end{aligned}
 \end{equation}
-\ABquestion{Mention $\delta\mathcal{F}_{\mathrm{correl}}$ and add diagrams for the clusters?}
 
 At NLL accuracy, correlated clusters contribute only through this
 coupling redefinition, and the squared matrix element for $n$ widely
 separated soft and collinear emissions factorises into a product of $n$
-independent single-emission matrix elements, $M^2(k_i)$. At NLL, the virtual
-correction, for which there is no real emission in phase space, takes
+independent single-emission matrix elements, in the soft-collinear limit $M_{\mathrm{sc}}^2(k_i)$, as defined
+in Ref.~\cite{Banfi:2014sua}. The observable constraint $V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})$ may likewise be taken in this limit for the same reasoning, and is defined as 
+\begin{equation}
+  \label{eq:Vsc}
+  \frac{\Vsc{k_1,\dots,k_n}}{v}
+  \equiv \lim_{v\to 0}\frac{V(\{\tilde{p}\},k_1,\dots,k_n)}{v}\,.
+\end{equation}
+This soft-collinear limit of the observable is guaranteed to exist for all rIRC safe observables, 
+
+
+At NLL, the virtual correction, for which there is no real emission in phase space, takes
 the form $\mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}$, ensuring
 that the inclusive sum over all real and virtual contributions equals
-unity. Both the real and virtual contributions are separately regulated \ABquestion{and so give finite contributions?} and  the effects of running of the coupling has already been resummed \ABquestion{Is this sentence necessary about coupling being resummed?}. Setting $S(n)=1/n!$, \ABquestion{when would there not be $n$-identical gluons?} the cumulant becomes
+unity. Both the real and virtual contributions are separately regulated, ensuring finite contributions in each.
+\question{Do we really need this line?}
+Moreover, at NLL, there are $n$-identical gluons and so we can set $S(n)=1/n!$, leading to
 \begin{equation}
     \label{eq:cumu-factor-more}
-    \Sigma\left(\{p\},v\right)=e^{-\int[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]M^2\left(k_i\right)\,\Theta\!\left(v-V\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
+    \Sigma\left(\{p\},v\right)=e^{-\int[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]M_{\mathrm{sc}}^2\left(k_i\right)\,\Theta\!\left(v-V_{\mathrm{sc}}\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
 \end{equation}
-
-
-\paragraph{The radiator and Sudakov form factor.}
 The exponent in Eq.~\eqref{eq:cumu-factor-more} can be split
 according to whether an emission's observable value
-$V(\{\tilde{p}\},k)$ is larger or smaller than $v$, \ABquestion{Unsure what this value $v$ is.}
+$V(\{\tilde{p}\},k)$ is larger or smaller than $v$,
 \begin{equation}
 \label{eq:exp-rad}
   \int[dk]\,M^2(k)
   = \underbrace{\int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)}_{\displaystyle R(v)}
-  + \int[dk]\,M^2(k)\,\Theta\!\left(v-V(\{\tilde{p}\},k)\right)\,.
+  + \int[dk]\,M_{\mathrm{sc}}^2(k)\,\Theta\!\left(v-V_{\mathrm{sc}}(\{\tilde{p}\},k)\right)\,,
 \end{equation}
+where the soft-collinear limit can be taken in the second term due to rIRC safety. 
+\question{Add more about why rIRC safety allows us to 
+take this limit?}
 The first term defines the \emph{radiator}
 \begin{equation}
-\label{eq:radiator}
+\label{eq:radiator-NLL}
 R(v) \equiv \int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)\,,
 \end{equation}
 which integrates the emission probability over the region of phase
 space where the observable value exceeds $v$. Its exponential
 $e^{-R(v)}$ is the \emph{Sudakov form factor},  a function which
-gives the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs. The Sudakov form factor resums all LL contributions. \ABquestion{Is this correct re LL contributions? Exponent with the constraints?}
-The cumulant then separates into
+gives the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs.
+The Sudakov form factor resums all LL contributions for rIRC safe observables.
+The cumulant then factorises as
 \begin{equation}
   \label{eq:cumu-factor-combine}
   \Sigma\left(\{p\},v\right)
   = e^{-R(v)}\,\mathcal{F}(v)\,,
 \end{equation}
 where $\mathcal{F}(v)$ collects the real emissions together with the
-virtual corrections from emissions with $V(\{\tilde{p}\},k)\leq v$.
-Since these emissions are constrained to $V(\{\tilde{p}\},k_i)\lesssim
-v$, their phase space is at most single-logarithmic, and it is
-consistent at NLL accuracy to replace both the matrix element and the
-observable with their soft-collinear limits; corrections beyond this
-approximation are power-suppressed in $v$ and hence sub-leading. This
-gives \ABquestion{Is this the reasoning? \\ Don't understand the sum over legs \\ Unsure when we take the soft-collinear limit?}  
+virtual corrections from emissions with $V(\{\tilde{p}\},k)\leq v$, \question{is this true?}
 \begin{equation}
   \label{eq:Fv-sc}
-  \mathcal{F}(v) = e^{-\int[dk]\,M^2(k)\,\Theta(v-V_{\mathrm{sc}})}
+  \mathcal{F}(v) = e^{-\int[dk]\,M_{\mathrm{sc}}^2(k)\,\Theta(v-V_{\mathrm{sc}}(\{\tilde{p}\},k))}
   \sum_{n=0}^\infty\frac{1}{n!}
-  \int\!\prod_{i=1}^n\,\sum_{\ell=1}^{n_\ell}[dk_i]\,M_{\mathrm{sc},\ell}^2\!\left(\{\tilde{p}\},k_i\right)
-  \,\Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
+  \int\!\prod_{i=1}^n[dk_i]\,M_{\mathrm{sc}}^2\!\left(k_i\right)
+  \,\Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
 \end{equation}
-where $n_\ell$ is the number of hard Born-level legs, the sum over
-$\ell$ runs over all hard legs, and $M_{\mathrm{sc},\ell}^2$ is the
-soft-collinear matrix element for emission off leg $\ell$, as defined
-in Ref.~\cite{Banfi:2014sua}.
 
-\paragraph{Change of variable to $\zeta$.}
-To simplify $\mathcal{F}(v)$ further, each emission $k$ is 
-parameterised in terms of the variable 
+\paragraph{The NLL multiple emission function, $\FNLL(\RpNLL)$.} To simplify $\mathcal{F}(v)$, we express $M^2(k)$ in terms of the radiator $R(v)$. 
+Using the following
+\begin{equation}
+	R'(v)\equiv-v\frac{d}{dv}R(v)\,,
+\end{equation}
+along with Eq.~\eqref{eq:radiator-NLL}, we find that 
+\begin{equation}
+	R'(v)=v\int [dk] M^2(k)\,\delta\left(V(\{\tilde{p}\},k)-v\right)\,.
+\end{equation}
+Each emission $k$ is parameterised in terms of the rescaled variable
 \begin{equation}
 \label{eq:zeta-1-emsn}
 	\zeta\equiv\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\,.
 \end{equation}
-Differentiating Eq.~\eqref{eq:radiator} with respect to $v$ and
-using the distributional identity
-$\tfrac{d}{dv}\,\Theta(V-v)=-\delta(V-v)$, one finds
+Integrating over $\zeta$ and using the delta function to perform the $\zeta$ integral, one obtains
 \begin{equation}
-\label{eq:Rprime}
-    R'(v)=v\int [dk]\, M^2(k)\,\delta\!\left(V(\{\tilde{p}\},k)-v\right)\,, \qquad R'(v)\equiv-v\frac{d}{dv}R(v)\,.
+	\int_0^\infty \frac{d\zeta}{\zeta} R'(\zeta v)= \int [dk] M^2(k)\,,
 \end{equation}
-Substituting the variable~\eqref{eq:zeta-1-emsn}, this becomes
+and substituting in the constraint, we find
 \begin{equation}
-R'(v)=\int[dk]\,M^2(k)\,\delta(\zeta-1)\,.
+\int[dk]\,M^2(k)\,\Theta\!\left(v-V(\{\tilde{p}\},k)\right)=\int_0^1 \frac{d\zeta}{\zeta}\, R'(\zeta v)\,.
 \end{equation}
-From here we can find \ABquestion{How?}
+\question{This isn't $M_{\mathrm{sc}}$ so we cannot substitute in directly?}
+
+The derivative $R'(v)$ decomposes as a sum over hard legs, $R'(v)\equiv\sum_\ell R'_{\ell}(v)$,
 \begin{equation}
 \label{eq:measure-replace}
-    [dk]\,M^2(k)=\frac{d\zeta}{\zeta}\,R'(\zeta v)\,.
+[dk]\,M_{\mathrm{sc}}^2(k)=\sum_{\ell}\frac{d\zeta}{\zeta}\frac{d\phi^{(\ell)}}{2\pi}\,R'_{\ell}(\zeta v)\,.
 \end{equation}
+At NLL, each emission $k_i$ is thus parametrised by $\{\ell_i,\phi_i^{(\ell_i)},\zeta_i\}$.
 
-We can re-write $\mathcal{F}(v)$ as: \ABquestion{What about the $\phi$-dependence?}
+
+Substituting into Eq.~\eqref{eq:Fv-sc}, $\mathcal{F}(v)$ takes the form
 \begin{equation}
-  \label{eq:Fv-zeta}
-  \mathcal{F}(v) = e^{-\int_{\epsilon}^1\frac{d\zeta}{\zeta}\,R'\left(\zeta v\right)}
+  \label{eq:Fv-zeta-reg}
+  \mathcal{F}(v) = e^{-\int_{\epsilon}^{1}\frac{d\zeta}{\zeta}R'\left(\zeta v\right)}
   \sum_{n=0}^\infty\frac{1}{n!}
-  \int_{\epsilon}^\infty\!\prod_{i=1}^n\frac{d\zeta_i}{\zeta_i}\,R'\left(\zeta_i v\right) \!\left(\{\tilde{p}\},k_i\right)
-  \,\Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
+  \int_{\epsilon}^\infty\!\prod_{i=1}^n\left(\sum_{\ell_i}R_{\ell_i}'\left(\zeta_i v\right)\frac{d\zeta_i}{\zeta_i}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)
+  \Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
-where we have introduced a cut off $\epsilon$ .. \ABquestion{unsure exactly from, eq 3.66 to eq. 3.67 in Hadronic Jet book.}
-
-
-
-\ABquestion{Unsure how to go between this and the next part.}
-
-
-At NLL, each emission $k_i$ is further parametrised by
-$\{\ell_i,\phi_i^{(\ell_i)},\zeta_i\}$, where $\ell_i$ denotes the
-leg to which the emission is soft and collinear and $\phi_i^{(\ell_i)}$ is the
-azimuthal angle with respect to that leg. For event shapes, the
-dependence on emission rapidity can be integrated analytically,
-yielding a Jacobian factor
-$R'_{\mathrm{NLL},\ell}\equiv 2C_\ell\,r'_\ell(L)$, with $C_\ell=C_F$
-for quark legs and $C_\ell=C_A$ for gluon legs. Applying the
-replacement~\eqref{eq:measure-replace} to every emission in
-Eq.~\eqref{eq:Fv-sc} and introducing an infrared regulator $\epsilon$,
-$\mathcal{F}(v)$ takes the compact form
+where we have introduced a  cutoff $\epsilon\ll 1$ is introduced so that emissions with $\zeta_i \ll \epsilon$ cancel between the real and virtual contributions, up to corrections that vanish as a power of $\epsilon$, which we can neglect because of rIRC safety. \question{Can we neglect these due to rIRC safety?}
+Approximating $R'(\zeta v) \simeq R'(v)$ -- thereby neglecting subleading effects due to corrections of relative order $\alpha_s$ -- we find
+\begin{equation}
+  \label{eq:Fv-reg-approx}
+   \mathcal{F}(v) \simeq \epsilon^{R'}\sum_{n=0}^\infty\frac{1}{n!}
+  \int_{\epsilon}^\infty\!\prod_{i=1}^n\left(\sum_{\ell_i}R_{\ell_i}'\left( v\right)\frac{d\zeta_i}{\zeta_i}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)
+  \Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
+\end{equation}
+This can be written in the compact form
 \begin{equation}
     \label{eq:FNLL-formula}
     \mathcal{F}_{\mathrm{NLL}}\!\left(R'_{\mathrm{NLL}}(v)\right)
     = \int\!\dZ\,\Theta\!\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\,,
 \end{equation}
-where the soft-collinear limit of the observable, \ABquestion{unsure how this limit comes into play/relates to what was given earlier?}
-\begin{equation}
-  \label{eq:Vsc}
-  \frac{\Vsc{k_1,\dots,k_n}}{v}
-  \equiv \lim_{v\to 0}\frac{V(\{\tilde{p}\},k_1,\dots,k_n)}{v}\,,
-\end{equation}
-is guaranteed to exist for all rIRC safe observables, and the
-soft-collinear measure $\dZ$ is defined by
+where the soft-collinear measure $\dZ$ is defined by
 \begin{multline}
     \label{eq:dZ-def}
     \int\!\dZ\,G(\{k_i\}) \\
@@ -612,58 +607,60 @@ soft-collinear measure $\dZ$ is defined by
     \int_0^{2\pi}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)
     G(k_1,\dots,k_n)\,,
 \end{multline}
-for any function $G$ of the emissions. The cumulant therefore takes
-the multiplicative form
+for any function $G$ of the emissions. 
+
+\paragraph{The NLL radiator, $R_{\mathrm{NLL}}$}  
+Referring back to Eq.~\eqref{eq:radiator-NLL}, we can find the NLL radiator...\add{using something but I don't know right now.}
+While the multiple-emission function arises from emissions which occur soft and widely separated in angle,
+the radiator has emissions coming from all regions. \question{Maybe not the soft wide-able contributions}.
+
+We can split the two into parts: a soft-collinear and a hard-collinear contribution \add{Add where this comes from physically speaking.}, \question{are all of these $\alpha_s^{\mathrm{phys}}$?}
 \begin{equation}
-\label{eq:NLL-cumulant}
-\Sigma\left(\{p\},v\right)
-= e^{-R_{\mathrm{NLL}}(v)}\,
-  \mathcal{F}_{\mathrm{NLL}}\!\left(R'_{\mathrm{NLL}}(v)\right)\,,
-\qquad R'_{\mathrm{NLL}}\simeq -v\frac{dR_{\mathrm{NLL}}}{dv}\,.
+	R(v)=R_{\mathrm{s}}+R_{\mathrm{hc}}\,,
 \end{equation}
-\ABquestion{Something about neglecting the soft wide-angle part.}
+where 
+\begin{equation}
+	R_{\mathrm{hc}}=\sum_{\ell} \int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
+\end{equation}
+and
+\begin{equation}
+	R_{\mathrm{s}}=\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\,\mathcal{R}_{\ell\bar\ell}(v)
+\end{equation}
+and
+\begin{multline}
+  \label{eq:Rll}
+  \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha_s(\kappa)}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}d\phi^{(\ell\bar \ell)}\  
+  \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar
+        \ell}}{\kappa_{\ell\bar \ell}^2}-\eta^{(\ell\bar \ell)}
+  \right) \Theta(Q_{\ell \bar\ell}-\kappa_{\ell\bar \ell}) \times \\
+  \times \Theta(\eta^{(\ell\bar \ell)})
+  \Theta\left(d^{(\ell\bar\ell)}_\ell\left(\frac{\kappa_{\ell\bar
+          \ell}}{Q_{\ell\bar\ell}}\right)^{a}
+    e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi)-v\right)\,,
+\end{multline}
+where we have expressed the limit $V_{\mathrm{sc}}^{(\ell\bar{\ell})}$ in terms of the dipole variables,
+and the dipole coefficient
+$d_{\ell\bar\ell}$ is given by:
+\begin{equation}
+  \label{eq:dll}
+  d^{(\ell\bar\ell)}_\ell = d_\ell \left(\frac{Q_{\ell\bar \ell}}{Q}\right)^a \left(\frac{Q_{\ell\bar \ell}}{2 E_\ell}\right)^{b_\ell}\,.
+\end{equation}
 
-%We can separate the real emissions into \emph{resolved} and \emph{unresolved} emissions, 
-%according to some cutoff $\epsilon$:
-% \begin{itemize}
-% 	\item Resolved emissions: $\epsilon v\lesssim V(\{\tilde{p}\},k_i)\sim v$\,,
-%	\item Unresolved emissions: $V(\{\tilde{p}\},k_i)<\epsilon v$\,.
-% \end{itemize}
-% 
-% The unresolved emissions do not affect the observable and so their
-%contribution in Eq.~\eqref{eq:cumu-factor-more} can be exponentiated \ABquestion{why can it be exponentiated} to combinine with the virtual factor to
-%give
-%\begin{multline}
-%  \label{eq:cumu-factor-unres}
-%  \Sigma\!\left(\{p\},v\right)
-%  = \exp\!\left\{-\int[dk]\,\mathcal{M}^2(k)
-%    \left[1-\Theta(\epsilon v - V(\{p\},k))\right]\right\}
-%  \times\\
-%  \times\sum_{n=0}^\infty\frac{1}{n!}
-%  \int^v_{\epsilon v}\!\prod_{i=1}^n[dk_i]\,
-%  \mathcal{M}^2\!\left(\{\tilde{p}\},k_i\right)
-%  \,\Theta\!\left(v-V\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
-%\end{multline}
-%
-%
-%The cumulant takes the form
-% \begin{equation}
-% 	\label{eq:cumu-factor-combine}
-% 	\Sigma\left(\{p\},v\right)=e^{-R(v)} e^{-\int_{\epsilon v}^v[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int^v_{\epsilon v}\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,.
-% \end{equation}
-%At NLL accuracy, $R(v) \simeq R_{\mathrm{NLL}}(v)$, and we write
-%\begin{equation}
-% 	\label{eq:cumu-factor-RNLL}
-% 	\Sigma\left(\{p\},v\right)\simeq e^{-R_{\mathrm{NLL}}(v)} \mathcal{F}(v)\,,
-%\end{equation} 
-%where $\mathcal{F}(v)$ encodes the contribution of the resolved emissions, 
-%\begin{equation}
-%\label{eq:Fv}
-%\mathcal{F}(v)=e^{-\int_{\epsilon v}^v[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int^v_{\epsilon v}\prod_{i=1}^n\left[dk_i\right]\mathcal{M}^2\left(\{\tilde{p}\},k_i\right)\,.
-%\end{equation}
+Simplifying this we can separate out the dependence on the Born
+momenta and on the azimuthal angle by expanding the Heaviside function
+\begin{multline}
+\Theta\left(d^{(\ell\bar\ell)}_\ell\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}
+e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell \bar \ell)})-v\right)\simeq\Theta\left(\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}e^{-b_\ell\eta^{(\ell\bar \ell)}}-v\right)+\\
++\delta\left(\ln\left[\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^ae^{-b_\ell\eta^{(\ell\bar \ell)}}\right]-\ln v\right)\ln\left(d^{(\ell\bar\ell)}_\ell g_\ell(\phi^{(\ell \bar \ell)})\right)+\cdots\,,
+\end{multline}
+\todo{make sure you know how this works}
+\question{is it just $d_\ell$ in the log?}
+where we can stop at this order for NLL.
 
-\paragraph{The NLL radiator.}
-The NLL radiator $R_{\mathrm{NLL}}(v)$ receives double-logarithmic contributions from
+
+
+
+The NLL radiator in Eq.~\eqref{eq:NLL-cumulant}, $R_{\mathrm{NLL}}(v)$ receives double-logarithmic contributions from
 the soft and collinear region, together with single-logarithmic contributions arising from
 the virtual corrections in the soft large-angle and hard-collinear regions. Its derivative $R'_{\mathrm{NLL}}$ retains only terms up to NLL accuracy. For a three-jet configuration, 
 the NLL radiator is a sum over the three dipoles $(q\bar q)$, $(qg)$ and $(g\bar q)$,
@@ -674,64 +671,44 @@ the NLL radiator is a sum over the three dipoles $(q\bar q)$, $(qg)$ and $(g\bar
 	\left. \left. +B_\ell T\left(\frac{L}{a+b_\ell}\right)\right] +2\ln\frac{Q_{ij}}{Q}T\left(\frac{L}{a}\right)\right)\,,
 \end{split}
 \end{equation}
-where $Q_{ij}^2=2p_i\!\cdot p_j$ and the dipole colour factor is
-\begin{equation}
-C_{(ij)}=
-\begin{cases}
-2C_F-C_A\,, & q\bar{q}\,,\\
-C_A\,,& qg,\,g\bar{q}\,.
-\end{cases}
-\end{equation}
+where $Q_{ij}^2=2p_i\!\cdot p_j$ and the dipole colour factor is $C_{(ij)}=2C_F-C_A$ for $(q\bar{q})$, and $C_{(ij)}=C_A$ for $(qg),(g\bar{q})$.
 The azimuthal average appearing
 in Eq.~\eqref{eq:NLL-radiator} is defined as
 \begin{equation}
 \label{eq:az-avg}
 \langle f \rangle \equiv \int_0^{2\pi}\frac{d\phi}{2\pi}f\left(\phi\right)\,.
 \end{equation}
-\add{Add more to here from the CAESAR paper on what each term means.}
 The functions $r_\ell$ encode the double-logarithmic (LL and some NLL) contributions,
 while $r'_\ell$ and $T(L)$ contain the single-logarithmic NLL pieces:
 \begin{multline}
-    r_\ell(L)=\int_{Qv^{1/(a+b_\ell)}}^Q \frac{dk_t}{k_t}
+    r_\ell(L)=\int_{Qe^{-\frac{L}{a+b_\ell}}}^Q \frac{dk_t}{k_t}
     \frac{\alpha_s^{\mathrm{phys}}(k_t)}{\pi}\ln\frac{Q}{k_t}
-    +\frac{1}{b_\ell}\int_{Qv^{1/a}}^{Qv^{1/(a+b_\ell)}}
+    +\frac{1}{b_\ell}\int_{Qe^{-\frac{L}{a}}}^{Qe^{-\frac{L}{a+b_\ell}}}
     \frac{dk_t}{k_t}\frac{\alpha_s^{\mathrm{phys}}(k_t)}{\pi}
     \left(L+a\ln\frac{k_t}{Q}\right)\,, \\
-    T(L)=\int_{Qv}^Q\frac{dk_t}{k_t}
+    T(L)=\int_{Qe^{-L}}^Q\frac{dk_t}{k_t}
     \frac{\alpha_s^{\mathrm{phys}}(k_t)}{\pi}\,,\qquad
     r'_\ell(L)=\frac{1}{b_\ell}\left[T\!\left(\frac{L}{a}\right)
     -T\!\left(\frac{L}{a+b_\ell}\right)\right]\,.
 \end{multline}
-The individual terms in Eq.~\eqref{eq:NLL-radiator} have the
-following physical interpretations:
-\begin{itemize}
-	\item The term $B_\ell\,T\left(\frac{L}{a+b_\ell}\right)$ encodes the virtual corrections of hard collinear origin down to scale $Qv^{1/(a+b_\ell)}$, which is the characteristic scale of hard collinear radiation. 
-	\item The term $T(L/a)$ represents soft wide-angle virtual corrections down to the scale $Qv^{1/a}$, the characteristic scale of soft wide-angle radiation. This is the only term that
-    does not decompose as a sum over individual legs and depends on
-    the geometry of the underlying three-jet event through
-    $\ln(Q_{ij}/Q)$.
-\end{itemize}
+\ndp{The individual terms in Eq.~\eqref{eq:NLL-radiator} admit clear physical interpretations. The term $B_\ell\,T\left(\frac{L}{a+b_\ell}\right)$ encodes the virtual corrections of hard-collinear origin down to the scale $Qv^{1/(a+b_\ell)}$, which is the characteristic scale of hard-collinear radiation. The term $T(L/a)$ represents soft wide-angle virtual corrections down to the scale $Qv^{1/a}$, the characteristic scale of soft wide-angle radiation; it is the only term that does not decompose as a sum over individual legs, and depends on the geometry of the underlying three-jet event through $\ln(Q_{ij}/Q)$.}
 
- 
- \paragraph{Numerical implementation.}
- The NLL resummation framework described above was introduced alongside
-the automated computer code \textsc{CAESAR}. Its successor,
-\textsc{ARES}, achieves NNLL accuracy. The principal difference
-between the two formalisms lies in how the limit
-$V_{\mathrm{sc}}(\{\tilde{p}\},k_1,\dots,k_n)/v$ is evaluated: in
-\textsc{ARES} this limit is taken analytically as a function of
-$\zeta$, whereas in \textsc{CAESAR} it is determined numerically by
-generating four-momenta in the region where the limit exists. While
-\textsc{CAESAR} automates the soft-collinear approximation to the
-observable and computes $\mathcal{F}_{\mathrm{NLL}}$ entirely
-numerically, \textsc{ARES} proceeds analytically as far as possible,
-resorting to Monte Carlo methods only where necessary.
+\paragraph{The NLL cumulant}
+The master formula for the NLL cumulant for rIRC safe, continuously global event shapes is,
+\begin{equation}
+\label{eq:NLL-cumulant}
+\Sigma\left(\{p\},v\right)
+= e^{-R_{\mathrm{NLL}}(v)}\,
+  \mathcal{F}_{\mathrm{NLL}}\!\left(R'_{\mathrm{NLL}}(v)\right)\,,
+\qquad R'_{\mathrm{NLL}}\simeq -v\frac{dR_{\mathrm{NLL}}}{dv}\,.
+\end{equation}
 
-A comparison between the analytical result and the numerical output
-of \textsc{CAESAR} and \textsc{ARES} for $\mathcal{F}_{\mathrm{NLL}}$ in the case of thrust is shown in Fig.~\ref{fig:FNLL-CAESAR-comp}, where excellent agreement is observed. The analytical result for thrust is discussed in detail in Sec.~\ref{subsec:additive-observables}.
-\add{Discuss computing numerically i.e. that there needs to be a cut off $\epsilon$ and split into resolved vs. unresolved emissions. \\
-Also add in what is in the Hadronic Jets book.}
 
+\paragraph{Numerical implementation} The NLL resummation for any continuously global rIRC observable is given by the general formula in Eq.~\eqref{eq:NLL-cumulant}. It is precisely rIRC safety that allows the components of this formula to be obtained by evaluating $V_{\mathrm{sc}}(\{\tilde{p}\},k_1,\dots,k_n)$ with suitable ensembles of soft and collinear gluons. This is implemented in the \textsc{CAESAR} computer code, in which emissions are generated through a simplified parton-shower event generator and passed to a subroutine that computes $V_{\mathrm{sc}}$. The observable is thus determined numerically by generating four-momenta in the region where the soft-collinear limit exists. \textsc{CAESAR} is furthermore capable of verifying rIRC safety directly from the observable's expression in terms of final-state momenta. \ABquestion{Should I be discussing resolved vs.\ unresolved here?}
+
+The extension of \textsc{CAESAR} to NNLL accuracy has been carried out in its successor, \textsc{ARES} (discussed in Sec.~\ref{sec:NNLL-resum}). The principal difference lies in the treatment of $V_{\mathrm{sc}}$: while \textsc{CAESAR} evaluates $\mathcal{F}_{\mathrm{NLL}}$ entirely numerically, \textsc{ARES} proceeds analytically as far as possible, resorting to Monte Carlo methods only where necessary.
+
+A comparison between the analytical result and the numerical output of \textsc{CAESAR} and \textsc{ARES} for $\mathcal{F}_{\mathrm{NLL}}$ in the case of thrust is shown in Fig.~\ref{fig:FNLL-CAESAR-comp}, where excellent agreement is observed. The analytical result for thrust is discussed in detail in Sec.~\ref{subsec:additive-observables}.
 \begin{figure}[htbp!]
   \centering
   \includegraphics[width=\textwidth]{figures/caesar_plot.pdf}
@@ -742,6 +719,7 @@ Also add in what is in the Hadronic Jets book.}
 \end{figure}
 
 \section{NNLL Resummation}
+\label{sec:NNLL-resum}
 In order to develop our NLL cumulant to an NNLL accurate prediction, one must collect all terms which give a correction of relative order $\alpha_s$ to the NLL prediction. As discussed in Refs.~\cite{Banfi:2014sua, Arpino:2019ozn}, this can be achieved by relaxing the NLL approximations for a single real emission at a time. Just as the NLL distribution consisted of soft and collinear partons widely separated in angle, the NNLL cumulant's configuration results in a configuration of a sea of soft and collinear emissions, accompanied by at most one \emph{special} emission. The NNLL master formula for the $e^+e^-\to3\,\text{jet}$ case, is defined as 
 \begin{equation}
 \begin{aligned}
@@ -784,8 +762,8 @@ originates from the combination of a single unresolved hard collinear emission e
   Each term can be interpreted physically: 
     \begin{itemize}
       \item $\delta \mathcal{F}_{\mathrm{hc}}$: results from a hard-collinear emission at the level of the squared matrix element. 
-           \item $\delta \mathcal{F}_{\mathrm{sc}}$: accounts for running coupling corrections to the real emissions in the CMW scheme, described in Sec.~\ref{sec:NLL-resum}. \ABquestion{Can I just replace CMW with phys here?} 
-           Additionally, it also accounts for the correct rapidity boundary for a single soft-collinear emission. Since rapidity dependence can always be handled analytically for event shapes, this correction is remarkably simple. For other observables, such as jet rates, these two corrections must be handled separately. 
+           \item $\delta \mathcal{F}_{\mathrm{sc}}$: accounts for running coupling corrections to the real emissions in the CMW scheme, described in Sec.~\ref{sec:NLL-resum}. \ndp{Show what these corrections are exactly.}
+           Additionally, it also accounts for the correct rapidity boundary for a single soft-collinear emission. Since rapidity dependence can always be handled analytically for event shapes, this correction is remarkably simple. For other observables, such as jet rates, these two corrections must be handled separately. \ndp{Add a reference.}
       \item $\delta \mathcal{F}_{\mathrm{correl}}$: arises from the fact that event shapes are not inclusive for all 
 splittings of a soft-collinear gluon. \ABquestion{Does it mean all \emph{types} of splittings i.e. event shapes don't account for a gluon splitting vs. a $q\bar{q}$ splitting?} 
 This function therefore accounts for the treatment of the splitting of a soft and collinear gluon. 
@@ -857,6 +835,9 @@ where
 and the functions $h_2^{(\ell)} \text{and}\,h_3^{(\ell)}$ are again found within~\cite{Arpino:2019ozn}.
 
 We now outline the remaining contributions by splitting the NNLL cumulant in Eq.~\eqref{eq:Sigma-NNLL-fs-ee} into a soft component $\Sigma_{\mathrm{soft}}$, and a hard-collinear component $\Sigma_{\mathrm{hc}}$. By separating the two, we will be able to identify the physical origins of the various NNLL contributions in Eq.~\eqref{eq:dFNNLL}. We discuss these two cumulants in the following.
+
+\subsection{Soft and Collinear Contributions}
+
 
 \subsection{Soft Cumulative Distribution}
 The master formula for the soft cumulant at NNLL accuracy is the following: 
@@ -970,12 +951,14 @@ The soft wide-angled emissions, $\delta\mathcal{F}_{\mathrm{wa}}$ and $\Delta\ma
 The general expression for $\Delta\mathcal{F}_{\mathrm{wa}}$ is given by
 \begin{equation}
 \begin{aligned}
-	&\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)=\sum_{(ij)}C_{(ij)}\frac{\alpha_s(v^{1/a}Q)}{a\,\alpha_s(Q)}\ln\frac{Q_{ij}}{Q}\int_0^\infty\frac{d\zeta}{\zeta}\int_{-\infty}^\infty d\eta^{(ij)}\int_0^{2\pi}\frac{d\phi^{(ij)}}{2\pi}\times\\
+	&\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)=\sum_{(ij)}C_{(ij)}\frac{\alpha_s(v^{1/a}Q)}{a\,\alpha_s(Q)}\ln\frac{Q_{ij}}{Q}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi^{(ij)}}{2\pi}\times\\
 	&\times \int \dZ  \left[\Theta\left(1-\lim_{v\to0}\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\lim_{v\to0}\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
      \right] \,.
 \end{aligned}
 \end{equation}
+
+\subsection{Hard and Collinear Contributions}
 
 \subsection{Hard-collinear Cumulative Distribution}
 At NNLL accuracy, the hard-collinear cumulant is
@@ -989,21 +972,13 @@ We will now define these functions explicitly.
 The general expression for $\delta \mathcal{F}_{\mathrm{hc}}$ is 
  \begin{multline}
    \label{eq:dFhc-general-ee}
-   \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{\pi}\int_0^1dz^{(\ell)} \langle P_{f_\ell}\left(z^{(\ell)},0\right)\rangle\times\\
+   \delta \mathcal{F}_{\mathrm{hc}}(\lambda) \equiv \sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{\pi} B_{\ell}\times\\
     \times \int\! \dZ \, \times \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
      \right] \,,
  \end{multline}
-where $\langle P_{f_\ell}\left(z^{(\ell)},\epsilon\right)\rangle$ is the 
-azimuthally averaged splitting function, which depends on $f_\ell$, the 
-flavour of leg $\ell$:
-\begin{equation}
-\langle P_{f_\ell}(z^{(\ell)},\epsilon)\rangle \equiv 
-\begin{cases}
-C_F\left(-2+(1-\epsilon)z^{(\ell)}\right)\,, & f_\ell = q, \bar{q} \\[6pt]
-C_A\left(z^{(\ell)}(1-z^{(\ell)})-2\right)+T_R n_f\left[1-\dfrac{2z^{(\ell)}(1-z^{(\ell)})}{1-\epsilon}\right]\,, & f_\ell = g\,.
-\end{cases}
-\end{equation}
+where $B_\ell$ is defined as 
+\add{Add in what the $B_\ell$ is for the final-state radiation.}
 The recoil corrections, $\delta\mathcal{F}_{\mathrm{rec}}, \Delta\mathcal{F}_{\mathrm{rec}}$ rely on the approximation found in Eq.~\ref{eq:Vsc} along with the following
 \begin{equation}
   \label{eq:Vhc}
@@ -1014,13 +989,14 @@ where $k_{\mathrm{hc}}$ denotes the hard-collinear gluon.
 The general expression for $\delta\mathcal{F}_{\mathrm{rec}}$ is
 \begin{equation}
 \begin{aligned}
-	&\delta\mathcal{F}_{\mathrm{rec}}(\lambda)=\sum_{\ell=1}^3\frac{\alpha_s(Qv^{1/(a+b_\ell)})}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^1dz^{(\ell)}\left(\frac{2C_\ell}{z^{(\ell)}}+\langle P_{f_\ell}(z^{(\ell)},0)\rangle\right)\times\\
+	&\delta\mathcal{F}_{\mathrm{rec}}(\lambda)=\sum_{\ell=1}^3\frac{\alpha_s(Qv^{1/(a+b_\ell)})}{\alpha_s(Q)(a+b_\ell)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^1dz^{(\ell)} P_\ell(z)\times\\
 	&\times \int \dZ  \left[\Theta\left(1-\frac{\Vhc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
      \right] \,,
 \end{aligned}
 \end{equation}
-where $C_{q,\bar{q}}=C_F$ and $C_g=C_A$. \\ \\
+where $P_\ell(z)$ is defined to be: \add{Add in what this is for FSR.} \ABquestion{Unsure on the $dz^{(\ell)}$ or $dz$ here?}
+
  The general expression for $\Delta\mathcal{F}_{\mathrm{rec}}$ is
 \begin{equation}
 \begin{aligned}
@@ -1032,8 +1008,10 @@ where $C_{q,\bar{q}}=C_F$ and $C_g=C_A$. \\ \\
 \end{equation}
 where the un-averaged splitting function for the gluon 
 \begin{equation}
-	 \Delta P_g(z,\phi;\epsilon)=4z(1-z)(2(1-\epsilon)\cos^2\phi-1)\left(\frac{C_A}{2}-\frac{T_Rn_f}{1-\epsilon}\right)\,.
+	 \Delta P_g(z,\phi)=4z(1-z)(2\cos^2\phi-1)\left(\frac{C_A}{2}-T_Rn_f\right)\,.
 \end{equation}
+
+\subsection{Soft Wide Angle Contributions}
 
 \section{Additive Observables}
 \label{subsec:additive-observables}
@@ -1186,7 +1164,7 @@ $\zeta$-integration, we obtain
 \delta\mathcal{F}_{\mathrm{sc}}=\FNLL\frac{\pi}{\alpha_s(Q)}\int_0^1\frac{d\zeta}{\zeta}\sum_{\ell=1}^3\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{\langle d_\ell g_\ell(\phi)\rangle}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\times \\
 \times\left((1-\zeta)^{\RpNLL}-1\right)\,,
 \end{multline}
-where $\langle\cdots\rangle$ denotes the azimuthal average.
+where $\langle\cdots\rangle$ denotes the azimuthal average, as shown in Eq.~\eqref{} \add{add equation}.
 Performing the 
 $\zeta$-integration finally yields
 \begin{multline}
@@ -1194,5 +1172,5 @@ $\zeta$-integration finally yields
 \times \left.\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,.
 \end{multline}
 This result holds for every additive observable.
-
+\add{see if there are terms proportional to $d\FNLL/d\RpNLL$ or $d\FNLL^2/d^2\RpNLL$.}
 
