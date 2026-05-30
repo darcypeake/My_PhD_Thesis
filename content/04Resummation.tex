@@ -610,25 +610,50 @@ where the soft-collinear measure $\dZ$ is defined by
 for any function $G$ of the emissions. 
 
 \paragraph{The NLL radiator, $R_{\mathrm{NLL}}$}  
-Referring back to Eq.~\eqref{eq:radiator-NLL}, we can find the NLL radiator...\add{using something but I don't know right now.}
-While the multiple-emission function arises from emissions which occur soft and widely separated in angle,
-the radiator has emissions coming from all regions. \question{Maybe not the soft wide-able contributions}.
+Referring back to Eq.~\eqref{eq:radiator-NLL}, we are able to find the NLL radiator 
+by splitting it into various regions. While the NLL multiple-emission function, 
+$\mathcal{F}_{\mathrm{NLL}}$ arises from emissions which occur soft and widely separated in angle, 
+the NLL radiator has contributions arising from both the hard-collinear and soft-collinear regions i.e.\ 
+neglecting emissions from the soft wide-angle region (this gives rise to NNLL and above accuracy).
+\question{check if this is true and also why does soft wide-angle give rise to higher order?}
 
-We can split the two into parts: a soft-collinear and a hard-collinear contribution \add{Add where this comes from physically speaking.}, \question{are all of these $\alpha_s^{\mathrm{phys}}$?}
+Therefore, we are able to re-write the radiator as a decomposition
+of two pieces, one arising from the soft-collinear region and the other 
+from the hard-collinear
 \begin{equation}
-	R(v)=R_{\mathrm{s}}+R_{\mathrm{hc}}\,,
+	R(v)=R_{\mathrm{s}}(v)+R_{\mathrm{hc}}(v)\,.
 \end{equation}
-where 
+The hard-collinear radiator is expressed as a sum over legs of 
+virtual hard-collinear origin down to $Q v^{1/(a+b_\ell)}$, the characteristic
+scale of hard-collinear origin:
 \begin{equation}
-	R_{\mathrm{hc}}=\sum_{\ell} \int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
+	R_{\mathrm{hc}}(v)=-\sum_{\ell} \int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
 \end{equation}
-and
+where $\gamma_{\ell}^{(0)}$ is minus the coefficient of the $\delta(1-x)$
+term in the splitting function $P_{qq}^{(0)}$ is $p_\ell$ is a quark or
+$P_{gg}^{(0)}$ is $p_\ell$ is a gluon, such that \question{$p_\ell$ is the emitter?} \add{refer back
+to the splitting functions in Ch.~\ref{ch:QCD}} 
+\begin{equation}
+    \gamma_\ell^{(0)} \equiv 
+    \begin{cases} -\frac{3}{2} C_F, & p_\ell \text{ is a quark}\,, \\ 
+    \frac{-11C_A + 4 T_R n_f}{6}, & p_\ell \text{ is a gluon}\,. 
+    \end{cases}
+\end{equation}
+\question{Do you think I need to give a reason why the hard-collinear 
+virtual corrections give this $\gamma_\ell^{(0)}$?}
+
+The soft-collinear radiator arises from the sum over legs $\ell$ of the soft-collinear matrix element,
+\begin{equation}
+R_s(v)=\sum_{\ell}\int[dk] M_{\mathrm{sc},\ell}^2(k)\,\Theta\left(d_\ell\left(\frac{k_t^{(\ell)}}{Q}\right)^a e^{-b_\ell\eta^{(\ell)}} g_\ell(\phi^{(\ell)}) -v\right)\Theta(\eta^{(\ell)})\,,
+\end{equation}
+where the soft-collinear limit is used in the Heaviside function and substituted in from Eq.~\eqref{eq:general-sc-V}. 
+\question{Unsure why we have the $\Theta(\eta^{(\ell)})$ function?}
+We can write the soft-collinear radiator, as a sum over dipoles $(\ell\bar{\ell})$,
 \begin{equation}
 	R_{\mathrm{s}}=\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\,\mathcal{R}_{\ell\bar\ell}(v)
 \end{equation}
-and
+where
 \begin{multline}
-  \label{eq:Rll}
   \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha_s(\kappa)}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}d\phi^{(\ell\bar \ell)}\  
   \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar
         \ell}}{\kappa_{\ell\bar \ell}^2}-\eta^{(\ell\bar \ell)}
@@ -657,8 +682,26 @@ e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell \bar \ell)})-v\right)\simeq
 \question{is it just $d_\ell$ in the log?}
 where we can stop at this order for NLL.
 
-
-
+In this way we can write
+\begin{equation}
+ \mathcal{R}_{\ell\bar\ell}(v)\simeq  
+R_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\langle \ln(d_{\ell\bar \ell}\,g_\ell)\rangle R'_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)\,,
+\end{equation}
+where
+\begin{equation}
+  \label{eq:Rll-final}
+  R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa^2}{\kappa^2} \frac{\alpha_s(\kappa)}{\pi} \int_0^\infty\!\! d\eta\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa}-\eta\right)\Theta\left(
+      d_{\ell\bar \ell} \left(\frac{\kappa}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta}-v
+    \right) \,,
+\end{equation}
+and where, for any function $f(\phi)$ of the azimuth:
+\begin{equation}
+  \label{eq:azimuthal-average}
+  \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,,
+\end{equation}
+and $R'_{\ell\bar\ell}\equiv -v dR_{\ell\bar\ell}/dv$, $R''_{\ell\bar\ell}\equiv -v dR'_{\ell\bar\ell}/dv$.
+\add{I think need to change to $\alpha_s^{\mathrm{phys}}$.}
+\ndp{Need to check the last couple of equations but got up to here.}
 
 The NLL radiator in Eq.~\eqref{eq:NLL-cumulant}, $R_{\mathrm{NLL}}(v)$ receives double-logarithmic contributions from
 the soft and collinear region, together with single-logarithmic contributions arising from
