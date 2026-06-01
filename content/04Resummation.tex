@@ -9,7 +9,9 @@ Shapes}) was developed to achieve NNLL accuracy for jet observables in
 $e^+e^-$ collisions~\cite{Banfi:2014sua, Banfi:2016zlc, Banfi:2018mcq, Arpino:2019ozn}.
 In this thesis, we focus on the \textsc{ARES} formalism.
 
-The structure of this chapter is as follows. We begin by introducing event-shape observables and the properties they must satisfy. We then motivate the need for resummation through a fixed-order calculation of a standard event shape, thrust, making explicit the origin and structure of the large logarithms. Finally, we present the NLL and NNLL resummation within the \textsc{ARES} frameworks. This chapter provides the necessary background and context for the original research presented in Chapter~5.
+The structure of this chapter is as follows. We begin by introducing event-shape observables and the properties they must satisfy. We then motivate the need for resummation through a fixed-order calculation of a standard event shape, thrust, making explicit the origin and structure of the large logarithms. Finally, we present the NLL and NNLL resummation within the \textsc{ARES} frameworks. This chapter provides the necessary background and context for the original research presented in Chapter~5. \\ \\
+\add{I think we need to add more of a motivation here.}
+
 
 \section{Event-shapes}
 \label{sec:event-shapes}
@@ -258,8 +260,26 @@ techniques are essential. A formalism known as \textsc{ARES} provides us with an
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2024cfk}}
 
 \section{Problem Specification}
-\ndp{I want to explain this part a bit more.}
-We consider events with $n_i$ incoming partons and an arbitrary number $N$ \ndp{$n$} of final-state particles, whose momenta are denoted by $q_1, \dots, q_N$ \ndp{$q_n$}. At Born level, the process consists of $n$ \ndp{$N$}  hard partons (including both incoming and outgoing legs), which define the underlying hard configuration.
+We consider events with $n_i$ incoming partons and an arbitrary number $n$ of
+final-state particles, whose momenta are denoted $q_1,\dots,q_n$.
+At Born level the process involves $N$ hard partons in total -- including
+both the $n_i$ incoming legs and the $N - n_i$ outgoing legs -- which define
+the underlying hard configuration. \ndp{Go from here - check D-parameter paper to see what they say.}
+We study event-shape observables $V(q_1,\dots,q_n)$ that are non-negative
+functions of the final-state momenta, are IRC safe, and vanish smoothly as
+the event approaches an $N$-parton configuration.
+Such observables are commonly referred to as $(N\!+\!1)$-jet observables,
+where the count includes both the outgoing jets and the incoming beam jets.
+
+
+
+
+
+
+
+
+
+
 
 We define an observable $V(q_1, q_2, \dots)$ as a non-negative function of the final-state momenta. We assume that the observable is IRC safe and that it vanishes smoothly in the limit where the event approaches an $n$-jet configuration. Observables with these properties are commonly referred to as $(n+1)$-jet observables \ndp{$N+1$-jet observable?}, where both the outgoing jets and the incoming beam jets are included in the jet counting.
 
@@ -469,7 +489,7 @@ widely separated in angle are effectively independent. Gluon-correlated clusters
 which a primary emission subsequently branches -- give rise to a
 correction to the single-gluon emission probability. At NLL, this correction
 can be absorbed into a redefinition of the coupling, giving rise to
-the physical coupling $\alpha_s^{\mathrm{phys}}$, which is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission \add{Add in reference}. This is related to the coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: 
+the physical coupling $\alpha_s^{\mathrm{phys}}$, which is defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission~\cite{Banfi:2018mcq}. This is related to the coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$, by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: 
  \begin{equation} \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
 \end{equation} 
 where the first two coefficients are 
@@ -610,37 +630,27 @@ where the soft-collinear measure $\dZ$ is defined by
 for any function $G$ of the emissions. 
 
 \paragraph{The NLL radiator, $R_{\mathrm{NLL}}$}  
-Referring back to Eq.~\eqref{eq:radiator-NLL}, we are able to find the NLL radiator 
-by splitting it into various regions. While the NLL multiple-emission function, 
-$\mathcal{F}_{\mathrm{NLL}}$ arises from emissions which occur soft and widely separated in angle, 
-the NLL radiator has contributions arising from both the hard-collinear and soft-collinear regions i.e.\ 
-neglecting emissions from the soft wide-angle region (this gives rise to NNLL and above accuracy).
-\question{check if this is true and also why does soft wide-angle give rise to higher order?}
-
-Therefore, we are able to re-write the radiator as a decomposition
-of two pieces, one arising from the soft-collinear region and the other 
-from the hard-collinear
+Returning to Eq.~\eqref{eq:radiator-NLL}, the NLL radiator receives contributions 
+from both the hard-collinear and soft-collinear regions; contributions from 
+the soft wide-angle region first enter at NNLL accuracy and above.
+\question{Check if this is true and also why does soft wide-angle give rise to higher order?} 
+Accordingly, the radiator splits into two pieces,
 \begin{equation}
 	R(v)=R_{\mathrm{s}}(v)+R_{\mathrm{hc}}(v)\,.
 \end{equation}
-The hard-collinear radiator is expressed as a sum over legs of 
-virtual hard-collinear origin down to $Q v^{1/(a+b_\ell)}$, the characteristic
-scale of hard-collinear origin:
+The hard-collinear radiator is expressed as a sum over legs of virtual hard-collinear corrections, 
+integrated from the characteristic hard-collinear scale $Qv^{1/(a+b_\ell)}$ up to the hard scale $Q$:
 \begin{equation}
 	R_{\mathrm{hc}}(v)=-\sum_{\ell} \int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
 \end{equation}
-where $\gamma_{\ell}^{(0)}$ is minus the coefficient of the $\delta(1-x)$
-term in the splitting function $P_{qq}^{(0)}$ is $p_\ell$ is a quark or
-$P_{gg}^{(0)}$ is $p_\ell$ is a gluon, such that \question{$p_\ell$ is the emitter?} \add{refer back
-to the splitting functions in Ch.~\ref{ch:QCD}} 
+where $\gamma_{\ell}^{(0)}$ is minus the coefficient of the $\delta(1-x)$ term in the relevant splitting function -- $P_{qq}^{(0)}$ if leg $p_\ell$ is a quark, or $P_{gg}^{(0)}$ if it is a gluon, as defined in Eq.~\eqref{eq:splitting-func-real-virt} -- so that \question{$p_\ell$ is the emitter?}
 \begin{equation}
     \gamma_\ell^{(0)} \equiv 
     \begin{cases} -\frac{3}{2} C_F, & p_\ell \text{ is a quark}\,, \\ 
     \frac{-11C_A + 4 T_R n_f}{6}, & p_\ell \text{ is a gluon}\,. 
     \end{cases}
 \end{equation}
-\question{Do you think I need to give a reason why the hard-collinear 
-virtual corrections give this $\gamma_\ell^{(0)}$?}
+\question{Do you think I need to give a reason why the hard-collinear virtual corrections give this $\gamma_\ell^{(0)}$?}
 
 The soft-collinear radiator arises from the sum over legs $\ell$ of the soft-collinear matrix element,
 \begin{equation}
@@ -648,28 +658,46 @@ R_s(v)=\sum_{\ell}\int[dk] M_{\mathrm{sc},\ell}^2(k)\,\Theta\left(d_\ell\left(\f
 \end{equation}
 where the soft-collinear limit is used in the Heaviside function and substituted in from Eq.~\eqref{eq:general-sc-V}. 
 \question{Unsure why we have the $\Theta(\eta^{(\ell)})$ function?}
-We can write the soft-collinear radiator, as a sum over dipoles $(\ell\bar{\ell})$,
+
+Decomposing over colour dipoles $(\ell\bar{\ell})$, this can be written as
 \begin{equation}
-	R_{\mathrm{s}}=\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\,\mathcal{R}_{\ell\bar\ell}(v)
+	R_{\mathrm{s}}=\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\,\mathcal{R}_{\ell\bar\ell}(v)\,,
 \end{equation}
-where
+where $C_{\ell\bar \ell}=C_A/2$ if either leg is a gluon and $C_{\ell\bar \ell}=C_F-C_A/2$ otherwise. Note that the dipole coefficients satisfy the sum rule
+\begin{equation}
+    \label{eq:Cl}
+    \sum_{\bar \ell \ne \ell} C_{\ell \bar \ell}= C_\ell\,,
+\end{equation}
+where $C_\ell$ is the colour factor of leg $\ell$ ($C_F$ for a quark and $C_A$ for a gluon). The dipole term is
 \begin{multline}
-  \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha_s(\kappa)}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}d\phi^{(\ell\bar \ell)}\  
-  \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar
-        \ell}}{\kappa_{\ell\bar \ell}^2}-\eta^{(\ell\bar \ell)}
+\label{eq:Rll-dip}
+  \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar \ell)}}{2\pi}\
+  \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar\ell}}{\kappa_{\ell\bar \ell}^2}-\eta^{(\ell\bar \ell)}
   \right) \Theta(Q_{\ell \bar\ell}-\kappa_{\ell\bar \ell}) \times \\
   \times \Theta(\eta^{(\ell\bar \ell)})
   \Theta\left(d^{(\ell\bar\ell)}_\ell\left(\frac{\kappa_{\ell\bar
           \ell}}{Q_{\ell\bar\ell}}\right)^{a}
     e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi)-v\right)\,,
 \end{multline}
-where we have expressed the limit $V_{\mathrm{sc}}^{(\ell\bar{\ell})}$ in terms of the dipole variables,
-and the dipole coefficient
-$d_{\ell\bar\ell}$ is given by:
+with $Q_{\ell\bar \ell}^2=2(p_\ell p_{\bar \ell})$, where the soft-collinear limit $V_{\mathrm{sc}}^{(\ell\bar{\ell})}$ 
+has been expressed in terms of the dipole variables. The dipole coefficient $d_{\ell\bar\ell}$ is
 \begin{equation}
   \label{eq:dll}
-  d^{(\ell\bar\ell)}_\ell = d_\ell \left(\frac{Q_{\ell\bar \ell}}{Q}\right)^a \left(\frac{Q_{\ell\bar \ell}}{2 E_\ell}\right)^{b_\ell}\,.
+  d^{(\ell\bar\ell)}_\ell = d_\ell \left(\frac{Q_{\ell\bar \ell}}{Q}\right)^a \left(\frac{Q_{\ell\bar \ell}}{2 E_\ell}\right)^{b_\ell}\,,
 \end{equation}
+and the dipole invariant $\kappa_{\ell\bar\ell}$ is
+\begin{equation}
+    \label{eq:kappa}
+    \kappa_{\ell\bar\ell}^2 = 2 \frac{(p_\ell k)(k p_{\bar \ell})}{(p_\ell p_{\bar\ell})}\,.
+\end{equation}
+
+To separate the dependence on the Born momenta and on the azimuthal angle, 
+the final Heaviside function in Eq.~\eqref{eq:Rll-dip}, is expanded as
+\begin{multline}
+\Theta\left(d^{(\ell\bar\ell)}_\ell\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}
+e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell \bar \ell)})-v\right)\simeq\Theta\left(\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}e^{-b_\ell\eta^{(\ell\bar \ell)}}-v\right)+\\
++\delta\left(\ln\left[\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^ae^{-b_\ell\eta^{(\ell\bar \ell)}}\right]-\ln v\right)\ln\left(d^{(\ell\bar\ell)}_\ell g_\ell(\phi^{(\ell \bar \ell)})\right)+\cdots\,,
+\end{multline}
 
 Simplifying this we can separate out the dependence on the Born
 momenta and on the azimuthal angle by expanding the Heaviside function
@@ -678,66 +706,29 @@ momenta and on the azimuthal angle by expanding the Heaviside function
 e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell \bar \ell)})-v\right)\simeq\Theta\left(\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}e^{-b_\ell\eta^{(\ell\bar \ell)}}-v\right)+\\
 +\delta\left(\ln\left[\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^ae^{-b_\ell\eta^{(\ell\bar \ell)}}\right]-\ln v\right)\ln\left(d^{(\ell\bar\ell)}_\ell g_\ell(\phi^{(\ell \bar \ell)})\right)+\cdots\,,
 \end{multline}
-\todo{make sure you know how this works}
-\question{is it just $d_\ell$ in the log?}
-where we can stop at this order for NLL.
-
-In this way we can write
+where the expansion is truncated at this order for NLL accuracy. This gives
 \begin{equation}
- \mathcal{R}_{\ell\bar\ell}(v)\simeq  
-R_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\langle \ln(d_{\ell\bar \ell}\,g_\ell)\rangle R'_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)\,,
+\label{eq:R-ll-expan}
+ \mathcal{R}_{\ell\bar\ell}(v)\simeq
+R_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\langle \ln(d^{(\ell\bar \ell)}_\ell\,g_\ell)\rangle R'_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\dots\,,
 \end{equation}
 where
 \begin{equation}
   \label{eq:Rll-final}
-  R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa^2}{\kappa^2} \frac{\alpha_s(\kappa)}{\pi} \int_0^\infty\!\! d\eta\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa}-\eta\right)\Theta\left(
-      d_{\ell\bar \ell} \left(\frac{\kappa}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta}-v
+  R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa_{\ell\bar\ell}^2}{\kappa_{\ell\bar\ell}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int_0^\infty\!\! d\eta^{(\ell\bar\ell)}\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}}-\eta^{(\ell\bar\ell)}\right)\Theta\left(
+      d_{\ell\bar \ell} \left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta^{(\ell\bar\ell)}}-v
     \right) \,,
 \end{equation}
-and where, for any function $f(\phi)$ of the azimuth:
+the azimuthal average is defined by
 \begin{equation}
   \label{eq:azimuthal-average}
   \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,,
 \end{equation}
-and $R'_{\ell\bar\ell}\equiv -v dR_{\ell\bar\ell}/dv$, $R''_{\ell\bar\ell}\equiv -v dR'_{\ell\bar\ell}/dv$.
-\add{I think need to change to $\alpha_s^{\mathrm{phys}}$.}
-\ndp{Need to check the last couple of equations but got up to here.}
+and $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$, $R''_{\ell\bar\ell}\equiv -v\, dR'_{\ell\bar\ell}/dv$. The omitted terms in Eq.~\eqref{eq:R-ll-expan} are of NNLL accuracy and beyond.
+\add{I would like to get these in terms of the $g$'s.}
 
-The NLL radiator in Eq.~\eqref{eq:NLL-cumulant}, $R_{\mathrm{NLL}}(v)$ receives double-logarithmic contributions from
-the soft and collinear region, together with single-logarithmic contributions arising from
-the virtual corrections in the soft large-angle and hard-collinear regions. Its derivative $R'_{\mathrm{NLL}}$ retains only terms up to NLL accuracy. For a three-jet configuration, 
-the NLL radiator is a sum over the three dipoles $(q\bar q)$, $(qg)$ and $(g\bar q)$,
-\begin{equation}
-\label{eq:NLL-radiator}
-\begin{split}
-	R_{\mathrm{NLL}}(v)=\sum_{(ij)\in\{(q\bar{q}), (qg), (g\bar{q})\}}C_{(ij)}\left(\sum_{\ell=i,j}\left[r_\ell(L)+r'_\ell(L)\left(\langle \ln(d_\ell g_\ell)\rangle - b_\ell\ln\frac{2E_\ell}{Q}\right) \right. \right. & \\
-	\left. \left. +B_\ell T\left(\frac{L}{a+b_\ell}\right)\right] +2\ln\frac{Q_{ij}}{Q}T\left(\frac{L}{a}\right)\right)\,,
-\end{split}
-\end{equation}
-where $Q_{ij}^2=2p_i\!\cdot p_j$ and the dipole colour factor is $C_{(ij)}=2C_F-C_A$ for $(q\bar{q})$, and $C_{(ij)}=C_A$ for $(qg),(g\bar{q})$.
-The azimuthal average appearing
-in Eq.~\eqref{eq:NLL-radiator} is defined as
-\begin{equation}
-\label{eq:az-avg}
-\langle f \rangle \equiv \int_0^{2\pi}\frac{d\phi}{2\pi}f\left(\phi\right)\,.
-\end{equation}
-The functions $r_\ell$ encode the double-logarithmic (LL and some NLL) contributions,
-while $r'_\ell$ and $T(L)$ contain the single-logarithmic NLL pieces:
-\begin{multline}
-    r_\ell(L)=\int_{Qe^{-\frac{L}{a+b_\ell}}}^Q \frac{dk_t}{k_t}
-    \frac{\alpha_s^{\mathrm{phys}}(k_t)}{\pi}\ln\frac{Q}{k_t}
-    +\frac{1}{b_\ell}\int_{Qe^{-\frac{L}{a}}}^{Qe^{-\frac{L}{a+b_\ell}}}
-    \frac{dk_t}{k_t}\frac{\alpha_s^{\mathrm{phys}}(k_t)}{\pi}
-    \left(L+a\ln\frac{k_t}{Q}\right)\,, \\
-    T(L)=\int_{Qe^{-L}}^Q\frac{dk_t}{k_t}
-    \frac{\alpha_s^{\mathrm{phys}}(k_t)}{\pi}\,,\qquad
-    r'_\ell(L)=\frac{1}{b_\ell}\left[T\!\left(\frac{L}{a}\right)
-    -T\!\left(\frac{L}{a+b_\ell}\right)\right]\,.
-\end{multline}
-\ndp{The individual terms in Eq.~\eqref{eq:NLL-radiator} admit clear physical interpretations. The term $B_\ell\,T\left(\frac{L}{a+b_\ell}\right)$ encodes the virtual corrections of hard-collinear origin down to the scale $Qv^{1/(a+b_\ell)}$, which is the characteristic scale of hard-collinear radiation. The term $T(L/a)$ represents soft wide-angle virtual corrections down to the scale $Qv^{1/a}$, the characteristic scale of soft wide-angle radiation; it is the only term that does not decompose as a sum over individual legs, and depends on the geometry of the underlying three-jet event through $\ln(Q_{ij}/Q)$.}
-
-\paragraph{The NLL cumulant}
-The master formula for the NLL cumulant for rIRC safe, continuously global event shapes is,
+\paragraph{The NLL cumulant.}
+Combining the results above, the master formula for the NLL cumulant for rIRC safe, continuously global event shapes is
 \begin{equation}
 \label{eq:NLL-cumulant}
 \Sigma\left(\{p\},v\right)
