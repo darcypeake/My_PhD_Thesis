@@ -1,5 +1,6 @@
 \chapter{Quantum Chromodynamics}
 \label{ch:QCD}
+\question{unsure on this title.}
 
 \section{QCD: The basics}
 In the 1940s, a number of unstable, strongly interacting particles -- collectively referred to as hadrons -- were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interprets hadrons as composite objects built from fundamental spin-$\tfrac{1}{2}$ constituents known as \emph{quarks}. The six known quarks are organised into three generations -- light, intermediate, and heavy -- as listed in Table~\ref{table:quark-properties}.
@@ -34,8 +35,7 @@ governing the strong interaction. It describes how quarks bind together to form 
  
 Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, 
 with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour labels: red, green, and blue. 
-The associated antiquark fields are written as $\bar q^a$, where $\bar{q} = q^\dagger \gamma^0$, 
-with $\gamma^0$ the zeroth component of the gamma matrices $\gamma^\mu$ \question{check}.
+The associated antiquark fields are written as $\bar q^a$, where $\bar{q} = q^\dagger \gamma^0$ denotes the Dirac adjoint. 
 Gluons, denoted $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, 
 where the index $A$ labels the eight colour degrees of freedom of the gauge group.
  
@@ -104,7 +104,7 @@ The second term in Eq.~\eqref{eq: L-QCD} is the gauge-fixing contribution,
 which is required to remove redundant gauge degrees of freedom arising from 
 the local $\mathrm{SU}(3)$ gauge invariance of the QCD Lagrangian. 
 The parameter $\xi$ specifies the choice of gauge: for example, 
-$\xi = 1$ corresponds to Feynman gauge, while $\xi = 0$ to Landau gauge.
+$\xi = 1$ corresponds to the Feynman gauge, while $\xi = 0$ to the Landau gauge.
 
 The final term in Eq.~\eqref{eq: L-QCD} is the ghost term,
 \begin{equation}
@@ -288,7 +288,7 @@ The QCD $\beta$-function admits a perturbative expansion of the form
 \begin{equation}
     \beta(\alpha_s) = -\!\left(\beta_0\,\alpha_s^2 + \beta_1\,\alpha_s^3 + \beta_2\,\alpha_s^4 + \cdots\right),
 \end{equation}
-whose first three coefficients are \question{check these}
+whose first three coefficients are \question{check these} \todo{change these}
 \begin{equation}
 \label{eq:beta-coeff}
 \begin{aligned}
@@ -603,6 +603,7 @@ The cancellation of singularities between the real and virtual diagrams is a dir
 \section{Soft and collinear factorisation of $|\mathcal{M}_m|^2$}
 \label{sec:M-factorisation}
 
+\ndp{Go from here.}
 In Sec.~\ref{subsec:IR-div}, we illustrated the cancellation of IRC divergences for $e^+e^- \to \mathrm{hadrons}$ at NLO. We now consider the general structure of these divergences, focusing on the behaviour of the partonic matrix elements in the soft and collinear limits~\cite{Catani:1999ss}. Understanding these factorisation properties is essential for characterising the singular structure of QCD. These factorisation 
 properties underpin the systematic treatment of IR singularities in QCD.
 
@@ -640,9 +641,10 @@ With the general form of the partonic cross-section established,
 we now examine the behaviour of $|\mathcal{M}_m|^2$ in the soft and collinear limits, 
 where it factorises into a remarkably simple and universal form. 
 
+\todo{swap around these limit sections - and show a bit more explicitly i think.}
 \subsection{Soft limit}
-\todo{Look at derivation from here.}
-Suppressing the initial-state momenta $(p_a,p_b)$ for brevity, the squared matrix element for the
+Suppressing the initial-state momenta $(p_a,p_b)$ \question{unsure if we need
+to as not just for final state?} for brevity, the squared matrix element for the
 emission of an additional soft parton of momentum $q$ factorises as
 \begin{equation}
     |\mathcal{M}_{m+1}^{(0)}(q,p_1,\ldots,p_m)|^2
@@ -674,43 +676,71 @@ The eikonal factor $S_{ij}(q)$ encodes the kinematic dependence of the soft emis
 where $s_{ij} = (p_i + p_j)^2$, with $s_{iq}$ and $s_{jq}$ defined analogously.
 
 \subsection{Collinear limit}
-When two final-state partons $i$ and $j$, become collinear,
-their momenta are conveniently parametrised via Sudakov decomposition,
+When two partons $i$ and $j$, become collinear,
+their momenta are conveniently parametrised via the Sudakov decomposition
 \begin{equation}
 \begin{aligned}
-    p_i^\mu &= z_i\, p^\mu + k_\perp^\mu
-               - \frac{k_\perp^2}{z_i}\,\frac{n^\mu}{2p\cdot n}\,, \\
-    p_j^\mu &= z_j\,p^\mu - k_\perp^\mu
-               - \frac{k_\perp^2}{z_j}\,\frac{n^\mu}{2p\cdot n}\,,
+    p_i^\mu &= z\, p^\mu + k_\perp^\mu
+               - \frac{k_\perp^2}{z}\,\frac{n^\mu}{2p\cdot n}\,, \\
+    p_j^\mu &= (1-z)\,p^\mu - k_\perp^\mu
+               - \frac{k_\perp^2}{1-z}\,\frac{n^\mu}{2p\cdot n}\,,
 \end{aligned}
 \end{equation}
-where $p^2 = n^2 = 0$, $k_\perp \cdot p = k_\perp \cdot n = 0$, and 
-the longitudinal momentum fractions satisfy $z_i + z_j = 1$. 
-The collinear limit corresponds to $k_\perp^\mu \to 0$.
+where $p^\mu$ is a light-like vector ($p^2 = 0$) defining the collinear 
+direction, and $n^\mu$ is an auxiliary light-like vector ($n^2 = 0$) 
+required to specify the transverse component $k_\perp^\mu$ 
+($k_\perp^2 < 0$, $k_\perp \cdot p = k_\perp \cdot n = 0$) -- or 
+equivalently, how the collinear direction is approached. The collinear limit corresponds to $k_\perp^\mu \to 0$.
 
 In this limit, the squared matrix element factorises as
 \begin{equation} 
 \begin{aligned}
-|\mathcal{M}_{m+1}^{(0)}&(p_1,\cdots p_i, p_j, \cdots p_{m+1})|^2\simeq\\
-&\frac{2}{s_{ij}}4\pi\mu_R^{2\varepsilon}\alpha_s\bra{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\hat{P}_{ij}(z,k_\perp;\epsilon)\ket{\mathcal{M}_{m}^{(0)}(p_1,\cdots p_{ij}, \cdots p_m)}\,,
+|\mathcal{M}_{m+1}^{(0)}&(p_1,\ldots p_i, p_j, \ldots p_{m+1})|^2\simeq\\
+&\frac{2}{s_{ij}}4\pi\mu_R^{2\varepsilon}\alpha_s\left\langle\mathcal{M}_{m}^{(0)}(p_1,\ldots p_{ij}, \cdots p_m)\left|\hat{P}^{(0)}_{(ij)\to ij}(z,k_\perp;\epsilon)\right|\mathcal{M}_{m}^{(0)}(p_1,\ldots p_{ij}, \ldots p_m)\right\rangle\,,
 \end{aligned}
 \end{equation}
-where the kernel $\hat{P}_{ij}$ denotes the splitting function associated with the splitting $(ij)\to i+j$. The explicit forms of these splitting functions are 
+where $p_{ij}^\mu = p_i^\mu + p_j^\mu$ is the momentum of the parent 
+parton $ij$, as illustrated in Fig.~\ref{fig:collinear-splitting}, and 
+$\hat{P}_{ij}(z,k_\perp;\varepsilon)$ denotes the unregularised 
+leading-order Altarelli--Parisi splitting function for the collinear 
+splitting $ij \to i + j$.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{feynman}
+    \vertex (v);
+    \vertex[left=2.5cm of v] (a);
+    \vertex[above right=2.0cm and 2.5cm of v] (i);
+    \vertex[below right=2.0cm and 2.5cm of v] (j);
+
+    \diagram*{
+        (a) -- [fermion, edge label={\(p_{ij}\)}] (v),
+        (v) -- [fermion, edge label={\(p_i\)}] (i),
+        (v) -- [fermion, edge label={\(p_j\)}] (j),
+    };
+\end{feynman}
+
+\node[left=2.5cm of v]  {\(ij\)};
+\node[above right=2.0cm and 2.5cm of v] {\(i\)};
+\node[below right=2.0cm and 2.5cm of v] {\(j\)};
+
+\end{tikzpicture}
+\caption{Collinear splitting of parent parton $ij$ with momentum 
+$p_{ij} = p_i + p_j$ into daughter partons $i$ and $j$.}
+\label{fig:collinear-splitting}
+\end{figure}
+
+The explicit forms of the splitting functions are
 \begin{equation}
 \begin{aligned}
 \label{eq:AP-functions}
 	&\hat{P}_{g\to q\bar{q}}^{\mu\nu}(z,k_\perp;\epsilon)=\hat{P}_{g\to\bar{q}q}^{\mu\nu}(z,k_\perp;\epsilon)=T_R\left[-g^{\mu\nu}+4z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\\
-	&\hat{P}_{qg}^{ss'}(z,k_\perp;\epsilon)=\hat{P}_{{\bar{q}}g}^{ss'}(z,k_\perp;\epsilon)=\delta^{ss'}C_F\left[\frac{1+z^2}{1-z}-\epsilon(1-z)\right]\\
-	&\hat{P}_{gq}^{ss'}(z,k_\perp;\epsilon)=\hat{P}_{g{\bar{q}}}^{ss'}(z,k_\perp;\epsilon)=\delta^{ss'}C_F\left[\frac{1+(1-z)^2}{z}-\epsilon z\right]\\
-	&\hat{P}_{gg}^{\mu\nu}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{2}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,,
+	&\hat{P}_{q\to qg}^{ss'}(z,k_\perp;\epsilon)=\hat{P}_{{\bar{q} \to \bar{q}}g}^{ss'}(z,k_\perp;\epsilon)=\delta_{ss'}\,C_F\left[\frac{1+z^2}{1-z}-\epsilon(1-z)\right]\\
+	&\hat{P}_{q\to gq}^{ss'}(z,k_\perp;\epsilon)=\hat{P}_{\bar{q}\to g{\bar{q}}}^{ss'}(z,k_\perp;\epsilon)=\delta_{ss'}\,C_F\left[\frac{1+(1-z)^2}{z}-\epsilon z\right]\\
+	&\hat{P}_{g\to gg}^{\mu\nu}(z,k_\perp;\epsilon)=2C_A\left[-g^{\mu\nu}\left(\frac{z}{1-z}+\frac{1-z}{z}\right)-2(1-\epsilon)z(1-z)\frac{k_\perp^{\mu}k_\perp^{\nu}}{k_\perp^2}\right]\,,
 \end{aligned}
 \end{equation}
-where $s,s'$ denote the spins of the two partons.\\ \\
-\todo{Do the $a\to bc$ in the splitting, add in a diagram of
-splitting, add in the $^{(0)}$ in the functions, also
-name them as unregularised. Refer these to the AP splitting
-functions which were introduced first.}
-\add{Fix these -- waiting for convention from Ch.~\ref{ch:hhZjet}.}
+where $s,s'$ denote the spins of the parent parton.\\ 
 \reference{~\cite{Luisoni:2015xha, Schwartz:2014sze} }
 
 \section{IRC Safety} 
@@ -781,7 +811,8 @@ where a diagrammatic representation of IRC safety is shown in Fig.~\ref{fig:IRC_
 
 \end{feynman}
 \end{tikzpicture}
-\caption{Diagrammatic representation of a $2\to m$ hard scattering process, $\mathcal{H}$, with an additional soft or collinear emission $p_i$.}
+\caption{Diagrammatic representation of a $2\to m$ hard scattering process, $\mathcal{H}$, with an additional soft or collinear emission $p_i$. \todo{see the part 
+pointing out}}
 \label{fig:IRC_safety}
 \end{figure}
 
@@ -910,54 +941,70 @@ In this thesis, we focus exclusively on sequential recombination algorithms. For
 \subsection{Jet Algorithms for $e^+e^-$ Collisions}
 \label{subsec: e+e-}
 Jet algorithms for electron–positron collisions follow a common iterative clustering procedure. Each pair of particles is assigned a \emph{distance measure}, $d_{ij}$, which determines how closely they are related. The closest pair is iteratively recombined until all remaining objects are separated by more than the chosen \emph{resolution parameter}, $d_{\mathrm{cut}}$.
-This framework forms the basis of the JADE and Durham algorithms, while the Cambridge algorithm extends it by introducing an additional \emph{ordering variable}, $v_{ij}$, as discussed in the following sections.
+\todo{Think this is for all sequential recombination algorithms - 
+also say that we are giving JADE as an example etc.}
 
 \subsubsection{The JADE Algorithm}
-The first sequential recombination algorithm used experimentally was introduced by the JADE Collaboration in Ref.~\cite{JADE:1988xlj} and is defined as follows:
+\todo{I think need to change to $y_{ij}$ etc.}
+The first sequential recombination algorithm used experimentally was introduced by the JADE Collaboration in Ref.~\cite{JADE:1988xlj} and proceeds as follows:
 \begin{enumerate}
-    \item \textbf{Define a resolution parameter} $d_{\mathrm{cut}}$.
-    \item \textbf{Compute the distance measure} for every pair of particles $i$ and $j$:
+    \item Define a resolution parameter $d_{\mathrm{cut}}$.
+    \item \label{step:jade-2} Compute the distance measure for every pair of particles $i$ and $j$:
     \begin{equation}
         \label{eq:yij-jade}
-        d^{\mathrm{JADE}}_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
+        d_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
     \end{equation}
     where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
-    \item \textbf{Identify the smallest $d_{ij}$ value.} If this minimum satisfies $d_{ij} < d_{\mathrm{cut}}$, the two particles are recombined into a pseudo-particle according to the chosen recombination scheme.
-    \item \textbf{Repeat the procedure} from step 2 until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The remaining objects are then defined as jets.
+    \item Identify the pair with the smallest $d_{ij}$. If $d_{ij} < d_{\mathrm{cut}}$, 
+    recombine the two particles into a pseudo-particle according to the chosen recombination scheme.
+    \item Repeat the procedure from step \ref{step:jade-2} until all remaining pairs satisfy $d_{ij} > d_{\mathrm{cut}}$. The left over objects are defined as jets.
 \end{enumerate}
-A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons that are widely separated in angle. This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as shown in Fig.~\ref{fig:JADE}. Physically speaking, a jet should constitute to a hard parton together with its associated radiation, so such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the Durham and Cambridge Algorithms in the following.
-\todo{Re-generate these.}
+A drawback of the JADE algorithm is its tendency to cluster soft pairs of gluons \question{partons?} that are widely separated in angle. This arises because 
+the distance measure $d_{ij} \propto E_iE_j$ is small 
+whenever either particle is soft, regardless of the angle between them.
+This can lead to situations where a hard parton is incorrectly merged with a soft gluon that was not emitted from it, as illustrated in Fig.~\ref{fig:JADE}. Since a jet should compromise a hard parton together with its associated radiation, such clustering is undesirable. This issue is resolved by modifying the distance measure, leading to the Durham and Cambridge algorithms discussed in Ch.~\ref{chapter:DIS}.
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{figures/JADE.jpeg}
-    \caption{The JADE algorithm clustering soft gluons widely separated in angle, taken from Ref.~\cite{Banfi:2016yyq}.}
-    \label{fig:JADE}
+\centering
+\begin{tikzpicture}[scale=1.2]
+\begin{feynman}
+\begin{scope}
+    \vertex (q1) at (-2.0, 0);
+    \vertex (v1) at (0, 0);
+    \vertex (q2) at (2.0, 0);
+    \vertex (g1) at (1.4, 1.2);
+    \vertex (g2) at (-2.0, 1.2);
+    \vertex (v2) at (-1.4, 0);
+    \diagram*{
+        (q1) -- [fermion] (v1) -- [fermion] (q2),
+        (g1) -- [gluon] (v1),
+        (g2) -- [gluon] (v2),
+    };
+    \node[left]  at (-2.0, 0)    {\(p_2\)};
+    \node[right] at ( 2.0, 0)    {\(p_1\)};
+    \node[above right] at (1.4, 1.2)  {\(k_1\)};
+    \node[above left]  at (-2.0, 1.2) {\(k_2\)};
+\end{scope}
+\end{feynman}
+\draw[->, thick] (2.6, 0.5) -- (3.8, 0.5);
+\node[above] at (3.2, 0.5) {\small JADE};
+\begin{scope}[xshift=7.0cm]
+\begin{feynman}
+    \vertex (q1) at (-2.0, 0);
+    \vertex (v1) at (0, 0);
+    \vertex (q2) at (2.0, 0);
+    \vertex (g1) at (1.4, 1.2);
+    \diagram*{
+        (q1) -- [fermion] (v1) -- [fermion] (q2),
+        (g1) -- [gluon] (v1),
+    };
+    \node[left]  at (-2.0, 0)   {\(p_2\)};
+    \node[right] at ( 2.0, 0)   {\(p_1\)};
+    \node[above right] at (1.4, 1.2) {\(k_1 + k_2\)};
+\end{feynman}
+\end{scope}
+\end{tikzpicture}
+\caption{An example of the JADE algorithm incorrectly recombining a 
+soft wide-angle gluon $k_2$ with a hard collinear gluon $k_1$ into a 
+single pseudo-particle $k_1 + k_2$.}
+\label{fig:JADE}
 \end{figure}
-
-\subsubsection{ The $k_\perp$ (Durham) algorithm}
-Also known as the Durham algorithm~\cite{Catani:1991hj}, this approach follows the same procedure as JADE but employs a modified distance measure:
-\begin{equation}
-	 \label{eq:yij-De}
-    	d^{\mathrm{Durham}}_{ij}=\frac{2(1-\cos\theta_{ij})}{Q^2}\min(E_i^2,E_j^2)\,.
-\end{equation} 
-At small angles, the numerator can be approximated to $\left[\min(E_i,E_j)\theta_{ij}\right]^2$, which corresponds to the squared relative transverse momentum of the softer particle with respect to the harder particle. The use of the $\min$ function ensures that soft emissions, widely separated in angle, have a larger distance measure than those corresponding to a hard parton radiating a nearby soft gluon. This modification prevents unphysical clustering of unrelated soft particles and produces jets that more accurately reflect the underlying partonic structure.
-
-\subsubsection{The Cambridge algorithm}
-The Cambridge algorithm, first introduced in Ref.~\cite{Dokshitzer:1997in}, extends the Durham algorithm by employing angular ordering rather than transverse-momentum ordering. Unlike the previous two algorithms, it introduces an additional \emph{ordering variable}, $v_{ij}$, used alongside the distance measure $d^{\mathrm{Durham}}_{ij}$ from the Durham algorithm:
-\begin{enumerate}
-    \item \textbf{If only one particle remains,} stop the clustering and define this object as a jet.
-    \item \textbf{Find the smallest $v_{ij}$} among all pairs of particles:
-    \begin{equation}
-        \label{eq:vij-cambridge}
-        v_{ij} = 2(1 - \cos\theta_{ij})\,.
-    \end{equation}
-    \item \textbf{Identify the corresponding $d_{ij}$ value.} If $d_{ij} < d_{\mathrm{cut}}$, recombine the particles as in the Durham algorithm and return to step 1.
-    \item \textbf{Otherwise,} remove the less energetic particle, label it as a jet, and return to step 1.
-\end{enumerate}
-This clustering procedure effectively reconstructs the sequence of gluon emissions in reverse, which typically occur at progressively smaller angles~\cite{Banfi:2016yyq}. As a result, the Cambridge algorithm is a better algorithm for the resolution of jet substructure since emissions widely separated in angles are emitted independently from the hard legs. \\ \\
-\add{Need to link this to the next section.} \\ \\
-\question{Should I be adding something to do with DIS - i.e. structure functions?}
-
-\section{Deep Inelastic Scattering}
-
-
