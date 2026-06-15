@@ -70,7 +70,7 @@ For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-lik
 \end{figure}
 
 
-\item{\textbf{Jet Broadenings}}~\cite{Clavelli:1979md, Rakow:1981qn, Catani:1992jc} quantify the transverse momentum of final-state hadrons relative to the thrust axis by dividing the event into the two hemispheres, $\mathcal{H}_L$ and $\mathcal{H}_R$. For each hemisphere, the broadening is defined as
+\item{\textbf{Jet broadenings}}~\cite{Clavelli:1979md, Rakow:1981qn, Catani:1992jc} quantify the transverse momentum of final-state hadrons relative to the thrust axis by dividing the event into the two hemispheres, $\mathcal{H}_L$ and $\mathcal{H}_R$. For each hemisphere, the broadening is defined as
 \begin{equation}
 	B_\ell \equiv \frac{\sum_{i \in \mathcal{H}_\ell} |\vec{p}_i \times \vec{n}_T|}{2 \sum_i |\vec{p}_i|}, \quad \ell = 1, 2\,.
 \end{equation}
@@ -81,7 +81,7 @@ broadening are defined respectively as
     B_N \equiv \min\{B_1, B_2\}\,, \qquad 
     B_T \equiv B_1 + B_2\,.
 \end{equation}
-\item{\textbf{Jet Masses}}~\cite{Chandramohan:1980ry, Clavelli:1981yh} are defined by computing the invariant mass of each 
+\item{\textbf{Jet masses}}~\cite{Chandramohan:1980ry, Clavelli:1981yh} are defined by computing the invariant mass of each 
 hemisphere,
 \begin{equation}
 	\rho_{\ell}\equiv \frac{\left(\sum_{i\in\mathcal{H}_{\ell}}p_i\right)^2}{\left(\sum_iE_i\right)^2}\,,\quad \ell=1, 2\,,
@@ -236,6 +236,7 @@ and each emission can generate up to two logarithms -- one from the soft
 limit and one from the collinear limit. These contributions grow as $\tau \to 0$, 
 spoiling the convergence of the perturbative series.
 
+\ABquestion{A question about the bulk of the data.}
 \ndp{This behaviour is particularly problematic because it occurs in the 
 region where most of the data lies. The dominance of this region can be 
 understood from the underlying event kinematics. At 
@@ -253,6 +254,9 @@ in the perturbative series are no longer small, so an
 expansion in powers of $\alpha_s$ alone is insufficient. Instead, one
 performs a systematic \emph{resummation} of the enhanced contributions to all
 orders in $\alpha_s$, yielding an exponentiated form for the cumulant,
+\ABquestion{I am thinking ahead to the paper - this is written in a different way in the draft.
+How would I connect these? Also I discuss exponentiating a fair amount - should I write
+the LL as exponentiated and the rest not?}
 \begin{equation}
 \label{eq:resummed-cumulant}
 	\Sigma(\tau) \simeq 
@@ -278,6 +282,7 @@ $g_3(\alpha_s L)$ & $\alpha_s^n L^{n-1}$ & NNLL \\
 where LL denotes leading-logarithmic accuracy and NLL, NNLL denote
 next-to-leading and next-to-next-to-leading accuracy respectively.
 
+\ABquestion{A question about fixed-order vs. resummation.}
 \ndp{It is worth emphasising the distinction between fixed-order and logarithmic
 accuracy. In a fixed-order calculation, improving the accuracy means
 computing additional Feynman diagrams at one higher power of $\alpha_s$.
@@ -288,6 +293,7 @@ to the next therefore requires identifying which physical effects and sets
 of diagrams contribute at that order, and computing each of their
 contributions at the necessary accuracy.}
 
+\ABquestion{A question about the Sudakov peak.}
 \ndp{Resummation gives rise to the \emph{Sudakov peak} visible in the
 experimental data in Fig.~\ref{fig:thrust-data-FO}: a suppression of the
 distribution at small $\tau$ driven by the Sudakov form factor -- the
@@ -310,6 +316,7 @@ Sec.~\ref{sec:NLL-resum}.\\ \\
 \section{Problem Specification}
 \label{sec:problem-spec}
 
+\ABquestion{A question about whether the notation is all correct here.}
 We consider events with $n_i$ incoming partons and an arbitrary number $n$ of
 final-state particles, whose momenta are denoted $p_1,\dots,p_n$.
 At Born level the process involves $N$ hard partons in total -- including
@@ -385,6 +392,8 @@ collinear radiation, which are captured entirely by $\Sigma(\{p\},v)$.}
 It is in the latter that large logarithms in $v$ appear in the limit $v \ll 1$, 
 as illustrated for thrust in Sec.~\ref{sec:thrust-example}, and which requires resummation.
 
+\ABquestion{Ask about factorisation properties.}
+
 
 \section{Observable Requirements}
 \label{sec:obs-req}
@@ -405,20 +414,19 @@ where $V_{\text{sc}}$ denotes the observable evaluated in the soft and collinear
 The set $\{\tilde{p}\}$ represents the Born momenta after recoil from the emission $k$, whose transverse momentum, rapidity, and azimuthal angle with respect to the emitting leg $p_\ell$ are denoted $\{k_t^{(\ell)}, \eta^{(\ell)}, \phi^{(\ell)}\}$ respectively.  
 The energy $Q$ is an arbitrary hard scale of the process serving as a reference normalisation for the transverse momenta. 
 The parameters $a$, $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ characterise the observable in this limit. 
-Writing observables in this form allows these parameters to be extracted for each leg, enabling the construction of the resummation formula. 
-%For example, for soft and/or collinear emissions, the observable thrust can be approximated to~\cite{Banfi:2004yd}:
-%\begin{equation}
-%	\tau\simeq\tau_{sc}=\sum_{\ell=1,2}\sum_{i\in\mathcal{H}_\ell}\frac{k_{ti}^{(\ell)}}{Q}e^{-\eta^{(\ell)}}\,,
-%\end{equation}
-%\add{Anxious they will get me to derive this - possibly good to re-write the derivation or
-%understand it a bit more.}
-%and so for a single soft/collinear emission it has the form of Eq.~\eqref{eq:general-sc-V}, with the parameters
-%\begin{equation}
-%a=b_\ell=d_\ell=g_\ell(\phi)=1\,,\quad \ell=1,2\,.
-%\end{equation}
-%These parameters produce a remarkably simple resummation structure.
-%More examples will be shown in Ch.~\ref{ch:hhZjet}. 
-Note that IRC safety implies that $a>0$ and $b_\ell>-a$.
+Writing observables in this form allows these parameters to be extracted for each leg, enabling the construction of the resummation formula. Note that IRC safety implies that $a>0$ and $b_\ell>-a$.
+
+As a concrete example, consider thrust in the soft-collinear limit.
+Evaluating $\tau = 1 - T$ when an additional emission is soft and collinear
+to leg $\ell$, we find~\cite{Banfi:2004yd}:
+\begin{equation}
+	\tau\simeq\tau_\mathrm{sc}=\sum_{\ell=1,2}\sum_{i\in\mathcal{H}_\ell}\frac{k_{ti}^{(\ell)}}{Q}e^{-\eta^{(\ell)}}\,,
+\end{equation}
+which is of the form of Eq.~\eqref{eq:general-sc-V}, with parameters
+\begin{equation}
+    a = b_\ell = d_\ell = g_\ell(\phi) = 1\,, \quad \ell = 1, 2\,.
+\end{equation}
+These parameters produce a remarkably simple resummation structure. 
 
 \item \textbf{Recursively IRC (rIRC) safe}: this condition requires that, for an ensemble of soft and collinear emissions, the addition of a further emission that is relatively much softer and/or more collinear should not significantly modify the value of the observable. A formal definition is given in Refs.~\cite{Banfi:2004yd, Banfi:2003je} and is summarised below.
 
@@ -439,7 +447,7 @@ of an existing emission can be denoted as:
 
 The conditions for rIRC safety are the following:
 \begin{enumerate}
-\item The limit
+\item \label{cond:rIRC-a} The limit 
 \begin{equation}
 \label{eq:rIRC-a}
 \lim_{\bar{v}\to0}\frac{1}{\bar{v}}V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,\kappa_m(\bar{v}\zeta_m))\,,
@@ -513,11 +521,22 @@ accuracy.
 To simplify the matrix element, we use colour coherence: a soft gluon
 emitted at large angles from a set of collinear partons resolves only the
 total colour of the collinear ensemble, not the individual colour charges.
-This guarantees that emissions widely separated in angle are effectively independent. 
-\ndp{Gluon-correlated clusters} -- in which a primary emission subsequently branches -- give rise to a
-correction to the single-gluon emission probability. At NLL, these corrections
-can be absorbed into a redefinition of the coupling, giving rise to
-the \emph{physical coupling} $\alpha_s^{\mathrm{phys}}$, defined as the strength of the soft radiation such that it includes all subsequent branchings from the initial emission~\cite{Banfi:2018mcq}. This is related to the coupling in the $\overline{\mathrm{MS}}$-scheme, $\alpha_s$ by\footnote{This scheme is an extension of the CMW scheme introduce in Ref.~\cite{Catani:1990rr}.}: 
+This guarantees that emissions widely separated in angle are effectively
+independent, so that the squared matrix element for $n$ such emissions
+approximately factorises into a product of independent single-emission
+contributions.
+
+However, this factorisation is not exact: correlated gluon clusters --
+in which a primary emission subsequently branches into further gluons --
+give rise to corrections to the single-gluon emission probability. At
+NLL, these corrections can be absorbed into a redefinition of the
+coupling constant, giving rise to the \emph{physical coupling}
+$\alpha_s^{\mathrm{phys}}$, defined as the effective strength of soft
+radiation when all subsequent branchings from an initial emission are
+included~\cite{Banfi:2018mcq}. This is related to the
+$\overline{\mathrm{MS}}$ coupling $\alpha_s$
+by\footnote{This scheme is an extension of the CMW scheme of
+Ref.~\cite{Catani:1990rr}.}
  \begin{equation} 
  \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
 \end{equation} 
@@ -533,24 +552,27 @@ where the first two coefficients are
 
 \paragraph{Factorisation of the matrix element.}
 At NLL accuracy, correlated clusters contribute only through the
-coupling redefinition above. The squared matrix element for $n$ widely
+coupling redefinition above. As mentioned above, the squared matrix element for $n$ widely
 separated soft and collinear emissions then factorises into a product of $n$
-independent single-emission matrix elements, in the soft-collinear limit $M_{\mathrm{sc}}^2(k_i)$, as defined
-in Ref.~\cite{Banfi:2014sua}. \ndp{The observable constraint $V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})$ may likewise be taken in the
-soft-collinear limit for the same reasoning, and is defined as}
+independent single-emission matrix elements, in the soft-collinear limit $M_{\mathrm{sc}}^2(k_i)$. 
+This soft-collinear matrix element is defined
+in Ref.~\cite{Banfi:2014sua}.
+
+The observable constraint $V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})$ may likewise be taken in the
+soft-collinear limit for the same reasoning, and is defined as
 \begin{equation}
   \label{eq:Vsc}
   \frac{\Vsc{k_1,\dots,k_n}}{v}
-  \equiv \lim_{v\to 0}\frac{V(\{\tilde{p}\},k_1,\dots,k_n)}{v}\,.
+  \equiv \lim_{v\to 0}\frac{V(\{\tilde{p}\},k_1,\dots,k_n)}{v}\,,
 \end{equation}
-\ndp{This soft-collinear limit of the observable is guaranteed to exist for all rIRC safe observables.}
-The virtual factor, which ensures that the inclusive sum over all real and
-virtual contributions equals unity, takes the form
-$\mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}$ at NLL.
-Both the real and virtual contributions are separately regulated, \ndp{ensuring each is
-individually finite before their combination.}
-At NLL the $n$ emissions are identical gluons, so $S(n)=1/n!$, and the
-cumulant becomes
+which is guaranteed to exist for all rIRC safe observables, as shown by condition~\ref{cond:rIRC-a}.
+
+The virtual factor takes the form
+$\mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}$ at NLL, ensuring
+that the inclusive sum over all real and virtual contributions equals
+unity. Both contributions are separately regulated, \ndp{ensuring each is
+individually finite before their combination}. At NLL the $n$ emissions
+are identical gluons, so $S(n)=1/n!$, and the cumulant becomes
 \begin{equation}
     \label{eq:cumu-factor-more}
     \Sigma\left(\{p\},v\right)=e^{-\int[dk]M^2(k)}\sum_{n=0}^\infty \frac{1}{n!} \int\prod_{i=1}^n\left[dk_i\right]M_{\mathrm{sc}}^2\left(k_i\right)\,\Theta\!\left(v-V_{\mathrm{sc}}\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
@@ -563,9 +585,9 @@ observable value exceeds $v$:
 \label{eq:exp-rad}
   \int[dk]\,M^2(k)
   = \underbrace{\int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)}_{\displaystyle R(v)}
-  + \int[dk]\,M_{\mathrm{sc}}^2(k)\,\Theta\!\left(v-V_{\mathrm{sc}}(\{\tilde{p}\},k)\right)\,,
+  + \int[dk]\,M_{\mathrm{sc}}^2(k)\,\Theta\!\left(v-V_{\mathrm{sc}}(\{\tilde{p}\},k)\right)\,.
 \end{equation}
-\ndp{where in the second term the full matrix element $M^2$ has been replaced
+\ndp{In the second term the full matrix element $M^2$ has been replaced
 by its soft-collinear limit $M_{\mathrm{sc}}^2$ and $V$ by
 $V_{\mathrm{sc}}$. This is valid because the constraint
 $\Theta(v-V_{\mathrm{sc}})$ restricts the emission to the soft-collinear
@@ -604,7 +626,7 @@ pieces,
 	R(v)=R_{\mathrm{s}}(v)+R_{\mathrm{hc}}(v)\,.
 \end{equation}
 
-\paragraph{Hard-collinear radiator.}
+\subsubsection{Hard-collinear radiator}
 \ndp{The hard-collinear radiator arises from virtual corrections collinear to
 each hard leg, integrated from the characteristic hard-collinear scale
 $Qv^{1/(a+b_\ell)}$ up to the hard scale $Q$.} It is a sum over legs,
@@ -617,19 +639,22 @@ where
 \end{equation}
 where $\gamma_\ell^{(0)}$ is minus the coefficient of the $\delta(1-x)$
 term in the relevant splitting function, as defined in
-Eq.~\eqref{eq:splitting-func-real-virt}:
-\begin{equation}
-    \gamma_\ell^{(0)} \equiv 
-    \begin{cases} -\frac{3}{2} C_F, & p_\ell \text{ is a quark}\,, \\ 
-    \frac{-11C_A + 4 T_R n_f}{6}, & p_\ell \text{ is a gluon}\,. 
-    \end{cases}
+Eq.~\eqref{eq:splitting-func-real-virt}: \ABquestion{A minus?}
+ \begin{equation}
+  \label{eq:gammal-flav}
+  \gamma_\ell^{(0)} = \left\{
+    \begin{split}
+      & -\frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
+      & -2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
+    \end{split}
+    \right.
 \end{equation}
 \ndp{These values follow from the coefficients of $\delta(1-x)$ in the
 one-loop splitting functions $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$
 respectively, which govern the collinear singularity structure of the
 virtual corrections to each leg.}
 
-\paragraph{Soft radiator.}
+\subsubsection{Soft radiator}
 The soft radiator is expressed as a sum over colour dipoles
 $(\ell\bar\ell)$:
 \begin{equation}
@@ -709,14 +734,18 @@ The azimuthal average is defined by
 \end{equation}
 and $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$. 
 
-\question{Mention ansatz?}
-To compute the radiator, we introduce the parameter
+\ABquestion{Put in a new paragraph?}
+We can use the following ansatz,
 \begin{equation}
-\label{eq:lambda-def}
-\lambda\equiv\alpha_s(Q)\beta_0\ln(1/v)\,,
+	\alpha_s(\mu_R)=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{\mu_R^2}{Q^2}\,,
 \end{equation}
- where $\beta_0$ is defined in Eq.~\eqref{eq:beta-coeff}.
-We find that at NLL \ABquestion{Check this please}
+where 
+\begin{equation}
+f_1(t)=1\,,\quad \quad f_2(t)=-\frac{\beta_1}{\beta_2}\ln(1+t)\,,
+\end{equation}
+where $\beta_0$ and $\beta_1$ are given in Eq.~\eqref{eq:beta-coeff}.
+
+Using this ansatz, we find that at NLL \ABquestion{Check this please}
 \begin{subequations}
 \begin{align}
 	&R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})=-\frac{\lambda}{\alpha_s(Q)\beta_0}g_1^{(\ell)}(\lambda)-g_2^{(\ell)}(\lambda)-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})\,,\\
