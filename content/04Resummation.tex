@@ -668,57 +668,28 @@ first enter at NNLL accuracy and above.} \ABquestion{Is this true - I thought
 that the $\ln Q_{ij}/Q$ terms were soft wide-angel?} Accordingly, it splits into two
 pieces,
 \begin{equation}
+\label{eq:R(v)-split}
 	R(v)=R_{\mathrm{s}}(v)+R_{\mathrm{hc}}(v)\,.
 \end{equation}
-
-
-\subsubsection{Hard-collinear radiator}
-
-\ndp{The hard-collinear radiator arises from virtual corrections collinear to
-each hard leg, integrated from the characteristic hard-collinear scale
-$Qv^{1/(a+b_\ell)}$ up to the hard scale $Q$.}  \\ \\
-\ABquestion{Do I need to explain why this is the hard-collinear scale?}
-It is a sum over legs,
-\begin{equation}
-R_{\mathrm{hc}}(v)=\sum_\ell R_{\mathrm{hc},\ell}(v)\,,
-\end{equation}
-where
-\begin{equation}
-	R_{\mathrm{hc},\ell}(v)=-\int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
-\end{equation}
-and $\gamma_\ell^{(0)}$ is minus the coefficient of the $\delta(1-x)$
-term in the relevant splitting function, as defined in
-Eq.~\eqref{eq:splitting-func-real-virt}: \ABquestion{A minus?}
- \begin{equation}
-  \label{eq:gammal-flav}
-  \gamma_\ell^{(0)} = \left\{
-    \begin{split}
-      & -\frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
-      & -2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
-    \end{split}
-    \right.
-\end{equation}
-\ndp{These values follow from the coefficients of $\delta(1-x)$ in the
-one-loop splitting functions $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$
-respectively, which govern the collinear singularity structure of the
-virtual corrections to each leg.}
+We treat each piece in turn.
 
 \subsubsection{Soft radiator}
-The soft radiator is expressed as a sum over colour dipoles
-$(\ell\bar\ell)$:
+
+The soft radiator is a sum over colour dipoles $(\ell\bar\ell)$ formed
+by pairs of hard legs,
 \begin{equation}
 	R_{\mathrm{s}}=\sum_{\ell}\sum_{\bar{\ell}\neq\ell} C_{\ell\bar{\ell}}\,\mathcal{R}_{\ell\bar\ell}(v)\,,
 \end{equation}
 where $C_{\ell\bar \ell}=C_A/2$ if either leg is a gluon and $C_{\ell\bar \ell}=C_F-C_A/2$ otherwise. 
-These dipole colour factors satisfy
+These colour factors satisfy
 \begin{equation}
     \label{eq:Cl}
     \sum_{\bar \ell \ne \ell} C_{\ell \bar \ell}= C_\ell\,,
 \end{equation}
 where $C_\ell$ is the colour factor of leg $\ell$ ($C_F$ for a quark and $C_A$ for a gluon). 
 
-\paragraph{Kinematics.} The kinematics of an emission with respect to the $(\ell\bar\ell)$
-dipole are described by three variables: the rapidity
+The kinematics of an emission with respect to the $(\ell\bar\ell)$
+dipole are described by the following variables: the rapidity
 \begin{equation}
     \eta^{(\ell\bar\ell)}
     \equiv \frac{1}{2}\ln\frac{z^{(\ell)}}{z^{(\bar\ell)}}\,,
@@ -726,15 +697,16 @@ dipole are described by three variables: the rapidity
 where $z^{(\ell)}$ and $z^{(\bar\ell)}$ are the longitudinal momentum
 fractions of the emission along legs $\ell$ and $\bar\ell$ respectively;
 the azimuthal angle $\phi^{(\ell\bar\ell)}$; and the invariant
-transverse momentum
+transverse momentum with respect to the dipole,
 \begin{equation}
 \label{eq:kappa}
     \kappa_{\ell\bar\ell}^2
     = \frac{2(p_\ell\cdot k)(2k\cdot p_{\bar\ell})}
            {2(p_\ell\cdot p_{\bar\ell})}\,,
 \end{equation}
-with $Q_{\ell\bar\ell}^2 = 2(p_\ell\cdot p_{\bar\ell})$. In terms of these
-variables, the dipole contribution to the soft radiator is
+with $Q_{\ell\bar\ell}^2 = 2(p_\ell\cdot p_{\bar\ell})$. 
+
+In terms of these variables, the soft radiator is
 \begin{multline}
 \label{eq:Rll-dip}
   \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar \ell)}}{2\pi}\
@@ -777,15 +749,51 @@ where the omitted terms are of NNLL accuracy and beyond, and the azimuthal avera
   \label{eq:azimuthal-average}
   \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,,
 \end{equation}
-and $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$, where
+and
 \begin{equation}
   \label{eq:Rll-final}
   R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa_{\ell\bar\ell}^2}{\kappa_{\ell\bar\ell}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int_0^\infty\!\! d\eta^{(\ell\bar\ell)}\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}}-\eta^{(\ell\bar\ell)}\right)\Theta\left(
       d_{\ell\bar \ell} \left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta^{(\ell\bar\ell)}}-v
     \right) \,.
 \end{equation}
+It's derivative is defined as: $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$.
 
-To evaluate the radiators analytically, we use the ansatz
+
+\subsubsection{Hard-collinear radiator}
+
+\ndp{The hard-collinear radiator arises from virtual corrections collinear to
+each hard leg, integrated from the characteristic hard-collinear scale
+$Qv^{1/(a+b_\ell)}$ up to the hard scale $Q$.}  \\ \\
+\ABquestion{Do I need to explain why this is the hard-collinear scale?}
+It is a sum over legs,
+\begin{equation}
+R_{\mathrm{hc}}(v)=\sum_\ell R_{\mathrm{hc},\ell}(v)\,,
+\end{equation}
+where
+\begin{equation}
+	R_{\mathrm{hc},\ell}(v)=-\int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
+\end{equation}
+and $\gamma_\ell^{(0)}$ is minus the coefficient of the $\delta(1-x)$
+term in the relevant splitting function, as defined in
+Eq.~\eqref{eq:splitting-func-real-virt}: \ABquestion{A minus?}
+ \begin{equation}
+  \label{eq:gammal-flav}
+  \gamma_\ell^{(0)} = \left\{
+    \begin{split}
+      & -\frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
+      & -2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
+    \end{split}
+    \right.
+\end{equation}
+\ndp{These values follow from the coefficients of $\delta(1-x)$ in the
+one-loop splitting functions $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$
+respectively, which govern the collinear singularity structure of the
+virtual corrections to each leg.}
+
+To evaluate the radiators analytically,  we expand the running coupling
+in powers of $\alpha_s(Q)$ via the ansatz
+\ABquestion{Do we do this
+to evaluate analytically or is it because of the running coupling?}
 \begin{equation}
 	\alpha_s(\mu_R)=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{\mu_R^2}{Q^2}\,,
 \end{equation}
@@ -803,7 +811,9 @@ one finds at NLL
 	&R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)\,.
 \end{align}
 \end{subequations}
-Assembling these contributions, the NLL radiator is
+Assembling the contributions in Eq.~\eqref{eq:R(v)-split}, the full
+NLL radiator is
+\ABquestion{Can I check this is correct?}
 \begin{multline}
 \label{eq:RNLL}
     R_{\mathrm{NLL}}(v)
@@ -840,15 +850,35 @@ $R'_{\mathrm{NLL}}(v) \equiv \sum_\ell R'_{\mathrm{NLL},\ell}$, is
 The functions appearing in Eq.~\eqref{eq:RNLL} are
 \begin{subequations}
 \begin{align}
-	&g_1^{(\ell)}(\lambda)=\frac{(a+b_\ell-2\lambda)\ln\left(1-\frac{2\lambda}{a+b_\ell}\right)-(a-2\lambda)\ln\left(1-\frac{2\lambda}{a}\right)}{4\pi b_\ell\beta_0\lambda}\,,\\
-	&g_2^{(\ell)}(\lambda)=\left[\frac{K^{(1)}\left(a\ln\left(1-\frac{2\lambda}{a}\right)-(a+b_\ell)\ln\left(1-\frac{2\lambda}{a+b_\ell}\right)\right)}{8\pi^2 b_\ell \beta^2_0}+\right.\\
-	&\qquad+\frac{\beta_1(a+b_\ell)\ln^2\left(1-\frac{2\lambda}{a}\right)}{8\pi b_\ell\beta_0^3}
-	+\frac{\beta_1(a+b_\ell)\ln\left(1-\frac{2\lambda}{a}\right)}{4\pi b_\ell\beta_0^3}+\\
-	&\qquad\left.-\beta_1\frac{a\ln\left(1-\frac{2\lambda}{a}\right)\left(\ln\left(1-\frac{2\lambda}{a}\right)+2\right)}{8\pi b_\ell\beta_0^3}\right]\,, \\
-	&\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})=-\lambda^2\frac{dg_1^{(\ell)}		(\lambda)}{d\lambda}\ln\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \\
-	&h_2^{(\ell)}(\lambda)=\frac{\gamma_{\ell}^{(0)}}{2\pi\beta_0}\ln\left(1-\frac{2\lambda}{a+b_\ell}\right)\,.
+  g_1^{(\ell)}(\lambda)
+  &= \frac{
+       (a+b_\ell-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
+       -(a-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a}\right)
+     }{4\pi b_\ell\beta_0\lambda}\,, \\[4pt]
+  g_2^{(\ell)}(\lambda)
+  &= \frac{K^{(1)}}{8\pi^2 b_\ell\beta_0^2}
+     \!\left[
+       a\ln\!\left(1-\tfrac{2\lambda}{a}\right)
+       -(a+b_\ell)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
+     \right] \notag\\
+  &\quad
+    + \frac{\beta_1(a+b_\ell)}{8\pi b_\ell\beta_0^3}
+      \ln^2\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
+    + \frac{\beta_1(a+b_\ell)}{4\pi b_\ell\beta_0^3}
+      \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \notag\\
+  &\quad
+    - \frac{\beta_1\,a}{8\pi b_\ell\beta_0^3}
+      \ln\!\left(1-\tfrac{2\lambda}{a}\right)
+      \!\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right], \\[4pt]
+  \mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})
+  &= -\lambda^2\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}
+     \ln\!\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right), \\[4pt]
+  h_2^{(\ell)}(\lambda)
+  &= \frac{\gamma_\ell^{(0)}}{2\pi\beta_0}
+     \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right).
 \end{align}
 \end{subequations}
+
 
 \subsection{The NLL $\mathcal{F}$-function, $\mathcal{F}_{\mathrm{NLL}}$}
 \label{subsec:FNLL}
@@ -916,8 +946,8 @@ giving
       \Theta\!\left(v-V_{\mathrm{sc}}\!\left(
         \{\tilde{p}\},k_1,\dots,k_n\right)\right)\,.
 \end{equation}
-\ABquestion{But we probably want to discuss why we can just add in NLL again
-to the radiator?}
+\ABquestion{Do we need to discuss why we can just add in the NLL radiator
+opposed to the $R(v)$ or is it presumed?}
 This can be written compactly as
 \begin{equation}
     \label{eq:FNLL-formula}
