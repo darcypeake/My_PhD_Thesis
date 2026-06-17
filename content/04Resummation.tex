@@ -275,8 +275,22 @@ expansion must be reorganised. When $\alpha_s L \sim 1$, successive
 terms in the perturbative series are no longer suppressed, so an 
 expansion in powers of $\alpha_s$ alone is insufficient. Instead, one 
 performs a systematic \emph{resummation} of the logarithmically enhanced 
-contributions to all orders in $\alpha_s$, yielding an exponentiated 
-form for the cumulant,
+contributions to all orders in $\alpha_s$. Therefore, in the region
+$\alpha_s L\sim 1$, the cumulant can be
+reorganised as follows
+\begin{equation}
+  \label{eq:log-counting}
+  \Sigma(\tau) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
+\end{equation}
+The function $g_1(\alpha_s L)$ resums all leading logarithmic (LL)
+terms, $\alpha_s^n L^{n+1}$, in $\ln\Sigma$. For rIRC safe
+(see Sec.~\ref{sec:obs-req}) observables, $g_1$ exponentiates. The function $G_2(\alpha_s L)$
+resums next-to-leading logarithmic (NLL) contributions
+($\alpha_s^n L^n$) to $\ln\Sigma$, and so on. For example,
+in Chapter.~\ref{ch:hhZjet} we are working at NNLL accuracy,
+ i.e.\ calculating $g_1$, $G_2$ and $G_3$.
+
+\ABquestion{ Is it better to use the previous question opposed to this one?
 \begin{equation}
 \label{eq:resummed-cumulant}
 	\Sigma(\tau) \simeq 
@@ -287,28 +301,29 @@ form for the cumulant,
 	+ \cdots 
 	\right\}\,.
 \end{equation}
-Each function $g_i$ resums logarithms at a successive level of accuracy,
-as summarised in Table~\ref{tab:log-accuracy}.
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{c|c|c}
-\hline\hline
-Function & Logarithms resummed & Accuracy \\
-\hline\hline
-$g_1(\alpha_s L)$ & $\alpha_s^n L^{n+1}$ & LL \\
-\hline
-$g_2(\alpha_s L)$ & $\alpha_s^n L^{n}$   & NLL \\
-\hline
-$g_3(\alpha_s L)$ & $\alpha_s^n L^{n-1}$ & NNLL \\
-\hline\hline
-\end{tabular}
-\end{center}
-\caption{Logarithms resummed at each order of accuracy in the exponent 
-of Eq.~\eqref{eq:resummed-cumulant}, where $L = \ln(1/\tau)$. LL, NLL, 
-and NNLL denote leading-logarithmic, next-to-leading-logarithmic, and 
-next-to-next-to-leading-logarithmic accuracy respectively.}
-\label{tab:log-accuracy}
-\end{table}
+}
+%Each function $g_i$ resums logarithms at a successive level of accuracy,
+%as summarised in Table~\ref{tab:log-accuracy}.
+%\begin{table}[h]
+%\begin{center}
+%\begin{tabular}{c|c|c}
+%\hline\hline
+%Function & Logarithms resummed & Accuracy \\
+%\hline\hline
+%$g_1(\alpha_s L)$ & $\alpha_s^n L^{n+1}$ & LL \\
+%\hline
+%$g_2(\alpha_s L)$ & $\alpha_s^n L^{n}$   & NLL \\
+%\hline
+%$g_3(\alpha_s L)$ & $\alpha_s^n L^{n-1}$ & NNLL \\
+%\hline\hline
+%\end{tabular}
+%\end{center}
+%\caption{Logarithms resummed at each order of accuracy in the exponent 
+%of Eq.~\eqref{eq:resummed-cumulant}, where $L = \ln(1/\tau)$. LL, NLL, 
+%and NNLL denote leading-logarithmic, next-to-leading-logarithmic, and 
+%next-to-next-to-leading-logarithmic accuracy respectively.}
+%\label{tab:log-accuracy}
+%\end{table}
 
 
 \ABquestion{A question about fixed-order vs. resummation.}
@@ -396,7 +411,8 @@ than $v$,
     \mathcal{H}(p_1,\dots,p_n)\,.
 \end{equation}
 In the limit $v\ll 1$, the cumulant $\Sigma_{\mathcal{H}}(v)$ assumes the
-factorised form~\cite{Banfi:2004yd} \ABquestion{Is the notation correct in the following?}
+factorised form~\cite{Banfi:2004yd} \ABquestion{Is the notation in this equation 
+correct -- specifically $ \mathcal{H}(p_{n_i+1},\dots,p_N)$?}
 \begin{equation}
 \label{eq:Sigma-H-fact}
   \Sigma_{\mathcal{H}}(v)
@@ -518,9 +534,8 @@ V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,\{\kappa_{i_a},\kappa_{i_b}\}(\ba
 \end{enumerate}
 The rIRC safety condition is precisely what allows the leading-logarithmic
 contributions to exponentiate. Observables that violate rIRC safety do not
-exponentiate; a well-known example is the \textsc{JADE} 3-jet resolution
-parameter in $e^+e^-$ collisions~\cite{Catani:1992tm}. \ABquestion{Should
-I be discussing the exponentiation of LL terms in the previous sections?}
+exponentiate (cf.\ Eq.~\eqref{eq:log-counting}); a well-known example is the \textsc{JADE} 3-jet resolution
+parameter in $e^+e^-$ collisions~\cite{Catani:1992tm}. 
 
 \item \textbf{Continuously global}: an observable is said to be \emph{global} if it is sensitive to emissions in all regions of phase space, i.e.\ it is non-zero for any emission of an additional parton that is not infinitely soft or collinear. 
 Continuous globalness further requires that, for a single soft emission, the parametric dependence of the observable on the emission’s transverse momentum be uniform across phase space, meaning that the parameter $a$ appearing in Eq.~\eqref{eq:general-sc-V} must be the same for all legs. This condition ensures that non-global logarithms~\cite{Dasgupta:2001sh,Dasgupta:2002dc}, which arise when different regions of phase space exhibit different transverse-momentum dependences, do not appear. Non-global logarithms lie beyond the scope of this thesis.
@@ -594,6 +609,7 @@ where the first two coefficients are
                  - \frac{224}{54}n_f\right)\,.
 \end{align}
 \end{subequations}
+\add{The coefficient $K^{(1)}$ is only needed at NLL.}
 
 \paragraph{Factorisation of the matrix element.} 
 At NLL accuracy, correlated clusters contribute only through the 
@@ -771,17 +787,18 @@ R_{\mathrm{hc}}(v)=\sum_\ell R_{\mathrm{hc},\ell}(v)\,,
 \end{equation}
 where
 \begin{equation}
+\label{eq:Rhc-NLL}
 	R_{\mathrm{hc},\ell}(v)=-\int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
 \end{equation}
 and $\gamma_\ell^{(0)}$ is minus the coefficient of the $\delta(1-x)$
 term in the relevant splitting function, as defined in
-Eq.~\eqref{eq:splitting-func-real-virt}: \ABquestion{A minus?}
+Eq.~\eqref{eq:splitting-func-real-virt}: 
  \begin{equation}
   \label{eq:gammal-flav}
   \gamma_\ell^{(0)} = \left\{
     \begin{split}
-      & -\frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
-      & -2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
+      & \frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
+      & 2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
     \end{split}
     \right.
 \end{equation}
@@ -790,19 +807,23 @@ one-loop splitting functions $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$
 respectively, which govern the collinear singularity structure of the
 virtual corrections to each leg.}
 
-To evaluate the radiators analytically,  we expand the running coupling
-in powers of $\alpha_s(Q)$ via the ansatz
-\ABquestion{Do we do this
-to evaluate analytically or is it because of the running coupling?}
+To integrate Eq.~\eqref{eq:Rll-final} and~\eqref{eq:Rhc-NLL}, we use
+the renormalisation group equation in Eq.~\eqref{eq:coupling-DE} and 
+use the following ansatz to solve it \ABquestion{I don't quite understand why
+we use this if the only coupling we have is $\alpha^{\rm phys}(k_t)$?}
 \begin{equation}
 	\alpha_s(\mu_R)=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{\mu_R^2}{Q^2}\,,
 \end{equation}
 with
-\begin{equation}
-f_1(t)=1\,,\quad \quad f_2(t)=-\frac{\beta_1}{\beta_2}\ln(1+t)\,,
-\end{equation}
-where $\beta_0$ and $\beta_1$ are given in Eq.~\eqref{eq:beta-coeff}.
-Defining $\lambda \equiv \alpha_s(Q)\beta_0 L$ where $L = \ln(1/v)$, 
+\begin{subequations}
+\begin{align}
+&f_1(t)=1\, \\
+f&_2(t)=-\frac{\beta_1}{\beta_2}\ln(1+t)\,, \\
+&f_3(t)=-\frac{\beta_2}{\beta_0}t\left(\frac{\beta_1}{\beta_0}\right)^2[t+(\ln(1+t)-1)]\ln(1+t)\,,
+\end{align}
+\end{subequations}
+\add{$f_3$ for NNLL} where $\beta_0, \beta_1$, and $\beta_2$ are given in Eqs.~\eqref{eq:beta0},~\eqref{eq:beta1}, and~\eqref{eq:beta2} respectively.
+Defining $\lambda \equiv \alpha_s(Q)\beta_0 L$, where $L = \ln(1/v)$, 
 one finds at NLL
 \begin{subequations}
 \begin{align}
@@ -823,7 +844,7 @@ NLL radiator is
          -\frac{\lambda}{\alpha_s(Q)\beta_0}
          g_1^{(\ell)}(\lambda)
          -g_2^{(\ell)}(\lambda)
-       \right)\\
+       \right)+\\
     -\sum_\ell\sum_{\bar\ell\neq\ell}
       C_{\ell\bar\ell}\!
       \left(
@@ -834,20 +855,10 @@ NLL radiator is
            g_1^{(\ell)}(\lambda)
          \right)
          \langle\ln(d^{(\ell\bar\ell)}_\ell\,g_\ell)\rangle
-      \right),
+      \right)\,,
 \end{multline}
-and its derivative, which decomposes as 
-$R'_{\mathrm{NLL}}(v) \equiv \sum_\ell R'_{\mathrm{NLL},\ell}$, is
-\begin{equation}
-\label{eq:RpNLL}
-    R'_{\mathrm{NLL}}(v) \equiv -v\frac{dR_{\mathrm{NLL}}}{dv}
-    = \sum_\ell C_\ell\,\alpha_s(Q)\beta_0\,
-      \frac{d}{d\lambda}\!\left(
-        -\frac{\lambda}{\alpha_s(Q)\beta_0}
-        g_1^{(\ell)}(\lambda)\right)\,.
-\end{equation}
-
-The functions appearing in Eq.~\eqref{eq:RNLL} are
+where the functions $g^{(\ell)}_1, g^{(\ell)}_2,\mathfrak{g}^{(\ell)}_2, h^{(\ell)}_2$ are the following 
+\todo{check the denominators -- the jacobian.}
 \begin{subequations}
 \begin{align}
   g_1^{(\ell)}(\lambda)
@@ -865,19 +876,30 @@ The functions appearing in Eq.~\eqref{eq:RNLL} are
     + \frac{\beta_1(a+b_\ell)}{8\pi b_\ell\beta_0^3}
       \ln^2\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
     + \frac{\beta_1(a+b_\ell)}{4\pi b_\ell\beta_0^3}
-      \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \notag\\
+      \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \\
   &\quad
     - \frac{\beta_1\,a}{8\pi b_\ell\beta_0^3}
       \ln\!\left(1-\tfrac{2\lambda}{a}\right)
-      \!\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right], \\[4pt]
+      \!\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right],\notag \\[4pt]
   \mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})
   &= -\lambda^2\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}
      \ln\!\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right), \\[4pt]
   h_2^{(\ell)}(\lambda)
-  &= \frac{\gamma_\ell^{(0)}}{2\pi\beta_0}
+  &=- \frac{\gamma_\ell^{(0)}}{2\pi\beta_0}
      \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right).
 \end{align}
 \end{subequations}
+
+The derivative of the NLL radiator is
+\begin{equation}
+\label{eq:RpNLL}
+    R'_{\mathrm{NLL}}(v) \equiv -v\frac{dR_{\mathrm{NLL}}}{dv}
+    = \sum_\ell C_\ell\,\alpha_s(Q)\beta_0\,
+      \frac{d}{d\lambda}\!\left(
+        -\frac{\lambda}{\alpha_s(Q)\beta_0}
+        g_1^{(\ell)}(\lambda)\right)\,,
+\end{equation}
+which can also be expressed as as sum over legs, $R'_{\mathrm{NLL}}(v) \equiv \sum_\ell R'_{\mathrm{NLL},\ell}$.
 
 
 \subsection{The NLL $\mathcal{F}$-function, $\mathcal{F}_{\mathrm{NLL}}$}
@@ -1017,12 +1039,6 @@ discussed in detail in Sec.~\ref{subsec:additive}.
   \label{fig:FNLL-CAESAR-comp}
 \end{figure}
 
-The NNLL \textsc{ARES} formalism has been applied to three-jet event shapes
-in $e^+e^-$ collisions in Ref.~\cite{Arpino:2019ozn}. In
-Chapter~\ref{ch:hhZjet}, we extend this framework to processes with
-initial-state radiation, demonstrating that the same resummation
-structure holds in that context.
-
 \subsection{Additive Observables}
 \label{subsec:additive}
 
@@ -1032,7 +1048,7 @@ expressed as a sum of independent contributions from individual
 emissions,
 \begin{equation}
 \label{eq:additive-def}
-    V_{\mathrm{sc}}(k_1,\dots,k_n) = \sum_{i=1}^n V_{\mathrm{sc}}(k_i)\,.
+    V_{\mathrm{sc}}(\{\tilde{p}\},k_1,\dots,k_n) = \sum_{i=1}^n V_{\mathrm{sc}}(\{\tilde{p}\},k_i)\,.
 \end{equation}
 This structure allows $\mathcal{F}_{\mathrm{NLL}}$ to be computed 
 analytically. In fact for all additive observables, the result 
@@ -1102,3 +1118,12 @@ we arrive at the final result
     = \frac{e^{-\gamma_E R'_{\mathrm{NLL}}}}{\Gamma\!\left(1+R'_{\mathrm{NLL}}\right)}\,,
 \end{equation}
 in agreement with the numerical results shown in Fig.~\ref{fig:FNLL-CAESAR-comp}.
+
+Having understood the NLL formalism, we now move to understand the NNLL
+formalism. This has been done for \textsc{ARES} in the context of $e^+e^-$
+annihilation for jet observables, for both dijet and jet-rates and the most 
+recent development for event shapes in three-jet production in Ref.~\cite{Arpino:2019ozn}.
+In Chapter~\ref{ch:hhZjet}, we present for the first time the \textsc{ARES} method
+for hadronic collisions.
+
+
