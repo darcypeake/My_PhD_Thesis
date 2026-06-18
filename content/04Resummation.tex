@@ -224,7 +224,7 @@ The cumulative distribution, or cumulant, is defined as
     \Sigma(\tau)
     = \frac{1}{\sigma_0} \int_0^\tau d\tau'\, \frac{d\sigma}{d\tau'}\,.
 \end{equation}
-Using the identities
+Using the identities \question{Correct signs?}
 \begin{equation}
 \label{eq:plus-dist-integrals}
     \int_0^\tau d\tau'\,\left(\frac{1}{\tau'}\right)_+ = -L\,, 
@@ -267,7 +267,9 @@ and each emission can generate up to two logarithms -- one from the soft
 limit and one from the collinear limit. These contributions grow as $\tau \to 0$, 
 spoiling the convergence of the perturbative series. This behaviour is 
 particularly problematic because it occurs precisely in the region where 
-the bulk of the data lies. \add{FO is inadequate.}
+the bulk of the data lies. A fixed-order expansion is therefore unable to describe the
+distribution, and a different theoretical treatment is
+required.
 
 \paragraph{Resummation.}
 To restore predictive power in the region $\tau \ll 1$, the perturbative 
@@ -325,8 +327,6 @@ in Chapter.~\ref{ch:hhZjet} we are working at NNLL accuracy,
 %\label{tab:log-accuracy}
 %\end{table}
 
-
-\ABquestion{A question about fixed-order vs. resummation.}
 \ndp{It is worth emphasising the distinction between fixed-order and logarithmic
 accuracy. In a fixed-order calculation, improving the accuracy means
 computing additional Feynman diagrams at one higher power of $\alpha_s$.
@@ -336,7 +336,6 @@ order at every power of $\alpha_s$. Advancing from one logarithmic order to the 
 requires identifying which physical effects contribute at that order and 
 computing each of their contributions at the necessary accuracy.}
 
-\ABquestion{A question about the Sudakov peak.}
 \ndp{Resummation gives rise to the \emph{Sudakov peak} visible in the
 experimental data in Fig.~\ref{fig:thrust-data-FO}: a suppression of the
 distribution at small $\tau$ driven by the Sudakov form factor -- the
@@ -609,9 +608,11 @@ where the first two coefficients are
                  - \frac{224}{54}n_f\right)\,.
 \end{align}
 \end{subequations}
-\add{The coefficient $K^{(1)}$ is only needed at NLL.}
+Only the first coefficient, $K^{(1)}$ is necessary for NLL. 
 
 \paragraph{Factorisation of the matrix element.} 
+\ABquestion{I want to make sure 
+the rIRC safe assumptions are correct here.} \\
 At NLL accuracy, correlated clusters contribute only through the 
 coupling redefinition above. The squared matrix element for $n$ widely 
 separated soft and collinear emissions then factorises into a product of 
@@ -624,7 +625,7 @@ taken in the soft-collinear limit,
   \frac{\Vsc{k_1,\dots,k_n}}{v}
   \equiv \lim_{v\to 0}\frac{V(\{\tilde{p}\},k_1,\dots,k_n)}{v}\,,
 \end{equation}
-which is guaranteed to exist for all rIRC safe observables by condition~\ref{cond:rIRC-a}.
+\ndp{which is guaranteed to exist for all rIRC safe observables by condition~\ref{cond:rIRC-a}.}
 
 The virtual factor takes the form
 $\mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}$ at NLL, ensuring
@@ -753,27 +754,26 @@ the final Heaviside function in Eq.~\eqref{eq:Rll-dip} is expanded as:
 e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell \bar \ell)})-v\right)\simeq\Theta\left(\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}e^{-b_\ell\eta^{(\ell\bar \ell)}}-v\right)+\\
 +\delta\left(\ln\left[\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^ae^{-b_\ell\eta^{(\ell\bar \ell)}}\right]-\ln v\right)\ln\left(d^{(\ell\bar\ell)}_\ell g_\ell(\phi^{(\ell \bar \ell)})\right)+\cdots\,,
 \end{multline}
-where the expansion is truncated at this order for NLL accuracy. 
+where the expansion is truncated at this order for NLL accuracy and the omitted terms are of NNLL accuracy and beyond. 
 Substituting into Eq.~\eqref{eq:Rll-dip} gives
 \begin{equation}
 \label{eq:R-ll-expan}
  \mathcal{R}_{\ell\bar\ell}(v)\simeq
 R_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\langle \ln(d^{(\ell\bar \ell)}_\ell\,g_\ell)\rangle R'_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\dots\,,
 \end{equation}
-where the omitted terms are of NNLL accuracy and beyond, and the azimuthal average is defined by
-\begin{equation}
-  \label{eq:azimuthal-average}
-  \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,,
-\end{equation}
-and
+where 
 \begin{equation}
   \label{eq:Rll-final}
   R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa_{\ell\bar\ell}^2}{\kappa_{\ell\bar\ell}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int_0^\infty\!\! d\eta^{(\ell\bar\ell)}\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}}-\eta^{(\ell\bar\ell)}\right)\Theta\left(
       d_{\ell\bar \ell} \left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta^{(\ell\bar\ell)}}-v
-    \right) \,.
+    \right) \,,
 \end{equation}
-It's derivative is defined as: $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$.
-
+and its derivative is defined as $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$. 
+The azimuthal average is defined by
+\begin{equation}
+  \label{eq:azimuthal-average}
+  \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,.
+\end{equation}
 
 \subsubsection{Hard-collinear radiator}
 
@@ -790,7 +790,7 @@ where
 \label{eq:Rhc-NLL}
 	R_{\mathrm{hc},\ell}(v)=-\int_{Q^2 v^{2/(a+b_\ell)}}^{Q^2}\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s^{\mathrm{phys}}(k)}{2\pi}\,,
 \end{equation}
-and $\gamma_\ell^{(0)}$ is minus the coefficient of the $\delta(1-x)$
+and $\gamma_\ell^{(0)}$ is the coefficient of the $\delta(1-z)$
 term in the relevant splitting function, as defined in
 Eq.~\eqref{eq:splitting-func-real-virt}: 
  \begin{equation}
@@ -802,14 +802,13 @@ Eq.~\eqref{eq:splitting-func-real-virt}:
     \end{split}
     \right.
 \end{equation}
-\ndp{These values follow from the coefficients of $\delta(1-x)$ in the
-one-loop splitting functions $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$
-respectively, which govern the collinear singularity structure of the
+\ndp{These coefficients govern the collinear singularity structure of the
 virtual corrections to each leg.}
 
 To integrate Eq.~\eqref{eq:Rll-final} and~\eqref{eq:Rhc-NLL}, we use
 the renormalisation group equation in Eq.~\eqref{eq:coupling-DE} and 
-use the following ansatz to solve it 
+use the following ansatz to solve it  \ABquestion{Can I just keep $\mu_R$ 
+as a place holder?}
 \begin{equation}
 	\alpha_s(\mu_R)=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{\mu_R^2}{Q^2}\,,
 \end{equation}
@@ -821,7 +820,10 @@ f&_2(t)=-\frac{\beta_1}{\beta_2}\ln(1+t)\,, \\
 &f_3(t)=-\frac{\beta_2}{\beta_0}t\left(\frac{\beta_1}{\beta_0}\right)^2[t+(\ln(1+t)-1)]\ln(1+t)\,,
 \end{align}
 \end{subequations}
-\add{$f_3$ for NNLL} where $\beta_0, \beta_1$, and $\beta_2$ are given in Eqs.~\eqref{eq:beta0},~\eqref{eq:beta1}, and~\eqref{eq:beta2} respectively.
+where only $f_1$ and $f_2$ are required at NLL accuracy, while $f_3$
+enters only at NNLL. The coefficients $\beta_0$, $\beta_1$, and $\beta_2$
+are given in Eqs.~\eqref{eq:beta0}, \eqref{eq:beta1},
+and~\eqref{eq:beta2} respectively. 
 Defining $\lambda \equiv \alpha_s(Q)\beta_0 L$, where $L = \ln(1/v)$, 
 one finds at NLL
 \begin{subequations}
@@ -857,37 +859,17 @@ NLL radiator is
       \right)\,,
 \end{multline}
 where the functions $g^{(\ell)}_1, g^{(\ell)}_2,\mathfrak{g}^{(\ell)}_2, h^{(\ell)}_2$ are the following 
-\todo{check the denominators -- the jacobian.}
 \begin{subequations}
 \begin{align}
-  g_1^{(\ell)}(\lambda)
-  &= \frac{
-       (a+b_\ell-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
-       -(a-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a}\right)
-     }{4\pi b_\ell\beta_0\lambda}\,, \\[4pt]
-  g_2^{(\ell)}(\lambda)
-  &= \frac{K^{(1)}}{8\pi^2 b_\ell\beta_0^2}
-     \!\left[
-       a\ln\!\left(1-\tfrac{2\lambda}{a}\right)
-       -(a+b_\ell)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
-     \right] \notag\\
-  &\quad
-    + \frac{\beta_1(a+b_\ell)}{8\pi b_\ell\beta_0^3}
-      \ln^2\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)
-    + \frac{\beta_1(a+b_\ell)}{4\pi b_\ell\beta_0^3}
-      \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \\
-  &\quad
-    - \frac{\beta_1\,a}{8\pi b_\ell\beta_0^3}
-      \ln\!\left(1-\tfrac{2\lambda}{a}\right)
-      \!\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right],\notag \\[4pt]
-  \mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})
-  &= -\lambda^2\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}
-     \ln\!\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right), \\[4pt]
-  h_2^{(\ell)}(\lambda)
-  &=- \frac{\gamma_\ell^{(0)}}{2\pi\beta_0}
-     \ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right).
+g_1^{(\ell)}(\lambda) &= \frac{(a+b_\ell-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)-(a-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a}\right)}{2\pi b_\ell\beta_0\lambda}\,, \label{eq:g1}\\[6pt]
+g_2^{(\ell)}(\lambda) &= \frac{K^{(1)}}{4\pi^2 b_\ell\beta_0^2}\left[a\ln\!\left(1-\tfrac{2\lambda}{a}\right)-(a+b_\ell)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)\right] \notag\\
+&\quad +\frac{\beta_1(a+b_\ell)}{4\pi b_\ell\beta_0^3}\ln^2\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) +\frac{\beta_1(a+b_\ell)}{2\pi b_\ell\beta_0^3}\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \notag\\
+&\quad -\frac{\beta_1\,a}{4\pi b_\ell\beta_0^3}\ln\!\left(1-\tfrac{2\lambda}{a}\right)\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right]\,, \label{eq:g2}\\[6pt]
+\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell}) &= -\lambda^2\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}\ln\!\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \label{eq:g2frak}\\[6pt]
+h_2^{(\ell)}(\lambda) &= -\frac{\gamma_\ell^{(0)}}{2\pi\beta_0}\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)\,. \label{eq:h2}
 \end{align}
 \end{subequations}
+
 
 The derivative of the NLL radiator is
 \begin{equation}
@@ -930,13 +912,13 @@ one can show that
 \end{equation}
 and in particular
 \begin{equation}
-\int[dk]\,M^2(k)\,\Theta\!\left(v-V(\{\tilde{p}\},k)\right)=\int_0^1 \frac{d\zeta}{\zeta}\, R'(\zeta v)\,,
+\int[dk]\,M^2(k)\,\Theta\!\left(v-V(\{\tilde{p}\},k)\right)=\int_0^1 \frac{d\zeta}{\zeta}\, R'(\zeta v)\,.
 \end{equation}
-\ndp{where $M_{\mathrm{sc}}^2$ is used consistently with the soft-collinear
-constraint $V_{\mathrm{sc}}\leq v$, which confines the integration to
-the region where this approximation is valid.} Since $R'(v)$ decomposes
+ Since $R'(v)$ decomposes
 as a sum over hard legs, $R'(v)\equiv\sum_\ell R'_\ell(v)$, 
- the soft-collinear measure becomes
+ the soft-collinear measure becomes \ABquestion{But why can
+ we just substitute in the soft-collinear limit here? \\ Do not quite understand
+ how this can be equal here?}
 \begin{equation}
 \label{eq:measure-replace}
 [dk]\,M_{\mathrm{sc}}^2(k)=\sum_{\ell}\frac{d\zeta}{\zeta}\frac{d\phi^{(\ell)}}{2\pi}\,R'_{\ell}(\zeta v)\,,
