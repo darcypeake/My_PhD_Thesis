@@ -1392,8 +1392,60 @@ The general expression for $\Delta\mathcal{F}_{\rm wa}$ is:
 \label{sec:validation}
 We compare this to two different formalisms in two different papers.
   
-\subsection{Lund-plane additive observables}
+\subsection{Additive Lund-tree observables}
+\label{subsec:LTS}
+
+We restrict our formalism to two hard legs $\ell$ and compare
+to the case of $N=0$ for hadron colliders in Ref. \add{add reference}.
+In this capacity, we reduce the formalism in Ref. \add{add reference},
+to be the case of the $q\bar q\to Z$.
+
+For resummation scale $Q$, \todo{we need to make it explicit that
+we are at this scale.}
+The NNLL cumulative distribution is expressed as
+\begin{equation}
+\label{eq:sig-LTS-full}
+	\Sigma^{pp}(v,\Phi_B)=\Sigma_S^{pp}(v,\Phi_B)\mathcal{F}^{pp}(v)+\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v,\Phi_B)\,,
+\end{equation}
+where $\Sigma_S^{pp}(v,\Phi_B)$ is defined to be the resummation for the
+`simple observable', such that for at the parton level, the two partons initiating
+the Born process $c, d$,
+\begin{equation}
+\label{eq:sig-simp-obs}
+\begin{aligned}
+\Sigma_S^{pp}(v,\Phi_B)=&\frac{d\hat{\sigma}_{cd}^{(0)}}{d\Phi_B}\exp\left\{-\mathcal{R}_{\mathrm{NNLL}}(v)\right\}\left[f_c(x_c,\mu_F v^{1/(1+b)})f_d(x_d,\mu_F v^{1/(1+b)})\left(1+\frac{\alpha_s(\mu_R)}{2\pi}H_{cd}^{(1)}(\Phi_B)\right)+\right.\\
+&+\frac{\alpha_s(\mu_R)}{2\pi}\frac{1+b}{1+b-2\lambda}\sum_i \left(
+\int_{x_c}^1\frac{dz}{z}C_{ci}^{(1)}(z, \mu_F v^{1/(1+b)})f_i\left(\frac{x_c}{z},\mu_F v^{1/(1+b)}\right)f_d(x_d,\mu_F v^{1/(1+b)})+\right.\\
+&\left.\left.+\{c\leftrightarrow d\}
+\right)\right]\,,
+\end{aligned}
+\end{equation}
+where $\hat\sigma_{cd}^{(0)}$ is the Born partonic cross section for the
+$cd$ flavour channel and $C_{ci}^{(1)}$ are referred to as the one-loop
+$b$-dependent coefficient functions, which we will see later. The NNLL 
+Radiator is precisely the same as that found in our formalism \todo{check this}.
+
+The $\mathcal{F}^{pp}(v)$ is defined to be
+\begin{equation}
+\label{eq:F-pp-full}
+	\mathcal{F}^{pp}(v)=\mathcal{F}_{\mathrm{NLL}}^{pp}(v)+\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{pp}_{\mathrm{NNLL}}(v)\,,
+\end{equation}
+where  \question{unsure whether to include the cluster function or not?}
+\begin{equation}
+	\delta\mathcal{F}^{pp}_{\mathrm{NNLL}}(v)=\delta\mathcal{F}^{pp}_{\mathrm{sc}}(v)+\delta\mathcal{F}^{pp}_{\mathrm{wa}}(v)+\delta\mathcal{F}^{pp}_{\mathrm{hc}}(v)+\delta\mathcal{F}^{pp}_{\mathrm{correl}}(v)\,.
+\end{equation}
+These corrections are exactly those found in Eq.~\eqref{eq:dFNNLL}. \todo{check this is true.}
+One can notice that this is exactly the $\delta\mathcal{F}_{\mathrm{NNLL}}$ found for 2-jet observables in Ref. \add{add reference}, with just the recoil correction missing, $\delta\mathcal{F}^{pp}_{\mathrm{rec}}(v)$. This is accounted for in the $\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v,\Phi_B)$ term in Eq.~\eqref{eq:sig-LTS-full}.
+
+The coefficient functions can be written as
+  \begin{multline}
+   \label{eq:CkiLTS}
+    C_{ki}^{(1)}(z) = -\hat P_{ki}^{(\varepsilon)}(z) +\\ +\frac{2b }{1+b}\left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln(z)}{(1-z)_+}
+      \right)(1-z)\hat P_{ij}(z;0)+\ln\frac{Q^2}{\mu_F^2}\hat P_{ij}(z;0)\,.
+  \end{multline}
   
+  \ABquestion{Unsure about the hard-collinear function in theirs.}
+
   
  \subsection{SCET formalism for N-jettiness}
  In order to match the coefficients correctly before SCET and ARES, we must construct a mapping between them. We find this to be:
