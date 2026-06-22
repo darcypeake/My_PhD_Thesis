@@ -1,4 +1,144 @@
-\chapter{Resummation Coefficients}
-\label{app:ressum-coeff}
-Here we will list out the resummation coefficients necessary to complete NNLL accuracy.
+\chapter{CH5 Appendix}
+\label{app:ch5}
+
+\section{Spin correlations for ISR}
+\label{app:spin-correl}
+In order to compute hard-collinear NNLL corrections, we need to take into account spin correlations. The starting point is the spin-density matrix for the hard process, in $4-2\varepsilon$ dimensions. Neglecting terms that are antisymmetric in the indexes $\mu,\nu$, this has the general form
+\begin{equation}
+\rho^{\mu\nu} = \frac{d^{\mu\nu} }{2(1-\varepsilon)}
++ \mathcal{T}_\ell(\{p\};\varepsilon)\left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu} }{1-\varepsilon}\right) \,.
+\end{equation}
+We choose $d^{\mu\nu}$ to be the sum over physical polarisations transverse to both $p_1$ and $p_2$:
+\begin{equation}
+d^{\mu\nu} = -g^{\mu\nu} + \frac{p_1^\mu p_2^\nu + p_2^\mu p_1^\nu}{p_1 \cdot p_2}\,,
+\end{equation}
+The space-like vector $n_{\rm in}$ lies in the plane identified by the beam and the $Z$ boson, and satisfies $n_{\rm in}^2=-1$ and $n_{\rm in}\cdot p_1=n_{\rm in}\cdot p_2=0$. We obtain the following relations: 
+\begin{equation}
+  \begin{split}
+  &d^{\mu\nu}d_{\mu\nu}=-g^{\mu\nu}d_{\mu\nu}=2(1-\varepsilon)\,,\\ & d_{\mu\nu} \left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)=-g^{\mu\nu}\left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)=0\,,\\ &
+  \left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)\left(2 n_{{\rm in},\mu} n_{{\rm in },\nu} - \frac{d^{\mu\nu}}{1-\varepsilon}\right) = 2 \frac{1-2\varepsilon}{1-\varepsilon}\,.
+  \end{split}
+\end{equation}
+This implies
+\begin{equation}
+  \label{eq:PL}
+  \mathcal{T}_\ell(\{\tilde p\};\varepsilon) = \frac{1-\varepsilon}{2(1-2\varepsilon)} \left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right) \rho_{\mu\nu}\,.
+\end{equation}
+%
+%
+%
+%
+%For the $gq \to Zq$ channel, the polarization factors read
+%\begin{equation}
+%\begin{aligned}
+%\mathcal{P}_L &= \frac{2su}{s^2 + u^2 + 2M^2 t}\,,\\
+%\mathcal{P}_C &= \frac{g_V g_A}{g_V^2 + g_A^2}\frac{s^2 - u^2}{s^2 + u^2 + 2M^2 t}\,.
+%\end{aligned}
+%\end{equation}
+To determine the collinear splitting probability, we contract $\rho^{\mu\nu}$ with the unaveraged splitting functions
+\begin{equation}
+\left[\hat{P}_{ga}^{(1)}(z,\vec k_t;\varepsilon)\right]^{\mu\nu}
+= -g^{\mu\nu}\,\hat{P}_{ga}(z;\varepsilon)
++ \left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)
+2\hat G_{ga}(z;\varepsilon)\,, \qquad a = g,q\,,
+\end{equation}
+with $k_\perp\cdot k_\perp = -k_t^2$, and
+\begin{equation}
+  \label{eq:Grho}
+  d_{\mu\nu}\left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)=0\,.
+\end{equation}
+Here $\hat{P}_{ga}(z;\varepsilon)$ denote the azimuthally averaged splitting functions,
+\begin{equation}
+  \label{eq:Pga-averaged}
+  \hat{P}_{ga}(z;\varepsilon) =\hat{P}_{ga}(z;0)+\varepsilon \hat{P}_{ga}^{(\varepsilon)}(z)
+\end{equation}
+with
+\begin{equation}
+\begin{aligned}
+  \hat{P}_{gg}(z;0) &= 2C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right]\,,\qquad
+  \hat{P}_{gg}^{(\varepsilon)}(z)=0\,,\\
+\hat{P}_{gq}(z;0) &
+= {P}_{gq}(z) = C_F \frac{1 + (1-z)^2}{z}\,,\qquad\qquad\>\>\> \hat P^{(\varepsilon)}_{gq}(z)=-C_Fz\,.
+\end{aligned}
+\end{equation}
+and~\ABquestion{This needs to be upgraded with $\varepsilon$ terms} \ndp{We need to check this.}
+\begin{equation}
+\begin{aligned}
+\hat G_{gg}(z) &= -(1-\varepsilon)C_A \frac{1-z}{z}\,,\qquad
+\hat G_{gq}(z) &= C_F \frac{1-z}{z}\,,
+\end{aligned}
+\end{equation}
+Performing the contraction, using the fact $k_\perp \cdot n_{\rm in }=-k_t \cos\phi$ we obtain
+\begin{equation}
+\rho^{\mu\nu}\left[\hat{P}_{ga}(z,\vec k_t;\varepsilon)\right]_{\mu\nu}
+= \hat{P}_{ga}(z;\varepsilon)
++  \mathcal{T}_\ell(\{\tilde p\};\varepsilon)\,\hat G_{ga}(z;\varepsilon)\left[2(1-\varepsilon)\cos^2\phi - 1\right]\,,
+\qquad a = g,q\,.
+\end{equation}
+The above equation gives the probability for a splitting $a\to g
+a$. For $\hat{P}_{ga}(z;\varepsilon)$, we can repeat exactly the same
+analysis as in section~\ref{sec:quark-in}, and obtain identical
+expressions for $C_{\mathrm{hc},\ell}^{(1)}$,
+$\delta\mathcal{F}_{\rm hc}$ and $\delta\mathcal{F}_{\rm rec}$. The
+functions $\hat{G}_{ga}(z;\varepsilon)$ can be handled using the same
+strategy as in~\cite{Arpino:2019ozn}, and yields the NNLL contribution
+\ABquestion{This needs to refer to a general formula in section 3}
+\begin{equation}
+\begin{aligned}
+\label{eq:DFrec-ISR}
+  \Delta\mathcal{F}^{(\ell)}_{\mathrm{rec}}(\lambda) &=
+\int_0^\infty \frac{d\zeta}{\zeta}
+\int_0^\pi \frac{d\phi}{\pi}\left[2\cos^2\phi - 1\right]
+\int_0^1\!dz\,
+\Delta P_g(z)
+\\
+&\quad \times \int \dZ \left[
+\Theta\left(1 - \frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
+- \Theta(1-\zeta)\,
+\Theta\left(1 - \frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
+\right]\,,
+\end{aligned}
+\end{equation}
+with
+\begin{equation}
+\Delta P_g(z) =
+4\left(\frac{1-z}{z}\right)\frac{\Theta(z-x_\ell)}{z f_g(x_\ell,Q v^{1/(a+b_\ell)})}
+\left[C_A f_g\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right) + C_F f_q\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right)\right]\,.
+\end{equation}
+\ndp{Do we not need to find the $P_{L}$ pre-factors?}
+
+
+
+\section{\textsc{ARES} resummation coefficients}
+
+\begin{equation}
+\begin{aligned}
+H_{12} &= G_{12}\,,\\
+H_{11} &= G_{11}
++ \frac{4}{a}S_1
+- \sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,,\\
+H_{24}&=\frac{1}{2}G_{12}^2\,,\\
+H_{23}&=G_{23}+G_{12}\left(G_{11}+\frac{4}{a}S_1-\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\right)\,,\\
+H_{22}&=\frac{1}{2}G^2_{11}+C_1G_{12}+G_{22}+\frac{8\pi\beta_0}{a^2}S_1+\frac{16}{a^2}S_2+\frac{4}{a}S_1G_{11}
+\\&+\frac{16\mathcal{F}_2}{a^2}\left(\sum_\ell\frac{C_\ell}{a+b_\ell}\right)^2-\left(G_{11}+\frac{4}{a}S_1\right)\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\\
+&-\sum_{\ell=1}^{n_i}\frac{4\pi\beta_0}{(a+b_\ell)^2}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}+\sum_{\ell_1}^{n_i}\sum_{\ell_2<\ell_1}^{n_i}\left(\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_1)}\right]_i}{q^{(\ell_1)}}\right)\left(\frac{2}{a+b_\ell}
+\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_2)}\right]_i}{q^{(\ell_2)}}\right)\\
+&+\frac{1}{2}\sum_{\ell=1}^{n_i}\left(\frac{2}{a+b_\ell}\right)^2\frac{\left[\mathbf{P}\otimes\mathbf{P}\otimes\mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,.
+\end{aligned}
+\end{equation}
+The terms found within the radiator are
+\begin{equation}
+\begin{aligned}
+G_{12}&= -\frac{2}{a}\sum_{\ell}\frac{C_\ell}{a+b_\ell}\,,\\
+G_{12}&=-\sum_{\ell}C_\ell\left(\frac{4B_\ell}{a+b_\ell}+\frac{4}{a(a+b_\ell)}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\,,\\
+G_{23}&=-\frac{8\pi\beta_0}{3a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\,,\\
+G_{22}&=-\frac{8\pi\beta_0}{a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)-8\pi\beta_0\sum_\ell\frac{C_\ell B_\ell}{(a+b_\ell)^2}-\frac{2K^{(1)}}{a}\sum_\ell\frac{C_\ell}{a+b_\ell}
+\end{aligned}
+\end{equation}
+
 
