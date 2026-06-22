@@ -284,14 +284,6 @@ reorganised as follows
   \label{eq:log-counting}
   \Sigma(\tau) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
 \end{equation}
-The function $g_1(\alpha_s L)$ resums all leading logarithmic (LL)
-terms, $\alpha_s^n L^{n+1}$, in $\ln\Sigma$. For rIRC safe
-(see Sec.~\ref{sec:obs-req}) observables, $g_1$ exponentiates. The function $G_2(\alpha_s L)$
-resums next-to-leading logarithmic (NLL) contributions
-($\alpha_s^n L^n$) to $\ln\Sigma$, and so on. For example,
-in Chapter.~\ref{ch:hhZjet} we are working at NNLL accuracy,
- i.e.\ calculating $g_1$, $G_2$ and $G_3$.
-
 \ABquestion{ Is it better to use the previous question opposed to this one?
 \begin{equation}
 \label{eq:resummed-cumulant}
@@ -304,6 +296,14 @@ in Chapter.~\ref{ch:hhZjet} we are working at NNLL accuracy,
 	\right\}\,.
 \end{equation}
 }
+The function $g_1(\alpha_s L)$ resums all leading logarithmic (LL)
+terms, $\alpha_s^n L^{n+1}$, in $\ln\Sigma$. For rIRC safe
+(see Sec.~\ref{sec:obs-req}) observables, $g_1$ exponentiates. The function $G_2(\alpha_s L)$
+resums next-to-leading logarithmic (NLL) contributions
+($\alpha_s^n L^n$) to $\ln\Sigma$, and so on. For example,
+in Chapter.~\ref{ch:hhZjet} we are working at NNLL accuracy,
+ i.e.\ calculating $g_1$, $G_2$ and $G_3$.
+
 %Each function $g_i$ resums logarithms at a successive level of accuracy,
 %as summarised in Table~\ref{tab:log-accuracy}.
 %\begin{table}[h]
@@ -457,7 +457,9 @@ after recoil from the emission $k$, and $k_t^{(\ell)}$, $\eta^{(\ell)}$,
 $\phi^{(\ell)}$ denote the transverse momentum, rapidity, and azimuthal 
 angle of $k$ with respect to the emitting leg $p_\ell$ respectively. 
 The scale $Q$ is an arbitrary hard scale of the process, 
-serving as a reference normalisation for the transverse momenta. 
+serving as a reference normalisation for the transverse momenta
+\ABquestion{are we sure that it is the normalisation of transverse momentum,
+I think this could just be for the hadronic collision case}. 
 The parameters $a$,  $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ characterise the 
 observable in this limit and can be extracted for each leg, enabling the 
 construction of the resummation formula. IRC safety requires $a > 0$ and 
@@ -691,6 +693,7 @@ pieces,
 We treat each piece in turn.
 
 \subsubsection{Soft radiator}
+\label{subsubsec:Rs}
 
 The soft radiator is a sum over colour dipoles $(\ell\bar\ell)$ formed
 by pairs of hard legs,
@@ -724,6 +727,9 @@ transverse momentum with respect to the dipole,
 with $Q_{\ell\bar\ell}^2 = 2(p_\ell\cdot p_{\bar\ell})$. 
 
 In terms of these variables, the soft radiator is
+\ABquestion{I would like to say where all of this came from
+i.e.\ its origins but am unsure how to explain this briefly i.e.\ where all the 
+different heaviside functions comes from.}
 \begin{multline}
 \label{eq:Rll-dip}
   \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar \ell)}}{2\pi}\
@@ -761,19 +767,21 @@ Substituting into Eq.~\eqref{eq:Rll-dip} gives
  \mathcal{R}_{\ell\bar\ell}(v)\simeq
 R_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\langle \ln(d^{(\ell\bar \ell)}_\ell\,g_\ell)\rangle R'_{\ell\bar \ell}\left(v,Q_{\ell\bar \ell}\right)+\dots\,,
 \end{equation}
-where 
+where, for any function $f(\phi)$ of the azimuth:
+\begin{equation}
+  \label{eq:azimuthal-average}
+  \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,,
+\end{equation}
+and
 \begin{equation}
   \label{eq:Rll-final}
   R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa_{\ell\bar\ell}^2}{\kappa_{\ell\bar\ell}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int_0^\infty\!\! d\eta^{(\ell\bar\ell)}\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}}-\eta^{(\ell\bar\ell)}\right)\Theta\left(
       d_{\ell\bar \ell} \left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta^{(\ell\bar\ell)}}-v
     \right) \,,
 \end{equation}
-and its derivative is defined as $R'_{\ell\bar\ell}\equiv -v\, dR_{\ell\bar\ell}/dv$. 
-The azimuthal average is defined by
-\begin{equation}
-  \label{eq:azimuthal-average}
-  \langle f \rangle\equiv \int\frac{d\phi}{2\pi} f(\phi)\,.
-\end{equation}
+where $R'_{\ell\bar\ell}\equiv -v dR_{\ell\bar\ell}/dv$, $R''_{\ell\bar\ell}\equiv -v dR'_{\ell\bar\ell}/dv$.
+
+
 
 \subsubsection{Hard-collinear radiator}
 
@@ -824,8 +832,12 @@ where only $f_1$ and $f_2$ are required at NLL accuracy, while $f_3$
 enters only at NNLL. The coefficients $\beta_0$, $\beta_1$, and $\beta_2$
 are given in Eqs.~\eqref{eq:beta0}, \eqref{eq:beta1},
 and~\eqref{eq:beta2} respectively. 
-Defining $\lambda \equiv \alpha_s(Q)\beta_0 L$, where $L = \ln(1/v)$, 
-one finds at NLL
+The parameter $\lambda$ is defined as
+\begin{equation}
+\label{eq:lambda}
+\lambda \equiv \alpha_s(Q)\beta_0 L\,,
+\end{equation} 
+where $L = \ln(1/v)$. One finds at NLL
 \begin{subequations}
 \begin{align}
 	&R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})=-\frac{\lambda}{\alpha_s(Q)\beta_0}g_1^{(\ell)}(\lambda)-g_2^{(\ell)}(\lambda)-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})\,,\\
@@ -871,7 +883,8 @@ h_2^{(\ell)}(\lambda) &= -\frac{\gamma_\ell^{(0)}}{2\pi\beta_0}\ln\!\left(1-\tfr
 \end{subequations}
 
 
-The derivative of the NLL radiator is
+The derivative of the NLL radiator is \ABquestion{is there meant
+to be a $\simeq$ here?}
 \begin{equation}
 \label{eq:RpNLL}
     R'_{\mathrm{NLL}}(v) \equiv -v\frac{dR_{\mathrm{NLL}}}{dv}
@@ -932,7 +945,8 @@ Substituting Eq.~\eqref{eq:measure-replace} into Eq.~\eqref{eq:Fv-sc} gives
   \int_{\epsilon}^\infty\!\prod_{i=1}^n\left(\sum_{\ell_i}R_{\ell_i}'\left(\zeta_i v\right)\frac{d\zeta_i}{\zeta_i}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)
   \Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
-where the cutoff $\epsilon\ll 1$ ensures that emissions with $\zeta_i \ll \epsilon$ cancel between the real and virtual contributions, up to power corrections in $\epsilon$, \ndp{that vanish because of rIRC safety}. 
+where the cutoff $\epsilon\ll 1$ ensures that emissions with $\zeta_i \ll \epsilon$ cancel between the real and virtual contributions, up to power corrections in $\epsilon$, \ndp{that vanish because of rIRC safety}. \ABquestion{Should we be adding more about rIRC safety and
+why it allows for this?}
 Approximating $R'(\zeta v) \simeq R'(v)$, thereby neglecting subleading effects due to corrections of relative order $\alpha_s$, the exponent evaluates to $\epsilon^{R'}$,
 giving
 \begin{equation}
@@ -984,7 +998,8 @@ observables is
 \end{equation}
 
 \paragraph{Numerical implementation.} 
-\ABquestion{Is the following correct?} \\ \\
+\ABquestion{Is the following correct - I am essentially trying to explain
+the difference between CAESAR and ARES.} \\ \\
 The formula in Eq.~\eqref{eq:NLL-cumulant} applies to any continuously
 global rIRC safe observable. The observable-dependent inputs -- the
 parameters $a$, $b_\ell$, $d_\ell$, $g_\ell(\phi)$ and the function
@@ -1013,10 +1028,8 @@ discussed in detail in Sec.~\ref{subsec:additive}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{figures/chapter4/caesar_plot.pdf}
-\caption{Comparison of the analytical result for $\mathcal{F}_{\mathrm{NLL}}$ with the numerical result obtained from the \textsc{CAESAR} code for thrust. 
-\add{Reproduce ARES and CAESAR data.}
-}
+  \includegraphics[width=\textwidth]{figures/chapter4/fnll_vs_R.pdf}
+\caption{Comparison of the analytical result for $\mathcal{F}_{\mathrm{NLL}}$ with the numerical result obtained from the \textsc{CAESAR} code for thrust.}
   \label{fig:FNLL-CAESAR-comp}
 \end{figure}
 
