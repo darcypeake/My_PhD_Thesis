@@ -202,7 +202,9 @@ to the previous section.}
   the case of initial-state radiation, to the collinear counterterm
   needed to renormalise the parton distribution functions. This gives
   the coefficient $C_{\mathrm{hc},\ell}^{(1)}$, a NNLL
-  contribution. \add{Note that this will different in ISR/FSR i.e.\
+  contribution. \add{Note that for an initial-state splitting, 
+  the coefficient $C_{\mathrm{hc},\ell}^{(1)}$ is a new result of this work.}
+   \add{Note that this will different in ISR/FSR i.e.\
   it is not exactly the same as the $\ee$ case.}
   
   \item All other resolved emissions and their
@@ -238,7 +240,11 @@ $\delta\mathcal{F}_{\rm NNLL}(\lambda)$.
   expressions are identical for initial- and final-state radiation. It
   is only their ingredients that are different. In particular, for
   initial-state radiation, these functions involve convolutions of
-  splitting functions with PDFs.
+  splitting functions with PDFs. 
+  In the following sections, we will provide a description for the
+considered functions and present the expressions for each observable
+explicitly. \todo{change this to indicate where we calculate the new terms
+and where we will show the old terms i.e.\ through one-jettiness.}
 
   \end{itemize}
   
@@ -453,151 +459,9 @@ for the \textsc{ARES} method.}
 %  as a jacobian factor for each emission and for each emitting leg.
 %  
 
-%\item A single unresolved hard collinear splitting of leg
-%  $\ell$ combines with the corresponding virtual corrections and, in
-%  the case of initial-state radiation, to the collinear counterterm
-%  needed to renormalise the parton distribution functions. This gives
-%  the coefficient $C_{\mathrm{hc},\ell}^{(1)}$, a NNLL
-%  contribution.
-%
-%  For a final-state splitting, the explicit expression
-%  of $C_{\mathrm{hc},3}^{(1)}$ depends on the flavour of leg 3, and
-%  can be obtained from~\cite{Arpino:2019ozn}. For a quark or an
-%  antiquark
-%  \begin{equation}
-%    \label{eq:C1hc-q}
-%    C_{\mathrm{hc},3}^{(1)}=C_F\left(\frac{7}{2}\frac{b_3}{a+b_3}+\frac{3}{a+b_3}\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac 12\right)\,,
-%  \end{equation}
-%  while for a gluon
-%  \begin{equation}
-%    \label{eq:C1hc-q}
-%    \begin{split}
-%    C_{\mathrm{hc},3}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_3}{a+b_3}\\ & +\frac{1}{a+b_3}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac{1}{3}T_R n_f\,.
-%    \end{split}
-%  \end{equation}
-%
-%  For an initial-state splitting, the coefficient $C_{\mathrm{hc},\ell}^{(1)}$ is a new result of this work, and is given by
-%  \begin{equation}
-%    \label{eq:Cell-ISR}
-%    C_{\mathrm{hc},\ell}^{(1)} = \sum_j  \int_{x_\ell}^1\frac{dz}{z}\,C_{ij}^{(1)}(z) \frac{f_j(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_i(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\,,
-%  \end{equation}
-%  where $i$ is the flavour of leg $\ell$. The coefficients $C_{ij}^{(1)}(z)$ are given in terms of the splitting functions in $4-2\varepsilon$ dimensions
-%  \begin{equation}
-%    \label{eq:Pij-general}
-%    \hat P_{ij}(z;\varepsilon)= \hat P_{ij}(z;0)+\varepsilon P_{ij}^{(\varepsilon)}(z)\,,
-%  \end{equation}
-%  and have the following expression
-%  \begin{multline}
-%    \label{eq:Cij-ISR}
-%    C_{ij}^{(1)}(z) = -\hat P_{ij}^{(\varepsilon)}(z) \\ +\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
-%      \left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\right)(1-z)\hat P_{ij}(z;0)\,.
-%  \end{multline}
-%  We give a complete derivation of this result in
-%  sec.~\ref{sec:quark-in}. The explicit expressions of the splitting
-%  functions are
-%  \begin{subequations}
-%  	\begin{align}
-%	& \hat P_{qq}(z;\varepsilon)=C_F \frac{1+z^2}{1-z}-\varepsilon\,C_F (1-z)\,,\\
-%	& \hat P_{qg}(z;\varepsilon)=T_R \left[z^2+(1-z)^2\right]-\varepsilon\,T_R\left[2z(1-z)\right]\,, \\
-%	& \hat P_{gq}(z;\varepsilon) =C_F \frac{1 + (1-z)^2}{z} - \varepsilon\,C_Fz \,, \\
-%	& \hat P_{gg}(z;\varepsilon) =2C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right]\,.
-%	\end{align}
-%  \end{subequations}
 
-%\item All other resolved emissions and their
-%associated virtual corrections build up the NNLL function
-%$\delta\mathcal{F}_{\rm NNLL}(\lambda)$.
-% More precisely, these consist of a single soft 
-% and/or collinear ``special'' emission,
-% accompanied by an arbitrary number of soft and collinear emissions
-% widely separated in angle (and the corresponding virtual corrections).
-%
-%  The function $\delta\mathcal{F}_{\rm NNLL}(\lambda)$
-%  is the sum of various terms, which reflect the region of phase space
-%  spanned by the special emission, namely:
-%  \begin{equation}
-%    \label{eq:dFNNLL}
-%    \delta\mathcal{F}_{\rm NNLL} = \delta\mathcal{F}_{\rm sc}+\delta\mathcal{F}_{\rm hc}+\delta\mathcal{F}_{\rm rec}+\Delta\mathcal{F}_{\rm rec}+\delta\mathcal{F}_{\rm wa}+\Delta\mathcal{F}_{\rm wa}+\delta\mathcal{F}_{\rm correl}\,.
-%  \end{equation}
-%  The meaning of the various contributions will become clear when
-%  computing them explicitly. All of them can be
-%  expressed in terms of integrals over the soft-colliner measure $\dZ$
-%  of the appropriate weight function $G(\{k_i\})$, see
-%  eq.~(\ref{eq:dZ-def}). 
-%  
-%  The contributions:
-%  $ \delta\mathcal{F}_{\rm sc}, \delta\mathcal{F}_{\rm wa},
-%  \Delta\mathcal{F}_{\rm wa}$, and $\delta\mathcal{F}_{\rm correl}$
-%  are all of soft origin. These means that both the initial- and
-%  final-state contributions are the same as those found in
-%  Ref.~\cite{Arpino:2019ozn}.  This is not the case for the
-%  corrections arising from the hard-collinear region, namely:
-%  $\delta\mathcal{F}_{\rm hc}, \delta\mathcal{F}_{\rm rec},$ and
-%  $\Delta\mathcal{F}_{\rm rec}$. Surprisingly, their formal
-%  expressions are identical for initial- and final-state radiation. It
-%  is only their ingredients that are different. In particular, for
-%  initial-state radiation, these functions involve convolutions of
-%  splitting functions with PDFs.
-%  
-%  The hard-collinear correction, $\delta \mathcal{F}_{\rm hc}$ takes the  form
-% \begin{multline}
-%   \label{eq:dFhc-ISR}
-%   \delta\mathcal{F}_{\rm hc}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
-% \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
-% \end{multline}
-% For final-state radiation, $B_\ell=\gamma_\ell^{(0)}$,
-% where 
-% \begin{equation}
-%  \label{eq:gammal-flav}
-%  \gamma_\ell^{(0)} = \left\{
-%    \begin{split}
-%      & \frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
-%      & 2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
-%    \end{split}
-%    \right.
-%\end{equation}
-% For initial-state radiation, $B_\ell$ is given by
-% \begin{equation}
-%   \label{eq:Bell-ISR}
-%B_\ell=\sum_j\int_x^1 \frac{dz}{z} \left(P_{ij}(z)+\gamma_\ell^{(0)}\delta_{ij}\right) \frac{f_j(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}  \,,
-% \end{equation}
-% where $P_{ij}(z)$ are the full Altarelli-Parisi splitting functions,
-% \begin{subequations}
-%\begin{align}
-%	&P_{qq}(z)=C_F\left[\frac{1+z^2}{1-z}\right]_+\,,\\
-%	&P_{qg}(z)=T_R\left[z^2+(1-z)^2\right]\,,\\
-%	&P_{gq}(z)=C_F\left[\frac{1+(1-z)^2}{z}\right]\,,\\
-%	&P_{gg}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+2\pi\beta_0\delta(1-z)\,.
-%\end{align}
-% \end{subequations}
-% 
-%The recoil correction, $\delta\mathcal{F}_{\rm rec}$, takes the form,
-% \begin{multline}
-%   \label{eq:dFrec-ISR}
-%   \delta\mathcal{F}_{\rm rec}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz P_\ell(z) \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
-% \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,.
-%\end{multline}
-%For a final-state leg, 
-%\begin{equation}
-%  \label{eq:Pell-FSR}
-%  P_\ell(z)=\left\{
-%    \begin{split}
-%      &C_F \frac{1+z^2}{1-z}\,,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\text{if $\ell$ is a quark,}\\
-%      &C_A\left(\frac{2z}{1-z}+z(1-z)\right)+T_R\left[z^2+(1-z)^2\right]\,,\qquad\text{if $\ell$ is a gluon}\,.
-%    \end{split}
-%  \right.
-%\end{equation}
-%For an initial-state leg,
-%\begin{equation}
-%  \label{eq:Pell-ISR}
-%  P_\ell(z)=\sum_j \hat P_{ij}(z;0) \frac{f_j(x_\ell/z,Qv^{1/(a+b_\ell)})}{z f_i(x_\ell,Qv^{1/(a+b_\ell)})} \Theta(z-x_\ell)\,,
-%\end{equation}
-%where $ \hat P_{ij}(z;0)$ are defined in Eq.~\eqref{eq:Pij-general}.
-%\end{itemize}
 
-%In the following sections, we will provide a description for the
-%considered functions and present the expressions for each observable
-%explicitly. 
+
 
 
 
@@ -615,13 +479,17 @@ production~\cite{vanBeekveld:2025zjh}.
 %which results in all cases in the existence of all-order factorisation
 %theorems in soft-collinear effective theory.
 
-We restrict ourselves to event-shape variables and, as is customary in
+We restrict ourselves to event-shape variables \add{give
+some insight here or later into what we would need to account for if
+we had other jet observables e.g.\ we would maybe have an ISR 
+term of $\delta\mathcal{F}_{\mathrm{clust}}$ for jet rates?} and, as is customary in
 the ARES approach, we identify the relevant emissions that give rise
 to a specific NNLL contribution. In this case, this is one hard and
 collinear emission $k$, accompanied by an arbitrary number of soft and
 collinear emissions $k_1,\dots,k_n$. Emission $k$ carries a fraction
 $z^{(\ell)}=(1-z)/z$ of the momentum $p_\ell$ entering the hard
-scattering, more precisely
+scattering, more precisely \question{I am unsure if this is shown
+in the diagram?}
 \begin{equation}
   \label{eq:k||l}
   k = \frac{1-z}{z} p_\ell + k_t^{(\ell)}+ \mathcal{O}\left(\left(k_t^{(\ell)}\right)^2\right)\,.
@@ -632,6 +500,7 @@ In order to extend ARES to initial-state radiation, we follow the same principle
   corrections, accompanied by an arbitrary
   number of soft and collinear emissions $\{k_i\}$;
 \item we subtract the double counting occurring when $k$ is also soft.
+\todo{Need to explain this.}
 \end{itemize}
 The procedure will involve contributions that are not separately
 finite in four dimensions. We use dimensional regularisation to make
@@ -644,10 +513,12 @@ colour charge of harder emissions at smaller angles. It has been
 recently found that there additional coherence violating
 logarithmically enhanced corrections to this
 picture~\cite{Banfi:2025mra,Becher:2026kbr}. These corrections start at order $\alpha_s^4$, and require a dedicated
-treatment that is beyond the scope of this paper.
+treatment that is beyond the scope of this thesis.
 
 We need to distinguish two cases, according to whether the parton
 entering the hard scattering is a quark or a gluon.
+
+\ABquestion{Unsure if we need sections for this.}
 
 \subsection{Quark entering the hard scattering}
 \label{sec:quark-in}
@@ -732,12 +603,12 @@ Contributions arise from both the $q \to qg$ splitting (left), along with $g \to
 \end{figure}
 
 We first discuss the splitting $q\to qg$ in detail, and generalise the result to the splitting $g\to q\bar q$.
-%\paragraph{Splitting $\mathbf{q\to qg}$.}
 We then consider an
 incoming quark carrying a fraction $x/z$ of the proton momentum, which
 emits a collinear gluon carrying a fraction $1-z$ of its emitter's
 momentum. After the emission, the quark enters the hard scattering
-with a fraction $x$ of the proton momentum. The contribution of this emission to $\Sigma(\{\tilde p\},v)$ gives
+with a fraction $x$ of the proton momentum. \question{again unsure
+if this is consistent with before?} The contribution of this emission to $\Sigma_{ij}(\{\tilde p\},v)$ gives
 a function that we call $\mathcal{F}_{qq}$. This function will
 be reorganised to give various NNLL functions. Our starting point is
 \begin{equation}
@@ -789,7 +660,7 @@ eq.~(\ref{eq:Sigma-NNLL}):
   \label{eq:FISR-split}
   \mathcal{F}_{qq} = \frac{\alpha_s(Q)}{\pi}\left( \delta \mathcal{F}_{\rm rec,qq}+\delta\mathcal{F}_{\rm hc,qq}\right)+ \frac{\alpha_s(Q v^{1/(a+b_\ell)})}{2\pi} C^{(1)}_{\rm hc,qq} \mathcal{F}_{\rm NLL}\,.
 \end{equation}
-The constant terms $C^{(1)}_{\rm hc,qq}$ plays the same role as an integrated counterterm in fixed-order calculations, whereas the sum $\delta \mathcal{F}_{\rm rec,qq}+\delta\mathcal{F}_{\rm hc,qq}$ represents the subtracted contribution of real radiation. We now proceed to the detailed derivation of eq.~\eqref{eq:FISR-split}. \ABquestion{Where do we comment about the Lund-plane paper?}
+The constant terms $C^{(1)}_{\rm hc,qq}$ plays the same role as an integrated counterterm in fixed-order calculations, whereas the sum $\delta \mathcal{F}_{\rm rec,qq}+\delta\mathcal{F}_{\rm hc,qq}$ represents the subtracted contribution of real radiation. We now proceed to the detailed derivation of eq.~\eqref{eq:FISR-split}. 
 
 First, we calculate $C^{(1)}_{\mathrm{hc, qq}}$. This quantity is obtained by adding $\mathrm{CT}$ to the last two lines of eq.~\eqref{eq:FISR-start}. This gives:
 \begin{equation}
@@ -800,8 +671,9 @@ First, we calculate $C^{(1)}_{\mathrm{hc, qq}}$. This quantity is obtained by ad
 \end{aligned}
 \end{equation}
 By comparing the first term on the right-hand-side of the above
-equation tp ~(\ref{eq:FNLL-formula}), we recognise $\FNLL(\lambda)$. Using the parametrisation of
+equation to ~(\ref{eq:FNLL-formula}), we recognise $\FNLL(\lambda)$. Using the parametrisation of
 $V_{\mathrm{sc}}(\{\tilde{p}\},k)$ in terms of the splitting variables
+\add{Maybe explain a bit more thoroughly how we get this.}
 \begin{equation}
 \label{eq:Vsc-param}
 V_{\mathrm{sc}}(\{\tilde{p}\},k)=d_\ell g_\ell(\phi) \left(\frac{Q}{2 E_\ell}\right)^{b_\ell}\left(\frac{k_t}{Q}\right)^{a+b_\ell}\frac{1}{(1-z)^{b_\ell}}\,,
@@ -840,17 +712,14 @@ In analogy with the extraction of $C^{(1)}_{\mathrm{hc},qq}$, this term is obtai
 &\times \left\{\left[\int_{x_\ell}^1 \frac{dz}{z}
 \hat P_{qq}(z;\epsilon)
 \Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
-\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}
-%\right. \\
-%&\left.
+\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}+\right.\right. \\
+&\left.
   - \int_0^1 dz \frac{2C_\ell}{1-z}
-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] \right. \\
-&\left.-\left[\int_{x_\ell}^1\frac{dz}{z} \hat P_{qq}(z;\epsilon)
+\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] + \\
+&-\left[\int_{x_\ell}^1\frac{dz}{z} \hat P_{qq}(z;\epsilon)
 \frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}
--\int_0^1dz\frac{2 C_\ell}{1-z}\right]
-%\times \\
-%&\times\left.
-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)
+-\int_0^1dz\frac{2 C_\ell}{1-z}\right] \times\\
+&\times \left.\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)
 \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
 \right\}\,.
 \end{aligned}
@@ -867,8 +736,8 @@ Using this substitution and taking the limit $\varepsilon \to 0$, Eq.~\eqref{eq:
     \label{eq:dFrec+dFhq}
 \frac{\alpha_s(Q)}{\pi}&\left(\delta \mathcal{F}_{\mathrm{rec,qq}}+\delta \mathcal{F}_{\mathrm{hc,qq}}\right)=\int \dZ \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\pi\left(a+b_\ell\right)}\left\{\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\times\right. \\
 &\times \left(\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qq}(z;0)\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}
-\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]
-\right. \\
+\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)+\right.\right.\\
+&\left.-\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right] +\\
 &\left.\left.-\int_0^1 dz \frac{2C_\ell}{1-z}\left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\right)\right\}\,.
 \end{aligned}
 \end{equation}
@@ -884,17 +753,21 @@ eq.~\eqref{eq:dFrec+dFhq} as a whole. A further simplication can be achieved by 
  \times\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\,.
 \end{multline}
 This gives two contributions, namely $\delta \mathcal{F}_{\mathrm{rec,qq}}$ and $\delta \mathcal{F}_{\mathrm{hc,qq}}$:
-\begin{multline}
+\begin{equation}
 \label{eq:dFrec-qq}
-\delta \mathcal{F}_{\mathrm{rec,qq}} = \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi} \int \dZ\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qq}(z;0)\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}\times \\
+\begin{aligned}
+\delta \mathcal{F}_{\mathrm{rec,qq}} = \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}&\int_0^{2\pi}\frac{d\phi}{2\pi} \int \dZ\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qq}(z;0)\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \\
 \times  
-\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
-\end{multline}
-\begin{multline}
+&\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
+\end{aligned}
+\end{equation}
+\begin{equation}
 \label{eq:dFhc-qq}
-\delta \mathcal{F}_{\mathrm{hc,qq}} = \frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left(\int_{x_\ell}^1 \frac{dz}{z}\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \left(P_{qq}(z)+\gamma^{(0)}_\ell\delta(1-z)\right)\right)\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\times \\
-\times \int \dZ   \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
-\end{multline}
+\begin{aligned}
+\delta \mathcal{F}_{\mathrm{hc,qq}} &= \frac{\alpha_s\left(v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left(\int_{x_\ell}^1 \frac{dz}{z}\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \left(P_{qq}(z)+\gamma^{(0)}_\ell\delta(1-z)\right)\right)\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\times \\
+&\times \int \dZ   \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
+\end{aligned}
+\end{equation}
 \ABquestion{I don't think we do for $\delta\mathcal{F}_{\rm rec}$??}
 We note again that we recover the final-state result by performing the substitution in eq.~\eqref{eq:C-recovery}.
 
@@ -907,12 +780,14 @@ C^{(1)}_{\mathrm{hc}, qg}=  \int_{x_\ell}^1\frac{dz}{z}\,\frac{f_g(x_\ell/z,Qv^{
 \left[\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
         \left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\right)(1-z)\hat P_{qg}(z;0)-P_{qg}^{(\varepsilon)}(z)\right]\,.
   \end{multline}
-\begin{multline}
+\begin{equation}
 \label{eq:dFrec-qg}
-\delta \mathcal{F}_{\mathrm{rec},qg} = \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta} \int_0^{2\pi}\frac{d\phi}{2\pi}\int \dZ\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qg}(z;0)\,\frac{f_g(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}\times \\
-\times  
+\begin{aligned}
+\delta \mathcal{F}_{\mathrm{rec},qg} = \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta} &\int_0^{2\pi}\frac{d\phi}{2\pi}\int \dZ\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qg}(z;0)\,\frac{f_g(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \\
+&\times  
 \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
-\end{multline}
+\end{aligned}
+\end{equation}
 \begin{multline}
 \label{eq:dFhc-qg}
 \delta \mathcal{F}_{\mathrm{hc},qg} = \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left(\int_{x_\ell}^1 \frac{dz}{z}\frac{f_g(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} P_{qg}(z)\right)\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\times \\
@@ -925,11 +800,6 @@ Where we have introduced the splitting functions
  \hat P_{qg}(z;0)= P_{qg}(z) = T_R \left[z^2+(1-z)^2\right]\,,
    \hat P_{qg}^{(\varepsilon)}(z) = -2T_R z(1-z)\,.
  \end{equation}
-We notice that $C^{(1)}_{\mathrm{hc}, qg}$ can be written in the general form provided in eq.~\eqref{eq:Cell-ISR}, which is formally identical to that for final-state radiation, just with different ingredients.  In this case $i$ is a quark or antiquark with a given electroweak charge, and $j=i,g$.
-
-Similarly, we find that both $\delta \mathcal{F}_{\rm hc}$ and $\delta\mathcal{F}_{\rm rec}$ 
-can be written in the general form as shown by Eq.~\eqref{eq:dFhc-ISR} and Eq.~\eqref{eq:dFrec-ISR}
-respectively.
  
 \subsection{Gluon entering the hard scattering}
 \label{sec:gluon-in}
@@ -1014,6 +884,117 @@ The hard scattering is denoted by $\mathcal{H}_{gq}$, where the subscripts indic
 \label{fig:g-incoming}
 \end{figure}
 
+\add{This follows in the same way to the $q\bar q$ channel etc.}
+\todo{Write out these formula also.}
+\add{Note that the gluon channel has spin correlation
+effects. These are not present for one-jettiness -- need to say
+why but am unsure -- but are presented in Appendix.~\ref{app:spin-correl}.}
+
+\add{We can write these in a general form.}
+We notice that $C^{(1)}_{\mathrm{hc}, qg}$ can be written in the general form,
+  \begin{equation}
+    \label{eq:Cell-ISR}
+    C_{\mathrm{hc},\ell}^{(1)} = \sum_j  \int_{x_\ell}^1\frac{dz}{z}\,C_{ij}^{(1)}(z) \frac{f_j(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_i(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\,,
+  \end{equation}
+  where $i$ is the flavour of leg $\ell$. The coefficients $C_{ij}^{(1)}(z)$ are given in terms of the splitting functions in $4-2\varepsilon$ dimensions
+  \begin{equation}
+    \label{eq:Pij-general}
+    \hat P_{ij}(z;\varepsilon)= \hat P_{ij}(z;0)+\varepsilon P_{ij}^{(\varepsilon)}(z)\,,
+  \end{equation}
+  and have the following expression
+  \begin{multline}
+    \label{eq:Cij-ISR}
+    C_{ij}^{(1)}(z) = -\hat P_{ij}^{(\varepsilon)}(z) \\ +\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
+      \left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\right)(1-z)\hat P_{ij}(z;0)\,.
+  \end{multline}
+  The explicit expressions of the splitting
+  functions are
+  \begin{subequations}
+  	\begin{align}
+	& \hat P_{qq}(z;\varepsilon)=C_F \frac{1+z^2}{1-z}-\varepsilon\,C_F (1-z)\,,\\
+	& \hat P_{qg}(z;\varepsilon)=T_R \left[z^2+(1-z)^2\right]-\varepsilon\,T_R\left[2z(1-z)\right]\,, \\
+	& \hat P_{gq}(z;\varepsilon) =C_F \frac{1 + (1-z)^2}{z} - \varepsilon\,C_Fz \,, \\
+	& \hat P_{gg}(z;\varepsilon) =2C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right]\,.
+	\end{align}
+  \end{subequations}
+  For a final-state splitting, the explicit expression
+  of $C_{\mathrm{hc},3}^{(1)}$ depends on the flavour of leg 3, and
+  can be obtained from~\cite{Arpino:2019ozn}. For a quark or an
+  antiquark
+  \begin{equation}
+    \label{eq:C1hc-q}
+    C_{\mathrm{hc},3}^{(1)}=C_F\left(\frac{7}{2}\frac{b_3}{a+b_3}+\frac{3}{a+b_3}\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac 12\right)\,,
+  \end{equation}
+  while for a gluon
+  \begin{equation}
+    \label{eq:C1hc-q}
+    \begin{split}
+    C_{\mathrm{hc},3}^{(1)}& =\left(\frac{67}{18}C_A-\frac{13}{9}T_R n_f\right)\frac{b_3}{a+b_3}\\ & +\frac{1}{a+b_3}\left(\frac{11}{3}C_A-\frac{4}{3}T_R n_f\right)\left(\ln\langle d_3 g_3\rangle-b_3\ln\frac{2E_3}{Q}\right)+\frac{1}{3}T_R n_f\,.
+    \end{split}
+  \end{equation}
+
+
+% which is formally identical to that for final-state radiation, just with different ingredients.  In this case $i$ is a quark or antiquark with a given electroweak charge, and $j=i,g$.
+
+Similarly, we find that $\delta \mathcal{F}_{\rm hc}$ can be written generally as
+ \begin{multline}
+   \label{eq:dFhc-ISR}
+   \delta\mathcal{F}_{\rm hc}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
+ \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
+ \end{multline}
+ For initial-state radiation, $B_\ell$ is given by
+ \begin{equation}
+   \label{eq:Bell-ISR}
+B_\ell=\sum_j\int_x^1 \frac{dz}{z} \left(P_{ij}(z)+\gamma_\ell^{(0)}\delta_{ij}\right) \frac{f_j(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}  \,,
+ \end{equation}
+ where $P_{ij}(z)$ are the full Altarelli-Parisi splitting functions,
+ \begin{subequations}
+\begin{align}
+	&P_{qq}(z)=C_F\left[\frac{1+z^2}{1-z}\right]_+\,,\\
+	&P_{qg}(z)=T_R\left[z^2+(1-z)^2\right]\,,\\
+	&P_{gq}(z)=C_F\left[\frac{1+(1-z)^2}{z}\right]\,,\\
+	&P_{gg}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+2\pi\beta_0\delta(1-z)\,.
+\end{align}
+ \end{subequations}
+  For final-state radiation, $B_\ell=\gamma_\ell^{(0)}$,
+ where 
+ \begin{equation}
+  \label{eq:gammal-flav}
+  \gamma_\ell^{(0)} = \left\{
+    \begin{split}
+      & \frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
+      & 2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
+    \end{split}
+    \right.
+\end{equation}
+
+The recoil correction, $\delta\mathcal{F}_{\rm rec}$ can be written in the general form,
+ \begin{multline}
+   \label{eq:dFrec-ISR}
+   \delta\mathcal{F}_{\rm rec}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz P_\ell(z) \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
+ \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,.
+\end{multline}
+For an initial-state leg,
+\begin{equation}
+  \label{eq:Pell-ISR}
+  P_\ell(z)=\sum_j \hat P_{ij}(z;0) \frac{f_j(x_\ell/z,Qv^{1/(a+b_\ell)})}{z f_i(x_\ell,Qv^{1/(a+b_\ell)})} \Theta(z-x_\ell)\,,
+\end{equation}
+where $ \hat P_{ij}(z;0)$ are defined in Eq.~\eqref{eq:Pij-general}.
+For a final-state leg, 
+\add{need to indicate how we get this -- I still don't understand
+the reason why we have this.}
+\begin{equation}
+  \label{eq:Pell-FSR}
+  P_\ell(z)=\left\{
+    \begin{split}
+      &C_F \frac{1+z^2}{1-z}\,,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\text{if $\ell$ is a quark,}\\
+      &C_A\left(\frac{2z}{1-z}+z(1-z)\right)+T_R\left[z^2+(1-z)^2\right]\,,\qquad\text{if $\ell$ is a gluon}\,.
+    \end{split}
+  \right.
+\end{equation}
+
+
+
 
 
 %We will now discuss each of the contributions making up the ISR component of the $q\bar{q}\to Z+g$ channel for each observable.
@@ -1060,110 +1041,6 @@ The hard scattering is denoted by $\mathcal{H}_{gq}$, where the subscripts indic
 %\frac{\alpha_s\left(Q v\right)}{2\alpha_s(Q)}\int_0^1 dz\, P^{\mathrm{hc}}_q(z)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}+\gamma_E\right)\right)\,.
 %\end{equation}
 
-
-In order to compute hard-collinear NNLL corrections, we need to take into account spin correlations. The starting point is the spin-density matrix for the hard process, in $4-2\varepsilon$ dimensions. Neglecting terms that are antisymmetric in the indexes $\mu,\nu$, this has the general form
-\begin{equation}
-\rho^{\mu\nu} = \frac{d^{\mu\nu} }{2(1-\varepsilon)}
-+ \mathcal{T}_\ell(\{p\};\varepsilon)\left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu} }{1-\varepsilon}\right) \,.
-\end{equation}
-We choose $d^{\mu\nu}$ to be the sum over physical polarisations transverse to both $p_1$ and $p_2$:
-\begin{equation}
-d^{\mu\nu} = -g^{\mu\nu} + \frac{p_1^\mu p_2^\nu + p_2^\mu p_1^\nu}{p_1 \cdot p_2}\,,
-\end{equation}
-The space-like vector $n_{\rm in}$ lies in the plane identified by the beam and the $Z$ boson, and satisfies $n_{\rm in}^2=-1$ and $n_{\rm in}\cdot p_1=n_{\rm in}\cdot p_2=0$. We obtain the following relations: 
-\begin{equation}
-  \begin{split}
-  &d^{\mu\nu}d_{\mu\nu}=-g^{\mu\nu}d_{\mu\nu}=2(1-\varepsilon)\,,\\ & d_{\mu\nu} \left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)=-g^{\mu\nu}\left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)=0\,,\\ &
-  \left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)\left(2 n_{{\rm in},\mu} n_{{\rm in },\nu} - \frac{d^{\mu\nu}}{1-\varepsilon}\right) = 2 \frac{1-2\varepsilon}{1-\varepsilon}\,.
-  \end{split}
-\end{equation}
-This implies
-\begin{equation}
-  \label{eq:PL}
-  \mathcal{T}_\ell(\{\tilde p\};\varepsilon) = \frac{1-\varepsilon}{2(1-2\varepsilon)} \left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right) \rho_{\mu\nu}\,.
-\end{equation}
-%
-%
-%
-%
-%For the $gq \to Zq$ channel, the polarization factors read
-%\begin{equation}
-%\begin{aligned}
-%\mathcal{P}_L &= \frac{2su}{s^2 + u^2 + 2M^2 t}\,,\\
-%\mathcal{P}_C &= \frac{g_V g_A}{g_V^2 + g_A^2}\frac{s^2 - u^2}{s^2 + u^2 + 2M^2 t}\,.
-%\end{aligned}
-%\end{equation}
-To determine the collinear splitting probability, we contract $\rho^{\mu\nu}$ with the unaveraged splitting functions
-\begin{equation}
-\left[\hat{P}_{ga}^{(1)}(z,\vec k_t;\varepsilon)\right]^{\mu\nu}
-= -g^{\mu\nu}\,\hat{P}_{ga}(z;\varepsilon)
-+ \left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)
-2\hat G_{ga}(z;\varepsilon)\,, \qquad a = g,q\,,
-\end{equation}
-with $k_\perp\cdot k_\perp = -k_t^2$, and
-\begin{equation}
-  \label{eq:Grho}
-  d_{\mu\nu}\left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)=0\,.
-\end{equation}
-Here $\hat{P}_{ga}(z;\varepsilon)$ denote the azimuthally averaged splitting functions,
-\begin{equation}
-  \label{eq:Pga-averaged}
-  \hat{P}_{ga}(z;\varepsilon) =\hat{P}_{ga}(z;0)+\varepsilon \hat{P}_{ga}^{(\varepsilon)}(z)
-\end{equation}
-with
-\begin{equation}
-\begin{aligned}
-  \hat{P}_{gg}(z;0) &= 2C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right]\,,\qquad
-  \hat{P}_{gg}^{(\varepsilon)}(z)=0\,,\\
-\hat{P}_{gq}(z;0) &
-= {P}_{gq}(z) = C_F \frac{1 + (1-z)^2}{z}\,,\qquad\qquad\>\>\> \hat P^{(\varepsilon)}_{gq}(z)=-C_Fz\,.
-\end{aligned}
-\end{equation}
-and~\ABquestion{This needs to be upgraded with $\varepsilon$ terms} \ndp{We need to check this.}
-\begin{equation}
-\begin{aligned}
-\hat G_{gg}(z) &= -(1-\varepsilon)C_A \frac{1-z}{z}\,,\qquad
-\hat G_{gq}(z) &= C_F \frac{1-z}{z}\,,
-\end{aligned}
-\end{equation}
-Performing the contraction, using the fact $k_\perp \cdot n_{\rm in }=-k_t \cos\phi$ we obtain
-\begin{equation}
-\rho^{\mu\nu}\left[\hat{P}_{ga}(z,\vec k_t;\varepsilon)\right]_{\mu\nu}
-= \hat{P}_{ga}(z;\varepsilon)
-+  \mathcal{T}_\ell(\{\tilde p\};\varepsilon)\,\hat G_{ga}(z;\varepsilon)\left[2(1-\varepsilon)\cos^2\phi - 1\right]\,,
-\qquad a = g,q\,.
-\end{equation}
-The above equation gives the probability for a splitting $a\to g
-a$. For $\hat{P}_{ga}(z;\varepsilon)$, we can repeat exactly the same
-analysis as in section~\ref{sec:quark-in}, and obtain identical
-expressions for $C_{\mathrm{hc},\ell}^{(1)}$,
-$\delta\mathcal{F}_{\rm hc}$ and $\delta\mathcal{F}_{\rm rec}$. The
-functions $\hat{G}_{ga}(z;\varepsilon)$ can be handled using the same
-strategy as in~\cite{Arpino:2019ozn}, and yields the NNLL contribution
-\ABquestion{This needs to refer to a general formula in section 3}
-\begin{equation}
-\begin{aligned}
-\label{eq:DFrec-ISR}
-  \Delta\mathcal{F}^{(\ell)}_{\mathrm{rec}}(\lambda) &=
-\int_0^\infty \frac{d\zeta}{\zeta}
-\int_0^\pi \frac{d\phi}{\pi}\left[2\cos^2\phi - 1\right]
-\int_0^1\!dz\,
-\Delta P_g(z)
-\\
-&\quad \times \int \dZ \left[
-\Theta\left(1 - \frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
-- \Theta(1-\zeta)\,
-\Theta\left(1 - \frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
-\right]\,,
-\end{aligned}
-\end{equation}
-with
-\begin{equation}
-\Delta P_g(z) =
-4\left(\frac{1-z}{z}\right)\frac{\Theta(z-x_\ell)}{z f_g(x_\ell,Q v^{1/(a+b_\ell)})}
-\left[C_A f_g\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right) + C_F f_q\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right)\right]\,.
-\end{equation}
-\ndp{Do we not need to find the $P_{L}$ pre-factors?}
 
 \section{ NNLL resummation: one-jettiness}
 \label{sec:one-jettiness}
