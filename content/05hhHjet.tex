@@ -109,8 +109,18 @@ $(\alpha_s L^2)^n$, with $L\equiv \ln(1/v)$. Neglecting for the moment
 coherence-violating effects, if $V(\{\tilde p\},\{k_i\})$ is rIRC
 safe, for each Born phase space point, in the region
 $\alpha_s L\sim 1$, $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ can be
-reorganised as follows in Eq.~\eqref{eq:log-counting}. In this work, we
+reorganised as follows
+\begin{equation}
+  \label{eq:log-counting}
+  \Sigma_{ij}(\{p_1,p_2,p_3\},v) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
+\end{equation}
+The function $g_1(\alpha_s L)$ resums all leading logarithmic (LL)
+terms, $\alpha_s^n L^{n+1}$, in $\ln\Sigma_{ij}$. For rIRC safe
+observables, $g_1$ exponentiates. The function $G_2(\alpha_s L)$
+resums next-to-leading logarithmic (NLL) contributions
+($\alpha_s^n L^n$) to $\ln\Sigma_{ij}$, and so on. In this work, we
 aim at NNLL accuracy, i.e.\ calculating $g_1$, $G_2$ and $G_3$.
+
  
 \section{General form of NNLL resummation}
 \label{sec:NNLL-general}
@@ -1398,31 +1408,14 @@ The general expression for $\Delta\mathcal{F}_{\rm wa}$ is:
   \end{split}
   \end{equation}
   
+  \newpage
 \section{Validation}
 \label{sec:validation}
 We compare this to two different formalisms in two different papers.
 
-\todo{I believe this is what we need to do
-for the next section:
-\begin{enumerate}
-	\item Figure out exactly what it is we need to do for this section.
-	I believe we are trying to show that we can use our formalism to
-	calculate these additive Lund variables as shown in 
-	Ref.~\cite{vanBeekveld:2025zjh}. In this capacity I believe we need
-	to adjust \emph{our} formalism to match theirs, not the other way around.
-	\item Work out how their overall cumulant with the diff partonic 
-	cross-sections and the PDFs etc.
-	\item Work out the difference between the resummation
-	and hard scale in theirs and ours.
-	\item Understand the observable a little more
-	\item Account for the running coupling expanded in $\lambda$
-	\item Using the NLL radiator vs. the NNLL radiator in the
-	DGLAP term.
-\end{enumerate}
-}
-  \newpage
 \subsection{Additive Lund-tree observables}
 \label{subsec:LTS}
+
 Ref.~\cite{vanBeekveld:2025zjh} provides an NNLL resummation for
 colour-singlet production in hadronic collisions with no resolved jets in
 the final state, $N=0$, for a class of observables they term Lund-Tree
@@ -1452,13 +1445,16 @@ contribute is $q\bar q\to Z$,
   \Sigma_{q\bar q}(\{p\},v)= e^{-R_{\rm NNLL}(v)} \frac{f_{q}(x_1,v^{\frac{1}{a+b_1}}Q)}{f_{q}(x_1,\mu_F)} \frac{f_{\bar q}(x_2,v^{\frac{1}{a+b_2}}Q)}{f_{\bar q}(x_2,\mu_F)}
   \times \\ \times
   \left(\mathcal{F}^{(q \bar q)}_{\rm NLL}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H_{q \bar q}^{(1)}(Q,\mu_R)
-      +\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}\sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL}(\lambda)\right)\,.
+      +\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}\sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL}(\lambda)\right)\,,
 \end{multline}
-One can extract the cumulant of Ref.~\cite{vanBeekveld:2025zjh} to
-be\footnote{\label{fn:LTS-conv}The expressions taken from
-Ref.~\cite{vanBeekveld:2025zjh} have been translated into our conventions
-throughout.} \add{Add a couple of sentences as to how we obtain this
-formula.}
+with 
+\begin{equation}
+\label{eq:dFNNLL-qq}
+	 \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL} = \delta\mathcal{F}_{\rm sc}+\delta\mathcal{F}_{\rm hc}+\delta\mathcal{F}_{\rm wa}+\delta\mathcal{F}_{\rm correl}+\delta \mathcal{F}_{\mathrm{rec}}\,.
+\end{equation}
+The corresponding cumulant of Ref.~\cite{vanBeekveld:2025zjh}, translated
+into our conventions throughout, is \add{Add a couple of sentences as to how we
+obtain this formula.}
 \begin{equation}
 \label{eq:LTS-cum}
 \begin{aligned}
@@ -1481,6 +1477,7 @@ formula.}
 \end{equation}
 where 
 \begin{equation}
+\label{eq:NNLL-LTS}
 	\delta\mathcal{F}^{\rm LTS}_{\mathrm{NNLL}}(v)=\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{wa}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{correl}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)\,,
 \end{equation}
 and 
@@ -1496,125 +1493,76 @@ and
 \end{aligned}
 \end{equation}
 
-Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum} already share an obvious
-structural resemblance; we now go through each ingredient in turn to
-confirm the correspondence explicitly. Comparing Eq.~\eqref{eq:Sb0-def} to
-the general single-emission scaling of Eq.~\eqref{eq:general-sc-V} gives
+From first look, it is easy to see that the cumulants in Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum} share similarities. Comparing Eq.~\eqref{eq:Sb0-def} to the general soft-collinear limit in Eq.~\eqref{eq:general-sc-V} fixes
 \begin{equation}
 	a=1, \quad b_\ell=b, \quad d_\ell=1, \quad g_\ell(\phi)=1,\quad \ell=1,2\,.
 \end{equation}
-The LTS cumulant therefore fixes $a=1$ and $b_\ell=b$, so every
-$a$-dependent ingredient of our formalism must be evaluated at $a=1$ before
-the comparison proceeds. Only the full cumulant need agree term by term;
+To compare the two cumulants directly, we additionally set the
+resummation scale $Q$ equal to the hard scale $M$. 
+Only the full cumulant need to agree, while
 individual constants are free to be reshuffled between ingredients, as the
-following makes clear.
+following makes clear. 
 
-\begin{enumerate}
-	\item \textbf{The radiator.} $R_{\mathrm{NNLL}}$ is identical between
-	Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum}, given the parameter
-	identification above.
+Referring directly to the formula of
+Ref.~\cite{vanBeekveld:2025zjh}, the NNLL radiator $R_{\mathrm{NNLL}}$, the
+hard coefficient $H_{q\bar q}^{(1)}/H^{(1)}$, the NLL contribution
+$\mathcal{F}_{\mathrm{NLL}}$, and the NNLL terms of soft origin --
+$\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}$, $\delta\mathcal{F}^{\rm
+LTS}_{\mathrm{wa}}$, $\delta\mathcal{F}^{\rm LTS}_{\mathrm{correl}}(v)$, and
+$\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)$ -- are all equivalent
+between Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum}. The one exception is
+$\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)$, which has no counterpart
+in the \textsc{ARES} formalism of Eq.~\eqref{eq:dFNNLL-qq}: we measure
+everything in terms of hadrons rather than jets, so our jet radius is
+formally infinite. Were Ref.~\cite{vanBeekveld:2025zjh} also to measure in
+terms of hadrons rather than jets, they would obtain the same. he
+additional terms depending on $\ln Q/\mu_R$ that appear in the radiator of
+Eq.~\eqref{eq:LTS-cum} arise simply because that radiator is expressed in
+terms of $\alpha_s(\mu_R)$ rather than $\alpha_s(Q)$ as in
+Eq.~\eqref{eq:Sigma-qqbar}; and while the $\alpha_s$ attached to the hard
+coefficient differs in scale between the two formulae, the scales can
+simply be substituted via the RGE, generating only a single logarithm of
+the scale ratio, which is $\mathcal{O}(\alpha_s^2)$ and so is beyond NNLL accuracy. 
 
-	\item \textbf{The hard coefficient.} In Eq.~\eqref{eq:LTS-cum},
-	\begin{equation}
-		H_{q\bar q}^{(1)}=C_F(\pi^2-8)-\frac{4 C_F}{1+b}\ln^2\frac{M}{Q}
-		+4\frac{\gamma_q^{(0)}}{1+b}\ln\frac{M}{Q}\,,
-	\end{equation}
-	while the hard coefficient of Eq.~\eqref{eq:Sigma-qqbar} follows from
-	Eq.~\eqref{eq:H1-final} with $Q_{12}=M$ and $\mathcal{H}_1=C_F(\pi^2-8)$:
-	\begin{equation}
-		H^{(1)}(Q)=\mathcal{H}_1+2\gamma_q^{(0)}\ln\frac{M}{Q}\,.
-	\end{equation}
-	Note that while the $\alpha_s$ attached to the hard coefficient differs
-	in scale between the two formulae, the scales can simply be substituted,
-	giving single logarithms of the scale ratio via the RGE; these are of
-	order $\alpha_s^2$ and so do not contribute at NNLL.
-	
-	\item \textbf{The NLL function.} For this observable,
-	\begin{equation}
-	\label{eq:FNLL-LTS}
-		\mathcal{F}_{\mathrm{NLL}}^{pp}(v)=\frac{e^{-\gamma_E R'_{\mathrm{NLL}}(v)}}{\Gamma(1+R'_{\mathrm{NLL}}(v))}\,,
-	\end{equation}
-	exactly the result found in the \textsc{ARES} formalism for additive
-	observables, Sec.~\ref{subsec:additive}.
-	\item \textbf{The coefficient function.} $C_{qi}^{(1)\rm LTS}(z)$ in
-	Eq.~\eqref{eq:LTS-cum} is
-	\begin{multline}
-	   \label{eq:CkiLTS}
-	    C_{qi}^{(1)\rm LTS}(z) = -\hat P_{qi}^{(\varepsilon)}(z) +\\ +\frac{2b }{1+b}\left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln(z)}{1-z}
-	      \right)(1-z)\hat P_{ij}(z;0)+2\left(\ln\frac{M}{\mu_F}+\frac{1}{1+b}\ln\frac{Q}{M}\right)\hat P_{ij}(z;0)\,.
-	 \end{multline}
-	 The first two terms of $C_{qi}^{(1)}$ combine two pieces kept separate
-	 in \textsc{ARES}: the hard-collinear coefficient $C_{\mathrm{hc},
-	 \ell}^{(1)}$ and the recoil correction $\delta\mathcal{F}_{\rm rec}$ of
-	 Eqs.~\eqref{eq:Cell-ISR} and~\eqref{eq:dFrec-ISR}.
+The last parts to account for are $\delta\mathcal{F}_{\mathrm{rec}}$,
+$\delta\mathcal{F}_{\mathrm{hc}}$, and $C_{\mathrm{hc},\ell}^{(1)}$ in
+Eq.~\eqref{eq:Sigma-qqbar}, and $\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}$,
+$C_{qi}^{(1)\rm LTS}$, and $\delta\Sigma_{\mathrm{DGLAP}}^{pp}$ in
+Eq.~\eqref{eq:LTS-cum}. One might notice that in Eq.~\eqref{eq:NNLL-LTS} there exists no recoil term i.e.\ $\delta\mathcal{F}^{\rm LTS}_{\mathrm{rec}}$. This is because
+Ref.~\cite{vanBeekveld:2025zjh} introduces the $\delta\Sigma_{\mathrm{DGLAP}}^{pp}$
+term to account for this contribution instead. We will show that this term
+is in fact unnecessary, and that the same structure as in the
+\textsc{ARES} formalism, Eq.~\eqref{eq:Sigma-qqbar}, can be retained as is.
 
-  \begin{multline}
-    C^{(1)}_{qi} = \sum_i \left\{
-    -\hat P_{qj}^{(\varepsilon)}(z)
-   +\frac{2b_\ell }{a+b_\ell}\left(\left(\frac{\ln(1-z)}{1-z}\right)_++ \frac{1}{(1-z)_+}
-       \ln\frac{M}{Q}\right)(1-z)\hat P_{qj}(z;0)\right\}
-    \,,
-  \end{multline}
-   \begin{multline}
-   \delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL \sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz P_\ell(z) b_{\ell}\ln z
+To begin, the coefficient function $C_{qi}^{(1)\rm LTS}(z)$ in
+Eq.~\eqref{eq:LTS-cum} is\footnote{Note that in
+Ref.~\cite{vanBeekveld:2025zjh} the last term reads $\ln
+M^2/\mu_F^2\,\hat P_{ij}(z;0)$, which we believe to be a since it
+introduces a collinear singularity.}
+\begin{multline}
+\label{eq:CkiLTS}
+C_{qi}^{(1)\rm LTS}(z) = -\hat P_{qi}^{(\varepsilon)}(z)  +\frac{2b }{1+b}\left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln(z)}{1-z}\right)(1-z)\hat P_{ij}(z;0)+\\+\ln\frac{M^2}{\mu_F^2}P_{qi}(z)\,,
 \end{multline}
+where the first two terms combine two pieces kept separate in
+\textsc{ARES}: the hard-collinear coefficient $C_{\mathrm{hc},\ell}^{(1)}$
+and the recoil correction $\delta\mathcal{F}_{\rm rec}$ of
+Eqs.~\eqref{eq:Cell-ISR} and~\eqref{eq:dFrec-ISR}, with $E_\ell=M/2$ for
+$\ell=1,2$. The last term simply accounts for the different PDF scales
+used in Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum}, and the
+prefactor $\frac{1+b}{1+b-2\lambda}$ that multiplies $C_{qi}^{(1)\rm
+LTS}(z)$ arises from the running coupling being expressed in terms of
+$\mu_R$.
 
-
-	\item \textbf{The NNLL corrections.} The soft-collinear correction is
-	\begin{multline}
-	\label{eq:dFsc-LTS}
-	\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}(v)=-\frac{\pi}{\alpha_s(\mu_R)}\FNLL(v)
-	\sum_{\ell=1,2}
-	\left[\delta R'_{\mathrm{NNLL},\ell}(v)\left(\psi^{(0)}(1+R'_{\mathrm{NLL}}(v))+\gamma_E\right)\right.\\
-	\left.+\frac{R''_{\ell}(v)}{2}\left(
-	\left(\psi^{(0)}(1+R'_{\mathrm{NLL}}(v))+\gamma_E\right)^2
-	-\psi^{(1)}(1+R'_{\mathrm{NLL}}(v))+\frac{\pi^2}{6}\right)\right]\,.
-	\end{multline}
-	The wide-angle correction vanishes, $\delta\mathcal{F}^{\rm LTS}_{\mathrm{wa}}(v)=0$. The hard-collinear correction is
+The term $\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}$ is ,
 	\begin{equation}
 	\label{eq:dFhc-LTS}
-		\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)=-\frac{d\FNLL}{d\RpNLL}\frac{1}{1+b-2\lambda}\sum_{\ell}\gamma_\ell^{(0)}\,,
+		\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)=-\frac{d\FNLL}{d\RpNLL}\frac{1}{1+b-2\lambda}\sum_{\ell}\gamma_\ell^{(0)}\,.
 	\end{equation}
-	the correlated correction is
-	\begin{equation}
-	\label{eq:dFcorrel-LTS}
-	\delta\mathcal{F}_{\mathrm{correl}}(v)=
-	\mathcal{F}_{\mathrm{NLL}}
-	\frac{\lambda R''(v)}{\alpha_s(\mu_R)\beta_0}
-	\left(
-	C_A\langle\ln f_{\mathrm{correl}}\rangle_{C_A}
-	+n_f\langle\ln f_{\mathrm{correl}}\rangle_{n_f}
-	\right)\,,
-	\end{equation}
-	with $\langle \ln f_{\mathrm{correl}}\rangle_{C_A}$ and $\langle \ln
-	f_{\mathrm{correl}}\rangle_{n_f}$ given in
-	Ref.~\cite{vanBeekveld:2025zjh}, and the clustering correction is
-	\begin{equation}
-	\label{eq:dFclust-LTS}
-	\delta\mathcal{F}_{\mathrm{clust}}(v)=
-	\mathcal{F}_{\mathrm{NLL}}
-	\frac{\lambda R''(v)}{\alpha_s(\mu_R)\beta_0}
-	C_{\ell}\langle \ln f_{\mathrm{clust}}\rangle\,,
-	\end{equation}
-	with $\langle \ln f_{\mathrm{clust}}\rangle$ likewise given in
-	Ref.~\cite{vanBeekveld:2025zjh}. This last contribution,
-	$\delta\mathcal{F}^{pp}_{\mathrm{clust}}(v)$, vanishes in the
-	\textsc{ARES} formalism, since we have no jets -- everything is measured
-	in terms of hadrons -- so formally our jet radius is infinity. Were
-	Ref.~\cite{vanBeekveld:2025zjh} also to measure in terms of hadrons
-	rather than jets, they would obtain the same.
-
-\item \textbf{The DGLAP and hard-collinear terms.} Combining the DGLAP
-	term of Eq.~\eqref{eq:DGLAP-add} with $\delta\mathcal{F}^{\rm
-	LTS}_{\mathrm{hc}}(v)$ of Eq.~\eqref{eq:dFhc-LTS} reproduces
-	$\delta\mathcal{F}_{\mathrm{hc}}$ as found in Eq.~\eqref{eq:dFhc-ISR}.
-	The factor $1/(1+b-2\lambda)$ arises, as above, from expanding the
-	running coupling in $\lambda$.
-
-\end{enumerate}
-
-
-
+Combining this with $\delta\Sigma_{\mathrm{DGLAP}}^{pp}$ in Eq.~\eqref{eq:DGLAP-add}, we find exactly  $\delta\mathcal{F}_{\mathrm{hc}}$ as found in Eq.~\eqref{eq:dFhc-ISR}.
+Hence in our case this additional DGLAP term does
+not stem from the recoil correction but from the hard-collinear term: a
+new structure for resummation, as introduced in
+Ref.~\cite{vanBeekveld:2025zjh}, is therefore unnecessary.
 
 
 
@@ -1797,7 +1745,9 @@ i..\ SCET 1/2. \\
 Go up to NNNLL. \\
 Look at $H+$ jet process. \\
 Extend to DIS process (although not really 
-an extension as just 1 leg). 
+an extension as just 1 leg). \\
+More jets is complicated as from 4 legs onwards the wide angle corrections become matrices in colour space
+which is already a huge amount more work.
 \item How can these results be used? \\
 When matching to fixed order we can then use these results
 to compare to experiment at the LHC. I believe the scientific community already have
