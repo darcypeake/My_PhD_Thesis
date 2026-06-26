@@ -1416,30 +1416,37 @@ We compare this to two different formalisms in two different papers.
 \subsection{Additive Lund-tree observables}
 \label{subsec:LTS}
 
-Ref.~\cite{vanBeekveld:2025zjh} provides an NNLL resummation for
-colour-singlet production in hadronic collisions with no resolved jets in
-the final state, $N=0$, for a class of observables they term Lund-Tree
-Shapes (LTS). One LTS variable, the additive observable $S_b^{(0)}$, can be
-computed within our formalism and provides an explicit point of comparison:
-\begin{equation}
-\label{eq:Sb0-def}
-	S_b^{(0)}=\sum_{j\in \mathcal{I}_0}v_b^j\,,\qquad
-	v_b^{j_i}=\frac{p_{t,i}}{M}\,e^{-b|y^i|}\,,
-\end{equation}
-where $(y^i,p_{t,i})$ are the rapidity and transverse momentum of jet $i$
-with respect to the beam, and $M$ is the hard scale of the process -- the
-invariant mass of the colour singlet in Ref.~\cite{vanBeekveld:2025zjh}. 
+\todo{Look through
+AB comments in slack and understand these a bit more.}
+
+In this section we compare the formalism developed in this chapter with the NNLL resummation presented in Ref.~\cite{vanBeekveld:2025zjh}. That work derives resummations for a class of observables termed Lund-tree Shapes (LTS) in hadron-hadron, DIS and $e^+e^-$ collisions. Although the observable considered in
+Ref.~\cite{vanBeekveld:2025zjh} is not identical to the event shapes
+considered in this chapter, it provides a useful comparison for the
+hard-collinear initial-state radiation contributions. \add{Maybe
+express that it is the treatment of ISR we are interested in.}
+
+In particular, Ref.~\cite{vanBeekveld:2025zjh} considers colour-singlet
+production with no resolved jets in the final state ($N=0$), and defines the
+additive Lund-tree observable as
+\begin{equation} 
+\label{eq:Sb0-def} 
+S_b^{(0)} = \sum_{j\in\mathcal{I}_0}v_b^j \,, \qquad v_b^{j_i} = \frac{p_{t,i}}{M}e^{-b|y_i|}\,,
+\end{equation} 
+where $(p_{t,i},y_i)$ are the transverse momentum and rapidity of jet $i$ with respect to the beam axis, and $M$ denotes the invariant mass of the produced colour singlet, which is chosen to be the hard scale of the process.
 The set
 \begin{equation}
 	\mathcal{I}_0\equiv \mathcal{I}_{N=0}=\{j_1,j_2,\dots , j_m\}
 \end{equation}
 is the list of jets obtained by clustering the event with the C/A algorithm
-of radius $R$, $N$ being the final-state jet multiplicity.
+of radius $R$.
 
-We validate our formalism against $S_b^{(0)}$ by restricting the
-\textsc{ARES} master formula, Eq.~\eqref{eq:Sigma-NNLL}, to two
-initial-state legs $\ell=1,2$, such that the only Born channel to
-contribute is $q\bar q\to Z$,
+Comparing Eq.~\eqref{eq:Sb0-def} with the general soft-collinear parameterisation of Eq.~\eqref{eq:general-sc-V}, and identifying the resummation scale with the hard scale, $Q=M$, fixes the observable parameters to be
+\begin{equation}
+	a=1, \quad b_\ell=b, \quad d_\ell=1, \quad g_\ell(\phi)=1,\quad \ell=1,2\,.
+\end{equation}
+
+Restricting the \textsc{ARES} master formula, Eq.~\eqref{eq:Sigma-NNLL}, to the case of $N=0$
+leaves only the two incoming legs, $\ell=1,2$, such that the only Born channel is $q\bar q\to Z$. The corresponding NNLL cumulant is \ABquestion{Shall I put in $M$ here instead of $Q$?}
 \begin{multline}
   \label{eq:Sigma-qqbar}
   \Sigma_{q\bar q}(\{p\},v)= e^{-R_{\rm NNLL}(v)} \frac{f_{q}(x_1,v^{\frac{1}{a+b_1}}Q)}{f_{q}(x_1,\mu_F)} \frac{f_{\bar q}(x_2,v^{\frac{1}{a+b_2}}Q)}{f_{\bar q}(x_2,\mu_F)}
@@ -1452,8 +1459,12 @@ with
 \label{eq:dFNNLL-qq}
 	 \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL} = \delta\mathcal{F}_{\rm sc}+\delta\mathcal{F}_{\rm hc}+\delta\mathcal{F}_{\rm wa}+\delta\mathcal{F}_{\rm correl}+\delta \mathcal{F}_{\mathrm{rec}}\,.
 \end{equation}
-The corresponding cumulant of Ref.~\cite{vanBeekveld:2025zjh}, translated
-into our conventions throughout, is \add{Add a couple of sentences as to how we
+Note that the corrections $\Delta\mathcal{F}_{\rm wa}$ and $\Delta\mathcal{F}_{\rm rec}$
+are not present here as they were in Eq.~\eqref{eq:dFNNLL}. This is because they were introduced
+for the first time for three-jet events (cf.\ Ref.~\cite{Arpino:2019ozn}).
+
+The corresponding cumulant derived in Ref.~\cite{vanBeekveld:2025zjh}, translated into our conventions, is
+\add{Add a couple of sentences as to how we
 obtain this formula.}
 \begin{equation}
 \label{eq:LTS-cum}
@@ -1478,9 +1489,12 @@ obtain this formula.}
 where 
 \begin{equation}
 \label{eq:NNLL-LTS}
-	\delta\mathcal{F}^{\rm LTS}_{\mathrm{NNLL}}(v)=\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{wa}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{correl}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)\,,
+	\delta\mathcal{F}^{\rm LTS}_{\mathrm{NNLL}}(v)=\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{wa}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{correl}}(v)+\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)\,.
 \end{equation}
-and 
+Notice that compared to Eq.~\eqref{eq:dFNNLL-qq}, there is not a recoil correction present.
+As discussed in Ref.~\cite{vanBeekveld:2025zjh}, this is compensated for by a new term they
+introduce in their resummation known as the DGLAP term \add{Need to explain 
+this a bit more -- include more of what they have written in their paper.}
 \begin{equation}
 \label{eq:DGLAP-add}
 \begin{aligned}
@@ -1493,76 +1507,86 @@ and
 \end{aligned}
 \end{equation}
 
-From first look, it is easy to see that the cumulants in Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum} share similarities. Comparing Eq.~\eqref{eq:Sb0-def} to the general soft-collinear limit in Eq.~\eqref{eq:general-sc-V} fixes
-\begin{equation}
-	a=1, \quad b_\ell=b, \quad d_\ell=1, \quad g_\ell(\phi)=1,\quad \ell=1,2\,.
-\end{equation}
-To compare the two cumulants directly, we additionally set the
-resummation scale $Q$ equal to the hard scale $M$. 
-Only the full cumulant need to agree, while
-individual constants are free to be reshuffled between ingredients, as the
-following makes clear. 
+At first sight the two cumulants already exhibit a very similar structure. To facilitate a direct comparison we identify the resummation scale with the hard scale, $Q=M$. It is worth emphasising that only the complete cumulant is required to agree: individual NNLL contributions may be distributed differently between the various ingredients without affecting the final result. The correspondence between
+the two approaches can be summarised as follows:
 
-Referring directly to the formula of
-Ref.~\cite{vanBeekveld:2025zjh}, the NNLL radiator $R_{\mathrm{NNLL}}$, the
-hard coefficient $H_{q\bar q}^{(1)}/H^{(1)}$, the NLL contribution
-$\mathcal{F}_{\mathrm{NLL}}$, and the NNLL terms of soft origin --
-$\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}$, $\delta\mathcal{F}^{\rm
-LTS}_{\mathrm{wa}}$, $\delta\mathcal{F}^{\rm LTS}_{\mathrm{correl}}(v)$, and
-$\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)$ -- are all equivalent
-between Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum}. The one exception is
-$\delta\mathcal{F}^{\rm LTS}_{\mathrm{clust}}(v)$, which has no counterpart
-in the \textsc{ARES} formalism of Eq.~\eqref{eq:dFNNLL-qq}: we measure
-everything in terms of hadrons rather than jets, so our jet radius is
-formally infinite. Were Ref.~\cite{vanBeekveld:2025zjh} also to measure in
-terms of hadrons rather than jets, they would obtain the same. he
-additional terms depending on $\ln Q/\mu_R$ that appear in the radiator of
-Eq.~\eqref{eq:LTS-cum} arise simply because that radiator is expressed in
-terms of $\alpha_s(\mu_R)$ rather than $\alpha_s(Q)$ as in
-Eq.~\eqref{eq:Sigma-qqbar}; and while the $\alpha_s$ attached to the hard
-coefficient differs in scale between the two formulae, the scales can
-simply be substituted via the RGE, generating only a single logarithm of
-the scale ratio, which is $\mathcal{O}(\alpha_s^2)$ and so is beyond NNLL accuracy. 
+\begin{itemize}
 
-The last parts to account for are $\delta\mathcal{F}_{\mathrm{rec}}$,
-$\delta\mathcal{F}_{\mathrm{hc}}$, and $C_{\mathrm{hc},\ell}^{(1)}$ in
-Eq.~\eqref{eq:Sigma-qqbar}, and $\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}$,
-$C_{qi}^{(1)\rm LTS}$, and $\delta\Sigma_{\mathrm{DGLAP}}^{pp}$ in
-Eq.~\eqref{eq:LTS-cum}. One might notice that in Eq.~\eqref{eq:NNLL-LTS} there exists no recoil term i.e.\ $\delta\mathcal{F}^{\rm LTS}_{\mathrm{rec}}$. This is because
-Ref.~\cite{vanBeekveld:2025zjh} introduces the $\delta\Sigma_{\mathrm{DGLAP}}^{pp}$
-term to account for this contribution instead. We will show that this term
-is in fact unnecessary, and that the same structure as in the
-\textsc{ARES} formalism, Eq.~\eqref{eq:Sigma-qqbar}, can be retained as is.
+\item The NNLL radiator $R_{\rm NNLL}$, the hard coefficient
+$H^{(1)}$, the NLL function $\mathcal{F}_{\rm NLL}$ are identical.
+ \add{Maybe want to change notation of the radiator
+and talk about it as a different bullet point to mention the $\ln \mu_R$
+terms in their radiator.}
 
-To begin, the coefficient function $C_{qi}^{(1)\rm LTS}(z)$ in
-Eq.~\eqref{eq:LTS-cum} is\footnote{Note that in
-Ref.~\cite{vanBeekveld:2025zjh} the last term reads $\ln
-M^2/\mu_F^2\,\hat P_{ij}(z;0)$, which we believe to be a since it
-introduces a collinear singularity.}
+\item The NNLL corrections of soft origin $\delta\mathcal{F}_{\rm sc}$,
+$\delta\mathcal{F}_{\rm wa}, \delta\mathcal{F}_{\rm correl}$ and
+$\delta\mathcal{F}_{\rm clust}$ are computed using the same formalism 
+and so there is nothing to validate here. 
+
+\item The clustering contribution
+$\delta\mathcal{F}^{\rm LTS}_{\rm clust}$ has no counterpart in the
+\textsc{ARES} formalism. This difference arises because
+Ref.~\cite{vanBeekveld:2025zjh} defines the observable in terms of jets,
+whereas the \textsc{ARES} formalism measures hadrons directly, which
+corresponds formally to a jet radius which is infinite.  Were Ref.~\cite{vanBeekveld:2025zjh} 
+also to measure in terms of hadrons rather than jets, they would obtain the same. 
+\add{Can probably delete this.}
+
+\item The differences in expressing the
+coupling in terms of $\alpha_s(Q)$ rather than $\alpha_s(\mu_R)$
+can be accounted for using the RGE, however this generates
+only terms beyond NNLL accuracy and so can be ignored. \add{AB comment:
+said I can ignore this.}
+
+\item The remaining difference concerns the organisation of the
+hard-collinear and recoil contributions. In the \textsc{ARES} formulation
+these appear through
+$C_{\mathrm{hc},\ell}^{(1)}$,
+$\delta\mathcal{F}_{\rm hc}$ and
+$\delta\mathcal{F}_{\rm rec}$,
+whereas Ref.~\cite{vanBeekveld:2025zjh} introduces
+$C_{qi}^{(1)\rm LTS}$,
+$\delta\mathcal{F}^{\rm LTS}_{\rm hc}$ and
+$\delta\Sigma_{\rm DGLAP}^{pp}$.
+We now show explicitly that these are equivalent.
+\end{itemize}
+
+The coefficient function introduced in
+Ref.~\cite{vanBeekveld:2025zjh} is
+\footnote{In Ref.~\cite{vanBeekveld:2025zjh} the final term is written as
+$\ln(M^2/\mu_F^2)\hat P_{ij}(z;0)$, which appears to be a typo since it
+introduces an uncancelled collinear singularity.} 
 \begin{multline}
 \label{eq:CkiLTS}
-C_{qi}^{(1)\rm LTS}(z) = -\hat P_{qi}^{(\varepsilon)}(z)  +\frac{2b }{1+b}\left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln(z)}{1-z}\right)(1-z)\hat P_{ij}(z;0)+\\+\ln\frac{M^2}{\mu_F^2}P_{qi}(z)\,,
+C_{qi}^{(1)\rm LTS}(z) = -\hat P_{qi}^{(\varepsilon)}(z)  +\frac{2b }{1+b}\left(\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{\ln(z)}{1-z}\right)(1-z)\hat P_{ij}(z;0)+\\+\ln\frac{M^2}{\mu_F^2}P_{qi}(z)\,.
 \end{multline}
-where the first two terms combine two pieces kept separate in
-\textsc{ARES}: the hard-collinear coefficient $C_{\mathrm{hc},\ell}^{(1)}$
-and the recoil correction $\delta\mathcal{F}_{\rm rec}$ of
-Eqs.~\eqref{eq:Cell-ISR} and~\eqref{eq:dFrec-ISR}, with $E_\ell=M/2$ for
-$\ell=1,2$. The last term simply accounts for the different PDF scales
-used in Eqs.~\eqref{eq:Sigma-qqbar} and~\eqref{eq:LTS-cum}, and the
-prefactor $\frac{1+b}{1+b-2\lambda}$ that multiplies $C_{qi}^{(1)\rm
-LTS}(z)$ arises from the running coupling being expressed in terms of
-$\mu_R$.
+The first two terms in Eq.~\eqref{eq:CkiLTS} combine contributions that are
+treated separately in the \textsc{ARES} formalism: the hard-collinear
+coefficient $C_{\mathrm{hc},\ell}^{(1)}$ and the recoil correction
+$\delta\mathcal{F}_{\rm rec}$ of Eqs.~\eqref{eq:Cell-ISR} and
+\eqref{eq:dFrec-ISR}. For the present process, $E_\ell=M/2$ for both
+incoming legs. The final term compensates for the different factorisation
+scales used in the two formulae, while the factor
+$(1+b)/(1+b-2\lambda)$ arises from the running coupling expressed in terms of $\lambda$.
+\ABquestion{Do I need to show this anymore?}
 
-The term $\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}$ is ,
+The remaining hard-collinear correction in the LTS formulation is
 	\begin{equation}
 	\label{eq:dFhc-LTS}
 		\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)=-\frac{d\FNLL}{d\RpNLL}\frac{1}{1+b-2\lambda}\sum_{\ell}\gamma_\ell^{(0)}\,.
 	\end{equation}
-Combining this with $\delta\Sigma_{\mathrm{DGLAP}}^{pp}$ in Eq.~\eqref{eq:DGLAP-add}, we find exactly  $\delta\mathcal{F}_{\mathrm{hc}}$ as found in Eq.~\eqref{eq:dFhc-ISR}.
-Hence in our case this additional DGLAP term does
-not stem from the recoil correction but from the hard-collinear term: a
-new structure for resummation, as introduced in
+Combining Eq.~\eqref{eq:dFhc-LTS} with the additional DGLAP contribution
+$\delta\Sigma_{\rm DGLAP}^{pp}$ reproduces exactly the hard-collinear
+correction $\delta\mathcal{F}_{\rm hc}$ appearing in the
+\textsc{ARES} formulation, in Eq.~\eqref{eq:dFhc-ISR}. 
+
+Therefore, the additional DGLAP contribution
+introduced in Ref.~\cite{vanBeekveld:2025zjh} does
+not stem from the recoil correction but from the hard-collinear term.
+This provides evidence that the new
+resummation structure introduced in
 Ref.~\cite{vanBeekveld:2025zjh}, is therefore unnecessary.
+
 
 
 
