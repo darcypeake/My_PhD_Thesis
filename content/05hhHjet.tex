@@ -1387,13 +1387,10 @@ The general expression for $\Delta\mathcal{F}_{\rm wa}$ is:
   \end{split}
   \end{equation}
   
-  \newpage
-\section{Validation}
-\label{sec:validation}
+\section{Validation: lund-tree observables}
+\label{sec:LTS-val}
 We compare this to two different formalisms in two different papers.
 
-\subsection{Additive Lund-tree observables}
-\label{subsec:LTS}
 
 \todo{Look through
 AB comments in slack and understand these a bit more.}
@@ -1566,48 +1563,46 @@ This provides evidence that the new
 resummation structure introduced in
 Ref.~\cite{vanBeekveld:2025zjh}, is therefore unnecessary.
   
- \subsection{One-jettiness in the N-jettiness subtraction formalism}
- \label{subsec:N-jet-SCET}
+ \section{Validation: N-jettiness subtraction}
+ \label{subsec:N-jet-SCET-val}
  
- \todo{Start with a brief introduction of what SCET is 
- and what the paper does and then launch into what the SCET coefficients are. Finish by expressing the ARES coefficients and do the relation.}
+ In this section we validate the results obtained fro the one-jettiness
+ by comparing coefficients compared to fixed-order calculations. \todo{Add a bit
+ more information for how the coefficients to fixed order work.}
  
- In this section, we take the work outlined in Ref.~\cite{Gaunt:2015pea}
- and use their subtraction ingredients to compare to coefficients found in
- the \textsc{ARES} formalism. 
- 
-In the \textsc{ARES} formalism, we can write the cumulant as
-\begin{equation}
+ In the \textsc{ARES} formalism, the cumulant $\Sigma_{ij}$ can be expanded in terms of the
+ coefficients as
+ \begin{equation}
+ \label{eq:sig-coeff}
 	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
 \end{equation}
 where $\bar{\alpha}_s\equiv \alpha_s(Q)/2\pi$ and
 the coefficients $h_{nm}$ are found in Appendix~\ref{ap:ARES-coeff}.
 
-The SCET counterpart of this expansion starts from the factorisation theorem for the singular $\mathcal{T}_1\to0$ limit, derived in Ref.~\cite{Gaunt:2015pea}, is
+To validate these coefficients, we take the work outlined in Ref.~\cite{Gaunt:2015pea}.
+This paper presents a subtraction scheme using the $N$-jettiness observable for up to NNLO. It uses
+SCET (soft-collinear effective theory) to determine the IR singular contributions of  $N$-jet
+cross sections for $\mathcal{T}_N\to 0$. This produces subtraction ingredients which 
+are exactly the coefficients we compare to. We take the general method for $N=1$ i.e.\
+the one-jettiness. 
+
+The singular part of the spectrum where $\tau\to1$ factorises as the follwoing, derived in Ref.~\cite{Gaunt:2015pea}, is
 \begin{equation}
 	\label{eq:Cnm-def}
-	\frac{\mathrm{d}\sigma^{\rm sing}(\Phi_1)}{\mathrm{d}\tau_1}
-	=\sum_{m\geq0}\left[\mathcal{C}_{-1}^{(m)}(\Phi_1,M,\mu_R)\,\delta(\tau)
-	+\sum_{n=0}^{2m-1}\mathcal{C}_n^{(m)}(\Phi_1,M,\mu_R)\,\mathcal{L}_n(\tau)\right]
+	\frac{\mathrm{d}\sigma^{\rm sing}(\{p\})}{\mathrm{d}\tau_1}
+	=\sum_{m\geq0}\left[\mathcal{C}_{-1}^{(m)}(\{p\},M,\mu_R)\,\delta(\tau)
+	+\sum_{n=0}^{2m-1}\mathcal{C}_n^{(m)}(\{p\},M,\mu_R)\,\mathcal{L}_n(\tau)\right]
 	\left(\frac{\alpha_s(\mu_R)}{4\pi}\right)^m\,,
 \end{equation}
-where $\mathcal{L}_n$ are the plus distributions defined in the usual way as
+where $\mathcal{L}_n$ are the usual plus distributions
 \begin{equation}
-	\mathcal{L}_n(\tau)=\left[\frac{\theta(\tau_1)\ln^n(\tau)}{\tau}\right]_+\,.
+	\mathcal{L}_n(\tau_1)=\left[\frac{\theta(\tau_1)\ln^n(\tau_1)}{\tau_1}\right]_+\,.
 \end{equation} 
-The coefficients $C_n^{(m)}(\Phi_1,\xi,\mu)$ given explicitly in terms of the
-beam, jet, soft, and hard function coefficients. The beam functions $B_a, B_b$ contain all collinear emissions from the two incoming partons $a,b$ and depends on the parton's flavour $\kappa_a,\kappa_b$ and momentum fraction $x_a, x_b$. The jet function $J_c$
-contains all collinear emissions from the outgoing parton and depends on the parton's flavour $\kappa_J$. The term $\vec{C}(\Phi_1,\mu)$ is the
-IR-finite hard Wilson coefficient -- a vector in the (here one-dimensional) colour
-space of the channel -- and $\widehat{S}_\kappa$ is the soft function describing all soft emissions between all partons and depends on the directions of the partons. 
+The coefficients $\mathcal{C}_n^{(m)}(\{p\},M,\mu)$ are given explicitly in terms of the
+beam, jet, soft, and hard function coefficients. These functions are what make up
+the SCET factorisation formula where the beam functions $B_a, B_b$ contain all collinear emissions from the two incoming partons $a,b$ and depends on the parton's flavour $\kappa_a,\kappa_b$ and momentum fraction $x_1, x_2$. The jet function $J_c$
+contains all collinear emissions from the outgoing parton and depends on the parton's flavour $\kappa_J$. The  soft function $\widehat{S}_\kappa$ described all all soft emissions between all partons and depends on the directions of the partons. 
 
-
-
-\begin{equation}
-	J_{c,n}^{(1)}(\lambda) = J_{c,n}^{(1)} + \sum_{k=1}^{1-n}(n+k)\,J_{c,n+k}^{(1)}
-	\ln^k\!\lambda\,, \qquad \lambda\equiv\frac{Q_c M}{\mu_R^2}\,,
-\end{equation}
-with analogous rescaling relations for the beam and soft function coefficients.
 
 In order to match the coefficients correctly between SCET and ARES, we must construct
 a mapping between them. We find this to be:
@@ -1616,23 +1611,37 @@ a mapping between them. We find this to be:
 	h_{mn}=\frac{C_{n-1}^{(m)}}{n}\frac{(-1)^n}{2m}\,.
 \end{equation}
 Please note that when looking at $C_{-1}^{(m)}$ we take the $n$ in the denominator to
-be 1.
-We restrict the comparison to the coefficients of Ref.~\cite{Gaunt:2015pea} that are
-fully analytic for $N=1$: at NLO, from eq.~(3.31), these are $C_1^{(1)}$, $C_0^{(1)}$,
-and $C_{-1}^{(1)}$; at NNLO, from eqs.~(3.37)--(3.40), these are $C_3^{(2)}$,
-$C_2^{(2)}$, $C_1^{(2)}$, and $C_0^{(2)}$. We do not include $C_{-1}^{(2)}$, as it
+be 1. At NLO, the coefficients are $\mathcal{C}_1^{(1)}$, $\mathcal{C}_0^{(1)}$,
+and $\mathcal{C}_{-1}^{(1)}$ ($h_{12}, h_{11}$ and $h_{10}$ respectively) and at
+NNLO $\mathcal{C}_3^{(2)}$, $\mathcal{C}_2^{(2)}$, $\mathcal{C}_1^{(2)}$, and 
+$\mathcal{C}_0^{(2)}$ ($h_{24}, h_{23}, h_{22}$ and $h_{21}$ respectively) .
+We do not include $\mathcal{C}_{-1}^{(2)}$ ($h_{20}$), as it
 requires the two-loop $1$-jettiness soft constant, which for three coloured partons
-is currently known only numerically. Through eq.~\eqref{eq:convention}, these
-correspond to the \textsc{ARES} coefficients
-\begin{align}
-	C_1^{(1)} &\leftrightarrow h_{12}\,, &
-	C_0^{(1)} &\leftrightarrow h_{11}\,, &
-	C_{-1}^{(1)} &\leftrightarrow h_{10}\,, \\
-	C_3^{(2)} &\leftrightarrow h_{24}\,, &
-	C_2^{(2)} &\leftrightarrow h_{23}\,, &
-	C_1^{(2)} &\leftrightarrow h_{22}\,, &
-	C_0^{(2)} &\leftrightarrow h_{21}\,.
-\end{align}
+is currently known only numerically and is at N$^3$LL and beyond. 
+
+\subsection{NLO Coefficients}
+\label{subsec:NLO-coeff}
+
+At NLO, the coefficients required as $\mathcal{C}_{1}^{(1)}$ and 
+$\mathcal{C}_{0}^{(1)}$ given by the following with $n=0,1$:
+\begin{equation}
+\begin{aligned}
+	\mathcal{C}_n^{(1)}(\{p\},M,\mu_R)&= f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}(\{p\},\mu_R)|^2\left[J_{c,n}^{(1)}(\lambda_c)+\hat{S}^{(1)}_{\kappa,n}\left(\{\widehat{q}_i\},\lambda_s\right)\right.\\
+	&\left.+\frac{1}{f_i(x_1,\mu_F)}B_{i,n}^{(1)}\left(x_a,\mu_R,\mu_F,\lambda_a\right)+\frac{1}{f_j(x_2,\mu_F)}B_{j,n}^{(1)}\left(x_b,\mu_R,\mu_F,\lambda_b\right)\right]\,,
+\end{aligned}
+\end{equation}
+where the jet, soft, and beam functions are expanded as the following:
+\begin{equation}
+\begin{aligned}
+	&J_{c,n}^{(m)}(\lambda_c) = J_{c,n}^{(m)} + \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,J_{c,n+k}^{(m)}
+	\ln^k\!\lambda_c\,, \quad \lambda_c= \frac{Q_3 M} {\mu_R^2}\\
+	&\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\},\lambda_s) = \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\})+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,\widehat{S}_{\kappa,n+k}^{(m)}(\{\hat{q}_i\})
+	\ln^k\!\lambda_s\,, \quad \lambda_c= \frac{M} {\mu_R}\\
+	&\mathcal{I}^{(m)}_{ic,n}(z,\lambda_F,\lambda_i)=\mathcal{I}^{(m)}_{ic,n}(z,\lambda_F)+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\mathcal{I}^{(m)}_{ic,n+k}(z,\lambda_F)\ln^k\lambda_i\quad \lambda_i= \frac{Q_1 M} {\mu_R}\,, \lambda_F=\frac{\mu_R^2}{\mu_F^2}\,.
+	\end{aligned}
+\end{equation}
+\todo{Go from here. I think keep as $B$'s and then express in terms of the I's -- although now unsure.}
+
 
 
 \subsubsection{h12}
@@ -1706,6 +1715,27 @@ h_{11} =\; & -2C_a\,B_a-2C_b\,B_b-2C_c\,B_c-\frac{\left[\bf{P} \otimes \bf{q}^{(
 \end{aligned}
 \end{equation}
 Using the relations: $2 q_i\cdot q_j = Q_{ij}^2$ and $d_\ell=\frac{2E_\ell}{Q_\ell}$, it is clear that this is exactly what is presented above, and so the matching of $h_{11}$ is correct.
+
+
+
+\begin{equation}
+\begin{aligned}
+	\mathcal{C}_{-1}^{(1)}(\{p\},M,\mu_R)&= f_i(x_1,\mu_F)f_j(x_2,\mu_F) \left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)(\{p\},\mu_R) \\
+	&+f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}(\{p\},\mu_R)|^2\left[J_{c,-1}^{(1)}(\lambda_c)+\hat{S}^{(1)}_{\kappa,-1}\left(\{\widehat{q}_i\},\lambda_s\right)\right.\\
+	&\left.+\frac{1}{f_i(x_1,\mu_F)}B_{i,-1}^{(1)}\left(x_a,\mu_R,\mu_F,\lambda_a\right)+\frac{1}{f_j(x_2,\mu_F)}B_{j,-1}^{(1)}\left(x_b,\mu_R,\mu_F,\lambda_b\right)\right]\,,
+\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+	&J_{c,-1}^{(m)}(\lambda_c)=J_{c,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{c,n}^{(m)}\frac{\ln^{n+1}\lambda_c}{n+1}\,, \\
+	&\widehat{S}_{\kappa,-1}^{(m)}(\lambda_s)
+\end{aligned}	
+\end{equation}
+
+
+
+
 
 \subsubsection{h24}
 Using the mapping:
