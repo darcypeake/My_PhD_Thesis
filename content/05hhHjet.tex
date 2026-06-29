@@ -1607,7 +1607,7 @@ contains all collinear emissions from the outgoing parton and depends on the par
 In order to match the coefficients correctly between SCET and ARES, we must construct
 a mapping between them. We find this to be:
 \begin{equation}
-\label{eq:convention}
+\label{eq:coeff-convent}
 	h_{mn}=\frac{C_{n-1}^{(m)}}{n}\frac{(-1)^n}{2m}\,.
 \end{equation}
 Please note that when looking at $C_{-1}^{(m)}$ we take the $n$ in the denominator to
@@ -1627,65 +1627,46 @@ $\mathcal{C}_{0}^{(1)}$ given by the following with $n=0,1$:
 \begin{equation}
 \begin{aligned}
 	\mathcal{C}_n^{(1)}(\{p\},M,\mu_R)&= f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}(\{p\},\mu_R)|^2\left[J_{c,n}^{(1)}(\lambda_c)+\hat{S}^{(1)}_{\kappa,n}\left(\{\widehat{q}_i\},\lambda_s\right)\right.\\
-	&\left.+\frac{1}{f_i(x_1,\mu_F)}B_{i,n}^{(1)}\left(x_a,\mu_R,\mu_F,\lambda_a\right)+\frac{1}{f_j(x_2,\mu_F)}B_{j,n}^{(1)}\left(x_b,\mu_R,\mu_F,\lambda_b\right)\right]\,,
+	&\left.+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,n}^{(m)}(z,\lambda_F,\lambda_i)\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}
++\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,n}^{(m)}(z,\lambda_F,\lambda_j)\frac{f_b\left(x_2/z\right)}{f_j(x_2,\mu_F)}
+\right]\,,
 \end{aligned}
 \end{equation}
 where the jet, soft, and beam functions are expanded as the following:
+\add{The beam functions include the integrals also.}
 \begin{equation}
 \begin{aligned}
 	&J_{c,n}^{(m)}(\lambda_c) = J_{c,n}^{(m)} + \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,J_{c,n+k}^{(m)}
 	\ln^k\!\lambda_c\,, \quad \lambda_c= \frac{Q_3 M} {\mu_R^2}\\
 	&\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\},\lambda_s) = \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\})+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,\widehat{S}_{\kappa,n+k}^{(m)}(\{\hat{q}_i\})
 	\ln^k\!\lambda_s\,, \quad \lambda_c= \frac{M} {\mu_R}\\
-	&\mathcal{I}^{(m)}_{ic,n}(z,\lambda_F,\lambda_i)=\mathcal{I}^{(m)}_{ic,n}(z,\lambda_F)+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\mathcal{I}^{(m)}_{ic,n+k}(z,\lambda_F)\ln^k\lambda_i\quad \lambda_i= \frac{Q_1 M} {\mu_R}\,, \lambda_F=\frac{\mu_R^2}{\mu_F^2}\,.
+	&\mathcal{I}^{(m)}_{ic,n}(z,\lambda_F,\lambda_i)=\mathcal{I}^{(m)}_{ic,n}(z,\lambda_F)+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\mathcal{I}^{(m)}_{ic,n+k}(z,\lambda_F)\ln^k\lambda_i\,,\quad \lambda_i= \frac{Q_1 M} {\mu_R}\,, \lambda_F=\frac{\mu_R^2}{\mu_F^2} \,.
 	\end{aligned}
 \end{equation}
-\todo{Go from here. I think keep as $B$'s and then express in terms of the I's -- although now unsure.}
-
-
-
-\subsubsection{h12}
-\label{sec:h12}
-Using the mapping we find:
-\begin{equation}
-	h_{12}=  \frac{C_{1}^{(1)}}{4}\,,
-	\end{equation}
-where
+Staring from $\mathcal{C}^{(1)}_1$, we find that
 \begin{equation}
 \begin{aligned}
-C^{(1)}_1=J^{(1)}_{c,1}+\mathcal{I}_{ab,\,1}^{(1)}+\mathcal{I}_{ba,\,1}^{(1)}+\hat{S}^{(1)}_{\kappa,1}=-4(C_a+C_b+C_c)\,.
+\mathcal{C}^{(1)}_1=-4\sum_{\ell} C_{\ell}\,.
 \end{aligned}
 \end{equation}
 In turn, we find that
 \begin{equation}
-h_{12}= -(C_a+C_b+Cc)\,,
+h_{12}= -\sum_{\ell}C_{\ell}\,.
 \end{equation}
-which is indeed correct.
+which is indeed satisfies the mapping shown in Eq.~\eqref{eq:coeff-convent}.
 
-\subsubsection{h11}
-\label{sec:h11}
-Using the mapping we find:
-\begin{equation}
-	h_{11}= -\frac{C_{0}^{(1)}}{2}\,,
-\end{equation}
-where
+Next, starting from $\mathcal{C}^{(1)}_0$, we find:
 \begin{equation}
 	\begin{aligned}
-	C^{(1)}_0=\;J&^{(1)}_{c,0}+J^{(1)}_{c,1}\ln\frac{Q_c Q}{\mu^2} + \mathcal{I}_{ab,\,0}^{(1)}+\mathcal{I}_{ab,\,1}^{(1)}\ln\frac{Q_a Q}{\mu^2} \\
-	& +\mathcal{I}_{ba,\,0}^{(1)}+\mathcal{I}_{ba,\,1}^{(1)}\ln\frac{Q_b Q}{\mu^2}+ \hat{S}^{(1)}_{\kappa,0}+\hat{S}^{(1)}_{\kappa,1}\ln\frac{Q}{\mu}\,.
+	\mathcal{C}^{(1)}_0=\;&-\frac{\gamma_{J0}^c}{2} +\left(-\frac{\gamma_{B0}^a}{2}+2P_{ab}^{(0)}\right)+\left(-\frac{\gamma_{B0}^b}{2}+2P_{ba}^{(0)}\right)\\
+	&+4C_a\ln\frac{Q_1 M}{\mu_R^2} +4C_b\ln\frac{Q_2 M}{\mu_R^2}+4C_c\ln\frac{Q_3 M}{\mu_R^2} \\
+	& -4\left[\left(C_1-C_2-C_3\right)\ln\frac{Q_{23}^2}{Q_2 Q_3}+\left(C_2-C_1-C_3\right)\ln\frac{Q_{13}^2}{Q_1 Q_3}+
+	\left(C_3-C_1-C_2\right)\ln\frac{Q_{12}^2}{Q_1 Q_2}\right]\\
+	&-8(C_a+C_b+C_c)\ln\frac{M}{\mu_R}\,.
 	\end{aligned}
 \end{equation}
-Expanding the terms we find:
-\begin{equation}
-	\begin{aligned}
-	C^{(1)}_0=\;&-\frac{\gamma_{J0}^c}{2} +\left(-\frac{\gamma_{B0}^a}{2}+2P_{ab}^{(0)}\right)+\left(-\frac{\gamma_{B0}^b}{2}+2P_{ba}^{(0)}\right)\\
-	&+4C_a\ln\frac{Q_a Q}{\mu^2} +4C_b\ln\frac{Q_b Q}{\mu^2}+4C_c\ln\frac{Q_c Q}{\mu^2} \\
-	& -4\left[\left(C_a-C_b-C_c\right)\ln\frac{2q_b\cdot q_c}{Q_b Q_c}+\left(C_b-C_a-C_c\right)\ln\frac{2q_a\cdot q_c}{Q_a Q_c}+
-	\left(C_c-C_a-C_b\right)\ln\frac{2q_a\cdot q_b}{Q_a Q_b}\right]\\
-	&-8(C_a+C_b+C_c)\ln\frac{Q}{\mu}\,.
-	\end{aligned}
-\end{equation}
-It is clear to see that the dependence on the renormalisation scale $\mu$ cancels. This makes sense as $\mu$ is unphysical and its dependence needs to cancel everywhere. \\ \\
+\todo{Go from here.}
+The $\mu_R$ dependence cancels everywhere, as expected \add{add in why this is expected}. This makes sense as $\mu_R$ is unphysical and its dependence needs to cancel everywhere. \\ \\
 Moreover, using the fact that $\gamma_{J/B\,0}^{\ell}=-8C_{\ell}B_{\ell}$, we find:
 \begin{equation}
 	\begin{aligned}
@@ -1716,7 +1697,11 @@ h_{11} =\; & -2C_a\,B_a-2C_b\,B_b-2C_c\,B_c-\frac{\left[\bf{P} \otimes \bf{q}^{(
 \end{equation}
 Using the relations: $2 q_i\cdot q_j = Q_{ij}^2$ and $d_\ell=\frac{2E_\ell}{Q_\ell}$, it is clear that this is exactly what is presented above, and so the matching of $h_{11}$ is correct.
 
-
+Using the mapping we find:
+\begin{equation}
+	h_{11}= -\frac{C_{0}^{(1)}}{2}\,,
+\end{equation}
+where
 
 \begin{equation}
 \begin{aligned}
