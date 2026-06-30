@@ -108,37 +108,144 @@ with
 \ndp{Do we not need to find the $P_{L}$ pre-factors?}
 
 
+\section{LTS Validation}
+\begin{itemize}
+\item \textbf{The NNLL corrections.} The soft-collinear correction is
+	\begin{multline}
+	\label{eq:dFsc-LTS}
+	\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}(v)=-\frac{\pi}{\alpha_s(\mu_R)}\FNLL(v)
+	\sum_{\ell=1,2}
+	\left[\delta R'_{\mathrm{NNLL},\ell}(v)\left(\psi^{(0)}(1+R'_{\mathrm{NLL}}(v))+\gamma_E\right)\right.\\
+	\left.+\frac{R''_{\ell}(v)}{2}\left(
+	\left(\psi^{(0)}(1+R'_{\mathrm{NLL}}(v))+\gamma_E\right)^2
+	-\psi^{(1)}(1+R'_{\mathrm{NLL}}(v))+\frac{\pi^2}{6}\right)\right]\,.
+	\end{multline}
+	The wide-angle correction vanishes, $\delta\mathcal{F}^{\rm LTS}_{\mathrm{wa}}(v)=0$. 
+	the correlated correction is
+	\begin{equation}
+	\label{eq:dFcorrel-LTS}
+	\delta\mathcal{F}_{\mathrm{correl}}(v)=
+	\mathcal{F}_{\mathrm{NLL}}
+	\frac{\lambda R''(v)}{\alpha_s(\mu_R)\beta_0}
+	\left(
+	C_A\langle\ln f_{\mathrm{correl}}\rangle_{C_A}
+	+n_f\langle\ln f_{\mathrm{correl}}\rangle_{n_f}
+	\right)\,,
+	\end{equation}
+	with $\langle \ln f_{\mathrm{correl}}\rangle_{C_A}$ and $\langle \ln
+	f_{\mathrm{correl}}\rangle_{n_f}$ given in
+	Ref.~\cite{vanBeekveld:2025zjh}, and the clustering correction is
+	\begin{equation}
+	\label{eq:dFclust-LTS}
+	\delta\mathcal{F}_{\mathrm{clust}}(v)=
+	\mathcal{F}_{\mathrm{NLL}}
+	\frac{\lambda R''(v)}{\alpha_s(\mu_R)\beta_0}
+	C_{\ell}\langle \ln f_{\mathrm{clust}}\rangle\,,
+	\end{equation}
+	with $\langle \ln f_{\mathrm{clust}}\rangle$ likewise given in
+	Ref.~\cite{vanBeekveld:2025zjh}. 
+\end{itemize}
 
-\section{\textsc{ARES} resummation coefficients}
+
+
+\section{\textsc{ARES} resummation coefficients for one-jettiness}
+\label{ap:ARES-coeff}
+
+The general form of these coefficients can be found in 
+Ref.~\cite{Banfi:2004yd},  however since in this thesis
+we focus on the one-jettiness, we will simply outline what 
+these are for the one-jettiness.
+
+\todo{Double check $S_1$ is expressed properly.}
+
+The terms which are of $\mathcal{O}(\alpha_s)$ are the following:
+\begin{subequations}
+\begin{align}
+\label{eq:h12}
+h_{12} &=-\sum_{\ell}C_{\ell}\,,\\
+\label{eq:h11}
+h_{11} &= \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\
+&-\sum_{b}\int\frac{dz}{z}P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{b}\int\frac{dz}{z}P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\
+\label{eq:h10}
+h_{10}&=
+\end{align}
+\end{subequations}
+
+
+\todo{Go through $h_{22}$ again as missing term.}
+The terms which are of $\mathcal{O}(\alpha_s^2)$ are the following:
+\begin{subequations}
+\begin{align}
+\label{eq:h24}
+h_{24}&=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,,\\
+\label{eq:h23}
+h_{23}&=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,,\\
+h_{22}&=h_{10} h_{12}+\frac{1}{2}h_{11}^2-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)^2 -K^{(1)}\sum_{\ell}C_{\ell} \notag\\ 
+&+2\pi\beta_0\left[-4\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln\frac{Q_{\ell\bar\ell}^2}{Q^2}
++\sum_{\ell}\left(-3C_\ell \ln\frac{Q^2}{M Q_{\ell}}+\frac{\gamma_\ell^{(0)}}{2}\right)\right. \notag \\
+&\left. -\frac{1}{2}\sum_{b}\int\frac{dz}{z}P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\frac{1}{2}\sum_{b}\int\frac{dz}{z}P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\right]\\
+h_{21}&=h_{11}h_{10}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\left[-K^{(1)} \ln d_\ell^{(\ell\bar{\ell})}
+  - 3\pi\beta_0 \ln^2 d_\ell^{(\ell\bar{\ell})} - \frac{\pi^3\beta_0}{6}
+ +\right.\\
+ & \left.  +2 \pi\beta_0 \ln d_\ell^{(\ell\bar{\ell})}
+ \ln\frac{Q_{\ell\bar{\ell}}^2}{Q^2}\right]-\sum_{\ell}\gamma_{\ell}^{(1)}+2\pi\beta_0\sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\left(\sum_{\ell}\left(B_{\ell}+C_{\ell}\ln\frac{Q}{Q_{\ell}}\right)\right)\notag\\
+&+2\left(\sum_{\ell}C_{\ell}\right)^2\psi^{(1)}(2)+2\pi\beta_0\frac{\pi^2}{6}\sum_{\ell}C_{\ell}+2\pi\beta_0\sum_{(ij)} 
+           C_{(ij)}\left[ \ln^2 \frac{Q_j}{Q_i} - 2(I_{ij,k} + I_{ji,k})\right]\notag\\
+           &-4\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,.
+\end{align}
+\end{subequations}
+\ndp{note extra 2 in front of the last part as there is a difference between $C_{ij}$ and $C_{\ell\bar\ell}$.}
+
+
+
+\section{$N$-jettiness subtraction ingredients}
+\label{ap:N-jet-ing}
+
+\todo{add in text \\ figure out the subequations in C.20 \\ add labels.}
+
+\begin{subequations}
+\begin{align}
+&J^{(1)}_{c,1} = 4 C_3\,,\\
+&\mathcal{I}_{ib}^{(1)} =4C_1 \,\delta_{ib}\,\delta(1-z)\,,\\
+&\mathcal{I}_{jb}^{(1)} =4C_2 \,\delta_{jb}\,\delta(1-z)\,,\\
+&\hat{S}^{(1)}_{\kappa,1}=-8\sum_{\ell}C_{\ell}
+\end{align}
+\end{subequations}
+
+\begin{subequations}
+\begin{align}
+&J_{c,0}^{(1)}=-2\gamma_{3}^{(0)}\,,\\
+&\mathcal{I}_{ib,0}^{(1)}=-2\gamma_{1}^{(0)}\delta_{ib}\,\delta(1-z)+2P_{ib}^{(0)}\,,\\
+&\mathcal{I}_{jb,0}^{(1)}=-2\gamma_{2}^{(0)}\delta_{jb}\,\delta(1-z)+2P_{jb}^{(0)}\,,\\
+&\hat{S}_{\kappa,0}^{(1)}=4C_1\left(\ln\frac{Q_{12}^2}{Q_1 Q_2}+\ln\frac{Q_{13}^2}{Q_1 Q_3}-\ln\frac{Q_{23}^2}{Q_2 Q_3}\right)\notag\\
+	&\qquad+4C_2\left(\ln\frac{Q_{12}^2}{Q_1 Q_2}+\ln\frac{Q_{23}^2}{Q_2 Q_3}-\ln\frac{Q_{13}^2}{Q_1 Q_3}\right)\notag\\
+	&\qquad+4C_3\left(\ln\frac{Q_{13}^2}{Q_1 Q_3}+\ln\frac{Q_{23}^2}{Q_2 Q_3}-\ln\frac{Q_{12}^2}{Q_1 Q_2}\right)\,.
+\end{align}
+\end{subequations}
 
 \begin{equation}
+J_{c,-1}^{(1)}=\left\{
 \begin{aligned}
-H_{12} &= G_{12}\,,\\
-H_{11} &= G_{11}
-+ \frac{4}{a}S_1
-- \sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,,\\
-H_{24}&=\frac{1}{2}G_{12}^2\,,\\
-H_{23}&=G_{23}+G_{12}\left(G_{11}+\frac{4}{a}S_1-\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\right)\,,\\
-H_{22}&=\frac{1}{2}G^2_{11}+C_1G_{12}+G_{22}+\frac{8\pi\beta_0}{a^2}S_1+\frac{16}{a^2}S_2+\frac{4}{a}S_1G_{11}
-\\&+\frac{16\mathcal{F}_2}{a^2}\left(\sum_\ell\frac{C_\ell}{a+b_\ell}\right)^2-\left(G_{11}+\frac{4}{a}S_1\right)\sum_{\ell=1}^{n_i}\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\\
-&-\sum_{\ell=1}^{n_i}\frac{4\pi\beta_0}{(a+b_\ell)^2}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}+\sum_{\ell_1}^{n_i}\sum_{\ell_2<\ell_1}^{n_i}\left(\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_1)}\right]_i}{q^{(\ell_1)}}\right)\left(\frac{2}{a+b_\ell}
-\frac{\left[\mathbf{P}\otimes \mathbf{q}^{(\ell_2)}\right]_i}{q^{(\ell_2)}}\right)\\
-&+\frac{1}{2}\sum_{\ell=1}^{n_i}\left(\frac{2}{a+b_\ell}\right)^2\frac{\left[\mathbf{P}\otimes\mathbf{P}\otimes\mathbf{q}^{(\ell)}\right]_i}{q^{(\ell)}}\,.
+& C_F(7-\pi^2)\,, && \text{if quark for} \quad \ell=3\,,\\
+& C_A\left(\frac{4}{3}-\pi^2\right)+\frac{20}{3}\pi\beta_0\,, && \text{if gluon for} \quad \ell=3\,,
 \end{aligned}
+\right.
 \end{equation}
-The terms found within the radiator are
-\begin{equation}
-\begin{aligned}
-G_{12}&= -\frac{2}{a}\sum_{\ell}\frac{C_\ell}{a+b_\ell}\,,\\
-G_{12}&=-\sum_{\ell}C_\ell\left(\frac{4B_\ell}{a+b_\ell}+\frac{4}{a(a+b_\ell)}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\,,\\
-G_{23}&=-\frac{8\pi\beta_0}{3a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\,,\\
-G_{22}&=-\frac{8\pi\beta_0}{a^2}\sum_{\ell}C_\ell\frac{2a+b_\ell}{(a+b_\ell)^2}\left(\ln\bar{d}_\ell-b_\ell\ln\frac{2E_\ell}{Q}\right)-8\pi\beta_0\sum_\ell\frac{C_\ell B_\ell}{(a+b_\ell)^2}-\frac{2K^{(1)}}{a}\sum_\ell\frac{C_\ell}{a+b_\ell}
-\end{aligned}
-\end{equation}
+
+\begin{subequations}
+\begin{align}
+&\mathcal{I}_{ib,-1}^{(1)}=2I_{ib}^{(1)}+\ln\lambda_F\,2P_{ib}^{(0)}\,,\\
+&\mathcal{I}_{jb,-1}^{(1)}=2I_{jb}^{(1)}+\ln\lambda_F\,2P_{jb}^{(0)}\,, \\
+&\hat{S}_{\kappa,-1}^{(1)}=C_1\left(\ln^2\frac{Q_{23}^2}{Q_2 Q_3}-\ln^2\frac{Q_{12}^2}{Q_1 Q_2}-\ln^2\frac{Q_{13}^2}{Q_1 Q_3}+\frac{\pi^2}{6}\right)\notag\\
+&\qquad+C_2\left(\ln^2\frac{Q_{13}^2}{Q_1 Q_3}-\ln^2\frac{Q_{12}^2}{Q_1 Q_2}-\ln^2\frac{Q_{23}^2}{Q_2 Q_3}+\frac{\pi^2}{6}\right)\notag\\
+&\qquad+C_3\left(\ln^2\frac{Q_{12}^2}{Q_1 Q_2}-\ln^2\frac{Q_{13}^2}{Q_1 Q_3}-\ln^2\frac{Q_{23}^2}{Q_2 Q_3}+\frac{\pi^2}{6}\right)\notag\\
+	&\qquad+2C_1\left(I_{23,1}+I_{32,1}-I_{12,3}-I_{21,3}-I_{13,2}-I_{31,2}\right)\\
+&\qquad+2C_2\left(I_{13,2}+I_{31,2}-I_{12,3}-I_{21,3}-I_{23,1}-I_{32,1}\right)\\
+&\qquad+2C_3\left(I_{12,3}+I_{21,3}-I_{13,2}-I_{31,2}-I_{23,1}-I_{32,1}\right)\,.
+\end{align}
+\end{subequations}
+
+
+
 
 
