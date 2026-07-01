@@ -1530,7 +1530,7 @@ We now show explicitly that these are equivalent.
 The coefficient function introduced in
 Ref.~\cite{vanBeekveld:2025zjh} is
 \footnote{In Ref.~\cite{vanBeekveld:2025zjh} the final term is written as
-$\ln(M^2/\mu_F^2)\hat P_{ij}(z;0)$, which appears to be a typo since it
+$\ln(M^2/\mu_F^2)\hat P_{ij}(z;0)$, which appears to be an error since it
 introduces an uncancelled collinear singularity.} 
 \begin{multline}
 \label{eq:CkiLTS}
@@ -1609,10 +1609,10 @@ directions.\question{direction?} Explicit expressions for these coefficients are
 given in Appendix.~\ref{ap:N-jet-ing}.
 
 To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
-establish a correspondence between the two sets of coefficients. Since the coefficients from
-\textsc{ARES} comes from the integrated distribution, while those from
-Ref.~\cite{Gaunt:2015pea} are differential, along with the difference of
-f $4\pi$ vs. $2\pi$ used in $\alpha_s$,
+establish a correspondence between the two sets of coefficients. Since the \textsc{ARES}
+coefficients arise from the integrated distribution while those of
+Ref.~\cite{Gaunt:2015pea} are differential, and accounting for the difference between
+the $4\pi$ and $2\pi$ conventions used for $\alpha_s$, we find
 \begin{equation}
 \label{eq:coeff-convent}
 h_{mn}=\frac{\mathcal{C}_{n-1}^{(m)}}{n}\,\frac{(-1)^n}{2m}.
@@ -1628,120 +1628,144 @@ $\mathcal{C}_0^{(2)}$ map onto $h_{24}$, $h_{23}$, $h_{22}$ and $h_{21}$. We do 
 compare $\mathcal{C}_{-1}^{(2)}$ (or equivalently $h_{20}$), since it depends on the
 two-loop one-jettiness soft constant. For processes involving three coloured partons
 this quantity is currently known only numerically, and first contributes at
-N$^3$LL accuracy.
+N$^3$LL accuracy. \question{Is it N$^3$LL accuracy?} \\
+\todo{Mention beam function how it is formulated. \\ Also
+discuss how the SCET factorisation formula works. \\
+Should also discuss the differences of convention from $a,b,c$ to $\ell=1,2,3$.}
 
 \subsection{NLO ingredients}
 \label{subsec:NLO-ingred}
 
-At NLO, the required coefficients are $\mathcal{C}_{1}^{(1)}$ and
-$\mathcal{C}_{0}^{(1)}$, given respectively by $n=1$ and $n=0$ in
+At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
+given respectively by $n=1$ and $n=0$ in
 \begin{equation}
 \label{eq:Cn1}
 \begin{aligned}
-	\mathcal{C}_n^{(1)}(\{p\},M,\mu_R)&= f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}(\{p\},\mu_R)|^2\left[J_{c,n}^{(1)}(\lambda_c)+\hat{S}^{(1)}_{\kappa,n}\left(\{\widehat{q}_i\},\lambda_s\right)\right.\\
-	&\left.+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,n}^{(m)}(z,\lambda_F,\lambda_i)\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}
-+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,n}^{(m)}(z,\lambda_F,\lambda_j)\frac{f_b\left(x_2/z\right)}{f_j(x_2,\mu_F)}
-\right]\,,
+    \mathcal{C}_n^{(1)}&(\{p\},M,\mu_R)=
+    f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
+    \left[J_{c,n}^{(1)}(\lambda_c)
+    +\widehat{S}^{(1)}_{\kappa,n}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\right.\\
+    &\left.+\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}(z,\lambda_F,\lambda_a)
+    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}(z,\lambda_F,\lambda_b)
+    \frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,,
 \end{aligned}
 \end{equation}
 where the jet, soft, and beam functions are expanded as follows:
 \begin{subequations}
 \label{eq:subt-mn-exp}
 \begin{align}
-	&J_{c,n}^{(m)}(\lambda_c) = J_{c,n}^{(m)}
-	+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,J_{c,n+k}^{(m)}\,\ln^k\!\lambda_c\,, \\
-	&\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\},\lambda_s) = \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\})
-	+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,\widehat{S}_{\kappa,n+k}^{(m)}(\{\hat{q}_i\})\,\ln^k\!\lambda_s\,, \\
-	&\mathcal{I}_{ic,n}^{(m)}(z,\lambda_F,\lambda_i) = \mathcal{I}_{ic,n}^{(m)}(z,\lambda_F)
-	+ \sum_{k=1}^{2m-1-n}\frac{(n+k)!}{n!\,k!}\,\mathcal{I}_{ic,n+k}^{(m)}(z,\lambda_F)\,\ln^k\!\lambda_i\,,
+    J_{c,n}^{(m)}(\lambda_c) &= J_{c,n}^{(m)}
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{c,n+r}^{(m)}\,\ln^r\!\lambda_c\,, \\
+    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) &=
+    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,, \\
+    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F,\lambda_a) &=
+    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,
 \end{align}
 \end{subequations}
-with analogous expressions for
-$\mathcal{I}_{jc,n}^{(m)}$.
-
-The $\lambda$ parameters are defined as 
+and analogously for $\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
+The $\lambda$
+parameters are defined as
 \begin{equation}
-	\lambda_c = \frac{Q_3 M}{\mu_R^2}\,, \qquad
-	\lambda_s = \frac{M}{\mu_R}\,, \qquad
-	\lambda_i = \frac{Q_1 M}{\mu_R}\,, \qquad
-	\lambda_j = \frac{Q_2 M}{\mu_R}\,, \qquad
-	\lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
+    \lambda_c = \frac{Q_c M}{\mu_R^2}\,, \qquad
+    \lambda_s = \frac{M}{\mu_R}\,, \qquad
+    \lambda_a = \frac{Q_a M}{\mu_R}\,, \qquad
+    \lambda_b = \frac{Q_b M}{\mu_R}\,, \qquad
+    \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
 \end{equation}
 
-We first consider the coefficient of the leading logarithm,  $\mathcal{C}^{(1)}_1$.
-Substituting the one-loop jet, beam and soft functions into the above expression gives
-
+We first consider the coefficient of the leading logarithm, $\mathcal{C}^{(1)}_1$.
+Substituting the jet, beam and soft functions found in Eq.~\eqref{eq:C11-ingred}
+into Eq.~\eqref{eq:Cn1} gives
 \begin{equation}
-\begin{aligned}
-\mathcal{C}^{(1)}_1=-4\sum_{\ell} C_{\ell}\,.
-\end{aligned}
+    \mathcal{C}^{(1)}_1=-4\left(C_a+C_b+C_c\right)\,.
 \end{equation}
-
-
 Applying the correspondence of Eq.~\eqref{eq:coeff-convent} immediately yields
 \begin{equation}
-	h_{12}=-\sum_{\ell}C_\ell\,,
+    h_{12}=-\left(C_a+C_b+C_c\right)\,,
 \end{equation}
-which is in agreement with the coefficient obtained in the
-\textsc{ARES} formalism, as shown in Eq.~\eqref{eq:h12}.
+which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
 
-We next consider the next-to-leading logarithmic coefficient,
-$\mathcal{C}^{(1)}_0$.
-Using the one-loop subtraction ingredients gives
+We next consider $\mathcal{C}^{(1)}_0$. Substituting ingredients found in Eq.~\eqref{eq:C10-ingred} into Eq.~\eqref{eq:Cn1} gives
 \begin{equation}
-	\begin{aligned}
-	\mathcal{C}^{(1)}_0=&-2\sum_{\ell} \gamma_{\ell}^{(0)} +\sum_{b}\int\frac{dz}{z}2P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}+\sum_{b}\int\frac{dz}{z}2P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\\
-	&+4C_a\ln\frac{Q_1 M}{\mu_R^2} +4C_b\ln\frac{Q_2 M}{\mu_R^2}+4C_c\ln\frac{Q_3 M}{\mu_R^2} \\
-	& -4\left[\left(C_1-C_2-C_3\right)\ln\frac{Q_{23}^2}{Q_2 Q_3}+\left(C_2-C_1-C_3\right)\ln\frac{Q_{13}^2}{Q_1 Q_3}+
-	\left(C_3-C_1-C_2\right)\ln\frac{Q_{12}^2}{Q_1 Q_2}\right]\\
-	&-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
-	\end{aligned}
+\label{eq:C10-init}
+    \begin{aligned}
+    \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
+    +\sum_{k}\int\frac{dz}{z}2P_{ak}^{(0)}(z)\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}2P_{bk}^{(0)}(z)\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\\
+    &+4C_a\ln\frac{Q_a M}{\mu_R^2}+4C_b\ln\frac{Q_b M}{\mu_R^2}
+    +4C_c\ln\frac{Q_c M}{\mu_R^2} \\
+    &-4\left[(C_a-C_b-C_c)\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    +(C_b-C_a-C_c)\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +(C_c-C_a-C_b)\ln\frac{Q_{ab}^2}{Q_a Q_b}\right]\\
+    &-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
+    \end{aligned}
 \end{equation}
-where $\gamma^{(0)}_{\ell}$ and $P_{ab}(z)$ are found in Eqs.~\eqref{eq:gammal-flav} and~\eqref{eq:full-AP} respectively. 
-
-The $\mu_R$ dependence cancels everywhere, which is expected since 
-this is an unphysical scale, which leads us to 
+where $\gamma^{(0)}_{\ell}$ are found in Eq.~\eqref{eq:gammal-flav} and the splitting
+functions $P_{ab}^{(0)}(z)$ in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels
+throughout, as expected since this is an unphysical scale, leaving
 \begin{equation}
-	\begin{aligned}
-	\mathcal{C}^{(1)}_0=& -2\sum_{\ell} \gamma_{\ell}^{(0)} +\sum_{b}\int\frac{dz}{z}2P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}+\sum_{b}\int\frac{dz}{z}2P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\\
-		&+4C_1\ln\frac{Q_{12}^2 Q_{13}^2}{Q_{23}^2 MQ_1}+4C_2\ln\frac{Q_{12}^2 Q_{23}^2}{Q_{12}^2 MQ_2}+4C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,.
-	\end{aligned}
+\label{eq:C01-simplified}
+    \begin{aligned}
+    \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
+    +\sum_{k}\int\frac{dz}{z}2P_{ak}^{(0)}(z)\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}2P_{bk}^{(0)}(z)\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\\
+    &+4C_a\ln\frac{Q_{ab}^2 Q_{ac}^2}{Q_{bc}^2 MQ_a}
+    +4C_b\ln\frac{Q_{ab}^2 Q_{bc}^2}{Q_{ac}^2 MQ_b}
+    +4C_c\ln\frac{Q_{ac}^2 Q_{bc}^2}{Q_{ab}^2 MQ_c}\,.
+    \end{aligned}
 \end{equation}
-
-Using Eq.~\eqref{eq:coeff-convent}, we obtain
+Applying Eq.~\eqref{eq:coeff-convent}, we obtain
 \begin{equation}
 \label{eq:SCET-h11}
-	\begin{aligned}
-	h_{11}=& \sum_{\ell}\gamma^{(0)}_{\ell}-\sum_{b}\int\frac{dz}{z}P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{b}\int\frac{dz}{z}P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\\
-		&-2C_1\ln\frac{Q_{12}^2 Q_{13}^2}{Q_{23}^2 MQ_1}-2C_2\ln\frac{Q_{12}^2 Q_{23}^2}{Q_{12}^2 MQ_2}-2C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,,
-	\end{aligned}
+    \begin{aligned}
+    h_{11}={}&\sum_{\ell}\gamma^{(0)}_{\ell}
+    -\sum_{k}\int\frac{dz}{z}P_{ak}^{(0)}(z)\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    -\sum_{k}\int\frac{dz}{z}P_{bk}^{(0)}(z)\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\\
+    &-2C_a\ln\frac{Q_{ab}^2 Q_{ac}^2}{Q_{bc}^2 MQ_a}
+    -2C_b\ln\frac{Q_{ab}^2 Q_{bc}^2}{Q_{ac}^2 MQ_b}
+    -2C_c\ln\frac{Q_{ac}^2 Q_{bc}^2}{Q_{ab}^2 MQ_c}\,,
+    \end{aligned}
 \end{equation}
-which again agrees with the coefficient obtained in the
-\textsc{ARES} formalism, as shown in Eq.~\eqref{eq:h11}.
+which agrees with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h11}.
 
-Finally, the coefficient multiplying the $\delta(\tau_1)$ contribution is
+Finally, the coefficient multiplying $\delta(\tau_1)$ is
 \begin{equation}
 \begin{aligned}
-	\mathcal{C}_{-1}^{(1)}(\{p\},M,\mu_R)&= f_i(x_1,\mu_F)f_j(x_2,\mu_F) \left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)(\{p\},\mu_R) \\
-	&+f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}(\{p\},\mu_R)|^2\left[J_{c,-1}^{(1)}(\lambda_c)+\hat{S}^{(1)}_{\kappa,-1}\left(\{\widehat{q}_i\},\lambda_s\right)\right.\\
-	&\left.+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,-1}^{(1)}(z,\lambda_F,\lambda_i)\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}
-+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,-1}^{(1)}(z,\lambda_F,\lambda_j)\frac{f_b\left(x_2/z\right)}{f_j(x_2,\mu_F)}\right]\,,
+    \mathcal{C}_{-1}^{(1)}&(\{p\},M,\mu_R)=
+    f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)
+    \left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)(\{p\},\mu_R) \\
+    &+f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
+    \left[J_{c,-1}^{(1)}(\lambda_c)
+    +\widehat{S}^{(1)}_{\kappa,-1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\right.\\
+    &\left.+\sum_{k}\int\frac{dz}{z}\mathcal{I}_{ak,-1}^{(1)}(z,\lambda_F,\lambda_a)
+    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}\mathcal{I}_{bk,-1}^{(1)}(z,\lambda_F,\lambda_b)
+    \frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,,
 \end{aligned}
 \end{equation}
-where the jet, soft, and beam functions are expanded as
-\begin{equation}
-\begin{aligned}
-	&J_{c,-1}^{(m)}(\lambda_c)=J_{c,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{c,n}^{(m)}\frac{\ln^{n+1}\lambda_c}{n+1}\,, \\
-	&\widehat{S}_{\kappa,-1}^{(m)}(\lambda_s)=\widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\frac{\ln^{n+1}\lambda_s}{n+1}\,,\\
-	&\mathcal{I}_{ic,-1}^{(m)}(z,\lambda_F,\lambda_i) = \mathcal{I}_{ic,-1}^{(m)}(z,\lambda_F)
-	+ \sum_{n=0}^{2m-1}\mathcal{I}_{ic,n}^{(m)}(z,\lambda_F)\,\frac{\ln^k\!\lambda_i}{n+1}\,,
-\end{aligned}	
-\end{equation}
-with analogous expressions for
-$\mathcal{I}^{(m)}_{jc,-1}$.
-
-The calculation is far more involved as it requires
-the hard coefficient $H^{(1)}$.
+where the ingredients are found in Eq.~\eqref{eq:Cd1-ingred} and
+the terms are expanded as
+\begin{subequations}
+\begin{align}
+    J_{c,-1}^{(m)}(\lambda_c) &=
+    J_{c,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{c,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_c}{n+1}\,, \\
+    \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) &=
+    \widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\,
+    \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,\\
+    \mathcal{I}_{ak,-1}^{(m)}(z,\lambda_F,\lambda_a) &=
+    \mathcal{I}_{ak,-1}^{(m)}(z,\lambda_F)
+    + \sum_{n=0}^{2m-1}\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)\,
+    \frac{\ln^{n+1}\!\lambda_a}{n+1}\,,
+\end{align}
+\end{subequations}
+and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. This coefficient is considerably
+more involved than the logarithmic ones, as it requires the hard coefficient $H^{(1)}$
+and requires identifying this from Ref.~\add{add vN reference.}
 
 
 
@@ -1749,77 +1773,125 @@ the hard coefficient $H^{(1)}$.
 \subsection{NNLO ingredients}
 \label{subsec:NNLO-ingred}
 
-Unlike the NLO case, as shown in Eq.~\eqref{eq:Cn1},  there is no compact master expression for logarithmic coefficients at NNLO . For
-brevity, we suppress the dependence of the various functions on their
-kinematic arguments and introduce the shorthand notation
-\begin{equation}
-	J_{i,n}^{(m)}\equiv J_{i,n}^{(m)}(\lambda_c),\qquad
-	\mathcal{I}_{ib,n}^{(m)}\equiv
-	\mathcal{I}_{ib,n}^{(m)}(z,\lambda_F,\lambda_i),\qquad
-	\widehat{S}_{\kappa,n}^{(m)}\equiv
-	\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_i\},\lambda_s),
-\end{equation}
-together with
-\begin{equation}
-	|\vec{C}^{(0)}|^2\equiv|\vec{C}^{(0)}(\{p\},\mu_R)|^2.
-\end{equation}
+\todo{sort out the Roman letters vs. italics and
+see if we need this. \\ Add more about what is going on here
+and how we can find the ingredients in the appendix.}
 
-We begin with the coefficient of the leading logarithm,
-$\mathcal{C}^{(2)}_3$, which is given by
+Unlike the NLO case of Eq.~\eqref{eq:Cn1}, there is no compact master expression
+for the NNLO subtraction coefficients. Following Ref.~\cite{Gaunt:2015pea}, we
+introduce shorthand notation to organise the contributions systematically, such that we
+suppress the dependence on the arguments.
 \begin{equation}
 \begin{aligned}
-	\mathcal{C}^{(2)}_3(\{p\},M,\mu_R)&=f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}|^2\left[J_{c,3}^{(2)}+\hat{S}^{(2)}_{\kappa,3}\right.\\
-	&+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,3}^{(2)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}
-+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,3}^{(2)}\frac{f_b\left(x_2/z\right)}{f_j(x_2,\mu_F)}\\
-& +J_{c,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}+J_{c,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_j(x_1,\mu_F)}\\
-&  + \frac{1}{f_i(x_1,\mu_F)} \frac{1}{f_j(x_2,\mu_F)}\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,1}^{(1)}\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,1}^{(1)}+J_{c,1}^{(1)} \widehat{S}_{\kappa,1}^{(1)}\\
-&\left. + \widehat{S}_{\kappa,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}+ \widehat{S}_{\kappa,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_j(x_1,\mu_F)} \right]\,.
-\end{aligned}
+   & J_{c,n}^{(m)}\equiv J_{c,n}^{(m)}(\lambda_c)\,,\quad \mathcal{I}_{bk,n}^{(m)}\equiv\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)\,,\quad
+    \mathcal{I}_{ak,n}^{(m)}\equiv\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F,\lambda_a)\,,\\
+    &
+    \widehat{S}_{\kappa,n}^{(m)}\equiv\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s)\,,\quad
+    |\vec{C}^{(0)}|^2\equiv|\vec{C}^{(0)}(\{p\},\mu_R)|^2\,,
+    \end{aligned}
 \end{equation}
-Substituting the in the ingredients we find
-\begin{equation}
-	\mathcal{C}^{(2)}_3=8\left(\sum_{\ell}C_{\ell}\right)^2\,.
-\end{equation}
-Using the correspondence of Eq.~\eqref{eq:coeff-convent}, this immediately
-gives
-\begin{equation}
-	h_{24}=\frac12\left(\sum_{\ell}C_{\ell}\right)^2,
-\end{equation}
-which is in complete agreement with the coefficient obtained within the
-\textsc{ARES} formalism, as shown in Eq.~\eqref{eq:h24}.
+however note they still undergo the expansions as found in
+Eq.~\eqref{eq:subt-mn-exp}.
 
-We next consider the coefficient of the next-to-leading logarithm,
-$\mathcal{C}^{(2)}_2$
+
+We define
+the genuine $m$-loop contributions from the jet, beam, and soft functions as
 \begin{equation}
 \begin{aligned}
-	\mathcal{C}^{(2)}_2(\{p\},M,\mu_R)&=f_i(x_1,\mu_F)f_j(x_2,\mu_F)|\vec{C}^{(0)}|^2\left[J_{c,2}^{(2)}+\hat{S}^{(2)}_{\kappa,2}\right.\\
-	&+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,2}^{(2)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}
-+\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,2}^{(2)}\frac{f_b\left(x_2/z\right)}{f_j(x_2,\mu_F)}\\
-& +\frac{3}{2}\left(J_{c,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,0}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}+J_{c,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,0}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_j(x_1,\mu_F)}\right.\\
-&  + \frac{1}{f_i(x_1,\mu_F)} \frac{1}{f_j(x_2,\mu_F)}\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,0}^{(1)}\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,1}^{(1)}+J_{c,0}^{(1)} \widehat{S}_{\kappa,1}^{(1)}\\
-&+ \widehat{S}_{\kappa,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,0}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}+ \widehat{S}_{\kappa,1}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,0}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_j(x_1,\mu_F)} \\
-&+J_{c,0}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}+J_{c,0}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_j(x_1,\mu_F)}\\
-&  + \frac{1}{f_i(x_1,\mu_F)} \frac{1}{f_j(x_2,\mu_F)}\sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,1}^{(1)}\sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,0}^{(1)}+J_{c,1}^{(1)} \widehat{S}_{\kappa,0}^{(1)}\\
-&\left. \left. + \widehat{S}_{\kappa,0}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{ib,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_i(x_1,\mu_F)}+ \widehat{S}_{\kappa,0}^{(1)} \sum_{b}\int\frac{dz}{z}\mathcal{I}_{jb,1}^{(1)}\frac{f_b\left(x_1/z,\mu_F\right)}{f_j(x_1,\mu_F)}\right)\right]\,.
+\label{eq:Xn-def}
+    X_n^{(m)} \equiv &f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}|^2
+    \left[J_{c,n}^{(m)} + \widehat{S}_{\kappa,n}^{(m)} \right.\\
+&  \left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(m)}\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(m)}\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,.
+    \end{aligned}
+\end{equation}
+The cross terms involving the one-loop
+virtual amplitude $\vec{C}^{(1)}$ are
+\begin{equation}
+\label{eq:Xn11-def}
+\begin{aligned}
+    X_n^{(1+1)} \equiv& f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)
+    \!\left(\vec{C}^{\dagger(0)}\vec{C}^{(1)}+\vec{C}^{\dagger(1)}\vec{C}^{(0)}\right)
+    \left[J_{c,n}^{(1)} + \widehat{S}_{\kappa,n}^{(1)} \right.\\
+  &\left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,.
+    \end{aligned}
+\end{equation}
+Finally, the cross terms with two one-loop coefficients arising from the
+$\mathcal{L}_n\otimes\mathcal{L}_m$ convolution are
+\begin{equation}
+\label{eq:Xnm11-def}
+\begin{aligned}
+    X_{n,m}^{(1+1)} \equiv{}&
+    f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}|^2
+    \left[J_{c,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}\right.\\
+    &+\!\left(J_{c,m}^{(1)}+\widehat{S}_{\kappa,m}^{(1)}\right)\!
+    \left(\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
+    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    +\sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}
+    \frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right)\\
+    &\left.+\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
+    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
+    \cdot\sum_{k'}\int\frac{dz'}{z'}\,\mathcal{I}_{bk',m}^{(1)}
+    \frac{f_{k'}(x_2/z',\mu_F)}{f_b(x_2,\mu_F)}\right]\,.
 \end{aligned}
 \end{equation}
+With these definitions, the NNLO subtraction coefficients read
+\begin{subequations}
+\label{eq:NNLO-Cn}
+\begin{align}
+    \mathcal{C}_3^{(2)} &= X_3^{(2)} + X_{1,1}^{(1+1)}\,, 
+    \label{eq:C32}\\
+    \mathcal{C}_2^{(2)} &= X_2^{(2)} + \frac{3}{2}\!\left(
+        X_{0,1}^{(1+1)} + X_{1,0}^{(1+1)}\right)\,,
+    \label{eq:C22}\\
+    \mathcal{C}_1^{(2)} &= X_1^{(2)} + X_1^{(1+1)} + 2X_{0,0}^{(1+1)}
+        - \frac{\pi^2}{3}X_{1,1}^{(1+1)}+X_{1,-1}^{(1+1)}+X_{-1,1}^{(1+1)}\,,
+    \label{eq:C12}\\
+    \mathcal{C}_0^{(2)} &= X_0^{(2)} + X_0^{(1+1)}
+        - \frac{\pi^2}{6}\!\left(X_{0,1}^{(1+1)}+X_{1,0}^{(1+1)}\right)
+        + 2\zeta_3\,X_{1,1}^{(1+1)}+X_{0,-1}^{(1+1)}+X_{-1,0}^{(1+1)}\,,
+    \label{eq:C02}
+\end{align}
+\end{subequations}
+where the constants multiplying $X_{n,m}^{(1+1)}$ are the coefficients
+arising from the convolution $\mathcal{L}_m\otimes \mathcal{L}_n$.
+In Eqs.~\eqref{eq:C12} and~\eqref{eq:C02}, the last two terms in each
+equation are not present in Ref.~\cite{Gaunt:2015pea}. Please note that
+we believe this to be an error on their side and these terms must contribute to make
+up the full coefficient. \question{Maybe they don't need the full coefficient for their method
+since it is a subtraction scheme?}
 
-Using the terms found in Appendix.~\ref{ap:N-jet-ing}
-along with the expansion expressions found in Eq.~\eqref{eq:subt-mn-exp},
-we obtain
+Starting from $\mathcal{C}^{(2)}_3$, we find that 
+substituting the ingredients from Eq.~\eqref{eq:C23-ingred} into
+Eq.~\eqref{eq:C32} gives
 \begin{equation}
-\mathcal{C}_{2}^{(2)} = 24\pi\beta_0 \sum_{\ell}C_{\ell } +12 \sum_{\ell}C_{\ell}\left(-\frac{\mathcal{C}^{(1)}_{0}}{2}\right)\,.
+    \mathcal{C}^{(2)}_3=8\left(C_a+C_b+C_c\right)^2\,.
 \end{equation}
-Using the relation, Eq.~\eqref{eq:coeff-convent}, we find 
- \begin{equation}
-	h_{23}=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,,
+which via Eq.~\eqref{eq:coeff-convent} gives
+\begin{equation}
+    h_{24}=\frac{1}{2}\left(\sum_{\ell}C_a+C_b+C_c\right)^2\,,
 \end{equation}
-which is exactly that found in the \textsc{ARES} coefficient, as shown in Eq.~\eqref{eq:h23}.
+in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h24}.
 
-\todo{Add in equation for $\mathcal{C}_{1}^{(2)}$ \\
-Add in equation for $\mathcal{C}_{0}^{(2)}$.
-}
+Next, the coefficient $\mathcal{C}^{(2)}_2$, is found by
+substituting the ingredients from Eq.~\eqref{eq:C22-ingred} into
+Eq.~\eqref{eq:C22} 
+\begin{equation}
+    \mathcal{C}_{2}^{(2)} = 24\pi\beta_0\left(C_a+C_b+C_c\right)
+    +12\left(-\frac{\mathcal{C}^{(1)}_{0}}{2}\right)\left(C_a+C_b+C_c\right)\,.
+\end{equation}
+Applying Eq.~\eqref{eq:coeff-convent} gives
+\begin{equation}
+    h_{23}=-2\pi\beta_{0}\left(C_a+C_b+C_c\right)-h_{11}\left(C_a+C_b+C_c\right)\,,
+\end{equation}
+which agrees exactly with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h23}.
 
+Note that the remaining coefficients, $\mathcal{C}^{(2)}_1, \mathcal{C}^{(2)}_0$
+found in Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are found to agree exactly 
+with the coefficients found in Eqs.~\eqref{eq:h22} and Eqs.~\eqref{eq:h21},
+however due to the length of this validation, we simply refer to a Mathematica 
+notebook found in Appendix.~\ref{ap:mathematica-coeff}.
 
 \section{Conclusion}
 \todo{Answer these questions:}
