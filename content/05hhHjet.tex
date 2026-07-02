@@ -1629,13 +1629,13 @@ compare $\mathcal{C}_{-1}^{(2)}$ (or equivalently $h_{20}$), since it depends on
 two-loop one-jettiness soft constant. For processes involving three coloured partons
 this quantity is currently known only numerically, and first contributes at
 N$^3$LL accuracy. \question{Is it N$^3$LL accuracy?} \\
-\todo{Mention beam function how it is formulated. \\ Also
+\todo{Mention beam function how it is formulated out of the $\mathcal{I}$'s \\ Also
 discuss how the SCET factorisation formula works. \\
 Should also discuss the differences of convention from $a,b,c$ to $\ell=1,2,3$.}
 
 \subsection{NLO ingredients}
 \label{subsec:NLO-ingred}
-
+\add{Refer to the appendix where the ingredients can be found.}
 At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
 given respectively by $n=1$ and $n=0$ in
 \begin{equation}
@@ -1767,32 +1767,18 @@ and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. This coefficient is considerabl
 more involved than the logarithmic ones, as it requires the hard coefficient $H^{(1)}$
 and requires identifying this from Ref.~\add{add vN reference.}
 
-
+\todo{Need to add in the $h_{10}$ validation. I believe this entails
+finding the pole structure and then combining everything.}
 
 
 \subsection{NNLO ingredients}
 \label{subsec:NNLO-ingred}
-
-\todo{sort out the Roman letters vs. italics and
-see if we need this. \\ Add more about what is going on here
-and how we can find the ingredients in the appendix.}
-
+\add{Refer to the appendix where the ingredients can be found.}
+\todo{Re word this next part, need to make it clear we are using the
+same expansion but we are simply just doing this for brevity.}
 Unlike the NLO case of Eq.~\eqref{eq:Cn1}, there is no compact master expression
-for the NNLO subtraction coefficients. Following Ref.~\cite{Gaunt:2015pea}, we
-introduce shorthand notation to organise the contributions systematically, such that we
-suppress the dependence on the arguments.
-\begin{equation}
-\begin{aligned}
-   & J_{c,n}^{(m)}\equiv J_{c,n}^{(m)}(\lambda_c)\,,\quad \mathcal{I}_{bk,n}^{(m)}\equiv\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)\,,\quad
-    \mathcal{I}_{ak,n}^{(m)}\equiv\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F,\lambda_a)\,,\\
-    &
-    \widehat{S}_{\kappa,n}^{(m)}\equiv\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s)\,,\quad
-    |\vec{C}^{(0)}|^2\equiv|\vec{C}^{(0)}(\{p\},\mu_R)|^2\,,
-    \end{aligned}
-\end{equation}
-however note they still undergo the expansions as found in
-Eq.~\eqref{eq:subt-mn-exp}.
-
+for the NNLO subtraction coefficients. Following the notation used Ref.~\cite{Gaunt:2015pea}, we organise the contributions systematically and suppress the dependence on the arguments
+for brevity.
 
 We define
 the genuine $m$-loop contributions from the jet, beam, and soft functions as
@@ -1890,8 +1876,12 @@ which agrees exactly with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h
 Note that the remaining coefficients, $\mathcal{C}^{(2)}_1, \mathcal{C}^{(2)}_0$
 found in Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are found to agree exactly 
 with the coefficients found in Eqs.~\eqref{eq:h22} and Eqs.~\eqref{eq:h21},
-however due to the length of this validation, we simply refer to a Mathematica 
-notebook found in Appendix.~\ref{ap:mathematica-coeff}.
+however due to the length of this validation, we perform this symbolically using
+\textsc{Mathematica}, where the key parts of the notebook can be found in 
+Appendix.~\ref{ap:symb-val}.
+
+
+
 
 \section{Conclusion}
 \todo{Answer these questions:}
