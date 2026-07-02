@@ -387,10 +387,51 @@ J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
 \end{align}
 \end{subequations}
 
-\section{Mathematica notebook for coefficient validation}
-\label{ap:mathematica-coeff}
+\section{Symbolic validation of $h_{22}$ and $h_{21}$}
+\label{ap:symb-val}
 
+Starting with $h_{22}$, the following figures present the key
+steps of the symbolic Mathematica computation validating
+$\mathcal{C}_1^{(2)}/8 = h_{22}$. As shown in Fig.~\ref{fig:mathematica-subtraction}, 
+we subtract the $\mathcal{C}_1^{(1)}\cdot \mathcal{C}_{-1}^{(1)}$ term
+since this has been validated previously. This allows a more simple calculation
+without having to go through inserting the lengthy formula for $\mathcal{C}_{-1}^{(1)}$ (and $h_{10}$).
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/C21_define.jpg}
+\caption{Defining $\mathcal{C}_1^{(2)}$ using Eq.~\eqref{eq:C12} along with the 
+ingredients found in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def}. These are evaluated using the
+subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
+\label{fig:mathematica-C21}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/Isolate_h10_h12.jpg}
+\caption{Subtraction of the $\mathcal{C}_1^{(1)}\cdot \mathcal{C}_{-1}^{(1)}$ cross-term from
+$\mathcal{C}_1^{(2)}$.}
+\label{fig:mathematica-subtraction}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/h22_define.jpg}
+\caption{Definition of the \textsc{ARES} coefficient $h_{22}$, following
+eq.~\eqref{eq:h22}.}
+\label{fig:mathematica-h22def}
+\end{figure}
+
+\todo{go from here}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/Compare_C21_h22.jpg}
+\caption{Confirmation that $\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly.
+The factor of $8$ follows from eq.~\eqref{eq:coeff-convent} with $n=2$,
+$m=2$. The output \texttt{0} confirms exact agreement between the SCET
+and \textsc{ARES} expressions.}
+\label{fig:mathematica-comparison}
+\end{figure}
 
 
 
