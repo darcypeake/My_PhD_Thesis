@@ -151,12 +151,30 @@ with
 \section{\textsc{ARES} resummation coefficients for one-jettiness}
 \label{ap:ARES-coeff}
 
+\todo{
+\begin{enumerate}
+\item Clean up the introduction bit of text here -- need to say that
+$h_{10}$ and $h_{21}$ are not given here. Also need to mention there is an additional
+$\beta_0$ term in $h_{22}$. Not totally sure why this is, need to figure it out.
+\item Check what $S_1$ is -- written in Notes.tex but 
+also work it out again in terms of $C_{\ell\bar\ell}$
+\item Double check that the difference of $\sum_{\ell}\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}$
+to $\sum_{\ell}\sum_{ij}C_{ij}$ is a factor of 2. I think they could be the same
+and it is just the individual $C_{\ell\bar\ell}$ and $C_{ij}$ which have a factor of
+2 difference -- I am unsure. Work out the convention between these two.
+\item Look what the mathematica notebook does.
+\item Add in the $h_{22}$ term properly. (Look at mathematica)
+\item Add in the $h_{21}$ term properly. (Look at mathematica)
+\item Need to write the $\delta\mathcal{F}_{\rm rec}$ and $C_{\mathrm{hc},\ell}^{(1)}$
+terms out properly here.
+\item Also sort out notation overall. (Unsure if we want to the difference of $a,b,b$ to legs 1,2,3 here but worth a thought)
+\end{enumerate}}
+
 The general form of these coefficients can be found in 
 Ref.~\cite{Banfi:2004yd},  however since in this thesis
 we focus on the one-jettiness, we will simply outline what 
 these are for the one-jettiness.
 
-\todo{Double check $S_1$ is expressed properly.}
 
 The terms which are of $\mathcal{O}(\alpha_s)$ are the following:
 \begin{subequations}
@@ -172,7 +190,7 @@ h_{10}&=
 \end{subequations}
 
 
-\todo{Go through $h_{22}$ again as missing term.}
+\todo{Go through $h_{22}$ and $h_{21} $again as missing term.}
 The terms which are of $\mathcal{O}(\alpha_s^2)$ are the following:
 \begin{subequations}
 \begin{align}
@@ -202,6 +220,10 @@ h_{21}&=h_{11}h_{10}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\le
 
 \section{$N$-jettiness subtraction ingredients}
 \label{ap:N-jet-ing}
+
+\todo{Sort out the text here as I think it is a bit lengthy and not necessary, we just need
+to explain that the $a,b,c$ are dummy variables used for legs $1,2,3$
+but because of the way the $N$-jettiness paper does this, it would be confusing to use numbers.}
 Here we present the components used to build the subtraction ingredients
 of Ref.~\cite{Gaunt:2015pea}. Legs are labelled $a$, $b$ (incoming) and
 $c$ (outgoing jet), corresponding to legs $\ell=1,2,3$ of the main
@@ -387,8 +409,19 @@ J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
 \end{align}
 \end{subequations}
 
-\section{Symbolic validation of $h_{22}$ and $h_{21}$}
+\section{Symbolic coefficient validation}
 \label{ap:symb-val}
+
+\todo{Make sure you are happy with the titles. \\
+Add the mathematica notebooks to github and cite them. \\
+Re-write the captions in the text in the following as I don't think they are 
+integrating the figures properly. \\
+ May want to think about using llisting and referring to the code in github
+ instead? }
+
+\subsection{Validation of \texorpdfstring{$h_{22}$}{h22} against 
+\texorpdfstring{$\mathcal{C}_1^{(2)}$}{C1(2)}}
+\label{ap:mathematica-h22}
 
 Starting with $h_{22}$, the following figures present the key
 steps of the symbolic Mathematica computation validating
@@ -401,8 +434,7 @@ without having to go through inserting the lengthy formula for $\mathcal{C}_{-1}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/appendixC/C21_define.jpg}
 \caption{Defining $\mathcal{C}_1^{(2)}$ using Eq.~\eqref{eq:C12} along with the 
-ingredients found in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def}. These are evaluated using the
-subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
+ingredients found in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def}. These are evaluated using the subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
 \label{fig:mathematica-C21}
 \end{figure}
 
@@ -410,7 +442,8 @@ subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/appendixC/Isolate_h10_h12.jpg}
 \caption{Subtraction of the $\mathcal{C}_1^{(1)}\cdot \mathcal{C}_{-1}^{(1)}$ cross-term from
-$\mathcal{C}_1^{(2)}$.}
+$\mathcal{C}_1^{(2)}$ corresponding to the
+$h_{10}\cdot h_{12}$ product in the \textsc{ARES} expansion.}
 \label{fig:mathematica-subtraction}
 \end{figure}
 
@@ -422,19 +455,57 @@ eq.~\eqref{eq:h22}.}
 \label{fig:mathematica-h22def}
 \end{figure}
 
-\todo{go from here}
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/appendixC/Compare_C21_h22.jpg}
-\caption{Confirmation that $\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly.
-The factor of $8$ follows from eq.~\eqref{eq:coeff-convent} with $n=2$,
-$m=2$. The output \texttt{0} confirms exact agreement between the SCET
+\caption{Confirmation that $\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly. This confirms the
+mapping between coefficients as shown in Eq.~\eqref{eq:coeff-convent}.
+The output \texttt{0} confirms exact agreement between the SCET
 and \textsc{ARES} expressions.}
 \label{fig:mathematica-comparison}
 \end{figure}
 
+\subsection{Validation of \texorpdfstring{$h_{21}$}{h21} against 
+\texorpdfstring{$\mathcal{C}_0^{(2)}$}{C0(2)}}
+\label{ap:mathematica-h21}
 
+The validation of $h_{21}$ follows the same structure, with
+$\mathcal{C}_0^{(2)}/(-4) = h_{21}$ via eq.~\eqref{eq:coeff-convent}.
+After subtracting the $\mathcal{C}_{-1}^{(1)}\cdot\mathcal{C}_0^{(1)}$
+cross-term, the initial comparison leaves a residual term dependent in $\gamma^{(1)}_\ell$. This residual does not vanish symbolically since there is no direct one-to-one mapping
+between the $\gamma^{(1)}$ conventions in SCET and \textsc{ARES} -- it is leg dependent. 
+Substituting the explicit values for the $q\bar{q}\to Zg$ channel,
+the residual vanishes exactly. The remaining channels follow in the same way.
+\todo{Need to make a note about the $\delta\mathcal{F}_{\rm rec}$ and $C_{\mathrm{hc},\ell}^{(1)}$ term and spell it out exactly -- might want to do this in the main body although unsure?}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/C20_define.jpg}
+\caption{Defining $\mathcal{C}_0^{(2)}$ using Eq.~\eqref{eq:C02} along with the 
+ingredients found in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def}. These are evaluated using the subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
+\label{fig:mathematica-C20}
+\end{figure}
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/isolate_h10_h11.jpg}
+\caption{Subtraction of the $\mathcal{C}_{-1}^{(1)}\cdot\mathcal{C}_0^{(1)}$
+cross-term from $\mathcal{C}_0^{(2)}$, corresponding to the
+$h_{10}\cdot h_{11}$ product in the $h_{21}$ shown in Eq.~\eqref{eq:h21}.}
+\label{fig:mathematica-C20-sub}
+\end{figure}
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/CompareRes.jpg}
+\caption{Initial comparison, leaving a remaining term dependent on $\gamma^{(1)}_\ell$.}
+\label{fig:mathematica-h21-res}
+\end{figure}
 
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/appendixC/gamma1res.jpg}
+\caption{Substitution of explicit $\gamma^{(1)}$ values for the
+$q\bar{q}\to Zg$ channel into the residual. The output \texttt{0}
+confirms exact agreement, completing the validation of $h_{21}$.}
+\label{fig:mathematica-h21-gamma1}
+\end{figure}

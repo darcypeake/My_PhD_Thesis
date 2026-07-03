@@ -1563,13 +1563,15 @@ This provides evidence that the new
 resummation structure introduced in
 Ref.~\cite{vanBeekveld:2025zjh}, is therefore unnecessary.
   
+  \newpage
  \section{Validation: N-jettiness subtraction}
  \label{subsec:N-jet-SCET-val}
  
  In this section we validate the one-jettiness resummation by comparing the logarithmic
 coefficients obtained in the \textsc{ARES} formalism with those derived in the
 SCET-based $N$-jettiness subtraction framework of Ref.~\cite{Gaunt:2015pea}. 
- \todo{Add a bit more information for how the coefficients to fixed order work.}
+ \todo{Add a bit more information for how the coefficients to fixed order work. \\
+ Also add in a bit more of what they are actually doing in Ref.~\cite{Gaunt:2015pea}.}
  
  Within the \textsc{ARES} formalism, the cumulant can be expanded as
  \begin{equation}
@@ -1631,11 +1633,13 @@ this quantity is currently known only numerically, and first contributes at
 N$^3$LL accuracy. \question{Is it N$^3$LL accuracy?} \\
 \todo{Mention beam function how it is formulated out of the $\mathcal{I}$'s \\ Also
 discuss how the SCET factorisation formula works. \\
-Should also discuss the differences of convention from $a,b,c$ to $\ell=1,2,3$.}
+Should also discuss the differences of convention from $a,b,c$ to $\ell=1,2,3$.} \\ \\
+\todo{We might want to think about breaking Sec 4.7.1 and 4.7.2 into
+paragraphs?}
 
 \subsection{NLO ingredients}
 \label{subsec:NLO-ingred}
-\add{Refer to the appendix where the ingredients can be found.}
+\todo{Refer to the appendix where the ingredients can be found.}
 At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
 given respectively by $n=1$ and $n=0$ in
 \begin{equation}
@@ -1765,17 +1769,24 @@ the terms are expanded as
 \end{subequations}
 and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. This coefficient is considerably
 more involved than the logarithmic ones, as it requires the hard coefficient $H^{(1)}$
-and requires identifying this from Ref.~\add{add vN reference.}
+and requires identifying this from Ref.~\cite{Ravindran:2002dc}.
 
 \todo{Need to add in the $h_{10}$ validation. I believe this entails
-finding the pole structure and then combining everything.}
+finding the pole structure and then combining everything. \\
+The tricky thing is that the $H^{(1)}$ does not have a direct mapping to $\vec{C}^{(1)}$
+in the SCET paper and so we cannot pull it out directly -- need to figure out what we want
+to do about this. I think at the very least we should put the pole structure simplification in the
+appendix.}
+\question{I would like to explain that we cannot find anything in the literature
+for the hard function for this process and so we need to construct it from the
+Higgs process instead. How can I explain this eloquently?}
 
 
 \subsection{NNLO ingredients}
 \label{subsec:NNLO-ingred}
 \add{Refer to the appendix where the ingredients can be found.}
 \todo{Re word this next part, need to make it clear we are using the
-same expansion but we are simply just doing this for brevity.}
+ expansion of functions but we are simply suppressing the arguments for brevity.}
 Unlike the NLO case of Eq.~\eqref{eq:Cn1}, there is no compact master expression
 for the NNLO subtraction coefficients. Following the notation used Ref.~\cite{Gaunt:2015pea}, we organise the contributions systematically and suppress the dependence on the arguments
 for brevity.
@@ -1873,6 +1884,9 @@ Applying Eq.~\eqref{eq:coeff-convent} gives
 \end{equation}
 which agrees exactly with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h23}.
 
+\todo{Try to word this a bit more eloquently. I think discuss that the calculations are
+lengthy and we proceeded by calculating on Mathematica opposed to pen and paper
+and so here will present the notebooks in the appendix.} \\ 
 Note that the remaining coefficients, $\mathcal{C}^{(2)}_1, \mathcal{C}^{(2)}_0$
 found in Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are found to agree exactly 
 with the coefficients found in Eqs.~\eqref{eq:h22} and Eqs.~\eqref{eq:h21},
