@@ -110,12 +110,34 @@ with
 
 
 \section{Additive Results}
+\label{ap:add-res-NNLL}
 
 \begin{multline}
   \label{eq:dFhc-general-add}
    \delta\mathcal{F}_{\rm hc}=-\FNLL(\lambda)\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell =\\
    =\frac{d\FNLL}{d\RpNLL}\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \,.
 \end{multline}
+
+\begin{multline}
+ \label{eq:dFsc-general-add}
+\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=-\FNLL(\lambda)\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\langle d_\ell g_\ell(\phi)-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\right. \times\\
+\times \left.\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,.
+\end{multline}
+
+\begin{equation}
+  \label{eq:dFrec-general-add}
+  \delta\mathcal{F}_{\rm rec} = -\FNLL(\lambda)
+  \sum_\ell
+  \frac{\alpha_s\!\left(Qv^{1/(a+b_\ell)}\right)}
+       {\alpha_s(Q)(a+b_\ell)}
+  \int_0^1 dz\,P_\ell(z)\ln f_{\mathrm{hc}}(z)\,.
+\end{equation}
+
+\ABquestion{Unsure about $\Delta\mathcal{F}_{\rm rec}$?}
+\begin{equation}
+ \label{eq:DFrec-general-add}
+	\Delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL(\lambda)\frac{\alpha_s(Qv^{1/(a+b_{\ell})})}{\alpha_s(Q)(a+b_{\ell})}\left[\int_0^{\pi}\frac{d\phi}{\pi}\int_0^1dz \Delta P_g(z,\phi)\ln f_{\rm hc}^{(f_{\ell})}(z,\phi)\right]\,.
+\end{equation}
 
 \begin{multline}
 \label{eq:dFcorrel-general-add}
@@ -127,10 +149,18 @@ with
 \ln f^{(\ell)}_{\mathrm{correl}}\left(z,\mu,\phi,\phi^{(\ell)}\right)\,.
 \end{multline}
 
+\begin{equation}
+ \label{eq:dFwa-general-add}
+	\delta\mathcal{F}_{\rm wa}(\lambda)=\FNLL(\lambda)
+	\sum_{\ell\bar\ell}\frac{2C_{\ell\bar\ell}}{a}\frac{\alpha_s(v^{1/a}Q)}{\alpha_s(Q)}\int_{-\infty}^{\infty}d\eta^{(\ell\bar\ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar\ell)}}{2\pi}\ln\frac{f_{\rm sc}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}{f_{\rm wa}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}\,.
+\end{equation}
 
  \begin{equation}
  \label{eq:DFwa-general-add}
- 	\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)=-\FNLL(\lambda)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}\right)+\gamma_E\right)\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}\sum_{(ij)}C_{(ij)}\ln\left(\frac{Q_{ij}}{Q}\right)\,,
+ \begin{aligned}
+ 	\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)&=-\FNLL(\lambda)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}\right)+\gamma_E\right)\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\\
+	&=\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}2\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,. 
+\end{aligned}	
  \end{equation}
 
 \section{LTS Validation}
