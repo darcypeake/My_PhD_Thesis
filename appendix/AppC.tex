@@ -55,45 +55,6 @@
 \end{aligned}	
  \end{equation}
 
-\section{LTS Validation}
-\begin{itemize}
-\item \textbf{The NNLL corrections.} The soft-collinear correction is
-	\begin{multline}
-	\label{eq:dFsc-LTS}
-	\delta\mathcal{F}^{\rm LTS}_{\mathrm{sc}}(v)=-\frac{\pi}{\alpha_s(\mu_R)}\FNLL(v)
-	\sum_{\ell=1,2}
-	\left[\delta R'_{\mathrm{NNLL},\ell}(v)\left(\psi^{(0)}(1+R'_{\mathrm{NLL}}(v))+\gamma_E\right)\right.\\
-	\left.+\frac{R''_{\ell}(v)}{2}\left(
-	\left(\psi^{(0)}(1+R'_{\mathrm{NLL}}(v))+\gamma_E\right)^2
-	-\psi^{(1)}(1+R'_{\mathrm{NLL}}(v))+\frac{\pi^2}{6}\right)\right]\,.
-	\end{multline}
-	The wide-angle correction vanishes, $\delta\mathcal{F}^{\rm LTS}_{\mathrm{wa}}(v)=0$. 
-	the correlated correction is
-	\begin{equation}
-	\label{eq:dFcorrel-LTS}
-	\delta\mathcal{F}_{\mathrm{correl}}(v)=
-	\mathcal{F}_{\mathrm{NLL}}
-	\frac{\lambda R''(v)}{\alpha_s(\mu_R)\beta_0}
-	\left(
-	C_A\langle\ln f_{\mathrm{correl}}\rangle_{C_A}
-	+n_f\langle\ln f_{\mathrm{correl}}\rangle_{n_f}
-	\right)\,,
-	\end{equation}
-	with $\langle \ln f_{\mathrm{correl}}\rangle_{C_A}$ and $\langle \ln
-	f_{\mathrm{correl}}\rangle_{n_f}$ given in
-	Ref.~\cite{vanBeekveld:2025zjh}, and the clustering correction is
-	\begin{equation}
-	\label{eq:dFclust-LTS}
-	\delta\mathcal{F}_{\mathrm{clust}}(v)=
-	\mathcal{F}_{\mathrm{NLL}}
-	\frac{\lambda R''(v)}{\alpha_s(\mu_R)\beta_0}
-	C_{\ell}\langle \ln f_{\mathrm{clust}}\rangle\,,
-	\end{equation}
-	with $\langle \ln f_{\mathrm{clust}}\rangle$ likewise given in
-	Ref.~\cite{vanBeekveld:2025zjh}. 
-\end{itemize}
-
-
 
 \section{\textsc{ARES} resummation coefficients for one-jettiness}
 \label{ap:ARES-coeff}
@@ -168,19 +129,11 @@ h_{21}&=h_{11}h_{10}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\le
 \section{$N$-jettiness subtraction ingredients}
 \label{ap:N-jet-ing}
 
-\todo{Sort out the text here as I think it is a bit lengthy and not necessary, we just need
-to explain that the $a,b,c$ are dummy variables used for legs $1,2,3$
-but because of the way the $N$-jettiness paper does this, it would be confusing to use numbers.}
+
 Here we present the components used to build the subtraction ingredients
 of Ref.~\cite{Gaunt:2015pea}. Legs are labelled $a$, $b$ (incoming) and
-$c$ (outgoing jet), corresponding to legs $\ell=1,2,3$ of the main
-text. The Casimirs $C_a, C_b, C_c$, anomalous dimensions
-$\gamma_a^{(0)}, \gamma_b^{(0)}, \gamma_c^{(0)}$, and axis scales
-$Q_a, Q_b, Q_c$ carry the leg label throughout. The dummy flavour
-summed over in each beam function is denoted $k$, running over all
-parton flavours that can produce $a$ or $b$ via a collinear splitting
---- for example, if $a=q$ then $k\in\{q,g\}$, corresponding to the
-$P_{qq}^{(0)}$ and $P_{qg}^{(0)}$ splitting channels respectively.
+$c$ (outgoing jet), and the variable $j$ is the flavour that the PDFs are summed over.
+
 
 \subsection{NLO coefficients}
 
@@ -188,18 +141,18 @@ $P_{qq}^{(0)}$ and $P_{qg}^{(0)}$ splitting channels respectively.
 \label{eq:C11-ingred}
 \begin{align}
 J_{c,1}^{(1)} &= 4C_c\,, \\
-\mathcal{I}_{ak,1}^{(1)} &= 4C_a\,\delta_{ak}\,\delta(1-z)\,, \\
-\mathcal{I}_{bk,1}^{(1)} &= 4C_b\,\delta_{bk}\,\delta(1-z)\,, \\
+\mathcal{I}_{aj,1}^{(1)} &= 4C_a\,\delta_{aj}\,\delta(1-z)\,, \\
+\mathcal{I}_{bj,1}^{(1)} &= 4C_b\,\delta_{bj}\,\delta(1-z)\,, \\
 \widehat{S}_{\kappa,1}^{(1)} &= -8(C_a+C_b+C_c)\,.
 \end{align}
 \end{subequations}
-%
+
 \begin{subequations}
 \label{eq:C10-ingred}
 \begin{align}
 J_{c,0}^{(1)} &= -2\gamma_c^{(0)}\,, \\
-\mathcal{I}_{ak,0}^{(1)} &= -2\gamma_a^{(0)}\,\delta_{ak}\,\delta(1-z)+2P_{ak}^{(0)}\,, \\
-\mathcal{I}_{bk,0}^{(1)} &= -2\gamma_b^{(0)}\,\delta_{bk}\,\delta(1-z)+2P_{bk}^{(0)}\,, \\
+\mathcal{I}_{aj,0}^{(1)} &= -2\gamma_a^{(0)}\,\delta_{aj}\,\delta(1-z)+2P_{aj}^{(0)}\,, \\
+\mathcal{I}_{bj,0}^{(1)} &= -2\gamma_b^{(0)}\,\delta_{bj}\,\delta(1-z)+2P_{bj}^{(0)}\,, \\
 \widehat{S}_{\kappa,0}^{(1)} &=
     4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}+\ln\frac{Q_{ac}^2}{Q_a Q_c}
     -\ln\frac{Q_{bc}^2}{Q_b Q_c}\right) \nonumber\\
@@ -209,7 +162,7 @@ J_{c,0}^{(1)} &= -2\gamma_c^{(0)}\,, \\
     -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\,.
 \end{align}
 \end{subequations}
-%
+
 \begin{subequations}
 \label{eq:Cd1-ingred}
 \begin{align}
@@ -217,8 +170,8 @@ J_{c,-1}^{(1)} &= \begin{cases}
     C_F(7-\pi^2)\,, & c = \text{quark}\,, \\[4pt]
     C_A\!\left(\dfrac{4}{3}-\pi^2\right)+\dfrac{20}{3}\pi\beta_0\,, & c = \text{gluon}\,,
 \end{cases} \\[8pt]
-\mathcal{I}_{ak,-1}^{(1)} &= 2I_{ak}^{(1)}+2\ln\lambda_F\,P_{ak}^{(0)}\,, \\
-\mathcal{I}_{bk,-1}^{(1)} &= 2I_{bk}^{(1)}+2\ln\lambda_F\,P_{bk}^{(0)}\,, \\
+\mathcal{I}_{aj,-1}^{(1)} &= 2I_{aj}^{(1)}+2\ln\lambda_F\,P_{aj}^{(0)}\,, \\
+\mathcal{I}_{bj,-1}^{(1)} &= 2I_{bj}^{(1)}+2\ln\lambda_F\,P_{bj}^{(0)}\,, \\
 \widehat{S}_{\kappa,-1}^{(1)}
   &= C_a\!\left(\ln^2\frac{Q_{bc}^2}{Q_b Q_c}
      -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
@@ -234,31 +187,29 @@ J_{c,-1}^{(1)} &= \begin{cases}
   &\quad+2C_c\!\left(I_{ab,c}+I_{ba,c}-I_{ac,b}-I_{ca,b}-I_{bc,a}-I_{cb,a}\right)\,.
 \end{align}
 \end{subequations}
-\newpage
-\newpage
+
 \subsection{NNLO coefficients}
-\allowdisplaybreaks
-\setlength{\jot}{3pt}
+
 \begin{subequations}
 \label{eq:C23-ingred}
 \begin{align}
 J_{c,3}^{(2)} &= 8C_c^2\,, \\
-\mathcal{I}_{ak,3}^{(2)} &= 8C_a^2\,\delta_{ak}\,\delta(1-z)\,, \\
-\mathcal{I}_{bk,3}^{(2)} &= 8C_b^2\,\delta_{bk}\,\delta(1-z)\,, \\
+\mathcal{I}_{aj,3}^{(2)} &= 8C_a^2\,\delta_{aj}\,\delta(1-z)\,, \\
+\mathcal{I}_{bj,3}^{(2)} &= 8C_b^2\,\delta_{bj}\,\delta(1-z)\,, \\
 \widehat{S}_{\kappa,3}^{(2)} &= 32\left(C_a+C_b+C_c\right)^2\,.
 \end{align}
-\end{subequations}%
-\vspace{6pt}%
+\end{subequations}
+
 \begin{subequations}
 \label{eq:C22-ingred}
 \begin{align}
 J_{c,2}^{(2)} &= -2C_c\!\left(6\gamma_c^{(0)}+4\pi\beta_0\right)\,, \\
-\mathcal{I}_{ak,2}^{(2)} &= 4C_a\!\left[
-    -\!\left(3\gamma_a^{(0)}+2\pi\beta_0\right)\delta_{ak}\,\delta(1-z)
-    +3P_{ak}^{(0)}\right]\,, \\
-\mathcal{I}_{bk,2}^{(2)} &= 4C_b\!\left[
-    -\!\left(3\gamma_b^{(0)}+2\pi\beta_0\right)\delta_{bk}\,\delta(1-z)
-    +3P_{bk}^{(0)}\right]\,, \\
+\mathcal{I}_{aj,2}^{(2)} &= 4C_a\left[
+    -\left(3\gamma_a^{(0)}+2\pi\beta_0\right)\delta_{aj}\,\delta(1-z)
+    +3P_{aj}^{(0)}\right]\,, \\
+\mathcal{I}_{bj,2}^{(2)} &= 4C_b\left[
+    -\left(3\gamma_b^{(0)}+2\pi\beta_0\right)\delta_{bj}\,\delta(1-z)
+    +3P_{bj}^{(0)}\right]\,, \\
 \widehat{S}_{\kappa,2}^{(2)} &=
     4(C_a+C_b+C_c)\left[8\pi\beta_0\right. \nonumber\\
   &\quad-12C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
@@ -268,28 +219,28 @@ J_{c,2}^{(2)} &= -2C_c\!\left(6\gamma_c^{(0)}+4\pi\beta_0\right)\,, \\
   &\left.\quad-12C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
 \end{align}
-\end{subequations}%
-\vspace{6pt}%
+\end{subequations}
+
 \begin{subequations}
 \label{eq:C21-ingred}
 \begin{align}
 J_{c,1}^{(2)} &= 8C_c K^{(1)}-\frac{8\pi^2}{3}C_c^2
     +2\gamma_c^{(0)}\!\left(2\gamma_c^{(0)}+4\pi\beta_0\right)
     +4C_c J_{c,-1}^{(1)}\,, \\
-\mathcal{I}_{ak,1}^{(2)} &=
+\mathcal{I}_{aj,1}^{(2)} &=
     \left[8C_a K^{(1)}-\frac{8\pi^2}{3}C_a^2
     +2\gamma_a^{(0)}\!\left(2\gamma_a^{(0)}+4\pi\beta_0\right)\right]
-    \delta_{ak}\,\delta(1-z) \nonumber\\
+    \delta_{aj}\,\delta(1-z) \nonumber\\
   &\quad+8C_a\!\left(I_{ak}^{(1)}+\ln\lambda_F\,P_{ak}^{(0)}\right)
-    +4\sum_m P_{am}^{(0)}\otimes_z P_{mk}^{(0)}
-    -2\!\left(4\gamma_a^{(0)}+4\pi\beta_0\right)P_{ak}^{(0)}\,, \\
-\mathcal{I}_{bk,1}^{(2)} &=
+    +4\sum_k P_{ak}^{(0)}\otimes_z P_{kj}^{(0)}
+    -2\!\left(4\gamma_a^{(0)}+4\pi\beta_0\right)P_{aj}^{(0)}\,, \\
+\mathcal{I}_{bj,1}^{(2)} &=
     \left[8C_b K^{(1)}-\frac{8\pi^2}{3}C_b^2
     +2\gamma_b^{(0)}\!\left(2\gamma_b^{(0)}+4\pi\beta_0\right)\right]
-    \delta_{bk}\,\delta(1-z) \nonumber\\
-  &\quad+8C_b\!\left(I_{bk}^{(1)}+\ln\lambda_F\,P_{bk}^{(0)}\right)
-    +4\sum_m P_{bm}^{(0)}\otimes_z P_{mk}^{(0)}
-    -2\!\left(4\gamma_b^{(0)}+4\pi\beta_0\right)P_{bk}^{(0)}\,, \\
+    \delta_{bj}\,\delta(1-z) \nonumber\\
+  &\quad+8C_b\!\left(I_{bj}^{(1)}+\ln\lambda_F\,P_{bj}^{(0)}\right)
+    +4\sum_k P_{bk}^{(0)}\otimes_z P_{kj}^{(0)}
+    -2\!\left(4\gamma_b^{(0)}+4\pi\beta_0\right)P_{bj}^{(0)}\,, \\
 \widehat{S}_{\kappa,1}^{(2)} &=
     16\left[C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \nonumber\\
@@ -309,30 +260,30 @@ J_{c,1}^{(2)} &= 8C_c K^{(1)}-\frac{8\pi^2}{3}C_c^2
   &\quad-8\widehat{S}_{\kappa,-1}^{(1)}\left(C_a+C_b+C_c\right)
     -16K^{(1)}\left(C_a+C_b+C_c\right)\,.
 \end{align}
-\end{subequations}%
-\vspace{6pt}%
+\end{subequations}
+
 \begin{subequations}
 \label{eq:C20-ingred}
 \begin{align}
 J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
     -\left(4\gamma_c^{(0)}+4\pi\beta_0\right)J_{c,-1}^{(1)}
     -\frac{\gamma_{c,s}^{(1)}}{2}\,, \\
-\mathcal{I}_{ak,0}^{(2)} &=
+\mathcal{I}_{aj,0}^{(2)} &=
     \left(16C_a^2\zeta_3+\frac{4\pi^2}{3}C_a\gamma_a^{(0)}
-    -\frac{\gamma_{a,s}^{(1)}}{2}\right)\delta_{ak}\,\delta(1-z)
-    -\frac{4\pi^2}{3}C_a P_{ak}^{(0)} \nonumber\\
-  &\quad-\left(4\gamma_a^{(0)}+8\pi\beta_0\right)I_{ak}^{(1)}
-    +4\sum_m I_{am}^{(1)}\otimes_z P_{mk}^{(0)}+4P_{ak}^{(1)} \nonumber\\
-  &\quad+\ln\lambda_F\!\left[-4\gamma_a^{(0)}P_{ak}^{(0)}
-    +4\sum_m P_{am}^{(0)}\otimes_z P_{mk}^{(0)}+4P_{ak}^{(1)}\right]\,, \\
-\mathcal{I}_{bk,0}^{(2)} &=
+    -\frac{\gamma_{a,s}^{(1)}}{2}\right)\delta_{aj}\,\delta(1-z)
+    -\frac{4\pi^2}{3}C_a P_{aj}^{(0)} \nonumber\\
+  &\quad-\left(4\gamma_a^{(0)}+8\pi\beta_0\right)I_{aj}^{(1)}
+    +4\sum_k I_{ak}^{(1)}\otimes_z P_{kj}^{(0)}+4P_{aj}^{(1)} \nonumber\\
+  &\quad+\ln\lambda_F\!\left[-4\gamma_a^{(0)}P_{aj}^{(0)}
+    +4\sum_k P_{ak}^{(0)}\otimes_z P_{kj}^{(0)}+4P_{aj}^{(1)}\right]\,, \\
+\mathcal{I}_{bj,0}^{(2)} &=
     \left(16C_b^2\zeta_3+\frac{4\pi^2}{3}C_b\gamma_b^{(0)}
-    -\frac{\gamma_{b,s}^{(1)}}{2}\right)\delta_{bk}\,\delta(1-z)
-    -\frac{4\pi^2}{3}C_b P_{bk}^{(0)} \nonumber\\
-  &\quad-\left(4\gamma_b^{(0)}+8\pi\beta_0\right)I_{bk}^{(1)}
-    +4\sum_m I_{bm}^{(1)}\otimes_z P_{mk}^{(0)}+4P_{bk}^{(1)} \nonumber\\
-  &\quad+\ln\lambda_F\!\left[-4\gamma_b^{(0)}P_{bk}^{(0)}
-    +4\sum_m P_{bm}^{(0)}\otimes_z P_{mk}^{(0)}+4P_{bk}^{(1)}\right]\,, \\
+    -\frac{\gamma_{b,s}^{(1)}}{2}\right)\delta_{bj}\,\delta(1-z)
+    -\frac{4\pi^2}{3}C_b P_{bj}^{(0)} \nonumber\\
+  &\quad-\left(4\gamma_b^{(0)}+8\pi\beta_0\right)I_{bj}^{(1)}
+    +4\sum_k I_{bk}^{(1)}\otimes_z P_{kj}^{(0)}+4P_{bj}^{(1)} \nonumber\\
+  &\quad+\ln\lambda_F\!\left[-4\gamma_b^{(0)}P_{bj}^{(0)}
+    +4\sum_k P_{bk}^{(0)}\otimes_z P_{kj}^{(0)}+4P_{bj}^{(1)}\right]\,, \\
 \widehat{S}_{\kappa,0}^{(2)} &=
     64\left(C_a+C_b+C_c\right)^2\zeta_3 \nonumber\\
   &\quad+\frac{4\pi^2}{3}(C_a+C_b+C_c)\left[
@@ -359,100 +310,97 @@ J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
 \section{Symbolic coefficient validation}
 \label{ap:symb-val}
 
-\todo{Make sure you are happy with the titles. \\
-Add the mathematica notebooks to github and cite them. \\
-Re-write the captions in the text in the following as I don't think they are 
-integrating the figures properly. \\
- May want to think about using llisting and referring to the code in github
- instead? }
+The following figures present the key steps of the \textsc{Mathematica}
+validation of $h_{22}$ and $h_{21}$ against $\mathcal{C}_1^{(2)}$ and
+$\mathcal{C}_0^{(2)}$ respectively. The complete notebook is available
+at Ref.~\cite{peake2026validation}.
 
-\subsection{Validation of \texorpdfstring{$h_{22}$}{h22} against 
-\texorpdfstring{$\mathcal{C}_1^{(2)}$}{C1(2)}}
+\subsection{Validation of \texorpdfstring{$h_{22}$}{h22}}
 \label{ap:mathematica-h22}
 
-Starting with $h_{22}$, the following figures present the key
-steps of the symbolic Mathematica computation validating
-$\mathcal{C}_1^{(2)}/8 = h_{22}$. As shown in Fig.~\ref{fig:mathematica-subtraction}, 
-we subtract the $\mathcal{C}_1^{(1)}\cdot \mathcal{C}_{-1}^{(1)}$ term
-since this has been validated previously. This allows a more simple calculation
-without having to go through inserting the lengthy formula for $\mathcal{C}_{-1}^{(1)}$ (and $h_{10}$).
+We validate $\mathcal{C}_1^{(2)}/8 = h_{22}$, which follows from
+Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=2$. Since $h_{10}$ and
+$h_{12}$ were validated at NLO, the cross-term
+$\mathcal{C}_1^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$, corresponding to
+$h_{10}\cdot h_{12}$ in the \textsc{ARES} cumulant expansion, is
+subtracted before the comparison is made
+(Fig.~\ref{fig:mathematica-C21-sub}). The output \texttt{0} in
+Fig.~\ref{fig:mathematica-h22compare} confirms exact agreement.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/C21_define.jpg}
-\caption{Defining $\mathcal{C}_1^{(2)}$ using Eq.~\eqref{eq:C12} along with the 
-ingredients found in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def}. These are evaluated using the subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_C21.jpeg}
+\caption{Define $\mathcal{C}_1^{(2)}$ by substituting the $X$ quantities
+in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def} into Eq.~\eqref{eq:C12}.}
 \label{fig:mathematica-C21}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/Isolate_h10_h12.jpg}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Isolate_h10_h12.jpeg}
 \caption{Subtraction of the $\mathcal{C}_1^{(1)}\cdot \mathcal{C}_{-1}^{(1)}$ cross-term from
-$\mathcal{C}_1^{(2)}$ corresponding to the
-$h_{10}\cdot h_{12}$ product in the \textsc{ARES} expansion.}
-\label{fig:mathematica-subtraction}
+$\mathcal{C}_1^{(2)}$, isolating the new term
+\texttt{C21Rem}.}
+\label{fig:mathematica-C21-sub}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/h22_define.jpg}
-\caption{Definition of the \textsc{ARES} coefficient $h_{22}$, following
-eq.~\eqref{eq:h22}.}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_h22.jpeg}
+\caption{Definition of $h_{11}$ and $h_{22}$ following
+Eqs.~\eqref{eq:h11} and~\eqref{eq:h22}.}
 \label{fig:mathematica-h22def}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/Compare_C21_h22.jpg}
-\caption{Confirmation that $\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly. This confirms the
-mapping between coefficients as shown in Eq.~\eqref{eq:coeff-convent}.
-The output \texttt{0} confirms exact agreement between the SCET
-and \textsc{ARES} expressions.}
-\label{fig:mathematica-comparison}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Compare_C21_h22.jpeg}
+\caption{Comparison of $h_{22}$ and $\mathcal{C}_1^{(2)}$, where the output \texttt{0} confirms $\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly.}
+\label{fig:mathematica-h22compare}
 \end{figure}
 
-\subsection{Validation of \texorpdfstring{$h_{21}$}{h21} against 
-\texorpdfstring{$\mathcal{C}_0^{(2)}$}{C0(2)}}
+\subsection{Validation of \texorpdfstring{$h_{21}$}{h21}}
 \label{ap:mathematica-h21}
 
-The validation of $h_{21}$ follows the same structure, with
-$\mathcal{C}_0^{(2)}/(-4) = h_{21}$ via eq.~\eqref{eq:coeff-convent}.
-After subtracting the $\mathcal{C}_{-1}^{(1)}\cdot\mathcal{C}_0^{(1)}$
-cross-term, the initial comparison leaves a residual term dependent in $\gamma^{(1)}_\ell$. This residual does not vanish symbolically since there is no direct one-to-one mapping
-between the $\gamma^{(1)}$ conventions in SCET and \textsc{ARES} -- it is leg dependent. 
-Substituting the explicit values for the $q\bar{q}\to Zg$ channel,
-the residual vanishes exactly. The remaining channels follow in the same way.
-\todo{Need to make a note about the $\delta\mathcal{F}_{\rm rec}$ and $C_{\mathrm{hc},\ell}^{(1)}$ term and spell it out exactly -- might want to do this in the main body although unsure?}
+We validate $\mathcal{C}_0^{(2)}/(-4) = h_{21}$, which follows from
+Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=1$. As above, the
+cross-term $\mathcal{C}_0^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$,
+corresponding to $h_{10}\cdot h_{11}$, is subtracted before the
+comparison is made (Fig.~\ref{fig:mathematica-C20-sub}). The initial
+comparison in Fig.~\ref{fig:mathematica-h21compare} leaves a residual
+in $\gamma^{(1)}_\ell$, which does not vanish symbolically since the
+SCET and \textsc{ARES} conventions for $\gamma^{(1)}$ differ. Substituting explicit values for the
+$q\bar{q}\to Zg$ channel, the residual vanishes exactly. The other channels follow in
+the same way. 
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/C20_define.jpg}
-\caption{Defining $\mathcal{C}_0^{(2)}$ using Eq.~\eqref{eq:C02} along with the 
-ingredients found in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def}. These are evaluated using the subtraction ingredients of Appendix~\ref{ap:N-jet-ing}.}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_C20.jpeg}
+\caption{Define $\mathcal{C}_0^{(2)}$ by substituting the $X$ quantities
+in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def} into Eq.~\eqref{eq:C02}.}
 \label{fig:mathematica-C20}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/isolate_h10_h11.jpg}
-\caption{Subtraction of the $\mathcal{C}_{-1}^{(1)}\cdot\mathcal{C}_0^{(1)}$
-cross-term from $\mathcal{C}_0^{(2)}$, corresponding to the
-$h_{10}\cdot h_{11}$ product in the $h_{21}$ shown in Eq.~\eqref{eq:h21}.}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Isolate_h10_h11.jpeg}
+\caption{Subtraction of the $h_{10}\cdot h_{11}$ cross-term from
+$\mathcal{C}_0^{(2)}$, isolating the new term \texttt{C20Rem}.}
 \label{fig:mathematica-C20-sub}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/CompareRes.jpg}
-\caption{Initial comparison, leaving a remaining term dependent on $\gamma^{(1)}_\ell$.}
-\label{fig:mathematica-h21-res}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_h21.jpeg}
+\caption{Definition of $h_{21}$ following Eq.~\eqref{eq:h21}.}
+\label{fig:mathematica-h21def}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/appendixC/gamma1res.jpg}
-\caption{Substitution of explicit $\gamma^{(1)}$ values for the
-$q\bar{q}\to Zg$ channel into the residual. The output \texttt{0}
-confirms exact agreement, completing the validation of $h_{21}$.}
-\label{fig:mathematica-h21-gamma1}
+\includegraphics[width=0.85\textwidth]{figures/appendixC/compare_C20_h21.jpeg}
+\caption{Initial comparison leads to a residual in $\gamma^{(1)}_\ell$ (top). The substitution
+of explicit $\gamma^{(1)}$ values for the $q\bar{q}\to Zg$ channel
+gives \texttt{Out[82] = 0}, showing that $\mathcal{C}_0^{(2)}/(-4) = h_{21}$ exactly (bottom).}
+\label{fig:mathematica-h21compare}
 \end{figure}
