@@ -1441,33 +1441,37 @@ yields
     \Delta \mathcal{F}_{\rm wa}(\lambda) =  \frac{\alpha_s(\tau_1\,Q)}{\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}2\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,. 
   \end{equation}
   
-  \todo{Re-word this.}
-  In the next section, we will provide a validation of these results. 
+In the next section, we will provide an analytical validation of these results.
      
  \section{Validation: N-jettiness subtraction}
  \label{subsec:N-jet-SCET-val}
  
- In this section we validate the one-jettiness resummation by comparing the logarithmic
-coefficients obtained in the \textsc{ARES} formalism with those derived in the
-SCET-based $N$-jettiness subtraction framework of Ref.~\cite{Gaunt:2015pea}. 
- \todo{Add a bit more information for how the coefficients to fixed order work. \\
- Also add in a bit more of what they are actually doing in Ref.~\cite{Gaunt:2015pea}.}
+ \todo{In general we need to edit this a bit as the wording is still
+ a bit off I think -- I also think we are maybe referring to too many equations? We also need to work out a better correspondence since
+ we have $|C|^2$ and PDFs floating around in SCET and we
+ cannot really see what we are corresponding to in ARES. }
  
- Within the \textsc{ARES} formalism, the cumulant can be expanded as
- \begin{equation}
- \label{eq:sig-coeff}
-	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
-\end{equation}
-where $\bar{\alpha}_s\equiv \alpha_s(Q)/2\pi$ and
-the coefficients $h_{nm}$ are found in Appendix~\ref{ap:ARES-coeff}.
+In this section we validate the one-jettiness resummation by
+comparing the logarithmic coefficients obtained in the \textsc{ARES}
+formalism with those derived in the SCET-based $N$-jettiness
+subtraction framework of Ref.~\cite{Gaunt:2015pea}.
 
-The subtraction formalism of Ref.~\cite{Gaunt:2015pea} uses Soft-Collinear Effective
-Theory (SCET) to determine the IR-singular contributions to the
-$N$-jettiness distribution in the limit $\mathcal{T}_N\rightarrow0$.
-For the present work we specialise to the case $N=1$, corresponding to
-one-jettiness.
+\ndp{Ref.~\cite{Gaunt:2015pea} presents a subtraction method for
+performing NNLO QCD calculations for arbitrary processes, exploiting
+the factorisation of the $N$-jettiness distribution in the limit
+$\mathcal{T}_N\to0$. The method uses SCET to determine the IR
+singular contributions to $N$-jet cross sections analytically and
+constructs suitable $\mathcal{T}_N$-subtractions from them. The
+singular structure is organised into hard, beam, jet, and soft
+functions. The beam function $B_a$ encodes all collinear emissions
+from incoming parton $a$ and depends on its flavour $\kappa_a$ and
+momentum fraction $x_a$. The jet function $J_c$ encodes collinear
+emissions from the outgoing parton $c$ and depends on its flavour
+$\kappa_c$. The soft function $S_\kappa$, where
+$\kappa\equiv\{\kappa_a,\kappa_b,\kappa_c\}$ denotes the full
+partonic channel, describes all soft emissions between the partons.}
 
-The singular part of the spectrum where $\tau_1\to1$ factorises as 
+Specialising this to the one-jettiness ($N=1$), we find that the singular part of the distribution ($\tau_1\to0$) factorises as 
 \begin{equation}
 	\label{eq:Cnm-def}
 	\frac{\mathrm{d}\sigma^{\rm sing}(\{p\})}{\mathrm{d}\tau_1}
@@ -1479,18 +1483,19 @@ where
 \begin{equation}
 	\mathcal{L}_n(\tau_1)=\left[\frac{\theta(\tau_1)\ln^n(\tau_1)}{\tau_1}\right]_+\,.
 \end{equation} 
-are the standard plus distributions. 
-
-The subtraction ingredients $\mathcal{C}_n^{(m)}$ are expressed in terms of the hard,
-beam, jet and soft functions that appear in the SCET factorisation theorem. The beam
-functions contain all collinear emissions from the incoming partons and depend on the
-flavours of the partons and their momentum fractions, while the jet function contains
-all collinear emissions from the outgoing parton and depends on its flavour. The soft
-function describes all soft emissions between the partons and depends on their
-directions.\question{direction?} Explicit expressions for these coefficients are
-given in Appendix.~\ref{ap:N-jet-ing}.
-
-To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
+are the standard plus distributions. The subtraction coefficients
+$\mathcal{C}_n^{(m)}$ are expressed in terms of the hard, beam, jet,
+and soft functions, where their explicit expressions are collected in
+Appendix~\ref{ap:N-jet-ing}, which follows the $a,b,c$ notation which has the correspondence with the leg notation used in the \textsc{ARE}
+formalism as $\{a,b,c\}\equiv\{\ell=1,\ell=2,\ell=3\}$.
+ 
+Within the \textsc{ARES} formalism, the cumulant expands as
+ \begin{equation}
+ \label{eq:sig-coeff}
+	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
+\end{equation}
+where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$ and the coefficients
+$h_{nm}$ are given in Appendix~\ref{ap:ARES-coeff}. To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
 establish a correspondence between the two sets of coefficients. Since the \textsc{ARES}
 coefficients arise from the integrated distribution while those of
 Ref.~\cite{Gaunt:2015pea} are differential, and accounting for the difference between
@@ -1503,39 +1508,37 @@ For the $\delta(\tau_1)$ coefficient,
 $\mathcal{C}_{-1}^{(m)}$,
 the denominator should be interpreted as $n=1$.
 
-At NLO this correspondence relates $\mathcal{C}_1^{(1)}$, $\mathcal{C}_0^{(1)}$ and
-$\mathcal{C}_{-1}^{(1)}$ to $h_{12}$, $h_{11}$ and $h_{10}$, respectively. At NNLO the
-coefficients $\mathcal{C}_3^{(2)}$, $\mathcal{C}_2^{(2)}$, $\mathcal{C}_1^{(2)}$ and
-$\mathcal{C}_0^{(2)}$ map onto $h_{24}$, $h_{23}$, $h_{22}$ and $h_{21}$. We do not
-compare $\mathcal{C}_{-1}^{(2)}$ (or equivalently $h_{20}$), since it depends on the
-two-loop one-jettiness soft constant. For processes involving three coloured partons
-this quantity is currently known only numerically, and first contributes at
-N$^3$LL accuracy. \question{Is it N$^3$LL accuracy?} \\
-\todo{Mention beam function how it is formulated out of the $\mathcal{I}$'s \\ Also
-discuss how the SCET factorisation formula works. \\
-Should also discuss the differences of convention from $a,b,c$ to $\ell=1,2,3$.} \\ \\
-\todo{We might want to think about breaking Sec 4.7.1 and 4.7.2 into
-paragraphs?}
-
 \subsection{NLO ingredients}
 \label{subsec:NLO-ingred}
-\todo{Refer to the appendix where the ingredients can be found.}
+
 At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
-given respectively by $n=1$ and $n=0$ in
+given by $n=1$ and $n=0$ respectively in
 \begin{equation}
 \label{eq:Cn1}
 \begin{aligned}
     \mathcal{C}_n^{(1)}&(\{p\},M,\mu_R)=
-    f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
+    f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
     \left[J_{c,n}^{(1)}(\lambda_c)
     +\widehat{S}^{(1)}_{\kappa,n}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\right.\\
-    &\left.+\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}(z,\lambda_F,\lambda_a)
-    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}(z,\lambda_F,\lambda_b)
-    \frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,,
+    &\left.+\sum_{j}\int\frac{dz}{z}\,\mathcal{I}_{aj,n}^{(1)}(z,\lambda_F,\lambda_a)
+    \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_{j}\int\frac{dz}{z}\,\mathcal{I}_{bj,n}^{(1)}(z,\lambda_F,\lambda_b)
+    \frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
 \end{aligned}
 \end{equation}
-where the jet, soft, and beam functions are expanded as follows:
+The beam function coefficients are related to the
+coefficients $\mathcal{I}_{ij}$ by
+\begin{equation}
+  B_{i,n}^{(m)}(x_i,\mu_R,\mu_F,\lambda_i) =
+  \sum_j\int\frac{dz}{z}\,\mathcal{I}_{ij,n}^{(m)}\!\left(z,\lambda_F,\lambda_i\right)
+  f_j\!\left(\frac{x_i}{z},\mu_F\right)\,.
+\end{equation}
+We have substituted these directly into eq.~\eqref{eq:Cn1} for a
+more transparent comparison with \textsc{ARES}, and refer to
+$\mathcal{I}_{ij}$ as the beam function coefficients throughout.
+
+The functions in Eq.~\eqref{eq:Cn1} are expanded in logarithms of the $\lambda$
+parameters as
 \begin{subequations}
 \label{eq:subt-mn-exp}
 \begin{align}
@@ -1545,13 +1548,13 @@ where the jet, soft, and beam functions are expanded as follows:
     \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
     + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
     \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,, \\
-    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F,\lambda_a) &=
-    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)
+    \mathcal{I}_{aj,n}^{(m)}(z,\lambda_F,\lambda_a) &=
+    \mathcal{I}_{aj,n}^{(m)}(z,\lambda_F)
     + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
-    \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,
+    \mathcal{I}_{aj,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,
 \end{align}
 \end{subequations}
-and analogously for $\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
+and analogously for $\mathcal{I}_{bj,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
 The $\lambda$
 parameters are defined as
 \begin{equation}
@@ -1563,24 +1566,24 @@ parameters are defined as
 \end{equation}
 
 We first consider the coefficient of the leading logarithm, $\mathcal{C}^{(1)}_1$.
-Substituting the jet, beam and soft functions found in Eq.~\eqref{eq:C11-ingred}
+Substituting the ingredients found in Eq.~\eqref{eq:C11-ingred}
 into Eq.~\eqref{eq:Cn1} gives
 \begin{equation}
     \mathcal{C}^{(1)}_1=-4\left(C_a+C_b+C_c\right)\,.
 \end{equation}
-Applying the correspondence of Eq.~\eqref{eq:coeff-convent} immediately yields
+Applying Eq.~\eqref{eq:coeff-convent} immediately yields
 \begin{equation}
     h_{12}=-\left(C_a+C_b+C_c\right)\,,
 \end{equation}
 which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
 
-We next consider $\mathcal{C}^{(1)}_0$. Substituting ingredients found in Eq.~\eqref{eq:C10-ingred} into Eq.~\eqref{eq:Cn1} gives
+We next consider $\mathcal{C}^{(1)}_0$. Substituting terms found in Eq.~\eqref{eq:C10-ingred} into Eq.~\eqref{eq:Cn1} gives
 \begin{equation}
 \label{eq:C10-init}
     \begin{aligned}
     \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
-    +\sum_{k}\int\frac{dz}{z}2P_{ak}^{(0)}(z)\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}2P_{bk}^{(0)}(z)\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\\
+    +\sum_{j}\int\frac{dz}{z}2P_{aj}^{(0)}(z)\frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_{j}\int\frac{dz}{z}2P_{bj}^{(0)}(z)\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
     &+4C_a\ln\frac{Q_a M}{\mu_R^2}+4C_b\ln\frac{Q_b M}{\mu_R^2}
     +4C_c\ln\frac{Q_c M}{\mu_R^2} \\
     &-4\left[(C_a-C_b-C_c)\ln\frac{Q_{bc}^2}{Q_b Q_c}
@@ -1589,15 +1592,14 @@ We next consider $\mathcal{C}^{(1)}_0$. Substituting ingredients found in Eq.~\e
     &-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
     \end{aligned}
 \end{equation}
-where $\gamma^{(0)}_{\ell}$ are found in Eq.~\eqref{eq:gammal-flav} and the splitting
-functions $P_{ab}^{(0)}(z)$ in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels
-throughout, as expected since this is an unphysical scale, leaving
+where $\gamma^{(0)}_{\ell}$ are given in Eq.~\eqref{eq:gammal-flav} and $P_{aj}^{(0)}(z)$ in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels
+throughout, \ndp{as expected since this is an unphysical scale}, leaving
 \begin{equation}
 \label{eq:C01-simplified}
     \begin{aligned}
     \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
-    +\sum_{k}\int\frac{dz}{z}2P_{ak}^{(0)}(z)\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}2P_{bk}^{(0)}(z)\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\\
+    +\sum_{j}\int\frac{dz}{z}2P_{aj}^{(0)}(z)\frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_{j}\int\frac{dz}{z}2P_{bj}^{(0)}(z)\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
     &+4C_a\ln\frac{Q_{ab}^2 Q_{ac}^2}{Q_{bc}^2 MQ_a}
     +4C_b\ln\frac{Q_{ab}^2 Q_{bc}^2}{Q_{ac}^2 MQ_b}
     +4C_c\ln\frac{Q_{ac}^2 Q_{bc}^2}{Q_{ab}^2 MQ_c}\,.
@@ -1608,8 +1610,8 @@ Applying Eq.~\eqref{eq:coeff-convent}, we obtain
 \label{eq:SCET-h11}
     \begin{aligned}
     h_{11}={}&\sum_{\ell}\gamma^{(0)}_{\ell}
-    -\sum_{k}\int\frac{dz}{z}P_{ak}^{(0)}(z)\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    -\sum_{k}\int\frac{dz}{z}P_{bk}^{(0)}(z)\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\\
+    -\sum_{j}\int\frac{dz}{z}P_{aj}^{(0)}(z)\frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    -\sum_{j}\int\frac{dz}{z}P_{bj}^{(0)}(z)\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
     &-2C_a\ln\frac{Q_{ab}^2 Q_{ac}^2}{Q_{bc}^2 MQ_a}
     -2C_b\ln\frac{Q_{ab}^2 Q_{bc}^2}{Q_{ac}^2 MQ_b}
     -2C_c\ln\frac{Q_{ac}^2 Q_{bc}^2}{Q_{ab}^2 MQ_c}\,,
@@ -1617,19 +1619,19 @@ Applying Eq.~\eqref{eq:coeff-convent}, we obtain
 \end{equation}
 which agrees with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h11}.
 
-Finally, the coefficient multiplying $\delta(\tau_1)$ is
+We turn our attention to the $\delta(\tau_1)$ coefficient
 \begin{equation}
 \begin{aligned}
     \mathcal{C}_{-1}^{(1)}&(\{p\},M,\mu_R)=
     f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)
     \left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)(\{p\},\mu_R) \\
-    &+f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
+    &+f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
     \left[J_{c,-1}^{(1)}(\lambda_c)
     +\widehat{S}^{(1)}_{\kappa,-1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\right.\\
-    &\left.+\sum_{k}\int\frac{dz}{z}\mathcal{I}_{ak,-1}^{(1)}(z,\lambda_F,\lambda_a)
-    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}\mathcal{I}_{bk,-1}^{(1)}(z,\lambda_F,\lambda_b)
-    \frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,,
+    &\left.+\sum_{j}\int\frac{dz}{z}\mathcal{I}_{aj,-1}^{(1)}(z,\lambda_F,\lambda_a)
+    \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_{j}\int\frac{dz}{z}\mathcal{I}_{bj,-1}^{(1)}(z,\lambda_F,\lambda_b)
+    \frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,,
 \end{aligned}
 \end{equation}
 where the ingredients are found in Eq.~\eqref{eq:Cd1-ingred} and
@@ -1641,22 +1643,19 @@ the terms are expanded as
     \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) &=
     \widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\,
     \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,\\
-    \mathcal{I}_{ak,-1}^{(m)}(z,\lambda_F,\lambda_a) &=
-    \mathcal{I}_{ak,-1}^{(m)}(z,\lambda_F)
-    + \sum_{n=0}^{2m-1}\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)\,
+    \mathcal{I}_{aj,-1}^{(m)}(z,\lambda_F,\lambda_a) &=
+    \mathcal{I}_{aj,-1}^{(m)}(z,\lambda_F)
+    + \sum_{n=0}^{2m-1}\mathcal{I}_{aj,n}^{(m)}(z,\lambda_F)\,
     \frac{\ln^{n+1}\!\lambda_a}{n+1}\,,
 \end{align}
 \end{subequations}
-and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. This coefficient is considerably
-more involved than the logarithmic ones, as it requires the hard coefficient $H^{(1)}$
-and requires identifying this from Ref.~\cite{Ravindran:2002dc}.
+and analogously for $\mathcal{I}_{bj,-1}^{(m)}$. 
 
-\todo{Need to add in the $h_{10}$ validation. I believe this entails
-finding the pole structure and then combining everything. \\
-The tricky thing is that the $H^{(1)}$ does not have a direct mapping to $\vec{C}^{(1)}$
-in the SCET paper and so we cannot pull it out directly -- need to figure out what we want
-to do about this. I think at the very least we should put the pole structure simplification in the
-appendix.}
+This coefficient is considerably more involved than the logarithmic ones, as it requires
+the one-loop hard function $H^{(1)}$, which is encoded in the Wilson coefficient $\vec{C}^{(1)}$ in Ref.~\cite{Gaunt:2015pea}. 
+
+\add{This requires using the one-loop corrections to $H+$ jet production
+in Ref.~\cite{Ravindran:2002dc} to extract the pole structure.}
 \question{I would like to explain that we cannot find anything in the literature
 for the hard function for this process and so we need to construct it from the
 Higgs process instead. How can I explain this eloquently?}
@@ -1664,22 +1663,16 @@ Higgs process instead. How can I explain this eloquently?}
 
 \subsection{NNLO ingredients}
 \label{subsec:NNLO-ingred}
-\add{Refer to the appendix where the ingredients can be found.}
-\todo{Re word this next part, need to make it clear we are using the
- expansion of functions but we are simply suppressing the arguments for brevity.}
-Unlike the NLO case of Eq.~\eqref{eq:Cn1}, there is no compact master expression
-for the NNLO subtraction coefficients. Following the notation used Ref.~\cite{Gaunt:2015pea}, we organise the contributions systematically and suppress the dependence on the arguments
-for brevity.
 
-We define
-the genuine $m$-loop contributions from the jet, beam, and soft functions as
+Unlike the NLO case, there is no compact master expression for the
+NNLO subtraction coefficients. For brevity the scale arguments are suppressed throughout this subsection. The contributions which make up these NNLO coefficients are organised into three types of quantity. The genuine $m$-loop contributions from the jet, beam, and soft functions as
 \begin{equation}
 \begin{aligned}
 \label{eq:Xn-def}
-    X_n^{(m)} \equiv &f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}|^2
+    X_n^{(m)} \equiv &f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}|^2
     \left[J_{c,n}^{(m)} + \widehat{S}_{\kappa,n}^{(m)} \right.\\
-&  \left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(m)}\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(m)}\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,.
+&  \left.  + \sum_j\int\frac{dz}{z}\,\mathcal{I}_{aj,n}^{(m)}\frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_j\int\frac{dz}{z}\,\mathcal{I}_{bj,n}^{(m)}\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
     \end{aligned}
 \end{equation}
 The cross terms involving the one-loop
@@ -1687,33 +1680,33 @@ virtual amplitude $\vec{C}^{(1)}$ are
 \begin{equation}
 \label{eq:Xn11-def}
 \begin{aligned}
-    X_n^{(1+1)} \equiv& f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)
+    X_n^{(1+1)} \equiv& f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)
     \!\left(\vec{C}^{\dagger(0)}\vec{C}^{(1)}+\vec{C}^{\dagger(1)}\vec{C}^{(0)}\right)
     \left[J_{c,n}^{(1)} + \widehat{S}_{\kappa,n}^{(1)} \right.\\
-  &\left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}\frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}\frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right]\,.
+  &\left.  + \sum_j\int\frac{dz}{z}\,\mathcal{I}_{aj,n}^{(1)}\frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_j\int\frac{dz}{z}\,\mathcal{I}_{bj,n}^{(1)}\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
     \end{aligned}
 \end{equation}
-Finally, the cross terms with two one-loop coefficients arising from the
+Finally, the cross-terms between two one-loop functions arising from the
 $\mathcal{L}_n\otimes\mathcal{L}_m$ convolution are
 \begin{equation}
 \label{eq:Xnm11-def}
 \begin{aligned}
     X_{n,m}^{(1+1)} \equiv{}&
-    f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)\,|\vec{C}^{(0)}|^2
+    f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}|^2
     \left[J_{c,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}\right.\\
     &+\!\left(J_{c,m}^{(1)}+\widehat{S}_{\kappa,m}^{(1)}\right)\!
-    \left(\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
-    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    +\sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}
-    \frac{f_k(x_2/z,\mu_F)}{f_b(x_2,\mu_F)}\right)\\
-    &\left.+\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
-    \frac{f_k(x_1/z,\mu_F)}{f_a(x_1,\mu_F)}
-    \cdot\sum_{k'}\int\frac{dz'}{z'}\,\mathcal{I}_{bk',m}^{(1)}
-    \frac{f_{k'}(x_2/z',\mu_F)}{f_b(x_2,\mu_F)}\right]\,.
+    \left(\sum_j\int\frac{dz}{z}\,\mathcal{I}_{aj,n}^{(1)}
+    \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_j\int\frac{dz}{z}\,\mathcal{I}_{bj,n}^{(1)}
+    \frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right)\\
+    &\left.+\sum_j\int\frac{dz}{z}\,\mathcal{I}_{aj,n}^{(1)}
+    \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    \cdot\sum_{j'}\int\frac{dz'}{z'}\,\mathcal{I}_{bj',m}^{(1)}
+    \frac{f_{j'}(x_b/z',\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
 \end{aligned}
 \end{equation}
-With these definitions, the NNLO subtraction coefficients read
+With these definitions, the NNLO subtraction coefficients are
 \begin{subequations}
 \label{eq:NNLO-Cn}
 \begin{align}
@@ -1727,21 +1720,18 @@ With these definitions, the NNLO subtraction coefficients read
     \label{eq:C12}\\
     \mathcal{C}_0^{(2)} &= X_0^{(2)} + X_0^{(1+1)}
         - \frac{\pi^2}{6}\!\left(X_{0,1}^{(1+1)}+X_{1,0}^{(1+1)}\right)
-        + 2\zeta_3\,X_{1,1}^{(1+1)}+X_{0,-1}^{(1+1)}+X_{-1,0}^{(1+1)}\,,
+        + 2\zeta_3\,X_{1,1}^{(1+1)}+X_{0,-1}^{(1+1)}+X_{-1,0}^{(1+1)}\,.
     \label{eq:C02}
 \end{align}
 \end{subequations}
-where the constants multiplying $X_{n,m}^{(1+1)}$ are the coefficients
-arising from the convolution $\mathcal{L}_m\otimes \mathcal{L}_n$.
-In Eqs.~\eqref{eq:C12} and~\eqref{eq:C02}, the last two terms in each
-equation are not present in Ref.~\cite{Gaunt:2015pea}. Please note that
+The last two terms Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are not present in Ref.~\cite{Gaunt:2015pea}. Please note that
 we believe this to be an error on their side and these terms must contribute to make
-up the full coefficient. \question{Maybe they don't need the full coefficient for their method
-since it is a subtraction scheme?}
+up the full coefficient. \ABquestion{Need to make sure this is correct and not
+something different about their subtraction scheme?}
 
-Starting from $\mathcal{C}^{(2)}_3$, we find that 
+Starting from $\mathcal{C}^{(2)}_3$, we find that by
 substituting the ingredients from Eq.~\eqref{eq:C23-ingred} into
-Eq.~\eqref{eq:C32} gives
+Eq.~\eqref{eq:C32} we obtain
 \begin{equation}
     \mathcal{C}^{(2)}_3=8\left(C_a+C_b+C_c\right)^2\,.
 \end{equation}
@@ -1752,7 +1742,7 @@ which via Eq.~\eqref{eq:coeff-convent} gives
 in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h24}.
 
 Next, the coefficient $\mathcal{C}^{(2)}_2$, is found by
-substituting the ingredients from Eq.~\eqref{eq:C22-ingred} into
+substituting the terms from Eq.~\eqref{eq:C22-ingred} into
 Eq.~\eqref{eq:C22} 
 \begin{equation}
     \mathcal{C}_{2}^{(2)} = 24\pi\beta_0\left(C_a+C_b+C_c\right)
@@ -1764,15 +1754,12 @@ Applying Eq.~\eqref{eq:coeff-convent} gives
 \end{equation}
 which agrees exactly with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h23}.
 
-\todo{Try to word this a bit more eloquently. I think discuss that the calculations are
-lengthy and we proceeded by calculating on Mathematica opposed to pen and paper
-and so here will present the notebooks in the appendix.} \\ 
-Note that the remaining coefficients, $\mathcal{C}^{(2)}_1, \mathcal{C}^{(2)}_0$
-found in Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are found to agree exactly 
-with the coefficients found in Eqs.~\eqref{eq:h22} and Eqs.~\eqref{eq:h21},
-however due to the length of this validation, we perform this symbolically using
-\textsc{Mathematica}, where the key parts of the notebook can be found in 
-Appendix.~\ref{ap:symb-val}.
+The remaining coefficients $\mathcal{C}^{(2)}_1$ and
+$\mathcal{C}^{(2)}_0$ are considerably more involved, depending on
+significantly more complex ingredients as shown in Eqs.~\eqref{eq:C21-ingred} and~\eqref{eq:C20-ingred}. We therefore validate $h_{22}$
+and $h_{21}$ symbolically using \textsc{Mathematica}. Snippets of this code
+are presented in Appendix~\ref{ap:symb-val}, while the actual code may be found in 
+Ref.~\cite{peake2026validation}.
 
 In the next section, we provide an alternative analytic 
 validation for the ISR procedure as a whole. 
@@ -1781,19 +1768,16 @@ validation for the ISR procedure as a whole.
 \label{sec:LTS-val}
 
 In this section we validate the ISR formalism developed in
-Sec.~\ref{sec:NNLL-initial} by comparing it with the NNLL resummation derived
-in Ref.~\cite{vanBeekveld:2025zjh}. This work derives an NNLL resummation for a
-class of observables known as Lund-tree Shapes (LTS) in hadron--hadron, DIS and
-$e^+e^-$ collisions. For hadron--hadron collisions, the NNLL resummation is
-derived for colour-singlet production with no resolved jets in the final state
-($N=0$). This provides a clear scenario in which the initial-state
-hard-collinear corrections can be compared.
+Sec.~\ref{sec:NNLL-initial} by comparing it with the NNLL resummation of Ref.~\cite{vanBeekveld:2025zjh}, which derives results for a class
+of observables known as Lund-tree Shapes (LTS) in hadron--hadron, DIS,
+and $e^+e^-$ collisions. For hadron--hadron collisions, the NNLL
+resummation is restricted to colour-singlet production with no resolved
+jets ($N=0$), providing a clean setting in which to compare
+initial-state hard-collinear corrections.
 
-Restricting the \textsc{ARES} master formula,
-Eq.~\eqref{eq:Sigma-NNLL}, to the same $N=0$ configuration considered in
-Ref.~\cite{vanBeekveld:2025zjh} leaves only the two incoming legs,
-$\ell=1,2$, such that the only Born channel is $q\bar q\to Z$. The
-corresponding NNLL cumulant is
+Restricting the \textsc{ARES} master formula Eq.~\eqref{eq:Sigma-NNLL}
+ to the same $N=0$ configuration leaves only the two incoming legs 
+ $\ell=1,2$, such that the only Born channel is $q\bar q\to Z$. The NNLL cumulant becomes
 \begin{multline}
   \label{eq:Sigma-qqbar}
   \Sigma_{q\bar q}(\{p\},v)= e^{-R_{\rm NNLL}(v)} \frac{f_{q}(x_1,v^{\frac{1}{a+b_1}}Q)}{f_{q}(x_1,\mu_F)} \frac{f_{\bar q}(x_2,v^{\frac{1}{a+b_2}}Q)}{f_{\bar q}(x_2,\mu_F)}
@@ -1806,37 +1790,45 @@ with
 \label{eq:dFNNLL-qq}
 	 \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL} = \delta\mathcal{F}_{\rm sc}+\delta\mathcal{F}_{\rm hc}+\delta\mathcal{F}_{\rm wa}+\delta\mathcal{F}_{\rm correl}+\delta \mathcal{F}_{\mathrm{rec}}\,.
 \end{equation}
-Note that the corrections $\Delta\mathcal{F}_{\rm wa}$ and
-$\Delta\mathcal{F}_{\rm rec}$ are not present here as they were in
-Eq.~\eqref{eq:dFNNLL}. These corrections were introduced for the first time
-for three-jet events~\cite{Arpino:2019ozn}.
+Note that $\Delta\mathcal{F}_{\rm wa}$ and
+$\Delta\mathcal{F}_{\rm rec}$ are absent from Eq.~\eqref{eq:dFNNLL}, 
+since these corrections were first introduced 
+for three-jet events in Ref.~\cite{Arpino:2019ozn} and
+require a final-state coloured leg, which is absent in the $N=0$ 
+configuration. This means that the $\Delta\mathcal{F}_{\rm rec}$
+ISR contribution cannot be tested against the LTS comparison, and
+we do not attempt to validate it here.
 
-The LTS framework contains several observables. We restrict ourselves to the
-additive Lund-tree observable, for which the NNLL correction admits a
-comparable ISR term. \ABquestion{Is this why we chose this observable? Also are we meant to say they aren't event shapes?} This
-allows a term-by-term comparison of the ISR contributions. The observable is
-defined as 
+We restrict ourselves to the additive LTS observable $S_b^{(0)}$,
+for which the NNLL correction contains a comparable ISR
+term. \ABquestion{Is this why we chose this observable? Also are we
+meant to say they aren't event shapes?} This allows a term-by-term
+comparison of the ISR contributions. The observable is
 \begin{equation} 
 \label{eq:Sb0-def} 
 S_b^{(0)} = \sum_{j\in\mathcal{I}_0}v_b^j \,, \qquad v_b^{j_i} = \frac{p_{t,i}}{M}e^{-b|y_i|}\,,
 \end{equation} 
-where $(p_{t,i},y_i)$ are the transverse momentum and rapidity of jet $i$ with respect to the beam axis, and $M$ denotes the invariant mass of the produced colour singlet, which is chosen as the hard scale of the process.
-The set
-\begin{equation}
-	\mathcal{I}_0\equiv \mathcal{I}_{N=0}=\{j_1,j_2,\dots , j_m\}
-\end{equation}
-is the list of jets obtained by clustering the event with the C/A algorithm
-of radius $R$.
+where $(p_{t,i},y_i)$ are the transverse momentum and rapidity of
+jet $i$ with respect to the beam axis, $M$ is the invariant mass of
+the colour singlet (taken as the hard scale), and
+$\mathcal{I}_0\equiv\{j_1,j_2,\dots,j_m\}$ is the list of jets from
+the C/A algorithm of radius $R$.
 
-In order to compare the two cumulants, we set the resummation scale to
-be equal to the hard scale i.e.\ $Q=M$. This fixes the single-emission parameters of the LTS observable to be
+Setting $Q=M$ fixes the single-emission parameters to
 \begin{equation}
 \label{eq:LTS-1-emsn}
 	a=1, \quad b_\ell=b, \quad d_\ell=1, \quad g_\ell(\phi)=1,\quad \ell=1,2\,.
 \end{equation}
-Expressed in our notation, the NNLL cumulant of
-Ref.~\cite{vanBeekveld:2025zjh} becomes
-\ABquestion{Do we need to explain how we get this?}
+Throughout this section we identify $x_q\equiv x_1$ and
+$x_{\bar{q}}\equiv x_2$, where $x_\ell$ is the momentum fraction of
+the parton on leg $\ell$ as defined in Sec.~\ref{sec:setup}. \ABquestion{I am
+really unsure about the notation between the two formalisms -- I
+am concerned it is quite confusing.}
+
+In our notation, the NNLL cumulant of
+Ref.~\cite{vanBeekveld:2025zjh} with $Q=M$ is \ABquestion{Do we need to explain
+how we get this? I don't quite understand how we get this cumulant 
+from their equations?}
 \begin{equation}
 \label{eq:LTS-cum}
 \begin{aligned}
@@ -1848,9 +1840,9 @@ Ref.~\cite{vanBeekveld:2025zjh} becomes
 1+\frac{\alpha_s(\mu_R)}{2\pi}H_{q\bar q}^{(1)}(\{p\})+
 \right.\right.\\
 &\left. \left.+\frac{\alpha_s(\mu_R)}{2\pi}\frac{1+b}{1+b-2\lambda}
-\sum_i\left(
-\int_{x_q}^1\frac{dz}{z}C_{qi}^{(1), \rm LTS}(z)
-\frac{f_i\left(x_q/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_{q},\mu_F v^{\frac{1}{1+b}})}
+\sum_j\left(
+\int_{x_q}^1\frac{dz}{z}C_{qj}^{(1), \rm LTS}(z)
+\frac{f_j\left(x_q/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_{q},\mu_F v^{\frac{1}{1+b}})}
 +\{q\leftrightarrow \bar q\}
 \right)
 \right)+\right.\\
@@ -1867,99 +1859,98 @@ and
 \label{eq:DGLAP-add}
 \begin{aligned}
 	\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v)&=e^{-R_{\mathrm{NNLL}}(v)}\frac{\alpha_s(\mu_R)}{\pi}\frac{1}{1+b-2\lambda}\frac{d\FNLL}{d\RpNLL}\times\\
-	&\times\sum_i\left(
-\int_{x_q}^1\frac{dz}{z}P_{qi}(z)
-\frac{f_i\left(x_q/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{q},\mu_F v^{1/(1+b)})}
+	&\times\sum_j\left(
+\int_{x_q}^1\frac{dz}{z}P_{qj}(z)
+\frac{f_j\left(x_q/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{q},\mu_F v^{1/(1+b)})}
 +\{q\leftrightarrow \bar q\}
 \right)\,,
 \end{aligned}
 \end{equation}
-\ABquestion{They use NLL radiator -- need to check.}
 where $P_{qi}(z)$ are the full AP splitting functions defined in Eq.~\eqref{eq:full-AP}. 
 
-At first sight the two cumulants already exhibit a very similar structure. The correspondence between the two approaches can be summarised as follows:
+The two cumulants have a very similar structure. Their correspondence
+can be summarised as follows.
 
-\begin{itemize}
+The radiator $R_{\rm NNLL}$, hard coefficient $H^{(1)}_{q\bar{q}}$,
+and NLL function $\mathcal{F}_{\rm NLL}$ are identical in the two
+formulations. The NNLL corrections of soft origin ---
+$\delta\mathcal{F}_{\rm sc}$, $\delta\mathcal{F}_{\rm wa}$, and
+$\delta\mathcal{F}_{\rm correl}$ --- are also identical, since they
+depend only on soft-emission kinematics and do not modify the
+longitudinal momentum fractions of the incoming partons. As
+Ref.~\cite{vanBeekveld:2025zjh} uses the same \textsc{ARES} treatment
+for these contributions, they require no further validation here. The
+additional correction $\delta\mathcal{F}^{pp}_{\rm clust}$ in
+eq.~\eqref{eq:NNLL-LTS} arises from the jet-clustering dependence of
+$S_b^{(0)}$ and has no counterpart in \textsc{ARES}, which measures
+hadrons directly (corresponding to infinite jet radius).
 
-\item The NNLL radiator $R_{\rm NNLL}$, the hard coefficient
-$H^{(1)}_{q\bar q}$ and the NLL function $\mathcal{F}_{\rm NLL}$ are identical
-in the two formulations.
-
-\item \ndp{The NNLL corrections of soft origin,
-$\delta\mathcal{F}_{\rm sc}$,
-$\delta\mathcal{F}_{\rm wa}$ and
-$\delta\mathcal{F}_{\rm correl}$,
-are also identical. These corrections depend only on soft-emission kinematics
-and therefore do not modify the longitudinal momentum fractions of the
-incoming partons. Since Ref.~\cite{vanBeekveld:2025zjh} uses the same
-\textsc{ARES} treatment for these contributions, they require no further
-validation here. The additional correction
-$\delta\mathcal{F}_{\rm clust}$ appearing in Eq.~\eqref{eq:NNLL-LTS} is a
-consequence of the jet-clustering dependence of the LTS observable and is not
-related to the ISR corrections considered here.}
-
-\item The remaining non-trivial comparison concerns the treatment of
-hard-collinear radiation. In the \textsc{ARES} formulation these contributions
-are organised into
-$C_{\mathrm{hc},\ell}^{(1)}$,
-$\delta\mathcal{F}_{\rm hc}$ and
-$\delta\mathcal{F}_{\rm rec}$,
+The non-trivial comparison concerns the hard-collinear contributions.
+In \textsc{ARES} these are organised into $C_{{\rm hc},\ell}^{(1)}$,
+$\delta\mathcal{F}_{\rm hc}$, and $\delta\mathcal{F}_{\rm rec}$,
 whereas Ref.~\cite{vanBeekveld:2025zjh} introduces
-$C_{qi}^{(1),\rm LTS}$,
-$\delta\mathcal{F}^{pp}_{\rm hc}$ and
-$\delta\Sigma_{\rm DGLAP}^{pp}$.
-Although the organisation differs, we show below that the two formulations
-contain the same ISR corrections.
+$C_{qi}^{(1),\rm LTS}$, $\delta\mathcal{F}^{pp}_{\rm hc}$, and
+$\delta\Sigma^{pp}_{\rm DGLAP}$. Although the organisation differs,
+we show below that the two formulations contain identical ISR
+corrections.
 
-\end{itemize}
-
-The coefficient function introduced in
-Ref.~\cite{vanBeekveld:2025zjh} is
-\footnote{In Ref.~\cite{vanBeekveld:2025zjh} the final term is written as
-$\ln(M^2/\mu_F^2)\hat P_{ij}(z;0)$, which appears to be an error since it
-introduces an uncancelled collinear singularity.}
+The coefficient function of Ref.~\cite{vanBeekveld:2025zjh}
+is\footnote{In Ref.~\cite{vanBeekveld:2025zjh} the final term is
+written as $\ln(M^2/\mu_F^2)\hat{P}_{ij}(z;0)$, which appears to be
+an error since it introduces an uncancelled collinear singularity --
+this has been confirmed with the authors of the paper.}
 \begin{multline}
-\label{eq:CkiLTS}
-\sum_j\int_{x_q}^1\frac{dz}{z}C_{qj}^{(1), \rm LTS}(z)
-\frac{f_i\left(x_q/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_{q},\mu_F v^{\frac{1}{1+b}})}=\\
-= \sum_j\int_{x_q}^1\frac{dz}{z}
-\frac{f_j\left(x_q/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_{q},\mu_F v^{\frac{1}{1+b}})}\left[
--\hat P_{qj}^{(\varepsilon)}(z)
-+\frac{2b}{1+b}
-\left(
-\left(\frac{\ln(1-z)}{1-z}\right)_+
--\frac{\ln(z)}{1-z}
-\right)
-(1-z)\hat P_{qj}(z;0)\right.\\
-\left.
-+\ln\frac{M^2}{\mu_F^2}P_{qj}(z)\right]\,.
+  \label{eq:CkiLTS}
+  \sum_j\int_{x_q}^1\frac{dz}{z}\,C_{qj}^{(1),\rm LTS}(z)
+  \frac{f_j(x_q/z,\mu_F v^{\frac{1}{1+b}})}
+  {f_q(x_q,\mu_F v^{\frac{1}{1+b}})}   = \sum_j\int_{x_q}^1\frac{dz}{z}\,
+  \frac{f_j(x_q/z,\mu_F v^{\frac{1}{1+b}})}
+  {f_q(x_q,\mu_F v^{\frac{1}{1+b}})}
+  \left[-\hat{P}_{qj}^{(\varepsilon)}(z)\right.\\
+  \left.+\frac{2b}{1+b}\!\left(\!
+  \left(\frac{\ln(1-z)}{1-z}\right)_+
+  -\frac{\ln z}{1-z}\right)
+  (1-z)\hat{P}_{qj}(z;0)
+  +\ln\frac{M^2}{\mu_F^2}P_{qj}(z)\right]\,.
 \end{multline}
-The first two terms in Eq.~\eqref{eq:CkiLTS} correspond to contributions that
-are treated separately in the \textsc{ARES} formalism, namely the
-hard-collinear coefficient $C_{\mathrm{hc},\ell}^{(1)}$ and the recoil
-correction $\delta\mathcal{F}_{\rm rec}$. We can show this explicitly, firstly using
-Eq.~\eqref{eq:Cell-ISR} along with the the parameters in Eq.~\eqref{eq:LTS-1-emsn}, and $E_\ell=M/2$ for both legs, we obtain \todo{format better}
-\todo{change the $Q$ to $M$ in both equations.} 
-  \begin{multline}
-    \label{eq:Cij-LTS-comp}
-  \frac{\alpha_s(Q v^{\frac{1}{1+b}})}{2\pi} \sum_{\ell=1}^2C_{\mathrm{hc}, \ell}^{(1)}=\\ = \sum_j  \left[\int_{x_1}^1\frac{dz}{z}\frac{f_j(x_\ell/z,Qv^{\frac{1}{1+b}})}{f_q(x_\ell,Qv^{\frac{1}{1+b}})}
-\left(-\hat P_{qj}^{(\varepsilon)}(z)+\frac{2 b_\ell}{1+b}\left(\left(\frac{\ln(1-z)}{1-z}\right)_+\right)(1-z)\hat P_{qj}(z;0)\right)\right.\\
-\left.+\{q\leftrightarrow \bar q\}\right]\,.
-  \end{multline}
-    
-  Now using Eq.~\eqref{eq:dFrec-ISR} and calculating it for additive observables along with the parameters used Eq.~\eqref{eq:LTS-1-emsn}, we find that
-  \begin{equation}
+The first two terms correspond to contributions that are treated
+separately in \textsc{ARES}, namely the hard-collinear coefficient
+$C_{{\rm hc},\ell}^{(1)}$ and the recoil correction
+$\delta\mathcal{F}_{\rm rec}$. To see this, we
+specialise Eq.~\eqref{eq:Cell-ISR} to the parameters in
+Eq.~\eqref{eq:LTS-1-emsn} with $Q=M$ and $E_\ell=M/2$:
+\begin{multline}
+  \label{eq:Cij-LTS-comp}
+  \frac{\alpha_s(Mv^{\frac{1}{1+b}})}{2\pi}\sum_{\ell=1}^2
+  C_{{\rm hc},\ell}^{(1)} =\\
+  =\sum_j\!\left[\int_{x_1}^1\frac{dz}{z}
+  \frac{f_j(x_1/z,Mv^{\frac{1}{1+b}})}
+  {f_q(x_1,Mv^{\frac{1}{1+b}})}
+  \!\left(-\hat{P}_{qj}^{(\varepsilon)}(z)
+  +\frac{2b}{1+b}
+  \!\left(\frac{\ln(1-z)}{1-z}\right)_+\!(1-z)\hat{P}_{qj}(z;0)
+  \right)+\{q\leftrightarrow\bar{q}\}\right]\,.
+\end{multline}
+Using Eq.~\eqref{eq:dFrec-ISR} for additive observables with the
+parameters of Eq.~\eqref{eq:LTS-1-emsn},
+\begin{equation}
   \label{eq:dFrec-LTS-comp}
-  \frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm rec}(\lambda)=
-  \frac{\alpha_s(Qv^{1/(1+b)})}{2\pi}\sum_j\left[\int_{x_1}^1\frac{dz}{z}
-\frac{f_j\left(x_q/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_{q},\mu_F v^{\frac{1}{1+b}})}\left(-\frac{2b}{1+b}\hat P_{qj}(z;0)\ln(z)\right)+\{q\leftrightarrow \bar q\}\right]\,.
-  \end{equation}
-  \todo{we need to work out a notation difference of $x_1$ vs. $x_q$ etc.}
-
-Combining Eq.~\eqref{eq:Cij-LTS-comp} and~\eqref{eq:dFrec-LTS-comp},
-we obtain exactly that in Eq.~\eqref{eq:CkiLTS}, minus the $P_{qj}(z)\ln M^2/\mu_F^2$ term which compensates for the
-different factorisation scales adopted in the two resummation formulae. \todo{Explain it is due to the different scales in the PDFs
-used out the front.} Note that the prefactor in Eq.~\eqref{eq:LTS-cum} $(1+b)/(1+b-2\lambda)$ originates from expressing the running coupling in terms of $\lambda$ in Ref.~\cite{vanBeekveld:2025zjh}. \ABquestion{Still don't really understand this.}
+  \frac{\alpha_s(M)}{\pi}\delta\mathcal{F}_{\rm rec}(\lambda) =
+  \frac{\alpha_s(Mv^{1/(1+b)})}{2\pi}
+  \sum_j\!\left[\int_{x_1}^1\frac{dz}{z}
+  \frac{f_j(x_1/z,\mu_F v^{\frac{1}{1+b}})}
+  {f_q(x_1,\mu_F v^{\frac{1}{1+b}})}
+  \!\left(-\frac{2b}{1+b}\hat{P}_{qj}(z;0)\ln z\right)
+  +\{q\leftrightarrow\bar{q}\}\right]\,.
+\end{equation}
+Combining Eqs.~\eqref{eq:Cij-LTS-comp} and~\eqref{eq:dFrec-LTS-comp}
+reproduces the first two terms of Eq.~\eqref{eq:CkiLTS} exactly. The
+third term, $\ln(M^2/\mu_F^2)P_{qj}(z)$, arises because the PDFs are 
+evaluated at different scales in the two formulations:
+\textsc{ARES} uses $Mv^{1/(1+b)}$, while Ref.~\cite{vanBeekveld:2025zjh} uses $\mu_Fv^{1/(1+b)}$. The logarithm $\ln(M^2/\mu_F^2)$ is the 
+DGLAP evolution between these two scales and compensates for the
+difference between the two. The prefactor $(1+b)/(1+b-2\lambda)$ in Eq.~\eqref{eq:LTS-cum} arises from expressing the running coupling $\alpha_s(Mv^{1/(1+b)})$ in terms of $\lambda=\alpha_s(\mu_R)\beta_0\ln(1/v)$ at one loop. \ABquestion{Is this statement true about the $(1+b)/(1+b-2\lambda)$ factor arising? Really it should be a term of $\ln M/\mu_R$ as they have
+$\alpha_s(\mu_R)$ but maybe this is neglected at NNLL?}
 
 The remaining hard-collinear correction in the LTS formulation is
 \begin{equation}
@@ -1967,19 +1958,31 @@ The remaining hard-collinear correction in the LTS formulation is
 \delta\mathcal{F}^{pp}_{\mathrm{hc}}(v)
 =-\frac{d\mathcal{F}_{\rm NLL}}{dR_{\rm NLL}}
 \frac{1}{1+b-2\lambda}
-\sum_{\ell}\gamma_\ell^{(0)} .
+\sum_{\ell}\gamma_\ell^{(0)}\,.
 \end{equation}
+Combining this with $\delta\Sigma^{pp}_{\rm DGLAP}$ in Eq.~\eqref{eq:DGLAP-add}, we find that at NNLL this gives rise to:
+\begin{multline}
+	\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{pp}_{\mathrm{hc}}(v)+
+	\delta\Sigma^{pp}_{\rm DGLAP}\simeq\\
+	\frac{\alpha_s(\mu_R)}{\pi(1+b)}\frac{1+b}{1+b-2\lambda}\frac{d\mathcal{F}_{\rm NLL}}{dR_{\rm NLL}}\left[\int_{x_q}^1\frac{dz}{z}\left(P_{qj}(z)-\gamma^{(0)}_1\delta_{qj}\right)
+\frac{f_j\left(x_q/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{q},\mu_F v^{1/(1+b)})}
++\{q\leftrightarrow \bar q\}
+\right]\,.
+\end{multline}
 
-Combining Eq.~\eqref{eq:dFhc-LTS} with the additional DGLAP contribution
-$\delta\Sigma_{\rm DGLAP}^{pp}$ reproduces exactly the hard-collinear
-correction $\delta\mathcal{F}_{\rm hc}$ appearing in the
-\textsc{ARES} formulation for additive observables, i.e. using Eq.~\eqref{eq:dFhc-ISR} and Eq.~\eqref{eq:Bell-ISR}, we obtain
+This is equivalent to $\delta\mathcal{F}_{\rm hc}$ in \textsc{ARES}, and can see this explicitly by calculating
+Eqs.~\eqref{eq:dFhc-ISR} for additive observables,
 \begin{equation}
-	\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}=\frac{\alpha_s(Qv^{1/(1+b)})}{2\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\sum_j \left[\int_x^1 \frac{dz}{z} \left(P_{qj}(z)-\gamma_q^{(0)}\delta_{qj}\right) \frac{f_j(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}\right]\,.
+	\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}=\frac{\alpha_s(Qv^{1/(1+b)})}{\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\sum_j \left[\int_{x_1}^1 \frac{dz}{z} \left(P_{qj}(z)-\gamma_1^{(0)}\delta_{qj}\right) \frac{f_j(x_{1}/z,Qv^{1/(a+b_\ell)})}{f_q(x_1,Qv^{1/(a+b_\ell)})} +\{q\leftrightarrow\bar{q}\}\right]\,.
 \end{equation}
 This is exactly the combination of the DLGAP term with $\delta\mathcal{F}_{\rm hc}^{pp}$. Consequently, the
-additional DGLAP contribution introduced in
-Ref.~\cite{vanBeekveld:2025zjh} is unnecessary. It does not represent a new physical effect, but rather a different organisation of the hard-collinear corrections. Once all terms are combined, the two resummation formalisms are equivalent.
+additional DGLAP term introduced in
+Ref.~\cite{vanBeekveld:2025zjh} does not represent a new physical effect, but rather a different organisation of the hard-collinear corrections. Once all terms are combined, the two resummation formalisms are equivalent. \ABquestion{I am 
+concerned what I am saying is a bit too strong here?}
+
+Throughout we identify $x_q\equiv x_1$ and $x_{\bar{q}}\equiv x_2$,
+where $x_\ell$ denotes the momentum fraction of the parton on leg
+$\ell$ as defined in Sec.~\ref{sec:setup}.
 
 
 \section{Conclusion}
