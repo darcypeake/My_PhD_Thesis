@@ -263,9 +263,23 @@ this comes about?}
   --- are identical to those found in Ref.~\cite{Arpino:2019ozn} and
   require no modification. \ndp{This is because they do not modify the 
   longitudinal momentum fractions of the incoming partons and so their
-  form will be the same as the final-state result. } \add{Re-word and add more to
-  this statement.}
- 
+  form will be the same as the final-state result.
+  Essentially, soft radiation does not generate terms in ISR
+  which are different from FSR. This comes down
+  to the matrix element factorisation. As such, the eikonal factor
+  which comes about when it is factorisation depends on the colour
+  of the leg rather than the momentum fraction, PDF, or whether it
+  involved convolutions with splitting functions. The soft corrections
+  are universal, they are the same whether the leg is initial or final state,
+  as long as they have the same colour charge and direction. 
+  The ISR contributions from the collinear region do change between ISR and FSR.
+  The emissions that are collinear to an incoming leg carry a significant fraction of its
+  momentum. They generate collinear divergences regulated by the PDF counterterm,
+  and involve splitting functions convoluted with PDFs. Furthermore, they know
+  about the identity of the parton and the momentum fraction it holds.
+  Therefore, they will differ between ISR and FSR.} 
+  
+   
    The hard-collinear contributions ---
 $\delta\mathcal{F}_{\rm hc}$, $\delta\mathcal{F}_{\rm rec}$, and
 $\Delta\mathcal{F}_{\rm rec}$ --- have the same formal expressions
@@ -281,8 +295,15 @@ $H^{(1)}(Q)$ and the radiator $R_{\rm NNLL}(v)$ in more detail.
 \todo{Need to add in why we are doing this here.}
 
 
-\subsection{The coefficient $\mathbf{H_{ij}^{(1)}(Q)}$}
+\subsection{The coefficient $\mathbf{H_{ij}^{(1)}(Q,\mu_R)}$}
 \label{sec:H1}
+
+\ABquestion{What are the arguments $H_{ij}^{(1)}$ -- they keep changing throughout the text? 
+If there is a dependence on $\mu_R$/$\alpha_s$, I don't understand where this dependence is in 
+Eq.~\eqref{eq:H1-final}?} \\
+\ABquestion{Do we need to mention about $\alpha_s^{\rm phys}$ here
+(also in the radiator)? Also, are all of the $\alpha_s$'s functions
+of $Q$ or $\mu_R$ here?}
 
 \ndp{The hard coefficient $H_{ij}^{(1)}(Q)$ encodes the finite one-loop virtual
 corrections to the hard scattering amplitude.} Its derivation sets the
@@ -290,26 +311,43 @@ conventions used throughout this chapter and introduces the web
 function formalism that also underlies the radiator. We follow the
 notation of Ref.~\cite{Catani:1998bh}, slightly adapted to our needs.
 
-\todo{We need to understand why we need to use these 
-UV-renormalised virtual corrections and also why they consist
-of the following components below.}
+\ndp{At NNLL, we need the full one-loop virtual amplitudes. These
+contain both UV divergences, which are regulated after renormalisation, and IR
+divergences. Taking the UV renormalised virtual corrections, leaves us just 
+with the IR divergences.}
+
+\ABquestion{Do we need the full one-loop virtual corrections for NNLL?
+In general what bits do we need for NNLL from the fixed-order calculation i.e.\
+one loop, one real emission (NLO) pieces?}
+
+\ABquestion{In resummation do we keep
+all virtual corrections while the real emissions are restricted?}
+
 The starting point to compute $H^{(1)}_{ij}$ is the following representation of UV-renormalised virtual corrections~\cite{Banfi:2018mcq,Arpino:2019ozn}:
 \begin{multline}
   \label{eq:HQ}
-  \mathcal{V}(Q;\varepsilon) = H(\alpha_s(\mu_R),Q) \exp\left\{\int^{Q^2}\!\!\frac{dk^2}{k^2}\sum_{\ell=1}^3 \gamma_\ell\left[\alpha_s(k^2;\varepsilon)\right]\right\}\times \\ \times \exp\left\{-\int \frac{d^dk}{(2\pi)^2}\sum_{\ell=1}^3 \sum_{\bar \ell\ne \ell} w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon) \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar \ell}}{m^2+\kappa_{\ell\bar \ell}^2}-|\eta^{(\ell\bar \ell)}| \right) \Theta(Q_{\ell \bar \ell}-\kappa_{\ell\bar \ell})\right\}\,,
+  \mathcal{V}(Q;\varepsilon) = H_{ij}(\alpha_s(\mu_R),Q) \exp\left\{\int^{Q^2}\!\!\frac{dk^2}{k^2}\sum_{\ell=1}^3 \gamma_\ell\left(\alpha_s(k^2;\varepsilon)\right)\right\}\times \\ \times \exp\left\{-\int \frac{d^dk}{(2\pi)^d}\sum_{\ell=1}^3 \sum_{\bar \ell\ne \ell} w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon) \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar \ell}}{m^2+\kappa_{\ell\bar \ell}^2}-|\eta^{(\ell\bar \ell)}| \right) \Theta(Q_{\ell \bar \ell}-\kappa_{\ell\bar \ell})\right\}\,,
 \end{multline}
+\ABquestion{I think this should be $\gamma(\alpha_s(k;\varepsilon))$? }
 where $Q_{\ell\bar\ell}^2=2p_\ell\cdot p_{\bar\ell}$ and dimensional
 regularisation is used to regulate soft and collinear divergences,
-with $d=4-2\varepsilon$. The key ingredients are:
-\ABquestion{Do we need to mention about $\alpha_s^{\rm phys}$ here
-(also in the radiator)? Also, are all of the $\alpha_s$'s functions
-of $Q$ or $\mu_R$ here?}
+with $d=4-2\varepsilon$.  
+\ndp{The virtual corrections are split into hard-collinear virtual corrections which are governed
+by the $\gamma_{\ell}$ exponential. The exponential with the web $w_{\ell\bar\ell}$  generates
+soft virtual corrections where the web is the eikonal weight for a soft gluon exchanged between 
+legs $\ell$ and $\bar\ell$, and the $\Theta$-functions restrict the integration to the region
+where this gluon is genuinely soft (rapidity bounded by the dipole
+kinematics and $\kappa_{\ell\bar\ell}<Q_{\ell\bar\ell}$). The hard
+function $H_{ij}(\alpha_s,Q)$ then captures everything that is left
+after these IR-divergent pieces are extracted -- it is the finite
+remainder.}
+The key ingredients are:
 \begin{itemize}
 \item
-  the ``hard'' function $H(\alpha_s,Q)$ which has the following expansion in powers of $\alpha_s(Q)$:
+  the ``hard'' function $H_{ij}(\alpha_s,Q)$ for incoming channel $ij$, which has the following expansion in powers of $\alpha_s(Q)$:
   \begin{equation}
     \label{eq:HQ-exp}
-    H(\alpha_s) = 1+\frac{\alpha_s}{2\pi}H^{(1)}(Q) +\left(\frac{\alpha_s}{2\pi}\right)^2H^{(2)}(Q)+\dots 
+    H_{ij}(\alpha_s) = 1+\frac{\alpha_s}{2\pi}H_{ij}^{(1)}(Q) +\left(\frac{\alpha_s}{2\pi}\right)^2H_{ij}^{(2)}(Q)+\dots 
   \end{equation}
   
 \item the $d$-dimensional strong coupling $\alpha_s(k^2;\varepsilon)$, defined as the solution of the renormalisation-group equation
@@ -318,15 +356,14 @@ of $Q$ or $\mu_R$ here?}
   k^2\frac{d\alpha_s}{dk^2} = - \varepsilon \alpha_s+\beta(\alpha_s)\,,
 \end{equation}
 where $\beta(\alpha_s)$ is the QCD beta function, and renormalisation
-is performed in the $\overline{\rm MS}$ scheme. The collinear anomalous dimension $\gamma_\ell(\alpha_s)$ has the expansion \ABquestion{Should this
-be square brackets instead?}
+is performed in the $\overline{\rm MS}$ scheme. The collinear anomalous dimension $\gamma_\ell(\alpha_s)$ has the expansion 
 \begin{equation}
   \label{eq:gammal}
   \gamma_\ell (\alpha_s) = \gamma^{(0)}_\ell \frac{\alpha_s}{2\pi} + \gamma^{(1)}_\ell \left(\frac{\alpha_s}{2\pi} \right)^2+\dots
 \end{equation}
 where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav};
 
-\item \todo{Need to understand this more thoroughly.} the ``web'' function
+\item the ``web'' function
   $w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon)$
   which consistently resum the contribution of multiple soft real
   emissions from the dipole $(\ell\bar\ell)$. Physically, the web function is the weight associated
@@ -341,19 +378,17 @@ where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav};
     \ell}^{(1)}+\alpha_s^2(\mu_R) w_{\ell \bar \ell}^{(2)}+\dots$, and
   \begin{equation}
     \label{eq:w1}
-    w_{\ell \bar \ell}^{(1)}(m^2,m^2+\kappa^2;\varepsilon) = (4\pi)^2\frac{C_{\ell\bar\ell}}{\kappa^2}\,\mu_R^{2\epsilon}\frac{e^{\varepsilon\gamma_E}}{(4\pi)^{\varepsilon}}\,\delta(m^2)\,,
+    w_{\ell \bar \ell}^{(1)}(m^2,m^2+\kappa^2;\varepsilon) = (4\pi)^2\frac{C_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}^2}\,\mu_R^{2\epsilon}\frac{e^{\varepsilon\gamma_E}}{(4\pi)^{\varepsilon}}\,\delta(m^2)\,,
   \end{equation}
-  where $C_{\ell\bar \ell}$ is the colour dipole factor introduced in Sec.~\ref{subsubsec:Rs};
+  where $C_{\ell\bar \ell}$ is the colour dipole factor introduced in Sec.~\ref{subsubsec:Rs}. \ndp{The $1/\kappa_{\ell\bar\ell}^2$ is the eikonal factor for soft gluon emission from the dipole with colour factor $C_{\ell\bar\ell}$ which occurs in soft matrix element factorisation as discussed in Sec.~\ref{subsec:soft-fact}. The term $\delta(m^2)$ is what places the gluon on-shell};
 \item the $d$-dimensional phase space, given by
-\ABquestion{Should I be writing this phase space in my 
-derivation of the NLL radiator?}
   \begin{equation}
     \label{eq:dk}
     \frac{d^d k}{(2\pi)^d} = \frac{d\eta^{(\ell\bar \ell)}}{2\pi}\, dm^2 \,\frac{d\kappa^2_{\ell\bar \ell}}{(4\pi)^2}\left(\frac{\pi}{\kappa^2_{\ell\bar\ell}}\right)^\varepsilon\frac{\Gamma(1-\varepsilon)}{\Gamma(1-2\varepsilon)}\frac{d\phi}{\pi}\,(\sin^2\phi)^{-\varepsilon}\,\Theta(\sin\phi)\,. 
   \end{equation}
 \end{itemize}
 
-We extract $H^{(1)}$ by expanding both sides of
+We extract $H_{ij}^{(1)}$ by expanding both sides of
 Eq.~\eqref{eq:HQ} to order $\alpha_s$ and comparing.
 Evaluating the web function integral gives
 \begin{multline}
@@ -366,6 +401,10 @@ and the anomalous dimension integral gives
   \label{eq:gamma0-int}
   \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s(k^2;\varepsilon)}{2\pi} = \frac{\alpha_s(\mu_R)}{2\pi}\gamma_\ell^{(0)} \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon} = -\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{Q^2}\right)^{\varepsilon} \gamma_\ell^{(0)}\frac{\alpha_s(\mu_R)}{2\pi}\,.
 \end{equation}
+\ndp{The poles in $\varepsilon$ from the two exponentials are precisely
+the IR poles of the full amplitude predicted by the Catani
+formula~\cite{Catani:1998bh}, and $H_{ij}^{(1)}$ is the associated
+finite part.}
 Using the fact that $\mathcal{V}(Q;\varepsilon)$ has the universal structure~\cite{Catani:1998bh}\footnote{Note that the general formula of~\cite{Catani:1998bh} includes also phase factors (Coulomb phases) that arise when the two legs $\ell$ and $\bar \ell$ are both incoming or outgoing. In the case of three emitters, these phase factors give rise to a finite contribution, included in $\mathcal{H}_1$.}
 \begin{equation}
   \label{eq:HQ-expanded}
@@ -379,7 +418,7 @@ and comparing the above result with the right-hand side of Eq.~(\ref{eq:HQ}),
 we find
 \begin{equation}
   \label{eq:H1-final}
-  H^{(1)}(Q) = \mathcal{H}_1+ \sum_\ell\frac{\gamma_\ell^{(0)}}{C_\ell}\sum_{\bar \ell\ne \ell} C_{\ell\bar \ell}\ln\left(\frac{Q^2_{\ell\bar\ell}}{Q^2}\right)
+  H_{ij}^{(1)}(Q) = \mathcal{H}_1+ \sum_\ell\frac{\gamma_\ell^{(0)}}{C_\ell}\sum_{\bar \ell\ne \ell} C_{\ell\bar \ell}\ln\left(\frac{Q^2_{\ell\bar\ell}}{Q^2}\right)
     \,.
 \end{equation}
 
@@ -510,6 +549,7 @@ We find that these expressions can give rise to:
 	R_{\ell\bar\ell}(v)=-\frac{\lambda}{\alpha_s(Q)\beta_0}g_1^{(\ell)}(\lambda)-g_2^{(\ell)}(\lambda)-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})-\frac{\alpha_s(Q)}{\pi}\left(g_3^{(\ell)}(\lambda)+\mathfrak{g}_3^{(\ell)}(\lambda,Q_{\ell\bar\ell})\right)\,,
 \end{equation}
 
+\todo{Add in the ansatz here also!}
 \begin{equation}
 	\delta R_{\ell\bar\ell}(v)=-\frac{\alpha_s(Q)}{\pi}\delta g_3^{(\ell)}(\lambda)\,,
 \end{equation}
@@ -517,8 +557,23 @@ We find that these expressions can give rise to:
 \begin{equation}
 	R_{\mathrm{hc},\ell}(v)=-h_2^{(\ell)}(\lambda)-\frac{\alpha_s(Q)}{\pi}h_3^{(\ell)}(\lambda)\,,
 \end{equation}
-where $g_1^{(\ell)}(\lambda), g_2^{(\ell)}(\lambda), \mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell}),$ and $h_2^{(\ell)}(\lambda)$ can be found in Eq.~\eqref{eq:RNLL-g-h} and the remaining terms are found in Appendix.
-\ABquestion{I thought it would be best to put these in the appendix so this section isn't overcrowded with literature content opposed to new results?}
+where $g_1^{(\ell)}(\lambda), g_2^{(\ell)}(\lambda), \mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell}),$ and $h_2^{(\ell)}(\lambda)$ can be found in Eq.~\eqref{eq:RNLL-g-h} and the remaining terms are expressed below:
+
+
+\begin{subequations}
+\begin{align}
+	&g_3^{(\ell)}(\lambda)=\left[K^{(1)}\frac{\beta_1\left(a^2(a+b_{\ell}-2\lambda)\ln\left(1-\frac{2\lambda}{a}\right)-(a+b_{\ell})^2(a-2\lambda)\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+6b_{\ell}\lambda^2\right)}{4\pi b_{\ell}\beta_0^3(a-2\lambda)(a+b_{\ell}-2\lambda)}\right.\notag \\
+	&\qquad\qquad+\frac{\left(\beta_1^2(a+b_{\ell})^2(a-2\lambda)\ln^2\left(1-\frac{2\lambda}{a+b_{\ell}}\right)-4b_{\ell}\lambda^2\left(\beta_0\beta_2+\beta_1^2\right)\right)}{4\pi b_{\ell}\beta_0^4(a-2\lambda)(a+b_{\ell}-2\lambda)} \notag \\
+	&\qquad\qquad-\frac{a\ln\left(1-\frac{2\lambda}{a}\right)\left(2\beta_0\beta_2(a-2\lambda)+a\beta_1^2\ln\left(1-\frac{2\lambda}{a}\right)+4\beta_1^2\lambda\right)}{4b_{\ell}\beta_0^4(a-2\lambda)} \notag\\
+	&\qquad\qquad+\frac{(a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)\left(\beta_0\beta_2(a+b_{\ell}-2\lambda)+2\beta_1^2\lambda\right)}{2b_{\ell}\beta_0^4(a+b_{\ell}-2\lambda)} \notag\\
+	&\left.\qquad\qquad -K^{(2)}\frac{2\lambda^2}{8\pi^2(a-2\lambda)(a+b_{\ell}-2\lambda)\beta_0^2} \right]\,, \\
+&\mathfrak{g}_3^{(\ell)}(\lambda,Q_{\ell\bar\ell})=\pi\beta_0\lambda^2\left(\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}+\frac{\lambda}{2}\frac{d^2g_1^{(\ell)}(\lambda)}{d\lambda^2}\right)\ln^2\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\notag \\
+&\qquad\qquad -\pi\beta_0\lambda\left(\frac{dg_2^{(\ell)}(\lambda)}{d\lambda}+\frac{\beta_1}{\beta_0^2}\lambda\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}\right)\ln\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \\
+&\delta g_3^{(\ell)}(\lambda)=-\zeta_2\frac{\lambda}{(a+b_{\ell}-2\lambda)}\,,\\
+&h_3^{(\ell)}(\lambda)=\gamma_{\ell}^{(0)}\frac{\beta_1\left((a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+2\lambda\right)}{2\beta_0^2(a+b_{\ell}-2\lambda)}
+-\gamma_{\ell}^{(1)}\frac{\lambda}{2\pi\beta_0(a+b_{\ell}-2\lambda)}\,.
+\end{align}
+\end{subequations}
 
 \section{NNLL resummation: initial-state radiation}
 \label{sec:NNLL-initial}
