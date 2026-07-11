@@ -134,6 +134,7 @@ Here we present the components used to build the subtraction ingredients
 of Ref.~\cite{Gaunt:2015pea}. Legs are labelled $a$, $b$ (incoming) and
 $c$ (outgoing jet), and the variable $j$ is the flavour that the PDFs are summed over.
 
+\todo{We need to sort out the spacing below.}
 
 \subsection{NLO coefficients}
 
@@ -167,8 +168,8 @@ J_{c,0}^{(1)} &= -2\gamma_c^{(0)}\,, \\
 \label{eq:Cd1-ingred}
 \begin{align}
 J_{c,-1}^{(1)} &= \begin{cases}
-    C_F(7-\pi^2)\,, & c = \text{quark}\,, \\[4pt]
-    C_A\!\left(\dfrac{4}{3}-\pi^2\right)+\dfrac{20}{3}\pi\beta_0\,, & c = \text{gluon}\,,
+    C_F(7-\pi^2)\,, & \text{if $c$ is a quark}\,, \\[4pt]
+    C_A\!\left(\dfrac{4}{3}-\pi^2\right)+\dfrac{20}{3}\pi\beta_0\,, &\text{if $c$ is a gluon}\,,
 \end{cases} \\[8pt]
 \mathcal{I}_{aj,-1}^{(1)} &= 2I_{aj}^{(1)}+2\ln\lambda_F\,P_{aj}^{(0)}\,, \\
 \mathcal{I}_{bj,-1}^{(1)} &= 2I_{bj}^{(1)}+2\ln\lambda_F\,P_{bj}^{(0)}\,, \\
@@ -306,6 +307,293 @@ J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
     -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
 \end{align}
 \end{subequations}
+
+\todo{we do ned to add in that the $\gamma^{(1)}$'s are different
+and where to get the $I_{ab}^{(1)}$ from.}
+
+\section{Extraction of \texorpdfstring{$H^{(1)}$}{H(1)}}
+\label{ap:H1-extraction}
+
+\add{Add in about the 0-jettiness?}
+
+We extract $H^{(1)}$ for the process $q\bar{q}\to Hg$ from
+the one-loop virtual amplitude of Ref.~\cite{Ravindran:2002dc}
+by verifying that its IR pole structure agrees with the universal
+prediction of Eq.~\eqref{eq:HQ-expanded}, then identifying the
+finite remainder with $2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
+  \vec{C}^{(0)\dagger}\right)/|\vec{C}^{(0)}|^2$. 
+The reason why we do this is because the $Z$ is that the virtual corrections are not publicly available, they need to be obtained from $\ee$, with an analytic continuation. To go about this differently we use the one-loop virtual corrections from
+Ref.~\cite{Ravindran:2002dc} to find $H^{(1)}$ for the $q\bar{q}\to g + H$ process.
+
+Expanding Eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
+$q\bar{q}\to Zg$ process, the double-pole
+coefficient is
+\begin{equation}
+  \label{eq:H-pole2}
+  -\frac{1}{\varepsilon^2}(C_A+2C_F)\,,
+\end{equation}
+and the single-pole coefficient is
+\begin{equation}
+  \label{eq:H-pole1}
+  \frac{1}{\varepsilon}\!\left(
+  -\frac{11}{6}C_A-3C_F+\frac{n_f}{3}
+  +(C_A-2C_F)\ln\frac{\mu_R^2}{Q_{12}^2}
+  -C_A\ln\frac{\mu_R^2}{Q_{13}^2}
+  -C_A\ln\frac{\mu_R^2}{Q_{23}^2}
+  \right)\,.
+\end{equation}
+
+Now comparing with Ref.~\cite{Ravindran:2002dc}. The bare cross section at leading-order is
+\begin{equation}
+  s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1)}}{dt\,du} =
+  \pi\delta(s+t+u-M^2)\,
+  \frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}
+  S_\varepsilon\,\frac{G^2}{4N^2}
+  \left(\frac{\mu_0^2\,s}{tu}\right)^\varepsilon
+  \frac{\alpha_s(\mu_0^2)}{4\pi}|M_{q\bar{q}\to g H}^{(1)}|^2
+  \,,
+\end{equation}
+where $N$ denotes the number of colours, $S_\varepsilon=\exp(\varepsilon(\ln4\pi-\gamma_E))$,
+$G$ is an effective coupling where for the scenario we are considering we can take this to be $G\simeq\alpha_s(\mu_R)/4\pi$, and $\mu_0$ is the reference scale. \ABquestion{Remember there is a mistake in theirs
+and also am unsure if we can approximate $G$ like this.}
+
+The bare one-loop virtual correction takes the form
+\begin{equation}
+\begin{aligned}
+  &s^2\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT}}{dt\,du} =
+  \pi\delta(s+t+u-M^2)\,S_\varepsilon^2\,\frac{G^2}{N^2}
+  \left(\frac{\alpha_s(\mu_0)}{4\pi}\right)^2 \times \\
+  &\qquad\qquad\left[ \left\{ n_f\!\left(\frac{2}{3\varepsilon}
+  +\frac{1}{3}\ln\frac{Q_{13}^2}{\mu_0^2}
+  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{5}{9}\right) \right. \right.\\
+   &\qquad\qquad+C_A\!\left(-\frac{2}{\varepsilon^2}
+  +\!\left(2\ln\frac{Q_{12}^2}{\mu_0^2}
+  -2\ln\frac{Q_{13}^2}{\mu_0^2}
+  -2\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{11}{3}\right)\frac{1}{\varepsilon}\right.\\
+  &\qquad\qquad+\operatorname{Li}_2\!\left(
+  \frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
+  -\ln\frac{Q_{13}^2}{\mu_0^2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  +\ln\frac{Q_{13}^2}{\mu_0^2}\ln\frac{Q_{12}^2}{\mu_0^2}
+  +\ln\frac{Q_{23}^2}{\mu_0^2}\ln\frac{Q_{12}^2}{\mu_0^2}\\
+  &\qquad\qquad\left.-\ln^2\frac{Q_{13}^2}{\mu_0^2}
+  -\ln^2\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{11}{6}\ln\frac{Q_{13}^2}{\mu_0^2}
+  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\
+  &\qquad\qquad+C_F\!\left(-\frac{4}{\varepsilon^2}
+  +\!\left(-2\ln\frac{Q_{13}^2}{\mu_0^2}
+  -2\ln\frac{Q_{23}^2}{\mu_0^2}+3\right)\frac{1}{\varepsilon}
+  +\operatorname{Li}_2\!\left(\frac{-Q_{13}^2}{M^2}\right)
+  +\operatorname{Li}_2\!\left(\frac{-Q_{23}^2}{M^2}\right)\right.\\
+  &\qquad\qquad-2\ln\frac{Q_{13}^2}{\mu_0^2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{1}{2}\ln^2\!\left(\frac{Q_{13}^2+M^2}{Q_{13}^2}\right)
+  -\frac{1}{2}\ln^2\!\left(\frac{Q_{23}^2+M^2}{Q_{23}^2}\right)\\
+  &\qquad\qquad\left.+\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{M^2}\right)
+  +\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{M^2}\right)
+  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_0^2}
+  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  +9\zeta_2-4\right)\\
+  &\qquad\qquad\left.+\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_0^2}
+  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  +9\zeta_2-4\right\}|M^{(1)}_{q\bar{q}\to g H}|^2 \\
+  &\qquad\qquad\left. +\frac{(C_A-C_F)}{2}C_A C_F\left(Q_{13}+Q_{23}\right)\right]\,.
+\end{aligned}
+\end{equation}
+
+Using the Catani convention to renormalise the coupling,
+\begin{equation}
+  \alpha_s(\mu_0^2) =
+  \frac{\alpha_s(\mu_R^2)}{S_\varepsilon}
+  \left(\frac{\mu_R^2}{\mu_0^2}\right)^\varepsilon
+  \!\left[1-\frac{\alpha_s(\mu_R^2)\beta_0}{\varepsilon}
+  +\mathcal{O}(\alpha_s^2)\right]\,,
+\end{equation}
+
+the renormalised leading-order term becomes
+\begin{equation}
+  s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dt\,du} =
+  \pi\delta(s+t+u-M^2)\,
+  \frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\,
+  \frac{G_1^2}{4N^2}
+  \left(\frac{\mu_R^2\,s}{tu}\right)^\varepsilon
+  \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^3
+ |M_{q\bar{q}\to g H}^{(1)}|^2  \left[1+\mathcal{O}(\alpha_s)\right]\,,
+\end{equation}
+where $G_1$ is $G$ evaluated at $\mu_R$, and the $\beta_0/\varepsilon$
+terms cancel between the renormalisation of $G$ and the explicit
+coupling. \ABquestion{Don't really understand this.}
+
+The renormalised virtual term is
+\begin{equation}
+\label{eq:virt-ren}
+\begin{aligned}
+  &s^2\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT, Ren}}{dt\,du} =
+  \pi\delta(s+t+u-M^2)\,\,\frac{G_1^2}{N^2}
+  \left(\frac{\alpha_s(\mu_R)}{4\pi}\right)^4\left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon} \times \\
+  &\qquad\qquad\left[ \left\{ n_f\!\left(\frac{2}{3\varepsilon}
+  +\frac{1}{3}\ln\frac{Q_{13}^2}{\mu_0^2}
+  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{5}{9}\right) \right. \right.\\
+   &\qquad\qquad+C_A\!\left(-\frac{2}{\varepsilon^2}
+  +\!\left(2\ln\frac{Q_{12}^2}{\mu_0^2}
+  -2\ln\frac{Q_{13}^2}{\mu_0^2}
+  -2\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{11}{3}\right)\frac{1}{\varepsilon}\right.\\
+  &\qquad\qquad+\operatorname{Li}_2\!\left(
+  \frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
+  -\ln\frac{Q_{13}^2}{\mu_0^2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  +\ln\frac{Q_{13}^2}{\mu_0^2}\ln\frac{Q_{12}^2}{\mu_0^2}
+  +\ln\frac{Q_{23}^2}{\mu_0^2}\ln\frac{Q_{12}^2}{\mu_0^2}\\
+  &\qquad\qquad\left.-\ln^2\frac{Q_{13}^2}{\mu_0^2}
+  -\ln^2\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{11}{6}\ln\frac{Q_{13}^2}{\mu_0^2}
+  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\
+  &\qquad\qquad+C_F\!\left(-\frac{4}{\varepsilon^2}
+  +\!\left(-2\ln\frac{Q_{13}^2}{\mu_0^2}
+  -2\ln\frac{Q_{23}^2}{\mu_0^2}+3\right)\frac{1}{\varepsilon}
+  +\operatorname{Li}_2\!\left(\frac{-Q_{13}^2}{M^2}\right)
+  +\operatorname{Li}_2\!\left(\frac{-Q_{23}^2}{M^2}\right)\right.\\
+  &\qquad\qquad-2\ln\frac{Q_{13}^2}{\mu_0^2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  -\frac{1}{2}\ln^2\!\left(\frac{Q_{13}^2+M^2}{Q_{13}^2}\right)
+  -\frac{1}{2}\ln^2\!\left(\frac{Q_{23}^2+M^2}{Q_{23}^2}\right)\\
+  &\qquad\qquad\left.+\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{M^2}\right)
+  +\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{M^2}\right)
+  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_0^2}
+  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  +9\zeta_2-4\right)\\
+  &\qquad\qquad\left.+\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_0^2}
+  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_0^2}
+  +9\zeta_2-4\right\}|M^{(1)}_{q\bar{q}\to g H}|^2 \\
+  &\qquad\qquad\left. +\frac{(C_A-C_F)}{2}C_A C_F\left(Q_{13}+Q_{23}\right)\right]\,.
+\end{aligned}
+\end{equation}
+The combination relevant for the hard function at this order is
+\begin{multline}
+  s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dt\,du}
+  +s^2\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT,Ren}}{dt\,du}=\\
+  \simeq\pi\delta(s+t+u-M^2)\,
+  \frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\,
+  \frac{G_1^2}{4N^2}
+  \left(\frac{\mu_R^2\,s}{tu}\right)^\varepsilon
+  \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^4\\
+  \times\left[-\frac{3\beta_0}{\varepsilon}
+  +4\left(\frac{\mu_R^2}{\mu_0^2}\right)^\varepsilon
+  \left(\frac{tu}{\mu_0^2\,s}\right)^\varepsilon
+  \times[\dots]\right]|M^{(1)}_{q\bar{q}\to g H}|^2\,,
+\end{multline}
+where $\dots$ are the terms within the curly brackets in
+Eq.~\eqref{eq:virt-ren}. \ABquestion{Do not understand 
+the $\beta_0$ term here?}
+
+Note that the $e^{\varepsilon\gamma_E}/\Gamma(1-\varepsilon)$ factor
+is already fully expanded inside the virtual bracket in
+Ref.~\cite{Ravindran:2002dc} and must be divided out before
+extracting the pole structure. \ABquestion{Need to check this is actually what occurs.}
+We find that 
+the double-pole
+coefficient of the renormalised virtual term is
+\begin{equation}
+  \label{eq:vN-pole2}
+  -\frac{2}{\varepsilon^2}(C_A+2C_F)\,,
+\end{equation}
+and the single-pole coefficient is
+\begin{equation}
+  \label{eq:vN-pole1}
+  \frac{1}{\varepsilon}\!\left(
+  -\frac{11}{3}C_A-6C_F+\frac{2n_f}{3}
+  -2C_A\ln\frac{\mu_R^2}{Q_{12}^2}
+  +2(C_A+C_F)\ln\frac{\mu_R^2}{Q_{13}^2}
+  +2(C_A+C_F)\ln\frac{\mu_R^2}{Q_{23}^2}
+  \right)\,.
+\end{equation}
+Comparing with Eqs.~\eqref{eq:H-pole2} and~\eqref{eq:H-pole1},
+the poles of Ref.~\cite{Ravindran:2002dc} are exactly twice those
+of $\mathcal{V}(Q;\varepsilon)$, this mapping must be taken 
+into account when now extracting the finite terms. The finite 
+remainder after subtracting the poles is the term
+\begin{equation}
+\label{eq:C1-SCET}
+\begin{aligned}
+& \frac{2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
+  \vec{C}^{(0)\dagger}\right)}{|\vec{C}^{(0)}|^2}=\;\\
+& C_A\left[
+\frac{152}{9}
++4\operatorname{Li}_2\left(\frac{Q_{12}-M^2}{Q_{12}}\right)
+-\frac{22}{3}\ln\frac{Q_{12}}{\mu_R^2}
++\ln^2\frac{\mu_R^2}{Q_{12}}
+-\ln^2\frac{\mu_R^2}{Q_{13}}
+-\ln^2\frac{\mu_R^2}{Q_{23}}
++2\ln\frac{Q_{12}}{Q_{13}}
+ \ln\frac{Q_{12}}{Q_{23}}
+\right]\\
+&+C_F\left[-16
++4\operatorname{Li}_2\left(\frac{-Q_{13}}{M^2}\right)
++4\operatorname{Li}_2\left(\frac{-Q_{23}}{M^2}\right)
+-2\ln^2\frac{-Q_{13}-M^2}{-Q_{13}}
+-2\ln^2\frac{-Q_{23}-M^2}{-Q_{23}}\right.\\
+&\qquad\left.
++2\ln^2\frac{M^2+Q_{13}}{M^2}
++2\ln^2\frac{M^2+Q_{23}}{M^2}
+-2\ln^2\frac{Q_{12}}{\mu_R^2}
++6\ln\frac{Q_{12}}{\mu_R^2}
++2\ln^2\frac{Q_{13}}{Q_{23}}
+\right]\\
+&+n_f\left(-\frac{20}{9}-\frac{4}{3}\ln\frac{\mu_R^2}{Q_{12}}\right)+\pi^2\left(
+6C_F-\frac{7}{3}C_A
+\right)\,.
+\end{aligned}
+\end{equation}
+
+For the \textsc{ARES} formalism, the hard coefficient is found
+using Eq.~\eqref{eq:H1-final},
+\begin{equation}
+H_{q\bar{q}}^{(1)}=\mathcal{H}_1
++3\left(C_F-\frac{C_A}{2}\right)\ln\frac{Q_{12}}{Q^2}
++\left(\frac{3C_A}{4}+\frac{\beta_0}{4}\right)\ln\frac{Q_{13}}{Q^2}
++\left(\frac{3C_A}{4}+\frac{\beta_0}{4}\right)\ln\frac{Q_{23}}{Q^2}\,,
+\end{equation}
+we subtract the logarithmic terms from the finite contributions \ABquestion{Maybe worthwhile writing
+out the contributions}, such that we obtain
+\begin{equation}
+\begin{aligned}
+\mathcal{H}_1=&-\frac{5}{4}C_A\pi^2+\frac{17}{6}C_F\pi^2
++\frac{3}{2}C_A\ln\frac{Q_{12}^2}{Q_{13}Q_{23}}
+-\frac{1}{4}\beta_0\ln\frac{Q_{12}^2Q_{13}Q_{23}}{\mu_R^{12}}
+\\
+&+\frac{C_A}{2}\left[
+\frac{152}{9}
++4\operatorname{Li}_2\left(\frac{Q_{12}-M^2}{Q_{12}}\right)
++2\ln\frac{Q_{12}}{Q_{13}}
+ \ln\frac{Q_{12}}{Q_{23}}
+\right]
+\\
+&+\frac{C_F}{2}\left[
+-16
++4\operatorname{Li}_2\left(\frac{-Q_{13}}{M^2}\right)
++4\operatorname{Li}_2\left(\frac{-Q_{23}}{M^2}\right)
+-2\ln^2\frac{-Q_{13}-M^2}{-Q_{13}}
+-2\ln^2\frac{-Q_{23}-M^2}{-Q_{23}}
+\right.
+\\
+&\left.
++2\ln^2\frac{M^2+Q_{13}}{M^2}
++2\ln^2\frac{M^2+Q_{23}}{M^2}
++2\ln^2\frac{Q_{13}}{Q_{23}}
+\right]
+\\
+&-\frac{20}{18}n_f\,.
+\end{aligned}
+\end{equation}
+
+\ABquestion{But are actually $H^{(1)}$ and $\frac{2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
+  \vec{C}^{(0)\dagger}\right)}{|\vec{C}^{(0)}|^2}$ the same?} 
+  
+\todo{Need to check all these terms.}
+
+
 
 \section{Symbolic coefficient validation}
 \label{ap:symb-val}
