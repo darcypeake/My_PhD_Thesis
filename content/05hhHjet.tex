@@ -1671,6 +1671,7 @@ We next consider $\mathcal{C}^{(1)}_0$. Substituting terms found in Eq.~\eqref{e
 \end{equation}
 where $\gamma^{(0)}_{\ell}$ are given in Eq.~\eqref{eq:gammal-flav} and $P_{aj}^{(0)}(z)$ in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels
 throughout, \ndp{as expected since this is an unphysical scale}, leaving
+\todo{need to remove the $^{(0)}$'s from the splitting functions.}
 \begin{equation}
 \label{eq:C01-simplified}
     \begin{aligned}
@@ -1745,10 +1746,144 @@ Using Eq.~\eqref{eq:C1-SCET}, along with ingredients from
 Eq.~\eqref{eq:Cd1-ingred}, we obtain for the $q\bar{q}\to g H$
 channel
 \begin{equation}
+	\begin{aligned}
+	C^{(1)}_{-1}=\;&\frac{67\,C_A-10\,n_f}{9}
+	+\frac{19\pi^2}{6}(2C_F-C_A)
+	-\beta_0\ln\frac{M\,Q_c\,Q_{ab}^2}{\mu_R^6}\\[1ex]
+	&+\sum_{j}\int\frac{dz}{z} \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}2I_{qj}^{(1)}+\sum_{j}\int\frac{dz}{z}\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}2I_{\bar{q}j}^{(1)}\\
+	&+\sum_{j}\int\frac{dz}{z}\left(2P_{qj}^{(0)}\ln\frac{Q_a\,M}{Q^2}+2P_{qj}^{(0)}\ln\frac{Q^2}{\mu_F^2}+3C_F\ln\frac{Q^2}{Q_a\,M}\right)
+    \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\\
+    &+\sum_{j}\int\frac{dz}{z}\left(2P_{\bar{q}j}^{(0)}\ln\frac{Q_b\,M}{Q^2}+2P_{qj}^{(0)}\ln\frac{Q^2}{\mu_F^2}+3C_F\ln\frac{Q^2}{Q_b\,M}\right)
+    \frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\[1ex]
+	&+3C_F\ln\frac{Q_{ab}}{Q^2}
+	+3C_F\ln\frac{Q_{ab}}{Q^2}\\[1ex]
+	&+2C_F\left[
+	\ln^2\frac{M}{Q_a}
+	+\ln^2\frac{M}{Q_b}
+	-\ln^2\frac{Q_{ab}}{M^2}
+	\right]
+\\[1ex]
+	&+C_A\left[
+	2\ln^2\frac{M}{Q_c}
+	+\ln^2\frac{M^2}{Q_{ab}}
+	-\ln^2\frac{M^2}{Q_{ac}}
+	-\ln^2\frac{M^2}{Q_{bc}}
+	\right]\\[3ex]
+	&+(C_A-2C_F)\left(
+	\ln^2\frac{Q_{ab}}{Q_aQ_b}
+	+2(I_{ab,c}+I_{ba,c})
+	\right)\\[1ex]
+	&-C_A\left(
+	\ln^2\frac{Q_{ac}}{Q_aQ_c}
+	+2(I_{ac,b}+I_{ca,b})
+	\right)\\[1ex]
+	&-C_A\left(
+	\ln^2\frac{Q_{bc}}{Q_bQ_c}
+	+2(I_{bc,a}+I_{cb,a})
+	\right)\\[2ex]
+	&+C_A\left[
+	\frac{152}{9}
+	+4\operatorname{Li}_2\left(\frac{Q_{ab}-M^2}{Q_{ab}}\right)
+	+2\ln\frac{Q_{ab}}{Q_{ac}}
+	\ln\frac{Q_{ab}}{Q_{bc}}
+	\right]\\[1ex]
+	&+C_F\left(
+	-16
+	+4\operatorname{Li}_2\left(\frac{-Q_{ac}}{M^2}\right)
+	+4\operatorname{Li}_2\left(\frac{-Q_{bc}}{M^2}\right)
+	-2\ln^2\frac{Q_{ac}+M^2}{Q_{ac}}
+	-2\ln^2\frac{Q_{bc}+M^2}{Q_{bc}}
+\right.
+\\[1ex]
+	&\left.
+	+2\ln^2\frac{M^2+Q_{ac}}{M^2}
+	+2\ln^2\frac{M^2+Q_{bc}}{M^2}
+	+2\ln^2\frac{Q_{ac}}{Q_{bc}}
+	\right)
+	-\frac{20}{9}n_f\,.
+	\end{aligned}
+\end{equation}
+
+The \textsc{ARES} coefficient $h_{10}$ for the $q\bar q\to g H$ channel is
+\begin{equation}
 \begin{aligned}
-& \mathcal{C}_{-1}^{(1)}=
+	h_{10}=\;&\frac{67\,C_A-10\,n_f}{18}
+	+\frac{19\pi^2}{12}(2C_F-C_A)
+	-\beta_0\ln\frac{M\,Q_c\,Q_{ab}^2}{\mu_R^6}\\[2ex]
+	&+\sum_{j}\int\frac{dz}{z} \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}2I_{qj}^{(1)}+\sum_{j}\int\frac{dz}{z}\frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}2I_{\bar{q}j}^{(1)}\\
+	&+\sum_{j}\int\frac{dz}{z}\left(2P_{qj}^{(0)}\ln\frac{Q_a\,M}{Q^2}+2P_{qj}^{(0)}\ln\frac{Q^2}{\mu_F^2}+3C_F\ln\frac{Q^2}{Q_a\,M}\right)
+    \frac{f_j(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\\
+    &+\sum_{j}\int\frac{dz}{z}\left(2P_{\bar{q}j}^{(0)}\ln\frac{Q_b\,M}{Q^2}+2P_{qj}^{(0)}\ln\frac{Q^2}{\mu_F^2}+3C_F\ln\frac{Q^2}{Q_b\,M}\right)
+    \frac{f_j(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\[1ex]
+	&+3C_F\ln\frac{Q_{ab}}{Q^2}
+	+3C_F\ln\frac{Q_{ab}}{Q^2}\\[1ex]
+	&+C_F\left[
+	\ln^2\frac{M}{Q_a}
+	+\ln^2\frac{M}{Q_b}
+	-\ln^2\frac{Q_{ab}}{M^2}
+	\right]
+\\[1ex]
+	&+\frac{C_A}{2}\left[
+	2\ln^2\frac{M}{Q_c}
+	+\ln^2\frac{M^2}{Q_{ab}}
+	-\ln^2\frac{M^2}{Q_{ac}}
+	-\ln^2\frac{M^2}{Q_{bc}}
+	\right]\\[2ex]
+	&+\frac{(C_A-2C_F)}{2}
+	\left(
+	\ln^2\frac{Q_{ab}}{Q_aQ_b}
+	+2(I_{ab,c}+I_{ba,c})
+	\right)\\[1ex]
+	&-\frac{C_A}{2}
+	\left(
+	\ln^2\frac{Q_{ac}}{Q_aQ_c}
+	+2(I_{ac,b}+I_{ca,b})
+	\right)\\[1ex]
+	&-\frac{C_A}{2}
+	\left(
+	\ln^2\frac{Q_{bc}}{Q_bQ_c}
+	+2(I_{bc,a}+I_{cb,a})
+	\right)\\
+	&+\frac{C_A}{2}\left[
+	\frac{152}{9}
+	+4\operatorname{Li}_2\left(\frac{Q_{ab}-M^2}{Q_{ab}}\right)
+	+2\ln\frac{Q_{ab}}{Q_{ac}}
+	\ln\frac{Q_{ab}}{Q_{bc}}
+	\right]\\[1ex]
+	&+\frac{C_F}{2}\left(
+	-16
+	+4\operatorname{Li}_2\left(\frac{-Q_{ac}}{M^2}\right)
+	+4\operatorname{Li}_2\left(\frac{-Q_{bc}}{M^2}\right)
+	-2\ln^2\frac{Q_{ac}+M^2}{Q_{ac}}
+	-2\ln^2\frac{Q_{bc}+M^2}{Q_{bc}}
+\right.
+\\[1ex]
+	&\left.
+	+2\ln^2\frac{M^2+Q_{ac}}{M^2}
+	+2\ln^2\frac{M^2+Q_{bc}}{M^2}
+	+2\ln^2\frac{Q_{ac}}{Q_{bc}}
+	\right)
+	-\frac{20}{18}n_f\,.
 \end{aligned}
 \end{equation}
+
+\todo{Go from here.}
+Note we have used the formulae:
+\begin{subequations}
+\begin{align}
+  I^{(1)}_{qq}(z) &=C_F\left[ \left(\frac{\ln(1-z)}{1-z}\right)_+
+  -\frac{\pi^2}{6}\delta(1-z)+\Theta(1-z)\left(1-z-\frac{1+z^2}{1-z}\ln z\right)\right]\,,\\
+  I^{(1)}_{qg}(z) &= T_R\left[z^2+(1-z)^2\right]\ln\frac{1-z}{z}
+  +2z(1-z)\,,\\
+  I^{(1)}_{gq}(z) &= \frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}+z\,,\\
+  I^{(1)}_{gg}(z) &= 2\!\left(\frac{\ln(1-z)}{1-z}\right)_+
+  +\frac{2(1-z)}{z}+2z(1-z)
+  -\frac{\pi^2}{6}C_F\delta(1-z)\,.
+\end{align}
+\end{subequations}
+
+The additional terms of $P_{qj}\ln Q^2/\mu_F^2$ is the expansion of the ratios
+of the PDFs in \textsc{ARES}. \todo{need to see where this comes from.}
 
 
 
