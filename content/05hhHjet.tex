@@ -361,7 +361,16 @@ is performed in the $\overline{\rm MS}$ scheme. The collinear anomalous dimensio
   \label{eq:gammal}
   \gamma_\ell (\alpha_s) = \gamma^{(0)}_\ell \frac{\alpha_s}{2\pi} + \gamma^{(1)}_\ell \left(\frac{\alpha_s}{2\pi} \right)^2+\dots
 \end{equation}
-where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav};
+where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav}, and 
+ \begin{equation}
+  \label{eq:gammal1-flav}
+  \gamma_\ell^{(1)} = \left\{
+    \begin{split}
+      &\frac{C_F}{2}\left(C_F\left(\frac{3}{4}-\pi^2+12\zeta_3\right)+C_A\left(\frac{17}{12}+\frac{11\pi^2}{9}-6\zeta_3\right)-n_f\left(\frac{1}{6}+\frac{2\pi^2}{9}\right)\right)\,,\quad \text{if $\ell$ is a quark,} \\
+      & C_A^2\left(\frac{8}{3}+3\zeta_3\right)-\frac{n_f}{2}C_F-\frac{2}{3}n_fC_A \,,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\text{if $\ell$ is a gluon}\,;
+    \end{split}
+    \right.
+\end{equation}
 
 \item the ``web'' function
   $w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon)$
@@ -543,13 +552,12 @@ $\gamma_\ell^{(0)}$ recovers the NLL result of
 Eq.~\eqref{eq:Rhc-NLL}, while the $\gamma_\ell^{(1)}$ term is the new
 NNLL contribution. 
 
-We find that these expressions can give rise to:
-
+Just as in the case for the NLL radiator, we use the ansatz
+in Eq.~\eqref{eq:ansatz}, and find the expressions below:
 \begin{equation}
 	R_{\ell\bar\ell}(v)=-\frac{\lambda}{\alpha_s(Q)\beta_0}g_1^{(\ell)}(\lambda)-g_2^{(\ell)}(\lambda)-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})-\frac{\alpha_s(Q)}{\pi}\left(g_3^{(\ell)}(\lambda)+\mathfrak{g}_3^{(\ell)}(\lambda,Q_{\ell\bar\ell})\right)\,,
 \end{equation}
 
-\todo{Add in the ansatz here also!}
 \begin{equation}
 	\delta R_{\ell\bar\ell}(v)=-\frac{\alpha_s(Q)}{\pi}\delta g_3^{(\ell)}(\lambda)\,,
 \end{equation}
@@ -566,13 +574,27 @@ where $g_1^{(\ell)}(\lambda), g_2^{(\ell)}(\lambda), \mathfrak{g}_2^{(\ell)}(\la
 	&\qquad\qquad+\frac{\left(\beta_1^2(a+b_{\ell})^2(a-2\lambda)\ln^2\left(1-\frac{2\lambda}{a+b_{\ell}}\right)-4b_{\ell}\lambda^2\left(\beta_0\beta_2+\beta_1^2\right)\right)}{4\pi b_{\ell}\beta_0^4(a-2\lambda)(a+b_{\ell}-2\lambda)} \notag \\
 	&\qquad\qquad-\frac{a\ln\left(1-\frac{2\lambda}{a}\right)\left(2\beta_0\beta_2(a-2\lambda)+a\beta_1^2\ln\left(1-\frac{2\lambda}{a}\right)+4\beta_1^2\lambda\right)}{4b_{\ell}\beta_0^4(a-2\lambda)} \notag\\
 	&\qquad\qquad+\frac{(a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)\left(\beta_0\beta_2(a+b_{\ell}-2\lambda)+2\beta_1^2\lambda\right)}{2b_{\ell}\beta_0^4(a+b_{\ell}-2\lambda)} \notag\\
-	&\left.\qquad\qquad -K^{(2)}\frac{2\lambda^2}{8\pi^2(a-2\lambda)(a+b_{\ell}-2\lambda)\beta_0^2} \right]\,, \\
-&\mathfrak{g}_3^{(\ell)}(\lambda,Q_{\ell\bar\ell})=\pi\beta_0\lambda^2\left(\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}+\frac{\lambda}{2}\frac{d^2g_1^{(\ell)}(\lambda)}{d\lambda^2}\right)\ln^2\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\notag \\
-&\qquad\qquad -\pi\beta_0\lambda\left(\frac{dg_2^{(\ell)}(\lambda)}{d\lambda}+\frac{\beta_1}{\beta_0^2}\lambda\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}\right)\ln\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \\
-&\delta g_3^{(\ell)}(\lambda)=-\zeta_2\frac{\lambda}{(a+b_{\ell}-2\lambda)}\,,\\
-&h_3^{(\ell)}(\lambda)=\gamma_{\ell}^{(0)}\frac{\beta_1\left((a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+2\lambda\right)}{2\beta_0^2(a+b_{\ell}-2\lambda)}
--\gamma_{\ell}^{(1)}\frac{\lambda}{2\pi\beta_0(a+b_{\ell}-2\lambda)}\,.
+	&\left.\qquad\qquad -K^{(2)}\frac{2\lambda^2}{8\pi^2(a-2\lambda)(a+b_{\ell}-2\lambda)\beta_0^2} \right]\,, \\[6pt]
+&\mathfrak{g}_3^{(\ell)}(\lambda,Q_{\ell\bar\ell})=\pi\beta_0\lambda^2\left(\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}+\frac{\lambda}{2}\frac{d^2g_1^{(\ell)}(\lambda)}{d\lambda^2}\right)\ln^2\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\notag \\[6pt]
+&\qquad\qquad -\pi\beta_0\lambda\left(\frac{dg_2^{(\ell)}(\lambda)}{d\lambda}+\frac{\beta_1}{\beta_0^2}\lambda\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}\right)\ln\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \\[6pt]
+&\delta g_3^{(\ell)}(\lambda)=-\zeta_2\frac{\lambda}{(a+b_{\ell}-2\lambda)}\,,\\[6pt]
+&h_3^{(\ell)}(\lambda)=-\gamma_{\ell}^{(0)}\frac{\beta_1\left((a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+2\lambda\right)}{2\beta_0^2(a+b_{\ell}-2\lambda)}
++\gamma_{\ell}^{(1)}\frac{\lambda}{2\pi\beta_0(a+b_{\ell}-2\lambda)}\,,
 \end{align}
+\end{subequations}
+where $\beta_0, \beta_1, \beta_2$ can be found in Eq.~\eqref{eq:beta}
+and $\gamma_{\ell}^{(0)}, \gamma_{\ell}^{(1)}$ can be found in
+Eqs.~\eqref{eq:gammal-flav} and.~\eqref{eq:gammal1-flav} 
+respectively.
+
+\todo{add the derivative of the radiators in here.}
+We can express derivatives of the NNLL radiator as a sum over legs $\ell$ to be:
+\begin{subequations}
+\begin{align}
+	&R'_{\rm NNLL}(\lambda)= \\
+	&R''_{\rm NNLL}(\lambda)= \\
+	&\Delta R'_{\ell, \mathrm{NNLL}}(\lambda)=\,.
+	\end{align}
 \end{subequations}
 
 \section{NNLL resummation: initial-state radiation}
@@ -1706,14 +1728,32 @@ the terms are expanded as
 \end{subequations}
 and analogously for $\mathcal{I}_{bj,-1}^{(m)}$. 
 
-This coefficient is considerably more involved than the logarithmic ones, as it requires
-the one-loop hard function $H^{(1)}$, which is encoded in the Wilson coefficient $\vec{C}^{(1)}$ in Ref.~\cite{Gaunt:2015pea}. 
+The coefficient $h_{10}$ maps to $\mathcal{C}_{-1}^{(1)}/(-2)$ via
+eq.~\eqref{eq:coeff-convent} with $m=1$, $n=1$. Unlike the
+logarithmic coefficients validated in the following subsections,
+$\mathcal{C}_{-1}^{(1)}$ receives a contribution from the hard
+Wilson coefficient $\vec{C}^{(1)}$, which is process-specific and
+must be computed explicitly. Since the $Z$ + jet production
+virtual corrections are not  publicly available, we use the
+results of $hh\to H $+ jet from Ref.~\cite{Ravindran:2002dc}.
+The calculation of this for $q\bar{q}\to H g$
+has been done in Appendix.~\ref{ap:H1-extraction}, we only do this 
+for this channel and so the validation will follow for this channel. 
+The remaining channels follow in the same way.
 
-\add{This requires using the one-loop corrections to $H+$ jet production
-in Ref.~\cite{Ravindran:2002dc} to extract the pole structure.}
-\question{I would like to explain that we cannot find anything in the literature
-for the hard function for this process and so we need to construct it from the
-Higgs process instead. How can I explain this eloquently?}
+Using Eq.~\eqref{eq:C1-SCET}, along with ingredients from
+Eq.~\eqref{eq:Cd1-ingred}, we obtain for the $q\bar{q}\to g H$
+channel
+\begin{equation}
+\begin{aligned}
+& \mathcal{C}_{-1}^{(1)}=
+\end{aligned}
+\end{equation}
+
+
+
+
+
 
 
 \subsection{NNLO ingredients}
