@@ -281,32 +281,38 @@ and where to get the $I_{ab}^{(1)}$ from.}
 \texorpdfstring{$q\bar{q}\to gH$}{qqbar to gH}}
 \label{ap:H1-extraction}
 
+\ABquestion{Should we be discussing 0-jettiness here, i.e.\ discuss
+how it tells us that the SCET hard function is the full expansion of
+the virtual in powers of $\varepsilon$?}
 
-We extract $H^{(1)}$ and  $2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
-  \vec{C}^{(0)\dagger}\right)/|\vec{C}^{(0)}|^2$ for the process $q\bar{q}\to Hg$ from
-the one-loop virtual amplitude of Ref.~\cite{Ravindran:2002dc}
-by verifying that its IR pole structure agrees with the universal
-prediction of Eq.~\eqref{eq:HQ-expanded}, then identifying the
-finite remainder with these.  This is a process-specific quantity that must be computed for each
-hard subprocess. The one-loop virtual corrections to $q\bar{q}\to Zg$
-are not directly available in the literature; they must be obtained
-via analytic continuation from the $e^+e^-$ process, which is
-technically involved. We therefore follow an alternative approach and
-use the one-loop virtual corrections for $q\bar{q}\to gH$ from
-Ref.~\cite{Ravindran:2002dc}, which shares the same three-leg colour
-structure as $q\bar{q}\to Zg$ and therefore has identical IR pole
-structure. The process-specific hard constant $\mathcal{H}_1$ is
-then extracted from the finite remainder, along with the total
-hard function in SCET,  $2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
- \vec{C}^{(0)\dagger}\right)/|\vec{C}^{(0)}|^2$.
- \todo{We need to say we only do this channel but the others
- can follow in the same way, despite not being shown.} 
- \ABquestion{Should we be discussing 0-jettiness here i.e.\
- discuss how it tells us that SCET's hard function is the full expansion 
- of the virtual in powers of epsilon.}
+Here we extract the quantity
+\begin{equation}
+  \label{eq:H1-SCET}
+  \frac{2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
+  \vec{C}^{(0)\dagger}\right)}{|\vec{C}^{(0)}|^2}
+\end{equation}
+from the one-loop virtual amplitude of Ref.~\cite{Ravindran:2002dc},
+where $\vec{C}^{(0)}$ and $\vec{C}^{(1)}$ are the tree-level and
+one-loop hard Wilson coefficients. This quantity enters
+$\mathcal{C}_{-1}^{(1)}$ of the N-jettiness subtraction and is
+compared against the \textsc{ARES} hard function in
+Sec.~\ref{subsec:N-jet-SCET-val}. The one-loop virtual corrections
+to $q\bar{q}\to Zg$ are not directly available in the literature
+and must be obtained via analytic continuation from $e^+e^-$, which
+is technically involved. We therefore use Ref.~\cite{Ravindran:2002dc},
+which computes the one-loop corrections to $q\bar{q}\to gH$. This
+process shares the same three-leg colour structure as $q\bar{q}\to Zg$
+and therefore has identical IR pole structure; only the
+process-specific finite constant $\mathcal{H}_1$ differs. We
+demonstrate the extraction for the $q\bar{q}\to Zg$ channel; the
+remaining channels $qg\to Hq$ and $\bar{q}g\to H\bar{q}$ follow
+by crossing symmetry.
 
-Expanding Eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
-$q\bar{q}\to Zg$ process, the double-pole
+
+\paragraph{Pole structure from \textsc{ARES}/Catani}
+Expanding eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
+$q\bar{q}\to Zg$ process, with dipole colour factors
+$C_{12}=C_F-C_A/2$, $C_{13}=C_{23}=C_A/2$, the double-pole
 coefficient is
 \begin{equation}
   \label{eq:H-pole2}
@@ -322,6 +328,9 @@ and the single-pole coefficient is
   -C_A\ln\frac{\mu_R^2}{Q_{23}^2}
   \right)\,.
 \end{equation}
+
+\paragraph{Comparison with Ref.~\cite{Ravindran:2002dc}}
+
 
 
 
@@ -339,6 +348,7 @@ where $N=N_c$ denotes the number of colours, $S_\varepsilon=\exp(\varepsilon(\ln
 $G$ is an effective coupling where for the scenario we are considering we can approximate this to be $G\sim\alpha_s(\mu_0)/4\pi$\footnote{Please note that we believe there to be a mistake in
 their equation, where they write $\alpha_s(\mu_R)$ in $G$.}, and $\mu_0$ is the bare reference scale.  The bare one-loop virtual correction takes the form
 \begin{equation}
+\label{eq:VIRT-bare}
 \begin{aligned}
   &s^2\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT}}{dt\,du} =
   \pi\delta(s+t+u-M^2)\,S_\varepsilon^2\,\frac{G^2}{N^2}
@@ -382,7 +392,8 @@ their equation, where they write $\alpha_s(\mu_R)$ in $G$.}, and $\mu_0$ is the 
 \end{aligned}
 \end{equation}
 
-We now renormalise the coupling using the Catani convention,\add{need to reference this}
+We now renormalise the coupling using the Catani
+convention~\cite{Catani:1998bh},
 \begin{equation}
   \label{eq:Catani-renorm}
   \alpha_s(\mu_0^2) =
@@ -395,17 +406,20 @@ We now renormalise the coupling using the Catani convention,\add{need to referen
 The bare LO cross section
 contains three powers of $\alpha_s(\mu_0^2)$ — two inside $G^2$
 and one explicit. Renormalising each gives $-3\beta_0/\varepsilon$
-from the explicit couplings and $+3\beta_0/\varepsilon$ from the
-change $G(\mu_0)\to G_1(\mu_R)$; these cancel exactly, leaving the
-renormalised LO term pole-free:
+from the explicit couplings:
 \begin{equation}
-  s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dt\,du} =
+\begin{aligned}
+  \label{eq:LO-ren}
+  s^2\frac{d^2\sigma_{q\bar{q}\to gH}^{{\rm LO},\rm Ren}}{dt\,du}& =
   \pi\delta(s+t+u-M^2)\,
   \frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\,
   \frac{G_1^2}{4N^2}
   \left(\frac{\mu_R^2\,s}{tu}\right)^\varepsilon
   \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^3
- |M_{q\bar{q}\to g H}^{(1)}|^2  \left[1+\mathcal{O}(\alpha_s)\right]\,,
+  \!\left[1-\frac{3\alpha_s(\mu_R^2)\beta_0}{\varepsilon}
+  +\mathcal{O}(\alpha_s^2)\right]\\
+&\times  |M_{q\bar{q}\to gH}^{(0)}|^2\,.
+  \end{aligned}
 \end{equation}
 where $G_1$ denotes $G$ with $\alpha_s(\mu_0^2)$ replaced by
 $\alpha_s(\mu_R^2)$. 
@@ -490,9 +504,9 @@ eq.~\eqref{eq:HQ-expanded}. Using the expansion
 and combining with the double-poles we find this simply subtracts the
 $\zeta_2$ terms present within the formula above.
 
-We find that 
-the double-pole
-coefficient of the renormalised virtual term is
+\paragraph{Pole comparison}
+Reading off the $1/\varepsilon^2$ and $1/\varepsilon$ coefficients
+from Eq.~\eqref{eq:VIRT-bare}, the double-pole coefficient is
 \begin{equation}
   \label{eq:vN-pole2}
   -\frac{2}{\varepsilon^2}(C_A+2C_F)\,,
@@ -509,9 +523,14 @@ and the single-pole coefficient is
 \end{equation}
 Comparing with Eqs.~\eqref{eq:H-pole2} and~\eqref{eq:H-pole1},
 the poles of Ref.~\cite{Ravindran:2002dc} are exactly twice those
-of $\mathcal{V}(Q;\varepsilon)$, this mapping must be taken 
-into account when now extracting the finite terms. The finite 
-remainder after subtracting the poles is the term
+of $\mathcal{V}(Q;\varepsilon)$, this factor is taken into account when 
+subtracting the finite terms.
+
+\paragraph{Extraction of the finite remainder}
+The finite remainder $\vec{C}^{(1)}$ is extracted from the
+$\mathcal{O}(\varepsilon^0)$ terms of eq.~\eqref{eq:VIRT-bare}
+after subtracting the predicted poles and dividing out the
+$e^{\varepsilon\gamma_E}/\Gamma(1-\varepsilon)$ prefactor. The
 \begin{equation}
 \label{eq:C1-SCET}
 \begin{aligned}
@@ -545,16 +564,22 @@ remainder after subtracting the poles is the term
 \end{aligned}
 \end{equation}
 
-For the \textsc{ARES} formalism, the hard coefficient is found
-using Eq.~\eqref{eq:H1-final},
+For the \textsc{ARES} formalism, the hard coefficient is given by
+Eq.~\eqref{eq:H1-final},
 \begin{equation}
 H_{q\bar{q}}^{(1)}=\mathcal{H}_1
 +3\left(C_F-\frac{C_A}{2}\right)\ln\frac{Q_{12}}{Q^2}
 +\left(\frac{3C_A}{4}+\frac{\beta_0}{4}\right)\ln\frac{Q_{13}}{Q^2}
-+\left(\frac{3C_A}{4}+\frac{\beta_0}{4}\right)\ln\frac{Q_{23}}{Q^2}\,,
++\left(\frac{3C_A}{4}+\frac{\beta_0}{4}\right)\ln\frac{Q_{23}}{Q^2}\,.
 \end{equation}
-we subtract the logarithmic terms from the finite contributions \ABquestion{Maybe worthwhile writing
-out the contributions}, such that we obtain
+\ABquestion{am unsure if i want to say that we subtract these from the SCET term as
+it makes it look like we get ours from theirs, which we don't -- we get ours from 
+vN reference. Also are the hard functions actually the same? If so then what
+is this about $\varepsilon$ expansion for 0-jettiness?}
+Subtracting these from
+Eq.~\eqref{eq:C1-SCET} and accounting for the fact that there is afactor of 2 arising from
+\textsc{ARES} expressing $\alpha_s/2\pi$
+opposed to $\alpha_s/4\pi$, we obtain $\mathcal{H}_1$:
 \begin{equation}
 \begin{aligned}
 \mathcal{H}_1=&-\frac{5}{4}C_A\pi^2+\frac{17}{6}C_F\pi^2
