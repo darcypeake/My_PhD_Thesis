@@ -1,59 +1,6 @@
-\chapter{CH5 Appendix}
+\chapter{One-jettiness coefficients}
 \label{app:ch5}
 
-\section{Additive Results}
-\label{ap:add-res-NNLL}
-
-\begin{multline}
-  \label{eq:dFhc-general-add}
-   \delta\mathcal{F}_{\rm hc}=-\FNLL(\lambda)\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell =\\
-   =\frac{d\FNLL}{d\RpNLL}\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \,.
-\end{multline}
-
-\begin{multline}
- \label{eq:dFsc-general-add}
-\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=-\FNLL(\lambda)\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\langle d_\ell g_\ell(\phi)-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\right. \times\\
-\times \left.\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,.
-\end{multline}
-
-\begin{equation}
-  \label{eq:dFrec-general-add}
-  \delta\mathcal{F}_{\rm rec} = -\FNLL(\lambda)
-  \sum_\ell
-  \frac{\alpha_s\!\left(Qv^{1/(a+b_\ell)}\right)}
-       {\alpha_s(Q)(a+b_\ell)}
-  \int_0^1 dz\,P_\ell(z)\ln f_{\mathrm{hc}}(z)\,.
-\end{equation}
-
-\ABquestion{Unsure about $\Delta\mathcal{F}_{\rm rec}$?}
-\begin{equation}
- \label{eq:DFrec-general-add}
-	\Delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL(\lambda)\frac{\alpha_s(Qv^{1/(a+b_{\ell})})}{\alpha_s(Q)(a+b_{\ell})}\left[\int_0^{\pi}\frac{d\phi}{\pi}\int_0^1dz \Delta P_g(z,\phi)\ln f_{\rm hc}^{(f_{\ell})}(z,\phi)\right]\,.
-\end{equation}
-
-\begin{multline}
-\label{eq:dFcorrel-general-add}
-\delta\mathcal{F}_{\mathrm{correl}}(\lambda)=-\FNLL(\lambda)
-\sum_{\ell=1}^3\frac{\lambda R''_{\ell,\mathrm{NNLL}}}{2a\beta_0\alpha_s(Q)}\times\\
-\times
-\int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^\infty
-\frac{d\mu^2}{\mu^2(1+\mu^2)}\int_0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)
-\ln f^{(\ell)}_{\mathrm{correl}}\left(z,\mu,\phi,\phi^{(\ell)}\right)\,.
-\end{multline}
-
-\begin{equation}
- \label{eq:dFwa-general-add}
-	\delta\mathcal{F}_{\rm wa}(\lambda)=\FNLL(\lambda)
-	\sum_{\ell\bar\ell}\frac{2C_{\ell\bar\ell}}{a}\frac{\alpha_s(v^{1/a}Q)}{\alpha_s(Q)}\int_{-\infty}^{\infty}d\eta^{(\ell\bar\ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar\ell)}}{2\pi}\ln\frac{f_{\rm sc}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}{f_{\rm wa}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}\,.
-\end{equation}
-
- \begin{equation}
- \label{eq:DFwa-general-add}
- \begin{aligned}
- 	\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)&=-\FNLL(\lambda)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}\right)+\gamma_E\right)\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\\
-	&=\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}2\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,. 
-\end{aligned}	
- \end{equation}
 
 
 \section{\textsc{ARES} resummation coefficients for one-jettiness}
@@ -91,14 +38,19 @@ The terms which are of $\mathcal{O}(\alpha_s)$ are the following:
 h_{12} &=-\sum_{\ell}C_{\ell}\,,\\
 \label{eq:h11}
 h_{11} &= \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\
-&-\sum_{b}\int\frac{dz}{z}P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{b}\int\frac{dz}{z}P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\
+&-\sum_{b}\int\frac{dz}{z}P_{ib}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{b}\int\frac{dz}{z}P_{jb}(z)\frac{f_b(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\[1ex]
 \label{eq:h10}
-h_{10}&=
+h_{10}&= H^{(1)}-\sum_{(\ell\bar\ell)}C_{(\ell\bar\ell)}\sum_{\ell\in (\ell\bar\ell)}\ln^2 d_\ell^{(\ell\bar\ell)}+\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\left[\ln^2\frac{Q_{\bar\ell}}{Q_\ell}- 2\!\left(I_{\ell\bar\ell,\hat\ell}+ I_{\bar\ell\ell,\hat\ell}\right)\right] \\ \notag
+&\qquad\qquad + \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\delta\mathcal{F}_{\rm rec}+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} 2P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
+\\[1ex] \notag
+&\qquad \qquad 
++\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_j(x_2,\mu_F)} 2P_{jk}(z)\ln\frac{Q^2}{\mu_F^2}\,.
 \end{align}
 \end{subequations}
 
 
-\todo{Go through $h_{22}$ and $h_{21} $again as missing term.}
+
+ \todo{Go through $h_{22}$ and $h_{21} $again as missing term.}
 The terms which are of $\mathcal{O}(\alpha_s^2)$ are the following:
 \begin{subequations}
 \begin{align}
@@ -188,6 +140,18 @@ J_{c,-1}^{(1)} &= \begin{cases}
   &\quad+2C_c\!\left(I_{ab,c}+I_{ba,c}-I_{ac,b}-I_{ca,b}-I_{bc,a}-I_{cb,a}\right)\,.
 \end{align}
 \end{subequations}
+For the beam functions, we have
+\begin{subequations}
+\begin{align}
+  I^{(1)}_{qq}(z) &=C_F\left[ \left(\frac{\ln(1-z)}{1-z}\right)_+(1+z^2)
+  -\frac{\pi^2}{6}\delta(1-z)+\Theta(1-z)\left(1-z-\frac{1+z^2}{1-z}\ln z\right)\right]\,,\\[1ex]
+  I^{(1)}_{qg}(z) &= T_R\left[\left(z^2+(1-z)^2\right)\ln\frac{1-z}{z}
+  +2z(1-z)\right]\,,\\[1ex]
+  I^{(1)}_{gq}(z) &= C_F\left[\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}+z\right]\,,\\[1ex]
+  I^{(1)}_{gg}(z) &= C_A\left[\left(\frac{\ln(1-z)}{1-z}\right)_+\frac{2(1-z+z^2)^2}{z}-\frac{\pi^2}{6}\delta(1-z)-\frac{2\ln z}{(1-z)_+}\frac{(1-z+z^2)^2}{z}\right]\notag\\
+  &\qquad\qquad+\frac{\beta_0}{2}\delta(1-z)\,.
+\end{align}
+\end{subequations}
 
 \subsection{NNLO coefficients}
 
@@ -200,6 +164,8 @@ J_{c,3}^{(2)} &= 8C_c^2\,, \\
 \widehat{S}_{\kappa,3}^{(2)} &= 32\left(C_a+C_b+C_c\right)^2\,.
 \end{align}
 \end{subequations}
+
+
 
 \begin{subequations}
 \label{eq:C22-ingred}
@@ -311,19 +277,33 @@ J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
 \todo{we do ned to add in that the $\gamma^{(1)}$'s are different
 and where to get the $I_{ab}^{(1)}$ from.}
 
-\section{Extraction of \texorpdfstring{$H^{(1)}$}{H(1)}}
+\section{Extraction of \texorpdfstring{$\vec{C}^{(1)}$}{C(1)} and $H^{(1)}$ for
+\texorpdfstring{$q\bar{q}\to gH$}{qqbar to gH}}
 \label{ap:H1-extraction}
 
-\add{Add in about the 0-jettiness?}
 
-We extract $H^{(1)}$ for the process $q\bar{q}\to Hg$ from
+We extract $H^{(1)}$ and  $2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
+  \vec{C}^{(0)\dagger}\right)/|\vec{C}^{(0)}|^2$ for the process $q\bar{q}\to Hg$ from
 the one-loop virtual amplitude of Ref.~\cite{Ravindran:2002dc}
 by verifying that its IR pole structure agrees with the universal
 prediction of Eq.~\eqref{eq:HQ-expanded}, then identifying the
-finite remainder with $2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
-  \vec{C}^{(0)\dagger}\right)/|\vec{C}^{(0)}|^2$. 
-The reason why we do this is because the $Z$ is that the virtual corrections are not publicly available, they need to be obtained from $\ee$, with an analytic continuation. To go about this differently we use the one-loop virtual corrections from
-Ref.~\cite{Ravindran:2002dc} to find $H^{(1)}$ for the $q\bar{q}\to g + H$ process.
+finite remainder with these.  This is a process-specific quantity that must be computed for each
+hard subprocess. The one-loop virtual corrections to $q\bar{q}\to Zg$
+are not directly available in the literature; they must be obtained
+via analytic continuation from the $e^+e^-$ process, which is
+technically involved. We therefore follow an alternative approach and
+use the one-loop virtual corrections for $q\bar{q}\to gH$ from
+Ref.~\cite{Ravindran:2002dc}, which shares the same three-leg colour
+structure as $q\bar{q}\to Zg$ and therefore has identical IR pole
+structure. The process-specific hard constant $\mathcal{H}_1$ is
+then extracted from the finite remainder, along with the total
+hard function in SCET,  $2\,\text{Re}\!\left(\vec{C}^{(1)}\cdot
+ \vec{C}^{(0)\dagger}\right)/|\vec{C}^{(0)}|^2$.
+ \todo{We need to say we only do this channel but the others
+ can follow in the same way, despite not being shown.} 
+ \ABquestion{Should we be discussing 0-jettiness here i.e.\
+ discuss how it tells us that SCET's hard function is the full expansion 
+ of the virtual in powers of epsilon.}
 
 Expanding Eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
 $q\bar{q}\to Zg$ process, the double-pole
@@ -343,6 +323,8 @@ and the single-pole coefficient is
   \right)\,.
 \end{equation}
 
+
+
 Now comparing with Ref.~\cite{Ravindran:2002dc}. The bare cross section at leading-order is
 \begin{equation}
   s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1)}}{dt\,du} =
@@ -353,11 +335,9 @@ Now comparing with Ref.~\cite{Ravindran:2002dc}. The bare cross section at leadi
   \frac{\alpha_s(\mu_0^2)}{4\pi}|M_{q\bar{q}\to g H}^{(1)}|^2
   \,,
 \end{equation}
-where $N$ denotes the number of colours, $S_\varepsilon=\exp(\varepsilon(\ln4\pi-\gamma_E))$,
-$G$ is an effective coupling where for the scenario we are considering we can take this to be $G\simeq\alpha_s(\mu_R)/4\pi$, and $\mu_0$ is the reference scale. \ABquestion{Remember there is a mistake in theirs
-and also am unsure if we can approximate $G$ like this.}
-
-The bare one-loop virtual correction takes the form
+where $N=N_c$ denotes the number of colours, $S_\varepsilon=\exp(\varepsilon(\ln4\pi-\gamma_E))$,
+$G$ is an effective coupling where for the scenario we are considering we can approximate this to be $G\sim\alpha_s(\mu_0)/4\pi$\footnote{Please note that we believe there to be a mistake in
+their equation, where they write $\alpha_s(\mu_R)$ in $G$.}, and $\mu_0$ is the bare reference scale.  The bare one-loop virtual correction takes the form
 \begin{equation}
 \begin{aligned}
   &s^2\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT}}{dt\,du} =
@@ -402,16 +382,22 @@ The bare one-loop virtual correction takes the form
 \end{aligned}
 \end{equation}
 
-Using the Catani convention to renormalise the coupling,
+We now renormalise the coupling using the Catani convention,\add{need to reference this}
 \begin{equation}
+  \label{eq:Catani-renorm}
   \alpha_s(\mu_0^2) =
   \frac{\alpha_s(\mu_R^2)}{S_\varepsilon}
   \left(\frac{\mu_R^2}{\mu_0^2}\right)^\varepsilon
   \!\left[1-\frac{\alpha_s(\mu_R^2)\beta_0}{\varepsilon}
-  +\mathcal{O}(\alpha_s^2)\right]\,,
+  +\mathcal{O}(\alpha_s^2)\right]\,.
 \end{equation}
 
-the renormalised leading-order term becomes
+The bare LO cross section
+contains three powers of $\alpha_s(\mu_0^2)$ — two inside $G^2$
+and one explicit. Renormalising each gives $-3\beta_0/\varepsilon$
+from the explicit couplings and $+3\beta_0/\varepsilon$ from the
+change $G(\mu_0)\to G_1(\mu_R)$; these cancel exactly, leaving the
+renormalised LO term pole-free:
 \begin{equation}
   s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dt\,du} =
   \pi\delta(s+t+u-M^2)\,
@@ -421,10 +407,8 @@ the renormalised leading-order term becomes
   \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^3
  |M_{q\bar{q}\to g H}^{(1)}|^2  \left[1+\mathcal{O}(\alpha_s)\right]\,,
 \end{equation}
-where $G_1$ is $G$ evaluated at $\mu_R$, and the $\beta_0/\varepsilon$
-terms cancel between the renormalisation of $G$ and the explicit
-coupling. \ABquestion{Don't really understand this.}
-
+where $G_1$ denotes $G$ with $\alpha_s(\mu_0^2)$ replaced by
+$\alpha_s(\mu_R^2)$. 
 The renormalised virtual term is
 \begin{equation}
 \label{eq:virt-ren}
@@ -470,7 +454,13 @@ The renormalised virtual term is
   &\qquad\qquad\left. +\frac{(C_A-C_F)}{2}C_A C_F\left(Q_{13}+Q_{23}\right)\right]\,.
 \end{aligned}
 \end{equation}
-The combination relevant for the hard function at this order is
+The relevant combination for extracting the hard function is the
+sum of the renormalised LO and virtual terms. To add them, both must
+be expressed at the same order $(\alpha_s/4\pi)^4$. The LO term at
+order $(\alpha_s/4\pi)^3$ acquires one additional power from the NLO
+expansion, which generates a $-3\beta_0/\varepsilon$ from renormalising
+the three bare couplings at the NLO level. Combined with the virtual
+term:
 \begin{multline}
   s^2\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dt\,du}
   +s^2\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT,Ren}}{dt\,du}=\\
@@ -485,13 +475,21 @@ The combination relevant for the hard function at this order is
   \times[\dots]\right]|M^{(1)}_{q\bar{q}\to g H}|^2\,,
 \end{multline}
 where $\dots$ are the terms within the curly brackets in
-Eq.~\eqref{eq:virt-ren}. \ABquestion{Do not understand 
-the $\beta_0$ term here?}
+Eq.~\eqref{eq:virt-ren}. 
 
-Note that the $e^{\varepsilon\gamma_E}/\Gamma(1-\varepsilon)$ factor
-is already fully expanded inside the virtual bracket in
-Ref.~\cite{Ravindran:2002dc} and must be divided out before
-extracting the pole structure. \ABquestion{Need to check this is actually what occurs.}
+Note that in Ref.~\cite{Ravindran:2002dc} the
+$e^{\varepsilon\gamma_E}/\Gamma(1-\varepsilon)$ prefactor has been
+fully expanded inside the bracket rather than appearing as an overall
+factor. When extracting the poles and finite terms, this prefactor
+must be divided out to match the ARES/Catani convention of
+eq.~\eqref{eq:HQ-expanded}. Using the expansion
+\begin{equation}
+  \frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)} =
+  1 - \frac{\zeta_2}{2}\varepsilon^2 + \mathcal{O}(\varepsilon^3)\,,
+\end{equation}
+and combining with the double-poles we find this simply subtracts the
+$\zeta_2$ terms present within the formula above.
+
 We find that 
 the double-pole
 coefficient of the renormalised virtual term is
