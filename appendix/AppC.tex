@@ -6,28 +6,10 @@
 \section{\textsc{ARES} resummation coefficients for one-jettiness}
 \label{ap:ARES-coeff}
 
-\todo{
-\begin{enumerate}
-\item Clean up the introduction bit of text here -- need to say that
-$h_{10}$ and $h_{21}$ are not given here. Also need to mention there is an additional
-$\beta_0$ term in $h_{22}$. Not totally sure why this is, need to figure it out.
-\item Check what $S_1$ is -- written in Notes.tex but 
-also work it out again in terms of $C_{\ell\bar\ell}$
-\item Double check that the difference of $\sum_{\ell}\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}$
-to $\sum_{\ell}\sum_{ij}C_{ij}$ is a factor of 2. I think they could be the same
-and it is just the individual $C_{\ell\bar\ell}$ and $C_{ij}$ which have a factor of
-2 difference -- I am unsure. Work out the convention between these two.
-\item Look what the mathematica notebook does.
-\item Add in the $h_{22}$ term properly. (Look at mathematica)
-\item Add in the $h_{21}$ term properly. (Look at mathematica)
-\item Need to write the $\delta\mathcal{F}_{\rm rec}$ and $C_{\mathrm{hc},\ell}^{(1)}$
-terms out properly here.
-\item Also sort out notation overall. (Unsure if we want to the difference of $a,b,b$ to legs 1,2,3 here but worth a thought)
-\end{enumerate}}
-\ndp{
-$\sum_{(\ell\bar\ell)}\sum_{\ell\,\in\,(\ell\bar\ell)}
-=
-\sum_{\ell}\sum_{\bar\ell\neq\ell} $}
+%\ndp{
+%$\sum_{(\ell\bar\ell)}\sum_{\ell\,\in\,(\ell\bar\ell)}
+%=
+%\sum_{\ell}\sum_{\bar\ell\neq\ell} $}
 
 The general form of these coefficients can be found in 
 Ref.~\cite{Banfi:2004yd},  however since in this thesis
@@ -41,22 +23,19 @@ The terms which are of $\mathcal{O}(\alpha_s)$ are the following:
 \label{eq:h12}
 h_{12} &=-\sum_{\ell}C_{\ell}\,,\\
 \label{eq:h11}
-h_{11} &= \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\
+h_{11} &= \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\
 &-\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\[1ex]
 \label{eq:h10}
-h_{10}&= H^{(1)}-\sum_{(\ell\bar\ell)}C_{(\ell\bar\ell)}\sum_{\ell\in (\ell\bar\ell)}\ln^2 d_\ell^{(\ell\bar\ell)}+\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\left[\ln^2\frac{Q_{\bar\ell}}{Q_\ell}- 2\!\left(I_{\ell\bar\ell,\hat\ell}+ I_{\bar\ell\ell,\hat\ell}\right)\right] \\ \notag
-&\qquad\qquad + \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\delta\mathcal{F}_{\rm rec}+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} 2P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
+h_{10}&= H^{(1)}-\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln^2 d_\ell^{(\ell\bar\ell)}+\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}\\ \notag
+&\qquad\qquad + \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} 2P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
 \\[1ex] \notag
 &\qquad \qquad 
 +\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_j(x_2,\mu_F)} 2P_{jk}(z)\ln\frac{Q^2}{\mu_F^2}\,.
 \end{align}
 \end{subequations}
-\ndp{Note that the additional terms of $P_{qj}\ln Q^2/\mu_F^2$ is the expansion of the ratios
+\ABquestion{Just to check, these $P_{qj}\ln Q^2/\mu_F^2$ in $h_{10}$ is the expansion of the ratios
 of the PDFs in \textsc{ARES}. }
 
-
-
- \todo{Go through $h_{22}$ and $h_{21} $again as missing term.}
 The terms which are of $\mathcal{O}(\alpha_s^2)$ are the following:
 \begin{subequations}
 \begin{align}
@@ -65,22 +44,21 @@ h_{24}&=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,,\\
 \label{eq:h23}
 h_{23}&=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,,\\
 \label{eq:h22}
-h_{22}&=h_{10} h_{12}+\frac{1}{2}h_{11}^2-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)^2 -K^{(1)}\sum_{\ell}C_{\ell} \notag\\ 
+h_{22}&=h_{10} h_{12}+\frac{1}{2}h_{11}^2+4\pi\ln\frac{\mu_R}{Q}h_{12}-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)^2 -K^{(1)}\sum_{\ell}C_{\ell} \notag\\ 
 &+2\pi\beta_0\left[-4\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln\frac{Q_{\ell\bar\ell}^2}{Q^2}
-+\sum_{\ell}\left(-3C_\ell \ln\frac{Q^2}{M Q_{\ell}}+\frac{\gamma_\ell^{(0)}}{2}\right)\right. \notag \\
-&\left. -\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\right]\\
++\sum_{\ell}\left(\frac{\gamma_\ell^{(0)}}{2}-3C_\ell \ln\frac{Q^2}{M Q_{\ell}}\right)\right. \notag \\
+&\left. -\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\right]\,,\\[1ex]
 \label{eq:h21}
-h_{21}&=h_{11}h_{10}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\left[-K^{(1)} \ln d_\ell^{(\ell\bar{\ell})}
-  - 3\pi\beta_0 \ln^2 d_\ell^{(\ell\bar{\ell})} - \frac{\pi^3\beta_0}{6}
+h_{21}&=h_{11}h_{10}+4\pi\beta_0\ln\frac{\mu_R}{Q}h_{11}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\left[-2K^{(1)} \ln d_\ell^{(\ell\bar{\ell})}
+  - 6\pi\beta_0 \ln^2 d_\ell^{(\ell\bar{\ell})} - \frac{\pi^3\beta_0}{3}
  +\right.\notag\\
  & \left.  +2 \pi\beta_0 \ln d_\ell^{(\ell\bar{\ell})}
- \ln\frac{Q_{\ell\bar{\ell}}^2}{Q^2}\right]-\sum_{\ell}\gamma_{\ell}^{(1)}+2\pi\beta_0\sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\left(\sum_{\ell}\left(B_{\ell}+C_{\ell}\ln\frac{Q}{Q_{\ell}}\right)\right)\notag\\
-&+2\left(\sum_{\ell}C_{\ell}\right)^2\psi^{(1)}(2)+2\pi\beta_0\frac{\pi^2}{6}\sum_{\ell}C_{\ell}+2\pi\beta_0\sum_{(ij)} 
-           C_{(ij)}\left[ \ln^2 \frac{Q_j}{Q_i} - 2(I_{ij,k} + I_{ji,k})\right]\notag\\
-           &-4\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,.
+ \ln\frac{Q_{\ell\bar{\ell}}^2}{Q^2}\right]-\sum_{\ell}\gamma_{\ell}^{(1)}+ 2\left(\sum_{\ell}C_{\ell}\right)^2\psi^{(1)}(2)+2\pi\beta_0\frac{\pi^2}{6}\sum_{\ell}C_{\ell} \notag \\&+2\pi\beta_0\left(\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}\right)\\
+&-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\left[\sum_{\ell}\left(B_{\ell}+C_{\ell}\ln\frac{Q^2 M}{Q_{\ell}}+ 8C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\right) \right]\notag\\
+&-\sum_{k}\int\frac{dz}{z}P^{(1)}_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P^{(1)}_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,.
 \end{align}
 \end{subequations}
-\ndp{note extra 2 in front of the last part as there is a difference between $C_{ij}$ and $C_{\ell\bar\ell}$.}
+\ABquestion{These $\ln \mu_R/Q$ terms -- where do they come from exactly?}
 
 \section{$N$-jettiness subtraction ingredients}
 \label{ap:N-jet-ing}
