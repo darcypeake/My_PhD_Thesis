@@ -1,0 +1,98 @@
+
+\chapter{Symbolic coefficient validation}
+\label{ap:symb-val}
+
+The following figures present the key steps of the \textsc{Mathematica}
+validation of $h_{22}$ and $h_{21}$ against $\mathcal{C}_1^{(2)}$ and
+$\mathcal{C}_0^{(2)}$ respectively. The complete notebook is available
+at Ref.~\cite{peake2026validation}.
+
+\subsection{Validation of \texorpdfstring{$h_{22}$}{h22}}
+\label{ap:mathematica-h22}
+
+We validate $\mathcal{C}_1^{(2)}/8 = h_{22}$, which follows from
+Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=2$. Since $h_{10}$ and
+$h_{12}$ were validated at NLO, the cross-term
+$\mathcal{C}_1^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$, corresponding to
+$h_{10}\cdot h_{12}$ in the \textsc{ARES} cumulant expansion, is
+subtracted before the comparison is made
+(Fig.~\ref{fig:mathematica-C21-sub}). The output \texttt{0} in
+Fig.~\ref{fig:mathematica-h22compare} confirms exact agreement.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_C21.jpeg}
+\caption{Define $\mathcal{C}_1^{(2)}$ by substituting the $X$ quantities
+in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def} into Eq.~\eqref{eq:C12}.}
+\label{fig:mathematica-C21}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Isolate_h10_h12.jpeg}
+\caption{Subtraction of the $\mathcal{C}_1^{(1)}\cdot \mathcal{C}_{-1}^{(1)}$ cross-term from
+$\mathcal{C}_1^{(2)}$, isolating the new term
+\texttt{C21Rem}.}
+\label{fig:mathematica-C21-sub}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_h22.jpeg}
+\caption{Definition of $h_{11}$ and $h_{22}$ following
+Eqs.~\eqref{eq:h11} and~\eqref{eq:h22}.}
+\label{fig:mathematica-h22def}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Compare_C21_h22.jpeg}
+\caption{Comparison of $h_{22}$ and $\mathcal{C}_1^{(2)}$, where the output \texttt{0} confirms $\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly.}
+\label{fig:mathematica-h22compare}
+\end{figure}
+
+\subsection{Validation of \texorpdfstring{$h_{21}$}{h21}}
+\label{ap:mathematica-h21}
+
+We validate $\mathcal{C}_0^{(2)}/(-4) = h_{21}$, which follows from
+Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=1$. As above, the
+cross-term $\mathcal{C}_0^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$,
+corresponding to $h_{10}\cdot h_{11}$, is subtracted before the
+comparison is made (Fig.~\ref{fig:mathematica-C20-sub}). The initial
+comparison in Fig.~\ref{fig:mathematica-h21compare} leaves a residual
+in $\gamma^{(1)}_\ell$, which does not vanish symbolically since the
+SCET and \textsc{ARES} conventions for $\gamma^{(1)}$ differ. Substituting explicit values for the
+$q\bar{q}\to Zg$ channel, the residual vanishes exactly. The other channels follow in
+the same way. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_C20.jpeg}
+\caption{Define $\mathcal{C}_0^{(2)}$ by substituting the $X$ quantities
+in Eqs.~\eqref{eq:Xn-def}--\eqref{eq:Xnm11-def} into Eq.~\eqref{eq:C02}.}
+\label{fig:mathematica-C20}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Isolate_h10_h11.jpeg}
+\caption{Subtraction of the $h_{10}\cdot h_{11}$ cross-term from
+$\mathcal{C}_0^{(2)}$, isolating the new term \texttt{C20Rem}.}
+\label{fig:mathematica-C20-sub}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_h21.jpeg}
+\caption{Definition of $h_{21}$ following Eq.~\eqref{eq:h21}.}
+\label{fig:mathematica-h21def}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/appendixC/compare_C20_h21.jpeg}
+\caption{Initial comparison leads to a residual in $\gamma^{(1)}_\ell$ (top). The substitution
+of explicit $\gamma^{(1)}$ values for the $q\bar{q}\to Zg$ channel
+gives \texttt{Out[82] = 0}, showing that $\mathcal{C}_0^{(2)}/(-4) = h_{21}$ exactly (bottom).}
+\label{fig:mathematica-h21compare}
+\end{figure}

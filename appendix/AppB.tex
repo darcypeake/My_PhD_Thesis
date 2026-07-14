@@ -1,33 +1,29 @@
 \chapter{Additive NNLL Results}
 \label{ap:add-res-NNLL}
 
+In this appendix we collect the explicit forms of the NNLL correction functions
+used in Sec.~\ref{sec:one-jettiness} for the case of additive observables.
+Throughout, we use $\lambda \equiv \alpha_s(Q)\beta_0\ln(1/v)$ as the resummation
+variable, and $\FNLL(\lambda)$ is the additive form given in Eq.~\eqref{eq:FNLL-add-final}.
+
+The hard-collinear correction for additive observables takes the remarkably simple form:
 \begin{multline}
   \label{eq:dFhc-general-add}
    \delta\mathcal{F}_{\rm hc}=-\FNLL(\lambda)\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell =\\
-   =\frac{d\FNLL}{d\RpNLL}\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \,.
+   =\frac{d\FNLL}{d\RpNLL}\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \,,
 \end{multline}
+where $B_{\ell}=\gamma_{\ell}^{(0)}$ for final-state legs, and is defined in Eq.~\eqref{eq:Bell-ISR} for initial-state legs.
 
+The soft-collinear correction for additive observables, relies only on the radiator:
 \begin{multline}
  \label{eq:dFsc-general-add}
 \delta\mathcal{F}_{\mathrm{sc}}(\lambda)=-\FNLL(\lambda)\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\left(\ln\langle d_\ell g_\ell(\phi)-b_\ell\ln\frac{2E_\ell}{Q}\right)\right)\right. \times\\
-\times \left.\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,.
+\times \left.\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,,
 \end{multline}
+where here $\RpNLL, R''_{\ell,\mathrm{NNLL}}$, and $\Delta R'_{\ell,\mathrm{NNLL}}$
+are defined in Eqs.~\eqref{eq:RpNLL}, \eqref{eq:R2NNLL}, and~\eqref{eq:DRNNLL} respectively. 
 
-\begin{equation}
-  \label{eq:dFrec-general-add}
-  \delta\mathcal{F}_{\rm rec} = -\FNLL(\lambda)
-  \sum_\ell
-  \frac{\alpha_s\!\left(Qv^{1/(a+b_\ell)}\right)}
-       {\alpha_s(Q)(a+b_\ell)}
-  \int_0^1 dz\,P_\ell(z)\ln f_{\mathrm{hc}}(z)\,.
-\end{equation}
-
-\ABquestion{Unsure about $\Delta\mathcal{F}_{\rm rec}$?}
-\begin{equation}
- \label{eq:DFrec-general-add}
-	\Delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL(\lambda)\frac{\alpha_s(Qv^{1/(a+b_{\ell})})}{\alpha_s(Q)(a+b_{\ell})}\left[\int_0^{\pi}\frac{d\phi}{\pi}\int_0^1dz \Delta P_g(z,\phi)\ln f_{\rm hc}^{(f_{\ell})}(z,\phi)\right]\,.
-\end{equation}
-
+The correlated contribution takes the form:
 \begin{multline}
 \label{eq:dFcorrel-general-add}
 \delta\mathcal{F}_{\mathrm{correl}}(\lambda)=-\FNLL(\lambda)
@@ -35,15 +31,49 @@
 \times
 \int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^\infty
 \frac{d\mu^2}{\mu^2(1+\mu^2)}\int_0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)
-\ln f^{(\ell)}_{\mathrm{correl}}\left(z,\mu,\phi,\phi^{(\ell)}\right)\,.
+\ln f^{(\ell)}_{\mathrm{correl}}\left(z,\mu,\phi,\phi^{(\ell)}\right)\,,
 \end{multline}
+where
+\begin{equation}
+	\frac{\Vsc{k_a,k_b,\{k_i\}}}{v}=\zeta f_{\rm correl}(z,\mu,\phi,\phi^{(\ell)})+\sum_{i=1}^n\zeta_i\,.
+\end{equation}
 
+
+The recoil correction for additive observables takes the form
+\begin{equation}
+  \label{eq:dFrec-general-add}
+  \delta\mathcal{F}_{\rm rec} = -\FNLL(\lambda)
+  \sum_\ell
+  \frac{\alpha_s\!\left(Qv^{1/(a+b_\ell)}\right)}
+       {\alpha_s(Q)(a+b_\ell)}
+  \int_0^1 dz\,P_\ell(z)\ln f_{\mathrm{hc}}(z)\,,
+\end{equation}
+where
+\ABquestion{Unsure how to formulate this in terms of $\Vsc{k}$/$\Vhc{k}$
+as the recoil correction is formulated differently in the 3-jet paper?}
+The function $P_{\ell}(z)$ is given by Eq.~\eqref{eq:Pell-ISR} for ISR contirbutions
+and  Eq.~\eqref{eq:Pell-FSR} for FSR.
+
+The recoil correction $\Delta\mathcal{F}_{\rm rec}$ is the following for additive observables:
+\ABquestion{I don't understand the labels here?}
+\begin{equation}
+ \label{eq:DFrec-general-add}
+	\Delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL(\lambda)\frac{\alpha_s(Qv^{1/(a+b_{\ell})})}{\alpha_s(Q)(a+b_{\ell})}\left[\int_0^{\pi}\frac{d\phi}{\pi}\int_0^1dz \Delta P_g(z,\phi)\ln f_{\rm hc}^{(f_{\ell})}(z,\phi)\right]\,.
+\end{equation}
+
+
+The wide-angle correction $\delta\mathcal{F}_{\rm wa}(\lambda)$ is:
 \begin{equation}
  \label{eq:dFwa-general-add}
 	\delta\mathcal{F}_{\rm wa}(\lambda)=\FNLL(\lambda)
-	\sum_{\ell\bar\ell}\frac{2C_{\ell\bar\ell}}{a}\frac{\alpha_s(v^{1/a}Q)}{\alpha_s(Q)}\int_{-\infty}^{\infty}d\eta^{(\ell\bar\ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar\ell)}}{2\pi}\ln\frac{f_{\rm sc}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}{f_{\rm wa}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}\,.
+	\sum_{(\ell\bar\ell)}\frac{2C_{\ell\bar\ell}}{a}\frac{\alpha_s(v^{1/a}Q)}{\alpha_s(Q)}\int_{-\infty}^{\infty}d\eta^{(\ell\bar\ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar\ell)}}{2\pi}\ln\frac{f_{\rm sc}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}{f_{\rm wa}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})}\,,
+\end{equation}
+where
+\begin{equation}
+	\frac{V_{\rm wa}(\{\tilde{p}\},k^{(\ell\bar\ell)},\{k_i\})}{v}=\zeta f_{\rm wa}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})+\sum_i\zeta_i\,.
 \end{equation}
 
+The wide-angle correction $\Delta\mathcal{F}_{\rm wa}(\lambda)$ is:
  \begin{equation}
  \label{eq:DFwa-general-add}
  \begin{aligned}
