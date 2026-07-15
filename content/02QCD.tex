@@ -875,10 +875,13 @@ where the Altarelli-Parisi splitting functions $P_{ij}(z)$ admit the perturbativ
 \begin{equation}
 	P_{ij}(z,\alpha_s(Q^2)) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-At leading order, these splitting functions are, \question{relate
-to those in Eq.~\eqref{eq:AP-functions} -- I get confused if these 
-are ISR/FSR? I believe that these are the integrated of Eq.~\eqref{eq:AP-functions} with
-the virtual corrections added. }.
+\ndp{The leading-order splitting functions $P_{ij}^{(0)}$ are the
+regularised counterparts of the unregularised functions
+$\hat{P}_{(ij)\to i+j}$ of Eq.~\eqref{eq:AP-functions}: they are
+obtained by integrating $\hat{P}$ over the collinear phase space,
+applying the $(1-z)_+$ prescription to handle the soft $z\to1$
+divergence, and adding the virtual $\delta(1-z)$ piece from
+one-loop corrections. Explicitly,}
 \begin{equation}
 \label{eq:splitting-func-real-virt}
 \begin{aligned}
@@ -888,6 +891,17 @@ the virtual corrections added. }.
 &P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+2\pi\beta_0\delta(1-z)\,.
 \end{aligned}
 \end{equation}
+\todo{I think work out actually how they are derived between the two so that
+we can say what is occuring here as I think missing up ISR and FSR? \\
+Also state that we do not use the $^{(0)}$ superscript in the future for the
+LO ones. \\
+Also maybe re-formulate the splitting functions
+for $q\bar{q}$ i.e.\ show in terms of the full plus distribution,}
+\ndp{The $(1-z)_+$ prescription is defined by
+$\int_0^1 dz\,f(z)/(1-z)_+ = \int_0^1 dz\,(f(z)-f(1))/(1-z)$
+and ensures integrability at $z\to1$. The $\delta(1-z)$ terms in
+$P_{qq}^{(0)}$ and $P_{gg}^{(0)}$ arise from virtual corrections
+and are present only for flavour-preserving splittings.}
 
 The hard interaction produces the primary particles of the event -- in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators such as \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}.
 
