@@ -1,2 +1,102 @@
-\chapter{Generalised $k_t$ DIS Plugin}
-Here we present the public code available on \texttt{fjcontrib} which contains the generalised-$k_t$ jet algorithm for deep inelastic scattering discussed in Chapter.~3.
+\chapter[DISGenkt FastJet contrib]{FastJet implementation of the 
+DIS generalised-$k_t$ algorithm}
+\label{ap:DIS-fastjet}
+
+\todo{Work out if we need the constructor here or not.
+Work out if we have the correct colours here.
+Need to link this to main text.}
+
+\begin{lstlisting}[caption={Evaluate the DIS generalised-$k_t$
+pairwise distance between two jets.}]
+double DISBriefJet::distance(const DISBriefJet * jet) const {
+  double dij = 1 - _nx*jet->_nx
+                 - _ny*jet->_ny
+                 - _nz*jet->_nz;
+  dij = dij * fmin(_E2p, jet->_E2p) / _dij_norm;
+  return dij;
+}
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[caption={Distance between the jet and the proton beam.}]
+double DISBriefJet::beam_distance() const {
+  return (1 - _beam_sign * _nz)*_E2p;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={The  DIS generalised-$k_t$ clustering. At each step the
+minimum distance pair is found, where if it is a pair of jets ($j\geq0$)
+they are merged, otherwise the jet is declared final and removed from
+the clustering.}]
+void DISGenktPlugin::run_clustering(
+    fastjet::ClusterSequence & cs) const {
+  int njets = cs.jets().size();
+  DISjetInfo info(p(), beam_sign(), R());
+  NNH<DISBriefJet,DISjetInfo> nnh(cs.jets(), &info);
+
+  while (njets > 0) {
+    int i, j, k;
+    double dij = nnh.dij_min(i, j);
+    if (j >= 0) {
+      cs.plugin_record_ij_recombination(i, j, dij, k);
+      nnh.merge_jets(i, j, cs.jets()[k], k);
+    } else {
+      cs.plugin_record_iB_recombination(i, dij);
+      nnh.remove_jet(i);
+    }
+    njets--;
+  }
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption={Find the 
+jet with the largest DIS longitudinal projection
+i.e.\ with the largest $E-\mathrm{beam\_sign}\, p_z$.
+This will be the macrojet.}]
+int DISGenktPlugin::find_idx_macrojet(
+    const std::vector<PseudoJet>& jets) const {
+  double best = 0.0;
+  int idx = -1;
+  for (size_t i = 0; i < jets.size(); ++i) {
+    double proj = jets[i].E() - beam_sign() * jets[i].pz();
+    if (proj > best) {
+      best = proj;
+      idx  = static_cast<int>(i);
+    }
+  }
+  return idx;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lstlisting}[caption={Sort jets by decreasing DIS longitudinal projection
+and return a set of jets from largest to smallest of $E-\mathrm{beam\_sign}\, p_z$.}]
+std::vector<PseudoJet> DISGenktPlugin::sorted_by_zjet(
+    const std::vector<PseudoJet> & jets) const {
+  std::vector<double> zproj(jets.size());
+  for (size_t i = 0; i < jets.size(); i++) {
+    zproj[i] = -(jets[i].E() - beam_sign() * jets[i].pz());
+  }
+  return objects_sorted_by_values(jets, zproj);
+}
+\end{lstlisting}
+
+
+
