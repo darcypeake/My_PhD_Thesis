@@ -79,6 +79,7 @@
 \newcommand{\FNNLL}{\mathcal{F}_{\mathrm{NNLL}}}
 \newcommand{\nn}{\nonumber}
 \newcommand{\qT}{q_T}
+\newcommand{\sgnsinphii}{\frac{\sin\phi_i}{|\sin\phi_i|}}
 
 \newcommand{\Vwa}[1]{V_{\mathrm{wa}}(\{\tilde{p}\},#1)}
 \newcommand{\Vfull}[1]{V(\{\tilde{p}\},#1)}
@@ -128,9 +129,23 @@
 \usepackage{cancel}
 \usepackage{amssymb}
 \usepackage{subcaption}
+
 % DIS Paper commands
 \newif\ifshowcomments
 \showcommentstrue
+% DIS comments
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\definecolor{orange}{rgb}{0.9,0.5,0.0}
+\definecolor{lightblue}{rgb}{0.0,0.5,1.0}
+\definecolor{darkspringgreen}{rgb}{0.09, 0.45, 0.27}
+\newcommand{\scomment}[3][red]{\textbf{\color{#1}[#2]$_\text{#3}$}}
+
+\newcommand{\sfr}[1]{\scomment[lightblue]{#1}{SFR}}
+\newcommand{\ak }[1]{\scomment[teal]{#1}{AK}}
+\newcommand{\mvb}[1]{\scomment[purple]{#1}{MVB}}
+\newcommand{\ndp}[1]{\scomment[orange]{#1}{DP}}
+
 %Comment commands 
 \newcommand{\ABquestion}[1]{\textcolor{red}{\textbf{A.B. Question:} #1}}
 \newcommand{\question}[1]{\textcolor{purple}{\textbf{Question:} #1}}
@@ -142,6 +157,16 @@
 
 %ARES project commands
 \newcommand{\dZ}{\mathrm{d}{\mathcal{Z}}[\{R'_{\mathrm{NLL}, \ell_i}, \{k_i\}\}]}
+
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+
+
 
 % ********************************************************************                
 % DIS Paper Add in
@@ -193,14 +218,51 @@
 
 \usepackage{inconsolata} % or \usepackage[scaled=0.85]{beramono}
 
-\definecolor{codebg}{HTML}{F0F4F8}       % very light blue-gray background
-\definecolor{codeframe}{HTML}{C9D6E3}    % soft blue-gray frame
-\definecolor{codekw}{HTML}{2A6496}       % muted navy blue - keywords
-\definecolor{codecomment}{HTML}{8FA8C8}  % soft mid blue - comments
-\definecolor{codestring}{HTML}{3D8A6E}   % muted teal - strings (not jarring green)
-\definecolor{codenumber}{HTML}{A0B4C8}   % light blue-gray - line numbers
-\definecolor{codeident}{HTML}{2C3E50}    % dark navy - main text (not pure black)
+\definecolor{codebg}{HTML}{F8F8F8}      % light grey background
+\definecolor{codeframe}{HTML}{CCCCCC}   % light grey frame
+\definecolor{codekw}{HTML}{0055AA}      % blue - keywords
+\definecolor{codecomment}{HTML}{5C8A5C} % muted green - comments
+\definecolor{codestring}{HTML}{AA3300}  % dark orange - strings
+\definecolor{codenumber}{HTML}{999999}  % light grey - line numbers
+\definecolor{codeident}{HTML}{1A1A1A}   % near-black - main text
+\definecolor{codetype}{HTML}{007070}    % teal - types
 
+\lstset{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\footnotesize\color{codeident}\linespread{1}\selectfont,
+  commentstyle=\itshape\color{codecomment},
+  stringstyle=\color{codestring},
+  numberstyle=\tiny\color{codenumber},
+  numbers=left,
+  numbersep=8pt,
+  frame=single,
+  rulecolor=\color{codeframe},
+  framesep=4pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  captionpos=b,
+  tabsize=2,
+  showstringspaces=false,
+  columns=flexible,
+  keepspaces=true,
+  language=C++,
+  % Class 0: control flow and built-in keywords
+  classoffset=0,
+  morekeywords={for, return, const, if, while, int, double,
+                size_t, override, true, false, void, else,
+                public, private, virtual, class, namespace,
+                new, delete, throw, try, catch, static},
+  keywordstyle=\bfseries\color{codekw},
+  % Class 1: FastJet and STL types
+  classoffset=1,
+  morekeywords={PseudoJet, ClusterSequence, NNH, DISBriefJet,
+                DISjetInfo, DISGenktPlugin, JetDefinition,
+                Plugin, FASTJET_BEGIN_NAMESPACE,
+                FASTJET_END_NAMESPACE, std, vector, string,
+                ostringstream},
+  keywordstyle=\color{codetype},
+  classoffset=0,
+}
 
 
 % ****************************************************************************************************
@@ -367,7 +429,7 @@
 \makeoddhead{custom}% Adjust odd header for custom page style
 {\leftmark}% Left odd header
 {\thepage}% Center odd header
-{\rightmark}% Right odd header
+{\scriptsize\rightmark}% Right odd header
 \makeheadrule{custom}{\textwidth}{.5pt}% Header rule width/thickness for custom page style
 \aliaspagestyle{chapter}{custom} % just to save some space
 \copypagestyle{chapter}{plain}
