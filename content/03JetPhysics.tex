@@ -1,0 +1,179 @@
+\chapter{Jet physics}
+\label{sec:jet-phys}
+
+Jets are collimated sprays of hadrons resulting from the
+hadronisation of energetic quarks and gluons produced in
+high-energy processes. They are among the most frequently
+observed objects in proton--proton collisions at the LHC, and
+are inherently complex and ambiguous objects. In
+Sec.~\ref{subsec:hadronisation} they were introduced in the
+context of hadronisation; in this chapter we discuss how they
+are to be precisely defined and measured.
+
+\section{Jet definition}
+\label{sec:jet-def}
+
+To be able to describe jets in a well-defined and reproducible way, 
+a \emph{jet definition} is required, consisting of three components:
+\begin{enumerate}
+    \item a \emph{jet algorithm}: a systematic procedure for clustering 
+    final-state particles into jets, i.e.\ a set of rules that determine 
+    which particles belong to the same jet;
+    
+    \item the algorithm's \emph{parameters}: these specify the proximity required between two particles for them to be recombined into a single jet constituent;
+    
+\item a \emph{recombination scheme}: this defines how the four-momenta of two particles are combined when they are merged. The most widely used is the $E$-scheme, which is a four-momentum sum, $p_i^\mu + p_j^\mu = p_k^\mu$.
+\end{enumerate}
+
+%\reference{~\cite{Schwartz:2014sze, Campbell:2017hsr, Banfi:2016yyq, Salam:2010nqg}}
+
+\section{Jet algorithms}
+\label{subsec:jet-algorithm}
+
+In 1990, significant discussion within the high-energy physics community 
+led to the formulation of a set of criteria that a well-defined jet 
+algorithm should satisfy. These requirements were outlined in a document 
+known as the \emph{Snowmass Accord}~\cite{Huth:1990mi}:
+\begin{enumerate}
+    \item simple to implement in an experimental analysis;
+    \item simple to implement in a theoretical calculation;
+    \item defined at any order in perturbation theory;
+    \item yields a finite cross section at any order in perturbation theory;
+    \item yields a cross section that is relatively insensitive to hadronisation effects.
+\end{enumerate}
+The final three requirements are ensured by IRC safety 
+(Sec.~\ref{sec:IRC}), which guarantees that jet definitions at the 
+detector, hadron, and parton levels are essentially equivalent.
+For IRC-safe observables, the effects of hadronisation are suppressed by inverse powers of the energy scale $Q$ used in the process. Consequently, at higher energies, the correspondence between hadronic and partonic observables becomes increasingly accurate, consistent with quark--hadron duality (Sec.~\ref{sec:divergences}). Together, these requirements allow us to regard jets as well-defined objects whose properties can be either determined by their constituent hadrons or underlying partons. This enables direct comparison between experimental measurements and theoretical calculations at the parton level.
+
+A wide variety of jet algorithms exist, each with its own advantages and limitations. The choice of algorithm depends on the specific physics question being addressed and the type of information one seeks to extract from an event. In general, jet algorithms can be divided into two broad classes: \emph{sequential recombination algorithms} and \emph{cone algorithms}.
+\begin{itemize}
+\item \textbf{Cone algorithms} cluster particles whose transverse
+energy deposits fall within a fixed cone of radius $R$ in $(\eta,\phi)$ space. 
+In three dimensions, these regions appear as cones. Different implementations vary in how stable 
+cones are defined and identified, see Refs.~\cite{Salam:2007xv,Kidonakis:1998bk} 
+for details. These are often described as \emph{top-down} algorithms.
+
+    \item \textbf{Sequential recombination algorithms} iteratively merge the closest pair of particles according to a chosen distance measure, until a stopping criterion is reached. Variations arise from different definitions of the distance measure and stopping condition. These are often referred to as \emph{bottom-up} algorithms.
+\end{itemize}
+In this thesis, we focus exclusively on sequential recombination algorithms. For a comprehensive review of jet algorithms across different processes, see Refs.~\cite{Banfi:2016yyq, Salam:2010nqg}.
+
+%\reference{~\cite{Banfi:2016yyq},~\cite{Salam:2010nqg}.}
+
+
+\section{Jet algorithms for $e^+e^-$ collisions}
+\label{subsec: e+e-}
+
+Jet algorithms for $e^+e^-$ collisions follow a common iterative clustering procedure: each pair of particles is assigned a \emph{distance measure}, $y_{ij}$, and the closest pair is recombined iteratively until all remaining objects are separated by more than a chosen \emph{resolution parameter}, $y_{\mathrm{cut}}$.
+We illustrate this 
+procedure through the JADE algorithm, the first such algorithm used 
+experimentally.
+
+\subsection{The JADE algorithm}
+\label{subsec:JADE}
+
+The JADE algorithm was introduced by the JADE 
+Collaboration~\cite{JADE:1988xlj} and proceeds as follows:
+\begin{enumerate}
+    \item Define a resolution parameter $y_{\mathrm{cut}}$.
+    
+    \item \label{step:jade-2} Compute the distance measure for every pair of particles $i$ and $j$:
+    \begin{equation}
+        \label{eq:yij-jade}
+        y_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
+    \end{equation}
+    where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
+    
+    \item Identify the pair with the smallest $y_{ij}$. If $y_{ij} < y_{\mathrm{cut}}$, 
+    recombine the two particles into a pseudo-particle according to the chosen recombination scheme.
+    
+    \item Repeat the procedure from step \ref{step:jade-2} until all remaining pairs satisfy $y_{ij} > y_{\mathrm{cut}}$. The surviving objects are defined as jets.
+\end{enumerate}
+
+A drawback of the JADE algorithm is its tendency to incorrectly cluster 
+soft partons that are widely separated in angle. This arises because 
+$y_{ij}$ is small whenever either particle is soft, regardless of their 
+angular separation. Consequently, a hard parton can be incorrectly merged 
+with a soft gluon not emitted from it. This is illustrated in 
+Fig.~\ref{fig:JADE}, where gluons $k_1$ and $k_2$ are merged into 
+$k_1+k_2$. This emission then clusters with $p_1$, incorrectly associating $k_2$ 
+with the hard parton $p_1$. This is an undesirable feature since a jet should compromise of 
+a hard parton with its associated radiation.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.3]
+\begin{feynman}
+\begin{scope}
+    \vertex (q1) at (-2.0, 0);
+    \vertex (v1) at (0.5, 0);
+    \vertex (q2) at (2.0, 0);
+    \vertex (g1) at (2.0, 1.1);
+    \vertex (g2) at (-2.0, 1.2);
+    \vertex (v2) at (-1.4, 0);
+    \diagram*{
+        (q1) -- [fermion] (v1) -- [fermion] (q2),
+        (g1) -- [gluon] (v1),
+        (g2) -- [gluon] (v2),
+    };
+    \node[left]  at (-2.0, 0)    {\(p_2\)};
+    \node[right] at ( 2.0, 0)    {\(p_1\)};
+   \node[above right] at (2.0, 1.1)  {\(k_1\)};
+    \node[above left]  at (-2.0, 1.2) {\(k_2\)};
+\end{scope}
+\end{feynman}
+\draw[->, thick] (2.6, 0.5) -- (3.8, 0.5);
+\node[above] at (3.2, 0.5) {\small JADE};
+\begin{scope}[xshift=7.0cm]
+\begin{feynman}
+    \vertex (q1) at (-2.0, 0);
+\vertex (v1) at (0.5, 0);
+\vertex (q2) at (2.0, 0);
+\vertex (g1) at (1.9, 1.2);
+    \diagram*{
+        (q1) -- [fermion] (v1) -- [fermion] (q2),
+        (g1) -- [gluon] (v1),
+    };
+    \node[left]  at (-2.0, 0)   {\(p_2\)};
+    \node[right] at ( 2.0, 0)   {\(p_1\)};
+   \node[above right] at (1.85, 1.2) {\(k_1 + k_2\)};
+\end{feynman}
+\draw[purple, thick] (1.7, 0.62) ellipse (0.2cm and 0.82cm);
+\end{scope}
+\end{tikzpicture}
+\caption{The JADE algorithm incorrectly recombining two gluons $k_1$ and 
+$k_2$ that are widely separated in angle. The merged pseudo-particle 
+$k_1+k_2$ subsequently clusters with the hard parton $p_1$, 
+incorrectly associating $k_2$ with $p_1$. \todo{I think we need to
+put the arrow on $p_2$ the other way.}}
+\label{fig:JADE}
+\end{figure}
+
+This issue motivated modifications to the distance measure, leading to 
+the Durham and Cambridge algorithms, discussed in Sec.~\ref{sec:exc-ee-alg}. 
+
+\subsection{Subsequent developments}
+\label{subsec:jet-subsequent}
+
+\todo{Need to think about exactly what I want to say here.
+Essentially I want to avoid repetition but also lead us on nicely to 
+the next chapter.} 
+\ndp{While the discussion above has focused on $e^+e^-$ annihilation,
+jet algorithms extend naturally to other processes. For hadronic
+collisions, the Durham and Cambridge algorithms were adapted to
+give rise to the $k_t$, Cambridge/Aachen, and anti-$k_t$
+families, of which the anti-$k_t$~\cite{Cacciari:2008gp} has
+become the standard at the LHC. For DIS, both algorithms were
+modified to account for the asymmetric initial state, and several
+further algorithms have been proposed, though unlike at the LHC
+no single algorithm dominates.
+In the following chapter we present a new inclusive
+generalised-$k_t$ jet algorithm for DIS. Since the progression
+of DIS jet algorithms is not always clearly laid out in the
+literature, we also provide a self-contained review of the
+relevant DIS kinematics and the historical development of jet
+algorithms across $e^+e^-$, DIS, and hadronic collisions (cf.\ Sec.~\ref{sec:oldDISalgo}). 
+We then compare our new algorithm to the recently proposed Centauro
+algorithm~\cite{Arratia:2020ssx}, demonstrating its strengths
+and potential applications.}
+
+
