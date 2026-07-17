@@ -1,13 +1,31 @@
-\chapter[DISGenkt FastJet contrib]{FastJet implementation of the 
-DIS generalised-$k_t$ algorithm}
+\chapter{DISGenkt FastJet contrib}
 \label{ap:DIS-fastjet}
 
-\todo{Work out if we need the constructor here or not.
-Work out if we have the correct colours here.
-Need to link this to main text.}
+\todo{Check the idea of IDS longitudinal projection is correct and if the
+text and how it is integrated with the implementation of the code below makes sense.
+Also make sure that we are highlighting the correct keywords
+in the code implementation.}
 
-\begin{lstlisting}[caption={Evaluate the DIS generalised-$k_t$
-pairwise distance between two jets.}]
+The generalised-$k_t$ jet algorithm for DIS presented in
+Chapter~\ref{chapter:DIS} has been implemented as the
+\href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}}
+plugin to \textsc{FastJet} as part of \texttt{fjcontrib}.
+Within the implementation, the pairwise distance $d_{ij}$ and
+beam distance $d_{iB}$ given in eq.~\eqref{eq:dij-diB-ouralg}
+are evaluated by the \texttt{DISBriefJet} class. The clustering
+loop uses the \textsc{FastJet} \texttt{NNH} (nearest-neighbour
+heuristic) class, which internally calls \texttt{distance()} and
+\texttt{beam\_distance()} to find the closest pair of objects at
+each step, returning \texttt{j=-1} when the minimum is a beam
+distance $d_{iB}$. The identification of the macrojet is
+determined by finding the jet with the largest DIS longitudinal
+projection $E-\mathrm{beam\_sign}\cdot p_z$, with an additional
+function to sort jets by decreasing DIS longitudinal projection.
+These are implemented as follows.
+
+\begin{lstlisting}[caption={Pairwise distance $d_{ij} =
+\min(E_i^{2p},E_j^{2p})(1-\cos\theta_{ij})/(1-\cos R)$ between
+two jets.}]
 double DISBriefJet::distance(const DISBriefJet * jet) const {
   double dij = 1 - _nx*jet->_nx
                  - _ny*jet->_ny
@@ -19,16 +37,18 @@ double DISBriefJet::distance(const DISBriefJet * jet) const {
 
 
 
-\begin{lstlisting}[caption={Distance between the jet and the proton beam.}]
+\begin{lstlisting}[caption={Beam distance $d_{iB} =
+E_i^{2p}(1-\cos\theta_{iB})$ between a jet and the proton beam.}]
 double DISBriefJet::beam_distance() const {
   return (1 - _beam_sign * _nz)*_E2p;
 }
 \end{lstlisting}
 
-\begin{lstlisting}[caption={The  DIS generalised-$k_t$ clustering. At each step the
-minimum distance pair is found, where if it is a pair of jets ($j\geq0$)
-they are merged, otherwise the jet is declared final and removed from
-the clustering.}]
+\begin{lstlisting}[caption={Main clustering loop. At each step the
+minimum distance is found via the \texttt{NNH} nearest-neighbour
+heuristic. If the minimum is $d_{ij}$ ($j\geq0$), jets $i$ and
+$j$ are merged, whereas if it is $d_{iB}$ ($j<0$), jet $i$ is declared
+final and removed from the clustering.}]
 void DISGenktPlugin::run_clustering(
     fastjet::ClusterSequence & cs) const {
   int njets = cs.jets().size();
@@ -51,10 +71,9 @@ void DISGenktPlugin::run_clustering(
 \end{lstlisting}
 
 
-\begin{lstlisting}[caption={Find the 
-jet with the largest DIS longitudinal projection
-i.e.\ with the largest $E-\mathrm{beam\_sign}\, p_z$.
-This will be the macrojet.}]
+\begin{lstlisting}[caption={Find the jet with the largest DIS
+longitudinal projection $E_i - \mathrm{beam\_sign}\cdot p_{iz}$.
+This jet is identified as the macrojet.}]
 int DISGenktPlugin::find_idx_macrojet(
     const std::vector<PseudoJet>& jets) const {
   double best = 0.0;
@@ -70,24 +89,9 @@ int DISGenktPlugin::find_idx_macrojet(
 }
 \end{lstlisting}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{lstlisting}[caption={Sort jets by decreasing DIS longitudinal projection
-and return a set of jets from largest to smallest of $E-\mathrm{beam\_sign}\, p_z$.}]
+\begin{lstlisting}[caption={Sort jets by decreasing DIS longitudinal
+projection, returning a set of jets from largest to smallest
+$E - \mathrm{beam\_sign}\cdot p_{z}$.}]
 std::vector<PseudoJet> DISGenktPlugin::sorted_by_zjet(
     const std::vector<PseudoJet> & jets) const {
   std::vector<double> zproj(jets.size());
