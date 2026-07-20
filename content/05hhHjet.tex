@@ -629,7 +629,7 @@ $h_3^{(\ell)}(\lambda)$ are given below:
 \begin{subequations}
 \begin{align}
 	&g_3^{(\ell)}(\lambda)=\left[K^{(1)}\frac{\beta_1\left(a^2(a+b_{\ell}-2\lambda)\ln\left(1-\frac{2\lambda}{a}\right)-(a+b_{\ell})^2(a-2\lambda)\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+6b_{\ell}\lambda^2\right)}{4\pi b_{\ell}\beta_0^3(a-2\lambda)(a+b_{\ell}-2\lambda)}\right.\notag \\
-	&\qquad\qquad+\frac{\left(\beta_1^2(a+b_{\ell})^2(a-2\lambda)\ln^2\left(1-\frac{2\lambda}{a+b_{\ell}}\right)-4b_{\ell}\lambda^2\left(\beta_0\beta_2+\beta_1^2\right)\right)}{4\pi b_{\ell}\beta_0^4(a-2\lambda)(a+b_{\ell}-2\lambda)} \notag \\
+	&\qquad\qquad+\frac{\left(\beta_1^2(a+b_{\ell})^2(a-2\lambda)\ln^2\left(1-\frac{2\lambda}{a+b_{\ell}}\right)-4b_{\ell}\lambda^2\left(\beta_0\beta_2+\beta_1^2\right)\right)}{4 b_{\ell}\beta_0^4(a-2\lambda)(a+b_{\ell}-2\lambda)} \notag \\
 	&\qquad\qquad-\frac{a\ln\left(1-\frac{2\lambda}{a}\right)\left(2\beta_0\beta_2(a-2\lambda)+a\beta_1^2\ln\left(1-\frac{2\lambda}{a}\right)+4\beta_1^2\lambda\right)}{4b_{\ell}\beta_0^4(a-2\lambda)} \notag\\
 	&\qquad\qquad+\frac{(a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)\left(\beta_0\beta_2(a+b_{\ell}-2\lambda)+2\beta_1^2\lambda\right)}{2b_{\ell}\beta_0^4(a+b_{\ell}-2\lambda)} \notag\\
 	&\left.\qquad\qquad -K^{(2)}\frac{2\lambda^2}{8\pi^2(a-2\lambda)(a+b_{\ell}-2\lambda)\beta_0^2} \right]\,, \\[6pt]
@@ -646,19 +646,21 @@ $\gamma_\ell^{(1)}$ are given in
 Eqs.~\eqref{eq:gammal-flav} and \eqref{eq:gammal1-flav},
 respectively.
 
-The derivatives of the NNLL radiator can be expressed as a sum over
-the emitting legs $\ell$,
+The derivatives of the NNLL radiator decompose as sums over the
+emitting legs, $R'_{\mathrm{NNLL}}(\lambda)=\sum_\ell R'_{\mathrm{NNLL},\ell}(\lambda)$
+and $R''_{\mathrm{NNLL}}(\lambda)=\sum_\ell R''_{\mathrm{NNLL},\ell}(\lambda)$, where
 \begin{subequations}
 \begin{align}
  \label{eq:RNNLL}
-	&R'_{\rm NNLL}(\lambda)=\sum_{\ell}C_{\ell}\frac{\alpha_s(Q)}{b_{\ell}\pi^2\beta_0^2(a-2\lambda)(a+b_{\ell}-2\lambda)}
+	&R'_{\mathrm{NNLL},\ell}(\lambda)=C_{\ell}\frac{\alpha_s(Q)}{b_{\ell}\pi^2\beta_0^2(a-2\lambda)(a+b_{\ell}-2\lambda)}
 		\left[b_{\ell}\beta_0\lambda K^{(1)}-2\pi b_{\ell}\beta_1\lambda \right. \notag\\ 
 		& \qquad\qquad \left.-\pi a(a+b_{\ell}-2\lambda)\beta_1\ln\left(1-\frac{2\lambda}{a}\right)+\pi(a+b_{\ell})(a-2\lambda)\beta_1\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)\right]\,,
 	 \\ \label{eq:R2NNLL}
-	&R''_{\rm NNLL}(\lambda)\equiv \sum_{\ell}C_{\ell}\,\alpha_s(Q)\beta_0\frac{dR'_{\rm NLL}}{d\lambda}= \sum_{\ell} 2C_{\ell}\frac{\alpha_s(Q)}{\pi}\frac{1}{(a-2\lambda)(a+b_{\ell}-2\lambda)}\,.
+	&R''_{\mathrm{NNLL},\ell}(\lambda)\equiv \alpha_s(Q)\beta_0\frac{dR'_{\mathrm{NLL},\ell}}{d\lambda}=2C_{\ell}\frac{\alpha_s(Q)}{\pi}\frac{1}{(a-2\lambda)(a+b_{\ell}-2\lambda)}\,.
 	\end{align}
 \end{subequations}
 \ABquestion{The $R''_{\rm NNLL}(\lambda)$ and $R''_{\rm NLL}(\lambda)$ are the same?}
+
 
 Having established $H^{(1)}_{ij}$ and $R_{\mathrm{NNLL}}$, we now turn our attention
 to the remaining terms in $\Sigma_{ij}$  inEq.~\eqref{eq:Sigma-NNLL}. In the next section
