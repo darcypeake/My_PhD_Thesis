@@ -247,7 +247,9 @@ the limit of an exactly back-to-back $q\bar{q}$ pair with $T \to 1$.
 Despite this perturbative divergence, the physical distribution must vanish
 in this limit -- a feature clearly visible in the experimental data shown in
 Fig.~\ref{fig:thrust-data-FO}, and a property of all IRC safe
-event-shape observables.
+event-shape observables. \question{I am still unsure about using this plot -- I think
+it looks a little bit rushed due to lack of colour etc.
+May try to generate some with A Banfi's data if there is time.}
 
 \begin{figure}[t!]
   \centering
@@ -811,18 +813,19 @@ To integrate Eq.~\eqref{eq:Rll-final} and~\eqref{eq:Rhc-NLL}, we use
 the renormalisation group equation in Eq.~\eqref{eq:coupling-DE} and 
 use the following ansatz to solve it 
 \begin{equation}
+\label{eq:ansatz}
 	\alpha_s(\kappa_{\ell\bar\ell})=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{\kappa_{\ell\bar\ell}^2}{Q^2}\,,
 \end{equation}
 with
 \begin{subequations}
 \begin{align}
 &f_1(t)=1\,, \\
-f&_2(t)=-\frac{\beta_1}{\beta_2}\ln(1+t)\,, \\
-&f_3(t)=-\frac{\beta_2}{\beta_0}t\left(\frac{\beta_1}{\beta_0}\right)^2[t+(\ln(1+t)-1)]\ln(1+t)\,,
+&f_2(t)=-\frac{\beta_1}{\beta_0}\ln(1+t)\,, \\
+&f_3(t)=-\frac{\beta_2}{\beta_0}t+\left(\frac{\beta_1}{\beta_0}\right)^2[t+(\ln(1+t)-1)]\ln(1+t)\,,
 \end{align}
 \end{subequations}
 where only $f_1$ and $f_2$ are required at NLL accuracy, while $f_3$
-enters only at NNLL. The coefficients $\beta_0$, $\beta_1$, and $\beta_2$
+enters at NNLL. The coefficients $\beta_0$, $\beta_1$, and $\beta_2$
 are given in Eqs.~\eqref{eq:beta0}, \eqref{eq:beta1},
 and~\eqref{eq:beta2} respectively. 
 The parameter $\lambda$ is defined as
@@ -830,7 +833,7 @@ The parameter $\lambda$ is defined as
 \label{eq:lambda}
 \lambda \equiv \alpha_s(Q)\beta_0 L\,,
 \end{equation} 
-where $L = \ln(1/v)$. One finds at NLL
+where $L = \ln(1/v)$. At NLL, one finds
 \begin{subequations}
 \begin{align}
 	&R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})=-\frac{\lambda}{\alpha_s(Q)\beta_0}g_1^{(\ell)}(\lambda)-g_2^{(\ell)}(\lambda)-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})\,,\\
@@ -839,8 +842,7 @@ where $L = \ln(1/v)$. One finds at NLL
 \end{align}
 \end{subequations}
 Assembling the contributions in Eq.~\eqref{eq:R(v)-split}, the full
-NLL radiator is \todo{Double check these and
-the $g$'s and $h$.}
+NLL radiator is 
 \begin{multline}
 \label{eq:RNLL}
     R_{\mathrm{NLL}}(v)
@@ -850,7 +852,7 @@ the $g$'s and $h$.}
          -\frac{\lambda}{\alpha_s(Q)\beta_0}
          g_1^{(\ell)}(\lambda)
          -g_2^{(\ell)}(\lambda)
-       \right)+\\
+       \right)\\
     -\sum_\ell\sum_{\bar\ell\neq\ell}
       C_{\ell\bar\ell}\!
       \left(
@@ -860,36 +862,33 @@ the $g$'s and $h$.}
            -\frac{\lambda}{\alpha_s(Q)\beta_0}
            g_1^{(\ell)}(\lambda)
          \right)
-         \langle\ln(d^{(\ell\bar\ell)}_\ell\,g_\ell)\rangle
+         \left\langle\ln(d^{(\ell\bar\ell)}_\ell\,g_\ell)\right\rangle
       \right)\,,
 \end{multline}
-where the functions $g^{(\ell)}_1, g^{(\ell)}_2,\mathfrak{g}^{(\ell)}_2, h^{(\ell)}_2$ are the following 
+where the functions $g_1^{(\ell)}$, $g_2^{(\ell)}$, $\mathfrak{g}_2^{(\ell)}$, and $h_2^{(\ell)}$ are given by
 \begin{subequations}
+\label{eq:RNLL-g-h}
 \begin{align}
-g_1^{(\ell)}(\lambda) &= \frac{(a+b_\ell-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)-(a-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a}\right)}{2\pi b_\ell\beta_0\lambda}\,, \label{eq:g1}\\[6pt]
-g_2^{(\ell)}(\lambda) &= \frac{K^{(1)}}{4\pi^2 b_\ell\beta_0^2}\left[a\ln\!\left(1-\tfrac{2\lambda}{a}\right)-(a+b_\ell)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)\right] \notag\\
-&\quad +\frac{\beta_1(a+b_\ell)}{4\pi b_\ell\beta_0^3}\ln^2\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) +\frac{\beta_1(a+b_\ell)}{2\pi b_\ell\beta_0^3}\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \notag\\
-&\quad -\frac{\beta_1\,a}{4\pi b_\ell\beta_0^3}\ln\!\left(1-\tfrac{2\lambda}{a}\right)\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right]\,, \label{eq:g2}\\[6pt]
-\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell}) &= -\lambda^2\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}\ln\!\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \label{eq:g2frak}\\[6pt]
-h_2^{(\ell)}(\lambda) &= -\frac{\gamma_\ell^{(0)}}{2\pi\beta_0}\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)\,. \label{eq:h2}
+&g_1^{(\ell)}(\lambda) = \frac{(a+b_\ell-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)-(a-2\lambda)\ln\!\left(1-\tfrac{2\lambda}{a}\right)}{2\pi b_\ell\beta_0\lambda}\,, \label{eq:g1}\\[6pt]
+&g_2^{(\ell)}(\lambda) = \frac{K^{(1)}}{4\pi^2 b_\ell\beta_0^2}\left[a\ln\!\left(1-\tfrac{2\lambda}{a}\right)-(a+b_\ell)\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)\right] \notag\\
+&\qquad\qquad +\frac{\beta_1(a+b_\ell)}{4\pi b_\ell\beta_0^3}\ln^2\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) +\frac{\beta_1(a+b_\ell)}{2\pi b_\ell\beta_0^3}\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right) \notag\\
+&\qquad\qquad -\frac{\beta_1\,a}{4\pi b_\ell\beta_0^3}\ln\!\left(1-\tfrac{2\lambda}{a}\right)\left[\ln\!\left(1-\tfrac{2\lambda}{a}\right)+2\right]\,, \label{eq:g2}\\[6pt]
+&\mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell}) = -\lambda^2\frac{dg_1^{(\ell)}(\lambda)}{d\lambda}\ln\!\left(\frac{Q_{\ell\bar\ell}^2}{Q^2}\right)\,, \label{eq:g2frak}\\[6pt]
+&h_2^{(\ell)}(\lambda) = -\frac{\gamma_\ell^{(0)}}{2\pi\beta_0}\ln\!\left(1-\tfrac{2\lambda}{a+b_\ell}\right)\,. \label{eq:h2}
 \end{align}
 \end{subequations}
-
-
-The derivative of the NLL radiator is \ABquestion{is there meant
-to be a $\simeq$ here?}
+The derivative of the NLL radiator decomposes as a sum over legs,
+$R'_{\mathrm{NLL}}(v) = \sum_\ell R'_{\mathrm{NLL},\ell}(v)$, where
 \begin{equation}
 \label{eq:RpNLL}
-    R'_{\mathrm{NLL}}(v) \equiv -v\frac{dR_{\mathrm{NLL}}}{dv}
-    = \sum_\ell C_\ell\,\alpha_s(Q)\beta_0\,
+    R'_{\mathrm{NLL},\ell}(v) = C_\ell\,\alpha_s(Q)\beta_0\,
       \frac{d}{d\lambda}\!\left(
         -\frac{\lambda}{\alpha_s(Q)\beta_0}
-        g_1^{(\ell)}(\lambda)\right)\,,
+        g_1^{(\ell)}(\lambda)\right)
+    = \frac{C_\ell}{b_{\ell}\pi\beta_0}
+      \left[\ln\!\left(1-\frac{2\lambda}{a+b_{\ell}}\right)
+           -\ln\!\left(1-\frac{2\lambda}{a}\right)\right]\,.
 \end{equation}
-which can also be expressed as as sum over legs, $R'_{\mathrm{NLL}}(v) \equiv \sum_\ell R'_{\mathrm{NLL},\ell}$.
-\todo{Put in the second derivative also 
-and substitute in the explicit expressions of $g$'s 
-and $h$'s.}
 
 
 \subsection{The NLL $\mathcal{F}$-function, $\mathcal{F}_{\mathrm{NLL}}$}
@@ -1105,11 +1104,12 @@ we arrive at the final result
 \end{equation}
 in agreement with the numerical results shown in Fig.~\ref{fig:FNLL-CAESAR-comp}.
 
-Having understood the NLL formalism, we now move to understand the NNLL
-formalism. This has been done for \textsc{ARES} in the context of $e^+e^-$
-annihilation for jet observables, for both dijet and jet-rates and the most 
-recent development for event shapes in three-jet production in Ref.~\cite{Arpino:2019ozn}.
-In Chapter~\ref{ch:hhZjet}, we present for the first time the \textsc{ARES} method
-for hadronic collisions.
-
+Having illustrated the NLL formalism, we now turn our attention to the NNLL
+accurate \textsc{ARES} method. So far this method has been applied to
+$e^+e^-$ annihilation, first for jet-rates and jet observables in dijet processes~\cite{Banfi:2014sua, 
+Banfi:2016zlc, Banfi:2018mcq}
+ and most 
+recently for event shapes in three-jet production~\cite{Arpino:2019ozn}.
+In the following chapter, we extend the \textsc{ARES} method
+to hadronic collisions for the very first time.
 
