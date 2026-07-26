@@ -1,54 +1,33 @@
 \chapter{DISGenkt FastJet contrib}
 \label{ap:DIS-fastjet}
 
-\todo{Check the idea of IDS longitudinal projection is correct and if the
-text and how it is integrated with the implementation of the code below makes sense.
-Also make sure that we are highlighting the correct keywords
-in the code implementation.}
-
-The generalised-$k_t$ jet algorithm for DIS presented in
+The generalised-$k_t$ jet algorithm for Deep Inelastic Scattering presented in
 Chapter~\ref{chapter:DIS} has been implemented as the
 \href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}}
-plugin to \textsc{FastJet} as part of \texttt{fjcontrib}.
-Within the implementation, the pairwise distance $d_{ij}$ and
-beam distance $d_{iB}$ given in eq.~\eqref{eq:dij-diB-ouralg}
-are evaluated by the \texttt{DISBriefJet} class. The clustering
-loop uses the \textsc{FastJet} \texttt{NNH} (nearest-neighbour
-heuristic) class, which internally calls \texttt{distance()} and
-\texttt{beam\_distance()} to find the closest pair of objects at
-each step, returning \texttt{j=-1} when the minimum is a beam
-distance $d_{iB}$. The identification of the macrojet is
-determined by finding the jet with the largest DIS longitudinal
-projection $E-\mathrm{beam\_sign}\cdot p_z$, with an additional
-function to sort jets by decreasing DIS longitudinal projection.
-These are implemented as follows.
+plugin to \textsc{FastJet} as part of \texttt{fjcontrib}. Relevant parts of the implementation are outlined below.
 
-\begin{lstlisting}[caption={Pairwise distance $d_{ij} =
-\min(E_i^{2p},E_j^{2p})(1-\cos\theta_{ij})/(1-\cos R)$ between
-two jets.}]
+The pairwise distance $d_{ij}$ and beam distance $d_{iB}$,
+defined in Eq.~\eqref{eq:dij-diB-ouralg}, are evaluated by the
+\texttt{DISBriefJet} class. 
+\begin{lstlisting}[caption={Implementation of the pairwise distance and 
+beam distance. }]
 double DISBriefJet::distance(const DISBriefJet * jet) const {
   double dij = 1 - _nx*jet->_nx
                  - _ny*jet->_ny
                  - _nz*jet->_nz;
   dij = dij * fmin(_E2p, jet->_E2p) / _dij_norm;
   return dij;
-}
-\end{lstlisting}
-
-
-
-\begin{lstlisting}[caption={Beam distance $d_{iB} =
-E_i^{2p}(1-\cos\theta_{iB})$ between a jet and the proton beam.}]
+  
 double DISBriefJet::beam_distance() const {
-  return (1 - _beam_sign * _nz)*_E2p;
+  return (1 - _beam_sign * _nz)*_E2p;  
 }
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Main clustering loop. At each step the
-minimum distance is found via the \texttt{NNH} nearest-neighbour
-heuristic. If the minimum is $d_{ij}$ ($j\geq0$), jets $i$ and
-$j$ are merged, whereas if it is $d_{iB}$ ($j<0$), jet $i$ is declared
-final and removed from the clustering.}]
+The clustering sequence is performed using the \textsc{FastJet}
+nearest-neighbour heuristic (\texttt{NNH}) class. If the minimum is $d_{ij}$ ($j\geq0$),
+ jets $i$ and $j$ are merged, whereas if it is $d_{iB}$ ($j<0$), jet $i$ is declared
+final and removed from the clustering.
+\begin{lstlisting}[caption={Main clustering loop.}]
 void DISGenktPlugin::run_clustering(
     fastjet::ClusterSequence & cs) const {
   int njets = cs.jets().size();
@@ -69,11 +48,10 @@ void DISGenktPlugin::run_clustering(
   }
 }
 \end{lstlisting}
-
-
-\begin{lstlisting}[caption={Find the jet with the largest DIS
-longitudinal projection $E_i - \mathrm{beam\_sign}\cdot p_{iz}$.
-This jet is identified as the macrojet.}]
+The macrojet is then identified as the
+jet with the largest DIS longitudinal projection,
+$E-\mathrm{beam\_sign}\cdot p_z$.
+\begin{lstlisting}[caption={Identification of the macrojet.}]
 int DISGenktPlugin::find_idx_macrojet(
     const std::vector<PseudoJet>& jets) const {
   double best = 0.0;
@@ -88,10 +66,8 @@ int DISGenktPlugin::find_idx_macrojet(
   return idx;
 }
 \end{lstlisting}
-
-\begin{lstlisting}[caption={Sort jets by decreasing DIS longitudinal
-projection, returning a set of jets from largest to smallest
-$E - \mathrm{beam\_sign}\cdot p_{z}$.}]
+A function is also provided to sort jets by decreasing DIS longitudinal projection.
+\begin{lstlisting}[caption={Sorting jets by DIS longitudinal projection.}]
 std::vector<PseudoJet> DISGenktPlugin::sorted_by_zjet(
     const std::vector<PseudoJet> & jets) const {
   std::vector<double> zproj(jets.size());
