@@ -1,66 +1,58 @@
-\chapter{One-jettiness coefficients}
+\chapter{Coefficients and subtraction ingredients for one-jettiness}
 \label{app:ch5}
 
-
-
-\section{\textsc{ARES} resummation coefficients for one-jettiness}
-\label{ap:ARES-coeff}
-
-%\ndp{
-%$\sum_{(\ell\bar\ell)}\sum_{\ell\,\in\,(\ell\bar\ell)}
-%=
-%\sum_{\ell}\sum_{\bar\ell\neq\ell} $}
-
-The general form of these coefficients can be found in 
+In this appendix we present explicit forms of the \textsc{ARES} coefficients
+for one-jettiness, together with the ingredients required to build the
+associated \textsc{SCET} subtraction terms of Ref.~\cite{Gaunt:2015pea}. 
+The general form of the \textsc{ARES} coefficients can be found in 
 Ref.~\cite{Banfi:2004yd},  however since in this thesis
 we focus on the one-jettiness, we will simply outline what 
-these are for the one-jettiness.
+these are for the one-jettiness. The latter are stated there for general $N$-jettiness and are only specialised to
+$N=1$ when used in Sec.~\ref{subsec:N-jet-SCET-val}. Both sets of ingredients
+are used to validate our results in Sec.~\ref{subsec:N-jet-SCET-val}. 
 
-
-The terms which are of $\mathcal{O}(\alpha_s)$ are the following:
+\section{\textsc{ARES} coefficients}
+\label{ap:ARES-coeff}
 \begin{subequations}
 \begin{align}
 \label{eq:h12}
-h_{12} &=-\sum_{\ell}C_{\ell}\,,\\
+&h_{12} =-\sum_{\ell}C_{\ell}\,,\\[1ex]
 \label{eq:h11}
-h_{11} &= \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\
-&-\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\[1ex]
+&h_{11} = \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\[1ex]
+&\qquad-\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\[1ex]
 \label{eq:h10}
-h_{10}&= H^{(1)}-\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln^2 d_\ell^{(\ell\bar\ell)}+\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}\\ \notag
-&\qquad\qquad + \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} 2P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
-\\[1ex] \notag
-&\qquad \qquad 
-+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_j(x_2,\mu_F)} 2P_{jk}(z)\ln\frac{Q^2}{\mu_F^2}\,.
+&h_{10}= H^{(1)}-\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln^2 d_\ell^{(\ell\bar\ell)}+\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}\\ \notag
+&\qquad +\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
++\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_j(x_2,\mu_F)} P_{jk}(z)\ln\frac{Q^2}{\mu_F^2}\,.
 \end{align}
 \end{subequations}
-\ABquestion{Just to check, these $P_{qj}\ln Q^2/\mu_F^2$ in $h_{10}$ is the expansion of the ratios
-of the PDFs in \textsc{ARES}. }
 
 The terms which are of $\mathcal{O}(\alpha_s^2)$ are the following:
 \begin{subequations}
 \begin{align}
 \label{eq:h24}
-h_{24}&=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,,\\
+&h_{24}=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,,\\[1ex]
 \label{eq:h23}
-h_{23}&=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,,\\
+&h_{23}=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,,\\[1ex]
 \label{eq:h22}
-h_{22}&=h_{10} h_{12}+\frac{1}{2}h_{11}^2+4\pi\ln\frac{\mu_R}{Q}h_{12}-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)^2 -K^{(1)}\sum_{\ell}C_{\ell} \notag\\ 
-&+2\pi\beta_0\left[-4\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln\frac{Q_{\ell\bar\ell}^2}{Q^2}
-+\sum_{\ell}\left(\frac{\gamma_\ell^{(0)}}{2}-3C_\ell \ln\frac{Q^2}{M Q_{\ell}}\right)\right. \notag \\
-&\left. -\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\right]\,,\\[1ex]
+&h_{22}=h_{10} h_{12}+\frac{1}{2}h_{11}^2+4\pi\ln\frac{\mu_R}{Q}h_{12}-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)^2 -K^{(1)}\sum_{\ell}C_{\ell} \notag\\ 
+&\qquad+2\pi\beta_0\left[-4\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln\frac{Q_{\ell\bar\ell}^2}{Q^2}
++\sum_{\ell}\left(\frac{\gamma_\ell^{(0)}}{2}-3C_\ell \ln\frac{Q^2}{M Q_{\ell}}\right)\right. \notag \\[1ex]
+&\qquad\left. -\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\frac{1}{2}\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\right]\,,\\[1ex]
 \label{eq:h21}
-h_{21}&=h_{11}h_{10}+4\pi\beta_0\ln\frac{\mu_R}{Q}h_{11}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\left[-2K^{(1)} \ln d_\ell^{(\ell\bar{\ell})}
+&h_{21}=h_{11}h_{10}+4\pi\beta_0\ln\frac{\mu_R}{Q}h_{11}+\sum_{\ell}\sum_{\ell\neq \bar{\ell}} C_{\ell\bar{\ell}}\left[-2K^{(1)} \ln d_\ell^{(\ell\bar{\ell})}
   - 6\pi\beta_0 \ln^2 d_\ell^{(\ell\bar{\ell})} - \frac{\pi^3\beta_0}{3}
- +\right.\notag\\
- & \left.  +2 \pi\beta_0 \ln d_\ell^{(\ell\bar{\ell})}
- \ln\frac{Q_{\ell\bar{\ell}}^2}{Q^2}\right]-\sum_{\ell}\gamma_{\ell}^{(1)}+ 2\left(\sum_{\ell}C_{\ell}\right)^2\psi^{(1)}(2)+2\pi\beta_0\frac{\pi^2}{6}\sum_{\ell}C_{\ell} \notag \\&+2\pi\beta_0\left(\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}\right)\notag\\
-&-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\left[\sum_{\ell}\left(B_{\ell}+C_{\ell}\ln\frac{Q^2 M}{Q_{\ell}}+ 8C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\right) \right]\notag\\
-&-\sum_{k}\int\frac{dz}{z}P^{(1)}_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P^{(1)}_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,.
+ +\right.\notag\\[1ex]
+ & \qquad\left.  +2 \pi\beta_0 \ln d_\ell^{(\ell\bar{\ell})}
+ \ln\frac{Q_{\ell\bar{\ell}}^2}{Q^2}\right]-\sum_{\ell}\gamma_{\ell}^{(1)}+ 2\left(\sum_{\ell}C_{\ell}\right)^2\psi^{(1)}(2)+2\pi\beta_0\frac{\pi^2}{6}\sum_{\ell}C_{\ell} \notag \\[1ex]
+ &\qquad+2\pi\beta_0\left(\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}\right)\notag\\[1ex]
+&\qquad-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)\left[\sum_{\ell}\left(B_{\ell}+C_{\ell}\ln\frac{Q^2 M}{Q_{\ell}}+ 8C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\right) \right]\notag\\[1ex]
+&\qquad-\sum_{k}\int\frac{dz}{z}P^{(1)}_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P^{(1)}_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,.
 \end{align}
 \end{subequations}
 \ABquestion{These $\ln \mu_R/Q$ terms -- where do they come from exactly?}
 
-\section{$N$-jettiness subtraction ingredients}
+\section{SCET $N$-jettiness subtraction ingredients}
 \label{ap:N-jet-ing}
 Here we present the components used to build the subtraction ingredients
 of Ref.~\cite{Gaunt:2015pea}. Legs are labelled $a$, $b$ (incoming) and
@@ -71,27 +63,28 @@ We have suppressed the arguments for brevity.
 \begin{subequations}
 \label{eq:C11-ingred}
 \begin{align}
-J_{c,1}^{(1)} &= 4C_c\,, \\
-\mathcal{I}_{ak,1}^{(1)} &= 4C_a\,\delta_{ak}\,\delta(1-z)\,, \\
-\mathcal{I}_{bk,1}^{(1)} &= 4C_b\,\delta_{bk}\,\delta(1-z)\,, \\
-\widehat{S}_{\kappa,1}^{(1)} &= -8(C_a+C_b+C_c)\,.
+&J_{c,1}^{(1)} = 4C_c\,, \\
+&\mathcal{I}_{ak,1}^{(1)} = 4C_a\,\delta_{ak}\,\delta(1-z)\,, \\
+&\mathcal{I}_{bk,1}^{(1)} = 4C_b\,\delta_{bk}\,\delta(1-z)\,, \\
+&\widehat{S}_{\kappa,1}^{(1)} = -8(C_a+C_b+C_c)\,.
 \end{align}
 \end{subequations}
 \begin{subequations}
 \label{eq:C10-ingred}
 \begin{align}
-J_{c,0}^{(1)} &= -2\gamma_c^{(0)}\,, \\
-\mathcal{I}_{ak,0}^{(1)} &= -2\gamma_a^{(0)}\,\delta_{ak}\,\delta(1-z)+2P_{ak}\,, \\
-\mathcal{I}_{bk,0}^{(1)} &= -2\gamma_b^{(0)}\,\delta_{bk}\,\delta(1-z)+2P_{bk}\,, \\
-\widehat{S}_{\kappa,0}^{(1)} &=
+&J_{c,0}^{(1)} = -2\gamma_c^{(0)}\,, \\
+&\mathcal{I}_{ak,0}^{(1)} = -2\gamma_a^{(0)}\,\delta_{ak}\,\delta(1-z)+2P_{ak}\,, \\
+&\mathcal{I}_{bk,0}^{(1)} = -2\gamma_b^{(0)}\,\delta_{bk}\,\delta(1-z)+2P_{bk}\,, \\[1ex]
+&\widehat{S}_{\kappa,0}^{(1)} =
     4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}+\ln\frac{Q_{ac}^2}{Q_a Q_c}
     -\ln\frac{Q_{bc}^2}{Q_b Q_c}\right) \nonumber\\
-  &\quad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}+\ln\frac{Q_{bc}^2}{Q_b Q_c}
+  &\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}+\ln\frac{Q_{bc}^2}{Q_b Q_c}
     -\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\
-  &\quad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}+\ln\frac{Q_{bc}^2}{Q_b Q_c}
+  &\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}+\ln\frac{Q_{bc}^2}{Q_b Q_c}
     -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\,.
 \end{align}
 \end{subequations}
+\todo{Fix spacing here.}
 \begin{subequations}
 \label{eq:Cd1-ingred}
 \begin{align}
@@ -99,24 +92,25 @@ J_{c,-1}^{(1)} &= \begin{cases}
     C_F(7-\pi^2)\,, & \text{if $c$ is a quark}\,, \\[4pt]
     C_A\!\left(\dfrac{4}{3}-\pi^2\right)+\dfrac{20}{3}\pi\beta_0\,, &\text{if $c$ is a gluon}\,,
 \end{cases} \\[8pt]
-\mathcal{I}_{ak,-1}^{(1)} &= 2I_{ak}^{(1)}+2\ln\lambda_F\,P_{ak}\,, \\
-\mathcal{I}_{bk,-1}^{(1)} &= 2I_{bk}^{(1)}+2\ln\lambda_F\,P_{bk}\,, \\
-\widehat{S}_{\kappa,-1}^{(1)}
-  &= C_a\!\left(\ln^2\frac{Q_{bc}^2}{Q_b Q_c}
+&\mathcal{I}_{ak,-1}^{(1)} = 2I_{ak}^{(1)}+2\ln\lambda_F\,P_{ak}\,, \\
+&\mathcal{I}_{bk,-1}^{(1)} = 2I_{bk}^{(1)}+2\ln\lambda_F\,P_{bk}\,, \\
+&\widehat{S}_{\kappa,-1}^{(1)}
+  = C_a\!\left(\ln^2\frac{Q_{bc}^2}{Q_b Q_c}
      -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
      -\ln^2\frac{Q_{ac}^2}{Q_a Q_c}+\frac{\pi^2}{6}\right) \nonumber\\
-  &\quad+C_b\!\left(\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
+  &\qquad+C_b\!\left(\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
      -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
      -\ln^2\frac{Q_{bc}^2}{Q_b Q_c}+\frac{\pi^2}{6}\right) \nonumber\\
-  &\quad+C_c\!\left(\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
+  &\qquad+C_c\!\left(\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
      -\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
      -\ln^2\frac{Q_{bc}^2}{Q_b Q_c}+\frac{\pi^2}{6}\right) \notag\\
-  &\quad+2C_a\!\left(I_{bc,a}+I_{cb,a}-I_{ab,c}-I_{ba,c}-I_{ac,b}-I_{ca,b}\right) \notag\\
-  &\quad+2C_b\!\left(I_{ac,b}+I_{ca,b}-I_{ab,c}-I_{ba,c}-I_{bc,a}-I_{cb,a}\right) \notag\\
-  &\quad+2C_c\!\left(I_{ab,c}+I_{ba,c}-I_{ac,b}-I_{ca,b}-I_{bc,a}-I_{cb,a}\right)\,.
+  &\qquad+2C_a\!\left(I_{bc,a}+I_{cb,a}-I_{ab,c}-I_{ba,c}-I_{ac,b}-I_{ca,b}\right) \notag\\
+  &\qquad+2C_b\!\left(I_{ac,b}+I_{ca,b}-I_{ab,c}-I_{ba,c}-I_{bc,a}-I_{cb,a}\right) \notag\\
+  &\qquad+2C_c\!\left(I_{ab,c}+I_{ba,c}-I_{ac,b}-I_{ca,b}-I_{bc,a}-I_{cb,a}\right)\,,
 \end{align}
 \end{subequations}
-For the beam functions, we have
+where the $I_{ak}^{(1)}$ and $I_{bk}^{(1)}$ terms within the beam functions
+are channel dependent:
 \begin{subequations}
 \begin{align}
   I^{(1)}_{qq}(z) &=C_F\left[ \left(\frac{\ln(1-z)}{1-z}\right)_+(1+z^2)
@@ -124,7 +118,7 @@ For the beam functions, we have
   I^{(1)}_{qg}(z) &= T_R\left[\left(z^2+(1-z)^2\right)\ln\frac{1-z}{z}
   +2z(1-z)\right]\,,\\[1ex]
   I^{(1)}_{gq}(z) &= C_F\left[\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}+z\right]\,,\\[1ex]
-  I^{(1)}_{gg}(z) &= C_A\left[\left(\frac{\ln(1-z)}{1-z}\right)_+\frac{2(1-z+z^2)^2}{z}-\frac{\pi^2}{6}\delta(1-z)-\frac{2\ln z}{(1-z)_+}\frac{(1-z+z^2)^2}{z}\right]\notag\\
+  I^{(1)}_{gg}(z) &= C_A\left[\left(\frac{\ln(1-z)}{1-z}\right)_+\frac{2(1-z+z^2)^2}{z}-\frac{\pi^2}{6}\delta(1-z)-\frac{2\ln z}{(1-z)_+}\frac{(1-z+z^2)^2}{z}\right]\notag\\[1ex]
   &\qquad\qquad+\frac{\beta_0}{2}\delta(1-z)\,.
 \end{align}
 \end{subequations}
@@ -132,29 +126,29 @@ For the beam functions, we have
 \begin{subequations}
 \label{eq:C23-ingred}
 \begin{align}
-J_{c,3}^{(2)} &= 8C_c^2\,, \\
-\mathcal{I}_{ak,3}^{(2)} &= 8C_a^2\,\delta_{ak}\,\delta(1-z)\,, \\
-\mathcal{I}_{bk,3}^{(2)} &= 8C_b^2\,\delta_{bk}\,\delta(1-z)\,, \\
-\widehat{S}_{\kappa,3}^{(2)} &= 32\left(C_a+C_b+C_c\right)^2\,.
+&J_{c,3}^{(2)} = 8C_c^2\,, \\
+&\mathcal{I}_{ak,3}^{(2)} = 8C_a^2\,\delta_{ak}\,\delta(1-z)\,, \\
+&\mathcal{I}_{bk,3}^{(2)} = 8C_b^2\,\delta_{bk}\,\delta(1-z)\,, \\
+&\widehat{S}_{\kappa,3}^{(2)} = 32\left(C_a+C_b+C_c\right)^2\,.
 \end{align}
 \end{subequations}
 \begin{subequations}
 \label{eq:C22-ingred}
 \begin{align}
-J_{c,2}^{(2)} &= -2C_c\!\left(6\gamma_c^{(0)}+4\pi\beta_0\right)\,, \\
-\mathcal{I}_{ak,2}^{(2)} &= 4C_a\left[
+&J_{c,2}^{(2)} = -2C_c\left(6\gamma_c^{(0)}+4\pi\beta_0\right)\,, \\
+&\mathcal{I}_{ak,2}^{(2)} = 4C_a\left[
     -\left(3\gamma_a^{(0)}+2\pi\beta_0\right)\delta_{ak}\,\delta(1-z)
     +3P_{ak}\right]\,, \\
-\mathcal{I}_{bk,2}^{(2)} &= 4C_b\left[
+&\mathcal{I}_{bk,2}^{(2)} = 4C_b\left[
     -\left(3\gamma_b^{(0)}+2\pi\beta_0\right)\delta_{bk}\,\delta(1-z)
     +3P_{bk}\right]\,, \\
-\widehat{S}_{\kappa,2}^{(2)} &=
-    4(C_a+C_b+C_c)\left[8\pi\beta_0\right. \nonumber\\
-  &\quad-12C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+&\widehat{S}_{\kappa,2}^{(2)} =
+    4(C_a+C_b+C_c)\left[8\pi\beta_0\right. \notag\\
+  &\qquad-12C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right) \nonumber\\
-  &\quad-12C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+  &\qquad-12C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\
-  &\left.\quad-12C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+  &\left.\qquad-12C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
 \end{align}
 \end{subequations}
@@ -162,41 +156,40 @@ J_{c,2}^{(2)} &= -2C_c\!\left(6\gamma_c^{(0)}+4\pi\beta_0\right)\,, \\
 \begin{subequations}
 \label{eq:C21-ingred}
 \begin{align}
-J_{c,1}^{(2)} &= 8C_c K^{(1)}-\frac{8\pi^2}{3}C_c^2
+&J_{c,1}^{(2)} = 8C_c K^{(1)}-\frac{8\pi^2}{3}C_c^2
     +2\gamma_c^{(0)}\!\left(2\gamma_c^{(0)}+4\pi\beta_0\right)
-    +4C_c J_{c,-1}^{(1)}\,, \\
-\mathcal{I}_{ak,1}^{(2)} &=
+    +4C_c J_{c,-1}^{(1)}\,, \\[1ex]
+&\mathcal{I}_{ak,1}^{(2)} =
     \left[8C_a K^{(1)}-\frac{8\pi^2}{3}C_a^2
-    +2\gamma_a^{(0)}\!\left(2\gamma_a^{(0)}+4\pi\beta_0\right)\right]
-    \delta_{ak}\,\delta(1-z) \nonumber\\
-  &\quad+8C_a\!\left(I_{am}^{(1)}+\ln\lambda_F\,P_{am}\right)
+    +2\gamma_a^{(0)}\left(2\gamma_a^{(0)}+4\pi\beta_0\right)\right]
+    \delta_{ak}\,\delta(1-z) \notag\\
+  &\qquad\quad+8C_a\left(I_{ak}^{(1)}+\ln\lambda_F\,P_{ak}\right)
     +4\sum_m P_{am}\otimes_z P_{mk}
-    -2\!\left(4\gamma_a^{(0)}+4\pi\beta_0\right)P_{ak}\,, \\
-\mathcal{I}_{bk,1}^{(2)} &=
+    -2\left(4\gamma_a^{(0)}+4\pi\beta_0\right)P_{ak}\,, \\
+&\mathcal{I}_{bk,1}^{(2)} =
     \left[8C_b K^{(1)}-\frac{8\pi^2}{3}C_b^2
-    +2\gamma_b^{(0)}\!\left(2\gamma_b^{(0)}+4\pi\beta_0\right)\right]
-    \delta_{bk}\,\delta(1-z) \nonumber\\
-  &\quad+8C_b\!\left(I_{bm}^{(1)}+\ln\lambda_F\,P_{bm}\right)
+    +2\gamma_b^{(0)}\left(2\gamma_b^{(0)}+4\pi\beta_0\right)\right]
+    \delta_{bk}\,\delta(1-z) \notag\\
+  &\qquad\quad+8C_b\left(I_{bk}^{(1)}+\ln\lambda_F\,P_{bk}\right)
     +4\sum_m P_{bm}\otimes_z P_{mk}
-    -2\!\left(4\gamma_b^{(0)}+4\pi\beta_0\right)P_{bk}\,, \\
-\widehat{S}_{\kappa,1}^{(2)} &=
+    -2\left(4\gamma_b^{(0)}+4\pi\beta_0\right)P_{bk}\,, \\
+&\widehat{S}_{\kappa,1}^{(2)} =
     16\left[C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \nonumber\\
-  &\qquad+C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\
-  &\left.\qquad+C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[1ex]
+  &\quad\qquad+C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[1ex]
+  &\left.\quad\qquad+C_c\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]^2
-    -\frac{32\pi^2}{3}\left(C_a+C_b+C_c\right)^2 \nonumber\\
-  &\quad+8\pi\beta_0\left[-4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \nonumber\\
-  &\qquad-4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\
-  &\left.\qquad-4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]^2\notag\\[1ex]
+  &\quad\qquad+8\pi\beta_0\left[-4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[1ex]
+  &\quad\qquad-4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[1ex]
+  &\left.\quad\qquad-4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right] \nonumber\\
-  &\quad-8\widehat{S}_{\kappa,-1}^{(1)}\left(C_a+C_b+C_c\right)
-    -16K^{(1)}\left(C_a+C_b+C_c\right)\,,
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right] \notag\\[1ex]
+  &\qquad\quad-8\widehat{S}_{\kappa,-1}^{(1)}\left(C_a+C_b+C_c\right)
+    -16K^{(1)}\left(C_a+C_b+C_c\right)-\frac{32\pi^2}{3}\left(C_a+C_b+C_c\right)^2 \,,
 \end{align}
 \end{subequations}
 where the convolution $\otimes_z$ is defined as
@@ -207,43 +200,43 @@ and analogously for $I_{ij}^{(1)}\otimes_z P_{jk}$. Note the index $j$ is not su
 \begin{subequations}
 \label{eq:C20-ingred}
 \begin{align}
-J_{c,0}^{(2)} &= 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
+&J_{c,0}^{(2)} = 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
     -\left(4\gamma_c^{(0)}+4\pi\beta_0\right)J_{c,-1}^{(1)}
-    -\frac{\gamma_{c,s}^{(1)}}{2}\,, \\
-\mathcal{I}_{ak,0}^{(2)} &=
+    -\frac{\gamma_{c,s}^{(1)}}{2}\,, \\[1ex]
+&\mathcal{I}_{ak,0}^{(2)} =
     \left(16C_a^2\zeta_3+\frac{4\pi^2}{3}C_a\gamma_a^{(0)}
     -\frac{\gamma_{a,s}^{(1)}}{2}\right)\delta_{ak}\,\delta(1-z)
     -\frac{4\pi^2}{3}C_a P_{ak} \nonumber\\
-  &\quad-\left(4\gamma_a^{(0)}+8\pi\beta_0\right)I_{ak}^{(1)}
+  &\qquad\quad-\left(4\gamma_a^{(0)}+8\pi\beta_0\right)I_{ak}^{(1)}
     +4\sum_m I_{am}^{(1)}\otimes_z P_{mk}+4P_{ak}^{(1)} \nonumber\\
-  &\quad+\ln\lambda_F\!\left[-4\gamma_a^{(0)}P_{ak}
-    +4\sum_m P_{am}\otimes_z P_{mk}+4P_{ak}^{(1)}\right]\,, \\
-\mathcal{I}_{bk,0}^{(2)} &=
+  &\qquad\quad+\ln\lambda_F\!\left[-4\gamma_a^{(0)}P_{ak}
+    +4\sum_m P_{am}\otimes_z P_{mk}+4P_{ak}^{(1)}\right]\,, \\[1ex]
+&\mathcal{I}_{bk,0}^{(2)} =
     \left(16C_b^2\zeta_3+\frac{4\pi^2}{3}C_b\gamma_b^{(0)}
     -\frac{\gamma_{b,s}^{(1)}}{2}\right)\delta_{bk}\,\delta(1-z)
     -\frac{4\pi^2}{3}C_b P_{bk} \nonumber\\
-  &\quad-\left(4\gamma_b^{(0)}+8\pi\beta_0\right)I_{bk}^{(1)}
+  &\qquad\quad-\left(4\gamma_b^{(0)}+8\pi\beta_0\right)I_{bk}^{(1)}
     +4\sum_m I_{bm}^{(1)}\otimes_z P_{mk}+4P_{bk}^{(1)} \nonumber\\
-  &\quad+\ln\lambda_F\!\left[-4\gamma_b^{(0)}P_{bk}
+  &\qquad\quad+\ln\lambda_F\!\left[-4\gamma_b^{(0)}P_{bk}
     +4\sum_m P_{bm}\otimes_z P_{mk}+4P_{bk}^{(1)}\right]\,, \\
-\widehat{S}_{\kappa,0}^{(2)} &=
+&\widehat{S}_{\kappa,0}^{(2)} =
     64\left(C_a+C_b+C_c\right)^2\zeta_3 \nonumber\\
-  &\quad+\frac{4\pi^2}{3}(C_a+C_b+C_c)\left[
+  &\qquad\quad+\frac{4\pi^2}{3}(C_a+C_b+C_c)\left[
     4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \nonumber\\
-  &\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+  &\quad\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\
-  &\left.\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+  &\left.\quad\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}
     -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right] \nonumber\\
-  &\quad-\gamma_S^{(1)}\left(C_a+C_b+C_c\right)
+  &\qquad\quad-\gamma_S^{(1)}\left(C_a+C_b+C_c\right)
     -8\pi\beta_0\,\widehat{S}_{\kappa,-1}^{(1)} \nonumber\\
-  &\quad+\left(\widehat{S}_{\kappa,-1}^{(1)}+K^{(1)}\right)\!\left[
+  &\qquad\quad+\left(\widehat{S}_{\kappa,-1}^{(1)}+K^{(1)}\right)\!\left[
     4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \nonumber\\
-  &\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+  &\quad\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\
-  &\left.\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+  &\left.\quad\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
     +\ln\frac{Q_{bc}^2}{Q_b Q_c}
     -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,,
 \end{align}

@@ -4,10 +4,11 @@
 
 The following figures present the key steps of the \textsc{Mathematica}
 validation of $h_{22}$ and $h_{21}$ against $\mathcal{C}_1^{(2)}$ and
-$\mathcal{C}_0^{(2)}$ respectively. The complete notebook is available
+$\mathcal{C}_0^{(2)}$ respectively discussed in Sec.~\ref{subsec:NNLO-ingred}.
+The complete notebook is available
 at Ref.~\cite{peake2026validation}.
 
-\subsection{Validation of \texorpdfstring{$h_{22}$}{h22}}
+\section{Validation of \texorpdfstring{$h_{22}$}{h22}}
 \label{ap:mathematica-h22}
 
 We validate $\mathcal{C}_1^{(2)}/8 = h_{22}$, which follows from
@@ -51,9 +52,10 @@ Eqs.~\eqref{eq:h11} and~\eqref{eq:h22}.}
 \label{fig:mathematica-h22compare}
 \end{figure}
 
-\subsection{Validation of \texorpdfstring{$h_{21}$}{h21}}
+\section{Validation of \texorpdfstring{$h_{21}$}{h21}}
 \label{ap:mathematica-h21}
 
+\todo{Edit the wording a bit here.}
 We validate $\mathcal{C}_0^{(2)}/(-4) = h_{21}$, which follows from
 Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=1$. As above, the
 cross-term $\mathcal{C}_0^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$,
@@ -64,6 +66,19 @@ in $\gamma^{(1)}_\ell$, which does not vanish symbolically since the
 SCET and \textsc{ARES} conventions for $\gamma^{(1)}$ differ. Substituting explicit values for the
 $q\bar{q}\to Zg$ channel, the residual vanishes exactly. The other channels follow in
 the same way. 
+
+Please note that we substitute in the explicit formula for $\delta\mathcal{F}_{\rm wa}$
+while we use the relationship:
+\begin{equation}
+\begin{aligned}
+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}&+\delta\mathcal{F}_{\rm rec}= \sum_{k}\int\frac{dz}{z} \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}2I_{ak}^{(1)}+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}2I_{bk}^{(1)}\\
+	&\qquad+\sum_{k}\int\frac{dz}{z}\left(P_{ak}(z)\ln\frac{Q_a\,M}{Q^2}+\gamma_{a}^{(0)}\ln\frac{Q^2}{Q_a\,M}\right)
+    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\\
+    &\qquad+\sum_{k}\int\frac{dz}{z}\left(P_{bk}(z)\ln\frac{Q_b\,M}{Q^2}+\gamma_{b}^{(0)}\ln\frac{Q^2}{Q_b\,M}\right)
+    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
+& \qquad+ J_{c,-1}^{(1)}+\gamma_{c}^{(0)}\ln\frac{Q^2}{Q_b\,M} + (C_a+C_b+C_c)\frac{\pi^2}{6}\,.
+ \end{aligned}
+\end{equation}
 
 \begin{figure}[h]
 \centering
@@ -83,14 +98,14 @@ $\mathcal{C}_0^{(2)}$, isolating the new term \texttt{C20Rem}.}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/appendixC/Define_h21.jpeg}
+\includegraphics[width=1.0\textwidth]{figures/appendixC/Define_h21.jpeg}
 \caption{Definition of $h_{21}$ following Eq.~\eqref{eq:h21}.}
 \label{fig:mathematica-h21def}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/appendixC/compare_C20_h21.jpeg}
+\includegraphics[width=1.0\textwidth]{figures/appendixC/compare_C20_h21.jpeg}
 \caption{Initial comparison leads to a residual in $\gamma^{(1)}_\ell$ (top). The substitution
 of explicit $\gamma^{(1)}$ values for the $q\bar{q}\to Zg$ channel
 gives \texttt{Out[82] = 0}, showing that $\mathcal{C}_0^{(2)}/(-4) = h_{21}$ exactly (bottom).}
