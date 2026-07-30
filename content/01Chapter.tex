@@ -2,69 +2,68 @@
 \label{ch:intro}
 
 The Large Hadron Collider (LHC) is, as its name suggests, a particle accelerator that
-collides hadrons at energies far beyond those achieved by any previous experiment. Now
-having concluded its third run, it continues to probe physics at the fundamental scale. The Standard
-Model (SM) is currently the best theory we have to describe the interactions between
-the elementary particles and their behaviours. It describes the electromagnetic, weak
-and strong interactions, with the latter taking centre stage throughout the course of
-this thesis, titled \emph{Jet physics at the LHC and beyond}. The strong force, also
-known as quantum chromodynamics (QCD), sits at the heart of almost every measurement
-made at the LHC. Whether that be the determination of the Higgs boson, top quarks, or
-searches for physics beyond the Standard Model, the events observed at the LHC are
-overwhelmed by QCD radiation, such that reliable theoretical predictions are necessary
-to understand this.
+collides hadrons at energies far beyond those achieved by any previous experiment.
+Having recently concluded its third run, it has spent over a decade probing physics at
+the fundamental scale. The Standard Model (SM) is currently the best theory we have to
+describe the interactions between the elementary particles and their behaviours. It
+describes the electromagnetic, weak and strong interactions, with the latter taking
+centre stage throughout the course of this thesis, titled \emph{Jet physics at the LHC
+and beyond}. The strong force, also known as quantum chromodynamics (QCD), sits at the
+heart of almost every measurement made at the LHC. Whether that be the determination of
+the Higgs boson, top quarks, or searches for physics beyond the Standard Model, the
+events observed at the LHC are overwhelmed by QCD radiation, such that reliable
+theoretical predictions are necessary to interpret them.
 
 Like other quantum field theories, QCD exhibits behaviour that depends on the energy
-scale at which it is probed. At high energies, the interaction between the particles of
-the strong force, namely the quarks and gluons, is weak, and the particles act freely.
-In this regime one can use perturbation theory to model QCD. At low energies, on the
-other hand, the interaction between the quarks and gluons becomes increasingly strong,
-such that the particles cluster together. As a result, particles can no longer act
-freely, and perturbation theory cannot be used. In this thesis we restrict ourselves
-to the high-energy regime, where perturbation theory has proven remarkably
-successful and underlies every precision QCD prediction made for the LHC.
+scale at which it is probed. At high energies, the interaction between quarks and
+gluons becomes weak, allowing them to behave approximately as free particles. This
+property, known as asymptotic freedom, permits the use of perturbation theory to obtain
+systematic theoretical predictions. At low energies, however, the strong interaction
+becomes stronger, causing quarks and gluons to bind together into hadrons. In this
+regime perturbation theory is no longer applicable and requires other theoretical techniques.
+Throughout this thesis we focus exclusively on the high-energy regime, where perturbative QCD has proven remarkably successful and provides the foundation for precision phenomenology at the LHC.  
 
-Even within perturbation theory, however, there remain problems one faces in QCD. 
-In the scope of this thesis, we focus on two problems, specifically those which
-complicate the comparison between theory and experiment. The first arises from the fact
-that, in a high-energy collision, the quarks and gluons produced in a hard scattering
-undergo a process known as hadronisation, such that they evolve into collimated sprays
-of colourless hadrons known as \emph{jets}. A jet is a messy and ambiguous object and
+Despite this success, perturbative QCD presents a number of challenges when comparing
+theoretical predictions with experimental measurements. This thesis addresses two such
+problems.
+
+The first concerns the fact that the quarks and gluons produced in a hard scattering
+are never observed directly. Instead, they undergo hadronisation, evolving into
+collimated sprays of hadrons known as \emph{jets}. A jet is a messy and ambiguous object and
 defining one requires a prescription for clustering final-state particles -- whether
 partons in a theoretical calculation or energy deposits in a detector -- into jets in a
 way that can be applied consistently to both. This prescription is known as a \emph{jet
-algorithm}. As one might suspect, different clustering procedures lead to different
-jets, and so choosing and designing an algorithm suited to a given process and
+algorithm}. Different clustering procedures generally lead to different
+jet configurations, and so choosing and designing an algorithm suited to a given process and
 observable is a non-trivial task in its own right, requiring careful thought about what
 physics we are trying to extract and which questions we want to answer. This is the
 subject of chapter~\ref{chapter:DIS}, where a new jet algorithm for deep-inelastic
-scattering, i.e.\ electron-proton collisions, is presented. 
+scattering, i.e.\ electron-proton collisions, is presented.
 
-The second problem is the presence of \emph{large logarithms} within perturbation
-theory. These occur for certain observables in phase-space regions where the observable
-becomes small. This causes a mismatch between perturbation theory and experimental data in 
-these regions. In this sense perturbation theory alone cannot be used to obtain reliable predictions
-in this region and so it is necessary for us to perform something known as \emph{resummation}
-to tackle these large logarithms. Resummation can be performed to various accuracies the 
-way in which perturbation theory can. Various methods exist in the literature to perform this resummation;
-however, for the scope of this thesis we focus on semi-numerical formalisms, particularly
-those known as \textsc{CAESAR} and \textsc{ARES}. This is the subject of
-chapter~\ref{ch:hhZjet}, where the semi-numerical \textsc{ARES} resummation formalism
-is extended to initial-state radiation for the first time, with the process
-$hh \to Z + \text{jet}$ as its application.
+The second challenge arises from the appearance of \emph{large logarithms} in
+perturbative calculations. For many observables, these logarithmic contributions become
+enhanced in regions of phase space where the observable takes small values, causing the
+perturbative expansion to converge poorly and reducing the reliability of fixed-order
+predictions. Accurate theoretical predictions therefore require these logarithms to be
+summed to all orders in perturbation theory through a procedure known as
+\emph{resummation}. As with fixed-order calculations, resummation can be performed at
+successively higher levels of logarithmic accuracy. Several approaches have been
+developed to achieve this, and in this thesis we focus on the semi-numerical
+\textsc{CAESAR} and \textsc{ARES} formalisms. In particular, Chapter~\ref{ch:hhZjet}
+extends the \textsc{ARES} framework to include initial-state radiation for the first
+time, using the process $hh \to Z + \text{jet}$ as its primary application.
 
-The remainder of this thesis is structured as follows. Chapter~\ref{ch:QCD}
-introduces the background material on QCD necessary to understand the remaining
-parts of this thesis where we introduce notation and relevant ideas used in the original research.
-Here we will give an overview of perturbation theory, the running of the strong coupling, and 
-the illustrating theoretically what occurs in a high-energy collision.  
-Chapter~\ref{ch:jet-phys} provides us with a brief interlude where it discusses 
-what a jet is, how to define them, algorithms and the discussions of advancements in
-jet algorithms, setting up chapter~\ref{chapter:DIS}, which
-presents the new deep inelastic scattering jet algorithm mentioned above. Chapter~\ref{ch:resum}
-turns to resummation, introducing the formalism and background required for
-chapter~\ref{ch:hhZjet}, where the \textsc{ARES} framework is extended to hadronic
-initial states and applied to $hh \to Z + \text{jet}$ at next-to-next-to-leading
-logarithmic accuracy. Finally, chapter~\ref{ch:conc} concludes, discussing how the
-research presented here could be extended and its implications for the wider
-community.
+The remainder of this thesis is structured as follows. Chapter~\ref{ch:QCD} introduces
+the background material on QCD necessary to understand the remaining parts of this
+thesis, where we introduce notation and relevant ideas used in the original research.
+Here we give an overview of perturbation theory, the running of the strong coupling,
+and illustrate theoretically what occurs in a high-energy collision.
+Chapter~\ref{ch:jet-phys} provides a brief interlude discussing what a jet is, how jets
+are defined, and recent advancements in jet algorithms, setting up
+chapter~\ref{chapter:DIS}, which presents the new deep-inelastic-scattering jet
+algorithm mentioned above. Chapter~\ref{ch:resum} turns to resummation, introducing the
+formalism and background required for chapter~\ref{ch:hhZjet}, where the \textsc{ARES}
+framework is extended to hadronic initial states and applied to
+$hh \to Z + \text{jet}$ at next-to-next-to-leading logarithmic accuracy. Finally,
+chapter~\ref{ch:conc} concludes, discussing how the research presented here could be
+extended and its implications for the wider community.
