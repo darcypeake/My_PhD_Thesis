@@ -85,6 +85,7 @@ defined as
 where $q_i$ is the four-momentum of a \emph{hadron}, and
 $Q_1, Q_2, Q_3$ three momentum scales. The two ``incoming'' momenta, 
 $\bar p_1$ and $\bar p_2$ are defined as $\bar p_i=E_i n_i$, where
+\ABquestion{Still don't quite understand the difference between $\bar{p}_i$ and $p_i$?}
 \begin{equation}
 	\bar{p}_1^\mu=\frac{1}{2}n_2\cdot (p_J+q)n_1^{\mu}\,,\quad\quad
 	\bar{p}_2^\mu=\frac{1}{2}n_1\cdot (p_J+q)n_2^{\mu}\,,
@@ -1616,60 +1617,32 @@ Ref.~\cite{vanBeekveld:2025zjh} in Sec.~\ref{sec:LTS-val}.
  \section{Comparison with $N$-jettiness}
  \label{subsec:N-jet-SCET-val}
  
- \todo{I think I could give a bit more information about what this validation is exactly.}
-In this section we validate the one-jettiness resummation by
-comparing the logarithmic coefficients obtained in the \textsc{ARES}
-formalism with those derived in the SCET-based $N$-jettiness
-subtraction framework of Ref.~\cite{Gaunt:2015pea}.
-
-Within the \textsc{ARES} formalism, the cumulant expands as
- \begin{equation}
+ The expression for the master formula, $\Sigma_{ij}$, in Eq.~\eqref{eq:Sigma-NNLL},
+ can be expanded in terms of $\alpha_s$ and $L$:
+  \begin{equation}
  \label{eq:sig-coeff}
 	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
 \end{equation}
-where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$. The general
-form of the majority of these coefficients can be found in Ref.~\cite{Banfi:2004yd},
-however we give the explicit results for all coefficients relevant to NNLL for the
-one-jettiness in Appendix~\ref{ap:ARES-coeff}. 
+where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$. The expansion coefficients $h_{nm}$
+are determined analytically by expanding the NNLL Radiator and collecting the
+terms at each order in the cumulant. Coefficients up to order NLL for a general observable
+are given in  Ref.~\cite{Banfi:2004yd} and the coefficients necessary for NNLL for the one-jettiness
+observable are contained in Appendix~\ref{ap:ARES-coeff}.
 
-To check that our formalism is correct we must validate these coefficients.
-\todo{Go from here.}
+Having derived the NNLL cumulant for hadronic collisions, we need to check our resummation formula, in particular to check that the treatment of the initial-state radiation is correct. We are able to do this by validating these resummation coefficients. \ABquestion{Do I need to talk about how we also need to match to fixed order but we are just doing the beginning bit?}
+In order to validate these coefficients, we are able to extract coefficients from the logarithms derived in the SCET-based $N$-jettiness subtraction framework of Ref.~\cite{Gaunt:2015pea}. These coefficients, $\mathcal{C}_n^{(m)}$, are referred to as subtraction coefficients and the comparison is performed analyitcally. 
 
-\ndp{Ref.~\cite{Gaunt:2015pea} presents a subtraction method for
-performing NNLO QCD calculations for arbitrary processes, exploiting
-the factorisation of the $N$-jettiness distribution in the limit
-$\mathcal{T}_N\to0$. The method uses SCET to determine the IR
-singular contributions to $N$-jet cross sections analytically and
-constructs suitable $\mathcal{T}_N$-subtractions from them. The
-singular structure is organised into hard, beam, jet, and soft
-functions. The beam function $B_a$ encodes all collinear emissions
-from incoming parton $a$ and depends on its flavour $\kappa_a$ and
-momentum fraction $x_a$. The jet function $J_c$ encodes collinear
-emissions from the outgoing parton $c$ and depends on its flavour
-$\kappa_c$. The soft function $S_\kappa$, where
-$\kappa\equiv\{\kappa_a,\kappa_b,\kappa_c\}$ denotes the full
-partonic channel, describes all soft emissions between the partons.}
-
-Specialising this to the one-jettiness ($N=1$), we find that the singular part of the distribution ($\tau_1\to0$) factorises as 
-\begin{equation}
-	\label{eq:Cnm-def}
-	\frac{\mathrm{d}\sigma^{\rm sing}(\{p\})}{\mathrm{d}\tau_1}
-	=\sum_{m\geq0}\left[\mathcal{C}_{-1}^{(m)}(\{p\},M,\mu_R)\,\delta(\tau_1)
-	+\sum_{n=0}^{2m-1}\mathcal{C}_n^{(m)}(\{p\},M,\mu_R)\,\mathcal{L}_n(\tau_1)\right]
-	\left(\frac{\alpha_s(\mu_R)}{4\pi}\right)^m\,,
-\end{equation}
-where 
-\begin{equation}
-	\mathcal{L}_n(\tau_1)=\left[\frac{\theta(\tau_1)\ln^n(\tau_1)}{\tau_1}\right]_+\,.
-\end{equation} 
-are the standard plus distributions. The subtraction coefficients
+The subtraction coefficients
 $\mathcal{C}_n^{(m)}$ are expressed in terms of the hard, beam, jet,
-and soft functions, where their explicit expressions are collected in
-Appendix~\ref{ap:N-jet-ing}, which follows the $a,b,c$ notation which has the correspondence with the leg notation used in the \textsc{ARES}
-formalism as $\{a,b,c\}\equiv\{\ell=1,\ell=2,\ell=3\}$.
-\ABquestion{The notation does feel quite messy between the two formalisms, however I cannot take the legs to be $\ell=1,2,3$
-here because the coefficient will look like $J_{1,1}^{(1)}$
-for example i.e.\ we need a letter to define the leg. Is this OK?}
+and soft functions and are dimensionless. These are functions which occur in SCET where
+the beam functions encodes all collinear emissions
+from the incoming partons, the jet function encodes collinear
+emissions from the outgoing parton. The soft function describes all soft emissions between the partons.
+All functions depend on the flavour of the partons with the beam functions having dependence
+on the momentum fractions of the incoming partons.
+
+
+
  
 To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
 establish a correspondence between the two sets of coefficients. Since the \textsc{ARES}
@@ -1680,15 +1653,88 @@ the $4\pi$ and $2\pi$ conventions used for $\alpha_s$, we find
 \label{eq:coeff-convent}
 h_{mn}=\frac{\mathcal{C}_{n-1}^{(m)}}{n}\,\frac{(-1)^n}{2m}.
 \end{equation}
-For the $\delta(\tau_1)$ coefficient,
+Please note that the coefficient,
 $\mathcal{C}_{-1}^{(m)}$,
 the denominator should be interpreted as $n=1$.
+
+\subsection{Leading-logarithmic coefficients}
+\label{subsec:LL-coeff}
+
+We begin with the first LL coefficient, $h_{12}$. The associated coefficient from
+the Ref.~\cite{Gaunt:2015pea} is
+\begin{equation}
+\label{eq:C11}
+    \mathcal{C}_1^{(1)}(\{p\},M,\mu_R)=\frac{B_{i,1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j,1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\ell=3,1}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
+\end{equation}
+
+\begin{equation}
+    \mathcal{C}^{(1)}_1=-4\sum_{\ell}C_{\ell}\,.
+\end{equation}
+Applying Eq.~\eqref{eq:coeff-convent} immediately yields
+\begin{equation}
+    h_{12}=-\sum_{\ell}C_{\ell}\,,
+\end{equation}
+which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
+
+\subsection{Next-to-leading-logarithmic coefficients}
+\label{subsec:NLL-coeff}
+
+The first NLL resummation coefficient
+
+\begin{equation}
+\label{eq:C10}
+    \mathcal{C}_0^{(1)}(\{p\},M,\mu_R)=\frac{B_{i,0}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j,0}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\ell=3,0}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,0}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
+\end{equation}
+
+\begin{equation}
+\label{eq:C10-init}
+    \begin{aligned}
+    \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
+    +\sum_{k}\int\frac{dz}{z}2P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}2P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\\
+    &+4C_1\ln\frac{Q_1 M}{\mu_R^2}+4C_2\ln\frac{Q_2 M}{\mu_R^2}
+    +4C_3\ln\frac{Q_3 M}{\mu_R^2} \\
+    &-4\left[(C_1-C_2-C_3)\ln\frac{Q_{12}^2}{Q_1 Q_2}
+    +(C_2-C_1-C_3)\ln\frac{Q_{13}^2}{Q_1 Q_3}
+    +(C_3-C_1-C_2)\ln\frac{Q_{12}^2}{Q_1 Q_2}\right]\\
+    &-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
+    \end{aligned}
+\end{equation}
+where $\gamma^{(0)}_{\ell}$ are given in Eq.~\eqref{eq:gammal-flav} and $P_{ak}(z)$ are the full AP splitting functions defined in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels throughout, giving rise to
+\begin{equation}
+\label{eq:C01-simplified}
+    \begin{aligned}
+    \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
+    +\sum_{k}\int\frac{dz}{z}2P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}2P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\\
+    &+4C_1\ln\frac{Q_{12}^2 Q_{13}^2}{Q_{23}^2 MQ_1}
+    +4C_2\ln\frac{Q_{12}^2 Q_{23}^2}{Q_{13}^2 MQ_2}
+    +4C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,.
+    \end{aligned}
+\end{equation}
+Applying Eq.~\eqref{eq:coeff-convent}, we obtain
+\begin{equation}
+\label{eq:SCET-h11}
+    \begin{aligned}
+    h_{11}=&\sum_{\ell}\gamma^{(0)}_{\ell}
+    -\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}
+    -\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\\
+    &-2C_1\ln\frac{Q_{12}^2 Q_{13}^2}{Q_{23}^2 MQ_1}
+    -2C_2\ln\frac{Q_{12}^2 Q_{23}^2}{Q_{13}^2 MQ_2}
+    -2C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,,
+    \end{aligned}
+\end{equation}
+which agrees with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h11}.
+
 
 \subsection{NLO ingredients}
 \label{subsec:NLO-ingred}
 
-\ABquestion{I am aware that the SCET coefficients have $ f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2$ in front of them which the \textsc{ARES} coefficients do not --  however
-it did not feel OK to remove them as this is how they have defined their coefficients? }
+
 At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
 given by $n=1$ and $n=0$ respectively in
 \begin{equation}
@@ -1741,72 +1787,22 @@ parameters are defined as
     \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
 \end{equation}
 
-We first consider the coefficient of the leading logarithm, $\mathcal{C}^{(1)}_1$.
-Substituting the ingredients found in Eq.~\eqref{eq:C11-ingred}
-into Eq.~\eqref{eq:Cn1} gives
-\begin{equation}
-    \mathcal{C}^{(1)}_1=-4\left(C_a+C_b+C_c\right)\,.
-\end{equation}
-Applying Eq.~\eqref{eq:coeff-convent} immediately yields
-\begin{equation}
-    h_{12}=-\left(C_a+C_b+C_c\right)\,,
-\end{equation}
-which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
+\subsection{Next-to-next-to-leading-logarithmic coefficients}
+\label{subsec:NNLL-coeff}
 
 We next consider $\mathcal{C}^{(1)}_0$. Substituting terms found in Eq.~\eqref{eq:C10-ingred} into Eq.~\eqref{eq:Cn1} gives
-\begin{equation}
-\label{eq:C10-init}
-    \begin{aligned}
-    \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
-    +\sum_{k}\int\frac{dz}{z}2P_{ak}(z)\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}2P_{bk}(z)\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
-    &+4C_a\ln\frac{Q_a M}{\mu_R^2}+4C_b\ln\frac{Q_b M}{\mu_R^2}
-    +4C_c\ln\frac{Q_c M}{\mu_R^2} \\
-    &-4\left[(C_a-C_b-C_c)\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    +(C_b-C_a-C_c)\ln\frac{Q_{ac}^2}{Q_a Q_c}
-    +(C_c-C_a-C_b)\ln\frac{Q_{ab}^2}{Q_a Q_b}\right]\\
-    &-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
-    \end{aligned}
-\end{equation}
-where $\gamma^{(0)}_{\ell}$ are given in Eq.~\eqref{eq:gammal-flav} and $P_{ak}(z)$ are the full AP splitting functions defined in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels throughout, giving rise to
-\begin{equation}
-\label{eq:C01-simplified}
-    \begin{aligned}
-    \mathcal{C}^{(1)}_0={}&-2\sum_{\ell} \gamma_{\ell}^{(0)}
-    +\sum_{k}\int\frac{dz}{z}2P_{ak}(z)\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}2P_{bk}(z)\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
-    &+4C_a\ln\frac{Q_{ab}^2 Q_{ac}^2}{Q_{bc}^2 MQ_a}
-    +4C_b\ln\frac{Q_{ab}^2 Q_{bc}^2}{Q_{ac}^2 MQ_b}
-    +4C_c\ln\frac{Q_{ac}^2 Q_{bc}^2}{Q_{ab}^2 MQ_c}\,.
-    \end{aligned}
-\end{equation}
-Applying Eq.~\eqref{eq:coeff-convent}, we obtain
-\begin{equation}
-\label{eq:SCET-h11}
-    \begin{aligned}
-    h_{11}={}&\sum_{\ell}\gamma^{(0)}_{\ell}
-    -\sum_{k}\int\frac{dz}{z}P_{ak}(z)\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    -\sum_{k}\int\frac{dz}{z}P_{bk}(z)\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\
-    &-2C_a\ln\frac{Q_{ab}^2 Q_{ac}^2}{Q_{bc}^2 MQ_a}
-    -2C_b\ln\frac{Q_{ab}^2 Q_{bc}^2}{Q_{ac}^2 MQ_b}
-    -2C_c\ln\frac{Q_{ac}^2 Q_{bc}^2}{Q_{ab}^2 MQ_c}\,,
-    \end{aligned}
-\end{equation}
-which agrees with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h11}.
+
 
 We turn our attention to the $\delta(\tau_1)$ coefficient
 \begin{equation}
 \begin{aligned}
-    \mathcal{C}_{-1}^{(1)}&(\{p\},M,\mu_R)=
-    f_a(x_1,\mu_F)\,f_b(x_2,\mu_F)
-    \left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)(\{p\},\mu_R) \\
-    &+f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
-    \left[J_{c,-1}^{(1)}(\lambda_c)
-    +\widehat{S}^{(1)}_{\kappa,-1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\right.\\
-    &\left.+\sum_{k}\int\frac{dz}{z}\mathcal{I}_{ak,-1}^{(1)}(z,\lambda_F,\lambda_a)
+    \mathcal{C}_{-1}^{(1)}&(\{p\},M,\mu_R)=H^{(1)}_{\rm SCET}+\\
+    &+J_{c,-1}^{(1)}(\lambda_c)
+    +\widehat{S}^{(1)}_{\kappa,-1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\\
+    &+\sum_{k}\int\frac{dz}{z}\mathcal{I}_{ak,-1}^{(1)}(z,\lambda_F,\lambda_a)
     \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
     +\sum_{k}\int\frac{dz}{z}\mathcal{I}_{bk,-1}^{(1)}(z,\lambda_F,\lambda_b)
-    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,,
+    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,,
 \end{aligned}
 \end{equation}
 where the ingredients are found in Eq.~\eqref{eq:Cd1-ingred} and
@@ -1848,7 +1844,7 @@ Eq.~\eqref{eq:Cd1-ingred}, we obtain for the $q\bar{q}\to g H$
 channel 
 \begin{equation}
 \begin{aligned}
-&\mathcal{C}^{(1)}_{-1} = C_H^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\left(2I_{qk}^{(1)}+2P_{qk}(z)\ln\frac{Q_a\,M}{\mu_F^2}\right)\\[0.5ex]
+&\mathcal{C}^{(1)}_{-1} = H_{\rm SCET}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\left(2I_{qk}^{(1)}+2P_{qk}(z)\ln\frac{Q_a\,M}{\mu_F^2}\right)\\[0.5ex]
 &\qquad+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\left(2I_{\bar{q}k}^{(1)}+2P_{\bar{q}k}(z)\ln\frac{Q_b\,M}{\mu_F^2}\right)\\[0.5ex]
 &\qquad -3C_F\ln\frac{Q_a\,M}{\mu_R^2}+2C_F\ln^2\frac{Q_a\,M}{\mu_R^2}-3C_F\ln\frac{Q_b\,M}{\mu_R^2}2C_F\ln^2\frac{Q_b\,M}{\mu_R^2} \\[0.5ex]
 &\qquad + C_A\left(\frac{4}{3}-\pi^2\right)+\frac{20}{3}\pi\beta_0-4\pi\beta_0\ln\frac{Q_c\,M}{\mu_R^2}+2C_A\ln^2\frac{Q_c\,M}{\mu_R^2}\\[0.5ex]
@@ -1906,10 +1902,9 @@ NNLO subtraction coefficients. For brevity the scale arguments are suppressed th
 \begin{equation}
 \begin{aligned}
 \label{eq:Xn-def}
-    X_n^{(m)} \equiv &f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}|^2
-    \left[J_{c,n}^{(m)} + \widehat{S}_{\kappa,n}^{(m)} \right.\\
-&  \left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(m)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(m)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
+    X_n^{(m)} \equiv &J_{c,n}^{(m)} + \widehat{S}_{\kappa,n}^{(m)} \\
+&   + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(m)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(m)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
     \end{aligned}
 \end{equation}
 The cross terms involving the one-loop
@@ -1917,8 +1912,7 @@ virtual amplitude $\vec{C}^{(1)}$ are
 \begin{equation}
 \label{eq:Xn11-def}
 \begin{aligned}
-    X_n^{(1+1)} \equiv& f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)
-    \!\left(\vec{C}^{\dagger(0)}\vec{C}^{(1)}+\vec{C}^{\dagger(1)}\vec{C}^{(0)}\right)
+    X_n^{(1+1)} \equiv& \,H^{(1)}_{\rm SCET}
     \left[J_{c,n}^{(1)} + \widehat{S}_{\kappa,n}^{(1)} \right.\\
   &\left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
     + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
@@ -1930,7 +1924,6 @@ $\mathcal{L}_n\otimes\mathcal{L}_m$ convolution are
 \label{eq:Xnm11-def}
 \begin{aligned}
     X_{n,m}^{(1+1)} \equiv{}&
-    f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}|^2
     \left[J_{c,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}\right.\\
     &+\!\left(J_{c,m}^{(1)}+\widehat{S}_{\kappa,m}^{(1)}\right)\!
     \left(\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
