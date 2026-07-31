@@ -1580,7 +1580,7 @@ Substituting these functions into the additive expression gives
     - 2\!\left(I_{\ell\bar\ell,\hat\ell}
     + I_{\bar\ell\ell,\hat\ell}\right)\right]\,,
 \end{equation}
-where $I_{\ell\bar\ell,\hat\ell}$ are defined in eq.~(51) of
+where $I_{\ell\bar\ell,\hat\ell}$ are defined in Eq.~(51) of
 Ref.~\cite{Alioli:2023rxx} (see also Ref.~\cite{Jouttenus:2011wh}),
 and $\hat\ell$ denotes the leg which is neither  $\ell$ or $\bar\ell$.
 
@@ -1594,11 +1594,11 @@ The general formula is
 	\int_0^{2\pi}\frac{d\phi}{2\pi}\int \dZ\times \\
 	\times \left[\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\}, k,\{k_i\}\right)}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\}, \{k_i\}\right)}{v}\right)\left(1-\zeta\right)\right]\,.
 \end{multline}
-\ndp{The reason why this is categorised as a wide-angle correction is due to 
+The reason why this is categorised as a wide-angle correction is due to 
 the $\ln Q_{\ell\bar\ell}/Q$ term in the expression above, which arises from soft radiation 
 emitted at large angles between legs $\ell$ and $\bar\ell$. The label 
 ``wide-angle'' refers to the character of the logarithm, not to a wide-angle 
-approximation on the kinematics.}
+approximation on the kinematics.
 
 For additive observables, Eq.~\eqref{eq:DFwa-general} reduces to the form
 given in Eq.~\eqref{eq:DFwa-general-add}. Applying this to one-jettiness
@@ -1616,10 +1616,24 @@ Ref.~\cite{vanBeekveld:2025zjh} in Sec.~\ref{sec:LTS-val}.
  \section{Comparison with $N$-jettiness}
  \label{subsec:N-jet-SCET-val}
  
+ \todo{I think I could give a bit more information about what this validation is exactly.}
 In this section we validate the one-jettiness resummation by
 comparing the logarithmic coefficients obtained in the \textsc{ARES}
 formalism with those derived in the SCET-based $N$-jettiness
 subtraction framework of Ref.~\cite{Gaunt:2015pea}.
+
+Within the \textsc{ARES} formalism, the cumulant expands as
+ \begin{equation}
+ \label{eq:sig-coeff}
+	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
+\end{equation}
+where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$. The general
+form of the majority of these coefficients can be found in Ref.~\cite{Banfi:2004yd},
+however we give the explicit results for all coefficients relevant to NNLL for the
+one-jettiness in Appendix~\ref{ap:ARES-coeff}. 
+
+To check that our formalism is correct we must validate these coefficients.
+\todo{Go from here.}
 
 \ndp{Ref.~\cite{Gaunt:2015pea} presents a subtraction method for
 performing NNLO QCD calculations for arbitrary processes, exploiting
@@ -1657,13 +1671,7 @@ formalism as $\{a,b,c\}\equiv\{\ell=1,\ell=2,\ell=3\}$.
 here because the coefficient will look like $J_{1,1}^{(1)}$
 for example i.e.\ we need a letter to define the leg. Is this OK?}
  
-Within the \textsc{ARES} formalism, the cumulant expands as
- \begin{equation}
- \label{eq:sig-coeff}
-	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
-\end{equation}
-where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$ and the coefficients
-$h_{nm}$ are given in Appendix~\ref{ap:ARES-coeff}. To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
+To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
 establish a correspondence between the two sets of coefficients. Since the \textsc{ARES}
 coefficients arise from the integrated distribution while those of
 Ref.~\cite{Gaunt:2015pea} are differential, and accounting for the difference between
@@ -1686,14 +1694,12 @@ given by $n=1$ and $n=0$ respectively in
 \begin{equation}
 \label{eq:Cn1}
 \begin{aligned}
-    \mathcal{C}_n^{(1)}&(\{p\},M,\mu_R)=
-    f_a(x_a,\mu_F)\,f_b(x_b,\mu_F)\,|\vec{C}^{(0)}(\{p\},\mu_R)|^2
-    \left[J_{c,n}^{(1)}(\lambda_c)
-    +\widehat{S}^{(1)}_{\kappa,n}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\right.\\
-    &\left.+\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}(z,\lambda_F,\lambda_a)
+    \mathcal{C}_n^{(1)}&(\{p\},M,\mu_R)=J_{c,n}^{(1)}(\lambda_c)
+    +\widehat{S}^{(1)}_{\kappa,n}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\\
+    &+\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}(z,\lambda_F,\lambda_a)
     \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
     +\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}(z,\lambda_F,\lambda_b)
-    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
+    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
 \end{aligned}
 \end{equation}
 The beam function coefficients are related to the
@@ -1821,7 +1827,7 @@ the terms are expanded as
 and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. 
 
 Unlike the logarithmic coefficients validated in the following subsections,
-receives a contribution from the one-loop hard function, which we will define as the following for brevity \ABquestion{Is it OK to define it like this?}
+receives a contribution from the one-loop hard function, which we will define as the following for brevity
 \begin{equation}
 \label{eq:CH-SCET}
 	H^{(1)}_{\rm SCET}\equiv \frac{\left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)}{|\vec{C}^{(0)}|^2}\,,
@@ -2123,7 +2129,7 @@ corrections.
 The coefficient function of Ref.~\cite{vanBeekveld:2025zjh}
 is\footnote{In Ref.~\cite{vanBeekveld:2025zjh} the final term is
 written as $\ln(M^2/\mu_F^2)\hat{P}_{ij}(z;0)$, which appears to be
-an error since it introduces an uncancelled collinear singularity --
+a misprint since it introduces an uncancelled collinear singularity --
 this has been confirmed with the authors of the paper.}
 \begin{multline}
   \label{eq:CkiLTS}
