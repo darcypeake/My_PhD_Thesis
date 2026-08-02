@@ -1634,7 +1634,7 @@ In order to validate these coefficients, we are able to extract coefficients fro
 
 The subtraction coefficients
 $\mathcal{C}_n^{(m)}(\{p\},M,\mu_R)$ are expressed in terms of the hard, beam, jet,
-and soft functions and are dimensionless. These are functions which occur in SCET where
+and soft functions and are dimensionless. They depend on the born momenta, the invariant mass of the $Z$-boson and the renormalisation scale. These are functions which occur in SCET where
 the beam functions encodes all collinear emissions
 from the incoming partons, the jet function encodes collinear
 emissions from the outgoing parton. The soft function describes all soft emissions between the partons.
@@ -1657,32 +1657,66 @@ Please note that the coefficient,
 $\mathcal{C}_{-1}^{(m)}$,
 the denominator should be interpreted as $n=1$.
 
+The beam function coefficients are related to the
+coefficients $\mathcal{I}_{ij}$ by
+\begin{equation}
+  B_{i,n}^{(m)}(x_i,\mu_R,\mu_F,\lambda_i) =
+  \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ik,n}^{(m)}\!\left(z,\lambda_F,\lambda_i\right)
+  f_k\!\left(\frac{x_i}{z},\mu_F\right)\,.
+\end{equation}
+The functions in Eq.~\eqref{eq:Cn1} are expanded in logarithms of the $\lambda$
+parameters as
+\begin{subequations}
+\label{eq:subt-mn-exp}
+\begin{align}
+    &\mathcal{I}_{i;\ell=1, k,n}^{(m)}(z,\lambda_F,\lambda_a) =
+    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,\\
+    &J_{\ell=3,n}^{(m)}(\lambda_3) = J_{\ell=3,n}^{(m)}
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{c,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
+    &\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) =
+    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,,
+\end{align}
+\end{subequations}
+and analogously for $\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
+The $\lambda$
+parameters are defined as
+\begin{equation}
+    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
+    \lambda_s = \frac{M}{\mu_R}\,, \qquad
+    \lambda_1 = \frac{Q_1 M}{\mu_R}\,, \qquad
+    \lambda_2 = \frac{Q_2 M}{\mu_R}\,, \qquad
+    \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
+\end{equation}
+
 
 \begin{subequations}
 \begin{align}
-    J_{\ell=3,-1}^{(m)}(\lambda_3) &=
-    J_{\ell=3,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{\ell=3,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_3}{n+1}\,, \\
-    \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) &=
+    &\mathcal{I}_{\kappa_1,-1}^{(m)}(z,\lambda_F,\lambda_a) =
+    \mathcal{I}_{\kappa_1,-1}^{(m)}(z,\lambda_F)
+    + \sum_{n=0}^{2m-1}\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)\,
+    \frac{\ln^{n+1}\!\lambda_a}{n+1}\,,\\
+    &J_{\kappa_3,-1}^{(m)}(\lambda_3) =J_{\kappa_3,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{\kappa_3,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_3}{n+1}\,, \\
+   & \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) =
     \widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\,
     \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,\\
-    \mathcal{I}_{ak,-1}^{(m)}(z,\lambda_F,\lambda_a) &=
-    \mathcal{I}_{ak,-1}^{(m)}(z,\lambda_F)
-    + \sum_{n=0}^{2m-1}\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)\,
-    \frac{\ln^{n+1}\!\lambda_a}{n+1}\,,
 \end{align}
 \end{subequations}
 and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. 
 
+We suppress the argument on the coefficients $\mathcal{C}_n^{(m)}$ for brevity in the following.
 
-
-\subsection{Leading-logarithmic coefficients}
+\subsection{LL coefficients}
 \label{subsec:LL-coeff}
 
 The first leading-logarithmic coefficient in Ref.~\cite{Gaunt:2015pea} is defined as
 \begin{equation}
 \label{eq:C11}
-    \mathcal{C}_1^{(1)}(\{p\},M,\mu_R)=\frac{B_{i;\ell=1,1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j;\ell=2,1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
-    J_{\ell=3,1}^{(1)}(\lambda_3)
+    \mathcal{C}_1^{(1)}=\frac{B_{\kappa_1,1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,1}^{(1)}(\lambda_3)
     +\widehat{S}^{(1)}_{\kappa,1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
 \end{equation}
 
@@ -1711,14 +1745,14 @@ which via Eq.~\eqref{eq:coeff-convent} gives
 \end{equation}
 in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h24}.
 
-\subsection{Next-to-leading-logarithmic coefficients}
+\subsection{NLL coefficients}
 \label{subsec:NLL-coeff}
 
 The first NLL resummation coefficient
 
 \begin{equation}
 \label{eq:C10}
-    \mathcal{C}_0^{(1)}(\{p\},M,\mu_R)=\frac{B_{i,0}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j,0}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+    \mathcal{C}_0^{(1)}=\frac{B_{i,0}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j,0}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
     J_{\ell=3,0}^{(1)}(\lambda_3)
     +\widehat{S}^{(1)}_{\kappa,0}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
 \end{equation}
@@ -1780,14 +1814,14 @@ Applying Eq.~\eqref{eq:coeff-convent} gives
 \end{equation}
 which agrees exactly with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h23}.
 
-\subsection{Next-to-next-to-leading-logarithmic coefficients}
+\subsection{NNLL coefficients}
 \label{subsec:NNLL-coeff}
 
 The first NNLL coefficient we consider is $\mathcal{C}^{(1)}_0$. This is defined as
 \begin{equation}
 \begin{aligned}
-    \mathcal{C}_{-1}^{(1)}&(\{p\},M,\mu_R)=H^{(1)}_{\rm SCET}\,+\frac{B_{i;\ell=1,-1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j;\ell=2,-1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}\\
-    &\qquad\qquad+J_{\ell=3,-1}^{(1)}(\lambda_c)
+   & \mathcal{C}_{-1}^{(1)}=H^{(1)}_{\rm SCET}\,+\frac{B_{\kappa_1,-1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,-1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}\\
+    &\qquad\qquad+J_{\kappa_3,-1}^{(1)}(\lambda_c)
     +\widehat{S}^{(1)}_{\kappa,-1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,.
 \end{aligned}
 \end{equation}
@@ -1878,44 +1912,11 @@ given by $n=1$ and $n=0$ respectively in
     \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
 \end{aligned}
 \end{equation}
-The beam function coefficients are related to the
-coefficients $\mathcal{I}_{ij}$ by
-\begin{equation}
-  B_{i,n}^{(m)}(x_i,\mu_R,\mu_F,\lambda_i) =
-  \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ik,n}^{(m)}\!\left(z,\lambda_F,\lambda_i\right)
-  f_k\!\left(\frac{x_i}{z},\mu_F\right)\,.
-\end{equation}
+
 We have substituted these directly into Eq.~\eqref{eq:Cn1} for a
 more transparent comparison with \textsc{ARES}, and refer to
 $\mathcal{I}_{ij}$ as the beam function coefficients throughout.
 
-The functions in Eq.~\eqref{eq:Cn1} are expanded in logarithms of the $\lambda$
-parameters as
-\begin{subequations}
-\label{eq:subt-mn-exp}
-\begin{align}
-    J_{\ell=3,n}^{(m)}(\lambda_3) &= J_{\ell=3,n}^{(m)}
-    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{c,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
-    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) &=
-    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
-    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
-    \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,, \\
-    \mathcal{I}_{i;\ell=1, k,n}^{(m)}(z,\lambda_F,\lambda_a) &=
-    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)
-    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
-    \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,
-\end{align}
-\end{subequations}
-and analogously for $\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
-The $\lambda$
-parameters are defined as
-\begin{equation}
-    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
-    \lambda_s = \frac{M}{\mu_R}\,, \qquad
-    \lambda_1 = \frac{Q_1 M}{\mu_R}\,, \qquad
-    \lambda_2 = \frac{Q_2 M}{\mu_R}\,, \qquad
-    \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
-\end{equation}
 
 
 
