@@ -1660,17 +1660,17 @@ the denominator should be interpreted as $n=1$.
 The beam function coefficients are related to the
 coefficients $\mathcal{I}_{ij}$ by
 \begin{equation}
-  B_{i,n}^{(m)}(x_i,\mu_R,\mu_F,\lambda_i) =
-  \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ik,n}^{(m)}\!\left(z,\lambda_F,\lambda_i\right)
-  f_k\!\left(\frac{x_i}{z},\mu_F\right)\,.
+  B_{\kappa_1,n}^{(m)}(x_1,\mu_R,\mu_F,\lambda_1) =
+  \sum_k\int\frac{dz}{z}\,\mathcal{I}_{\kappa_1;k,n}^{(m)}\!\left(z,\ln\frac{\mu_R^2}{\mu_F^2},\lambda_1\right)
+  f_k\!\left(\frac{x_1}{z},\mu_F\right)\,.
 \end{equation}
 The functions in Eq.~\eqref{eq:Cn1} are expanded in logarithms of the $\lambda$
 parameters as
 \begin{subequations}
 \label{eq:subt-mn-exp}
 \begin{align}
-    &\mathcal{I}_{i;\ell=1, k,n}^{(m)}(z,\lambda_F,\lambda_a) =
-    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)
+    &\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F,\lambda_a) =
+    \mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)
     + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
     \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,\\
     &J_{\ell=3,n}^{(m)}(\lambda_3) = J_{\ell=3,n}^{(m)}
@@ -1707,7 +1707,7 @@ parameters are defined as
 \end{subequations}
 and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. 
 
-We suppress the argument on the coefficients $\mathcal{C}_n^{(m)}$ for brevity in the following.
+We suppress the argument on the coefficients $\mathcal{C}_n^{(m)}$ and the functions for brevity in the following.
 
 \subsection{LL coefficients}
 \label{subsec:LL-coeff}
@@ -1730,7 +1730,9 @@ Applying Eq.~\eqref{eq:coeff-convent} immediately yields
 which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
 
 \begin{equation}
-	\mathcal{C}^{(2)}_3(\{p\},M,\mu_R)=
+	\mathcal{C}^{(2)}_3=\frac{B_{\kappa_1,3}^{(2)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,3}^{(2)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,3}^{(2)}(\lambda_3)
+    +\widehat{S}^{(2)}_{\kappa,3}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
 \end{equation}
 
 Starting from $\mathcal{C}^{(2)}_3$, we find that by
@@ -1894,24 +1896,6 @@ however one can find in the Mathematica notebook in Ref.~\cite{peake2026validati
 that $\mathcal{C}^{(1)}_{-1}=2h_{10}$ as given in Eq.~\eqref{eq:coeff-convent}.
 
 
-
-\subsection{NLO ingredients}
-\label{subsec:NLO-ingred}
-
-
-At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
-given by $n=1$ and $n=0$ respectively in
-\begin{equation}
-\label{eq:Cn1}
-\begin{aligned}
-    \mathcal{C}_n^{(1)}&(\{p\},M,\mu_R)=J_{c,n}^{(1)}(\lambda_c)
-    +\widehat{S}^{(1)}_{\kappa,n}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\\
-    &+\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}(z,\lambda_F,\lambda_a)
-    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    +\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}(z,\lambda_F,\lambda_b)
-    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
-\end{aligned}
-\end{equation}
 
 We have substituted these directly into Eq.~\eqref{eq:Cn1} for a
 more transparent comparison with \textsc{ARES}, and refer to
