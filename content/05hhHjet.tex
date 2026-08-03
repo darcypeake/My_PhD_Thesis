@@ -1646,7 +1646,15 @@ from the incoming partons, with momentum fractions $x_1,x_2$. The jet function
 $J_{\kappa_3,n}^{(m)}(\lambda_3)$ encodes collinear emissions from the outgoing
 parton. The soft function $\widehat{S}_{\kappa,n}^{(m)}(\{\hat{p}_\ell\},\lambda_s)$,
 with $\kappa\equiv\{\kappa_1,\kappa_2,\kappa_3\}$, describes soft emissions between
-the partons and depends on the normalised vectors $\hat{p}_\ell=p_\ell/Q_\ell$.
+the partons and depends on the normalised vectors $\hat{p}_\ell=p_\ell/Q_\ell$. The
+$\lambda$ parameters are defined as
+\begin{equation}
+    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
+    \lambda_s = \frac{M}{\mu_R}\,, \qquad
+    \lambda_1 = \frac{Q_1 M}{\mu_R}\,, \qquad
+    \lambda_2 = \frac{Q_2 M}{\mu_R}\,, \qquad
+    \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
+\end{equation}
 
 The beam function coefficients are related to the
 coefficients $\mathcal{I}_{ij}$ by
@@ -1659,48 +1667,20 @@ where these along with the soft and jet function coefficients are given in expli
 in Appendix.~\ref{ap:subtract-ingred}.
 
 In order to make the following calculations more compact, we
-introduce additional notation, adapted from Ref.~\cite{Gaunt:2015pea} to our conventions. 
+introduce additional notation, adapted from Ref.~\cite{Gaunt:2015pea} to our conventions,
+such that the coefficients are expanded in powers of their respective $\lambda$
+parameter i.e.\
 The functions are expanded in
 logarithms of the $\lambda$ parameters as
 \begin{subequations}
 \label{eq:subt-mn-exp}
 \begin{align}
-    &\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F,\lambda_1) =
-    \mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)
-    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
-    \mathcal{I}_{\kappa_1 k,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_1\,,\\
     &J_{\kappa_3,n}^{(m)}(\lambda_3) = J_{\kappa_3,n}^{(m)}
     + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{\kappa_3,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
-    &\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) =
-    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
-    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
-    \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,,
+    &J_{\kappa_3,-1}^{(m)}(\lambda_3) =J_{\kappa_3,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{\kappa_3,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_3}{n+1}\,, 
 \end{align}
 \end{subequations}
-and analogously for $\mathcal{I}_{\kappa_2 k,n}^{(m)}(z,\lambda_F,\lambda_2)$. The
-$\lambda$ parameters are defined as
-\begin{equation}
-    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
-    \lambda_s = \frac{M}{\mu_R}\,, \qquad
-    \lambda_1 = \frac{Q_1 M}{\mu_R}\,, \qquad
-    \lambda_2 = \frac{Q_2 M}{\mu_R}\,, \qquad
-    \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
-\end{equation}
-
-For the $\mathcal{C}_{-1}^{(m)}$ coefficients:
-\begin{subequations}
-\begin{align}
-    &\mathcal{I}_{\kappa_1 k,-1}^{(m)}(z,\lambda_F,\lambda_1) =
-    \mathcal{I}_{\kappa_1 k,-1}^{(m)}(z,\lambda_F)
-    + \sum_{n=0}^{2m-1}\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)\,
-    \frac{\ln^{n+1}\!\lambda_1}{n+1}\,,\\
-    &J_{\kappa_3,-1}^{(m)}(\lambda_3) =J_{\kappa_3,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{\kappa_3,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_3}{n+1}\,, \\
-   & \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) =
-    \widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\,
-    \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,
-\end{align}
-\end{subequations}
-and analogously for $\mathcal{I}_{\kappa_2 k,-1}^{(m)}$.
+and analogously for the remaining functions. 
 
 To compare the SCET results with the \textsc{ARES} expansion we relate the two sets
 of coefficients. Since the \textsc{ARES} coefficients arise from the integrated
@@ -1726,9 +1706,9 @@ The first leading-logarithmic coefficient in Ref.~\cite{Gaunt:2015pea} is define
 \label{eq:C11}
     \mathcal{C}_1^{(1)}=\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
     J_{\kappa_3,1}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
+    +\widehat{S}^{(1)}_{\kappa,1}\!\left(\{\hat{p}_\ell\},\lambda_s\right)\,.
 \end{equation}
-
+Using the formulae from Eq.~\eqref{eq:C11-ingred}, we obtain:
 \begin{equation}
     \mathcal{C}^{(1)}_1=-4\sum_{\ell}C_{\ell}\,.
 \end{equation}
@@ -1738,15 +1718,19 @@ Applying Eq.~\eqref{eq:coeff-convent} immediately yields
 \end{equation}
 which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
 
+The other coefficient contributing at LL order is:
 \begin{equation}
-	\mathcal{C}^{(2)}_3=\frac{B_{\kappa_1,3}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,3}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+\begin{aligned}
+	&\mathcal{C}^{(2)}_3=\frac{B_{\kappa_1,3}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,3}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
     J_{\kappa_3,3}^{(2)}(\lambda_3)
-    +\widehat{S}^{(2)}_{\kappa,3}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
+    +\widehat{S}^{(2)}_{\kappa,3}\!\left(\{\hat{p}_\ell\},\lambda_s\right)\\[0.5ex]
+    &\qquad +\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}J_{\kappa_3,m}^{(1)}(\lambda_3)
+    +\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}J_{\kappa_3,m}^{(1)}(\lambda_3)+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\widehat{S}_{\kappa,1}^{(1)}(\{\hat{p}_{\ell}\},\lambda_s)\\[0.5ex]
+    &\qquad+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\widehat{S}_{\kappa,1}^{(1)}(\{\hat{p}_{\ell}\},\lambda_s)+J_{\kappa_3,n}^{(1)}(\lambda_3)\,\widehat{S}_{\kappa,1}^{(1)}(\{\hat{p}_{\ell}\},\lambda_s)+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\,.
+ \end{aligned}   
 \end{equation}
-
-Starting from $\mathcal{C}^{(2)}_3$, we find that by
-substituting the ingredients from Eq.~\eqref{eq:C23-ingred} into
-Eq.~\eqref{eq:C32} we obtain
+Substituting the formulae found in Eqs.~\eqref{eq:C11-ingred} and ~\eqref{eq:C23-ingred},
+this drastically simplifies to
 \begin{equation}
     \mathcal{C}^{(2)}_3=8\left(\sum_{\ell}C_{\ell}\right)^2\,.
 \end{equation}
@@ -1759,15 +1743,14 @@ in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h24}.
 \subsection{NLL coefficients}
 \label{subsec:NLL-coeff}
 
-The first NLL resummation coefficient
-
+The first NLL resummation coefficient is
 \begin{equation}
 \label{eq:C10}
-    \mathcal{C}_0^{(1)}=\frac{B_{i,0}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{j,0}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
-    J_{\ell=3,0}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,0}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
+    \mathcal{C}_0^{(1)}=\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,0}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,0}\left(\{\widehat{p}_\ell\},\lambda_s\right)\,.
 \end{equation}
-
+Using the formulae in Eqs.~\eqref{eq:C11-ingred} and~\eqref{eq:C10-ingred}, we find this gives
 \begin{equation}
 \label{eq:C10-init}
     \begin{aligned}
@@ -1782,7 +1765,7 @@ The first NLL resummation coefficient
     &-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
     \end{aligned}
 \end{equation}
-where $\gamma^{(0)}_{\ell}$ are given in Eq.~\eqref{eq:gammal-flav} and $P_{ak}(z)$ are the full AP splitting functions defined in Eq.~\eqref{eq:full-AP}. The $\mu_R$ dependence cancels throughout, giving rise to
+which simplifies to
 \begin{equation}
 \label{eq:C01-simplified}
     \begin{aligned}
@@ -1806,10 +1789,16 @@ Applying Eq.~\eqref{eq:coeff-convent}, we obtain
     -2C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,,
     \end{aligned}
 \end{equation}
-which agrees with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h11}.
+which is in exact agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h11}.
 
+The next NLL coefficient is
 \begin{equation}
-	\mathcal{C}_2^{(2)}
+\begin{aligned}
+&\mathcal{C}^{(2)}_2=\frac{B_{\kappa_1,2}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,2}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,2}^{(2)}(\lambda_3)
+    +\widehat{S}^{(2)}_{\kappa,2}\left(\lambda_s\right)\\[0.5ex]
+    &\qquad +
+ \end{aligned}
 \end{equation}
 
 Next, the coefficient $\mathcal{C}^{(2)}_2$, is found by
@@ -1830,11 +1819,8 @@ which agrees exactly with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h
 
 The first NNLL coefficient we consider is $\mathcal{C}^{(1)}_0$. This is defined as
 \begin{equation}
-\begin{aligned}
-   & \mathcal{C}_{-1}^{(1)}=H^{(1)}_{\rm SCET}\,+\frac{B_{\kappa_1,-1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,-1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}\\
-    &\qquad\qquad+J_{\kappa_3,-1}^{(1)}(\lambda_c)
-    +\widehat{S}^{(1)}_{\kappa,-1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,.
-\end{aligned}
+    \mathcal{C}_{-1}^{(1)}=H^{(1)}_{\rm SCET}\,+\frac{B_{\kappa_1,-1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,-1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,-1}^{(1)}(\lambda_c)
+    +\widehat{S}^{(1)}_{\kappa,-1}\left(\lambda_s\right)\,,
 \end{equation}
 where 
 
@@ -1904,13 +1890,15 @@ We will not perform the exact derivation here to see how these terms compare
 however one can find in the Mathematica notebook in Ref.~\cite{peake2026validation}
 that $\mathcal{C}^{(1)}_{-1}=2h_{10}$ as given in Eq.~\eqref{eq:coeff-convent}.
 
+The remaining coefficients $\mathcal{C}^{(2)}_1$ and
+$\mathcal{C}^{(2)}_0$ are defined as
 
 
-We have substituted these directly into Eq.~\eqref{eq:Cn1} for a
-more transparent comparison with \textsc{ARES}, and refer to
-$\mathcal{I}_{ij}$ as the beam function coefficients throughout.
-
-
+considerably more involved, depending on
+significantly more complex ingredients as shown in Eqs.~\eqref{eq:C21-ingred} and~\eqref{eq:C20-ingred}. We therefore validate $h_{22}$
+and $h_{21}$ symbolically using \textsc{Mathematica}. Snippets of this code
+are presented in Appendix~\ref{ap:symb-val}, while the actual code may be found in 
+Ref.~\cite{peake2026validation}.
 
 
 
@@ -1943,20 +1931,10 @@ Finally, the cross-terms between two one-loop functions arising from the
 $\mathcal{L}_n\otimes\mathcal{L}_m$ convolution are
 \begin{equation}
 \label{eq:Xnm11-def}
-\begin{aligned}
-    X_{n,m}^{(1+1)} \equiv{}&
-    \left[J_{c,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}\right.\\
-    &+\!\left(J_{c,m}^{(1)}+\widehat{S}_{\kappa,m}^{(1)}\right)\!
-    \left(\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
-    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    +\sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}
-    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right)\\
-    &\left.+\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
-    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
-    \cdot\sum_{k'}\int\frac{dz'}{z'}\,\mathcal{I}_{bk',m}^{(1)}
-    \frac{f_{k'}(x_b/z',\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
-\end{aligned}
-\end{equation}
+    X_{n,m}^{(1+1)} \equiv
+J_{\kappa_3,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}+\frac{B_{\kappa_1}}{f_i}J_{\kappa_3,m}^{(1)}
+    +\frac{B_{\kappa_2}}{f_j}J_{\kappa_3,m}^{(1)}+\frac{B_{\kappa_1}}{f_i}\widehat{S}_{\kappa,m}^{(1)}
+    +\frac{B_{\kappa_2}}{f_j}\widehat{S}_{\kappa,m}^{(1)}+\frac{B_{\kappa_1}}{f_i}\frac{B_{\kappa_2}}{f_j}\end{equation}
 With these definitions, the NNLO subtraction coefficients are
 \begin{subequations}
 \label{eq:NNLO-Cn}
@@ -1980,12 +1958,7 @@ we believe this to be an error on their side and these terms must contribute to 
 up the full coefficient. \ABquestion{Need to make sure this is correct and not
 something different about their subtraction scheme?}
 
-The remaining coefficients $\mathcal{C}^{(2)}_1$ and
-$\mathcal{C}^{(2)}_0$ are considerably more involved, depending on
-significantly more complex ingredients as shown in Eqs.~\eqref{eq:C21-ingred} and~\eqref{eq:C20-ingred}. We therefore validate $h_{22}$
-and $h_{21}$ symbolically using \textsc{Mathematica}. Snippets of this code
-are presented in Appendix~\ref{ap:symb-val}, while the actual code may be found in 
-Ref.~\cite{peake2026validation}.
+
 
 In the next section, we provide an alternative analytic 
 validation for the ISR procedure as a whole. 
