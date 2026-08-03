@@ -1617,73 +1617,68 @@ Ref.~\cite{vanBeekveld:2025zjh} in Sec.~\ref{sec:LTS-val}.
  \section{Comparison with $N$-jettiness}
  \label{subsec:N-jet-SCET-val}
  
- The expression for the master formula, $\Sigma_{ij}$, in Eq.~\eqref{eq:Sigma-NNLL},
- can be expanded in terms of $\alpha_s$ and $L$:
-  \begin{equation}
- \label{eq:sig-coeff}
+The expression for the master formula, $\Sigma_{ij}$, in Eq.~\eqref{eq:Sigma-NNLL},
+can be expanded in terms of $\alpha_s$ and $L$:
+\begin{equation}
+\label{eq:sig-coeff}
 	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
 \end{equation}
-where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$. The expansion coefficients $h_{nm}$
-are determined analytically by expanding the NNLL Radiator and collecting the
-terms at each order in the cumulant. Coefficients up to order NLL for a general observable
-are given in  Ref.~\cite{Banfi:2004yd} and the coefficients necessary for NNLL for the one-jettiness
-observable are contained in Appendix~\ref{ap:ARES-coeff}.
+where $\bar{\alpha}_s\equiv\alpha_s(Q)/2\pi$. The expansion coefficients $h_{nm}$ are
+determined analytically by expanding the NNLL Radiator and collecting terms at each
+order in the cumulant. Coefficients up to NLL for a general observable are given in
+Ref.~\cite{Banfi:2004yd}, while the NNLL coefficients for one-jettiness are given in
+Appendix~\ref{ap:ARES-coeff}.
 
 Having derived the NNLL cumulant for hadronic collisions, we need to check our resummation formula, in particular to check that the treatment of the initial-state radiation is correct. We are able to do this by validating these resummation coefficients. \ABquestion{Do I need to talk about how we also need to match to fixed order but we are just doing the beginning bit?}
-In order to validate these coefficients, we are able to extract coefficients from the logarithms derived in the SCET-based $N$-jettiness subtraction framework of Ref.~\cite{Gaunt:2015pea}. These coefficients, $\mathcal{C}_n^{(m)}$, are referred to as subtraction coefficients and the comparison is performed analyitcally. 
+In order to validate these coefficients, we are able to extract coefficients from the logarithms derived in the SCET-based $N$-jettiness subtraction framework of Ref.~\cite{Gaunt:2015pea}. These coefficients, $\mathcal{C}_n^{(m)}$, are referred to as subtraction coefficients and the comparison is performed analytically. 
 
-The subtraction coefficients
-$\mathcal{C}_n^{(m)}(\{p\},M,\mu_R)$ are expressed in terms of the hard, beam, jet,
-and soft functions and are dimensionless. They depend on the born momenta, the invariant mass of the $Z$-boson and the renormalisation scale. These are functions which occur in SCET where
-the beam functions encodes all collinear emissions
-from the incoming partons, the jet function encodes collinear
-emissions from the outgoing parton. The soft function describes all soft emissions between the partons.
-All functions depend on the flavour of the partons with the beam functions having dependence
-on the momentum fractions of the incoming partons.
+The subtraction coefficients 
+$\mathcal{C}_n^{(m)}(\{p\},M,\mu_R)$ are dimensionless functions of the Born momenta, 
+ invariant mass of the $Z$-boson and the renormalisation scale, built from the hard, beam, jet,
+and soft function coefficients. These building blocks are referred to as the subtraction ingredients. 
 
-
-
- 
-To compare the SCET results with the \textsc{ARES} expansion, it is necessary to
-establish a correspondence between the two sets of coefficients. Since the \textsc{ARES}
-coefficients arise from the integrated distribution while those of
-Ref.~\cite{Gaunt:2015pea} are differential, and accounting for the difference between
-the $4\pi$ and $2\pi$ conventions used for $\alpha_s$, we find
-\begin{equation}
-\label{eq:coeff-convent}
-h_{mn}=\frac{\mathcal{C}_{n-1}^{(m)}}{n}\,\frac{(-1)^n}{2m}.
-\end{equation}
-Please note that the coefficient,
-$\mathcal{C}_{-1}^{(m)}$,
-the denominator should be interpreted as $n=1$.
+We introduce a bit of notation adapted
+from Ref.~\cite{Gaunt:2015pea} to our conventions. We label the parton on leg $\ell=1$, of flavour $i$, by $\kappa_1$, the parton on leg
+$\ell=2$, of flavour $j$, by $\kappa_2$, and the parton on the outgoing leg $\ell=3$
+by $\kappa_3$. The beam functions $B_{\kappa_1,n}^{(m)}(x_1,\mu_R,\lambda_F,\lambda_1)$
+and $B_{\kappa_2,n}^{(m)}(x_2,\mu_R,\lambda_F,\lambda_2)$ encode collinear emissions
+from the incoming partons, with momentum fractions $x_1,x_2$. The jet function
+$J_{\kappa_3,n}^{(m)}(\lambda_3)$ encodes collinear emissions from the outgoing
+parton. The soft function $\widehat{S}_{\kappa,n}^{(m)}(\{\hat{p}_\ell\},\lambda_s)$,
+with $\kappa\equiv\{\kappa_1,\kappa_2,\kappa_3\}$, describes soft emissions between
+the partons and depends on the normalised vectors $\hat{p}_\ell=p_\ell/Q_\ell$.
 
 The beam function coefficients are related to the
 coefficients $\mathcal{I}_{ij}$ by
 \begin{equation}
   B_{\kappa_1,n}^{(m)}(x_1,\mu_R,\mu_F,\lambda_1) =
   \sum_k\int\frac{dz}{z}\,\mathcal{I}_{\kappa_1;k,n}^{(m)}\!\left(z,\ln\frac{\mu_R^2}{\mu_F^2},\lambda_1\right)
-  f_k\!\left(\frac{x_1}{z},\mu_F\right)\,.
+  f_k\!\left(\frac{x_1}{z},\mu_F\right)\,,
 \end{equation}
-The functions in Eq.~\eqref{eq:Cn1} are expanded in logarithms of the $\lambda$
-parameters as
+where these along with the soft and jet function coefficients are given in explicitly
+in Appendix.~\ref{ap:subtract-ingred}.
+
+In order to make the following calculations more compact, we
+introduce additional notation, adapted from Ref.~\cite{Gaunt:2015pea} to our conventions. 
+The functions are expanded in
+logarithms of the $\lambda$ parameters as
 \begin{subequations}
 \label{eq:subt-mn-exp}
 \begin{align}
-    &\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F,\lambda_a) =
+    &\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F,\lambda_1) =
     \mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)
     + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
-    \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,\\
-    &J_{\ell=3,n}^{(m)}(\lambda_3) = J_{\ell=3,n}^{(m)}
-    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{c,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
+    \mathcal{I}_{\kappa_1 k,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_1\,,\\
+    &J_{\kappa_3,n}^{(m)}(\lambda_3) = J_{\kappa_3,n}^{(m)}
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{\kappa_3,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
     &\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) =
     \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
     + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
     \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,,
 \end{align}
 \end{subequations}
-and analogously for $\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
-The $\lambda$
-parameters are defined as
+and analogously for $\mathcal{I}_{\kappa_2 k,n}^{(m)}(z,\lambda_F,\lambda_2)$. The
+$\lambda$ parameters are defined as
 \begin{equation}
     \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
     \lambda_s = \frac{M}{\mu_R}\,, \qquad
@@ -1692,22 +1687,36 @@ parameters are defined as
     \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
 \end{equation}
 
-
+For the $\mathcal{C}_{-1}^{(m)}$ coefficients:
 \begin{subequations}
 \begin{align}
-    &\mathcal{I}_{\kappa_1,-1}^{(m)}(z,\lambda_F,\lambda_a) =
-    \mathcal{I}_{\kappa_1,-1}^{(m)}(z,\lambda_F)
-    + \sum_{n=0}^{2m-1}\mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)\,
-    \frac{\ln^{n+1}\!\lambda_a}{n+1}\,,\\
+    &\mathcal{I}_{\kappa_1 k,-1}^{(m)}(z,\lambda_F,\lambda_1) =
+    \mathcal{I}_{\kappa_1 k,-1}^{(m)}(z,\lambda_F)
+    + \sum_{n=0}^{2m-1}\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)\,
+    \frac{\ln^{n+1}\!\lambda_1}{n+1}\,,\\
     &J_{\kappa_3,-1}^{(m)}(\lambda_3) =J_{\kappa_3,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{\kappa_3,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_3}{n+1}\,, \\
    & \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) =
     \widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\,
-    \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,\\
+    \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,
 \end{align}
 \end{subequations}
-and analogously for $\mathcal{I}_{bk,-1}^{(m)}$. 
+and analogously for $\mathcal{I}_{\kappa_2 k,-1}^{(m)}$.
 
-We suppress the argument on the coefficients $\mathcal{C}_n^{(m)}$ and the functions for brevity in the following.
+To compare the SCET results with the \textsc{ARES} expansion we relate the two sets
+of coefficients. Since the \textsc{ARES} coefficients arise from the integrated
+distribution while those of Ref.~\cite{Gaunt:2015pea} are differential, and
+accounting for the difference between the $4\pi$ and $2\pi$ conventions used for
+$\alpha_s$, we find
+\begin{equation}
+\label{eq:coeff-convent}
+h_{mn}=\frac{\mathcal{C}_{n-1}^{(m)}}{n}\,\frac{(-1)^n}{2m}\,.
+\end{equation}
+For $\mathcal{C}_{-1}^{(m)}$ the denominator is interpreted as $n=1$.
+
+We suppress the arguments of $\mathcal{C}_n^{(m)}$ and the functions above for
+brevity in what follows.
+
+
 
 \subsection{LL coefficients}
 \label{subsec:LL-coeff}
@@ -1715,7 +1724,7 @@ We suppress the argument on the coefficients $\mathcal{C}_n^{(m)}$ and the funct
 The first leading-logarithmic coefficient in Ref.~\cite{Gaunt:2015pea} is defined as
 \begin{equation}
 \label{eq:C11}
-    \mathcal{C}_1^{(1)}=\frac{B_{\kappa_1,1}^{(1)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+    \mathcal{C}_1^{(1)}=\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
     J_{\kappa_3,1}^{(1)}(\lambda_3)
     +\widehat{S}^{(1)}_{\kappa,1}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
 \end{equation}
@@ -1730,7 +1739,7 @@ Applying Eq.~\eqref{eq:coeff-convent} immediately yields
 which is in agreement with the \textsc{ARES} coefficient shown in Eq.~\eqref{eq:h12}.
 
 \begin{equation}
-	\mathcal{C}^{(2)}_3=\frac{B_{\kappa_1,3}^{(2)}(x_1,\mu_R,\mu_F,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,3}^{(2)}(x_2,\mu_R,\mu_F,\lambda_2)}{f_j(x_2,\mu_F)}+
+	\mathcal{C}^{(2)}_3=\frac{B_{\kappa_1,3}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,3}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
     J_{\kappa_3,3}^{(2)}(\lambda_3)
     +\widehat{S}^{(2)}_{\kappa,3}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\,
 \end{equation}
