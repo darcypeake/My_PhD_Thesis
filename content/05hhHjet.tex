@@ -33,11 +33,13 @@ To illustrate the method, we consider the event-shape observable
 one-jettiness, which has been studied extensively and already resummed
 to N$^3$LL accuracy~\cite{Alioli:2023rxx}, providing a useful
 benchmark against which to validate our results. One-jettiness is also
-an additive observable, making it particularly straightforward to treat
+an additive observable (see Sec.~\ref{subsec:additive}), making it particularly straightforward to treat
 within \textsc{ARES}. It therefore serves as an ideal worked example
 through which to demonstrate the implementation of the formalism,
 rather than as a source of new phenomenological results. We validate
 our results analytically against the known resummation of one-jettiness.
+\add{Reference the N-jettiness paper and also mention that we validate the ISR 
+treatment generally against LTS paper.}
 
 Unlike the NLL discussion presented in the previous chapter, we do not
 derive the NNLL master formula from first principles, as this is not
@@ -54,10 +56,6 @@ We then apply the formalism to one-jettiness, and close with a
 validation of the results against existing calculations in the
 literature.
 
-
-
-
-
 \section{General setup}
 \label{sec:setup}
 
@@ -66,17 +64,15 @@ We consider the production of a $Z$ boson and a hard jet in hadron collisions,
   \label{eq:Z+jet}
   h_1(P_1)+h_2(P_2) \to Z(q) + \mathrm{jet}(p_J)+\dots\,,
 \end{equation}
-where $h_1$ and $h_2$ denote the incoming hadrons with momenta $P_1$ and $P_2$, and the dots represents accompanying hadrons. At Born level, the process proceeds through two incoming partons with momenta $p_1=x_1P_1$ and $p_2=x_2P_2$, producing a $Z$ boson with momentum $q$ and a single hard parton with momentum $p_3$. Beyond Born level, $p_3$ will recoil
-against additional partons. Its momentum will change to
-$\tilde p_3$, and it will be clustered with other partons to form a hard jet $p_J$. 
-At Born level, the two coincide, such that $p_J=p_3$.
+where $h_1$ and $h_2$ denote the incoming hadrons with momenta $P_1$ and $P_2$, and the dots represent accompanying hadrons. At Born level, the process proceeds through two incoming partons with momenta $p_1=x_1P_1$ and $p_2=x_2P_2$, producing a $Z$ boson with momentum $q$ and a single hard parton with momentum $p_3$. 
+Beyond Born level, additional QCD radiation causes the hard parton to recoil, modifying its momentum to $\tilde p_3$. The recoiling parton is subsequently clustered together with the accompanying radiation to form the observed jet with momentum $p_J$. In the Born limit, the two coincide, so that $p_J=p_3$.
 
 We consider recursively infrared and collinear (rIRC) safe event
 shapes, which we denote generally as functions $V(q_1,\dots,q_n)$ of
 hadron momenta $q_1, \dots, q_n$. As an example, we consider
-1-jettiness, an observable that is widely studied in SCET and is the
+1-jettiness, an observable that has been widely studied in SCET.  It corresponds to the 
 $N=1$ case of the more general $N$-jettiness observable~\cite{Stewart:2010tn}, 
-which quantifies how well the final state can be described by $N$ narrow jets. This is
+which quantifies how well the final state can be described by $N$ narrow jets. It is
 defined as
 \begin{equation}
  \label{eq:T1}
@@ -84,25 +80,26 @@ defined as
 \end{equation}
 where $q_i$ is the four-momentum of a \emph{hadron}, and
 $Q_1, Q_2, Q_3$ three momentum scales. The two ``incoming'' momenta, 
-$\bar p_1$ and $\bar p_2$ are defined as $\bar p_i=E_i n_i$, where
-\ABquestion{Still don't quite understand the difference between $\bar{p}_i$ and $p_i$?}
+$\bar p_1$ and $\bar p_2$ are defined as 
+\ABquestion{Still don't quite understand the difference between $\bar{p}_i$ and $p_i$
+and what we mean by the quotation marks around ``incoming''  are meant to indicate?}
 \begin{equation}
 	\bar{p}_1^\mu=\frac{1}{2}n_2\cdot (p_J+q)n_1^{\mu}\,,\quad\quad
 	\bar{p}_2^\mu=\frac{1}{2}n_1\cdot (p_J+q)n_2^{\mu}\,,
 \end{equation}
-and
+where
 \begin{equation}
   \label{eq:ni-incoming}
   n_1 = (1,0,0,1)\,,\qquad n_2 = (1,0,0,-1)\,.
 \end{equation}
 When $\mathcal{T}_1\to 0$, we are in the ``1-jet region'', in which
-the outgoing jet $p_J$ recoils against the $Z$ boson. In that case,
+the outgoing jet $p_J$ recoils against the $Z$ boson. In this limit,
 $\bar p_1$ and $\bar p_2$ coincide with the Born momenta $p_1$ and
 $p_2$.
 
-We can also consider a normalised version of 1-jettiness,
+We also introduce the normalised observable
 $\tau_1\equiv \mathcal{T}_1/M$, where $M$ denotes a generic hard scale. 
-A particular choice of $Q_1, Q_2, Q_3$
+Choosing
 \begin{equation}
   \label{eq:Qi-inv}
   Q_1 = \frac{2 \bar{p}_1\cdot p_J}{p_{T,J}}\,,  \quad Q_2 = \frac{2 \bar{p}_2\cdot p_J}{p_{T,J}}\,,
@@ -110,48 +107,48 @@ A particular choice of $Q_1, Q_2, Q_3$
 \end{equation}
 where $p_{T,J}$ is the transverse momentum of the outgoing jet with
 respect to the beam, provides a definition of $\mathcal{T}_1$ that is
-manifestly invariant under boosts along the beam direction:
+manifestly invariant under boosts along the beam direction,
 \begin{equation}
 	\label{eq:T1-binv}
 	\mathcal{T}_1\equiv  \sum_{i} k_{t,i}\min\{e^{(\eta_i-\eta_J)}, e^{-(\eta_i-\eta_J)}, \cosh(\eta_{i}-\eta_J)-\cos(\phi_{i}-\phi_J)\}\,,
 \end{equation}
-where $k_{t,i}$ and $\eta_i$ are the transverse momentum and rapidity
-of hadron $q_i$ with respect to the beam, and $\eta_J$ the rapidity of the hard jet. 
-To reduce the impact of experimental systematics in the measurement of particle momenta, 
+where $k_{t,i}$ and $\eta_i$ denote the transverse momentum and rapidity
+of hadron $q_i$ with respect to the beam, while $\eta_J$ is the rapidity of the jet. 
+To reduce the impact of experimental systematics associated with the measurements of particle momenta, 
 we can set $M=H_T$, with $H_T$ the scalar sum of all hadron transverse
-momenta, leading to a dimensionless definition of $\tau_1$, namely
+momenta. This leads to the dimensionless observable
 \begin{equation}
 	\label{eq:tau1-binv}
 	\tau_1\equiv  \sum_{i} \frac{k_{t,i}}{H_T}\min\{e^{(\eta_i-\eta_J)}, e^{-(\eta_i-\eta_J)}, \cosh(\eta_{i}-\eta_J)-\cos(\phi_{i}-\phi_J)\}\,.
 \end{equation}
 
-In general, we want the cumulant of an event shape, defined by the constraint that a given
+In general, we are interested in the cumulant of an event shape, defined by imposing that a given
 event shape $V(q_1,q_2,\dots,q_n)$ is less than a given value
-$v$. This observable is such that the one-jet region corresponds
+$v$. For the one-jettiness, this is such that the one-jet region corresponds
 to $v\to 0$. Additionally, in the one-jet region, we wish to fix Born kinematics completely. 
-This can be obtained for instance by measuring the differential cross-section in $\eta_J$, and in the transverse momentum $q_T$ and rapidity $y_Z$ of the $Z$ boson.  In the one-jet limit, the aforementioned
-cross-section takes the form
+This can be obtained for instance by measuring the differential cross-section in $\eta_J$, and in the transverse momentum $q_T$ and rapidity $y_Z$ of the $Z$ boson.  In the one-jet limit, the differential cross section factorises as
 \begin{equation}
   \label{eq:dsigma-def}
   \frac{d\sigma(v)}{dq_T dy_Zd\eta_J} \simeq \sum_{i,j} \int_0^1 \!\! dx_1\, f_i(x_1,\mu_F)\int_0^1 \!\! dx_2\, f_j(x_2,\mu_F)\frac{d\hat \sigma_{ij}}{dq_Tdy_Zd\eta_J} \Sigma_{ij}(\{p_1,p_2,p_3\},v)\,,
 \end{equation}
-\ABquestion{This does map directly to Eq.~\eqref{eq:Sigma-H-fact}?}
+\ABquestion{Can I say, this takes the factorised form of Eq.~\eqref{eq:Sigma-H-fact} in the one-jet limit?}
 In the above equation, we have introduced the partonic cross section
 for the production of a $Z$ boson and an extra jet via the partonic
 subprocess $ij$, where $i$ represents a quark, an antiquark of any
 light flavour ($u,d,c,s,b$, considered massless), or a gluon. The expression in Eq.~\eqref{eq:dsigma-def}
-requires the construction of a mapping between the full event, made up
-of the three hard partons $\{\tilde p\}\equiv\{\tilde p_1,\tilde p_2,\tilde p_3\}$ and an arbitrary number of soft and/or collinear emissions $\{k_i\}$, and
-a Born event with only three hard partons $\{p_1,p_2,p_3\}$. 
+requires the construction of a mapping between the full event -- made up
+of the three hard partons $\{\tilde p\}\equiv\{\tilde p_1,\tilde p_2,\tilde p_3\}$ and an arbitrary number of soft and/or collinear emissions $\{k_i\}$ -- and
+a Born event with only three hard partons $\{p_1,p_2,p_3\}$.  \ABquestion{Can we say anything more about this mapping -- I would
+be confused if they asked me about it?}
 The difference between the approximation on the right-hand side of
-eq.~\eqref{eq:dsigma-def} and the full expression for
+Eq.~\eqref{eq:dsigma-def} and the full expression for
 $ d\sigma(v)/(dq_T dy_Z d\eta_J)$ is a well-defined expansion in powers of the
 strong coupling $\alpha_s$, with coefficients vanishing as a power of
 $v$, potentially enhanced by logarithms of $v$. \ABquestion{Is this
 the rest of the FO expansion at higher values of $v>V$?}
 
 The cumulative distribution $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ contains
-logarithms of $v$ that become large in the near-to-planar region. The
+logarithms of $v$ that become large in the one-jet region. The
 largest of these contributions are double logarithms of the form
 $(\alpha_s L^2)^n$, with $L\equiv \ln(1/v)$. Neglecting 
 coherence-violating effects, if $V(\{\tilde p\},\{k_i\})$ is rIRC
@@ -162,7 +159,7 @@ reorganised as follows
   \label{eq:log-counting}
   \Sigma_{ij}(\{p_1,p_2,p_3\},v) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
 \end{equation}
-\ABquestion{Shall I refer to how this is different to that in Eq.~\eqref{eq:resummed-cumulant}?}
+\ABquestion{You say this should be in Ch.~\ref{ch:resum} but where?}
 As illustrated in Table.~\ref{tab:log-accuracy} the function $g_1(\alpha_s L)$ resums all leading logarithmic (LL)
 terms, $\alpha_s^n L^{n+1}$, in $\ln\Sigma_{ij}$. For rIRC safe
 observables, $g_1$ exponentiates. The function $G_2(\alpha_s L)$
@@ -178,9 +175,8 @@ The main differences between event shape resummation in hadronic
 collisions and $e^+e^-$ annihilation are
 \begin{itemize}
 \item the presence of initial-state radiation;
-\item the fact that there is no single natural hard scale $Q$.
+\item the fact that there is no single natural hard scale.
 \end{itemize}
-\ABquestion{I shouldn't be calling this $Q$, this should be $M$ I think.}
 Nevertheless, as will be made clear in Sec.~\ref{sec:NNLL-initial}, the structure of the NNLL resummation for $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ is the same as for $e^+e^-$ annihilation, but some of the ingredients appearing in the resummation formula have to be slightly modified. In this section, we present the general structure of the NNLL resummation, and discuss the physical meaning of each ingredient. For each partonic channel $ij$, we have 
 \begin{multline}
   \label{eq:Sigma-NNLL}
@@ -209,8 +205,8 @@ respect to the $e^+e^-$ case:
   but their divergences cancel with those of real radiation. In
   order to cancel the singularities of virtual corrections analytically, the
   radiator also includes also a subset of real corrections for suitably
-  defined ``unresolved'' emissions. The procedure to define those
-  emissions is not unique. A proposal adequate for three emitting legs is given in
+  defined unresolved emissions. The procedure to define those
+  emissions is not unique (cf.\ Sec.\ref{sec:NLL-resum}). A proposal adequate for three emitting legs is given in
   Ref.~\cite{Arpino:2019ozn}, leading to a master formula for
   $R_{\rm NNLL}(v)$ whose explicit expression depends only on the
   single-emission parameters $a$, $b_\ell$, $d_\ell$, and
@@ -219,28 +215,19 @@ respect to the $e^+e^-$ case:
   Sec.~\ref{sec:radiator}. It is worth noting that  
   with the knowledge we have acquired so far, the radiator 
   could be computed for a generic observable at N$^3$LL accuracy. 
-  \ABquestion{We have not introduced what resolved/unresolved 
-  and so I think it is necessary to explain what they are exactly here or in the NLL derivation
-  in Sec.\ref{sec:NLL-resum}?}
 
   \item Parton distribution functions enter through the ratios
   $f_i(x_\ell,v^{\frac{1}{a+b_\ell}}Q)/f_i(x_\ell,\mu_F)$,
   where $f_i(x_\ell,\mu_F)$ is the parton distribution function
   corresponding to the flavour of the parton $p_\ell$ entering the hard scattering, with
-  momentum fraction $x_\ell$. The physical meaning of this ratio is the contribution 
-  of all unresolved \emph{hard collinear emissions} below the veto scale 
-  $v^{\frac{1}{a+b_\ell}}Q$ gives the DGLAP evolution of a 
-  parton distribution function. \ABquestion{I want
-  to be a bit more explicit here, can I say:
-  `` between the factorisation scale $\mu_F$ and the veto scale
-  $v^{1/(a+b_\ell)}Q$, the incoming parton can emit collinear
-  gluons that are too soft to be resolved by the observable.
-  These unresolved emissions are not included in
-  $\mathcal{F}_{\rm NLL}$ but they modify the effective PDF seen
+  momentum fraction $x_\ell$. Between the factorisation scale $\mu_F$ and the veto scale
+  $v^{1/(a+b_\ell)}Q$, the incoming parton can emit \emph{hard-collinear}
+  gluons that are too collinear to be resolved by the observable.
+  These unresolved emissions are absent from
+  $\mathcal{F}_{\rm NLL}$ and instead they modify the effective PDF seen
   by the hard process. The ratio $f_i(x_\ell,v^{1/(a+b_\ell)}Q)/
   f_i(x_\ell,\mu_F)$ resums precisely this effect via DGLAP
-  evolution from $\mu_F$ down to the veto scale.''}
-  This contribution is absent in
+  evolution from $\mu_F$ down to the veto scale. This contribution is absent in
   $e^+e^-$ annihilation, where there are no incoming partons, and
   is a genuinely new ingredient in hadronic collisions.
 
@@ -255,21 +242,22 @@ respect to the $e^+e^-$ case:
   $\alpha_s$ multiplying the NLL function, $\mathcal{F}^{(ij)}_{\rm NLL}(\lambda)$, 
   hence NNLL. For a generic process, $H_{ij}^{(1)}$ depends on $Q$, kinematic invariants and $\mu_R$. This contribution is process dependent and so will be entirely different between the $\ee$ and hadronic case. The general formula for $H_{ij}^{(1)}$ is derived in Sec.~\ref{sec:H1}; 
    
-\item A single unresolved \emph{hard collinear splitting} of leg
+\item A single unresolved \emph{hard-collinear splitting} of leg
   $\ell$ combines with the corresponding virtual corrections and, in
   the case of initial-state radiation, to the collinear counterterm
   needed to renormalise the parton distribution functions. This gives
   the coefficient $C_{\mathrm{hc},\ell}^{(1)}$, which gives rise to a NNLL
   contribution since it is a term of order $\alpha_s$
   multiplying the NLL function, $\mathcal{F}^{(ij)}_{\rm NLL}(\lambda)$.
-   \ABquestion{ I want to be explicit about this
-  PDF counterterm as I have not explained it anywhere yet, 
-  can I say something like ``The PDF counterterm is necessary to avoid double-counting.
-  In the $\overline{\rm MS}$ scheme the PDF absorbs the collinear $1/\varepsilon$ divergences.
-  Therefore, the real splitting in the collinear limit must be subtracted to prevent this divergence
-  from being counted twice.  Once the real emission, virtual correction,
-and PDF counterterm are combined, all $1/\varepsilon$ poles cancel
-and one is left with a finite $C_{\mathrm{hc},\ell}^{(1)}$.''}
+  \ABquestion{Can I say: $C_{\mathrm{hc},\ell}^{(1)}$ is the finite piece left over once the
+  collinear $1/\varepsilon$ singularities cancel. In $e^+e^-$ annihilation
+  this cancellation happens entirely between the real hard-collinear
+  splitting and its virtual correction. In hadronic collisions, radiation
+  collinear to an incoming leg carries an extra singularity, already
+  absorbed into the PDF, that real and virtual corrections alone cannot
+  remove. The collinear counterterm removes it
+  instead. Combining real, virtual, and, for ISR, the counterterm leaves
+  the finite coefficient $C_{\mathrm{hc},\ell}^{(1)}$.}
 The final-state contribution is identical to that derived in Ref.~\cite{Arpino:2019ozn}, 
 while the initial-state contribution is a new result of this work, derived
  in Sec.~\ref{sec:NNLL-initial}.  
@@ -277,7 +265,7 @@ while the initial-state contribution is a new result of this work, derived
   \item All remaining resolved emissions and their associated virtual
   corrections are collected in the NNLL function
   $\delta\mathcal{F}_{\rm NNLL}(\lambda)$. These consist of one
-  ``special'' soft and/or collinear emission accompanied by an
+  special \emph{soft and/or collinear} emission accompanied by an
   arbitrary ensemble of soft-collinear emissions widely
   separated in angle, together with the corresponding virtual
   corrections:
@@ -462,17 +450,11 @@ we find
   H_{ij}^{(1)}(Q,\mu_R) = \mathcal{H}_1+ \sum_\ell\frac{\gamma_\ell^{(0)}}{C_\ell}\sum_{\bar \ell\ne \ell} C_{\ell\bar \ell}\ln\left(\frac{Q^2_{\ell\bar\ell}}{Q^2}\right)
     \,.
 \end{equation}
-\ndp{The result splits naturally into two pieces. The logarithmic terms
-\[
-\sum_\ell\frac{\gamma_\ell^{(0)}}{C_\ell}
-\sum_{\bar\ell\ne\ell}C_{\ell\bar\ell}
-\ln\left(\frac{Q^2_{\ell\bar\ell}}{Q^2}\right),
-\]
-are universal and depend only on the colour charges and kinematics of
+The result splits naturally into two pieces, where the second term is universal and depend only on the colour charges and kinematics of
 the hard partons. In contrast, the finite constant $\mathcal{H}_1$ is
 process dependent and is determined by the one-loop hard scattering
 amplitude. It must therefore be calculated separately for each hard
-process.}
+process.
 
 \subsection{The NNLL Radiator}
 \label{sec:radiator}
@@ -675,7 +657,7 @@ same principles as for final-state radiation:
   corrections, accompanied by an arbitrary
   number of soft and collinear emissions $\{k_i\}$;
 \item we subtract the double counting occurring when $k$ is also soft,
-\ndp{since such contributions are already included at NLL in $\FNLL$.}
+since such contributions are already included at NLL in $\FNLL$.
 \end{itemize}
 The procedure will involve contributions that are not separately
 finite in four dimensions. We use dimensional regularisation to make
@@ -1825,11 +1807,11 @@ Wilson coefficients, which encode the hard-scattering of the process.
 \ABquestion{Do I need to add in what these Wilson coefficients are? I understand them to
 be found by matching the full QCD amplitude onto SCET at a scale where $\mu_R\simeq \mu_H$?}
 This function is process-specific and
-must be computed explicitly. Since the $Z$ + jet production
-virtual corrections are not  publicly available, \add{not true, add in what A Banfi said.} we use the
+must be computed explicitly. While the finite virtual corrections necessary for the
+$hh\to Z+$ jet are in \textsc{MCFM} and can be obtained from $\ee$ with the appropriate
+analytic continuation, with time permitting we instead use the
 results of $hh\to H $+ jet from Ref.~\cite{Ravindran:2002dc}.
- The
-calculation for the $q\bar{q}\to Hg$ channel is carried out in
+ The calculation for the $q\bar{q}\to Hg$ channel is carried out in
 Appendix~\ref{ap:H1-extraction}, and the remaining channels follow
 in the same way.
 
@@ -1838,8 +1820,8 @@ Eq.~\eqref{eq:Cd1-ingred}, we obtain for the $q\bar{q}\to g H$
 channel 
 \begin{equation}
 \begin{aligned}
-&\mathcal{C}^{(1)}_{-1} = H_{\rm SCET}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\left(2I_{qk}^{(1)}+2P_{qk}(z)\ln\frac{Q_1\,M}{\mu_F^2}\right)\\[0.5ex]
-&\qquad+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\left(2I_{\bar{q}k}^{(1)}+2P_{\bar{q}k}(z)\ln\frac{Q_2\,M}{\mu_F^2}\right)\\[0.5ex]
+&\mathcal{C}^{(1)}_{-1} = H_{\rm SCET}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\left(2I_{qk}^{(1)}(z)+2P_{qk}(z)\ln\frac{Q_1\,M}{\mu_F^2}\right)\\[0.5ex]
+&\qquad+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\left(2I_{\bar{q}k}^{(1)}(z)+2P_{\bar{q}k}(z)\ln\frac{Q_2\,M}{\mu_F^2}\right)\\[0.5ex]
 &\qquad -3C_F\ln\frac{Q_1\,M}{\mu_R^2}+2C_F\ln^2\frac{Q_1\,M}{\mu_R^2}-3C_F\ln\frac{Q_2\,M}{\mu_R^2}+2C_F\ln^2\frac{Q_2\,M}{\mu_R^2} \\[0.5ex]
 &\qquad + C_A\left(\frac{4}{3}-\pi^2\right)+\frac{20}{3}\pi\beta_0-4\pi\beta_0\ln\frac{Q_3\,M}{\mu_R^2}+2C_A\ln^2\frac{Q_3\,M}{\mu_R^2}\\[0.5ex]
 &\qquad+(C_A-2C_F)\left[\ln^2\frac{Q_{12}^2}{Q_1 Q_2}-\frac{\pi^2}{6}+2(I_{12,3}+I_{21,3})\right] \\[0.5ex]
@@ -1854,8 +1836,8 @@ The \textsc{ARES} coefficient $h_{10}$ for the $q\bar q\to Hg$ channel, given in
 Eq.~\eqref{eq:h10}, is
 \begin{equation}
 \begin{aligned}
-&h_{10}=H_{q\bar{q}}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\left(I_{qk}^{(1)}+P_{qk}(z)\ln\frac{Q_1\,M}{\mu_F^2}\right)\\[0.5ex]
-&\qquad+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\left(I_{\bar{q}k}^{(1)}+P_{\bar{q}k}(z)\ln\frac{Q_2\,M}{\mu_F^2}\right)\\[0.5ex]
+&h_{10}=H_{q\bar{q}}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\left(I_{qk}^{(1)}(z)+P_{qk}(z)\ln\frac{Q_1\,M}{\mu_F^2}\right)\\[0.5ex]
+&\qquad+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\left(I_{\bar{q}k}^{(1)}(z)+P_{\bar{q}k}(z)\ln\frac{Q_2\,M}{\mu_F^2}\right)\\[0.5ex]
 &\qquad-\frac{3}{2}C_F\ln\frac{Q_1\,M}{Q^2}-\frac{3}{2}C_F\ln\frac{Q_2\,M}{Q^2}-2\pi\beta_0\ln\frac{M\,Q_3}{Q^2}\\[0.5ex]
     &\qquad-\frac{2C_F-C_A}{2}\left(\ln^2\frac{Q_{12}^2}{Q_1\,M}+\ln^2\frac{Q_{12}^2}{Q_2\,M}\right)-\frac{C_A}{2}\left(\ln^2\frac{Q_{13}^2}{Q_1\,M}+\ln^2\frac{Q_{13}^2}{Q_3\,M}\right)\\[0.5ex]
 &\qquad-\frac{C_A}{2}\left(\ln^2\frac{Q_{23}^2}{Q_2\,M}+\ln^2\frac{Q_{23}^2}{Q_3\,M}\right)+\frac{2C_F-C_A}{2}\left[\ln^2\frac{Q_2}{Q_1}-2(I_{12,3}+I_{21,3})\right]\\[0.5ex]
@@ -1873,8 +1855,8 @@ I_{ik}^{(1)}(z) =
 -\ln z\right]
 +\frac{\pi^2}{6}\,\delta_{ij}\,C_i\,\delta(1-z)\,,
 \end{equation}
-to express the SCET beam function scalar kernels $I_{qk}^{(1)}$ and
-$I_{\bar{q}k}^{(1)}$ in terms of \textsc{ARES} ingredients: the
+to express the SCET matching functions $I_{qk}^{(1)}(z)$ and
+$I_{\bar{q}k}^{(1)}(z)$ in terms of \textsc{ARES} ingredients: the
 first two terms correspond to part $C_{\mathrm{hc},\ell}^{(1)}$
 and $\delta\mathcal{F}_{\rm rec}$ for ISR, shown in Eqs.~\eqref{eq:Cij-ISR}
 and~\eqref{eq:dFrec-ISR}. We will not perform the exact derivation here to see how these terms compare
@@ -1882,7 +1864,7 @@ however one can find in the \textsc{Mathematica} notebook in Ref.~\cite{peake202
 that $\mathcal{C}^{(1)}_{-1}=2h_{10}$ as given in Eq.~\eqref{eq:coeff-convent}.
 
 Finally, we turn our attention to the last two coefficients entering at
-NNLL\footnote{Note that $h_{22}$ actually enters at NLL$'$.}: $\mathcal{C}^{(2)}_1$
+NNLL\footnote{Note that $\mathcal{C}^{(1)}_0/h_{22}$ actually enters at NLL$'$.}: $\mathcal{C}^{(2)}_1$
 and $\mathcal{C}^{(2)}_0$, corresponding to $h_{22}$ and $h_{21}$ respectively. These
 are given in Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}, with their ingredients shown in
 Eqs.~\eqref{eq:C21-ingred} and~\eqref{eq:C20-ingred}. They are considerably more
@@ -1931,8 +1913,9 @@ we do not attempt to validate it here.
 
 We restrict ourselves to the additive LTS observable $S_b^{(0)}$,
 for which the NNLL correction contains a comparable ISR
-term. \ABquestion{Is this why we chose this observable? Also are we
-meant to say they aren't event shapes?} This allows a term-by-term
+term.\footnote{The other observable they define, $M_b^{(0)}=\max_{j\in\mathcal{I}_0}v_b^j$
+is not an event shape as it is not collinear safe and so will not offer a reasonable comparison.}
+This allows a term-by-term
 comparison of the ISR contributions. The observable is
 \begin{equation} 
 \label{eq:Sb0-def} 
@@ -1942,36 +1925,31 @@ where $(p_{t,i},y_i)$ are the transverse momentum and rapidity of
 jet $i$ with respect to the beam axis, $M$ is the invariant mass of
 the colour singlet (taken as the hard scale), and
 $\mathcal{I}_0\equiv\{j_1,j_2,\dots,j_m\}$ is the list of jets from
-the C/A algorithm of radius $R$.
+the C/A algorithm of radius $R$ (cf.\ Sec.~\ref{sec:gen-kt} for more details on
+this algorithm).
 
 Setting $Q=M$ fixes the single-emission parameters to
 \begin{equation}
 \label{eq:LTS-1-emsn}
 	a=1, \quad b_\ell=b, \quad d_\ell=1, \quad g_\ell(\phi)=1,\quad \ell=1,2\,.
 \end{equation}
-Throughout this section we identify $x_q\equiv x_1$ and
-$x_{\bar{q}}\equiv x_2$, where $x_\ell$ is the momentum fraction of
-the parton on leg $\ell$ as defined in Sec.~\ref{sec:setup}. 
+
 In our notation, the NNLL cumulant of
 Ref.~\cite{vanBeekveld:2025zjh} with $Q=M$ is 
 \begin{equation}
 \label{eq:LTS-cum}
 \begin{aligned}
-\Sigma^{pp}&(\{p\},v)=e^{-R_{\mathrm{NNLL}}(v)}
-\frac{f_q(x_q,\mu_F v^{\frac{1}{1+b}})f_{\bar q}(x_{\bar q},\mu_F v^{\frac{1}{1+b}})}
-{f_q(x_q,\mu_F )f_{\bar q}(x_{\bar q},\mu_F )}
-\times\\
-&\left[\mathcal{F}_{\mathrm{NLL}}(v)\left(
-1+\frac{\alpha_s(\mu_R)}{2\pi}H_{q\bar q}^{(1)}(\{p\})+
-\right.\right.\\
-&\left. \left.+\frac{\alpha_s(\mu_R)}{2\pi}\frac{1+b}{1+b-2\lambda}
+&\Sigma^{pp}(\{p\},v)=e^{-R_{\mathrm{NNLL}}(v)}
+\frac{f_q(x_1,\mu_F v^{\frac{1}{1+b}})f_{\bar q}(x_{2},\mu_F v^{\frac{1}{1+b}})}
+{f_q(x_1,\mu_F )f_{\bar q}(x_{2},\mu_F )}\left\{\mathcal{F}_{\mathrm{NLL}}(v)\left[
+1+\frac{\alpha_s(\mu_R)}{2\pi}H_{q\bar q}^{(1)}(Q,\mu_R)+
+\right.\right.\\[0.5ex]
+&\qquad\qquad +\frac{\alpha_s(\mu_R)}{2\pi}\frac{1+b}{1+b-2\lambda}
 \sum_k\left(
-\int_{x_q}^1\frac{dz}{z}C_{qk}^{(1), \rm LTS}(z)
-\frac{f_k\left(x_q/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_{q},\mu_F v^{\frac{1}{1+b}})}
-+\{q\leftrightarrow \bar q\}
-\right)
-\right)+\right.\\
-&\left.+\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{ pp}_{\mathrm{NNLL}}(v)\right]+\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v)\,,
+\int_{x_1}^1\frac{dz}{z}C_{qk}^{(1), \rm LTS}(z)
+\frac{f_k\left(x_1/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_1,\mu_F v^{\frac{1}{1+b}})}\right.\\[0,5ex]
+&\qquad\qquad\left.\left.\left.+\int_{x_2}^1\frac{dz}{z}C_{\bar{q}k}^{(1), \rm LTS}(z)
+\frac{f_k\left(x_2/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{\bar{q}}(x_2,\mu_F v^{\frac{1}{1+b}})}\right)\right]+\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{ pp}_{\mathrm{NNLL}}(v)\right\}+\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v)\,,
 \end{aligned}
 \end{equation}
 where 
@@ -1983,15 +1961,16 @@ and
 \begin{equation}
 \label{eq:DGLAP-add}
 \begin{aligned}
-	\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v)&=e^{-R_{\mathrm{NNLL}}(v)}\frac{\alpha_s(\mu_R)}{\pi}\frac{1}{1+b-2\lambda}\frac{d\FNLL}{d\RpNLL}\times\\
-	&\times\sum_k\left(
-\int_{x_q}^1\frac{dz}{z}P_{qk}(z)
-\frac{f_k\left(x_q/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{q},\mu_F v^{1/(1+b)})}
-+\{q\leftrightarrow \bar q\}
+	&\delta\Sigma_{\mathrm{DGLAP}}^{pp}(v)=e^{-R_{\mathrm{NNLL}}(v)}\frac{\alpha_s(\mu_R)}{\pi}\frac{1}{1+b-2\lambda}\frac{d\FNLL}{d\RpNLL}\\
+	&\qquad\qquad\times\sum_k\left(
+\int_{x_1}^1\frac{dz}{z}P_{qk}(z)
+\frac{f_k\left(x_q/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{1},\mu_F v^{1/(1+b)})}
++\int_{x_2}^1\frac{dz}{z}P_{\bar{q}k}(z)
+\frac{f_k\left(x_{2}/z,\mu_F v^{1/(1+b)}\right)}{f_{\bar{q}}(x_{2},\mu_F v^{1/(1+b)})}
 \right)\,,
 \end{aligned}
 \end{equation}
-where $P_{qk}(z)$ are the full AP splitting functions defined in Eq.~\eqref{eq:full-AP}. 
+where $P_{qk}(z), P_{\bar{q}k}(z)$ are the full AP splitting functions defined in Eq.~\eqref{eq:full-AP}. 
 
 The two cumulants have a very similar structure. Their correspondence
 can be summarised as follows.
@@ -2026,18 +2005,19 @@ a misprint since it introduces an uncancelled collinear singularity --
 this has been confirmed with the authors of the paper.}
 \begin{multline}
   \label{eq:CkiLTS}
-  \sum_j\int_{x_q}^1\frac{dz}{z}\,C_{qk}^{(1),\rm LTS}(z)
-  \frac{f_k(x_q/z,\mu_F v^{\frac{1}{1+b}})}
-  {f_q(x_q,\mu_F v^{\frac{1}{1+b}})}   = \sum_k\int_{x_q}^1\frac{dz}{z}\,
-  \frac{f_k(x_q/z,\mu_F v^{\frac{1}{1+b}})}
-  {f_q(x_q,\mu_F v^{\frac{1}{1+b}})}
+  \sum_j\int_{x_1}^1\frac{dz}{z}\,C_{qk}^{(1),\rm LTS}(z)
+  \frac{f_k(x_1/z,\mu_F v^{\frac{1}{1+b}})}
+  {f_q(x_q,\mu_F v^{\frac{1}{1+b}})}   = \sum_k\int_{x_1}^1\frac{dz}{z}\,
+  \frac{f_k(x_1/z,\mu_F v^{\frac{1}{1+b}})}
+  {f_q(x_1,\mu_F v^{\frac{1}{1+b}})}
   \left[-\hat{P}_{qk}^{(\varepsilon)}(z)\right.\\
   \left.+\frac{2b}{1+b}\!\left(\!
   \left(\frac{\ln(1-z)}{1-z}\right)_+
   -\frac{\ln z}{1-z}\right)
   (1-z)\hat{P}_{qk}(z;0)
-  +\ln\frac{M^2}{\mu_F^2}P_{qk}(z)\right]\,.
+  +\ln\frac{M^2}{\mu_F^2}P_{qk}(z)\right]\,,
 \end{multline}
+and analogously for $C_{\bar{q}k}^{(1),\mathrm{LTS}}$.
 The first two terms correspond to contributions that are treated
 separately in \textsc{ARES}, namely the hard-collinear coefficient
 $C_{{\rm hc},\ell}^{(1)}$ and the recoil correction
@@ -2048,25 +2028,25 @@ Eq.~\eqref{eq:LTS-1-emsn} with $Q=M$ and $E_\ell=M/2$:
   \label{eq:Cij-LTS-comp}
   \frac{\alpha_s(Mv^{\frac{1}{1+b}})}{2\pi}\sum_{\ell=1}^2
   C_{{\rm hc},\ell}^{(1)} =\\
-  =\sum_k\!\left[\int_{x_1}^1\frac{dz}{z}
+  =\sum_k\left[\int_{x_1}^1\frac{dz}{z}
   \frac{f_k(x_1/z,Mv^{\frac{1}{1+b}})}
   {f_q(x_1,Mv^{\frac{1}{1+b}})}
-  \!\left(-\hat{P}_{qk}^{(\varepsilon)}(z)
+  \left(-\hat{P}_{qk}^{(\varepsilon)}(z)
   +\frac{2b}{1+b}
   \!\left(\frac{\ln(1-z)}{1-z}\right)_+\!(1-z)\hat{P}_{qk}(z;0)
-  \right)+\{q\leftrightarrow\bar{q}\}\right]\,.
+  \right)  +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
 \end{multline}
 Using Eq.~\eqref{eq:dFrec-ISR} for additive observables with the
 parameters of Eq.~\eqref{eq:LTS-1-emsn},
 \begin{equation}
   \label{eq:dFrec-LTS-comp}
   \frac{\alpha_s(M)}{\pi}\delta\mathcal{F}_{\rm rec}(\lambda) =
-  \frac{\alpha_s(Mv^{1/(1+b)})}{2\pi}
+  \frac{\alpha_s(Mv^{\frac{1}{1+b}})}{2\pi}
   \sum_k\!\left[\int_{x_1}^1\frac{dz}{z}
   \frac{f_k(x_1/z,\mu_F v^{\frac{1}{1+b}})}
   {f_q(x_1,\mu_F v^{\frac{1}{1+b}})}
-  \!\left(-\frac{2b}{1+b}\hat{P}_{qk}(z;0)\ln z\right)
-  +\{q\leftrightarrow\bar{q}\}\right]\,.
+  \left(-\frac{2b}{1+b}\hat{P}_{qk}(z;0)\ln z\right)
+  +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
 \end{equation}
 Combining Eqs.~\eqref{eq:Cij-LTS-comp} and~\eqref{eq:dFrec-LTS-comp}
 reproduces the first two terms of Eq.~\eqref{eq:CkiLTS} exactly. The
@@ -2074,9 +2054,7 @@ third term, $\ln(M^2/\mu_F^2)P_{qk}(z)$, arises because the PDFs are
 evaluated at different scales in the two formulations:
 \textsc{ARES} uses $Mv^{1/(1+b)}$, while Ref.~\cite{vanBeekveld:2025zjh} uses $\mu_Fv^{1/(1+b)}$. The logarithm $\ln(M^2/\mu_F^2)$ is the 
 DGLAP evolution between these two scales and compensates for the
-difference between the two. The prefactor $(1+b)/(1+b-2\lambda)$ in Eq.~\eqref{eq:LTS-cum} arises from expressing the running coupling $\alpha_s(Mv^{1/(1+b)})$ in terms of $\lambda=\alpha_s(\mu_R)\beta_0\ln(1/v)$ at one loop. \ABquestion{Is this statement true about the $(1+b)/(1+b-2\lambda)$ factor arising? Really it should be a term of $\ln M/\mu_R$ as they have
-$\alpha_s(\mu_R)$ but maybe this is neglected at NNLL?}
-
+difference between the two. The prefactor $(1+b)/(1+b-2\lambda)$ in Eq.~\eqref{eq:LTS-cum} arises from expressing the running coupling $\alpha_s(Mv^{1/(1+b)})$ in terms of $\lambda=\alpha_s(\mu_R)\beta_0\ln(1/v)$ at one loop. 
 The remaining hard-collinear correction in the LTS formulation is
 \begin{equation}
 \label{eq:dFhc-LTS}
@@ -2089,16 +2067,16 @@ Combining this with $\delta\Sigma^{pp}_{\rm DGLAP}$ in Eq.~\eqref{eq:DGLAP-add},
 \begin{multline}
 	\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{pp}_{\mathrm{hc}}(v)+
 	\delta\Sigma^{pp}_{\rm DGLAP}\simeq\\
-	\frac{\alpha_s(\mu_R)}{\pi(1+b)}\frac{1+b}{1+b-2\lambda}\frac{d\mathcal{F}_{\rm NLL}}{dR_{\rm NLL}}\left[\int_{x_q}^1\frac{dz}{z}\left(P_{qk}(z)-\gamma^{(0)}_1\delta_{qj}\right)
-\frac{f_k\left(x_q/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{q},\mu_F v^{1/(1+b)})}
-+\{q\leftrightarrow \bar q\}
+	\frac{\alpha_s(\mu_R)}{\pi(1+b)}\frac{1+b}{1+b-2\lambda}\frac{d\mathcal{F}_{\rm NLL}}{dR_{\rm NLL}}\left[\int_{x_1}^1\frac{dz}{z}\left(P_{qk}(z)-\gamma^{(0)}_1\delta_{qk}\right)
+\frac{f_k\left(x_1/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{1},\mu_F v^{1/(1+b)})}
++ \left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}
 \right]\,.
 \end{multline}
 
 This is equivalent to $\delta\mathcal{F}_{\rm hc}$ in \textsc{ARES}, and can see this explicitly by calculating
 Eqs.~\eqref{eq:dFhc-ISR} for additive observables,
 \begin{equation}
-	\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}=\frac{\alpha_s(Qv^{1/(1+b)})}{\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\sum_k \left[\int_{x_1}^1 \frac{dz}{z} \left(P_{qk}(z)-\gamma_1^{(0)}\delta_{qk}\right) \frac{f_k(x_{1}/z,Qv^{1/(a+b_\ell)})}{f_q(x_1,Qv^{1/(a+b_\ell)})} +\{q\leftrightarrow\bar{q}\}\right]\,.
+	\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}=\frac{\alpha_s(Qv^{1/(1+b)})}{\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\sum_k \left[\int_{x_1}^1 \frac{dz}{z} \left(P_{qk}(z)-\gamma_1^{(0)}\delta_{qk}\right) \frac{f_k(x_{1}/z,Qv^{1/(a+b_\ell)})}{f_q(x_1,Qv^{1/(a+b_\ell)})}   +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
 \end{equation}
 This is exactly the combination of the DGLAP term with $\delta\mathcal{F}_{\rm hc}^{pp}$. Consequently, the
 additional DGLAP term introduced in
@@ -2152,3 +2130,7 @@ valuable given the availability of high-order fixed-order results, since it
 provides the resummed counterpart needed for reliable predictions across the
 full kinematic range.
 \add{It is for MC validation.}
+
+\add{R. Wood comments: The natural next steps for our work are to perform additional
+direct checks, match to fixed order, consider any hadronisation effects and then compare
+to experimental data to extract a value for the strong coupling.}
