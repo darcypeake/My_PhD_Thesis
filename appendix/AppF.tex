@@ -1,193 +1,110 @@
+\chapter{ISR spin-correlation corrections}
+\label{app:spin-correl}
 
-\chapter{SCET subtraction ingredients}
-\label{ap:N-jet-ing}
- Legs are labelled $a$, $b$ (incoming) and
-$c$ (outgoing jet), in place of $\ell=1,2,3$ used
-when calculating the \textsc{ARES} coefficients above.
+This appendix derives the additional NNLL correction that arises when
+a gluon enters the hard scattering. In addition to the ISR
+hard-collinear corrections
+$C_{{\rm hc},\ell}^{(1)}$, $\delta\mathcal{F}_{\rm hc}$, and
+$\delta\mathcal{F}_{\rm rec}$ derived in
+Sec.~\ref{sec:NNLL-initial}, an incoming gluon introduces a further
+contribution with no counterpart for quark-initiated radiation: spin
+correlations. These give rise to the additional NNLL contribution
+$\Delta\mathcal{F}_{\rm rec}$, which vanishes for one-jettiness but is
+required for the general ISR formalism and for observables with
+non-trivial azimuthal dependence.
 
-
-\begin{subequations}
-\label{eq:C11-ingred}
-\begin{align}
-&J_{\kappa_3,1}^{(1)} = 4C_3\,, \\[1ex]
-&\mathcal{I}_{\kappa_1,1}^{(1)} = 4C_1\,\delta_{ik}\,\delta(1-z)\,, \\[1ex]
-&\mathcal{I}_{\kappa_2,1}^{(1)} = 4C_2\,\delta_{jk}\,\delta(1-z)\,, \\[1ex]
-&\widehat{S}_{\kappa,1}^{(1)} = -8\sum_{\ell}C_{\ell}\,.
-\end{align}
-\end{subequations}
-%
-\begin{subequations}
-\label{eq:C10-ingred}
-\begin{align}
-&J_{\kappa_3,0}^{(1)} = -2\gamma_3^{(0)}\,, \\[1ex]
-&\mathcal{I}_{\kappa_1,0}^{(1)} = -2\gamma_1^{(0)}\,\delta_{ik}\,\delta(1-z)+2P_{ik}\,, \\[1ex]
-&\mathcal{I}_{\kappa_2,0}^{(1)} = -2\gamma_2^{(0)}\,\delta_{jk}\,\delta(1-z)+2P_{jk}\,, \\[1ex]
-&\widehat{S}_{\kappa,0}^{(1)} =
-    4C_1\!\left(\ln\frac{Q_{12}^2}{Q_1 Q_2}+\ln\frac{Q_{13}^2}{Q_1 Q_3}
-    -\ln\frac{Q_{23}^2}{Q_2 Q_3}\right) \notag\\[0.5ex]
-  &\qquad+4C_2\!\left(\ln\frac{Q_{12}^2}{Q_1 Q_2}+\ln\frac{Q_{23}^2}{Q_2 Q_3}
-    -\ln\frac{Q_{13}^2}{Q_1 Q_3}\right) \notag\\[0.5ex]
-  &\qquad+4C_3\!\left(\ln\frac{Q_{13}^2}{Q_1 Q_3}+\ln\frac{Q_{23}^2}{Q_2 Q_3}
-    -\ln\frac{Q_{12}^2}{Q_1 Q_2}\right)\,.
-\end{align}
-\end{subequations}
-\add{Add in where the PDFs are from.}
-\begin{subequations}
-\label{eq:Cd1-ingred}
-\begin{align}
-&J_{\kappa_3,-1}^{(1)} = \begin{cases}
-    C_F(7-\pi^2)\,, & \text{if $C_3$ is a quark}\,, \\[4pt]
-    C_A\!\left(\dfrac{4}{3}-\pi^2\right)+\dfrac{20}{3}\pi\beta_0\,, &\text{if $C_3$ is a gluon}\,,
-\end{cases} \\[1ex]
-&\mathcal{I}_{\kappa_1,-1}^{(1)} = 2I_{ak}^{(1)}+2\ln\frac{\mu_R^2}{\mu_F^2}\,P_{ak}\,, \\[1ex]
-&\mathcal{I}_{\kappa_2,-1}^{(1)} = 2I_{bk}^{(1)}+2\ln\frac{\mu_R^2}{\mu_F^2}\,P_{bk}\,, \\[1ex]
-&\widehat{S}_{\kappa,-1}^{(1)}
-  = C_a\!\left(\ln^2\frac{Q_{bc}^2}{Q_b Q_c}
-     -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
-     -\ln^2\frac{Q_{ac}^2}{Q_a Q_c}+\frac{\pi^2}{6}\right) \notag\\[0.5ex]
-  &\qquad+C_b\!\left(\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
-     -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
-     -\ln^2\frac{Q_{bc}^2}{Q_b Q_c}+\frac{\pi^2}{6}\right) \notag\\[0.5ex]
-  &\qquad+C_c\!\left(\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
-     -\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
-     -\ln^2\frac{Q_{bc}^2}{Q_b Q_c}+\frac{\pi^2}{6}\right) \notag\\[0.5ex]
-  &\qquad+2C_a\!\left(I_{bc,a}+I_{cb,a}-I_{ab,c}-I_{ba,c}-I_{ac,b}-I_{ca,b}\right) \notag\\[0.5ex]
-  &\qquad+2C_b\!\left(I_{ac,b}+I_{ca,b}-I_{ab,c}-I_{ba,c}-I_{bc,a}-I_{cb,a}\right) \notag\\[0.5ex]
-  &\qquad+2C_c\!\left(I_{ab,c}+I_{ba,c}-I_{ac,b}-I_{ca,b}-I_{bc,a}-I_{cb,a}\right)\,,
-\end{align}
-\end{subequations}
-where the matching functions, $I_{ak}^{(1)}$ and $I_{bk}^{(1)}$, are defined in \add{add references}.
-
-\begin{subequations}
-\label{eq:C23-ingred}
-\begin{align}
-&J_{\kappa_3,3}^{(2)} = 8C_3^2\,, \\[1ex]
-&\mathcal{I}_{\kappa_1,3}^{(2)} = 8C_1^2\,\delta_{ik}\,\delta(1-z)\,, \\[1ex]
-&\mathcal{I}_{\kappa_2,3}^{(2)} = 8C_2^2\,\delta_{jk}\,\delta(1-z)\,, \\[1ex]
-&\widehat{S}_{\kappa,3}^{(2)} = 32\left(\sum_{\ell}C_{\ell}\right)^2\,.
-\end{align}
-\end{subequations}
-\begin{subequations}
-\label{eq:C22-ingred}
-\begin{align}
-&J_{\kappa_3,2}^{(2)} = -2C_3\left(6\gamma_3^{(0)}+4\pi\beta_0\right)\,, \\[1ex]
-&\mathcal{I}_{\kappa_1,2}^{(2)} = 4C_1\left[
-    -\left(3\gamma_1^{(0)}+2\pi\beta_0\right)\delta_{ik}\,\delta(1-z)
-    +3P_{ik}\right]\,, \\[1ex]
-&\mathcal{I}_{\kappa_2,2}^{(2)} = 4C_2\left[
-    -\left(3\gamma_2^{(0)}+2\pi\beta_0\right)\delta_{jk}\,\delta(1-z)
-    +3P_{jk}\right]\,, \\[1ex]
-&\widehat{S}_{\kappa,2}^{(2)} =
-    4\left(\sum_{\ell}C_{\ell}\right)\left[8\pi\beta_0-12C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad-12C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}\notag
-      +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
-  &\left.\qquad\qquad\qquad\qquad\qquad-12C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
-\end{align}
-\end{subequations}
-
-\begin{subequations}
-\label{eq:C21-ingred}
-\begin{align}
-&J_{c,1}^{(2)} = 8C_c K^{(1)}-\frac{8\pi^2}{3}C_c^2
-    +2\gamma_c^{(0)}\!\left(2\gamma_c^{(0)}+4\pi\beta_0\right)
-    +4C_c J_{c,-1}^{(1)}\,, \\[1ex]
-&\mathcal{I}_{ak,1}^{(2)} =
-    \left[8C_a K^{(1)}-\frac{8\pi^2}{3}C_a^2
-    +2\gamma_a^{(0)}\left(2\gamma_a^{(0)}+4\pi\beta_0\right)\right]
-    \delta_{ak}\,\delta(1-z) \notag\\[0.5ex]
-  &\qquad+8C_a\left(I_{ak}^{(1)}+\ln\lambda_F\,P_{ak}\right)
-    +4\sum_m P_{am}\otimes_z P_{mk}
-    -2\left(4\gamma_a^{(0)}+4\pi\beta_0\right)P_{ak}\,, \\[1ex]
-&\mathcal{I}_{bk,1}^{(2)} =
-    \left[8C_b K^{(1)}-\frac{8\pi^2}{3}C_b^2
-    +2\gamma_b^{(0)}\left(2\gamma_b^{(0)}+4\pi\beta_0\right)\right]
-    \delta_{bk}\,\delta(1-z) \notag\\[0.5ex]
-  &\qquad+8C_b\left(I_{bk}^{(1)}+\ln\lambda_F\,P_{bk}\right)
-    +4\sum_m P_{bm}\otimes_z P_{mk}
-    -2\left(4\gamma_b^{(0)}+4\pi\beta_0\right)P_{bk}\,, \\[1ex]
-&\widehat{S}_{\kappa,1}^{(2)} =-\left(C_a+C_b+C_c\right)\left(8\widehat{S}_{\kappa,-1}^{(1)}
-    +16K^{(1)}+\frac{32\pi^2}{3}\left(C_a+C_b+C_c\right)\right) \notag \\[0.5ex]
-    &\qquad+16\left[C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
-  &\qquad\qquad+C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
-  &\left.\qquad\qquad+C_c\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]^2\notag\\[0.5ex]
-  &\qquad+8\pi\beta_0\left[-4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
-  &\qquad\qquad\qquad-4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
-  &\left.\qquad\qquad\qquad-4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
-\end{align}
-\end{subequations}
-
-\begin{subequations}
-\label{eq:C20-ingred}
-\begin{align}
-&J_{c,0}^{(2)} = 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
-    -\left(4\gamma_c^{(0)}+4\pi\beta_0\right)J_{c,-1}^{(1)}
-    -\frac{\gamma_{c,s}^{(1)}}{2}\,, \\[1ex]
-&\mathcal{I}_{ak,0}^{(2)} =
-    \left(16C_a^2\zeta_3+\frac{4\pi^2}{3}C_a\gamma_a^{(0)}
-    -\frac{\gamma_{a,s}^{(1)}}{2}\right)\delta_{ak}\,\delta(1-z)
-    -\frac{4\pi^2}{3}C_a P_{ak} \notag\\[0.5ex]
-  &\qquad-\left(4\gamma_a^{(0)}+8\pi\beta_0\right)I_{ak}^{(1)}
-    +4\sum_m I_{am}^{(1)}\otimes_z P_{mk}+4P_{ak}^{(1)} \notag\\[0.5ex]
-  &\qquad+\ln\lambda_F\!\left[-4\gamma_a^{(0)}P_{ak}
-    +4\sum_m P_{am}\otimes_z P_{mk}+4P_{ak}^{(1)}\right]\,, \\[1ex]
-&\mathcal{I}_{bk,0}^{(2)} =
-    \left(16C_b^2\zeta_3+\frac{4\pi^2}{3}C_b\gamma_b^{(0)}
-    -\frac{\gamma_{b,s}^{(1)}}{2}\right)\delta_{bk}\,\delta(1-z)
-    -\frac{4\pi^2}{3}C_b P_{bk} \notag\\[0.5ex]
-  &\qquad-\left(4\gamma_b^{(0)}+8\pi\beta_0\right)I_{bk}^{(1)}
-    +4\sum_m I_{bm}^{(1)}\otimes_z P_{mk}+4P_{bk}^{(1)} \notag\\[0.5ex]
-  &\qquad+\ln\lambda_F\!\left[-4\gamma_b^{(0)}P_{bk}
-    +4\sum_m P_{bm}\otimes_z P_{mk}+4P_{bk}^{(1)}\right]\,, \\[1ex]
-&\widehat{S}_{\kappa,0}^{(2)} =
-    64\left(C_a+C_b+C_c\right)^2\zeta_3-\gamma_S^{(1)}\left(C_a+C_b+C_c\right)
-    -8\pi\beta_0\,\widehat{S}_{\kappa,-1}^{(1)} \notag\\[0.5ex]
-  &\qquad+\frac{4\pi^2}{3}(C_a+C_b+C_c)\left[
-    4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
-  &\left.\qquad\qquad\qquad\qquad\qquad\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right] \notag\\[0.5ex]
-  &\qquad+\left(\widehat{S}_{\kappa,-1}^{(1)}+K^{(1)}\right)\!\left[
-    4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
-  &\left.\qquad\qquad\qquad\qquad\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
-    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
-    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
-\end{align}
-\end{subequations}
-The convolution $\otimes_z$ is defined as:
+To account for this, we introduce the spin-density matrix for the hard process
+in $4-2\varepsilon$ dimensions. Neglecting terms that are antisymmetric in $\mu,\nu$, the general form is 
 \begin{equation}
-P_{ij}(z)\otimes_z P_{jk}(z)=\int_z^1\frac{dw}{w}P_{ij}(w)P_{jk}\left(\frac{z}{w}\right)
+\rho^{\mu\nu} = \frac{d^{\mu\nu} }{2(1-\varepsilon)}
++ \mathcal{T}_\ell(\{p\};\varepsilon)\left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu} }{1-\varepsilon}\right) \,,
 \end{equation}
-and analogously for $I_{ij}^{(1)}\otimes_z P_{jk}$, where the index $j$ is not summed over. 
-Additionally,  the noncusp soft anomalous dimension is
+where we choose $d^{\mu\nu}$ to be the sum over physical polarisations transverse to both $p_1$ and $p_2$,
 \begin{equation}
-\gamma_S^{(1)}=C_A\left(-\frac{64}{9}+28\zeta_3\right)+4\pi\beta_0\left(-\frac{56}{9}+\frac{\pi^2}{3}\right)\,,
+d^{\mu\nu} = -g^{\mu\nu} + \frac{p_1^\mu p_2^\nu + p_2^\mu p_1^\nu}{p_1 \cdot p_2}\,,
 \end{equation}
-while those for the beam and jet functions $\gamma^{(1)}_{\ell,s}$ are, for a quark,
+and $n_{\rm in}$ is a space-like unit vector that lies in the plane identified
+by the beam and the $Z$ boson, satisfying $n_{\rm in}^2=-1$ and $n_{\rm in}\cdot p_1=n_{\rm in}\cdot p_2=0$. We obtain the following relations: 
 \begin{equation}
-\gamma_{q,s}^{(1)}=C_F\left[C_A\left(\frac{146}{9}-80\zeta_3\right)+C_F(3-4\pi^2+48\zeta_3)+4\pi\beta_0\left(\frac{121}{9}+\frac{2\pi^2}{3}\right)\right]\,,
+  \begin{split}
+  &d^{\mu\nu}d_{\mu\nu}=-g^{\mu\nu}d_{\mu\nu}=2(1-\varepsilon)\,,\\[1ex]
+  &d_{\mu\nu} \left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)=-g^{\mu\nu}\left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)=0\,,\\[1ex] 
+  &\left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)\left(2 n_{{\rm in},\mu} n_{{\rm in },\nu} - \frac{d^{\mu\nu}}{1-\varepsilon}\right) = 2 \frac{1-2\varepsilon}{1-\varepsilon}\,.
+  \end{split}
 \end{equation}
-and for a gluon,
+This implies
 \begin{equation}
-\gamma_{g,s}^{(1)}=C_A\left[C_A\left(\frac{182}{9}-32\zeta_3\right)+4\pi\beta_0\left(\frac{94}{9}-\frac{2\pi^2}{3}\right)\right]\,.
+  \label{eq:PL}
+  \mathcal{T}_\ell(\{\tilde p\};\varepsilon) = \frac{1-\varepsilon}{2(1-2\varepsilon)} \left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right) \rho_{\mu\nu}\,.
 \end{equation}
-The subscript $s$ indicates that these follow the $N$-jettiness SCET convention opposed to 
-those used within the \textsc{ARES} formalism as defined in Eq.~\eqref{eq:gammal1-flav}.
 
-\add{Change this and state that the $\gamma^{(1)}$ are different and are found in Ref.~\cite{Gaunt:2015pea}.}
-
+The collinear splitting probability is then obtained by contracting
+$\rho^{\mu\nu}$ with the unaveraged splitting functions
+\begin{equation}
+\left[\hat{P}_{ga}^{(1)}(z,\vec k_t;\varepsilon)\right]^{\mu\nu}
+= -g^{\mu\nu}\,\hat{P}_{ga}(z;\varepsilon)
++ \left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)
+2\hat G_{ga}(z;\varepsilon)\,, \qquad a = g,q\,,
+\end{equation}
+with $k_\perp\cdot k_\perp = -k_t^2$, and
+\begin{equation}
+  \label{eq:Grho}
+  d_{\mu\nu}\left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)=0\,.
+\end{equation}
+The azimuthally averaged splitting functions $\hat{P}_{ga}(z;\varepsilon)$ with $a=q,g$ are those present in Eqs.~\eqref{eq:Pgq-epsilon} and.~\eqref{eq:Pgg-epsilon} respectively, and the
+spin-correlated functions are 
+\begin{equation}
+\begin{aligned}
+\hat G_{gg}(z) &= -(1-\varepsilon)C_A \frac{1-z}{z}\,,\qquad
+\hat G_{gq}(z) &= C_F \frac{1-z}{z}\,.
+\end{aligned}
+\end{equation}
+Performing the contraction, using the fact $k_\perp \cdot n_{\rm in }=-k_t \cos\phi$ we obtain
+\begin{equation}
+\rho^{\mu\nu}\left[\hat{P}_{ga}(z,\vec k_t;\varepsilon)\right]_{\mu\nu}
+= \hat{P}_{ga}(z;\varepsilon)
++  \mathcal{T}_\ell(\{\tilde p\};\varepsilon)\,\hat G_{ga}(z;\varepsilon)\left[2(1-\varepsilon)\cos^2\phi - 1\right]\,,
+\qquad a = g,q\,.
+\end{equation}
+The above equation gives the probability for a splitting $a\to g
+a$. The contribution proportional to the term
+splitting function $\hat{P}_{ga}(z;\varepsilon)$ can be treated exactly
+as in Sec.~\ref{sec:NNLL-initial}, leading to the ISR
+hard-collinear coefficient $C_{\mathrm{hc},\ell}^{(1)}$ together with
+the corrections $\delta\mathcal{F}_{\rm hc}$ and
+$\delta\mathcal{F}_{\rm rec}$. The remaining term, proportional to
+$\hat{G}_{ga}(z;\varepsilon)$, contains the spin-correlation
+dependence. Following the same derivation as
+Ref.~\cite{Arpino:2019ozn}, this gives rise to the additional NNLL
+correction
+\ABquestion{Is this correct sum over legs here? Do all the $\ell$'s need to be $\ell_g$
+and does the $z$ and $\phi$ need to be $z^{\ell_g}$ and $\phi^{\ell_g}$}
+\begin{equation}
+\begin{aligned}
+\label{eq:DFrec-ISR}
+  \Delta&\mathcal{F}_{\mathrm{rec}}(\lambda) =
+\sum_{\ell_g}\frac{\alpha_s(Qv^{1/(a+b_{\ell_g})})}{\alpha_s(Q)(a+b_{\ell_g})}\int_0^\infty \frac{d\zeta}{\zeta}
+\int_0^\pi \frac{d\phi}{\pi}\left[2\cos^2\phi^{(\ell_g)} - 1\right]
+\int_0^1\!dz\,
+\Delta P_g(z^{(\ell_g)})
+\\
+&\quad \times \int \dZ \left[
+\Theta\left(1 - \frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
+- \Theta(1-\zeta)\,
+\Theta\left(1 - \frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
+\right]\,,
+\end{aligned}
+\end{equation}
+where the sum runs over the gluon legs $\ell_g$. For initial-state
+radiation,
+\begin{equation}
+\label{eq:DPg-ISR}
+\Delta P_g(z) =
+4\left(\frac{1-z}{z}\right)\frac{\Theta(z-x_\ell)}{z f_g(x_\ell,Q v^{1/(a+b_\ell)})}
+\left[C_A f_g\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right) + C_F f_q\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right)\right]\,,
+\end{equation}
+while for final-state radiation
+\begin{equation}
+\label{eq:DPg-FSR}
+\Delta P_g(z) =4z(1-z)\left[\frac{C_A}{2}-T_Rn_f\right]\,.
+\end{equation}

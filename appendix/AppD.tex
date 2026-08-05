@@ -1,13 +1,23 @@
-\chapter{One-loop hard function}
+\chapter{One-Loop hard function}
 \label{ap:H1-extraction}
 
 In this appendix, we perform the calculation required to identify
-the hard coefficient $H^{(1)}_{ij}$ in Eq.~\eqref{eq:H1-final} and the
+the hard coefficient $H^{(1)}_{ij}$ in Eq.~\eqref{eq:HQ-expanded} and the
 one-loop hard function $C^{(1)}_H$ defined in Eq.~\eqref{eq:CH-SCET}.
 These contributions rely on the one-loop virtual corrections, which for the $hh\to Z+$ jet
 process are not directly available in the literature and so we use the work from Ref.~\cite{Ravindran:2002dc} which
-presents the one-loop virtual amplitude for the $hh\to H+$ jet process. \ABquestion{How do we justify this is OK?}
-We proceed by finding these contributions for the $q\bar{q}\to Hg$ channel where the other channels follow analogously. 
+presents the one-loop virtual amplitude for the $hh\to H+$ jet process. 
+
+\ndp{The infrared pole structure of a one-loop QCD amplitude is universal, fixed entirely by the colour charges
+and directions of the external coloured partons (cf.\ Eq.~\eqref{eq:HQ}). Since $q\bar{q}\to Hg$
+and $q\bar{q}\to Zg$ share an identical coloured-parton configuration, their poles must
+agree up to the known colour and kinematic prefactors, which we verify explicitly below.
+The finite remainder is not universal and depends on the underlying hard interaction. Consequently, 
+this substitution validates the pole-subtraction procedure used to extract the finite part 
+of the hard coefficient $\mathcal{H}_1$
+in Eq.~\eqref{eq:H1-final} as well as the full SCET hard function $C^{(1)}_H$,
+but does not itself calculate the physical $Z$+jet hard function. This calculation is left to future work.
+In the following, we carry out this validation for the $q\bar{q}\to Hg$ channel, with the remaining partonic channels proceeding analogously.} 
 
 \paragraph{Pole comparison.} Expanding Eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
 $q\bar{q}\to Zg$ process, the double-pole
@@ -26,7 +36,7 @@ and the single-pole coefficient is
   -C_A\ln\frac{\mu_R^2}{Q_{23}^2}
   \right)\,.
 \end{equation}
-Comparing with the poles found in Ref.~\cite{Ravindran:2002dc}. The bare cross section at leading-order is
+Comparing with the poles found in Ref.~\cite{Ravindran:2002dc}. The bare differential cross section at leading-order is
 \begin{equation}
   Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to g H}^{(1)}}{dQ_{13}^2\,dQ_{23}^2} =
   \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
@@ -36,9 +46,10 @@ Comparing with the poles found in Ref.~\cite{Ravindran:2002dc}. The bare cross s
  \left( \frac{\alpha_s(\mu_0^2)}{4\pi}\right)^3|M_{q\bar{q}\to g H}^{(1)}|^2
   \,,
 \end{equation}
-where $S_\varepsilon=\exp(\varepsilon(\ln4\pi-\gamma_E))$ and $\mu_0$ is the bare reference scale. \ABquestion{I have substituted in
-$G$ directly as $\alpha_s/4\pi$ but not quite sure if this is OK? The reference does say that $G^2\simeq \alpha_s(\mu_r)/4\pi$ where
-$\mu_r$ is the renormalisation scale so I think this could be a mistake?}
+where $S_\varepsilon=\exp(\varepsilon(\ln4\pi-\gamma_E))$ and $\mu_0$ is the bare reference scale. 
+\ABquestion{In Ref.~\cite{Ravindran:2002dc} $G^2=4\sqrt{2}(\alpha_s(\mu_r)/4\pi)^2 G_F\tau^2 F^2(\tau)\mathcal{C}^2$
+where $\mu_r$ is the renormalisation scale. I have substituted in directly as $G^2=(\alpha_s(\mu_0)/4\pi)^2$, is this OK? Also
+should I make a note the in Eq. (2.13) of Ref.~\cite{Ravindran:2002dc} that $\mu_r\to\mu_0$ and $\mu\to\mu_0$?}
 
 We must renormalise the strong coupling constant due to UV divergences using,
 \begin{equation}
@@ -48,7 +59,7 @@ We must renormalise the strong coupling constant due to UV divergences using,
   \!\left[1-\frac{\alpha_s(\mu_R^2)\beta_0}{\varepsilon}
   +\mathcal{O}(\alpha_s^2)\right] \left(\frac{\mu_R^2}{\mu_0^2}\right)^\varepsilon\,,
 \end{equation}
-leading to the renormalised form of the LO cross-section
+leading to the renormalised form of the LO differential cross-section
 \begin{equation}
 \begin{aligned}
   \label{eq:LO-ren}
@@ -59,7 +70,7 @@ leading to the renormalised form of the LO cross-section
   \left(\frac{\mu_R^2\,Q_{12}^2}{Q_{13}^2Q_{23}^2}\right)^\varepsilon
 \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^3
 \left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\\
-&\times  \!\left[1-\frac{3\alpha_s(\mu_R^2)\beta_0}{\varepsilon}\right] |M_{q\bar{q}\to gH}^{(0)}|^2\,.
+&\times  \!\left[1-\frac{3\alpha_s(\mu_R^2)\beta_0}{\varepsilon}\right] |M_{q\bar{q}\to gH}^{(1)}|^2\,.
   \end{aligned}
   \end{equation}
  
@@ -108,10 +119,9 @@ The bare one-loop virtual correction have the form
   +9\zeta_2-4\right]|M^{(1)}_{q\bar{q}\to g H}|^2\,.
 \end{aligned}
 \end{equation}
-\ABquestion{I left the $\frac{(C_A-C_F)}{2}C_A C_F\left(Q_{23}^2+Q_{13}^2\right)$ term out of
-this virtual piece as it doesn't contribute to the virtual correction as does not multiply the $M^{(1)}$? Is this correct?}
-We renormalise the bare coupling, again using Eq.~\eqref{eq:Catani-renorm}
-and find
+\ABquestion{Note I have removed the $\frac{(C_A-C_F)}{2}C_A C_F\left(Q_{23}^2+Q_{13}^2\right)$ term out of
+this virtual piece as it doesn't multiply the $M^{(1)}$ term?}
+We renormalise the bare coupling, again using Eq.~\eqref{eq:Catani-renorm} and find
 \begin{equation}
 \label{eq:virt-ren}
   Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT, Ren}}{dQ_{13}^2\,dQ_{23}^2} \simeq
@@ -122,13 +132,12 @@ and find
 where the $\ldots$ represent terms found in the square brackets of Eq.~\eqref{eq:VIRT-bare}.
 The relevant combination for extracting the hard function is the
 sum of the renormalised LO and virtual terms at order $\mathcal{O}(\alpha_s^4)$
-\ABquestion{Why do we go up this order of $\alpha_s$ and why do we include the LO term
-if we are just looking at the virtual corrections?}
+\ABquestion{Do I need to explain why we go up to this order of $\alpha_s$ and also why it is this combination which gives the the finite virtual corrections?}
 \begin{equation}
 \begin{aligned}
 \label{eq:LO+virt-ren}
   &Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dQ_{13}^2\,dQ_{23}^2}
-  +Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT,Ren}}{dQ_{13}^2\,dQ_{23}^2}=\\[0.5ex]
+  +Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT,Ren}}{dQ_{13}^2\,dQ_{23}^2}\\[0.5ex]
  &\simeq  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
   \frac{S_\varepsilon}{\Gamma(1-\varepsilon)}
   \,\frac{1}{4N_c^2}
@@ -172,7 +181,6 @@ if we are just looking at the virtual corrections?}
   +9\zeta_2-4\right]\right\}|M^{(1)}_{q\bar{q}\to g H}|^2\,.
 \end{aligned}
 \end{equation}
-
 \ABquestion{The $S_{\varepsilon}\Gamma(1-\varepsilon)$
 term gives a $\ln 4\pi$ which is absorbed into the coupling in MS-bar scheme which
 is what the Catani poles are in so in essence this can also be absorbed into
@@ -205,9 +213,9 @@ $\mathcal{O}(\varepsilon^0)$ terms of Eq.~\eqref{eq:VIRT-bare}
 after subtracting the predicted poles giving rise to
 the SCET hard function
 \begin{equation}
-\label{eq:C1-SCET}
+\label{eq:H1-SCET}
 \begin{aligned}
-& C^{(1)}_{H}=n_f\left(-\frac{10}{9}-\frac{2}{3}\ln\frac{\mu_R^2}{Q_{12}^2}\right)+\pi^2\left(
+& H^{(1)}_{\rm SCET}=n_f\left(-\frac{10}{9}-\frac{2}{3}\ln\frac{\mu_R^2}{Q_{12}^2}\right)+\pi^2\left(
 3C_F-\frac{7}{6}C_A
 \right)\\[0.5ex]
 & \qquad+C_A\left[
@@ -242,40 +250,36 @@ H_{q\bar{q}}^{(1)}=\mathcal{H}_1
 +\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{13}^2}{Q^2}
 +\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{23}^2}{Q^2}\,.
 \end{equation}
-Unlike Eq.~\eqref{eq:C1-SCET}, which takes all finite terms from
-Ref. 
-\textsc{ARES} obtains the finite terms contained in $\mathcal{H}_1$
-by subtracting the finite terms in Eq.~\eqref{eq:HQ-expanded}
-(not including $\mathcal{H}_1$) from those in Eq.~\eqref{eq:C1-SCET}
-(divided by 2 due to Eq.~\eqref{eq:coeff-convent}), 
-such that we obtain
+Unlike $C^{(1)}_H$, which takes all finite terms from
+Ref.~\cite{Ravindran:2002dc}, the finite terms contained in
+ $\mathcal{H}_1$ are found by subtracting the finite terms Eq.~\eqref{eq:HQ-expanded} (not including  $\mathcal{H}_1$) from Eq.~\eqref{eq:C1-SCET}, such that we obtain\footnote{Please note the factor of 2 difference due to Eq.~\eqref{eq:coeff-convent}) }
 \begin{equation}
 \begin{aligned}
-\mathcal{H}_1=&\frac{1}{36}\left[-20n_f+C_A(152-21\pi^2)+18C_F(-8+3\pi^2)
+\mathcal{H}_1=&\frac{1}{36}\left\{-20n_f+C_A(152-21\pi^2)+18C_F(-8+3\pi^2)
 -66C_A\ln\frac{Q_{12}^2}{\mu_R^2}\right.\\[1ex]
-&+6\left(-3C_F\ln^2\left(\frac{Q_{13}^2+M^2}{Q_{13}^2}\right)-3C_F\ln^2\left(\frac{Q_{23}^2+M^2}{Q_{23}^2}\right)\right.\\
-&+3C_F\ln^2\left(\frac{M^2+Q_{13}^2}{M^2}\right)+3C_F\ln^2\left(\frac{M^2+Q_{23}^2}{M^2}\right)
+&\quad+6\left[-3C_F\ln^2\left(\frac{Q_{13}^2+M^2}{Q_{13}^2}\right)-3C_F\ln^2\left(\frac{Q_{23}^2+M^2}{Q_{23}^2}\right)\right.\\
+&\quad+3C_F\ln^2\left(\frac{M^2+Q_{13}^2}{M^2}\right)+3C_F\ln^2\left(\frac{M^2+Q_{23}^2}{M^2}\right)
 +9C_F\ln\frac{Q_{13}^2}{\mu_R^2}+2n_f\ln\frac{Q_{13}^2}{\mu_R^2}\\
-&+6C_A\ln\frac{Q_{12}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+&\quad+6C_A\ln\frac{Q_{12}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
 -6C_A\ln^2\frac{Q_{13}^2}{\mu_R^2}-6C_A\ln^2\frac{Q_{23}^2}{\mu_R^2}\\
-&\left.+\left(-11C_A+9C_F+2n_f+6C_A\ln\frac{Q_{12}^2}{\mu_R^2}
--6(C_A+2C_F)\ln\frac{Q_{13}^2}{\mu_R^2}\right)\ln\frac{Q_{23}^2}{\mu_R^2}\right)\\[1ex]
-&+6\left(11C_A-9C_F-2n_f-6C_A\ln\frac{Q_{12}^2}{\mu_R^2}
-+6(C_A+C_F)\left(\ln\frac{Q_{12}^2}{\mu_R^2}+\ln\frac{Q_{23}^2}{\mu_R^2}\right)\right)
+&\quad\left.+\left(-11C_A+9C_F+2n_f+6C_A\ln\frac{Q_{12}^2}{\mu_R^2}
+-6(C_A+2C_F)\ln\frac{Q_{13}^2}{\mu_R^2}\right)\ln\frac{Q_{23}^2}{\mu_R^2}-6C_A\ln^2\frac{Q_{23}^2}{\mu_R^2}\right]\\[1ex]
+&\quad+6\left[11C_A-9C_F-2n_f-6C_A\ln\frac{Q_{12}^2}{\mu_R^2}
++6(C_A+C_F)\left(\ln\frac{Q_{12}^2}{\mu_R^2}+\ln\frac{Q_{23}^2}{\mu_R^2}\right)\right]
 \ln\frac{Q_{13}^2Q_{23}^2}{Q_{12}^2\mu_R^2}\\[1ex]
-&-9(C_A+2C_F)\ln^2\frac{Q_{13}^2Q_{23}^2}{Q_{12}^2\mu_R^2}\\[1ex]
-&+3\left(-(C_A+2C_F)\pi^2-18(C_A-2C_F)\ln\frac{\mu_R^2}{Q_{12}^2}
+&\quad-9(C_A+2C_F)\ln^2\frac{Q_{13}^2Q_{23}^2}{Q_{12}^2\mu_R^2}\\[1ex]
+&\quad+3\left[-(C_A+2C_F)\pi^2-18(C_A-2C_F)\ln\frac{\mu_R^2}{Q_{12}^2}
 -6(C_A-2C_F)\ln^2\frac{\mu_R^2}{Q_{12}^2}\right.\\
-&\left.+3(3C_A+4\pi\beta_0)\ln\frac{\mu_R^2}{Q_{13}^2}
+&\quad\left.+3(3C_A+4\pi\beta_0)\ln\frac{\mu_R^2}{Q_{13}^2}
 +6C_A\ln^2\frac{\mu_R^2}{Q_{13}^2}+3\ln\frac{\mu_R^2}{Q_{23}^2}\left(3C_A+4\pi\beta_0
-+2C_A\ln\frac{\mu_R^2}{Q_{23}^2}\right)\right)\\[1ex]
-&\left.+36C_A\operatorname{Li}_2\!\left(\frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
-+36C_F\left(\operatorname{Li}_2\!\left(-\frac{Q_{13}^2}{M^2}\right)
-+\operatorname{Li}_2\!\left(-\frac{Q_{23}^2}{M^2}\right)\right)\right]\,.
++2C_A\ln\frac{\mu_R^2}{Q_{23}^2}\right)\right]\\[1ex]
+&\quad\left.+36\left[C_A\operatorname{Li}_2\left(\frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
++C_F\operatorname{Li}_2\left(-\frac{Q_{13}^2}{M^2}\right)
++C_F\operatorname{Li}_2\left(-\frac{Q_{23}^2}{M^2}\right)\right]\right\}\,.
 \end{aligned}
 \end{equation}
 
-\ABquestion{I am unsure about whether the convention of $1,2,3$ to $a,b,c$. \\
+\ABquestion{
 Also I don't know if I expanded too much i.e.\ the prefactor and have factors of
 $\pi^2$ which should not be there?}
 

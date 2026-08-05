@@ -1,36 +1,43 @@
-\chapter{Resummation coefficients}
+\chapter{One-jettiness resummation coefficients}
 \label{ap:ARES-coeff}
 
-In this appendix we present the resummation coefficients and the subtraction ingredients 
-entering the validation
-shown in Sec.~\ref{subsec:N-jet-SCET-val}  for one-jettiness.
+In this appendix we collect the ingredients entering the validation of
+the one-jettiness resummation presented in Sec.~\ref{subsec:N-jet-SCET-val}.
+We first give the expansion coefficients of the \textsc{ARES} resummation
+formula, followed by the corresponding $N$-jettiness SCET ingredients
+used to construct the subtraction coefficients extracted from Ref.~\cite{Gaunt:2015pea}.
 
-\section{ARES}
-The \textsc{ARES} resummation coefficients for
-one-jettiness are the following.
+\section{ARES expansion coefficients}
+The \textsc{ARES} expansion coefficients entering Eq.~\eqref{eq:sig-coeff}
+for one-jettiness are given below.
 
-The coefficients of $\mathcal{O}(\alpha_s)$ are:
+The LL coefficients are:
 \begin{subequations}
 \begin{align}
 \label{eq:h12}
 &h_{12} =-\sum_{\ell}C_{\ell}\,,\\[1ex]
+\label{eq:h24}
+&h_{24}=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,.
+ \end{align}
+\end{subequations}
+
+The NLL coefficients are: 
+\begin{subequations}
+\begin{align}
 \label{eq:h11}
 &h_{11} = \sum_{\ell}\left(\gamma_{\ell}^{(0)}-2\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln  d^{(\ell\bar{\ell})}_\ell\right)\notag\\[1ex]
 &\qquad-\sum_{k}\int\frac{dz}{z}P_{ik}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}-\sum_{k}\int\frac{dz}{z}P_{jk}(z)\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\,,\\[1.5ex]
-\label{eq:h10}
-&h_{10}= H_{ij}^{(1)}-\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln^2 d_\ell^{(\ell\bar\ell)}+\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}\notag\\[0.5ex]
-&\qquad +\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
-+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_j(x_2,\mu_F)} P_{jk}(z)\ln\frac{Q^2}{\mu_F^2}\,.
-\end{align}
+\label{eq:h23}
+&h_{23}=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,.
+ \end{align}
 \end{subequations}
 
-The coefficients of $\mathcal{O}(\alpha_s^2)$ are:
+The NNLL coefficients are:
 \begin{subequations}
 \begin{align}
-\label{eq:h24}
-&h_{24}=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,,\\[1.5ex]
-\label{eq:h23}
-&h_{23}=-2\pi\beta_{0} \sum_{\ell}C_{\ell }-h_{11} \sum_{\ell}C_{\ell }\,,\\[1.5ex]
+&h_{10}= H_{ij}^{(1)}-\sum_{\ell}\sum_{\bar\ell\neq\ell} C_{\ell\bar\ell}\ln^2 d_\ell^{(\ell\bar\ell)}+\frac{\alpha_s(Q)}{\alpha_s(\tau_1 Q)}\frac{\delta\mathcal{F}_{\rm wa}}{\FNLL}+ \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}+\frac{\alpha_s(Q)}{\alpha_s\left(Q\sqrt{\tau_1}\right)}\frac{\delta\mathcal{F}_{\rm rec}}{\FNLL}\notag\\[0.5ex]
+&\qquad +\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)} P_{ik}(z)\ln\frac{Q^2}{\mu_F^2}
++\sum_{k}\int\frac{dz}{z}\frac{f_k(x_1/z,\mu_F)}{f_j(x_2,\mu_F)} P_{jk}(z)\ln\frac{Q^2}{\mu_F^2}\,,\\[1.5ex]
 \label{eq:h22}
 &h_{22}=h_{10}\cdot h_{12}+\frac{1}{2}h_{11}^2+4\pi\ln\frac{\mu_R}{Q}h_{12}-\frac{\pi^2}{3}\left(\sum_{\ell}C_{\ell}\right)^2 -K^{(1)}\sum_{\ell}C_{\ell} \notag\\[0.5ex]
 &\qquad+2\pi\beta_0\left[-4\sum_{\bar\ell\neq\ell}C_{\ell\bar\ell}\ln\frac{Q_{\ell\bar\ell}^2}{Q^2}
@@ -47,12 +54,15 @@ The coefficients of $\mathcal{O}(\alpha_s^2)$ are:
 \end{align}
 \end{subequations}
 
+
 \section{SCET subtraction ingredients}
 \label{ap:subtract-ingred}
-\todo{Describe what $k$ is, do formatting, give new subtitle and full title of the appendix.}
-The set of partons are labelled $\kappa\equiv\{\kappa_1,\kappa_2,\kappa_3\}$, where $\kappa_1$ is the parton on
-leg $\ell=1$, of flavour $i$, $\kappa_2$ is the parton on leg $\ell=2$, of flavour
-$j$, and $\kappa_3$ is the parton on the outgoing leg $\ell=3$.
+
+The set of partons is labelled
+$\kappa\equiv\{\kappa_1,\kappa_2,\kappa_3\}$, where $\kappa_1$ and
+$\kappa_2$ denote the incoming partons on legs $\ell=1,2$, with flavours
+$i$ and $j$, respectively, while $\kappa_3$ denotes the outgoing parton
+on leg $\ell=3$.  \todo{Need to reformat.}
 
 The ingredients for the LL coefficients are:
 \begin{subequations}
@@ -195,9 +205,10 @@ and for a gluon,
 \begin{equation}
 \gamma_{\ell,s}^{(1)}=C_A\left[C_A\left(\frac{182}{9}-32\zeta_3\right)+4\pi\beta_0\left(\frac{94}{9}-\frac{2\pi^2}{3}\right)\right]\,.
 \end{equation}
-The subscript $s$ indicates that these follow the $N$-jettiness SCET convention opposed to 
-those used within the \textsc{ARES} formalism as defined in Eq.~\eqref{eq:gammal1-flav}.
-
+The subscript $s$ indicates that these anomalous dimensions follow the
+$N$-jettiness SCET convention, which differs from the convention used in
+the \textsc{ARES} formalism, where the corresponding quantities are defined
+in Eq.~\eqref{eq:gammal1-flav}.
 
 
 
