@@ -7,13 +7,6 @@ form~\cite{Arpino:2019ozn}. These contributions are expressed in terms of
 $\lambda \equiv \alpha_s(Q)\beta_0\ln(1/v)$ and $\FNLL(\lambda)$, whose additive form is given
 in Eq.~\eqref{eq:FNLL-add-final}. All results below are for additive observables.
  
-The hard-collinear correction takes the form:
-\begin{equation}
-  \label{eq:dFhc-general-add}
-   \delta\mathcal{F}_{\rm hc}=-\FNLL(\lambda)\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \,,
-\end{equation}
-where $B_{\ell}=\gamma_{\ell}^{(0)}$ for final-state legs, and is defined in Eq.~\eqref{eq:Bell-ISR} for initial-state legs.
-
 The soft-collinear correction takes the form:
 \begin{multline}
  \label{eq:dFsc-general-add}
@@ -40,27 +33,39 @@ where
 	\frac{\Vsc{k_a,k_b,\{k_i\}}}{v}=\zeta f_{\rm correl}(z,\mu,\phi,\phi^{(\ell)})+\sum_{i=1}^n\zeta_i\,.
 \end{equation}
 
+The hard-collinear correction takes the form:
+\begin{equation}
+  \label{eq:dFhc-general-add}
+   \delta\mathcal{F}_{\rm hc}=-\FNLL(\lambda)\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \,,
+\end{equation}
+where $B_{\ell}=\gamma_{\ell}^{(0)}$ for final-state legs, and is defined in Eq.~\eqref{eq:Bell-ISR} for initial-state legs.
+
 The recoil correction $\delta\mathcal{F}_{\rm rec}$ takes the form:
 \begin{equation}
   \label{eq:dFrec-general-add}
-  \delta\mathcal{F}_{\rm rec} = -\FNLL(\lambda)
-  \sum_\ell
+  \delta\mathcal{F}_{\rm rec} = \FNLL(\lambda)
+  \sum_\ell 
   \frac{\alpha_s\!\left(Qv^{1/(a+b_\ell)}\right)}
        {\alpha_s(Q)(a+b_\ell)}
-  \int_0^1 dz\,P_\ell(z)\ln f_{\mathrm{hc}}(z)\,,
+ \int_0^{2\pi} \frac{d\phi^{(\ell)}}{2\pi}\int_0^1 dz^{(\ell)}\,P_\ell(z)\ln \frac{f_{\rm sc}^{(\ell)}(z^{(\ell)},\phi^{(\ell)})}{f_{\rm hc}^{(\ell)}(z^{(\ell)},\phi^{(\ell)})}
 \end{equation}
-where
-\ABquestion{Unsure how to formulate this in terms of $\Vsc{k}$/$\Vhc{k}$
-as the recoil correction is formulated differently in the 3-jet paper?}
-The function $P_{\ell}(z)$ is given by Eqs.~\eqref{eq:Pell-ISR} and~\eqref{eq:Pell-FSR}
-for initial- and final-state radiation respectively. 
+where the function $P_{\ell}(z)$ is given by Eqs.~\eqref{eq:Pell-ISR} and~\eqref{eq:Pell-FSR}
+for initial- and final-state radiation respectively, while
+\begin{subequations}
+\begin{align}
+&\frac{V_{\rm hc}(\{\tilde{p}\},k,\{k_i\})}{v}=\zeta f_{\rm hc}^{(\ell)}(z^{(\ell)},\phi^{(\ell)})+\sum_i\zeta_i\,,\\
+&\frac{V_{\rm sc}(\{\tilde{p}\},k,\{k_i\})}{v}=\zeta f_{\rm sc}^{(\ell)}(z^{(\ell)},\phi^{(\ell)})+\sum_i\zeta_i\,.
+\end{align}
+\end{subequations}
 
-The recoil correction $\Delta\mathcal{F}_{\rm rec}$ takes the form: 
-\ABquestion{I don't understand the labels here?}
-\begin{equation}
+The recoil correction $\Delta\mathcal{F}_{\rm rec}$ takes the form of summing over the gluon legs $\ell_g$ : 
+\ABquestion{Is this correct?}
+\begin{multline}
  \label{eq:DFrec-general-add}
-	\Delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL(\lambda)\frac{\alpha_s(Qv^{1/(a+b_{\ell})})}{\alpha_s(Q)(a+b_{\ell})}\left[\int_0^{\pi}\frac{d\phi}{\pi}\int_0^1dz \Delta P_g(z,\phi)\ln f_{\rm hc}^{(f_{\ell})}(z,\phi)\right]\,.
-\end{equation}
+	\Delta\mathcal{F}_{\rm rec}(\lambda)=-\FNLL(\lambda)\sum_{\ell_g}\frac{\alpha_s(Qv^{1/(a+b_{\ell_g})})}{\alpha_s(Q)(a+b_{\ell_g})}\\\times\int_0^{\pi}\frac{d\phi^{(\ell_g)}}{\pi}\left(2\cos^2\phi^{(\ell_g)}-1\right)\int_0^1dz^{(\ell_g)}\, \Delta P_g(z^{(\ell_g)})\ln f_{\rm hc}^{(\ell_g)}(z^{(\ell_g)},\phi^{(\ell_g)})\,,
+\end{multline}
+where $\Delta P_g(z)$ for initial-state legs is given in Eq.~\eqref{eq:DPg-ISR} 
+and for final-state legs in Eq.~\eqref{eq:DPg-FSR} .
 
 The wide-angle correction $\delta\mathcal{F}_{\rm wa}(\lambda)$ takes the form:
 \begin{equation}
@@ -74,8 +79,7 @@ where
 \end{equation}
 
 The wide-angle correction $\Delta\mathcal{F}_{\rm wa}(\lambda)$ takes the form:
- \begin{multline}
+ \begin{equation}
  \label{eq:DFwa-general-add}
- 	\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)=-\FNLL(\lambda)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}\right)+\gamma_E\right)\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\\
-	=\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}2\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,. 
- \end{multline}
+ 	\Delta\mathcal{F}_{\mathrm{wa}}(\lambda)=-\FNLL(\lambda)\left(\psi^{(0)}\left(1+R'_{\mathrm{NLL}}\right)+\gamma_E\right)\frac{\alpha_s\left(v^{1/a}Q\right)}{a\alpha_s(Q)}2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,.
+ \end{equation}
