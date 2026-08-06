@@ -1126,6 +1126,10 @@ For a final-state leg,
 \section{ NNLL resummation: one-jettiness}
 \label{sec:one-jettiness}
 
+\todo{Ensure that the understanding of where all the corrections
+come from are understood and written. Also understand when we do and don't
+use the results of $x=0$ in Ref.~\cite{Banfi:2018mcq}.}
+
 We now apply the general NNLL formalism to one-jettiness $\tau_1$,
 introduced in Sec.~\ref{sec:setup}. One-jettiness is an rIRC-safe,
 continuously global observable that vanishes at Born level, and satisfies the scaling conditions for an arbitrary number of soft
@@ -1234,14 +1238,20 @@ splitting, and $\mathcal{A}^2$ is the double-emission function defined in
 Ref.~\cite{Arpino:2019ozn}. 
 
 Since one-jettiness is formally equivalent to thrust in
-$e^+e^-$ annihilation, such that both observables are additive with
-$a=b_\ell=1$ and $g_\ell(\phi)=1$, we may therefore directly use the
-angularity result of Ref.~\cite{Banfi:2018mcq} evaluated at $x=0$,
+$e^+e^-$ annihilation, both observables being additive with
+$a=b_\ell=1$ and $g_\ell(\phi)=1$, we can directly use the angularity
+result of Ref.~\cite{Banfi:2018mcq} evaluated at $x=0$:
+\ABquestion{What is confusing me is - when do we use 
+the work in Ref.~\cite{Banfi:2018mcq} evaluated at $x=0$
+and when do we not? The wide-angle correction is not the same 
+as in this reference for example. Also is this the correct reasoning
+why we can use it: ``both observables being additive with
+$a=b_\ell=1$ and $g_\ell(\phi)=1$''?}
 \begin{equation}
  	f^{(\ell)}_{\rm correl}\left(z,\mu,\phi,\phi^{(\ell)}\right)=\sqrt{1+\mu^2}\,,
 	\label{eq: f-correl-tau_1}
  \end{equation}
-reducing Eq.~\eqref{eq:dFcorrel-general-add} to
+which reduces Eq.~\eqref{eq:dFcorrel-general-add} to
 \begin{equation}
 \label{eq:dFcorrel-tau_1}
 	\delta  \mathcal{F}_{\rm correl}(\lambda)=\frac{\pi}{2\alpha_s(Q)}\lambda\,R'' \zeta_2 \FNLL(\lambda)\,.
@@ -1264,9 +1274,9 @@ three such contributions:
   \item $\Delta\mathcal{F}_{\rm rec}$, which accounts for spin
   correlations between a hard-collinear gluon and the event plane.
 \end{itemize}
-The hard-collinear correction, $\delta\mathcal{F}_{\rm hc}$, depends on the 
-limits as those of $\delta\mathcal{F}_{\rm sc}$, in Eq.~\eqref{eq:dFsc-general}. 
-The recoil corrections additionally require
+The hard-collinear correction $\delta\mathcal{F}_{\rm hc}$ depends on the
+same soft-collinear limit appearing in $\delta\mathcal{F}_{\rm sc}$,
+Eq.~\eqref{eq:dFsc-general}. The recoil corrections additionally require
 the hard-collinear limit of the observable,
 \begin{equation}
   \label{eq:Vhc}
@@ -1305,8 +1315,9 @@ The general expression for $\delta\mathcal{F}_{\rm rec}$ is
 \end{multline}
 
 For one-jettiness, the additive expression,
-Eq.~\eqref{eq:dFrec-general-add}, applies. Using the results of
-Ref.~\cite{Banfi:2018mcq} for angularities at $x=0$, one finds
+Eq.~\eqref{eq:dFrec-general-add}, applies. Again, using the results of
+Ref.~\cite{Banfi:2018mcq} for angularities at $x=0$, the ratio between the
+soft-collinear and hard-collinear measurement functions is
 \begin{equation}
 \label{eq:tau_1-fhc}
 \frac{f_{\mathrm{sc}}^{(\ell)}(z^{(\ell)},\phi^{(\ell)})}{f_{\mathrm{hc}}^{(\ell)}(z^{(\ell)},\phi^{(\ell)})}=
@@ -1315,11 +1326,13 @@ z\,, \quad \ell=1,2\,, \\
 1/z\,, \quad \ell=3\,.
 \end{cases}
 \end{equation}
-\ABquestion{Still don't quite understand how these change from ISR to FSR?}
+\ABquestion{In this reference we actually get FSR term is $1-z$ as the ratio
+so actually don't see how we get this for the ISR or the FSR?
+Also why does ISR have $z$ while FSR has $1/z$ cannot see how this makes
+sense kinematically speaking?}
 
-As for $\delta\mathcal{F}_{\rm hc}$, the $z$ integration for the
-initial-state legs cannot be performed analytically because the
-splitting functions $P_\ell(z)$ contain PDF ratios
+Similarly to $\delta\mathcal{F}_{\rm hc}$, the $z$ integration for the
+initial-state legs cannot be performed analytically as $P_\ell(z)$ contain PDFs
 (Eq.~\eqref{eq:Pell-ISR}). For the final-state leg,
 $\ell=3$, the result coincides with the corresponding
 $e^+e^-$ three-jet calculation~\cite{Arpino:2019ozn}. Isolating this
@@ -1338,10 +1351,11 @@ while for a final-state gluon
  -T_Rn_f\frac{13}{18} \right)\,.
  \end{equation}
  
-The final hard-collinear contribution,
+The remaining hard-collinear contribution,
 $\Delta\mathcal{F}_{\rm rec}$, accounts for spin correlations and is
 written as a sum over gluon legs, $\ell_g$,
-\ABquestion{Is this form of the expression correct?}
+\ABquestion{Is the sum over legs correct here? Does the $\phi$ and $z$ need to have $\ell_g$ 
+superscripts?}
 \begin{equation}
 \label{eq:DFrec-general}
 \begin{aligned}
@@ -1371,7 +1385,7 @@ Spin correlations depend on the orientation of a hard gluon's
 polarisation relative to the event plane. An observable can only see
 this if it distinguishes radiation in that plane from radiation outside
 it. One-jettiness makes no such distinction: it only depends on how
-close a hadron is to the beam or jet directions, not on its position
+close a hadron is to the beam or to the jet direction, not on its position
 around them. With no sensitivity to the event plane, there is nothing
 for the polarisation to affect, so $\Delta\mathcal{F}_{\rm rec}$
 vanishes identically.}
@@ -1386,7 +1400,7 @@ between the full observable and its soft-collinear approximation for a
 single soft wide-angle emission accompanied by an ensemble of
 soft-collinear emissions. The second,
 $\Delta\mathcal{F}_{\rm wa}$, is associated with resolved soft
-wide-angle radiation and was first introduced in Ref.~\cite{Arpino:2019ozn}.
+wide-angle radiation.
 
 The evaluation of $\delta\mathcal{F}_{\rm wa}$ is naturally expressed in
 terms of dipoles $(\ell\bar\ell)$. Accordingly, the momentum
@@ -1411,8 +1425,8 @@ soft wide-angle limit of the observable,
   \label{eq:Vwa}
   \frac{V_{\mathrm{wa}}(\{\tilde{p}\}, k^{(\ell\bar{\ell})}, k_1,\dots,k_n)}{v}\equiv \lim_{v\to 0}\frac{\Vfull{k^{(\ell\bar{\ell})}}, k_1,\dots,k_n)}{v}\,,
 \end{equation}
-where the emission $k^{(\ell\bar\ell)}$ is soft but emitted at a wide
-angle with respect to all Born legs.
+where the emission $k^{(\ell\bar\ell)}$ denotes a soft emission at wide angle with
+respect to the Born legs.
 
 The corresponding wide-angle correction is
 \begin{equation}
@@ -1453,15 +1467,14 @@ Ref.~\cite{Alioli:2023rxx} (see also Ref.~\cite{Jouttenus:2011wh}),
 and $\hat\ell$ denotes the leg which is neither  $\ell$ or $\bar\ell$.
 
 Unlike $\delta\mathcal{F}_{\rm wa}$, the correction
-$\Delta\mathcal{F}_{\rm wa}$ does not require the wide-angle limit of
-the observable and instead depends on the same soft-collinear
-approximation entering $\delta\mathcal{F}_{\rm sc}$. It is nevertheless
-classified as a soft wide-angle contribution because of the logarithm
-$\ln(Q_{\ell\bar\ell}/Q)$, which originates from soft radiation emitted
-at large angles between the legs $\ell$ and $\bar\ell$. In other words,
-the term ``wide-angle'' refers to the logarithm rather
-than to the kinematic approximation used for the observable.
-The general formula is
+$\Delta\mathcal{F}_{\rm wa}$ does not involve the wide-angle limit of the
+observable, but instead takes the same limits as $\delta\mathcal{F}_{\rm sc}$. The general expression is
+%Nevertheless
+%it is classified as a soft wide-angle contribution because of the logarithm
+%$\ln(Q_{\ell\bar\ell}/Q)$, which originates from soft radiation emitted
+%at large angles between the legs $\ell$ and $\bar\ell$. In other words,
+%the term ``wide-angle'' refers to the logarithm rather
+%than to the kinematic approximation used for the observable.
 \begin{multline}
 \label{eq:DFwa-general}
 	\Delta\mathcal{F}_{\mathrm{wa}}=2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\frac{\alpha_s(v^{1/a}Q)}{a\,\alpha_s(Q)}\ln\frac{Q_{\ell\bar\ell}}{Q}\int_0^\infty \frac{d\zeta}{\zeta}
