@@ -116,8 +116,6 @@ logarithmic contributions arising from soft and collinear emissions in
 the limit where the observable approaches zero. To illustrate this 
 explicitly, we now examine how such logarithms emerge in the fixed-order 
 calculation of thrust.
-\\ \\
-\reference{~\cite{Luisoni:2015xha, ParticleDataGroup:2026aaa, Banfi:2016yyq, Dasgupta:2003iq}}
 
 \section{Motivation: thrust and the need for resummation}
 \label{sec:thrust-example}
@@ -344,8 +342,7 @@ unique to thrust: the structure of Eq.~\eqref{eq:resummed-cumulant} applies
 broadly to all IRC safe event-shape observables. semi-numerical 
 framework, implemented in the codes \textsc{CAESAR} and \textsc{ARES}, 
 provides an observable-independent method to perform this resummation 
-systematically; we discuss it in Sec.~\ref{sec:NLL-resum}.\\ \\
-\reference{~\cite{Luisoni:2015xha, Schwartz:2014sze, ParticleDataGroup:2026aaa}}
+systematically; we discuss it in Sec.~\ref{sec:NLL-resum}.
 
 \section{Problem Specification}
 \label{sec:problem-spec}
@@ -531,7 +528,6 @@ parameter in $e^+e^-$ collisions~\cite{Catani:1992tm}.
 \item \textbf{Continuously global}: an observable is said to be \emph{global} if it is sensitive to emissions in all regions of phase space, i.e.\ it is non-zero for any emission of an additional parton that is not infinitely soft or collinear. 
 Continuous globalness further requires that, for a single soft emission, the parametric dependence of the observable on the emission’s transverse momentum be uniform across phase space, meaning that the parameter $a$ appearing in Eq.~\eqref{eq:general-sc-V} must be the same for all legs. This condition ensures that non-global logarithms~\cite{Dasgupta:2001sh,Dasgupta:2002dc}, which arise when different regions of phase space exhibit different transverse-momentum dependences, do not appear. Non-global logarithms lie beyond the scope of this thesis.
 \end{enumerate}
-\reference{~\cite{Banfi:2004yd, Banfi:2003je}.}
 
 \section{NLL Resummation}
 \label{sec:NLL-resum}
@@ -546,14 +542,13 @@ where:
 \begin{itemize}
     \item $\mathcal{V}(\{p\})$ encodes the virtual corrections to the Born process, normalised to the Born matrix element squared,
     \item $S(n)$ is a symmetry factor,
-    \item the Lorentz-invariant phase space in $d=4-2\varepsilon$ dimensions is \ABquestion{Should I express this in
-    rapidity instead?}
+    \item the Lorentz-invariant phase space in $d=4-2\varepsilon$ dimensions is 
     \begin{equation}
     [dk] \equiv \frac{d^d k}{(2\pi)^{d-1}} \delta(k^2) \Theta(k^0)\,,
     \end{equation}
     \item $\mathcal{M}^2(\{\tilde{p}\},k_1,\dots,k_n)$ is the squared matrix element for $n$ real emissions off the Born configuration $\{\tilde{p}\}$.
 \end{itemize}
-We now describe the approximations that allow this to be evaluated at NLL
+We now introduce the approximations that allow Eq.~\eqref{eq:cumu-gen} to be evaluated at NLL
 accuracy.
 
 \subsection{Approximations at NLL}
@@ -568,7 +563,7 @@ independent, so that the squared matrix element for $n$ such emissions
 approximately factorises into a product of independent single-emission
 contributions.
 
-However, this factorisation is not exact: correlated gluon clusters, 
+However, this factorisation is not exact. Correlated gluon clusters, 
 in which a primary emission subsequently branches into further gluons, 
 give rise to corrections to the single-gluon emission probability. At
 NLL, these corrections can be absorbed into a redefinition of the
@@ -642,8 +637,7 @@ by its soft-collinear limit $M_{\mathrm{sc}}^2$ and $V$ by
 $V_{\mathrm{sc}}$. This is valid because the constraint
 $\Theta(v-V_{\mathrm{sc}})$ restricts the emission to the soft-collinear
 region, where $M^2\simeq M_{\mathrm{sc}}^2$ where the remaining terms 
-are of NNLL accuracy and are neglected. \add{AB correction: these
-are contained in dFhc, dFsc and Delta Fwa.}
+are of NNLL accuracy and are neglected. 
 
 The first term defines the \emph{radiator} $R(v)$, and the cumulant
 factorises as
@@ -668,9 +662,9 @@ R(v) \equiv \int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)\,,
 which integrates the emission probability over the region of phase
 space where the observable value exceeds $v$. Its exponential
 $e^{-R(v)}$ is the \emph{Sudakov form factor}, giving the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs.
-The Sudakov form factor resums all LL contributions for rIRC safe observables.
+This factor resums all LL contributions for rIRC safe observables.
 
-At NLL, the radiator receives contributions all regions. 
+At NLL, the radiator receives contributions from all regions. 
 Accordingly, it can be split into two pieces, one from the hard-collinear
 region and the other from the soft regions,
 \begin{equation}
@@ -682,18 +676,17 @@ We treat each piece in turn.
 \subsubsection{Soft radiator}
 \label{subsubsec:Rs}
 
-\todo{We might want to explain why exactly 
-we do this as a sum over dipoles i.e.\ where the dipole 
-structure arises from (ME factorisation), why it is 
-only a special case for 2 and 3 legs. Look at first CAESAR
-paper to understand what is occurring here.}
-
 The soft radiator is a sum over colour dipoles $(\ell\bar\ell)$ formed
 by pairs of hard legs,
 \begin{equation}
 	R_{\mathrm{s}}=\sum_{\ell}\sum_{\bar{\ell}\neq\ell} C_{\ell\bar{\ell}}\,\mathcal{R}_{\ell\bar\ell}(v)\,,
 \end{equation}
-where $C_{\ell\bar \ell}=C_A/2$ if either leg is a gluon and $C_{\ell\bar \ell}=C_F-C_A/2$ otherwise. 
+where the dipole colour factor is defined as
+\begin{equation}
+\label{eq:Cellbell}
+C_{\ell\bar{\ell}}=-\mathbf{T}_{\ell}\cdot\mathbf{T}_{\bar\ell}\,,
+\end{equation}
+and the colour-charge operators are defined in Eq.~\eqref{eq:colour-charge-op}.
 These colour factors satisfy
 \begin{equation}
     \label{eq:Cl}
@@ -702,7 +695,7 @@ These colour factors satisfy
 where $C_\ell$ is the colour factor of leg $\ell$ ($C_F$ for a quark and $C_A$ for a gluon). 
 
 The kinematics of an emission with respect to the $(\ell\bar\ell)$
-dipole are described by the following variables: the rapidity
+dipole are described by the rapidity
 \begin{equation}
     \eta^{(\ell\bar\ell)}
     \equiv \frac{1}{2}\ln\frac{z^{(\ell)}}{z^{(\bar\ell)}}\,,
@@ -719,12 +712,8 @@ transverse momentum with respect to the dipole,
 \end{equation}
 with $Q_{\ell\bar\ell}^2 = 2(p_\ell\cdot p_{\bar\ell})$. 
 
-In terms of these variables, the soft radiator is
-\add{AB comment: the origin of this comes from the 
-observable constraint and a prescription to deal with
-soft wide-angle gluons.}
-\todo{We do need to discuss where this comes from, look
-at original CAESAR paper I think.}
+In terms of these variables, the soft radiator is \ABquestion{Am I missing 
+a  soft matrix element here?}
 \begin{multline}
 \label{eq:Rll-dip}
   \mathcal{R}_{\ell\bar\ell}(v) = \int \frac{d\kappa_{\ell\bar{\ell}}^2}{\kappa_{\ell\bar{\ell}}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int d\eta^{(\ell\bar \ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar \ell)}}{2\pi}\
@@ -738,7 +727,8 @@ at original CAESAR paper I think.}
 where the factor $\Theta(\eta^{(\ell\bar{\ell})})$ restricts each 
 emission to the hemisphere associated with leg $\ell$ within the dipole, 
 a prescription which allows us to separate the contribution
-of different legs. The last Heaviside function encodes the soft-collinear 
+of different legs. Note that $1/\kappa_{\ell\bar\ell}^2$ is the eikonal factor for soft gluon emission from the dipole with colour factor $C_{\ell\bar\ell}$
+as shown in Sec.~\ref{subsec:soft-fact}. The last Heaviside function encodes the soft-collinear 
 limit $V_{\mathrm{sc}}^{(\ell\bar{\ell})}$ expressed in dipole 
 variables. The dipole coefficient is
 \begin{equation}
@@ -914,9 +904,9 @@ and the rescaled variable
 \label{eq:zeta-1-emsn}
 	\zeta\equiv\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\,.
 \end{equation}
-the definition \ABquestion{don't understand how this is a definition.}
+We have
 \begin{equation}
-	\int_0^\infty \frac{d\zeta}{\zeta} R'(\zeta v)= \int [dk] M^2(k)\,,
+	\int [dk] M^2(k)=\int_0^\infty \frac{d\zeta}{\zeta} R'(\zeta v)\,,
 \end{equation}
 and in particular
 \begin{equation}
@@ -925,7 +915,6 @@ and in particular
  Using the fact that $R'(v)$ decomposes
 as a sum over hard legs, $R'(v)\equiv\sum_\ell R'_\ell(v)$
 along with a change of variables, we obtain
-\ABquestion{where does this $\phi$ come from?}
 \begin{equation}
 \label{eq:measure-replace}
 [dk]\,M_{\mathrm{sc}}^2(k)=\sum_{\ell}\frac{d\zeta}{\zeta}\frac{d\phi^{(\ell)}}{2\pi}\,R'_{\ell}(\zeta v)\,,
@@ -941,7 +930,12 @@ Substituting Eq.~\eqref{eq:measure-replace} into Eq.~\eqref{eq:Fv-sc} gives
   \int_{\epsilon}^\infty\!\prod_{i=1}^n\left(\sum_{\ell_i}R_{\ell_i}'\left(\zeta_i v\right)\frac{d\zeta_i}{\zeta_i}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)
   \Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
-where the cutoff $\epsilon\ll 1$ ensures that emissions with $\zeta_i \ll \epsilon$ cancel between the real and virtual contributions, up to power corrections in $\epsilon$, that vanish because of rIRC safety. Approximating $R'(\zeta v) \simeq R'(v)$, thereby neglecting subleading effects due to corrections of relative order $\alpha_s$, the exponent evaluates to $\epsilon^{R'}$,
+where the cutoff $\epsilon\ll 1$ ensures that emissions with $\zeta_i \ll \epsilon$ cancel between the real and virtual contributions, up to power corrections in $\epsilon$, that vanish because of rIRC safety. Note that an emission with $\zeta_i < \epsilon$ is referred to as
+an \emph{unresolved} emission. These emissions contributes negligibly to the observable on its own and 
+cancel exactly between the real sum and the virtual exponent. Emissions with  $\zeta_i > \epsilon$ are referred to as
+\emph{resolved emissions}, whose contribution to the observable must be accounted for.
+
+Approximating $R'(\zeta v) \simeq R'(v)$, thereby neglecting subleading effects due to corrections of relative order $\alpha_s$, the exponent evaluates to $\epsilon^{R'}$,
 giving
 \begin{equation}
 \label{eq:Fv-reg-approx}
