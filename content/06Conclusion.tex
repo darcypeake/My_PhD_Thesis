@@ -1,50 +1,62 @@
 \chapter{Conclusion}
 \label{ch:conc}
 
-The need for theoretical predictions within QCD has a significance importance to
-help connect us to experiment. Throughout the course of this thesis, we have 
-demonstrated exactly this through two research projects which outline exactly why
-theoretical predictions are necessary for us to understand more clearly what exactly
-occurs within high-energy collisions at the LHC. Both these projects contribute significantly
-to the jet and QCD community while offering direct and in-direct ways of impacting experimental
-physics.
+Theoretical predictions within QCD are of significant importance in connecting theory
+to experiment. Throughout the course of this thesis, we have demonstrated exactly this
+through two research projects that illustrate why such predictions are necessary to
+understand more clearly what occurs within high-energy collisions at the LHC and beyond. Both
+projects contribute significantly to the jet and QCD community, offering both direct
+and indirect ways of impacting experimental physics.
 
-In chapter~\ref{chapter:DIS}, we introduced a new state-of-the-art jet algorithm 
-for deep-inelastic scattering, which is a family of $k_t$ algorithms, which is currently going
-through pier review. We presented an overview of the popular jet algorithms
-used within the literature as while doing our research we realised there is not such
-a comprehensive overview to understand how jet algorithms for DIS have been adapted.
-We outlined the structure of the algorithm as implemented as the
+In Chapter~\ref{chapter:DIS}, we introduced a new state-of-the-art family of $k_t$
+algorithms for deep-inelastic scattering, currently going through peer review. We
+presented an overview of the jet algorithms used within the literature, having found
+during our research that no such comprehensive overview of DIS jet algorithms
+currently exists. We outlined the structure of the algorithm as implemented in the
 \href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}}
-plugin to \textsc{FastJet} as part of \texttt{fjcontrib}, taking special care to consider crucial points like
-IRC safety how to order jets. We presented phenomenological results of this algorithm and compared to the
-more recently presented algorithm, Centauro to demonstrate the differences our algorithm has.
-Here we looked at the clustering sequences of the family of algorithms and Centauro and studies a range of
-observables that gave us further insight into how the clustering formation occurs. Moreover, we looked at
-hadronisation effects and observables that are particularly insensitive to hadronisation which can offer 
-possible additional tests for QCD. Overall, this piece of work was really to introduce the algorithm given in 
-\texttt{fjcontrib} and give some phenomenological results and compare to Centauro to demonstrate how it works.
-We believe that this algorithm offers an exciting avenue to re-analyse the old HERA data, to see if this
-algorithm sheds any light on anything missed previously. It has also come around at an exciting time where
-the Electron-Ion Collider (EIC) which is due to undergo construction soon \todo{work out when it is},
-this algorithm could take centre stage for analysing data due to the clean nature of separating the
-two hemispheres. Additional extensions to this project could be in the form of resummation of jet rates. 
-The \textsc{ARES} method introduced in Ch.~\ref{ch:hhZjet} could be used for this, where as discussed
-in Sec.~\ref{sec:LTS-val}, this would need only an additional correction $\delta\mathcal{F}_{\rm clust}$
-and only one initial-state radiation leg. \todo{Work out why we would need resummation for this project?}
-This leads us on nicely to the second research project presented in this thesis.
+plugin to \textsc{FastJet} as part of \texttt{fjcontrib}, taking special care to
+consider crucial points such as IRC safety and jet ordering. We presented
+phenomenological results for this algorithm and compared them to the more recently
+presented Centauro algorithm to demonstrate the differences between the two. Here we
+examined the clustering sequences of our family of algorithms alongside Centauro and
+studied a range of observables that gave further insight into how the clustering
+formation occurs. Moreover, we looked at hadronisation effects and observables that
+are particularly insensitive to hadronisation, which can offer possible additional
+tests of QCD. Overall, this piece of work introduces the algorithm implemented in
+\texttt{fjcontrib}, presents phenomenological results, and compares these to Centauro
+to demonstrate how it works. We believe that this algorithm offers an exciting avenue
+to re-analyse the old HERA data, to see if it sheds any light on features missed
+previously. It also arrives at an exciting time: the Electron-Ion Collider (EIC),
+due to undergo construction soon \todo{work out when it is}, is a natural setting for
+this algorithm to take centre stage, given its clean separation of the two
+hemispheres. Additional extensions to this project could take the form of resummation
+of jet rates. The \textsc{ARES} method introduced in Ch.~\ref{ch:hhZjet} could be used
+for this, where, as discussed in Sec.~\ref{sec:LTS-val}, this would require only an
+additional correction $\delta\mathcal{F}_{\rm clust}$ and a single initial-state
+radiation leg. \todo{Work out why we would need resummation for this project?} This
+leads us on nicely to the second research project presented in this thesis.
 
-In chapter~\ref{ch:hhZjet}, we presented an extension to the \textsc{ARES} framework for hadronic collisions.
-This is work directed towards a future paper, where in this thesis we completed
-the crucial conceptual stages of extending ARES to hadronic collisions which has never been done before. 
-Here we have presented the formalism and have completed a mixture of the direct and indirect checks to validate our results so far, which have all been successful.
+In Chapter~\ref{ch:hhZjet}, we presented an extension of the \textsc{ARES} framework
+to hadronic collisions. This work is directed towards a future paper, for which, in
+this thesis, we have completed the crucial conceptual stages of extending ARES to
+hadronic collisions, something that has never been done before. We have presented the
+formalism and completed a mixture of direct and indirect checks to validate our
+results so far, all of which have been successful. Within this chapter, we gave an
+overview of the \textsc{ARES} formalism previously introduced for $\ee$ collisions,
+and discussed the main result of the extension to hadronic collisions, which gives
+rise to exactly the same structure for the master formula, with only some ingredients
+differing. We introduced the derivation of initial-state radiation within the
+\textsc{ARES} framework, validating it by calculating the components of the master
+formula for the additive observable one-jettiness. We chose this observable for its
+remarkably simple additive nature within the \textsc{ARES} formalism, and because it
+has been resummed many times within the literature, up to N$^3$LL. Using these
+results from the literature, we performed a series of direct and indirect tests, all
+of which have been successful.
 
-
-ARES: \\
-Introduced novel resummation technique for hadronic collisions.
-Produced the most conceptually difficult steps in this procedure.
-Have provided a set of direct and indirect validations for the one-jettiness
-and work has been started for other observables which aren't so simple 
-to calculate in ARES. The matching to fixed order is the next bit. \\ \\
-
-
+There are many exciting avenues in which this work could be extended. The most
+obvious is to calculate the hard coefficient for the $hh\to Z+$jet process. This
+would allow these coefficients to be computed numerically using the \textsc{H1jet}
+programme and compared to fixed order using \textsc{Sherpa}; progress is already
+being made towards this. Additionally, other observables can be calculated using this
+formalism to give interesting phenomenological studies. Progress has already been
+made in studying event shapes, thrust minor, and one minus transverse thrust.
