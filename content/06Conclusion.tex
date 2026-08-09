@@ -1,17 +1,45 @@
 \chapter{Conclusion}
 \label{ch:conc}
 
-A small intro about what the world of physics looks like to me in our research. \\ \\
+The need for theoretical predictions within QCD has a significance importance to
+help connect us to experiment. Throughout the course of this thesis, we have 
+demonstrated exactly this through two research projects which outline exactly why
+theoretical predictions are necessary for us to understand more clearly what exactly
+occurs within high-energy collisions at the LHC. Both these projects contribute significantly
+to the jet and QCD community while offering direct and in-direct ways of impacting experimental
+physics.
 
-DIS: \\
-Introduced a new jet algorithm for DIS. 
-See how it looks in the old HERA data, and could be tested a bit
-more ahead of the EIC being made. In general offers an alternative 
-Extensions 
-for resummation in jet rates could occurs -- we can use the ARES resummation
-introduced in this thesis also, would be easy for DIS because of one leg.
-Resummation for jet rates - would just need the clustering correction as discussed in
-the LTS validation. \\ \\
+In chapter~\ref{chapter:DIS}, we introduced a new state-of-the-art jet algorithm 
+for deep-inelastic scattering, which is a family of $k_t$ algorithms, which is currently going
+through pier review. We presented an overview of the popular jet algorithms
+used within the literature as while doing our research we realised there is not such
+a comprehensive overview to understand how jet algorithms for DIS have been adapted.
+We outlined the structure of the algorithm as implemented as the
+\href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}}
+plugin to \textsc{FastJet} as part of \texttt{fjcontrib}, taking special care to consider crucial points like
+IRC safety how to order jets. We presented phenomenological results of this algorithm and compared to the
+more recently presented algorithm, Centauro to demonstrate the differences our algorithm has.
+Here we looked at the clustering sequences of the family of algorithms and Centauro and studies a range of
+observables that gave us further insight into how the clustering formation occurs. Moreover, we looked at
+hadronisation effects and observables that are particularly insensitive to hadronisation which can offer 
+possible additional tests for QCD. Overall, this piece of work was really to introduce the algorithm given in 
+\texttt{fjcontrib} and give some phenomenological results and compare to Centauro to demonstrate how it works.
+We believe that this algorithm offers an exciting avenue to re-analyse the old HERA data, to see if this
+algorithm sheds any light on anything missed previously. It has also come around at an exciting time where
+the Electron-Ion Collider (EIC) which is due to undergo construction soon \todo{work out when it is},
+this algorithm could take centre stage for analysing data due to the clean nature of separating the
+two hemispheres. Additional extensions to this project could be in the form of resummation of jet rates. 
+The \textsc{ARES} method introduced in Ch.~\ref{ch:hhZjet} could be used for this, where as discussed
+in Sec.~\ref{sec:LTS-val}, this would need only an additional correction $\delta\mathcal{F}_{\rm clust}$
+and only one initial-state radiation leg. \todo{Work out why we would need resummation for this project?}
+This leads us on nicely to the second research project presented in this thesis.
+
+In chapter~\ref{ch:hhZjet}, we presented an extension to the \textsc{ARES} framework for hadronic collisions.
+This is work directed towards a future paper, where in this thesis we completed
+the crucial conceptual stages of extending ARES to hadronic collisions which has never been done before. 
+Here we have presented the formalism and have completed a mixture of the direct and indirect checks to validate our results so far, which have all been successful.
+
+
 ARES: \\
 Introduced novel resummation technique for hadronic collisions.
 Produced the most conceptually difficult steps in this procedure.
@@ -19,4 +47,4 @@ Have provided a set of direct and indirect validations for the one-jettiness
 and work has been started for other observables which aren't so simple 
 to calculate in ARES. The matching to fixed order is the next bit. \\ \\
 
-Looking forward into what this research will impact overall.
+
