@@ -8,33 +8,51 @@ understand more clearly what occurs within high-energy collisions at the LHC and
 projects contribute significantly to the jet and QCD community, offering both direct
 and indirect ways of impacting experimental physics.
 
-In Chapter~\ref{chapter:DIS}, we introduced a new state-of-the-art family of $k_t$
-algorithms for deep-inelastic scattering, currently going through peer review. We
-presented an overview of the jet algorithms used within the literature, having found
-during our research that no such comprehensive overview of DIS jet algorithms
-currently exists. We outlined the structure of the algorithm as implemented in the
+In Chapter~\ref{chapter:DIS}, we introduced a new family of generalised-$k_t$
+algorithms for deep-inelastic scattering, presented in Ref.~\cite{}. We began with
+an overview of the jet algorithms used within the literature, having found during our
+research that no such comprehensive overview of DIS jet algorithms currently exists.
+We outlined the structure of the algorithm as implemented in the
 \href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}}
 plugin to \textsc{FastJet} as part of \texttt{fjcontrib}, taking special care to
-consider crucial points such as IRC safety and jet ordering. We presented
-phenomenological results for this algorithm and compared them to the more recently
-presented Centauro algorithm to demonstrate the differences between the two. Here we
-examined the clustering sequences of our family of algorithms alongside Centauro and
-studied a range of observables that gave further insight into how the clustering
-formation occurs. Moreover, we looked at hadronisation effects and observables that
-are particularly insensitive to hadronisation, which can offer possible additional
-tests of QCD. Overall, this piece of work introduces the algorithm implemented in
-\texttt{fjcontrib}, presents phenomenological results, and compares these to Centauro
-to demonstrate how it works. We believe that this algorithm offers an exciting avenue
-to re-analyse the old HERA data, to see if it sheds any light on features missed
-previously. It also arrives at an exciting time: the Electron-Ion Collider (EIC),
-due to undergo construction soon \todo{work out when it is}, is a natural setting for
-this algorithm to take centre stage, given its clean separation of the two
-hemispheres. Additional extensions to this project could take the form of resummation
-of jet rates. The \textsc{ARES} method introduced in Ch.~\ref{ch:hhZjet} could be used
-for this, where, as discussed in Sec.~\ref{sec:LTS-val}, this would require only an
-additional correction $\delta\mathcal{F}_{\rm clust}$ and a single initial-state
-radiation leg. \todo{Work out why we would need resummation for this project?} This
-leads us on nicely to the second research project presented in this thesis.
+consider crucial points such as IRC safety and jet ordering. We then presented
+phenomenological results and compared them to the Centauro algorithm, examining the
+clustering sequences of our family of algorithms alongside Centauro and studying a
+range of observables that gave further insight into how the clustering formation
+occurs. \add{Give reason why we look at Centauro.}
+
+The comparison revealed clear differences in how the algorithms treat soft radiation.
+The anti-$k_t$ variant clusters outward from the hardest particle, producing conical
+jets whose constituents are stable against variations in the jet radius, whereas the
+$k_t$ and C/A variants allow soft particles to cluster among themselves and so produce
+a larger number of soft, stand-alone jets. Relative to Centauro, our algorithms retain
+more of the struck-quark radiation within the macrojet, which manifests itself in a
+harder $z_{\rm jet}$ spectrum and a larger fraction of events at low $q_T$. We also
+looked at hadronisation effects and identified observables that are particularly
+insensitive to hadronisation, which can offer possible additional tests of QCD.
+
+We believe that this algorithm offers an exciting avenue to re-analyse the old HERA
+data, to see if it sheds any light on features missed previously. Such a re-analysis
+is made particularly attractive by the fact that $Q$ is measured event by event in
+DIS: since non-perturbative corrections fall with inverse powers of $Q$ while
+perturbative ones vary only logarithmically, a single dataset spanning a range in $Q$
+offers a natural handle on the energy dependence of non-perturbative parameters, in a
+way that in $\ee$ annihilation would require data taken at several beam energies. The
+work also arrives at an opportune time: the Electron--Ion Collider (EIC), currently
+under construction at Brookhaven National Laboratory with operation scheduled to begin
+in the early 2030s, is a natural setting for this algorithm to take centre stage,
+given its clean separation of the two hemispheres.
+
+A further extension of this project would be the resummation of jet rates. Jet rates
+contain large logarithms of the resolution parameter, so a fixed-order prediction is
+unreliable in precisely the region where the behaviour of the algorithm matters most,
+and resumming them is what would allow the algorithm to be used for the $\alpha_s$ and
+hadronisation fits proposed above. The \textsc{ARES} method introduced in
+Ch.~\ref{ch:hhZjet} could be used for this, where, as discussed in
+Sec.~\ref{sec:LTS-val}, this would require only an additional correction
+$\delta\mathcal{F}_{\rm clust}$ and a single initial-state radiation leg. This leads
+us on nicely to the second research project presented in this thesis. \todo{Need to check this is
+correct.}
 
 In Chapter~\ref{ch:hhZjet}, we presented an extension of the \textsc{ARES} framework
 to hadronic collisions. This work is directed towards a future paper, for which, in
