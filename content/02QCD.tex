@@ -1045,7 +1045,10 @@ consisting of three components:
     
 \item a \emph{recombination scheme}: this defines how the four-momenta of two particles are combined when they are merged. The most widely used is the $E$-scheme, which is a four-momentum sum, $p_i^\mu + p_j^\mu = p_k^\mu$.
 \end{enumerate}
-%
+
+\section{Jet Algorithms}
+\label{sec:jet-algs}
+
 In 1990, significant discussion within the high-energy physics community 
 led to the formulation of a set of criteria that a well-defined jet 
 algorithm should satisfy. These requirements were outlined in a document 
@@ -1074,14 +1077,14 @@ for details. These are often described as \emph{top-down} algorithms.
 \end{itemize}
 In this thesis, we focus exclusively on sequential recombination algorithms. For a comprehensive review of jet algorithms across different processes, see Refs.~\cite{Banfi:2016yyq, Salam:2010nqg}.
 
-\section{Sequential recombination in $e^+e^-$ collisions}
+\section{Sequential Recombination in $e^+e^-$ Collisions}
 \label{sec:ee-algos}
 
 Jet algorithms for $e^+e^-$ collisions follow a common iterative clustering
 procedure: each pair of particles is assigned a \emph{distance measure}, $y_{ij}$,
 and the closest pair is recombined iteratively until all remaining objects are
 separated by more than a chosen \emph{resolution parameter}, $y_{\mathrm{cut}}$.
-%
+
 We illustrate this 
 procedure through the JADE algorithm, the first such algorithm used 
 experimentally, which was introduced by the \textsc{JADE} 
@@ -1091,7 +1094,6 @@ the sequential recombination algorithms work in practice, for any
 of the algs.}
 \begin{enumerate}
     \item Define a resolution parameter $y_{\mathrm{cut}}$.
-    %
     \item \label{step:jade-2} Compute the distance measure for every pair of 
     particles $i$ and $j$:
     \begin{equation}
@@ -1099,13 +1101,10 @@ of the algs.}
         y_{ij} = \frac{2E_iE_j(1 - \cos\theta_{ij})}{Q^2}\,,
     \end{equation}
     where $Q$ is the total centre-of-mass energy, $E_i$ is the energy of particle $i$, and $\theta_{ij}$ is the angle between particles $i$ and $j$.
-    %
     \item Identify the pair with the smallest $y_{ij}$. If $y_{ij} < y_{\mathrm{cut}}$, 
     recombine the two particles into a pseudo-particle according to the chosen recombination scheme.
-    %
     \item Repeat the procedure from step \ref{step:jade-2} until all remaining pairs satisfy $y_{ij} > y_{\mathrm{cut}}$. The surviving objects are defined as jets.
 \end{enumerate}
-%
 A drawback of the JADE algorithm is its tendency to incorrectly cluster 
 soft partons that are widely separated in angle. This arises because 
 $y_{ij}$ is small whenever either particle is soft, regardless of their 
@@ -1127,7 +1126,7 @@ a hard parton with its associated radiation.
     \vertex (g2) at (-2.0, 1.2);
     \vertex (v2) at (-1.4, 0);
     \diagram*{
-        (q1) -- [fermion] (v1) -- [fermion] (q2),
+        (q1) -- [anti fermion] (v1) -- [fermion] (q2),
         (g1) -- [gluon] (v1),
         (g2) -- [gluon] (v2),
     };
@@ -1146,7 +1145,7 @@ a hard parton with its associated radiation.
 \vertex (q2) at (2.0, 0);
 \vertex (g1) at (1.9, 1.2);
     \diagram*{
-        (q1) -- [fermion] (v1) -- [fermion] (q2),
+        (q1) -- [anti fermion] (v1) -- [fermion] (q2),
         (g1) -- [gluon] (v1),
     };
     \node[left]  at (-2.0, 0)   {\(p_2\)};
@@ -1159,30 +1158,40 @@ a hard parton with its associated radiation.
 \caption{The JADE algorithm incorrectly recombining two gluons $k_1$ and 
 $k_2$ that are widely separated in angle. The merged pseudo-particle 
 $k_1+k_2$ subsequently clusters with the hard parton $p_1$, 
-incorrectly associating $k_2$ with $p_1$. \todo{I think we need to
-put the arrow on $p_2$ the other way.}}
+incorrectly associating $k_2$ with $p_1$.}
 \label{fig:JADE}
 \end{figure}
-The shortcoming of Eq.~\eqref{eq:yij-jade} identified above motivated modifications
+The shortcoming of Eq.~\eqref{eq:yij-jade} motivated modifications
 to the distance measure, leading to the Durham~\cite{Catani:1991hj,Brown:1991hx} and
-Cambridge~\cite{Dokshitzer:1997in} algorithms. We present these in
-Chapter~\ref{chapter:DIS}, alongside the DIS variants to which they gave rise, where
-the details are useful for the new algorithm introduced.
+Cambridge~\cite{Dokshitzer:1997in} algorithms. These algorithms are outlined in Ch.~\ref{chapter:DIS}.
 
 \section{Jet algorithms beyond $e^+e^-$}
 \label{sec:beyond-ee}
 
-\add{Beam distance measure changes DIS and hadronic algorithms} \\
-\add{Inclusive vs. exclusive.}
-\add{Difference of SI vs LI $k_t$ algorithms. What does it get you and what is the evidence that it worked well?
-}
+\todo{Need to look over this. Think about if we want to discuss the LI vs. SI.}
+The clustering procedure becomes more involved in processes with an
+incoming hadron, such as hadronic collisions and deep-inelastic scattering
+(DIS). In this case, the clustering must account for radiation that is
+collinear to the incoming beam, which is incorporated through an additional
+\emph{beam distance}, $d_{iB}$. At each step of the clustering procedure,
+the smallest inter-particle distance $d_{ij}$ is compared with the smallest
+beam distance $d_{iB}$, and the corresponding operation is performed.
+The precise treatment of a pseudojet selected by the beam distance leads to
+the distinction between \emph{exclusive} and \emph{inclusive} jet
+algorithms.
 
-In Chapter~\ref{chapter:DIS} we present a new inclusive generalised-$k_t$ jet
-algorithm for DIS. Because the development of DIS jet algorithms is nowhere laid out
-in one place, that chapter also gives a self-contained account of the relevant
-kinematics and of the algorithms that preceded ours. We then compare our algorithm to
-Centauro~\cite{Arratia:2020ssx}, the most recent proposal designed specifically for
-the Breit frame.
+The construction of jet algorithms for DIS is particularly interesting
+because the presence of a single hadronic beam introduces an asymmetry that
+is absent in $e^+e^-$ collisions. Moreover, many DIS jet algorithms are
+naturally formulated in the Breit frame, where the struck quark and the
+proton remnant occupy opposite hemispheres. Several of the algorithms used
+in DIS can be understood as extensions of the Durham and Cambridge
+algorithms discussed above.
 
-
-
+We discuss these constructions in detail in Ch.~\ref{chapter:DIS}, where
+we first introduce the relevant DIS kinematics and the Breit frame before
+reviewing the historical DIS jet algorithms and their relation to their
+$e^+e^-$ counterparts. We then introduce the new inclusive
+generalised-$k_t$ algorithm developed in this thesis and compare it with
+the Centauro algorithm~\cite{Arratia:2020ssx}, a recent proposal designed
+specifically for the Breit frame.
