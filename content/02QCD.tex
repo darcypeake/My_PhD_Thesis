@@ -1,27 +1,33 @@
 \chapter{Quantum chromodynamics}
 \label{ch:QCD}
 
-\question{Do tell me if the title needs to be a bit better.}
 In this chapter we introduce the QCD background required for the remainder of
-this thesis. Unless otherwise stated, the material presented here follows Refs.~\cite{Ellis:1996mzs, Campbell:2017hsr, Peskin:1995ev,
+the thesis. Unless otherwise stated, the material presented here 
+follows Refs.~\cite{Ellis:1996mzs, Campbell:2017hsr, Peskin:1995ev,
 Luisoni:2015xha, Schwartz:2014sze, Banfi:2016yyq}.
 
-\section{QCD: The basics}
-In the 1940s, a number of unstable, strongly interacting particles -- collectively referred to as hadrons -- were discovered. In 1964, Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} proposed the quark model, which interprets hadrons as composite objects built from fundamental spin-$\tfrac{1}{2}$ constituents known as \emph{quarks}. The six known quarks are organised into three generations -- light, intermediate, and heavy -- as listed in Table~\ref{table:quark-properties}.
+\section{The QCD Lagrangian}
+\label{sec:qCD-lang}
+
+In the 1940s, a large number of unstable, strongly interacting particles,
+collectively known as \emph{hadrons}, were discovered. In 1964, 
+Gell-Mann~\cite{Gell-Mann:1964ewy} and Zweig~\cite{Zweig:1964ruk, Zweig:1964jf} 
+independently proposed the quark model, in which hadrons are interpreted as composite objects built from 
+fundamental spin-1/2 constituents known as \emph{quarks}. The six known quarks are organised into three generations -- light, intermediate, and heavy -- as shown in Table~\ref{table:quark-properties}.
  \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
 Quark & Generation & Mass & Electric Charge ($e$) \\ \hline
 
-$u$ (up)   & Light        & $2.16 \pm 0.07\,\mathrm{MeV}$ & $+\tfrac{2}{3}$ \\ \hline
-$d$ (down) & Light        & $4.70 \pm 0.07\,\mathrm{MeV}$ & $-\tfrac{1}{3}$ \\ \hline
+$u$ (up)   & Light        & $2.16 \pm 0.07\,\mathrm{MeV}$ & $+2/3$ \\ \hline
+$d$ (down) & Light        & $4.70 \pm 0.07\,\mathrm{MeV}$ & $-1/3$ \\ \hline
 
-$s$ (strange) & Intermediate & $93.5 \pm 0.8\,\mathrm{MeV}$ & $-\tfrac{1}{3}$ \\ \hline
-$c$ (charm)   & Intermediate & $1.2730 \pm 0.0046\,\mathrm{GeV}$ & $+\tfrac{2}{3}$ \\ \hline
+$s$ (strange) & Intermediate & $92.9 \pm 0.7\,\mathrm{MeV}$ & $-1/3$ \\ \hline
+$c$ (charm)   & Intermediate & $1.2729 \pm 0.0045\,\mathrm{GeV}$ & $+2/3$ \\ \hline
 
-$b$ (bottom) & Heavy & $4.183 \pm 0.007\,\mathrm{GeV}$ & $-\tfrac{1}{3}$ \\ \hline
-$t$ (top)    & Heavy & $172.56 \pm 0.31\,\mathrm{GeV}$ & $+\tfrac{2}{3}$ \\ \hline
+$b$ (bottom) & Heavy & $4.186 \pm 0.006\,\mathrm{GeV}$ & $-1/3$ \\ \hline
+$t$ (top)    & Heavy & $172.60 \pm 0.27\,\mathrm{GeV}$ & $+2/3$ \\ \hline
 
 \end{tabular}
 \caption{Properties of the six quarks. Mass values are taken from the Particle Data Group~\cite{ParticleDataGroup:2026aaa}, 
@@ -29,39 +35,41 @@ where further details on their definitions and extractions are provided.}
 \label{table:quark-properties}
 \end{table}
 
-In this picture, hadrons are classified into two categories: mesons ($q\bar{q}$), which are 
+Hadrons are broadly classified into two categories: mesons ($q\bar{q}$), which are 
 integer-spin bosons, and baryons ($qqq$), which are half-integer-spin fermions. 
-Quantum Chromodynamics (QCD) is the $\mathrm{SU}(3)$ non-Abelian gauge theory 
+Quantum chromodynamics (QCD) is the $\mathrm{SU}(3)$ non-Abelian gauge theory 
 governing the strong interaction. It describes how quarks bind together to form hadrons,
- with the interaction mediated by gauge bosons known as gluons. 
- Throughout this thesis, quarks and gluons are collectively
-referred to as \emph{partons} and carry a conserved charge called
-colour.
+with the interaction mediated by gauge bosons known as gluons. Throughout this thesis, 
+quarks and gluons are collectively referred to as \emph{partons} and carry a conserved 
+charge known as colour.
 
-Quarks transform in the fundamental representation of $\mathrm{SU}(3)$, 
-with fields denoted by $q_a$ for $a = 1,2,3$, corresponding to the three colour labels: red, green, and blue. 
-The associated antiquark fields are written as $\bar q^a$, where $\bar{q} = q^\dagger \gamma^0$ denotes the Dirac adjoint. 
-Gluons, denoted $\mathcal{A}^\mu_A$, transform in the adjoint representation of $\mathrm{SU}(3)$, 
-where the index $A$ labels the eight colour degrees of freedom of the gauge group.
+Quarks transform in the fundamental representation of $\mathrm{SU}(3)$,
+with fields denoted by $q_a$, where $a=1,2,3$ labels the three colour
+states, conventionally referred to as red, green, and blue. The corresponding
+antiquark fields are denoted by $\bar{q}^a$ and transform in the conjugate
+representation, where $\bar{q}=q^\dagger\gamma^0$ is the Dirac adjoint of
+$q$. Gluons, denoted by $\mathcal{A}_\mu^A$, transform in the adjoint
+representation of $\mathrm{SU}(3)$, with $A=1,\ldots,8$ labelling the eight
+colour degrees of freedom of the gluon field.
  
- The QCD Lagrangian density governing the dynamics of quarks of mass $m_f$ 
- and massless gluons takes the form
+ The QCD Lagrangian density governing the dynamics of quarks with mass $m_f$ 
+ and massless gluons can be written as
 \begin{equation}
 \label{eq: L-QCD}
 \mathcal{L}_{\mathrm{QCD}}
 = \mathcal{L}_{\mathrm{classical}}
 + \mathcal{L}_{\mathrm{GF}}
-+ \mathcal{L}_{\mathrm{ghost}}\,,
++ \mathcal{L}_{\mathrm{ghost}}\,.
 \end{equation}
-where the classical contribution contains the kinetic and interaction contributions 
-for the quark and gluon fields:
+The classical contribution contains the kinetic and interaction terms 
+for the quark and gluon fields,
 \begin{equation}
 \label{eq: L-Classical}
 \mathcal{L}_{\mathrm{classical}}
 = -\frac{1}{4} F_{\mu\nu}^{A} F^{\mu\nu}_{A}
 + \sum_{f=1}^{n_f} \bar{q}^f_a (i\slashed{D} - m_f)_{ab}\, q^f_b \,.
 \end{equation}
-Here $n_f$ denotes the number of quark flavours, taking the value $n_f = 6$ in the Standard Model 
+Here $n_f$ denotes the number of quark flavours, with $n_f = 6$ in the Standard Model 
 (see Table~\ref{table:quark-properties}). The gluon dynamics are encoded in the non-Abelian field-strength tensor
 \begin{equation}
 F_{\alpha\beta}^{A}
@@ -78,10 +86,11 @@ The covariant derivative is written using Feynman slash notation, $\slashed{D} =
 \begin{equation}
 (D_\mu)_{ab}
 = \partial_\mu \delta_{ab}
-+ ig_s (t^C \mathcal{A}_\mu^C)_{ab}\,,
++ ig_s (t^C \mathcal{A}_\mu^C)_{ab}\,.
 \end{equation}
-where the gamma matrices satisfy the anti-commutation relation $\{\gamma^\mu,\gamma^\nu\} = 2 g^{\mu\nu}$. 
-Throughout this work we adopt the metric convention $g^{\mu\nu} = (1,-1,-1,-1)$. 
+The gamma matrices satisfy the anti-commutation relation $\{\gamma^\mu,\gamma^\nu\} = 2 g^{\mu\nu}$
+and throughout this work we adopt the metric convention $g^{\mu\nu} = \mathrm{diag}(1,-1,-1,-1)$.
+
 The matrices $t^C$ are the generators of the fundamental representation of $\mathrm{SU}(3)$, 
 given explicitly by 
 \begin{equation}
@@ -93,37 +102,48 @@ These satisfy the commutation relation
 [t^A, t^B] = i f^{ABC} t^C\,,
 \end{equation}
 where $f^{ABC}$ are the structure constants of the $\mathrm{SU}(3)$ gauge group.
-The generators satisfy the Casimir identities, where repeated
-indices are summed implicitly:
+The generators satisfy the Casimir identities
 \begin{equation}
 \begin{aligned}
 &\mathrm{Tr}(t^A t^B) = T_R\, \delta^{AB}, \qquad T_R = \tfrac{1}{2}, \\[1ex]
 &t^{A}_{ab} t^{A}_{bc} = C_F\, \delta_{ac}, \qquad \qquad C_F = \tfrac{4}{3}, \\[1ex]
-&f^{ABC} f^{ABD} = C_A\, \delta^{CD}, \quad C_A = 3.
+&f^{ABC} f^{ABD} = C_A\, \delta^{CD}, \quad C_A = 3\,
 \end{aligned}
 \end{equation}
+where repeated indices are summed implicitly.
 
 The second term in Eq.~\eqref{eq: L-QCD} is the gauge-fixing contribution,
 \begin{equation}
     \mathcal{L}_{\mathrm{GF}}
     = -\frac{1}{2\xi} \left( \partial^\mu \mathcal{A}_\mu^{A} \right)^{2}\,,
 \end{equation}
-which is required to remove redundant gauge degrees of freedom arising from 
-the local $\mathrm{SU}(3)$ gauge invariance of the QCD Lagrangian. 
-The parameter $\xi$ specifies the choice of gauge: for example, 
-$\xi = 1$ corresponds to the Feynman gauge, while $\xi = 0$ to the Landau gauge.
+which is required to remove redundant gauge degrees of freedom 
+associated with the local $\mathrm{SU}(3)$ gauge invariance of the QCD
+Lagrangian. The parameter $\xi$ specifies the choice of gauge: for example, 
+$\xi = 1$ corresponds to the Feynman gauge, while $\xi = 0$ corresponds to the Landau gauge.
 
-The final term in Eq.~\eqref{eq: L-QCD} is the ghost term,
+The final term in Eq.~\eqref{eq: L-QCD} is the ghost contribution,
 \begin{equation}
 \mathcal{L}_\mathrm{ghost} = \partial_\mu \eta^{A^\dagger}(D_{AB}^\mu\,\eta^B)\,,
 \end{equation}
-where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. These fields anti-commute and therefore obey Fermi statistics. Ghosts do not correspond to physical states; instead, they arise as a consequence of the gauge-fixing procedure in non-Abelian gauge theories. 
+where $\eta^A$ are complex scalar fields known as Faddeev--Popov ghosts. 
+These fields anti-commute and therefore obey Fermi statistics. 
+Ghosts do not correspond to physical states and instead arise as a
+consequence of the gauge-fixing procedure in non-Abelian gauge theories.
 
-The Feynman rules obtained from the QCD Lagrangian are illustrated in Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. For the work performed in this thesis, these rules suffice, with propagators arising from the kinetic terms and vertices determined by the interaction terms. 
+The Feynman rules obtained from the QCD Lagrangian are illustrated in
+Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}. The propagators arise from the kinetic terms,
+while the interaction terms determine the vertices. Throughout this thesis,
+$a,b,c$ denote colour indices in the fundamental representation, while
+$A,B,C,D$ denote colour indices in the adjoint representation and $i,j$
+denote Dirac indices. For the calculations presented in this thesis, the
+rules shown here are sufficient.
 
 \begin{figure}[h!]
 \centering
-
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{@{}c@{\hspace{1.2em}}l@{}}
+%
 \begin{tikzpicture}[baseline=(current bounding box.center)]
 \begin{feynman}
     \vertex (a);
@@ -134,11 +154,11 @@ The Feynman rules obtained from the QCD Lagrangian are illustrated in Figs.~\ref
 \end{feynman}
 \node[left] at (a) {$a,i$};
 \node[right] at (b) {$b,j$};
-\node[right=1.0cm of b] {$=\; \delta^{ab}\dfrac{i}{(\slashed{p}-m+i\epsilon)_{ji}}$};
 \end{tikzpicture}
-
-\vspace{0.7cm}
-
+&
+$\displaystyle =\; \delta^{ab}\,\frac{i}{(\slashed{p}-m+i\epsilon)_{ji}}$
+\\[1.0em]
+%
 \begin{tikzpicture}[baseline=(current bounding box.center)]
 \begin{feynman}
     \vertex (a);
@@ -149,17 +169,21 @@ The Feynman rules obtained from the QCD Lagrangian are illustrated in Figs.~\ref
 \end{feynman}
 \node[left] at (a) {$A,\mu$};
 \node[right] at (b) {$B,\nu$};
-\node[right=1.0cm of b] {$=\; \delta^{AB}\dfrac{i}{p^{2}+i\epsilon}\!\left(-g^{\mu\nu}-(1-\xi)\dfrac{p^\mu\,p^\nu}{p^2+i\epsilon}\right)$};
 \end{tikzpicture}
-
+&
+$\displaystyle =\; \delta^{AB}\,\frac{i}{p^{2}+i\epsilon}
+\left(-g^{\mu\nu}+(1-\xi)\frac{p^\mu p^\nu}{p^2}\right)$
+\\
+\end{tabular}
 \caption{Feynman rules for the quark and gluon propagators.}
 \label{fig:QCD-Propagator-Rules}
 \end{figure}
 
-
 \begin{figure}[h]
 \centering
-
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{@{}c@{\hspace{1.2em}}l@{}}
+%
 \begin{tikzpicture}[baseline=(current bounding box.center)]
 \begin{feynman}
     \vertex (a);
@@ -175,52 +199,43 @@ The Feynman rules obtained from the QCD Lagrangian are illustrated in Figs.~\ref
 \node[left] at (a) {$A,\mu$};
 \node[right] at (c) {$c,j$};
 \node[right] at (d) {$b,i$};
-\node[right=1.5cm of b] {$=\; -ig_s\,(t^A)_{cb}\,(\gamma^\alpha)_{ji}$};
 \end{tikzpicture}
-
-\vspace{0.7cm}
-
+&
+$\displaystyle =\; -ig_s\,(t^A)_{cb}\,(\gamma^\mu)_{ji}$
+\\[5em]
+%
 \begin{tikzpicture}[baseline=(current bounding box.center)]
 \begin{feynman}
     \vertex (v);
     \vertex[left=2cm of v] (a);
     \vertex[above right=1.3cm and 0.9cm of v] (b);
     \vertex[below right=1.3cm and 0.9cm of v] (c);
-
     \diagram*{
         (a) -- [gluon, momentum={$p$}] (v),
         (b) -- [gluon, momentum={$q$}] (v),
         (c) -- [gluon, momentum={$r$}] (v),
     };
 \end{feynman}
-
 \node[left] at (a) {$A,\mu$};
 \node[above right] at (b) {$B,\nu$};
-\node[below right] at (c) {$C,\gamma$};
-
-\node[right=2.3cm of v] {
-$\displaystyle
-= -g_s\, f^{ABC}
-\big[
-(p-q)^\gamma g^{\mu\nu}
-+ (q-r)^\mu g^{\nu\gamma}
-+ (r-p)^\nu g^{\mu\gamma}
-\big]
-$
-};
-
+\node[below right] at (c) {$C,\rho$};
 \end{tikzpicture}
-
-
-\vspace{0.7cm}
+&
+$\displaystyle
+\begin{aligned}
+=\; -g_s\, f^{ABC}\big[&(p-q)^\rho g^{\mu\nu}
++ (q-r)^\mu g^{\nu\rho}\\
+&+ (r-p)^\nu g^{\mu\rho}\big]
+\end{aligned}$
+\\[5em]
+%
 \begin{tikzpicture}[baseline=(current bounding box.center)]
 \begin{feynman}
     \vertex (v);
     \vertex[above left=of v]  (A) {$A,\mu$};
     \vertex[below left=of v]  (B) {$B,\nu$};
-    \vertex[above right=of v] (C) {$C,\gamma$};
-    \vertex[below right=of v] (D) {$D,\delta$};
-
+    \vertex[above right=of v] (C) {$C,\rho$};
+    \vertex[below right=of v] (D) {$D,\sigma$};
     \diagram*{
         (v) -- [gluon] (A),
         (v) -- [gluon] (B),
@@ -228,38 +243,38 @@ $
         (v) -- [gluon] (D),
     };
 \end{feynman}
-
-\node[right=3.1cm of v] {
+\end{tikzpicture}
+&
 $\displaystyle
 \begin{aligned}
-&= -ig_s^2  \left[f^{EAC}f^{EBD}(g^{\mu\nu}g^{\gamma\delta}-g^{\mu\delta}g^{\nu\gamma})\right.\\
-&\qquad\quad + f^{EAD}f^{EBC}(g^{\mu\nu}g^{\gamma\delta}-g^{\mu\gamma}g^{\nu\delta})\\
-&\qquad\quad \left.+ f^{EAB}f^{ECD}(g^{\mu\gamma}g^{\nu\delta}-g^{\mu\delta}g^{\nu\gamma})\right]
-\end{aligned}
-$
-};
-\end{tikzpicture}
-
-
-\caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and the four--gluon vertex.}
+=\; -ig_s^2 \big[&f^{EAC}f^{EBD}(g^{\mu\nu}g^{\rho\sigma}-g^{\mu\sigma}g^{\nu\rho})\\
++\,&f^{EAD}f^{EBC}(g^{\mu\nu}g^{\rho\sigma}-g^{\mu\rho}g^{\nu\sigma})\\
++\,&f^{EAB}f^{ECD}(g^{\mu\rho}g^{\nu\sigma}-g^{\mu\sigma}g^{\nu\rho})\big]
+\end{aligned}$
+\\
+\end{tabular}
+\caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and
+the four--gluon vertex.}
 \label{fig:QCD-Vertex-Rules}
 \end{figure}
 
-\section{Perturbation Theory}
+\section{Perturbation theory}
 \label{sec:pert-theory}
 
-With the QCD Lagrangian and its Feynman rules established, we now outline how 
-calculations are performed in practice. The probability for one state to transition to another 
-through scattering is determined by considering all relevant Feynman diagrams 
-for the incoming and outgoing particles. Each diagram is constructed from 
-the vertices and propagators of Figs.~\ref{fig:QCD-Propagator-Rules} 
-and~\ref{fig:QCD-Vertex-Rules}, and translates into a mathematical expression via 
-the corresponding Feynman rules. The sum over all such diagrams yields the 
-\emph{scattering amplitude} (or matrix element) $\mathcal{M}$, and the transition probability is 
-proportional to the squared modulus $|\mathcal{M}|^2$.
+With the QCD Lagrangian and its Feynman rules established, we now outline how
+perturbative calculations are performed in practice. Scattering processes are
+described by considering all Feynman diagrams contributing to the transition
+between a given set of incoming and outgoing states. Each diagram is constructed
+from the propagators and interaction vertices shown in
+Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}, and translated
+into a mathematical expression according to the corresponding Feynman rules.
+The sum of all contributing diagrams gives the \emph{scattering amplitude}, or
+matrix element, $\mathcal{M}$. Observable quantities such as cross sections are
+then obtained from the squared amplitude, integrated over the allowed phase
+space.
 
-To make this concrete, consider the partonic cross section for a
-hard scattering of $2\to m$ massless partons,
+To illustrate the construction of a partonic cross section, consider a hard
+$2\to m$ scattering process involving massless partons,
 \[
     p_a + p_b \rightarrow p_1 + \cdots + p_m\,.
 \]
@@ -270,11 +285,11 @@ The corresponding partonic cross section is
 \end{equation}
 where the individual components are defined as follows:
 \begin{itemize}
-    \item $1/2s$ is the Lorentz-invariant flux factor for the two
+    \item $1/(2s)$ is the Lorentz-invariant flux factor for the two
   massless incoming partons, with $s=(p_a+p_b)^2$ the
-  centre-of-mass energy squared for the hard process.
+  centre-of-mass energy squared of the hard process.
   
-    \item $d\Phi^{(m)}$ denotes the $m$-parton phase space\footnote{This expression can be generalised to include colour-singlet final states by replacing the delta function $\delta(p_i^2)$ with $\delta(p_i^2 - m_i^2)$.},
+    \item $d\Phi^{(m)}$ denotes the $m$-parton phase space measure, \footnote{This expression can be generalised to include colour-singlet final states by replacing the delta function $\delta(p_i^2)$ with $\delta(p_i^2 - m_i^2)$.}
 \begin{equation}
 \label{eq:m-phase-space}
 d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, \left(2\pi\right) \, \delta\left(p_i^2\right)\,\Theta\left(p_i^0\right)\right]\left(2\pi\right)^D\delta^{(D)}\Big(p_a + p_b - \sum_{j=1}^{m} p_j\Big)\,.
@@ -287,8 +302,11 @@ d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^D p_i}{(2\pi)^D} \, \left(2\pi\right
   over those of the initial-state partons.
 
 \item $F_J^{(m)}$ is the \emph{jet function}, which specifies the observable under consideration.
- Depending on the choice of $\Theta$-functions, $\delta$-functions, or numerical
-factors, it encodes cross-sections, differential cross sections or expectation values respectively. 
+Its precise form depends on the observable
+and may contain $\Theta$-functions, $\delta$-functions, or numerical
+factors. Setting $F_J^{(m)} = 1$ gives the the total partonic cross-section.
+% Depending on the choice of $\Theta$-functions, $\delta$-functions, or numerical
+%factors, it encodes cross-sections, differential cross sections or expectation values respectively. 
 The choice $F_J^{(m)} = 1$ reduces Eq.~\eqref{eq:2-to-m-xsec} to the total partonic cross-section. 
 \end{itemize}
 
@@ -362,7 +380,7 @@ $\mu_R\gg\Lambda_{\rm QCD}$, thereby exploiting asymptotic freedom.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1.0\linewidth]{figures/chapter2/running_coupling.jpg}
+  \includegraphics[width=0.85\linewidth]{figures/chapter2/running_coupling.jpg}
   \caption{Determinations of $\alpha_s$ as a function of the energy
   scale $Q$, taken from Ref.~\cite{ParticleDataGroup:2026aaa},
   compared to the five-loop QCD prediction evaluated at the current Particle Data Group (PDG)
