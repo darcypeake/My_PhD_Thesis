@@ -613,7 +613,7 @@ collectively referred to as IR (or IRC) divergences.
 To regulate these divergences, we evaluate this integral in
 $d=4-2\varepsilon$ dimensions using dimensional regularisation.
 (see Sec.~\ref{subsec:UV-div}).\footnote{Note that the $m$-particle
-phase space in Eq.~\eqref{eq:m-3-phase-space}, can be written in 
+phase space in Eq.~\eqref{eq:m-3-phase-space}, is written as
 $d$ dimensions as $d\Phi^{(m)}=\left[\prod_{i=1}^{m}\frac{d^d p_i}{(2\pi)^d}(2\pi)\delta(p_i^2)\Theta(p_i^0)\right]
 (2\pi)^d\delta^{(d)}\left(p_a+p_b-\sum_{j=1}^{m}p_j\right)\,.$} 
 The regulated expression is
@@ -696,13 +696,8 @@ and virtual contributions is finite and is given by
 \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
 \left(\frac{3}{2} + \mathcal{O}(\varepsilon)\right)\,.
 \end{equation}
-Taking the limit $\varepsilon\to0$ and comparing with the perturbative
-expansion in Eq.~\eqref{eq:sig-pert-theory}, the finite NLO contribution is
-\begin{equation}
-\hat{\sigma}^{(1)}
-= \frac{3}{2}C_F\,\hat{\sigma}^{(0)}\,.
-\end{equation}
-The total cross section up to NLO accuracy is consequently
+Expanding in $\varepsilon$ and taking the limit $\varepsilon\to0$,
+the total cross section up to NLO accuracy is consequently
 \begin{equation}
 \label{eq:sigma-full}
 \hat{\sigma}
@@ -772,14 +767,16 @@ the soft emission and is given by
 \end{equation}
 The factorisation shows that the soft emission depends only on the
 colour charges and directions of the hard legs, not on the details
-of the hard process.
+of the hard process. \ABquestion{I wanted to write something like this
+to give background to why soft emissions don't affect ISR - but maybe this
+is unnecessary?}
 
 
 \subsection{Collinear limit}
 \label{subsec:collinear-fact}
 
 We next consider the limit in which two partons become collinear.
-The momenta of the two partons can be parametrised using a Sudakov
+The momenta of the two partons, $i$ and $j$, can be parametrised using a Sudakov
 decomposition,
 \begin{equation}
 \begin{aligned}
@@ -814,19 +811,19 @@ splitting $ij\to i+j$. The explicit forms are
 \begin{equation}
 \label{eq:AP-functions}
 \begin{aligned}
-  \hat{P}_{g\to q\bar{q}}^{\mu\nu} (z,k_\perp;\varepsilon)&=
+  &\hat{P}_{g\to q\bar{q}}^{\mu\nu} (z,k_\perp;\varepsilon)=
    \hat{P}_{g\to \bar{q}q}^{\mu\nu} (z,k_\perp;\varepsilon)=
   T_R\!\left[-g^{\mu\nu}+4z(1-z)
   \frac{k_\perp^\mu k_\perp^\nu}{k_\perp^2}\right]\,,\\[1ex]
-  \hat{P}_{q\to qg}^{ss'} (z,k_\perp;\varepsilon)&=
+  &\hat{P}_{q\to qg}^{ss'} (z,k_\perp;\varepsilon)=
   \hat{P}_{\bar{q}\to \bar{q}g}^{ss'} (z,k_\perp;\varepsilon)=
   \delta_{ss'}\,C_F\!\left[\frac{1+z^2}{1-z}
   -\varepsilon(1-z)\right]\,,\\[1ex]
-  \hat{P}_{q\to gq}^{ss'} (z,k_\perp;\varepsilon)&=
+  &\hat{P}_{q\to gq}^{ss'} (z,k_\perp;\varepsilon)=
    \hat{P}_{\bar{q}\to g\bar{q}}^{ss'} (z,k_\perp;\varepsilon)=
   \delta_{ss'}\,C_F\!\left[\frac{1+(1-z)^2}{z}
   -\varepsilon z\right]\,,\\[1ex]
-  \hat{P}_{g\to gg}^{\mu\nu} (z,k_\perp;\varepsilon)&=
+ &\hat{P}_{g\to gg}^{\mu\nu} (z,k_\perp;\varepsilon)=
   2C_A\!\left[-g^{\mu\nu}\!\left(\frac{z}{1-z}+\frac{1-z}{z}\right)
   -2(1-\varepsilon)z(1-z)
   \frac{k_\perp^\mu k_\perp^\nu}{k_\perp^2}\right]\,,
@@ -837,10 +834,9 @@ indices $\mu,\nu$ corresponding to the two polarisation states
 of the parent gluon, while the quark splitting functions
 $\hat{P}^{ss'}$ carry spin indices $s,s'$ of the parent
 fermion. In both cases the indices are contracted with those of the reduced
-matrix element in the factorisation formula above. The gluon splitting functions
-retain a dependence on $k_\perp^\mu k_\perp^\nu$, giving rise to azimuthal spin
-correlations, whereas the quark splitting functions are diagonal in spin and
-carry no such dependence. \todo{Unsure about this last bit.}
+matrix element in the factorisation formula above. 
+\ABquestion{Is this last paragraph necessary? \\
+I cannot work out if these are ISR or FSR splitting functions?}
 
 \section{IRC Safety} 
 \label{sec:IRC}
@@ -854,8 +850,8 @@ number of final-state particles (see Sec.~\ref{sec:pert-theory}).
 
 For more general observables, such a cancellation is not guaranteed.
 To obtain finite perturbative predictions, the observable must be
-\emph{infrared and collinear safe} (IRC safe), meaning that its value
-is insensitive to the emission of an additional soft and/or collinear parton. 
+\emph{infrared and collinear safe} (IRC safe): its value must be insensitive 
+to the emission of additional soft and/or collinear partons.
 At NLO, these conditions can be expressed in terms of the jet function as
 \begin{equation}
 \begin{aligned}
@@ -983,12 +979,7 @@ one-loop corrections. Explicitly,}
 &P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+2\pi\beta_0\delta(1-z)\,.
 \end{aligned}
 \end{equation}
-\todo{I think work out actually how they are derived between the two so that
-we can say what is occuring here as I think missing up ISR and FSR? \\
-Also state that we do not use the $^{(0)}$ superscript in the future for the
-LO ones. \\
-Also maybe re-formulate the splitting functions
-for $q\bar{q}$ i.e.\ show in terms of the full plus distribution,}
+\ABquestion{Are these initial or final-state splittings?}
 \ndp{The $(1-z)_+$ prescription is defined by
 $\int_0^1 dz\,f(z)/(1-z)_+ = \int_0^1 dz\,(f(z)-f(1))/(1-z)$
 and ensures integrability at $z\to1$. The $\delta(1-z)$ terms in
@@ -1112,13 +1103,15 @@ the final-state particles and proton remnants.}
 \label{fig:factorisation-formula}
 \end{figure}
 
+\ABquestion{Is this next paragraph correct?}
 The factorisation formula separates the long-distance, non-perturbative physics, encoded in the PDFs, 
 from the short-distance hard interaction, captured by $\hat{\sigma}_{ij}$.  
 This separation is made precise by the factorisation scale $\mu_F$: 
 radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in $\hat{\sigma}_{ij}$. 
 
-The power-suppressed corrections $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflect the fact that this description is valid only in the high-energy limit, $Q \gg \Lambda_{\mathrm{QCD}}$, which is satisfied throughout the course of this thesis. \todo{I am thinking we might
-want to discuss the PDF and its counterterm here?}
+The power-suppressed corrections $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflect the fact that this description is valid only in the high-energy limit, $Q \gg \Lambda_{\mathrm{QCD}}$, which is satisfied throughout the course of this thesis. 
+
+\ABquestion{Should I be discussing the PDF and its counterterm here? I think I should but am not sure what I would say?}
 
 \section{Jet Physics}
 \label{sec:jet-phys}
@@ -1141,7 +1134,7 @@ consisting of three components:
 \item a \emph{recombination scheme}: this defines how the four-momenta of two particles are combined when they are merged. The most widely used is the $E$-scheme, which is a four-momentum sum, $p_i^\mu + p_j^\mu = p_k^\mu$.
 \end{enumerate}
 
-\section{Jet Algorithms}
+\section{Jet algorithms}
 \label{sec:jet-algs}
 
 In 1990, significant discussion within the high-energy physics community 
@@ -1193,15 +1186,14 @@ be used experimentally and proceeds as follows:
     recombine the two particles into a pseudojet according to the chosen recombination scheme.
     \item Repeat the procedure from step \ref{step:jade-2} until all remaining pairs satisfy $y_{ij} > y_{\mathrm{cut}}$. The surviving objects are defined as jets.
 \end{enumerate}
-A drawback of the JADE algorithm is its tendency to incorrectly cluster 
-soft partons that are widely separated in angle. 
-This behaviour arises from the energy dependence of the distance measure
-in Eq.~\eqref{eq:yij-jade}. The distance $y_{ij}$ becomes small whenever
-either particle is soft, irrespective of their angular separation.
-Consequently, two soft gluons emitted at widely separated angles can be
-recombined before either is clustered with the hard parton from which it
-originated. The resulting pseudojet may then be clustered with a
-different hard parton, causing radiation to be assigned to the wrong jet.
+A drawback of the JADE algorithm is its tendency to incorrectly cluster
+soft partons that are widely separated in angle. This follows from the
+energy dependence of the distance measure, $y_{ij}$, in Eq.~\eqref{eq:yij-jade},
+which becomes small whenever either particle is soft, irrespective of
+their angular separation. Consequently, two soft gluons emitted at widely
+separated angles can be recombined before either is clustered with the
+hard parton from which it originated. This can subsequently result in a
+soft gluon being incorrectly associated with a different hard parton.
 
 An example is shown in Fig.~\ref{fig:JADE}. The soft gluons $k_1$ and
 $k_2$ are first recombined into the pseudojet $k_1+k_2$, which then
