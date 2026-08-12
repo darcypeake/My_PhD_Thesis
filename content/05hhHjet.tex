@@ -61,8 +61,6 @@ results against existing calculations in the literature.
 
 \section{General setup}
 \label{sec:setup}
-\todo{Wording to be checked. \\
-Link back to the previous chapter more i.e.\ the rIRC safe observable etc.}
 
 We consider the production of a $Z$ boson and a hard jet in hadron collisions,
 \begin{equation}
@@ -72,9 +70,10 @@ We consider the production of a $Z$ boson and a hard jet in hadron collisions,
 where $h_1$ and $h_2$ denote the incoming hadrons with momenta $P_1$ and $P_2$, and the dots represent accompanying hadrons. At Born level, the process proceeds through two incoming partons with momenta $p_1=x_1P_1$ and $p_2=x_2P_2$, producing a $Z$ boson with momentum $q$ and a single hard parton with momentum $p_3$. 
 Beyond Born level, additional QCD radiation causes the hard parton to recoil, modifying its momentum to $\tilde p_3$. The recoiling parton is subsequently clustered together with the accompanying radiation to form the observed jet with momentum $p_J$. In the Born limit, the two coincide, so that $p_J=p_3$.
 
-We consider recursively infrared and collinear (rIRC) safe event
-shapes, which we denote generally as functions $V(q_1,\dots,q_n)$ of
-hadron momenta $q_1, \dots, q_n$. As an example, we consider
+We consider event shapes satisfying the conditions set out in
+Sec.~\ref{sec:obs-req}, denoted generally as functions $V(q_1,\dots,q_n)$ of the
+hadron momenta $q_1,\dots,q_n$.
+As an example, we consider
 one-jettiness, an observable that has been widely studied in SCET.  It corresponds to the 
 $N=1$ case of the more general $N$-jettiness observable~\cite{Stewart:2010tn}, 
 which quantifies how well the final state can be described by $N$ narrow jets. It is
@@ -87,7 +86,8 @@ where $q_i$ is the four-momentum of a \emph{hadron}, and
 $Q_1, Q_2, Q_3$ are three momentum scales. The two ``incoming'' momenta, 
 $\bar p_1$ and $\bar p_2$ are defined as 
 \ABquestion{Still don't quite understand the difference between $\bar{p}_i$ and $p_i$
-and what we mean by the quotation marks around ``incoming''  are meant to indicate?}
+and what we mean by the quotation marks around ``incoming''  are meant to indicate?
+I would not know what to say what these objects are if asked.}
 \begin{equation}
 	\bar{p}_1^\mu=\frac{1}{2}n_2\cdot (p_J+q)n_1^{\mu}\,,\quad\quad
 	\bar{p}_2^\mu=\frac{1}{2}n_1\cdot (p_J+q)n_2^{\mu}\,,
@@ -97,7 +97,7 @@ where
   \label{eq:ni-incoming}
   n_1 = (1,0,0,1)\,,\qquad n_2 = (1,0,0,-1)\,.
 \end{equation}
-When $\mathcal{T}_1\to 0$, we are in the ``1-jet region'', in which
+When $\mathcal{T}_1\to 0$, we are in the \emph{one-jet region}, in which
 the outgoing jet $p_J$ recoils against the $Z$ boson. In this limit,
 $\bar p_1$ and $\bar p_2$ coincide with the Born momenta $p_1$ and
 $p_2$.
@@ -127,24 +127,27 @@ momenta. This leads to the dimensionless observable
 	\tau_1\equiv  \sum_{i} \frac{k_{t,i}}{H_T}\min\{e^{(\eta_i-\eta_J)}, e^{-(\eta_i-\eta_J)}, \cosh(\eta_{i}-\eta_J)-\cos(\phi_{i}-\phi_J)\}\,.
 \end{equation}
 
-In general, we are interested in the cumulant of an event shape, defined by imposing the constraint that a given
-event shape $V(q_1,q_2,\dots,q_n)$ is less than a given value
-$v$. For the one-jettiness, this is such that the one-jet region corresponds
-to $v\to 0$. Additionally, in the one-jet region, we wish to fix Born kinematics completely. 
-This can be obtained for instance by measuring the differential cross-section in $\eta_J$, and in the transverse momentum $q_T$ and rapidity $y_Z$ of the $Z$ boson.  In the one-jet limit, the differential cross section factorises as
+As discussed in Sec.~\ref{sec:problem-spec}, we consider the cumulant of
+an event shape, obtained by imposing the constraint
+$V(q_1,q_2,\dots,q_n)<v$. For one-jettiness, the one-jet region corresponds
+to the limit $v\to0$. To fix the Born kinematics in this limit, we
+consider the cross section differential in $\eta_J$, and in the transverse momentum $q_T$ 
+and rapidity $y_Z$ of the $Z$ boson. The differential cross section then takes the factorised form
+of Eq.~\eqref{eq:Sigma-H-fact}, specialised to the present process, \ABquestion{Can we say it takes the factorised form of Eq.~\eqref{eq:Sigma-H-fact}}
 \begin{equation}
   \label{eq:dsigma-def}
   \frac{d\sigma(v)}{dq_T dy_Zd\eta_J} \simeq \sum_{i,j} \int_0^1 \!\! dx_1\, f_i(x_1,\mu_F)\int_0^1 \!\! dx_2\, f_j(x_2,\mu_F)\frac{d\hat \sigma_{ij}}{dq_Tdy_Zd\eta_J} \Sigma_{ij}(\{p_1,p_2,p_3\},v)\,,
 \end{equation}
-\ABquestion{Can I say, this takes the factorised form of Eq.~\eqref{eq:Sigma-H-fact} in the one-jet limit?}
-In the above equation, we have introduced the partonic cross section
+In the above equation, we have introduced the partonic cross section, $d\hat{\sigma}_{ij}$,
 for the production of a $Z$ boson and an extra jet via the partonic
 subprocess $ij$, where $i$ represents a quark, an antiquark of any
-light flavour ($u,d,c,s,b$, considered massless), or a gluon. The expression in Eq.~\eqref{eq:dsigma-def}
+light flavour ($u,d,c,s,b$, considered massless), or a gluon. 
+The expression in Eq.~\eqref{eq:dsigma-def}
 requires the construction of a mapping between the full event -- made up
 of the three hard partons $\{\tilde p\}\equiv\{\tilde p_1,\tilde p_2,\tilde p_3\}$ and an arbitrary number of soft and/or collinear emissions $\{k_i\}$ -- and
-a Born event with only three hard partons $\{p_1,p_2,p_3\}$.  \ABquestion{What sort of mapping? Can I say anything about the recoil momenta
-being able to be approximated to the born momenta?}
+a Born event with only three hard partons $\{p_1,p_2,p_3\}$.  \ABquestion{Is it necessary to expand on
+what this mapping is? Can I at least say the mapping is in the 3-jet paper and cite that or something? I don't understand
+what this mapping is here.}
 The difference between the approximation on the right-hand side of
 Eq.~\eqref{eq:dsigma-def} and the full expression for
 $ d\sigma(v)/(dq_T dy_Z d\eta_J)$ is a well-defined expansion in powers of the
@@ -163,7 +166,6 @@ reorganised as follows
   \label{eq:log-counting}
   \Sigma_{ij}(\{p_1,p_2,p_3\},v) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
 \end{equation}
-\ABquestion{You say this should be in Ch.~\ref{ch:resum} but where?}
 As illustrated in Table.~\ref{tab:log-accuracy} the function $g_1(\alpha_s L)$ resums all leading logarithmic (LL)
 terms, $\alpha_s^n L^{n+1}$, in $\ln\Sigma_{ij}$. For rIRC safe
 observables, $g_1$ exponentiates. The function $G_2(\alpha_s L)$
@@ -171,7 +173,7 @@ resums next-to-leading logarithmic (NLL) contributions
 ($\alpha_s^n L^n$) to $\ln\Sigma_{ij}$, and so on. In this work, we
 aim at NNLL accuracy, i.e.\ calculating $g_1$, $G_2$ and $G_3$. 
 
- 
+
 \section{General form of NNLL resummation}
 \label{sec:NNLL-general}
 
@@ -179,7 +181,8 @@ The main differences between event shape resummation in hadronic
 collisions and $e^+e^-$ annihilation are
 \begin{itemize}
 \item the presence of initial-state radiation;
-\item the fact that there is no single natural hard scale.
+\item the fact that there is no single natural hard scale, $Q$. \ABquestion{This is confusing
+as $Q$ is also the resummation scale? Should we just remove the $Q$ here?}
 \end{itemize}
 Nevertheless, as will be made clear in Sec.~\ref{sec:NNLL-initial}, the structure of the NNLL resummation for $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ is the same as for $e^+e^-$ annihilation, although several ingredients appearing in the
 resummation formula are modified to account for initial-state radiation.
@@ -333,19 +336,17 @@ Sec.~\ref{sec:NNLL-initial}.
   In the following two subsections we discuss $H_{ij}^{(1)}(Q,\mu_R)$
 and $R_{\rm NNLL}(v)$ in more detail. The radiator can in principle
 be taken directly from Ref.~\cite{Arpino:2019ozn}, since the Born-level process
-$hh\to Z+\text{jet}$ has the same three-lleg colour structure as the
+$hh\to Z+\text{jet}$ has the same three-leg colour structure as the
 $e^+e^-\to q\bar q g$ case. Nevertheless we present its derivation here to
 illustrate how the NLL radiator is extended to NNLL and to
 establish the conventions used throughout this chapter. The hard
 function $H_{ij}^{(1)}$, by contrast, is process specific
 and cannot be taken from Ref.~\cite{Arpino:2019ozn}. Its general
-formula is derived in Sec.~\ref{sec:H1}.
+formula is derived in the following.
 
 
 \subsection{The hard coefficient $\mathbf{H_{ij}^{(1)}(Q,\mu_R)}$}
 \label{sec:H1}
-
-\todo{Discuss further what the web is.}
 
 The hard coefficient $H_{ij}^{(1)}(Q,\mu_R)$ encodes the finite contribution
 from one-loop virtual corrections to the hard scattering amplitude.
@@ -371,15 +372,10 @@ $\gamma_\ell$ exponential, where $\gamma_\ell$ is the collinear anomalous
 dimension associated with external leg $\ell$. The second exponential
 contains the web function $w_{\ell\bar\ell}$, which describes soft
 virtual corrections arising from the exchange of an arbitrary number of soft partons between
-the dipole $(\ell\bar\ell)$. \ABquestion{In terms of the $\Theta$-functions can I say:
-The $\Theta$-functions restrict the
-integration to the region where the exchanged gluon is genuinely soft, with
-its rapidity bounded by the dipole kinematics in the first function and $\kappa_{\ell\bar\ell}$
-cut off at a scale of the same order as the hard process in the second -- here taken to
-be $Q_{\ell\bar\ell}$. Though this choice is a convention, 
-any comparably large scale would serve equally well, since differences
-amount to corrections suppressed by powers of
-$\kappa_{\ell\bar\ell}/Q_{\ell\bar\ell}$~\cite{Banfi:2018mcq}. } 
+the dipole $(\ell\bar\ell)$. \ABquestion{I wanted to explain what this $m$ is, can I say:
+The origin of the constraints given by the $\Theta$-functions 
+are explained in Sec.~\ref{subsubsec:Rs}, where there is an additional $m$-dependence
+which is a way of parameterising the multiple emissions?}
 The hard function $H_{ij}(\alpha_s,Q)$ contains the finite contribution
 remaining after these IR-divergent terms have been extracted. It
 therefore represents the process-dependent finite part of the virtual
@@ -433,7 +429,7 @@ where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav}, and
     \label{eq:w1}
     w_{\ell \bar \ell}^{(1)}(m^2,m^2+\kappa^2;\varepsilon) = (4\pi)^2\frac{C_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}^2}\,\mu_R^{2\epsilon}\frac{e^{\varepsilon\gamma_E}}{(4\pi)^{\varepsilon}}\,\delta(m^2)\,,
   \end{equation}
-  where $C_{\ell\bar \ell}$ is the colour dipole factor introduced in Sec.~\ref{subsubsec:Rs}. The $1/\kappa_{\ell\bar\ell}^2$ is the eikonal factor for soft gluon emission from the dipole with colour factor $C_{\ell\bar\ell}$ which occurs in soft matrix element factorisation as discussed in Sec.~\ref{subsec:soft-fact}; 
+  where  $C_{\ell\bar \ell}$ is the dipole colour factor given in Eq.~\eqref{eq:Cellbell}, such that for the present case, $C_{\ell\bar \ell}=C_A/2$ if either leg is a gluon and $C_{\ell\bar \ell}=C_F-C_A/2$ otherwise.
 \item the $d$-dimensional phase space, given by
   \begin{equation}
     \label{eq:dk}
@@ -471,13 +467,11 @@ we find
 \end{equation}
 where the finite constant piece, $\mathcal{H}_1$, is
 process dependent and determined by the one-loop hard scattering
-amplitude (see Appendix.~\ref{ap:H1-extraction}). It must therefore be calculated separately for each hard
+amplitude. It must therefore be calculated separately for each hard
 process.
 
 \subsection{The NNLL Radiator}
 \label{sec:radiator}
-
-\todo{Fill in the gaps of knowledge.}
 
 The NNLL radiator extends the NLL result derived in
 Sec.~\ref{subsec:NLL-radiator} by incorporating the additional
@@ -650,8 +644,6 @@ the \textsc{ARES} formalism.
 
 \section{NNLL resummation: initial-state radiation}
 \label{sec:NNLL-initial}
-\todo{Sort out the $k$ vs. $j$ notation and understand what it does/means -- work out
-if $i$ is flavour of leg 1 or just generally. Also sort out $\gamma_{\ell}^{(0)}$.}
 
 A general treatment of initial-state radiation at NNLL is currently
 missing. Results exist for one-jettiness in deep-inelastic scattering~\cite{Kang:2013ata, Kang:2013lga}
@@ -1021,7 +1013,11 @@ general structure. The coefficient $C^{(1)}_{\mathrm{hc}, qq}$ can be written in
     \label{eq:Cell-ISR}
     C_{\mathrm{hc},\ell}^{(1)} = \sum_k  \int_{x_\ell}^1\frac{dz}{z}\,C_{ik}^{(1)}(z) \frac{f_k(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_i(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\,,
   \end{equation}
-  where $i$ is the flavour of leg $\ell$. The coefficients $C_{ik}^{(1)}(z)$ are given in terms of the splitting functions in $4-2\varepsilon$ dimensions
+  where $i$ is the flavour of leg $\ell$. 
+  \ABquestion{I think there is a notation issue here -- I believe we 
+  need to say $i$ is the flavour of $\ell=1$ or instead make the subscript 
+  $i_{\ell}$ not $i$ as the channel is $ij$.}
+  The coefficients $C_{ik}^{(1)}(z)$ are given in terms of the splitting functions in $4-2\varepsilon$ dimensions
   \begin{equation}
     \label{eq:Pij-general}
     \hat P_{ik}(z;\varepsilon)= \hat P_{ik}(z;0)+\varepsilon P_{ik}^{(\varepsilon)}(z)\,,
@@ -1125,11 +1121,6 @@ For a final-state leg,
 
 \section{ NNLL resummation: one-jettiness}
 \label{sec:one-jettiness}
-
-\todo{Ensure that the understanding of where all the corrections
-come from are understood and written. Also understand when we do and don't
-use the results of $x=0$ in Ref.~\cite{Banfi:2018mcq}.}
-
 We now apply the general NNLL formalism to one-jettiness $\tau_1$,
 introduced in Sec.~\ref{sec:setup}. One-jettiness is an rIRC-safe,
 continuously global observable that vanishes at Born level, and satisfies the scaling conditions for an arbitrary number of soft
@@ -1200,14 +1191,8 @@ The general expression for $\delta\mathcal{F}_{\rm sc}$ is
 	\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\times 
 	 \\ \times \int \dZ  \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
-     \right]\,,
+     \right]\,.
 \end{multline}
-where $R''_{\ell,\mathrm{NNLL}}$ is given in Eq.\eqref{eq:R2NNLL}
-and
-\begin{equation}
-\label{eq:DRNNLL}
-\Delta R'_{\ell,\rm NNLL}(v) \equiv C_\ell\left(-\alpha_s(Q)\beta_0\,\frac{dg_2^{(\ell)}(\lambda)}{d\lambda}\right)\,.
-\end{equation}
 
 Using the one-jettiness parameters in Eq.~\eqref{eq:tau1-1em-props}
 in the additive result, Eq.~\eqref{eq:dFhc-general-add}, gives
@@ -2065,30 +2050,17 @@ This is exactly the combination of the DGLAP term with $\delta\mathcal{F}_{\rm h
 additional DGLAP term introduced in
 Ref.~\cite{vanBeekveld:2025zjh} does not represent a new physical effect, but rather a different organisation of the hard-collinear corrections. Once all terms are combined, the resummed contributions due to ISR in the two formalisms are the same.
 
-
-
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this chapter we extended the \textsc{ARES} formalism to NNLL
-resummation in hadronic collisions, applying it to $pp\to Z+\text{jet}$.
-The central result is that the NNLL master formula takes the same
-structural form as the $e^+e^-\to3$-jet case of
-Ref.~\cite{Arpino:2019ozn}. Here, the radiator and the NNLL corrections of
-soft origin --- $\delta\mathcal{F}_{\rm sc}$, $\delta\mathcal{F}_{\rm
-wa}$, and $\delta\mathcal{F}_{\rm correl}$ --- are unchanged, since
-they depend only on the colour factors and direction of the emitting
-leg. What genuinely differs is the treatment of initial-state
-radiation: a collinear splitting on an incoming leg convolutes with the
-parton distribution functions, generating new ISR contributions to
-$C_{{\rm hc},\ell}^{(1)}$, $\delta\mathcal{F}_{\rm hc}$, and
-$\delta\mathcal{F}_{\rm rec}$ that have no counterpart in $e^+e^-$
-annihilation. We also derived the associated spin-correlation
-correction $\Delta\mathcal{F}_{\rm rec}$ for a gluon-initiated
-splitting in full generality (Appendix~\ref{app:spin-correl}); this
-term vanishes for one-jettiness, since the observable carries no
-azimuthal sensitivity to the hard event plane, but is a necessary
-ingredient for any observable that does. 
+In this chapter we extended the \textsc{ARES} formalism to NNLL resummation in
+hadronic collisions, applying it to $hh\to Z+\text{jet}$. The central result is
+that the NNLL master formula takes the same structural form as the
+$e^+e^-\to3$-jet case of Ref.~\cite{Arpino:2019ozn}, with the radiator and the
+NNLL corrections of soft origin carrying over unchanged. What genuinely differs
+is the treatment of initial-state radiation, where a collinear splitting on an
+incoming leg convolutes with the parton distribution functions, generating
+contributions that have no counterpart in $e^+e^-$ annihilation.
 
 The resulting formalism was validated using the additive observable
 one-jettiness, chosen because it has already been studied extensively in
@@ -2105,12 +2077,8 @@ they contain identical ISR corrections once all terms are combined.
 Together, these comparisons provide a comprehensive validation of the
 ISR hard-collinear formalism developed in this chapter.
 
-Several natural extensions of this work remain. The most immediate step
-is the calculation of the process-dependent hard coefficient
-$\mathcal{H}_1$ for $Z+\text{jet}$ production, which would allow the
-resummation to be matched to fixed-order calculations and provide a
-direct validation of the resulting $h_{10}$ coefficient. 
-
+\ABquestion{This next bit is important as it is justifying why
+the validation I did was OK - can I confirm this is accurate.}
 There are several natural directions in which this work could be
 extended. The validation of $h_{10}$ presented in this chapter
 establishes the process-independent relation between the SCET hard
@@ -2149,4 +2117,3 @@ The next steps towards phenomenological applications are the
 matching of the resummation to fixed-order calculations, the inclusion
 of hadronisation corrections, and comparisons with experimental data to
 extract a value of the strong coupling. 
-
