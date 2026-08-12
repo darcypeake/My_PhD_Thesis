@@ -375,7 +375,8 @@ virtual corrections arising from the exchange of an arbitrary number of soft par
 the dipole $(\ell\bar\ell)$. \ABquestion{I wanted to explain what this $m$ is, can I say:
 The origin of the constraints given by the $\Theta$-functions 
 are explained in Sec.~\ref{subsubsec:Rs}, where there is an additional $m$-dependence
-which is a way of parameterising the multiple emissions?}
+which is a way of parameterising the multiple emissions? Is it all unnecessary and should
+I just reference the Sudakov paper?}
 The hard function $H_{ij}(\alpha_s,Q)$ contains the finite contribution
 remaining after these IR-divergent terms have been extracted. It
 therefore represents the process-dependent finite part of the virtual
@@ -491,7 +492,7 @@ respectively.
 
 Relative to NLL accuracy, the NNLL radiator receives three additional
 contributions. The first is the mass correction
-$\delta R_{\ell\bar\ell}$. \ABquestion{Is this true?: This accounts for the difference
+$\delta R_{\ell\bar\ell}$. \ABquestion{Is the following correct: This accounts for the difference
 between the exact rapidity boundary and the approximation used
 in the massless radiator (see below). This correction arises because unresolved collinear splittings 
 are integrated inclusively.}
@@ -1176,7 +1177,8 @@ variables $\zeta=\Vsc{k}/v$, the emitting leg $\ell$, and its azimuthal
 angle $\phi^{(\ell)}$. Physically, this correction accounts for running
 coupling corrections to real emissions in the physical scheme and for
 the correct rapidity boundary for a single soft-collinear emission. 
-\ABquestion{I am unsure what the `the correct rapidity boundary' is?}
+\ABquestion{Can we say that this is the boundary which now has the $m$
+in the denominator? Maybe it is unnecessary to expand on this?}
 
 The correlated correction $\delta\mathcal{F}_{\rm correl}$ accounts for
 the contribution of correlated double emissions. In this case, the additional
@@ -1365,7 +1367,9 @@ Since one-jettiness has no azimuthal dependence,
 \Delta\mathcal{F}_{\rm rec}(\lambda)=0\,.
 \end{equation}
 
-\ABquestion{I want to explain why this occurs physically - is the following correct:
+\ndp{I want to explain clearly why the one-jettiness gives rise to a vanishing contribution
+as will validate why we don't discuss in this chapter.} \\
+\ABquestion{Is the following correct:
 Spin correlations depend on the orientation of a hard gluon's
 polarisation relative to the event plane. An observable can only see
 this if it distinguishes radiation in that plane from radiation outside
@@ -1734,11 +1738,13 @@ to explain what these are a bit more, can I say: These are obtained by matching 
 onto the corresponding SCET operator basis. These coefficients encode
 the short-distance hard interaction and are evaluated at the hard scale.}
 
+\ndp{This is the most crucial bit to explain properly in this chapter - I am trying to validate
+why it is okay to use the $hh\to H+$ jet hard function.}
 \ABquestion{This is my justification to the examiners for why we are allowed to do this - is this OK?:
 The hard function is the only process-dependent ingredient entering the
 NNLL subtraction coefficient and therefore requires the corresponding
 one-loop virtual corrections. Our aim here is not to determine the
-physical hard function for $pp\to Z+\mathrm{jet}$, but rather to validate
+physical hard function for $hh\to Z+\mathrm{jet}$, but rather to validate
 the relation between the SCET hard function and the corresponding
 \textsc{ARES} hard coefficient. This relation is process independent:
 the conversion from $H_{\rm SCET}^{(1)}$ to the \textsc{ARES} coefficient
@@ -2079,6 +2085,8 @@ ISR hard-collinear formalism developed in this chapter.
 
 \ABquestion{This next bit is important as it is justifying why
 the validation I did was OK - can I confirm this is accurate.}
+ \ABquestion{Also, am I showing too much that the work is 
+incomplete?}
 There are several natural directions in which this work could be
 extended. The validation of $h_{10}$ presented in this chapter
 establishes the process-independent relation between the SCET hard

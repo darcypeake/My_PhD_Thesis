@@ -289,7 +289,9 @@ where the individual components are defined as follows:
   massless incoming partons, with $s=(p_a+p_b)^2$ the
   centre-of-mass energy squared of the hard process;
   
-    \item $d\Phi^{(m)}$ denotes the $m$-parton phase space measure, 
+    \item $d\Phi^{(m)}$ denotes the $m$-parton phase space measure,
+    \ABquestion{I introduced the $d$-dimensional one later as a footnote in Eq.~\eqref{eq:m-phase-d}
+    as I didn't want to introduce $d$-dimensions without discussing dim reg--is this the correct way to do it?} 
 \begin{equation}
 \label{eq:m-3-phase-space}
 d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^3 p_i}{(2\pi)^3\, 2E_i}\right]
@@ -315,14 +317,14 @@ perturbative expansion in $\alpha_s$,
 \begin{equation}
 \label{eq:sig-pert-theory}
   \hat\sigma =
-  \hat\sigma^{(0)}
-  +\frac{\alpha_s}{2\pi}\,\hat\sigma^{(1)}
-  +\left(\frac{\alpha_s}{2\pi}\right)^2\hat\sigma^{(2)}
+  \hat\sigma_0
+  +\frac{\alpha_s}{2\pi}\,\hat\sigma_1
+  +\left(\frac{\alpha_s}{2\pi}\right)^2\hat\sigma_2
   +\dots\,,
 \end{equation}
-where $\hat\sigma^{(0)}$ is the tree-level contribution, referred to as the
+where $\hat\sigma_0$ is the tree-level contribution, referred to as the
 leading-order (LO) or Born term. The terms
-$\hat\sigma^{(1)},\hat\sigma^{(2)},\ldots$ represent successive orders in the
+$\hat\sigma_1,\hat\sigma_2,\ldots$ represent successive orders in the
 perturbative expansion, known as next-to-leading order (NLO),
 next-to-next-to-leading order (NNLO), and so on.
 
@@ -516,11 +518,12 @@ section computed in perturbation theory \footnote{For differential distributions
 The corresponding leading-order cross section is
 \begin{equation}
 \label{eq:sigma-LO}
-	\hat{\sigma}^{(0)}=\frac{4\pi\alpha^2}{3s}N_c\sum_fQ_f^2\,,
+	\sigma_0=\frac{4\pi\alpha^2}{3s}N_c\sum_fQ_f^2\,,
 \end{equation}
-where $Q_f$ is the electric charge of a quark of flavour $f$,
-$N_c=3$ is the number of quark colours, $s=(p_{e^+}+p_{e^-})^2$ is the
-centre-of-mass energy squared, and $\alpha$ is the QED coupling.
+where we have dropped the partonic hat notation for simplicity. Here, $Q_f$
+denotes the electric charge of a quark of flavour $f$, $N_c=3$ is the number
+of quark colours, $s=(p_{e^+}+p_{e^-})^2$ is the centre-of-mass energy squared,
+and $\alpha$ is the QED coupling.
 
 At NLO, the cross section receives both real-emission and virtual
 corrections. We first consider the real-emission contribution,
@@ -581,9 +584,7 @@ x_i = \frac{2E_i}{\sqrt{s}}\,,
 the corresponding cross section is
 \begin{equation}
 \label{eq:qqg-real}
-\hat{\sigma}^{(1)}_{\rm R}
-=
-\hat{\sigma}^{(0)}
+\sigma^{q\bar{q}g}=\sigma_0\,
 C_F\frac{\alpha_s}{2\pi}
 \int_0^1 dx_q
 \int_0^1 dx_{\bar{q}}\,
@@ -611,24 +612,27 @@ antiquark--gluon angles, respectively. These soft and collinear singularities ar
 collectively referred to as IR (or IRC) divergences. 
 
 To regulate these divergences, we evaluate this integral in
-$d=4-2\varepsilon$ dimensions using dimensional regularisation.
+$d=4-2\varepsilon$ dimensions using dimensional regularisation
 (see Sec.~\ref{subsec:UV-div}).\footnote{Note that the $m$-particle
 phase space in Eq.~\eqref{eq:m-3-phase-space}, is written as
-$d$ dimensions as $d\Phi^{(m)}=\left[\prod_{i=1}^{m}\frac{d^d p_i}{(2\pi)^d}(2\pi)\delta(p_i^2)\Theta(p_i^0)\right]
-(2\pi)^d\delta^{(d)}\left(p_a+p_b-\sum_{j=1}^{m}p_j\right)\,.$} 
+$d$ dimensions as 
+\begin{equation}
+\label{eq:m-phase-d}
+d\Phi^{(m)}=\left[\prod_{i=1}^{m}\frac{d^d p_i}{(2\pi)^d}(2\pi)\delta(p_i^2)\Theta(p_i^0)\right]
+(2\pi)^d\delta^{(d)}\left(p_a+p_b-\sum_{j=1}^{m}p_j\right)\,.
+\end{equation}} 
 The regulated expression is
 \begin{equation}
 \label{eq:qqg-real-d-dim}
 \begin{aligned}
-	\hat{\sigma}^{(1)}_{\rm R}=&\hat{\sigma}^{(0)}\,C_F\frac{\alpha_s}{2\pi}\left(\frac{4\pi\mu_R^2}{s}\right)^\varepsilon\frac{1}{\Gamma(1-\varepsilon)}\int_0^1dx_q\int_0^1dx_{\bar{q}}\\
+	\sigma^{q\bar{q}g}&=\sigma_0\,C_F\frac{\alpha_s}{2\pi}\left(\frac{4\pi\mu_R^2}{s}\right)^\varepsilon\frac{1}{\Gamma(1-\varepsilon)}\int_0^1dx_q\int_0^1dx_{\bar{q}}\\
 	&\times\frac{(x_q^2+x_{\bar{q}}^2)-\varepsilon(2-x_q-x_{\bar{q}})^2}{(1-x_q)^{1+\varepsilon}\,(1-x_{\bar{q}})^{1+\varepsilon}\,(x_q+x_{\bar{q}}-1)^\varepsilon}\,\Theta\left(x_q+x_{\bar{q}}-1\right)\,.
 	\end{aligned}
 \end{equation}
 Performing the integrations gives
 \begin{equation}
 \label{eq:qqg-real-d-dim-more}
-    \hat{\sigma}^{(1)}_{\rm R}
-    = \sigma_0\, \frac{\alpha_s}{2\pi}\,
+   \sigma^{q\bar{q}g}=\sigma_0 \frac{\alpha_s}{2\pi}\,
       \frac{C_F}{\Gamma(1-\varepsilon)}
       \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
       \left(
@@ -673,8 +677,7 @@ Fig.~\ref{fig:photon-qq(g)}.
 
 The virtual contribution is
 \begin{equation}
-    \hat{\sigma}^{(1)}_{\rm V}
-    = \sigma_0\, \frac{\alpha_s}{2\pi}\,
+   \sigma^{q\bar{q}(g)}=\sigma_0\frac{\alpha_s}{2\pi}\,
       \frac{C_F}{\Gamma(1-\varepsilon)}
       \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
       \left(
@@ -690,8 +693,7 @@ in Eq.~\eqref{eq:qqg-real-d-dim-more}. Consequently, the sum of the real
 and virtual contributions is finite and is given by
 \begin{equation}
 \label{eq:Real-plus-Virt}
-\hat{\sigma}^{(1)}_{\rm R}+ \hat{\sigma}^{(1)}_{\rm V}
-= \hat{\sigma}^{(0)}\,\frac{\alpha_s}{2\pi}\,
+\sigma^{q\bar{q}g}+\sigma^{q\bar{q}(g)}=\sigma_0\frac{\alpha_s}{2\pi}\,
 \frac{C_F}{\Gamma(1-\varepsilon)}
 \left(\frac{4\pi\mu_R^2}{s}\right)^{\varepsilon}
 \left(\frac{3}{2} + \mathcal{O}(\varepsilon)\right)\,.
@@ -700,8 +702,8 @@ Expanding in $\varepsilon$ and taking the limit $\varepsilon\to0$,
 the total cross section up to NLO accuracy is consequently
 \begin{equation}
 \label{eq:sigma-full}
-\hat{\sigma}
-= \hat{\sigma}^{(0)}
+\sigma
+= \sigma_0
 \left(
 1 + \frac{\alpha_s}{2\pi}\,\frac{3}{2} C_F
 + \mathcal{O}(\alpha_s^2)
@@ -725,6 +727,9 @@ $|\mathcal{M}_m|^2$ in the soft and collinear limits, where it factorises into a
 remarkably simple and universal form~\cite{Catani:1999ss}. It is this
 factorisation that underpins the systematic treatment of IR singularities in
 QCD.
+
+\ndp{This is the section that I am
+most concerned by in this chapter -- I want to check it is correct.}
 
 \subsection{Soft limit}
 \label{subsec:soft-fact}
@@ -808,6 +813,7 @@ where $p_{ij}^\mu = p_i^\mu + p_j^\mu$ is the momentum of the parent
 parton $(ij)$ and $s_{ij}\equiv (p_i + p_j)^2$. The term $\hat{P}_{(ij) \to i + j}(z,k_\perp;\varepsilon)$ is the unregularised
 tree-level Altarelli--Parisi splitting function for the collinear
 splitting $ij\to i+j$. The explicit forms are
+\ABquestion{Are these ISR or FSR splitting functions?}
 \begin{equation}
 \label{eq:AP-functions}
 \begin{aligned}
@@ -835,8 +841,7 @@ of the parent gluon, while the quark splitting functions
 $\hat{P}^{ss'}$ carry spin indices $s,s'$ of the parent
 fermion. In both cases the indices are contracted with those of the reduced
 matrix element in the factorisation formula above. 
-\ABquestion{Is this last paragraph necessary? \\
-I cannot work out if these are ISR or FSR splitting functions?}
+\ABquestion{Is this last paragraph necessary?}
 
 \section{IRC Safety} 
 \label{sec:IRC}
@@ -963,13 +968,13 @@ where the Altarelli-Parisi splitting functions $P_{ij}(z)$ admit the perturbativ
 \begin{equation}
 	P_{ij}(z,\alpha_s(Q^2)) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-\ndp{The leading-order splitting functions $P_{ij}^{(0)}$ are the
+\ABquestion{Is the following correct: The leading-order splitting functions $P_{ij}^{(0)}$ are the
 regularised counterparts of the unregularised functions
-$\hat{P}_{(ij)\to i+j}$ of Eq.~\eqref{eq:AP-functions}: they are
+$\hat{P}_{(ij)\to i+j}$ of Eq.~\eqref{eq:AP-functions}. They are
 obtained by integrating $\hat{P}$ over the collinear phase space,
 applying the $(1-z)_+$ prescription to handle the soft $z\to1$
 divergence, and adding the virtual $\delta(1-z)$ piece from
-one-loop corrections. Explicitly,}
+one-loop corrections. Explicitly,
 \begin{equation}
 \label{eq:splitting-func-real-virt}
 \begin{aligned}
@@ -979,12 +984,12 @@ one-loop corrections. Explicitly,}
 &P_{gg}^{(0)}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+2\pi\beta_0\delta(1-z)\,.
 \end{aligned}
 \end{equation}
-\ABquestion{Are these initial or final-state splittings?}
-\ndp{The $(1-z)_+$ prescription is defined by
+The $(1-z)_+$ prescription is defined by
 $\int_0^1 dz\,f(z)/(1-z)_+ = \int_0^1 dz\,(f(z)-f(1))/(1-z)$
 and ensures integrability at $z\to1$. The $\delta(1-z)$ terms in
 $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$ arise from virtual corrections
-and are present only for flavour-preserving splittings.}
+and are present only for flavour-preserving splittings.} \\
+\ABquestion{Are these initial or final-state splittings? I cannot match them to Eq.~\eqref{eq:AP-functions}?}
 
 The hard interaction produces the primary particles of the event -- in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators such as \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}.
 
@@ -1111,7 +1116,8 @@ radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and t
 
 The power-suppressed corrections $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflect the fact that this description is valid only in the high-energy limit, $Q \gg \Lambda_{\mathrm{QCD}}$, which is satisfied throughout the course of this thesis. 
 
-\ABquestion{Should I be discussing the PDF and its counterterm here? I think I should but am not sure what I would say?}
+\ABquestion{Should I be discussing the PDF and its counterterm here
+or unnecessary? }
 
 \section{Jet Physics}
 \label{sec:jet-phys}

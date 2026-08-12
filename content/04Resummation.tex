@@ -145,9 +145,9 @@ calculation of the thrust distribution. At Born level, the process
 $e^+e^- \to q\bar{q}$ produces a perfectly back-to-back quark--antiquark 
 pair with $\tau = 0$, giving the distribution
 \begin{equation}
-    \frac{1}{\hat{\sigma}^{(0)}}\frac{d\sigma}{d\tau} = \delta(\tau),
+    \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = \delta(\tau),
 \end{equation}
-where $\hat{\sigma}^{(0)}$ is the leading-order cross section 
+where $\sigma_0$ is the leading-order cross section 
 defined in Eq.~\eqref{eq:sigma-LO}.The first non-trivial contribution arises 
 at $\mathcal{O}(\alpha_s)$ from the real-emission process $
 e^+e^- \to q\bar{q}g$. For a 
@@ -163,7 +163,7 @@ configuration $x_q = x_{\bar{q}} = x_g = 2/3$, and $T_{\max} = 1$.
 Using the real-emission cross section in Eq.~\eqref{eq:qqg-real}, the
 differential thrust distribution is
 \begin{equation}
-    \frac{1}{\hat{\sigma}^{(0)}}\frac{d\sigma}{dT}
+    \frac{1}{\sigma_0}\frac{d\sigma}{dT}
     = C_F \frac{\alpha_s}{2\pi}
       \int_0^1 dx_q \int_0^1 dx_{\bar{q}}\,
       \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}
@@ -174,7 +174,7 @@ As discussed in Sec.~\ref{subsec:IR-div}, this expression
 contains soft and collinear singularities. Regulating these singularities
 using dimensional regularisation gives
 \begin{multline}
-    \frac{1}{\hat{\sigma}^{(0)}}\frac{d\sigma}{dT}
+    \frac{1}{\sigma_0}\frac{d\sigma}{dT}
     = C_F\frac{\alpha_s}{2\pi}
       \left(\frac{4\pi\mu_R^2}{s}\right)^\varepsilon
       \frac{1}{\Gamma(1-\varepsilon)}
@@ -203,7 +203,7 @@ not being physical -- how is this Eq meant to be presented? Also is it OK that I
 the partonic cross section?}
 \begin{multline}
 \label{eq:full-thrust-NLO}
-    \frac{1}{\hat{\sigma}^{(0)}}\frac{d\sigma}{d\tau}
+    \frac{1}{\sigma_0}\frac{d\sigma}{d\tau}
     =\; \delta(\tau)
     + C_F\frac{\alpha_s}{2\pi}
       \left\{
@@ -234,7 +234,7 @@ In the two-jet limit, $\tau\to0$, the fixed-order distribution contains
 logarithmically enhanced contributions that become increasingly large.
 Keeping only these terms, Eq.~\eqref{eq:full-thrust-NLO} gives
 \begin{equation}
-    \left(\frac{1}{\hat{\sigma}^{(0)}}\frac{d\sigma}{d\tau}\right)_{\!\text{log-enh}}
+    \left(\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}\right)_{\!\text{log-enh}}
     = C_F \frac{\alpha_s}{2\pi}
       \left[
         -3 \left(\frac{1}{\tau}\right)_+
@@ -246,7 +246,7 @@ defined by
 \begin{equation}
 \label{eq:cumulant}
     \Sigma(\tau)
-    = \frac{1}{\hat{\sigma}^{(0)}}\int_0^\tau d\tau'\, \frac{d\sigma}{d\tau'}\,.
+    = \frac{1}{\sigma_0}\int_0^\tau d\tau'\, \frac{d\sigma}{d\tau'}\,.
 \end{equation}
 Using 
 \begin{equation}
@@ -679,6 +679,10 @@ $\mathcal{F}(v)$ in turn.
 \subsection{The NLL radiator, $R_{\mathrm{NLL}}$}
 \label{subsec:NLL-radiator}
 
+\ndp{For this section, I really
+want to pin down the origin of the radiator
+because then it can be used to explain the
+NNLL radiator and hard function in the following chapter.}\\
 The radiator is defined as
 \begin{equation}
 \label{eq:radiator-NLL}
@@ -1016,12 +1020,11 @@ where the soft-collinear measure $\dZ$ is defined by
 \end{multline}
 for any function $G$ of the emissions. 
 
-\subsection{The NLL Cumulant}
+\subsection{The NLL cumulant}
 \label{subsec:NLL-cumulant}
 
 Combining the results of the previous subsections, 
-the NLL cumulant for an rIRC-safe, continuously global observable 
-takes the form 
+the NLL cumulant takes the form 
 \begin{equation}
 \label{eq:NLL-cumulant}
 \Sigma\left(\{p\},v\right)
@@ -1029,52 +1032,42 @@ takes the form
   \mathcal{F}_{\mathrm{NLL}}\!\left(R'_{\mathrm{NLL}}(v)\right)\,,
 \qquad R'_{\mathrm{NLL}}\simeq -v\frac{dR_{\mathrm{NLL}}}{dv}\,,
 \end{equation}
-where the derivative is evaluated retaining only the terms required at NLL accuracy, 
-with NNLL corrections neglected.
+where the derivative is evaluated retaining only the terms required for NLL accuracy.
 
-\ABquestion{I am wondering if this next section is really necessary?}
+This result applies to any continuously global rIRC-safe observable, and
+requires only the parameters $a$, $b_\ell$, $d_\ell$ and $g_\ell(\phi)$ together
+with the soft-collinear limit $V_{\mathrm{sc}}$, all of which follow from the
+definition of the observable. The existence of this limit is guaranteed by rIRC
+safety, and it may be evaluated using suitable ensembles of soft and collinear
+emissions.
 
-The formula in Eq.~\eqref{eq:NLL-cumulant} applies to any continuously
-global rIRC-safe observable. For a given observable, 
-the parameters $a$, $b_\ell$, $d_\ell$, and $g_\ell(\phi)$, together with 
-the soft-collinear limit $V_{\mathrm{sc}}$, can be determined from 
-its definition. In particular, rIRC safety guarantees the existence 
-of the soft-collinear limit, which can be evaluated using suitable ensembles of 
-soft and collinear emissions.
-
-This procedure is implemented in the \textsc{CAESAR} computer code~\cite{Banfi:2004yd}. 
-Emissions are generated using a simplified parton-shower event generator and
-passed to a subroutine that evaluates $V_{\mathrm{sc}}$. 
-\textsc{CAESAR} can also be used to verify the rIRC safety of an observable
-directly from its definition in terms of final-state momenta.
-
-The successor code \textsc{ARES}~\cite{Banfi:2014sua,Banfi:2016zlc, 
-Banfi:2018mcq,Arpino:2019ozn} extends this framework to NNLL accuracy 
-(cf.\ Ch.~\ref{ch:hhZjet}).  At NLL accuracy, \textsc{CAESAR} evaluates the multiple-emission function 
-$\mathcal{F}_{\mathrm{NLL}}$ entirely numerically. In \textsc{ARES}, 
-the soft-collinear observable $V_{\mathrm{sc}}$ is instead determined analytically, 
-while the remaining integrations entering $\mathcal{F}_{\mathrm{NLL}}$ are 
-performed numerically using Monte Carlo integration. 
-A comparison between the analytical result and the numerical results 
-obtained with \textsc{CAESAR} and \textsc{ARES} for $\mathcal{F}_{\mathrm{NLL}}$
- in the case of thrust is shown in Fig.~\ref{fig:FNLL-CAESAR-comp}, 
- where excellent agreement is observed. The analytical result for thrust is derived below.
+This procedure is implemented in the \textsc{CAESAR} computer
+code~\cite{Banfi:2004yd}, in which emissions are generated by a simplified
+parton-shower event generator and passed to a subroutine that evaluates
+$V_{\mathrm{sc}}$. The code can also be used to verify the rIRC safety of an
+observable directly from its definition in terms of final-state momenta. Its
+successor, \textsc{ARES}~\cite{Banfi:2014sua,Banfi:2016zlc,Banfi:2018mcq,Arpino:2019ozn},
+extends the framework to NNLL accuracy (cf.\ Ch.~\ref{ch:hhZjet}). The two also
+differ in how the multiple-emission function is obtained, with \textsc{CAESAR}
+evaluating $\mathcal{F}_{\mathrm{NLL}}$ entirely numerically, whereas
+\textsc{ARES} determines $V_{\mathrm{sc}}$ analytically and performs the
+remaining integrations by Monte Carlo. Fig.~\ref{fig:FNLL-CAESAR-comp} compares
+both against the analytical result for thrust, derived below, and excellent
+agreement is observed.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{figures/chapter4/fnll_vs_R.pdf}
 \caption{Comparison of the analytical result for $\mathcal{F}_{\mathrm{NLL}}$ 
-with the numerical result obtained from the \textsc{CAESAR} and \textsc{ARES} code 
+with the numerical result obtained from the \textsc{CAESAR} and \textsc{ARES} codes 
 for thrust.}
   \label{fig:FNLL-CAESAR-comp}
 \end{figure}
 
-\subsection{Additive Observables}
+\subsection{Additive observables}
 \label{subsec:additive}
-\todo{This needs some re-wording and small bit of checking -- look 
-at original CAESAR paper.}
 
 A particularly important class of observables are those that are 
-\emph{additive}. For such observables, the soft-collinear limit can be
+\emph{additive}, for which the soft-collinear limit can be
 written as a sum of independent contributions from individual
 emissions,
 \begin{equation}
@@ -1082,28 +1075,21 @@ emissions,
     V_{\mathrm{sc}}(\{\tilde{p}\},k_1,\dots,k_n) = \sum_{i=1}^n V_{\mathrm{sc}}(\{\tilde{p}\},k_i)\,.
 \end{equation}
 This property allows the multiple-emission function to be evaluated
-analytically. In fact, all additive observables give rise to the same
-form of $\mathcal{F}_{\mathrm{NLL}}$, with the observable dependence 
-entering only through the value of $\RpNLL$. Thrust is one example of an additive observable, 
-while the observable studied in Chapter~\ref{ch:hhZjet}, namely one-jettiness, is also additive, 
-as we shall see.
+analytically, where the result is the same for every such observable, with the
+observable dependence entering only through the value of $\RpNLL$. Thrust is one
+example, as is one-jettiness, the observable studied in Ch.~\ref{ch:hhZjet}.
 
-To illustrate how additivity simplifies the calculation, we outline the 
-derivation of $\mathcal{F}_{\mathrm{NLL}}$ for additive observables.
-Substituting Eq.~\eqref{eq:additive-def} into
-Eq.~\eqref{eq:FNLL-formula} and introducing the rescaled variable
-$\zeta_i = V_{\mathrm{sc}}(k_i)/v$, we obtain
+Substituting Eq.~\eqref{eq:additive-def} into Eq.~\eqref{eq:FNLL-formula}, and
+recalling the rescaled variable $\zeta_i$ of Eq.~\eqref{eq:zeta-1-emsn}, we
+obtain
 \begin{equation}
  \label{eq:FNLL-add-1}
  \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i}{2\pi}\right) \Theta\left(1-\sum_{i=1}^n\zeta_i\right)\,,
 \end{equation}
-where $\RpNLL\equiv \sum_{\ell_i} R'_{\mathrm{NLL},\ell_i}$ since the
-only dependence on the hard leg $\ell_i$ enters
-through the radiator. We have written $\phi_i^{(\ell_i)}\to\phi_i$ for
-brevity. 
+where $\RpNLL\equiv \sum_{\ell_i} R'_{\mathrm{NLL},\ell_i}$ since $\phi_i^{(\ell_i)}\to\phi_i$ for
+additive observables. \ABquestion{It is true the $\phi$-dependence is the same for each leg?}
 
-We next express the Heaviside function using the Mellin
-representation
+The Heaviside function can be expressed using the Mellin transform
 \begin{equation}
 \label{eq:mellin-transform}
     \Theta\left(1-\sum_{i=1}^n\zeta_i\right)=\int_{c-i\infty}^{c+i\infty}
@@ -1114,36 +1100,34 @@ so that Eq.~\eqref{eq:FNLL-add-1} becomes,
 \label{eq:FNLL-add-2}
     \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}\frac{e^\nu}{\nu}\ \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i} \int_0^{2\pi}\frac{d\phi_i}{2\pi} e^{-\nu\zeta_i}\right) \,.
 \end{equation}
-Since the integrand contains no $\phi$ dependence, 
-the azimuthal integrals are trivial. The sum over $n$ exponentiates, giving
+The azimuthal integrals are now trivial, and the sum over $n$ exponentiates,
+giving
 \begin{equation}
 \label{eq:FNLL-add-3}
     \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \exp\left[ \RpNLL \int_{\epsilon}^\infty \frac{d\zeta}{\zeta} e^{-\nu\zeta}\right] \,.
 \end{equation}
-
 The limit $\epsilon\to 0$ becomes finite only after combining the prefactor
 $\epsilon^{\RpNLL}$ with the exponent. Writing
 \begin{equation}
   \epsilon^{\RpNLL}=\exp\left[-\RpNLL\int_{\epsilon}^1\frac{d\zeta}{\zeta}\right]\,,
   \end{equation}
-and combining this with the exponentiated integral in Eq.~\eqref{eq:FNLL-add-3} gives the 
-convergent expression
+and combining the two exponents leaves the integrand
+$e^{-\nu\zeta}-\Theta(1-\zeta)$, which vanishes as $\zeta\to0$. The
+limit may now be taken, giving
 \begin{equation}
 \label{eq:FNLL-add-4}
     \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \exp\left[ \RpNLL \int_{0}^\infty \frac{d\zeta}{\zeta} \left(e^{-\nu\zeta} - \Theta(1-\zeta)\right)\right] \,.
 \end{equation}
-
 The remaining $\zeta$-integral evaluates to
 \begin{equation}
 	 \int_{0}^\infty \frac{d\zeta}{\zeta} \left(e^{-\nu\zeta} - \Theta(1-\zeta)\right) = -\gamma_E -\ln\nu\,,
 \end{equation}
-so that Eq.~\eqref{eq:FNLL-add-4} reduces to
+so that
 \begin{equation}
 \label{eq:FNLL-add-5}
     \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= e^{-\gamma_E \RpNLL} \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i\nu}\frac{e^\nu}{\nu^{\RpNLL}}\,.
 \end{equation}
-
-Applying the standard inverse Mellin formula 
+Applying the standard inverse Mellin formula
 \begin{equation}
     \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i\,\nu}\,\frac{e^\nu}{\nu^{z}} 
     = \frac{1}{\Gamma(1+z)}\,,
@@ -1162,5 +1146,5 @@ The method was originally developed for $e^+e^-$ annihilation,
 first for jet rates and jet observables in dijet processes~\cite{Banfi:2014sua, Banfi:2016zlc,Banfi:2018mcq},
  and subsequently for event shapes in three-jet production~\cite{Arpino:2019ozn}.
 In the following chapter, we extend the \textsc{ARES} method
-to hadronic collisions for the very first time.
+to hadronic collisions for the first time.
 
