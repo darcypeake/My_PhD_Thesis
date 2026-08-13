@@ -1,28 +1,60 @@
- %\thispagestyle{empty}
+%\thispagestyle{empty}
 %\pagestyle{custom}% Set page style to custom
-\pdfbookmark[0]{Declaration}{declaration} % Bookmark name visible in a PDF viewer
-
+%\pdfbookmark[0]{Declaration}{declaration} % Bookmark name visible in a PDF viewer
 % \begin{center}
 % 	\Huge{\textbf{STATEMENT}}
 % \end{center}
-
-\vspace*{5cm}
-
+\pagestyle{empty}% Set page style to empty
+\pdfbookmark[0]{Declaration}{declaration}% Bookmark name visible in a PDF viewer
+\begin{center}
+	\Huge \textbf{Declaration}
+	\hrulefill
+\end{center}
 \begin{flushleft}
-	\large{\noindent I, \myName, hereby declare that this thesis has not been and will not be, submitted in whole or in part to another university for the award of any other degree.}
+	{\large
+	\noindent I, \myName, hereby declare that this thesis has not been, and will not be, submitted in whole or in part to another university for the award of any other degree.
+	
+	The work presented in this thesis is divided into two research projects and has been
+	completed in collaboration with Andrea Banfi, Melissa van Beekveld,
+	Silvia Ferrario Ravasio, Alexander Karlberg, Matthew Lim, and Daniel Reichelt.
+	
+	The content of chapter~\ref{chapter:DIS} is taken nearly verbatim from the paper~\cite{vanBeekveld:2026rez}
+	currently undergoing peer review:
+	
+	M. van Beekveld, S. Ferrario Ravasio, A. Karlberg, D. Peake \textit{A generalised-$k_t$ jet algorithm for Deep
+	Inelastic Scattering} arXiv:2606.13077
+	
+	I produced the first implementation of the algorithm and carried out the accompanying
+	literature review, and performed the majority of the phenomenological runs on LXPLUS
+	using Pythia and Rivet. Later implementations were developed together
+	with the other authors, with Melissa preparing the version that was released in the plugin.
+	The plots were produced by Silvia from my runs, and the conceptual development was
+	shared between all of us. Support and supervision were given throughout by all.
+	
+	Appendix~\ref{ap:DIS-fastjet} contains relevant parts of the code taken from the
+	\href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}} plugin.
+	
+	The content of chapter~\ref{ch:hhZjet} is based on a project that will be submitted for publication in due
+	course:
+	
+	D. Peake, A. Banfi, M.A. Lim, D. Reichelt \textit{NNLL resummation in Z+jet events with the ARES method}
+	
+	The majority of the calculations in this project were performed by me, under the supervision
+	of Andrea throughout and with further input from Matthew and Daniel. In particular, I computed
+	all NNLL corrections to the observable, and with Andrea derived the initial-state treatment in the 
+	\textsc{ARES} formalism. I performed all validations for the work presented here.
+	\par}
 \end{flushleft}
-
 \vspace*{2cm}
-
 \begin{minipage}{.45\linewidth}
-	\begin{flushleft} %\large
+	\begin{flushleft} 
 		\textit{\myLocation,} \\
-		\textit{\today}% adds space between the two sets of signatures
+		\textit{\today}
 	\end{flushleft}
 \end{minipage}
 \hfill
 \begin{minipage}{.45\linewidth}
-	\begin{flushright} %\large
+	\begin{flushright} 
 		\makebox[2.5in]{\hrulefill} \\
 		\myName 
 	\end{flushright}
