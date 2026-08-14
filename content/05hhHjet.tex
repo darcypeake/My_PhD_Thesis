@@ -1088,7 +1088,6 @@ B_\ell=\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\de
   used as in Eq.~\eqref{eq:C-recovery}, such that $B_\ell=\gamma_\ell^{(0)}$,
  where 
  \begin{equation}
-  \label{eq:gammal-flav}
   \gamma_\ell^{(0)} = \left\{
     \begin{split}
       & \frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
@@ -1827,14 +1826,65 @@ Finally, we consider the remaining subtraction coefficients contributing
 at NNLL accuracy, $\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$, which
 correspond to the \textsc{ARES} expansion coefficients $h_{22}$ and
 $h_{21}$, respectively\footnote{Note that $h_{22}$ formally enters at
-NLL$'$ accuracy.}. Their explicit expressions are given in
-Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}. Since these expressions are
+NLL$'$ accuracy.}. Their explicit expressions are the following:.\footnote{The coefficients as printed in
+Ref.~\cite{Gaunt:2015pea} omit the final four lines of both
+Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}, which appears to be a misprint since
+these terms are required for the coefficients to be complete.}
+
+\begin{equation}
+\label{eq:C21}
+\begin{aligned}
+&\mathcal{C}^{(2)}_1=\frac{B_{\kappa_1,1}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,1}^{(2)}(\lambda_3)
+    +\widehat{S}^{(2)}_{\kappa,1}(\lambda_s)\\[0.5ex]
+    &\qquad + H^{(1)}_{\rm SCET}\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,1}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +2\left[\left(\frac{B^{(1)}_{\kappa_1,0}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,0}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_3,0}^{(1)}(\lambda_3)+\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\right)\right.\\[0.5ex]
+    &\qquad\qquad\left.+\frac{B^{(1)}_{\kappa_1,0}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,0}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\right]\\[0.5ex]
+    &\qquad -\frac{\pi^2}{3}\left[\left(\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_3,1}^{(1)}(\lambda_3)+\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\right.\\[0.5ex]
+    &\qquad\qquad\left.+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right]\\[0.5ex]
+    &\qquad +\frac{B_{\kappa_1,-1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\left(\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +\frac{B_{\kappa_2,-1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +J_{\kappa_3,-1}^{(1)}(\lambda_3)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +\widehat{S}^{(1)}_{\kappa,-1}(\lambda_s)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)\right)\,,
+\end{aligned}
+\end{equation}
+and
+\begin{equation}
+\label{eq:C20}
+\begin{aligned}
+&\mathcal{C}^{(2)}_0=\frac{B_{\kappa_1,0}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,0}^{(2)}(\lambda_3)
+    +\widehat{S}^{(2)}_{\kappa,0}(\lambda_s)\\[0.5ex]
+    &\qquad + H^{(1)}_{\rm SCET}\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
+    J_{\kappa_3,0}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\right)\\[0.5ex]
+    &\qquad -\frac{\pi^2}{6}\left[\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\left(\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\right.\\[0.5ex]
+    &\qquad\qquad+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\\[0.5ex]
+    &\qquad\qquad +J_{\kappa_3,0}^{(1)}(\lambda_3)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\\[0.5ex]
+    &\qquad\qquad \left.+\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)\right)\right]\\[0.5ex]
+    &\qquad +2\zeta_3\left[\left(\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_3,1}^{(1)}(\lambda_3)+\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right)\right.\\[0.5ex]
+    &\qquad\qquad\left.+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)\widehat{S}^{(1)}_{\kappa,1}(\lambda_s)\right]\\[0.5ex]
+    &\qquad +\frac{B_{\kappa_1,-1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\left(\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +\frac{B_{\kappa_2,-1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)
+    +\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +J_{\kappa_3,-1}^{(1)}(\lambda_3)\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+\widehat{S}^{(1)}_{\kappa,0}(\lambda_s)\right)\\[0.5ex]
+    &\qquad +\widehat{S}^{(1)}_{\kappa,-1}(\lambda_s)\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)\right)\,.
+\end{aligned}
+\end{equation}
+Since these expressions are
 considerably more involved than those encountered at LL and NLL
 accuracy, we perform the comparison with the \textsc{ARES} expansion
 coefficients symbolically using \textsc{Mathematica}. Details of the
 implementation are provided in Appendix~\ref{ap:symb-val}, while the
 complete notebook is available in Ref.~\cite{peake2026validation}.
-
+\todo{Work out if we can write these in a more compact expression.}
 In the next section, we provide an alternative analytic validation of
 the treatment of initial-state radiation.
 
