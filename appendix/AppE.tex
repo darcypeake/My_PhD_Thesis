@@ -1,23 +1,22 @@
-\chapter{Symbolic coefficient validation}
+\chapter{Symbolic validation of \texorpdfstring{$h_{22}$}{h22} and
+         \texorpdfstring{$h_{21}$}{h21}}
 \label{ap:symb-val}
 
-This appendix documents the \textsc{Mathematica} validation of the
-\textsc{ARES} coefficients $h_{22}$ and $h_{21}$ against the SCET
-subtraction coefficients $\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$,
-discussed in Sec.~\ref{subsec:NNLL-coeff}. The complete notebook is available
-at Ref.~\cite{peake2026validation}.\footnote{The coefficients as printed in
-Ref.~\cite{Gaunt:2015pea} omit the final four lines of both
-Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}, which appears to be a misprint since
-these terms are required for the coefficients to be complete.}
+This appendix documents the symbolic validation of the ARES expansion
+coefficients $h_{22}$ and $h_{21}$ against the SCET subtraction coefficients
+$\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$ of
+Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}, discussed in
+Sec.~\ref{subsec:NNLL-coeff}. The complete \textsc{Mathematica} notebook is
+available at Ref.~\cite{peake2026validation}.
 
-Within this notebook, the ingredients of Sec.~\ref{ap:subtract-ingred} and
-the \textsc{ARES} coefficients of Eqs.~\eqref{eq:h11}--\eqref{eq:h21} are
-entered directly. Uppercase symbols denote the full expansion of a
-coefficient, following Eq.~\eqref{eq:subt-mn-exp}, so that for example
-\texttt{J[1,0]} corresponds to
-$J^{(1)}_{\kappa_3,0}(\lambda_3)=J^{(1)}_{\kappa_3,0}
-+J^{(1)}_{\kappa_3,1}\ln\lambda_3$. The remaining correspondence with the
-notation of this thesis is given in Table~\ref{tab:mma-symbols}.
+Within the notebook, the ingredients of Sec.~\ref{ap:subtract-ingred} and the
+ARES coefficients of Eqs.~\eqref{eq:h11}--\eqref{eq:h21} are entered
+directly. Uppercase symbols denote the full expansion of a coefficient,
+following Eq.~\eqref{eq:subt-mn-exp}, and the shorthand \texttt{tot[m,n]}
+collects the four functions at a given order and power of the logarithm (see below). The
+remaining correspondence with the notation of this thesis is given in
+Table~\ref{tab:mma-symbols}; symbols appearing only in the full notebook are
+documented there.
 
 \begin{table}[h]
 \begin{center}
@@ -25,18 +24,17 @@ notation of this thesis is given in Table~\ref{tab:mma-symbols}.
 \hline\hline
 Notebook & LaTeX & Notebook & LaTeX \\
 \hline\hline
-\texttt{b1[m,n]}, \texttt{b2[m,n]} & $B^{(m)}_{\kappa_{1,2},n}/f_{i,j}$ &
+\texttt{j[m,n]}, \texttt{b1[m,n]}, \texttt{b2[m,n]} &
+$J^{(m)}_{\kappa_3,n}$, $B^{(m)}_{\kappa_{1,2},n}/f_{i,j}$ &
 \texttt{Ck[l]}, \texttt{Ctot} & $C_\ell$, $\sum_\ell C_\ell$ \\
-\texttt{j[m,n]} & $J^{(m)}_{\kappa_3,n}$ &
-\texttt{g[l,m]}, \texttt{gA[l,m]} & $\gamma^{(m)}_\ell$ (SCET, \textsc{ARES}) \\
 \texttt{s[m,n]} & $\widehat{S}^{(m)}_{\kappa,n}$ &
+\texttt{g[l,m]}, \texttt{gA[l,m]} & $\gamma^{(m)}_\ell$ (SCET, ARES) \\
+\texttt{Q[l]}, \texttt{Q[l,lbar]} & $Q_\ell$, $Q_{\ell\bar\ell}$ &
 \texttt{gs1} & $\gamma^{(1)}_S$ \\
 \texttt{Qresum} & $Q$ &
-\texttt{P[l,m]}, \texttt{I[l]} & $P^{(m)}_{ik}(z)$, $I^{(1)}_{ik}(z)$ \\
-\texttt{Q[l]}, \texttt{Q[l,lbar]} & $Q_\ell$, $Q_{\ell\bar\ell}$ &
-\texttt{Isoft[l,lbar,lhat]} & $I_{\ell\bar\ell,\hat\ell}$ \\
-\texttt{ln$\lambda$F} & $\ln(\mu_R^2/\mu_F^2)$ &
-\texttt{H1SCET} & $H^{(1)}_{\rm SCET}$ \\
+\texttt{P[l,m]} & $P^{(m)}_{ik}(z)$ \\
+\texttt{H1SCET} & $H^{(1)}_{\rm SCET}$ &
+\texttt{ChcRec[l]} & $C_{\mathrm{hc},\ell}^{(1)}+\delta\mathcal{F}_{\rm rec}$ \\
 \hline\hline
 \end{tabular}
 \end{center}
@@ -47,209 +45,74 @@ Appendix~\ref{ap:ARES-coeff}.}
 \label{tab:mma-symbols}
 \end{table}
 
-\section{Validation of \texorpdfstring{$h_{22}$}{h22}}
-\label{ap:mathematica-h22}
+Following Eq.~\eqref{eq:coeff-convent}, $\mathcal{C}^{(2)}_1/8$ should
+reproduce $h_{22}$ and $\mathcal{C}^{(2)}_0/(-4)$ should reproduce $h_{21}$.
+Since $h_{10}$, $h_{11}$ and $h_{12}$ have already been validated, the
+cross-terms $\mathcal{C}^{(1)}_1\cdot\mathcal{C}^{(1)}_{-1}$ and
+$\mathcal{C}^{(1)}_0\cdot\mathcal{C}^{(1)}_{-1}$, corresponding to
+$h_{10}\cdot h_{12}$ and $h_{10}\cdot h_{11}$ in the ARES cumulant expansion,
+are known independently and can be removed to isolate the contributions
+corresponding to $h_{22}$ and $h_{21}$,
 
-We begin by validating $\mathcal{C}^{(2)}_1$, given by
-\begin{equation}
-\label{eq:C21}
-\begin{aligned}
-&\mathcal{C}^{(2)}_1=\frac{B_{\kappa_1,1}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
-    J_{\kappa_3,1}^{(2)}(\lambda_3)
-    +\widehat{S}^{(2)}_{\kappa,1}\left(\lambda_s\right)\\[0.5ex]
-    &\qquad + H^{(1)}_{\rm SCET}\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
-    J_{\kappa_3,1}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,1}\!\left(\{\hat{p}_\ell\},\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +2\left[\left(\frac{B^{(1)}_{\kappa_1,0}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,0}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_1,0}^{(1)}(\lambda_3)+\widehat{S}_{\kappa,0}^{(1)}(\lambda_s)\right)+\frac{B^{(1)}_{\kappa_1,0}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,0}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right]\\[0.5ex]
-    &\qquad -\frac{\pi^2}{3}\left[\left(\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_1,m}^{(1)}(\lambda_3)+\widehat{S}_{\kappa,1}^{(1)}(\lambda_s)\right)+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right]\\[0.5ex]
-    &\qquad +\frac{B_{\kappa_1,-1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\left(\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +\frac{B_{\kappa_2,-1}^{(1)}(x_2,\lambda_1)}{f_j(x_2,\mu_F)}\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +J_{\kappa_3,-1}^{(1)}(\lambda_3)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +\widehat{S}^{(1)}_{\kappa,-1}\left(\lambda_s\right)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)\right)\,,
-\end{aligned}
-\end{equation}
-We validate $\mathcal{C}_1^{(2)}/8 = h_{22}$, which follows from
-Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=2$. Since $h_{10}$ and
-$h_{12}$ were validated at NLO, the cross-term
-$\mathcal{C}_1^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$, corresponding to
-$h_{10}\cdot h_{12}$ in the \textsc{ARES} cumulant expansion, is
-subtracted before the comparison is made
-(Fig.~\ref{fig:mathematica-C21-sub}). The output \texttt{0} in
-Fig.~\ref{fig:mathematica-h22compare} confirms exact agreement.
-
-\begin{lstlisting}[style=mma, caption={Definition of $\mathcal{C}_1^{(2)}$
-following Eq.~\eqref{eq:C21}. The shorthand \texttt{tot[m,n]} collects the
-four functions at a given order and power of the logarithm.},
-label={lst:C21}]
+\begin{lstlisting}[style=mma]
 tot[m_, n_] := J[m, n] + B1[m, n] + B2[m, n] + S[m, n];
- 
-C21 = (tot[2, 1] + H1SCET tot[1, 1]
-    + 2 (J[1,0] B1[1,0] + J[1,0] B2[1,0] + B1[1,0] B2[1,0]
-         + J[1,0] S[1,0] + B1[1,0] S[1,0] + B2[1,0] S[1,0])
-    - \[Pi]^2/3 (B1[1,1] B2[1,1] + B1[1,1] S[1,1] + B2[1,1] S[1,1]
-         + B1[1,1] J[1,1] + B2[1,1] J[1,1] + S[1,1] J[1,1])
-    + B1[1,1] J[1,-1] + B2[1,1] J[1,-1] + B1[1,1] B2[1,-1]
-    + J[1,1] S[1,-1] + B1[1,1] S[1,-1] + B2[1,1] S[1,-1]
-    + B1[1,-1] J[1,1] + B2[1,-1] J[1,1] + B1[1,-1] B2[1,1]
-    + J[1,-1] S[1,1] + B1[1,-1] S[1,1] + B2[1,-1] S[1,1]);
-\end{lstlisting}
- 
-\begin{lstlisting}[style=mma, caption={Subtraction of the
-$\mathcal{C}_1^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$ cross-term from
-$\mathcal{C}_1^{(2)}$, isolating the new term \texttt{C21Rem}.},
-label={lst:C21-sub}]
-C11    = tot[1, 1];
-C1m1   = tot[1, -1] + H1SCET;
-C21Rem = C21 - C1m1 C11;
-\end{lstlisting}
- 
-\begin{lstlisting}[style=mma, caption={Definition of $h_{11}$ and $h_{22}$
-following Eqs.~\eqref{eq:h11} and~\eqref{eq:h22}.}, label={lst:h22-def}]
-h11 = ((g[1,0] + g[2,0] + g[3,0])
-    - 2 Ck[1] Log[(Q[1,2]^2 Q[1,3]^2)/(Q[2,3]^2 M Q[1])]
-    - 2 Ck[2] Log[(Q[1,2]^2 Q[2,3]^2)/(Q[1,3]^2 M Q[2])]
-    - 2 Ck[3] Log[(Q[2,3]^2 Q[1,3]^2)/(Q[1,2]^2 M Q[3])]
-    - P[1,0] - P[2,0]);
- 
-h22 = (h11^2/2 - \[Pi]^2/3 Ctot^2 - K1 Ctot
-    + 2 \[Pi] \[Beta]0 (
-        -2 (Ck[1] + Ck[2] - Ck[3]) Log[Q[1,2]^2/Qresum^2]
-        -2 (Ck[1] + Ck[3] - Ck[2]) Log[Q[1,3]^2/Qresum^2]
-        -2 (Ck[2] + Ck[3] - Ck[1]) Log[Q[2,3]^2/Qresum^2]
-        + g[1,0]/2 + g[2,0]/2 + g[3,0]/2
-        - 3 Ck[1] Log[Qresum^2/(M Q[1])]
-        - 3 Ck[2] Log[Qresum^2/(M Q[2])]
-        - 3 Ck[3] Log[Qresum^2/(M Q[3])]
-        - 1/2 P[1,0] - 1/2 P[2,0])
-    + 4 \[Pi] Ctot \[Beta]0 Log[Qresum/\[Mu]R]);
-\end{lstlisting}
- 
-\begin{lstlisting}[style=mma, caption={Comparison of $h_{22}$ and
-$\mathcal{C}_1^{(2)}$, where the output \texttt{0} confirms
-$\mathcal{C}_1^{(2)}/8 = h_{22}$ exactly.}, label={lst:h22-compare}]
-C21Rem - 8 h22 // FullSimplify
- 
-(* Out: 0 *)
-\end{lstlisting}
 
-\section{Validation of \texorpdfstring{$h_{21}$}{h21}}
-\label{ap:mathematica-h21}
+C21 = (tot[2,1] + H1SCET tot[1,1]
+    + 2 (J[1,0] B1[1,0] + J[1,0] B2[1,0] + B1[1,0] B2[1,0] + ... )
+    - \[Pi]^2/3 (B1[1,1] B2[1,1] + B1[1,1] S[1,1] + ... )
+    + B1[1,1] J[1,-1] + B2[1,1] J[1,-1] + ... );
 
-We now validate $\mathcal{C}^{(2)}_0$, given by
-\begin{equation}
-\label{eq:C20}
-\begin{aligned}
-&\mathcal{C}^{(2)}_0=\frac{B_{\kappa_1,0}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
-    J_{\kappa_3,0}^{(2)}(\lambda_3)
-    +\widehat{S}^{(2)}_{\kappa,0}\left(\lambda_s\right)\\[0.5ex]
-    &\qquad + H^{(1)}_{\rm SCET}\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
-    J_{\kappa_3,0}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,0}\!\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad -\frac{\pi^2}{6}\left[\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\left(\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\right)\right.\\[0.5ex]
-    &\qquad+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_1)}{f_j(x_2,\mu_F)}\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +J_{\kappa_3,0}^{(1)}(\lambda_3)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad \left.+\widehat{S}^{(1)}_{\kappa,0}\left(\lambda_s\right)\left(\frac{B_{\kappa_1,1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,1}^{(1)}(\lambda_3)\right)\right]\\[0.5ex]
-    &\qquad +2\zeta_3\left[\left(\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_1,1}^{(1)}(\lambda_3)+\widehat{S}_{\kappa,1}^{(1)}(\lambda_s)\right)+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right]\\[0.5ex]
-    &\qquad +\frac{B_{\kappa_1,-1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\left(\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,0}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +\frac{B_{\kappa_2,-1}^{(1)}(x_2,\lambda_1)}{f_j(x_2,\mu_F)}\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)
-    +\widehat{S}^{(1)}_{\kappa,0}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +J_{\kappa_3,-1}^{(1)}(\lambda_3)\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+\widehat{S}^{(1)}_{\kappa,0}\left(\lambda_s\right)\right)\\[0.5ex]
-    &\qquad +\widehat{S}^{(1)}_{\kappa,-1}\left(\lambda_s\right)\left(\frac{B_{\kappa_1,0}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,0}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,0}^{(1)}(\lambda_3)\right)\,.
-\end{aligned}
-\end{equation}
-
-We validate $\mathcal{C}_0^{(2)}/(-4) = h_{21}$, which follows from
-Eq.~\eqref{eq:coeff-convent} with $m=2$, $n=1$. As above, the cross-term
-$\mathcal{C}_0^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$, corresponding to
-$h_{10}\cdot h_{11}$, is subtracted before the comparison is made
-(Listing~\ref{lst:C20-sub}). In carrying out the comparison we substitute the
-explicit expression for $\delta\mathcal{F}_{\rm wa}$, together with the
-relation
-\begin{equation}
-\label{eq:Chc-map}
-\begin{aligned}
- \sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}&+\delta\mathcal{F}_{\rm rec}
- = \sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}2I_{ik}^{(1)}
- +\sum_{k}\int\frac{dz}{z}\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}2I_{jk}^{(1)}\\
-	&\qquad+\sum_{k}\int\frac{dz}{z}\left(P_{ik}(z)\ln\frac{Q_1\,M}{Q^2}
-    +\gamma_{1}^{(0)}\ln\frac{Q^2}{Q_1\,M}\right)
-    \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\\
-    &\qquad+\sum_{k}\int\frac{dz}{z}\left(P_{jk}(z)\ln\frac{Q_2\,M}{Q^2}
-    +\gamma_{2}^{(0)}\ln\frac{Q^2}{Q_2\,M}\right)
-    \frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\\
-& \qquad+ J_{\kappa_3,-1}^{(1)}+\gamma_{3}^{(0)}\ln\frac{Q^2}{Q_3\,M}
- + \sum_{\ell}C_{\ell}\frac{\pi^2}{6}\,,
- \end{aligned}
-\end{equation}
-for the hard-collinear coefficients. The comparison then leaves a residual
-proportional to $\gamma^{(1)}_\ell$, which does not vanish symbolically since
-the SCET and \textsc{ARES} conventions for $\gamma^{(1)}$ differ.
-Substituting explicit values for the $q\bar{q}\to Zg$ channel, the residual
-vanishes exactly (Listing~\ref{lst:h21-compare}), where the other channels follow
-in the same way.
- 
-\begin{lstlisting}[style=mma, caption={Definition of $\mathcal{C}_0^{(2)}$
-following Eq.~\eqref{eq:C20}. The NNLL coefficients are first zsubstituted explicitly}, label={lst:C20}]
-b1[1,-1] = 2 I[1] + ln\[Lambda]F 2 P[1,0];
-b2[1,-1] = 2 I[2] + ln\[Lambda]F 2 P[2,0];
-s[1,-1]  = ((Ck[3] - Ck[1] - Ck[2])
-             (Log[Q[1,2]^2/(Q[1] Q[2])]^2 - \[Pi]^2/6
-              + 2 (Isoft[1,2,3] + Isoft[2,1,3])) + ... );
- 
 C20 = (tot[2,0] + H1SCET tot[1,0]
-    - \[Pi]^2/6 (B1[1,0] J[1,1] + B2[1,0] J[1,1] + B1[1,0] B2[1,1]
-         + J[1,0] S[1,1] + B1[1,0] S[1,1] + B2[1,0] S[1,1]
-         + B1[1,1] J[1,0] + B2[1,1] J[1,0] + B1[1,1] B2[1,0]
-         + J[1,1] S[1,0] + B1[1,1] S[1,0] + B2[1,1] S[1,0])
-    + 2 Zeta[3] (B1[1,1] B2[1,1] + B1[1,1] S[1,1] + B2[1,1] S[1,1]
-         + B1[1,1] J[1,1] + B2[1,1] J[1,1] + S[1,1] J[1,1])
-    + B1[1,0] J[1,-1] + B2[1,0] J[1,-1] + B1[1,0] B2[1,-1]
-    + J[1,0] S[1,-1] + B1[1,0] S[1,-1] + B2[1,0] S[1,-1]
-    + B1[1,-1] J[1,0] + B2[1,-1] J[1,0] + B1[1,-1] B2[1,0]
-    + J[1,-1] S[1,0] + B1[1,-1] S[1,0] + B2[1,-1] S[1,0]);
-\end{lstlisting}
- 
-\begin{lstlisting}[style=mma, caption={Subtraction of the
-$\mathcal{C}_0^{(1)}\cdot\mathcal{C}_{-1}^{(1)}$ cross-term from
-$\mathcal{C}_0^{(2)}$, isolating the new term \texttt{C20Rem}.},
-label={lst:C20-sub}]
-C10    = tot[1, 0];
+    - \[Pi]^2/6 (B1[1,0] J[1,1] + B2[1,0] J[1,1] + ... )
+    + 2 Zeta[3] (B1[1,1] B2[1,1] + B1[1,1] S[1,1] + ... )
+    + B1[1,0] J[1,-1] + B2[1,0] J[1,-1] + ... );
+
+C1m1   = tot[1,-1] + H1SCET;
+C21Rem = C21 - C11 C1m1;
 C20Rem = C20 - C10 C1m1;
 \end{lstlisting}
- 
-\begin{lstlisting}[style=mma, caption={Definition of $h_{21}$ following
-Eq.~\eqref{eq:h21}, where \texttt{ChcRec[l]} implements the relation of
-Eq.~\eqref{eq:Chc-map}.}, label={lst:h21-def}]
-ChcRec[1] = I[1] - (P[1,0] - g[1,0]) Log[Qresum^2/(M Q[1])]
-          + \[Pi]^2/6 Ck[1];
-ChcRec[2] = I[2] - (P[2,0] - g[2,0]) Log[Qresum^2/(M Q[2])]
-          + \[Pi]^2/6 Ck[2];
-ChcRec[3] = j[1,-1]/2 + g[3,0] Log[Qresum^2/(M Q[3])]
-          + \[Pi]^2/6 Ck[3];
- 
+
+\noindent
+while the ARES coefficients are taken directly from
+Eqs.~\eqref{eq:h11}--\eqref{eq:h21},
+
+\begin{lstlisting}[style=mma]
+h11 = ((g[1,0] + g[2,0] + g[3,0])
+    - 2 Ck[1] Log[(Q[1,2]^2 Q[1,3]^2)/(Q[2,3]^2 M Q[1])] + ...
+    - P[1,0] - P[2,0]);
+
+h22 = (h11^2/2 - \[Pi]^2/3 Ctot^2 - K1 Ctot
+    + 2 \[Pi] \[Beta]0 (-2 (Ck[1] + Ck[2] - Ck[3]) Log[Q[1,2]^2/Qresum^2]
+        + g[1,0]/2 - 3 Ck[1] Log[Qresum^2/(M Q[1])] - 1/2 P[1,0] + ... )
+    + 4 \[Pi] Ctot \[Beta]0 Log[Qresum/\[Mu]R]);
+
 h21 = (-K1 ((Ck[1] + Ck[2] - Ck[3])
              (Log[Q[1,2]^2/(M Q[1])] + Log[Q[1,2]^2/(M Q[2])]) + ... )
     + 2 \[Pi] \[Beta]0 (ChcRec[1] + ChcRec[2] + ChcRec[3])
     + 2 Ctot^2 PolyGamma[2, 1]
     - gA[1,1] - gA[2,1] - gA[3,1] - (P[1,1] + P[2,1]));
 \end{lstlisting}
- 
-\begin{lstlisting}[style=mma, caption={Initial comparison leaves a residual
-in $\gamma^{(1)}_\ell$. Substituting the explicit $\gamma^{(1)}$ values for
-the $q\bar{q}\to Zg$ channel gives the output \texttt{0}, showing that
-$\mathcal{C}_0^{(2)}/(-4) = h_{21}$ exactly.}, label={lst:h21-compare}]
+
+\noindent
+The $h_{22}$ comparison agrees exactly. For $h_{21}$, the comparison leaves a
+residual proportional to $\gamma^{(1)}_\ell$, which does not vanish
+symbolically because the SCET and ARES conventions for $\gamma^{(1)}_\ell$
+differ (cf.\ Eqs.~\eqref{eq:gammal1-flav},~\eqref{eq:gamma-1-SCET-q}
+and~\eqref{eq:gamma-1-SCET-g}). Substituting explicit values for the
+$q\bar{q}\to Zg$ channel makes the residual vanish exactly; the other channels
+follow analogously.
+\begin{lstlisting}[style=mma]
+C21Rem - 8 h22 // FullSimplify
+
+(* Out: 0 *)
+
 g1Res = C20Rem + 4 h21 // FullSimplify
- 
+
 (* Out: (1/2)(-g[1,1] - 8 gA[1,1] - g[2,1] - 8 gA[2,1]
                - g[3,1] - 8 gA[3,1] - 2 Ctot gs1) *)
- 
+
 g1Res /. {g[1,1] -> ..., gA[1,1] -> ..., gs1 -> ...,
           Ck[1] -> CF, Ck[2] -> CF, Ck[3] -> CA} // FullSimplify
- 
+
 (* Out: 0 *)
 \end{lstlisting}
