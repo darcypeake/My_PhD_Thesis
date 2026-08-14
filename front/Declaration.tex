@@ -12,40 +12,51 @@
 \end{center}
 \begin{flushleft}
 	{\large
-	\noindent I, \myName, hereby declare that this thesis has not been, and will not be, submitted in whole or in part to another university for the award of any other degree.
+	\noindent I, \myName, hereby declare that this thesis has not been, and will not be, submitted in whole or in part to
+	another university for the award of any other degree. The work presented in this thesis includes research
+	carried out in collaboration with, Andrea Banfi, Melissa van Beekveld, Silvia Ferrario Ravasio, Alexander Karlberg, 
+	Matthew Lim, and Daniel Reichelt.
+		
+	The content of chapter~\ref{chapter:DIS} is taken nearly verbatim from the paper~\cite{vanBeekveld:2026rez},
+	currently under peer review:
 	
-	The work presented in this thesis is divided into two research projects and has been
-	completed in collaboration with Andrea Banfi, Melissa van Beekveld,
-	Silvia Ferrario Ravasio, Alexander Karlberg, Matthew Lim, and Daniel Reichelt.
+	M.~van Beekveld, S.~Ferrario Ravasio, A.~Karlberg and D.~Peake,
+	\textit{A generalised-$k_t$ jet algorithm for Deep Inelastic Scattering},
+	arXiv:2606.13077.
 	
-	The content of chapter~\ref{chapter:DIS} is taken nearly verbatim from the paper~\cite{vanBeekveld:2026rez}
-	currently undergoing peer review:
+	The algorithm builds on the angular-ordered ($p=0$) variant introduced by
+	M.~van Beekveld and S.~Ferrario Ravasio in Ref.~\cite{vanBeekveld:2023chs},
+	while the generalisation to arbitrary $p$ was developed jointly by all
+	authors. I implemented the initial versions of the generalised-$k_t$
+	algorithm, which were subsequently refined in collaboration with my
+	co-authors, with M.~van Beekveld preparing the version released in the
+	plugin. I performed the majority of the computational work underlying the
+	phenomenological results, including running the simulations using
+	\textsc{Pythia} on LXPLUS, the CERN interactive computing service, and
+	developing the corresponding \textsc{Rivet} analysis. The
+	phenomenological studies, comparisons, and interpretation of the results
+	were developed jointly by all authors. The plotting scripts were produced
+	by S.~Ferrario Ravasio using the results of my simulations, and the paper
+	was written jointly by all authors. Appendix~\ref{ap:DIS-fastjet} contains
+	relevant parts of the code taken directly from the
+	\href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}
+	{\texttt{DISGenkt}} plugin.
 	
-	M. van Beekveld, S. Ferrario Ravasio, A. Karlberg, D. Peake \textit{A generalised-$k_t$ jet algorithm for Deep
-	Inelastic Scattering} arXiv:2606.13077
-	
-	I produced the first implementation of the algorithm and carried out the accompanying
-	literature review, and performed the majority of the phenomenological runs on LXPLUS
-	using Pythia and Rivet. Later implementations were developed together
-	with the other authors, with Melissa preparing the version that was released in the plugin.
-	The plots were produced by Silvia from my runs, and the conceptual development was
-	shared between all of us. Support and supervision were given throughout by all.
-	
-	Appendix~\ref{ap:DIS-fastjet} contains relevant parts of the code taken from the
-	\href{https://repo.hepforge.org/source/fastjetsvn/browse/contrib/contribs/DISGenkt}{\texttt{DISGenkt}} plugin.
-	
-	The content of chapter~\ref{ch:hhZjet} is based on a project that will be submitted for publication in due
-	course:
-	
-	D. Peake, A. Banfi, M.A. Lim, D. Reichelt \textit{NNLL resummation in Z+jet events with the ARES method}
-	
-	The majority of the calculations in this project were performed by me, under the supervision
-	of Andrea throughout and with further input from Matthew and Daniel. In particular, I computed
-	all NNLL corrections to the observable, and with Andrea derived the initial-state treatment in the 
-	\textsc{ARES} formalism. I performed all validations for the work presented here.
-	\par}
+	The content of Chapter~\ref{ch:hhZjet} is based on a project that will be
+	submitted for publication in due course:
+
+	D.~Peake, A.~Banfi, M.A.~Lim and D.~Reichelt, \textit{NNLL resummation in
+	$Z+$jet events with the ARES method}.
+	I performed the majority of the calculations presented in this chapter,
+	under the supervision of A.~Banfi, with further input from M.A.~Lim and
+	D.~Reichelt. In particular, I carried out the calculation of the NNLL
+	corrections to the observable and all of the validations presented in this
+	chapter. Together with A.~Banfi, I developed the treatment of initial-state
+	radiation within the \textsc{ARES} formalism.	\par}
 \end{flushleft}
-\vspace*{2cm}
+\todo{See if we need to shorten this a bit i.e. too much info in DIS for example (compare with DG and RW)
+and word the ARES project better i.e. understand if we want to say we developed it together or not?}
+\vspace*{1cm}
 \begin{minipage}{.45\linewidth}
 	\begin{flushleft} 
 		\textit{\myLocation,} \\
