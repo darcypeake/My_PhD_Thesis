@@ -2,21 +2,18 @@
          \texorpdfstring{$h_{21}$}{h21}}
 \label{ap:symb-val}
 
-This appendix documents the symbolic validation of the ARES expansion
-coefficients $h_{22}$ and $h_{21}$ against the SCET subtraction coefficients
-$\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$ of
-Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}, discussed in
-Sec.~\ref{subsec:NNLL-coeff}. The complete \textsc{Mathematica} notebook is
-available at Ref.~\cite{peake2026validation}.
+This appendix presents the symbolic validation of the \textsc{ARES}
+expansion coefficients $h_{22}$ and $h_{21}$ against the corresponding
+SCET subtraction coefficients $\mathcal{C}^{(2)}_1$ and
+$\mathcal{C}^{(2)}_0$. The comparison is performed using
+\textsc{Mathematica}, and the complete notebook is available in
+Ref.~\cite{peake2026validation}.
 
-Within the notebook, the ingredients of Sec.~\ref{ap:subtract-ingred} and the
-ARES coefficients of Eqs.~\eqref{eq:h11}--\eqref{eq:h21} are entered
-directly. Uppercase symbols denote the full expansion of a coefficient,
-following Eq.~\eqref{eq:subt-mn-exp}, and the shorthand \texttt{tot[m,n]}
-collects the four functions at a given order and power of the logarithm (see below). The
-remaining correspondence with the notation of this thesis is given in
-Table~\ref{tab:mma-symbols}; symbols appearing only in the full notebook are
-documented there.
+The notation used in the \textsc{Mathematica} implementation is summarised
+in Table~\ref{tab:mma-symbols}. Uppercase symbols denote the full
+expansion of a subtraction ingredient, following
+Eq.~\eqref{eq:subt-mn-exp}. The lowercase symbols are the corresponding
+coefficients defined in Appendix~\ref{ap:ARES-coeff}.
 
 \begin{table}[h]
 \begin{center}
@@ -24,95 +21,121 @@ documented there.
 \hline\hline
 Notebook & LaTeX & Notebook & LaTeX \\
 \hline\hline
-\texttt{j[m,n]}, \texttt{b1[m,n]}, \texttt{b2[m,n]} &
-$J^{(m)}_{\kappa_3,n}$, $B^{(m)}_{\kappa_{1,2},n}/f_{i,j}$ &
-\texttt{Ck[l]}, \texttt{Ctot} & $C_\ell$, $\sum_\ell C_\ell$ \\
-\texttt{s[m,n]} & $\widehat{S}^{(m)}_{\kappa,n}$ &
-\texttt{g[l,m]}, \texttt{gA[l,m]} & $\gamma^{(m)}_\ell$ (SCET, ARES) \\
-\texttt{Q[l]}, \texttt{Q[l,lbar]} & $Q_\ell$, $Q_{\ell\bar\ell}$ &
-\texttt{gs1} & $\gamma^{(1)}_S$ \\
+\texttt{J[m,n]} & $J^{(m)}_{\kappa_3,n}$ &
+\texttt{Ck[l]} & $C_\ell$ \\
+\texttt{B1[m,n]}, \texttt{B2[m,n]} &
+$B^{(m)}_{\kappa_{1,2},n}/f_{i,j}$ &
+\texttt{Ctot} & $\sum_\ell C_\ell$ \\
+\texttt{S[m,n]} & $\widehat{S}^{(m)}_{\kappa,n}$ &
+\texttt{g[l,m]} & $\gamma^{(m)}_\ell$ (SCET) \\
+\texttt{Q[l]}, \texttt{Q[l,lbar]} &
+$Q_\ell$, $Q_{\ell\bar\ell}$ &
+\texttt{gA[l,m]} & $\gamma^{(m)}_\ell$ (ARES) \\
 \texttt{Qresum} & $Q$ &
-\texttt{P[l,m]} & $P^{(m)}_{ik}(z)$ \\
+\texttt{gs1} & $\gamma^{(1)}_S$ \\
 \texttt{H1SCET} & $H^{(1)}_{\rm SCET}$ &
-\texttt{ChcRec[l]} & $C_{\mathrm{hc},\ell}^{(1)}+\delta\mathcal{F}_{\rm rec}$ \\
+\texttt{P[l,m]} & $P^{(m)}_{ik}(z)$ \\
 \hline\hline
 \end{tabular}
 \end{center}
-\caption{Correspondence between the symbols used in the \textsc{Mathematica}
-notebook and the notation of this thesis. The lowercase terms
-\texttt{b1[m,n]}, \texttt{b2[m,n]} and so on are the coefficients of
-Appendix~\ref{ap:ARES-coeff}.}
+\caption{Correspondence between the symbols used in the
+\textsc{Mathematica} notebook and the notation of this thesis.}
 \label{tab:mma-symbols}
 \end{table}
 
-Following Eq.~\eqref{eq:coeff-convent}, $\mathcal{C}^{(2)}_1/8$ should
-reproduce $h_{22}$ and $\mathcal{C}^{(2)}_0/(-4)$ should reproduce $h_{21}$.
-Since $h_{10}$, $h_{11}$ and $h_{12}$ have already been validated, the
-cross-terms $\mathcal{C}^{(1)}_1\cdot\mathcal{C}^{(1)}_{-1}$ and
-$\mathcal{C}^{(1)}_0\cdot\mathcal{C}^{(1)}_{-1}$, corresponding to
-$h_{10}\cdot h_{12}$ and $h_{10}\cdot h_{11}$ in the ARES cumulant expansion,
-are known independently and can be removed to isolate the contributions
-corresponding to $h_{22}$ and $h_{21}$,
-
-\begin{lstlisting}[style=mma]
+For compactness, we define the following shorthand:
+\begin{lstlisting}[style=mma, caption={Definition of the shorthand used
+for the subtraction ingredients.}]
 tot[m_, n_] := J[m, n] + B1[m, n] + B2[m, n] + S[m, n];
+\end{lstlisting}
 
-C21 = (tot[2,1] + H1SCET tot[1,1]
-    + 2 (J[1,0] B1[1,0] + J[1,0] B2[1,0] + B1[1,0] B2[1,0] + ... )
-    - \[Pi]^2/3 (B1[1,1] B2[1,1] + B1[1,1] S[1,1] + ... )
-    + B1[1,1] J[1,-1] + B2[1,1] J[1,-1] + ... );
+The subtraction coefficients $\mathcal{C}^{(2)}_1$ and
+$\mathcal{C}^{(2)}_0$ are implemented directly from
+Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}:
+\begin{lstlisting}[style=mma, caption={Implementation of
+$\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$.}]
+C21 = (tot[2, 1] + H1SCET tot[1, 1]
+    + 2 (B1[1, 0] J[1, 0] + B1[1, 0] B2[1, 0] + ... )
+    - \[Pi]^2/3 (B1[1, 1] J[1, 1] + B1[1, 1] B2[1, 1] + ... )
+    + B1[1, -1] J[1, 1] + B2[1, -1] J[1, 1] + ... );
 
-C20 = (tot[2,0] + H1SCET tot[1,0]
-    - \[Pi]^2/6 (B1[1,0] J[1,1] + B2[1,0] J[1,1] + ... )
-    + 2 Zeta[3] (B1[1,1] B2[1,1] + B1[1,1] S[1,1] + ... )
-    + B1[1,0] J[1,-1] + B2[1,0] J[1,-1] + ... );
+C20 = (tot[2, 0] + H1SCET tot[1, 0]
+    - \[Pi]^2/6 (B1[1, 0] J[1, 1] + B2[1, 0] J[1, 1] + ... )
+    + 2 Zeta[3] (B1[1, 1] J[1, 1] + B1[1, 1] B2[1, 1] + ... )
+    + B1[1, -1] J[1, 0] + B2[1, -1] J[1, 0] + ... );
+\end{lstlisting}
 
-C1m1   = tot[1,-1] + H1SCET;
+The \textsc{ARES} coefficients are defined according to
+Eqs.~\eqref{eq:h11}, \eqref{eq:h22}, and~\eqref{eq:h21}. Since the
+cross-terms $h_{10}h_{12}$ and $h_{10}h_{11}$ have already been validated
+at lower logarithmic accuracy, they are omitted here. The same terms are
+removed from the corresponding SCET coefficients to simplify the
+comparison:
+\begin{lstlisting}[style=mma, caption={Removal of the cross-terms already
+validated in the \textsc{ARES} coefficients.}]
+C11  = tot[1, 1];
+C10  = tot[1, 0];
+C1m1 = tot[1, -1] + H1SCET;
+
 C21Rem = C21 - C11 C1m1;
 C20Rem = C20 - C10 C1m1;
 \end{lstlisting}
 
-\noindent
-while the ARES coefficients are taken directly from
-Eqs.~\eqref{eq:h11}--\eqref{eq:h21},
-
-\begin{lstlisting}[style=mma]
-h11 = ((g[1,0] + g[2,0] + g[3,0])
-    - 2 Ck[1] Log[(Q[1,2]^2 Q[1,3]^2)/(Q[2,3]^2 M Q[1])] + ...
-    - P[1,0] - P[2,0]);
+The resulting \textsc{ARES} expressions are implemented as
+\begin{lstlisting}[style=mma, caption={Implementation of the \textsc{ARES}
+expansion coefficients $h_{11}$, $h_{22}$ and $h_{21}$.}]
+h11 = ((g[1, 0] + g[2, 0] + g[3, 0])
+    - 2 Ck[1] Log[(Q[1, 2]^2 Q[1, 3]^2)/(Q[2, 3]^2 M Q[1])] + ...
+    - P[1, 0] - P[2, 0]);
 
 h22 = (h11^2/2 - \[Pi]^2/3 Ctot^2 - K1 Ctot
-    + 2 \[Pi] \[Beta]0 (-2 (Ck[1] + Ck[2] - Ck[3]) Log[Q[1,2]^2/Qresum^2]
-        + g[1,0]/2 - 3 Ck[1] Log[Qresum^2/(M Q[1])] - 1/2 P[1,0] + ... )
+    + 2 \[Pi] \[Beta]0 (-2 (Ck[1] + Ck[2] - Ck[3])
+        Log[Q[1, 2]^2/Qresum^2]
+        + g[1, 0]/2 - 3 Ck[1] Log[Qresum^2/(M Q[1])]
+        - 1/2 P[1, 0] + ... )
     + 4 \[Pi] Ctot \[Beta]0 Log[Qresum/\[Mu]R]);
 
 h21 = (-K1 ((Ck[1] + Ck[2] - Ck[3])
-             (Log[Q[1,2]^2/(M Q[1])] + Log[Q[1,2]^2/(M Q[2])]) + ... )
-    + 2 \[Pi] \[Beta]0 (ChcRec[1] + ChcRec[2] + ChcRec[3])
+             (Log[Q[1, 2]^2/(M Q[1])]
+              + Log[Q[1, 2]^2/(M Q[2])) + ... )
+    + 2 \[Pi] \[Beta]0 ( ... )
     + 2 Ctot^2 PolyGamma[2, 1]
-    - gA[1,1] - gA[2,1] - gA[3,1] - (P[1,1] + P[2,1]));
+    - gA[1, 1] - gA[2, 1] - gA[3, 1]
+    - (P[1, 1] + P[2, 1]));
 \end{lstlisting}
 
-\noindent
-The $h_{22}$ comparison agrees exactly. For $h_{21}$, the comparison leaves a
-residual proportional to $\gamma^{(1)}_\ell$, which does not vanish
-symbolically because the SCET and ARES conventions for $\gamma^{(1)}_\ell$
-differ (cf.\ Eqs.~\eqref{eq:gammal1-flav},~\eqref{eq:gamma-1-SCET-q}
-and~\eqref{eq:gamma-1-SCET-g}). Substituting explicit values for the
-$q\bar{q}\to Zg$ channel makes the residual vanish exactly; the other channels
-follow analogously.
-\begin{lstlisting}[style=mma]
+Using Eq.~\eqref{eq:coeff-convent}, $\mathcal{C}^{(2)}_1=8h_{22}$.
+The symbolic comparison gives
+\begin{lstlisting}[style=mma, caption={Symbolic comparison of $h_{22}$ with
+$\mathcal{C}^{(2)}_1$.}]
 C21Rem - 8 h22 // FullSimplify
 
 (* Out: 0 *)
+\end{lstlisting}
+showing exact agreement.
 
+For $h_{21}$, Eq.~\eqref{eq:coeff-convent} gives
+$\mathcal{C}^{(2)}_0=-4h_{21}$. The symbolic comparison gives
+\begin{lstlisting}[style=mma, caption={Symbolic comparison of $h_{21}$ with
+$\mathcal{C}^{(2)}_0$.}]
 g1Res = C20Rem + 4 h21 // FullSimplify
 
-(* Out: (1/2)(-g[1,1] - 8 gA[1,1] - g[2,1] - 8 gA[2,1]
-               - g[3,1] - 8 gA[3,1] - 2 Ctot gs1) *)
+(* Out: (1/2)(-g[1, 1] - 8 gA[1, 1] - g[2, 1] - 8 gA[2, 1]
+               - g[3, 1] - 8 gA[3, 1] - 2 Ctot gs1) *)
+\end{lstlisting}
 
-g1Res /. {g[1,1] -> ..., gA[1,1] -> ..., gs1 -> ...,
+The residual arises from the different conventions for the two-loop
+anomalous dimensions in the SCET and \textsc{ARES} expressions, as
+discussed in Eqs.~\eqref{eq:gammal1-flav},
+\eqref{eq:gamma-1-SCET-q}, and~\eqref{eq:gamma-1-SCET-g}. Substituting
+the explicit values for the $q\bar q\to Zg$ channel gives
+\begin{lstlisting}[style=mma, caption={Evaluation of the residual for the
+$q\bar q\to Zg$ channel.}]
+g1Res /. {g[1, 1] -> ..., gA[1, 1] -> ..., gs1 -> ...,
           Ck[1] -> CF, Ck[2] -> CF, Ck[3] -> CA} // FullSimplify
 
 (* Out: 0 *)
 \end{lstlisting}
+
+The remaining partonic channels are validated in the same way, using the
+corresponding colour factors and anomalous dimensions.
