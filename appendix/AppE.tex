@@ -34,7 +34,7 @@ $Q_\ell$, $Q_{\ell\bar\ell}$ &
 \texttt{Qresum} & $Q$ &
 \texttt{gs1} & $\gamma^{(1)}_S$ \\
 \texttt{H1SCET} & $H^{(1)}_{\rm SCET}$ &
-\texttt{P[l,m]} & $P^{(m)}_{ik}(z)$ \\
+\texttt{P[1,m]}, \texttt{P[2,m]} & $P^{(m)}_{ik}(z)$, $P^{(m)}_{jk}(z)$ \\
 \hline\hline
 \end{tabular}
 \end{center}
@@ -42,18 +42,14 @@ $Q_\ell$, $Q_{\ell\bar\ell}$ &
 \textsc{Mathematica} notebook and the notation of this thesis.}
 \label{tab:mma-symbols}
 \end{table}
-
-For compactness, we define the following shorthand:
-\begin{lstlisting}[style=mma, caption={Definition of the shorthand used
-for the subtraction ingredients.}]
-tot[m_, n_] := J[m, n] + B1[m, n] + B2[m, n] + S[m, n];
-\end{lstlisting}
-
 The subtraction coefficients $\mathcal{C}^{(2)}_1$ and
 $\mathcal{C}^{(2)}_0$ are implemented directly from
-Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}:
+Eqs.~\eqref{eq:C21} and~\eqref{eq:C20}, using the shorthand
+\texttt{tot} shown below:
 \begin{lstlisting}[style=mma, caption={Implementation of
 $\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$.}]
+tot[m_, n_] := J[m, n] + B1[m, n] + B2[m, n] + S[m, n];
+
 C21 = (tot[2, 1] + H1SCET tot[1, 1]
     + 2 (B1[1, 0] J[1, 0] + B1[1, 0] B2[1, 0] + ... )
     - \[Pi]^2/3 (B1[1, 1] J[1, 1] + B1[1, 1] B2[1, 1] + ... )
@@ -64,15 +60,32 @@ C20 = (tot[2, 0] + H1SCET tot[1, 0]
     + 2 Zeta[3] (B1[1, 1] J[1, 1] + B1[1, 1] B2[1, 1] + ... )
     + B1[1, -1] J[1, 0] + B2[1, -1] J[1, 0] + ... );
 \end{lstlisting}
+The expansion coefficients are implemented according to
+Eqs.~\eqref{eq:h22} and~\eqref{eq:h21}, with the cross-terms
+$h_{10}\cdot h_{12}$ and $h_{10}\cdot h_{11}$ omitted for simplicity.
+The coefficients $h_{10}$, $h_{11}$, and $h_{12}$ entering these terms
+have already been validated in Sec.~\ref{subsec:N-jet-SCET-val}:
+\begin{lstlisting}[style=mma, caption={Implementation of $h_{22}$ and
+$h_{21}$ with the cross-terms omitted.}]
+h22 = -\[Pi]^2/3 Ctot^2 - K1 Ctot
+    + 2 \[Pi] \[Beta]0 (-2 (Ck[1] + Ck[2] - Ck[3])
+        Log[Q[1, 2]^2/Qresum^2]
+        + g[1, 0]/2 - 3 Ck[1] Log[Qresum^2/(M Q[1])]
+        - 1/2 P[1, 0] + ... )
+    + 4 \[Pi] Ctot \[Beta]0 Log[Qresum/\[Mu]R]
+    + ... ;
 
-The \textsc{ARES} coefficients are defined according to
-Eqs.~\eqref{eq:h11}, \eqref{eq:h22}, and~\eqref{eq:h21}. Since the
-cross-terms $h_{10}h_{12}$ and $h_{10}h_{11}$ have already been validated
-at lower logarithmic accuracy, they are omitted here. The same terms are
-removed from the corresponding SCET coefficients to simplify the
-comparison:
-\begin{lstlisting}[style=mma, caption={Removal of the cross-terms already
-validated in the \textsc{ARES} coefficients.}]
+h21 = -K1 ((Ck[1] + Ck[2] - Ck[3])
+            (Log[Q[1, 2]^2/(M Q[1])]
+             + Log[Q[1, 2]^2/(M Q[2])]) + ... )
+    + 2 \[Pi] \[Beta]0 ( ... )
+    + 2 Ctot^2 PolyGamma[2, 1]
+    - gA[1, 1] - gA[2, 1] - gA[3, 1]
+    - (P[1, 1] + P[2, 1]);
+\end{lstlisting}
+The corresponding cross-terms are then removed from the SCET coefficients:
+\begin{lstlisting}[style=mma, caption={SCET coefficients with the
+cross-terms omitted.}]
 C11  = tot[1, 1];
 C10  = tot[1, 0];
 C1m1 = tot[1, -1] + H1SCET;
@@ -80,62 +93,32 @@ C1m1 = tot[1, -1] + H1SCET;
 C21Rem = C21 - C11 C1m1;
 C20Rem = C20 - C10 C1m1;
 \end{lstlisting}
-
-The resulting \textsc{ARES} expressions are implemented as
-\begin{lstlisting}[style=mma, caption={Implementation of the \textsc{ARES}
-expansion coefficients $h_{11}$, $h_{22}$ and $h_{21}$.}]
-h11 = ((g[1, 0] + g[2, 0] + g[3, 0])
-    - 2 Ck[1] Log[(Q[1, 2]^2 Q[1, 3]^2)/(Q[2, 3]^2 M Q[1])] + ...
-    - P[1, 0] - P[2, 0]);
-
-h22 = (h11^2/2 - \[Pi]^2/3 Ctot^2 - K1 Ctot
-    + 2 \[Pi] \[Beta]0 (-2 (Ck[1] + Ck[2] - Ck[3])
-        Log[Q[1, 2]^2/Qresum^2]
-        + g[1, 0]/2 - 3 Ck[1] Log[Qresum^2/(M Q[1])]
-        - 1/2 P[1, 0] + ... )
-    + 4 \[Pi] Ctot \[Beta]0 Log[Qresum/\[Mu]R]);
-
-h21 = (-K1 ((Ck[1] + Ck[2] - Ck[3])
-             (Log[Q[1, 2]^2/(M Q[1])]
-              + Log[Q[1, 2]^2/(M Q[2])) + ... )
-    + 2 \[Pi] \[Beta]0 ( ... )
-    + 2 Ctot^2 PolyGamma[2, 1]
-    - gA[1, 1] - gA[2, 1] - gA[3, 1]
-    - (P[1, 1] + P[2, 1]));
-\end{lstlisting}
-
-Using Eq.~\eqref{eq:coeff-convent}, $\mathcal{C}^{(2)}_1=8h_{22}$.
-The symbolic comparison gives
-\begin{lstlisting}[style=mma, caption={Symbolic comparison of $h_{22}$ with
-$\mathcal{C}^{(2)}_1$.}]
+Using Eq.~\eqref{eq:coeff-convent}, the $h_{22}$ comparison requires
+$\mathcal{C}^{(2)}_1=8h_{22}$:
+\begin{lstlisting}[style=mma, caption={Validation of $h_{22}$.}]
 C21Rem - 8 h22 // FullSimplify
-
+ 
 (* Out: 0 *)
 \end{lstlisting}
-showing exact agreement.
-
-For $h_{21}$, Eq.~\eqref{eq:coeff-convent} gives
-$\mathcal{C}^{(2)}_0=-4h_{21}$. The symbolic comparison gives
-\begin{lstlisting}[style=mma, caption={Symbolic comparison of $h_{21}$ with
-$\mathcal{C}^{(2)}_0$.}]
+For $h_{21}$, Eq.~\eqref{eq:coeff-convent} requires
+$\mathcal{C}^{(2)}_0=-4h_{21}$. The corresponding result is
+\begin{lstlisting}[style=mma, caption={Validation of $h_{21}$, leaving a
+residual in $\gamma^{(1)}_\ell$.}]
 g1Res = C20Rem + 4 h21 // FullSimplify
-
+ 
 (* Out: (1/2)(-g[1, 1] - 8 gA[1, 1] - g[2, 1] - 8 gA[2, 1]
                - g[3, 1] - 8 gA[3, 1] - 2 Ctot gs1) *)
 \end{lstlisting}
-
-The residual arises from the different conventions for the two-loop
-anomalous dimensions in the SCET and \textsc{ARES} expressions, as
-discussed in Eqs.~\eqref{eq:gammal1-flav},
+The result differs only through the conventions used for $\gamma_{\ell}^{(1)}$ in the SCET 
+and \textsc{ARES} expressions, as
+shown in Eqs.~\eqref{eq:gammal1-flav},
 \eqref{eq:gamma-1-SCET-q}, and~\eqref{eq:gamma-1-SCET-g}. Substituting
 the explicit values for the $q\bar q\to Zg$ channel gives
 \begin{lstlisting}[style=mma, caption={Evaluation of the residual for the
 $q\bar q\to Zg$ channel.}]
 g1Res /. {g[1, 1] -> ..., gA[1, 1] -> ..., gs1 -> ...,
           Ck[1] -> CF, Ck[2] -> CF, Ck[3] -> CA} // FullSimplify
-
+ 
 (* Out: 0 *)
 \end{lstlisting}
-
-The remaining partonic channels are validated in the same way, using the
-corresponding colour factors and anomalous dimensions.
+The remaining partonic channels follow analogously.
