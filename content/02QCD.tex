@@ -112,7 +112,8 @@ The generators satisfy the Casimir identities
 \end{equation}
 where repeated indices are summed implicitly.
 
-The second term in Eq.~\eqref{eq: L-QCD} is the gauge-fixing contribution,
+The second term in Eq.~\eqref{eq: L-QCD} is the gauge-fixing contribution.
+For instance, in a covariant gauge, this is
 \begin{equation}
     \mathcal{L}_{\mathrm{GF}}
     = -\frac{1}{2\xi} \left( \partial^\mu \mathcal{A}_\mu^{A} \right)^{2}\,,
@@ -253,8 +254,8 @@ $\displaystyle
 \end{aligned}$
 \\
 \end{tabular}
-\caption{Feynman rules for the quark--gluon vertex, the three--gluon vertex, and
-the four--gluon vertex.}
+\caption{Feynman rules for the quark-gluon vertex, the three-gluon vertex, and
+the four-gluon vertex.}
 \label{fig:QCD-Vertex-Rules}
 \end{figure}
 
@@ -290,8 +291,6 @@ where the individual components are defined as follows:
   centre-of-mass energy squared of the hard process;
   
     \item $d\Phi^{(m)}$ denotes the $m$-parton phase space measure,
-    \ABquestion{I introduced the $d$-dimensional one later as a footnote in Eq.~\eqref{eq:m-phase-d}
-    as I didn't want to introduce $d$-dimensions without discussing dim reg--is this the correct way to do it?} 
 \begin{equation}
 \label{eq:m-3-phase-space}
 d\Phi^{(m)} = \left[\prod_{i=1}^{m} \frac{d^3 p_i}{(2\pi)^3\, 2E_i}\right]
@@ -380,9 +379,9 @@ The sign of $\beta_0$ and the form of Eq.~\eqref{eq:scale-dependence} determine
 the scale dependence of the strong coupling.
 As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave increasingly like free particles. 
 This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. 
-Conversely, as $\mu_R$ decreases towards
-$\Lambda_{\mathrm{QCD}}$, a scale of a few hundred MeV,
-the coupling grows large, signalling the breakdown of perturbation theory and 
+Conversely, as $\mu_R$ decreases the running coupling
+in Eq.~\eqref{eq:scale-dependence} diverges at $\Lambda_{\mathrm{QCD}}$, a scale of a few hundred MeV.
+Close to $\Lambda_{\mathrm{QCD}}$ the coupling grows large, signalling the breakdown of perturbation theory and 
 the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. 
 This phenomenon is known as \emph{confinement}. 
 
@@ -485,9 +484,9 @@ $e^+e^- \rightarrow \mathrm{hadrons}$.  At leading order, the hadronic
 cross section is described by the corresponding partonic process
 $e^+e^- \rightarrow \gamma^* \rightarrow q\bar{q}$, shown in
 Fig.~\ref{fig:photon-qq}. This approach is
-justified by quark--hadron duality~\cite{Poggio:1975af}: in the high-energy regime, the \emph{fully inclusive} hadronic cross
+justified by quark-hadron duality~\cite{Poggio:1975af}: in the high-energy regime, the \emph{fully inclusive} hadronic cross
 section can be approximated sufficiently well by the corresponding partonic cross
-section computed in perturbation theory \footnote{For differential distributions, one expects a more pronounced difference between parton and hadron level. However, it is found that hadronisation does not significantly reshuffle the momentum of very energetic partons, a feature known as local parton-hadron duality Ref.~\cite{Shifman:2000jv, Azimov:1984np}.}.
+section computed in perturbation theory \footnote{For differential distributions, one expects a more pronounced difference between parton and hadron level. However, it is found that hadronisation does not significantly reshuffle the momentum of very energetic partons, a feature known as local parton-hadron duality~\cite{Shifman:2000jv, Azimov:1984np}.}.
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[scale=1.4]
@@ -726,10 +725,11 @@ divergences by examining the behaviour of the squared matrix element
 $|\mathcal{M}_m|^2$ in the soft and collinear limits, where it factorises into a
 remarkably simple and universal form~\cite{Catani:1999ss}. It is this
 factorisation that underpins the systematic treatment of IR singularities in
-QCD.
+QCD. 
 
-\ndp{This is the section that I am
-most concerned by in this chapter -- I want to check it is correct.}
+The results below describe the emission of a single soft or collinear
+parton, as required at NLO. The same factorisation holds at higher
+orders~\cite{Catani:1999ss,Catani:2019nqv,Duhr:2013msa,Herzog:2023sgb}.
 
 \subsection{Soft limit}
 \label{subsec:soft-fact}
@@ -768,14 +768,11 @@ The eikonal factor $S_{ij}(q)$ contains the kinematic dependence of
 the soft emission and is given by
 \begin{equation}
 \label{eq:eikonal-fac}
-    S_{ij}(q) = \frac{2p_i \cdot p_j}{(2p_i \cdot q)(2p_j \cdot q)} \,.
+    S_{ij}(q) = \frac{p_i \cdot p_j}{(p_i \cdot q)(p_j \cdot q)} \,.
 \end{equation}
 The factorisation shows that the soft emission depends only on the
 colour charges and directions of the hard legs, not on the details
-of the hard process. \ABquestion{I wanted to write something like this
-to give background to why soft emissions don't affect ISR - but maybe this
-is unnecessary?}
-
+of the hard process. 
 
 \subsection{Collinear limit}
 \label{subsec:collinear-fact}
@@ -813,7 +810,6 @@ where $p_{ij}^\mu = p_i^\mu + p_j^\mu$ is the momentum of the parent
 parton $(ij)$ and $s_{ij}\equiv (p_i + p_j)^2$. The term $\hat{P}_{(ij) \to i + j}(z,k_\perp;\varepsilon)$ is the unregularised
 tree-level Altarelli--Parisi splitting function for the collinear
 splitting $ij\to i+j$. The explicit forms are
-\ABquestion{Are these ISR or FSR splitting functions?}
 \begin{equation}
 \label{eq:AP-functions}
 \begin{aligned}
@@ -841,9 +837,8 @@ of the parent gluon, while the quark splitting functions
 $\hat{P}^{ss'}$ carry spin indices $s,s'$ of the parent
 fermion. In both cases the indices are contracted with those of the reduced
 matrix element in the factorisation formula above. 
-\ABquestion{Is this last paragraph necessary?}
 
-\section{IRC Safety} 
+\section{IRC safety} 
 \label{sec:IRC}
 
 In Sec.~\ref{sec:divergences}, we saw through the explicit NLO calculation
@@ -933,7 +928,7 @@ Although IRC safety ensures a finite result at every order in perturbation theor
 \label{sec:high-energy-picture}
 
 Up to this point, the discussion has largely focused on physics at the parton level.
-In particular, we have relied on concepts such as quark--hadron duality (cf.\ Sec.~\ref{sec:divergences}) to relate partonic cross sections to hadronic observables, and have worked predominantly in the high-energy regime, where asymptotic freedom (cf.\ Sec.~\ref{sec:running-coupling}) allows the use of  perturbative QCD. 
+In particular, we have relied on concepts such as quark-hadron duality (cf.\ Sec.~\ref{sec:divergences}) to relate partonic cross sections to hadronic observables, and have worked predominantly in the high-energy regime, where asymptotic freedom (cf.\ Sec.~\ref{sec:running-coupling}) allows the use of  perturbative QCD. 
 
 In realistic collider experiments, however, the situation is significantly more complex.
 Consider, for example, a hadronic collision at the LHC. The incoming particles are composite hadrons rather than elementary partons, and the final-state particles observed in the detector consist of hadrons produced at energy scales far below that of the hard interaction. A complete description of such a collision therefore necessarily involves physics beyond the perturbative regime. 
@@ -945,7 +940,7 @@ as generated by the \textsc{Sherpa}~\cite{Gleisberg:2008ta} collaboration.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.85\linewidth]{figures/chapter2/High-energy-event.jpeg}
-    \caption{Pictorial representaion of a $t\bar{t}h$ event produced in a high-energy hadronic collision, taken from Ref.~\cite{Gleisberg:2008ta}}.
+    \caption{Pictorial representaion of a $t\bar{t}h$ event produced in a high-energy hadronic collision, taken from Ref.~\cite{Gleisberg:2008ta}.}
     \label{fig:high-energy-event}
 \end{figure}
 
@@ -964,17 +959,21 @@ However, their scale dependence is governed by perturbative QCD through the Doks
       P_{ij}(z,\alpha_s(Q^2))\,
       f_{j/P}\!\left(\frac{x}{z}, Q^2\right),
 \end{equation}
-where the Altarelli-Parisi splitting functions $P_{ij}(z)$ admit the perturbative expansion
+where the Altarelli--Parisi splitting functions $P_{ij}(z)$ admit the perturbative expansion
 \begin{equation}
 	P_{ij}(z,\alpha_s(Q^2)) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
-\ABquestion{Is the following correct: The leading-order splitting functions $P_{ij}^{(0)}$ are the
+The leading-order splitting functions $P_{ij}^{(0)}$ are the
 regularised counterparts of the unregularised functions
-$\hat{P}_{(ij)\to i+j}$ of Eq.~\eqref{eq:AP-functions}. They are
-obtained by integrating $\hat{P}$ over the collinear phase space,
-applying the $(1-z)_+$ prescription to handle the soft $z\to1$
-divergence, and adding the virtual $\delta(1-z)$ piece from
-one-loop corrections. Explicitly,
+$\hat{P}_{(ij)\to i+j}$ of Eq.~\eqref{eq:AP-functions}, here for
+initial- rather than final-state splittings; the two coincide at this
+order. Note that the index ordering follows the opposite convention,
+$P_{ij} = P_{j\to i+k}$, with $j$ the parton taken from the proton, $i$
+the parton entering the hard scattering and $k$ the parton radiated
+into the final state. They are obtained by averaging $\hat{P}$ over the
+spin of the parent and setting $\varepsilon=0$, applying the $(1-z)_+$
+prescription to handle the soft $z\to1$ divergence, and adding the
+virtual $\delta(1-z)$ piece from one-loop corrections. Explicitly,
 \begin{equation}
 \label{eq:splitting-func-real-virt}
 \begin{aligned}
@@ -985,11 +984,12 @@ one-loop corrections. Explicitly,
 \end{aligned}
 \end{equation}
 The $(1-z)_+$ prescription is defined by
-$\int_0^1 dz\,f(z)/(1-z)_+ = \int_0^1 dz\,(f(z)-f(1))/(1-z)$
+\begin{equation}
+\int_0^1 dz \frac{f(z)}{(1-z)_+} = \int_0^1 dz \frac{f(z)-f(1)}{1-z}\,,
+\end{equation}
 and ensures integrability at $z\to1$. The $\delta(1-z)$ terms in
 $P_{qq}^{(0)}$ and $P_{gg}^{(0)}$ arise from virtual corrections
-and are present only for flavour-preserving splittings.} \\
-\ABquestion{Are these initial or final-state splittings? I cannot match them to Eq.~\eqref{eq:AP-functions}?}
+and are present only for flavour-preserving splittings.
 
 The hard interaction produces the primary particles of the event -- in this case a $t\bar{t}h$ system, indicated by the smaller red blobs in Fig.~\ref{fig:high-energy-event}. Since the energy scale $Q$ is much larger than $\Lambda_{\mathrm{QCD}}$, predictions at this stage can be reliably obtained using fixed-order perturbation theory (Sec.~\ref{sec:pert-theory}). Such calculations are typically provided by matrix-element generators such as \textsc{MadGraph}~\cite{Alwall:2014hca} and \textsc{MCFM}~\cite{Campbell:1999ah,Campbell:2011bn,Campbell:2019dru}.
 
@@ -1025,11 +1025,11 @@ string~\cite{Sjostrand:1982fn,Andersson:1983jt} and
 cluster~\cite{Webber:1983if} models, as well as analytical 
 power-correction methods~\cite{Dokshitzer:1995qm}.
 
-The three stages described above capture the main features of the QCD dynamics in a high-energy hadronic collision, but several additional ingredients contribute to the structure of a realistic event. Electromagnetic radiation, shown as yellow lines in Fig.~\ref{fig:high-energy-event}, may occur at any stage of the process. Secondary semi-hard interactions between the proton remnants give rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These interactions generate further radiation and hadrons, however are not described by standard QCD factorisation and require dedicated modelling. 
+The three stages described above capture the main features of the QCD dynamics in a high-energy hadronic collision, but several additional ingredients contribute to the structure of a realistic event. Electromagnetic radiation, shown as yellow lines in Fig.~\ref{fig:high-energy-event}, may occur at any stage of the process. Secondary semi-hard interactions between the proton remnants give rise to the \emph{underlying event}, represented by the purple blob in Fig.~\ref{fig:high-energy-event}. These interactions generate further radiation and hadrons, but are not described by standard QCD factorisation and require dedicated modelling. 
 
 Prior to the hard interaction, the incoming partons may radiate, producing \emph{initial-state radiation} (ISR). This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard scattering.
 
-\subsection{The QCD Factorisation Formula}
+\subsection{The QCD factorisation formula}
 \label{subsec:factorisation-formula}
 
 To relate the partonic dynamics of a hard scattering to experimentally
@@ -1045,7 +1045,7 @@ formula,
 which is illustrated schematically in Fig.~\ref{fig:factorisation-formula}.
 Here, $f_{i/P_1}(x_1,\mu_F^2)$ and $f_{j/P_2}(x_2,\mu_F^2)$ are the 
 PDFs for partons $i$ and $j$ inside the incoming protons $P_1$ and 
-$P_2$, carrying longitudinal momentum fractions $x_1$ and $x_2$,
+$P_2$, carrying longitudinal momentum fractions $x_1$ and $x_2$.
 The sum over $i,j$ runs over all contributing parton flavours, while 
 $\hat{\sigma}_{ij}$ denotes the corresponding partonic cross section.
 
@@ -1108,18 +1108,32 @@ the final-state particles and proton remnants.}
 \label{fig:factorisation-formula}
 \end{figure}
 
-\ABquestion{Is this next paragraph correct?}
 The factorisation formula separates the long-distance, non-perturbative physics, encoded in the PDFs, 
 from the short-distance hard interaction, captured by $\hat{\sigma}_{ij}$.  
 This separation is made precise by the factorisation scale $\mu_F$: 
 radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in $\hat{\sigma}_{ij}$. 
+This scale comes about because beyond leading order
+the partonic cross sections contain collinear singularities from
+radiation off the incoming partons which, unlike their final-state
+counterparts, do not cancel against the virtual corrections. They are
+removed by a counterterm absorbed into the definition of the PDFs, which
+thereby acquire their $\mu_F$ dependence,
+\begin{equation}
+\label{eq:pdf-counterterm}
+    f^{\mathrm{bare}}_{i/P}(x) = f_{i/P}(x,\mu_F^2)
+    + \frac{\alpha_s(\mu_R^2)}{2\pi}\,
+      \frac{(4\pi)^\varepsilon}{\Gamma(1-\varepsilon)}
+      \left(\frac{\mu_R^2}{\mu_F^2}\right)^{\!\varepsilon}
+      \frac{1}{\varepsilon}\sum_j\int_x^1\frac{dz}{z}\,
+      P^{(0)}_{ij}(z)\,f_{j/P}\!\left(\frac{x}{z},\mu_F^2\right)
+    + \mathcal{O}(\alpha_s^2)\,.
+\end{equation}
+with $\mu_F$ fixing how much of the accompanying collinear logarithm is
+absorbed into the PDF and how much is left in $\hat{\sigma}_{ij}$.
 
 The power-suppressed corrections $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ reflect the fact that this description is valid only in the high-energy limit, $Q \gg \Lambda_{\mathrm{QCD}}$, which is satisfied throughout the course of this thesis. 
 
-\ABquestion{Should I be discussing the PDF and its counterterm here
-or unnecessary? }
-
-\section{Jet Physics}
+\section{Jet physics}
 \label{sec:jet-phys}
 
 As discussed in Sec.~\ref{subsec:hadronisation}, jets
@@ -1157,7 +1171,7 @@ known as the \emph{Snowmass Accord}~\cite{Huth:1990mi}:
 The final three requirements are ensured by IRC safety 
 (Sec.~\ref{sec:IRC}), which guarantees that jet definitions at the 
 detector, hadron, and parton levels are essentially equivalent.
-For IRC-safe observables, the effects of hadronisation are suppressed by inverse powers of the energy scale $Q$ used in the process. Consequently, at higher energies, the correspondence between hadronic and partonic observables becomes increasingly accurate, consistent with quark--hadron duality (Sec.~\ref{sec:divergences}). Together, these requirements allow us to regard jets as well-defined objects whose properties can be either determined by their constituent hadrons or underlying partons. This enables direct comparison between experimental measurements and theoretical calculations at the parton level.
+For IRC-safe observables, the effects of hadronisation are suppressed by inverse powers of the energy scale $Q$ used in the process. Consequently, at higher energies, the correspondence between hadronic and partonic observables becomes increasingly accurate, consistent with quark-hadron duality (Sec.~\ref{sec:divergences}). Together, these requirements allow us to regard jets as well-defined objects whose properties can be determined either by their constituent hadrons or underlying partons. This enables direct comparison between experimental measurements and theoretical calculations at the parton level.
 
 A wide variety of jet algorithms exist, each with its own advantages and limitations. The choice of algorithm depends on the specific physics question being addressed and the type of information one seeks to extract from an event. In general, jet algorithms can be divided into two broad classes:
 \begin{itemize}
@@ -1173,7 +1187,8 @@ In this thesis, we focus exclusively on sequential recombination algorithms. For
 
 \section{Sequential recombination in $e^+e^-$ collisions}
 \label{sec:ee-algos}
-
+\add{D.G. comment: can say that the JADE is a simple example of a sequential recombination
+algorithm and gives an idea of how they work in general.}
 To illustrate the basic procedure of sequential recombination algorithms,
 we first consider their application to $e^+e^-$ collisions. The JADE
 algorithm, introduced by the \textsc{JADE} Collaboration
@@ -1266,7 +1281,7 @@ discussed in Ch.~\ref{chapter:DIS}.
 
 The clustering procedure becomes more involved when moving beyond
 $e^+e^-$ collisions to processes involving incoming hadrons, such as
-hadronic collisions and deep-inelastic scattering (DIS). In these cases,
+hadronic collisions and deep inelastic scattering (DIS). In these cases,
 the algorithm must also account for radiation that becomes collinear to an
 incoming beam. This is incorporated through an additional \emph{beam
 distance}, $d_{iB}$, which determines whether a particle is associated
