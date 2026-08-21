@@ -8,17 +8,16 @@ To date, no general framework has been established for performing
 next-to-next-to-leading logarithmic (NNLL) resummation of jet
 observables in hadronic collisions. Considerable effort is being
 devoted to extending parton showers to this accuracy, but the state of
-the art remains at NLL, demonstrated by
+the art remains at NLL, as demonstrated by the
 \textsc{Sherpa}~\cite{Herren:2022jej,Sherpa:2024mfk} and
 \textsc{PanScales}~\cite{vanBeekveld:2022zhl,vanBeekveld:2022ukn,
-vanBeekveld:2023chs}. Within Soft-Collinear Effective Theory (SCET),
+vanBeekveld:2023chs} collaborations. Within Soft-Collinear Effective Theory (SCET),
 resummation has been achieved up to N$^3$LL accuracy for a number of
 observables~\cite{Becher:2008cf, Abbate:2010xh, Alioli:2023rxx}.
 However, these calculations rely on observable-specific factorisation
 theorems, which limits their generality. Recent progress has been made
 towards a more general treatment~\cite{vanBeekveld:2025zjh}, but no
-formalism applicable to a wide range of event shapes in processes with
-a hard final-state parton currently exists. \todo{Think about last line.}
+formalism applicable to a wide range of event shapes currently exists.
 
 In this chapter, we extend the \textsc{ARES} formalism for NNLL
 resummation to hadronic collisions, considering the process
@@ -42,10 +41,10 @@ calculate within \textsc{ARES}. The aim of this application is
 therefore not to provide new phenomenological predictions, but rather
 to demonstrate the implementation of the extension to hadronic
 collisions and validate the resulting resummation against known
-results. The structure of the initial-state radiation contributions is
-validated independently by comparing the corresponding NNLL terms with
-the results obtained for Lund tree shapes in
-Ref.~\cite{vanBeekveld:2025zjh}.
+results~\cite{Gaunt:2015pea}. The structure of the initial-state
+radiation contributions is validated independently by comparing the
+corresponding NNLL terms with the results obtained for Lund tree shapes
+in Ref.~\cite{vanBeekveld:2025zjh}.
 
 Unlike the NLL discussion presented in the previous chapter, we do not
 derive the NNLL master formula from first principles, as this is not the
@@ -126,13 +125,14 @@ momenta. This leads to the dimensionless observable
 	\tau_1\equiv  \sum_{i} \frac{k_{t,i}}{H_T}\min\{e^{(\eta_i-\eta_J)}, e^{-(\eta_i-\eta_J)}, \cosh(\eta_{i}-\eta_J)-\cos(\phi_{i}-\phi_J)\}\,.
 \end{equation}
 
-As discussed in Sec.~\ref{sec:problem-spec}, we consider the cumulant of
-an event shape, obtained by imposing the constraint
-$V(q_1,q_2,\dots,q_n)<v$. For one-jettiness, the one-jet region corresponds
-to the limit $v\to0$. To fix the Born kinematics in this limit, we
-consider the cross section differential in $\eta_J$, and in the transverse momentum $q_T$ 
-and rapidity $y_Z$ of the $Z$ boson. The differential cross section then takes the factorised form
-of Eq.~\eqref{eq:Sigma-H-fact}, specialised to the present process, 
+As discussed in Sec.~\ref{sec:problem-spec}, we consider the cumulant
+of an event shape, imposing the constraint
+$V(q_1,q_2,\dots,q_n)<v$. For one-jettiness, the one-jet region
+corresponds to the limit $v\to0$. In this limit, we fix the Born
+kinematics by considering the cross section differential in $\eta_J$,
+and in the transverse momentum $q_T$ and rapidity $y_Z$ of the $Z$ boson.
+The differential cross section then takes the factorised form of
+Eq.~\eqref{eq:Sigma-H-fact}, specialised to the present process,
 \begin{equation}
   \label{eq:dsigma-def}
   \frac{d\sigma(v)}{dq_T dy_Zd\eta_J} \simeq \sum_{i,j} \int_0^1 \!\! dx_1\, f_i(x_1,\mu_F)\int_0^1 \!\! dx_2\, f_j(x_2,\mu_F)\frac{d\hat \sigma_{ij}}{dq_Tdy_Zd\eta_J} \Sigma_{ij}(\{p_1,p_2,p_3\},v)\,.
@@ -141,16 +141,6 @@ Here $d\hat{\sigma}_{ij}$ is the partonic cross section
 for the production of a $Z$ boson and an extra jet via the partonic
 subprocess $ij$, where $i$ and $j$ each represent a quark, an antiquark of any
 light flavour ($u,d,c,s,b$, considered massless), or a gluon. 
-Eq.~\eqref{eq:dsigma-def}
-requires a mapping between the full event -- made up
-of the three hard partons $\{\tilde p\}\equiv\{\tilde p_1,\tilde p_2,\tilde p_3\}$ and an arbitrary number of soft and/or collinear emissions -- and
-a Born event with only three hard partons $\{p_1,p_2,p_3\}$. \todo{Get a reference.}
-The difference between the approximation on the right-hand side of
-Eq.~\eqref{eq:dsigma-def} and the full expression for
-$ d\sigma(v)/(dq_T dy_Z d\eta_J)$ is a well-defined expansion in powers of the
-strong coupling $\alpha_s$, with coefficients vanishing as a power of
-$v$, potentially enhanced by logarithms of $v$. \todo{last two paragraphs seem
-like they are together.}
 
 The cumulative distribution $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ contains
 logarithms of $v$ that become large in the one-jet region. The
@@ -163,19 +153,18 @@ $\alpha_s L\sim 1$ as
   \label{eq:log-counting}
   \Sigma_{ij}(\{p_1,p_2,p_3\},v) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
 \end{equation}
-This organisation differs from that of Eq.~\eqref{eq:resummed-cumulant},
-where the full series is exponentiated: here only the
-leading-logarithmic function is kept in the exponent, with the
-subleading contributions collected in a prefactor. This form is the
-natural one for \textsc{ARES}, where the cumulant is written as an
-exponentiated radiator multiplying the multiple-emission function, as in
-Eq.~\eqref{eq:NLL-cumulant}. As in Table~\ref{tab:log-accuracy}, the
+This organisation differs from the form in
+Eq.~\eqref{eq:resummed-cumulant}, where the logarithmic contributions
+are fully exponentiated. In \textsc{ARES}, the leading logarithms are
+contained in an exponentiated radiator, while the subleading
+contributions are accounted for in the prefactor (cf.\  Eq.~\eqref{eq:NLL-cumulant}).
+As illustrated in Table~\ref{tab:log-accuracy}, the
 function $g_1(\alpha_s L)$ resums all leading logarithmic (LL) terms,
 $\alpha_s^n L^{n+1}$, in $\ln\Sigma_{ij}$. For rIRC safe observables,
 $g_1$ exponentiates. The function $G_2(\alpha_s L)$ resums
 next-to-leading logarithmic (NLL) contributions ($\alpha_s^n L^n$) to
 $\ln\Sigma_{ij}$, and so on. Here we work to NNLL accuracy, i.e.\
-calculating $g_1$, $G_2$ and $G_3$. \todo{wording of final paragraph.}
+calculating $g_1$, $G_2$ and $G_3$.
 
 \section{General form of NNLL resummation}
 \label{sec:NNLL-general}
@@ -195,44 +184,41 @@ resummation formula are modified to account for initial-state radiation.
   \Sigma_{ij}(\{p_1,p_2,p_3\},v)= e^{-R_{\rm NNLL}(v)} \frac{f_i(x_1,v^{\frac{1}{a+b_1}}Q)}{f_i(x_1,\mu_F)} \frac{f_j(x_2,v^{\frac{1}{a+b_2}}Q)}{f_j(x_2,\mu_F)}
   \times \\ \times
   \left(\mathcal{F}^{(ij)}_{\rm NLL}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H_{ij}^{(1)}(Q,\mu_R)
-      +\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}\sum_{\ell}C_{\mathrm{hc},\ell}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(ij)}_{\rm NNLL}(\lambda)\right)\,,
+      +\sum_{\ell}\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},\ell}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(ij)}_{\rm NNLL}(\lambda)\right)\,,
 \end{multline}
 where $\mu_R,\mu_F$ are the renormalisation and factorisation
 scales in the $\overline{\rm MS}$ scheme, and $\lambda$
 is defined in Eq.~\eqref{eq:lambda}.
-The parameters $a, b_\ell$ are determined by the general behaviour 
-of an IRC safe observable $V$ in the presence of a single soft emission collinear to leg $\ell$, as given in Eq.~\eqref{eq:general-sc-V}. For hadronic collisions, the scale $Q$ is an arbitrary resummation scale.
 
-The physical meaning of all ingredients in
-Eq.~\eqref{eq:Sigma-NNLL} can be recovered from
-Refs.~\cite{Arpino:2019ozn,Banfi:2018mcq,Banfi:2004yd}. We give
-below a short description of each, highlighting the differences with
+The parameters $a$, $b_\ell$ are determined by the behaviour of an
+IRC-safe observable $V$ in the presence of a single soft emission
+collinear to leg $\ell$, as given in Eq.~\eqref{eq:general-sc-V}. For
+hadronic collisions, the resummation scale $Q$ is arbitrary. The
+physical interpretation of the ingredients in
+Eq.~\eqref{eq:Sigma-NNLL}  can be recovered from
+Refs.~\cite{Arpino:2019ozn,Banfi:2018mcq,Banfi:2004yd}. 
+We briefly summarise them below, highlighting the differences with
 respect to the $e^+e^-$ case:
 
-\todo{Need to go through and make sure everything makes sense/see if anything can be made more concise.}
+\begin{itemize}  
+\item The NNLL radiator $R_{\rm NNLL}(v)$ contains the virtual
+corrections of \emph{soft and/or collinear origin}, together with the
+real corrections associated with suitably defined unresolved
+emissions. These contributions are combined such that the infrared
+singularities cancel analytically. The procedure for defining the
+unresolved emissions is not unique (cf.\ Sec.~\ref{sec:NLL-resum}).
+A proposal adequate for three emitting legs is given in
+Ref.~\cite{Arpino:2019ozn}, leading to a master formula for
+$R_{\rm NNLL}(v)$ whose explicit expression depends only on the
+single-emission parameters $a$, $b_\ell$, $d_\ell$, and
+$g_\ell(\phi)$. For completeness, its extension from NLL to NNLL is
+derived in Sec.~\ref{sec:radiator}.
 
-\begin{itemize}
-\item The NNLL radiator $R_{\rm NNLL}(v)$ includes all virtual
-  corrections of \emph{soft and/or collinear origin}. These are divergent,
-  but their divergences cancel with those of real radiation. In
-  order to cancel the singularities of virtual corrections analytically, the
-  radiator also includes a subset of real corrections for suitably
-  defined unresolved emissions. The procedure to define those
-  emissions is not unique (cf.\ Sec.\ref{sec:NLL-resum}). 
-  A proposal adequate for three emitting legs is given in
-  Ref.~\cite{Arpino:2019ozn}, leading to a master formula for
-  $R_{\rm NNLL}(v)$ whose explicit expression depends only on the
-  single-emission parameters $a$, $b_\ell$, $d_\ell$, and
-  $g_\ell(\phi)$. For completeness, we illustrate how
-  the NNLL radiator extends from the NLL result in
-  Sec.~\ref{sec:radiator}. 
-
-  \item Parton distribution functions enter through the ratios
-  $f_i(x_\ell,v^{\frac{1}{a+b_\ell}}Q)/f_i(x_\ell,\mu_F)$,
-  where $f_i(x_\ell,\mu_F)$ is the parton distribution function
-  corresponding to the flavour of the parton $p_\ell$ entering the hard scattering, with
-  momentum fraction $x_\ell$. Between the factorisation scale $\mu_F$ and the veto scale
-  $v^{1/(a+b_\ell)}Q$, the incoming parton can emit \emph{hard-collinear}
+  \item Parton distribution functions (PDFs) enter through the ratios
+$f_i(x_\ell,v^{1/(a+b_\ell)}Q)/f_i(x_\ell,\mu_F)$, where $f_i(x_\ell,\mu_F)$
+is the PDF for the incoming parton $p_\ell$ entering the hard scattering, carrying momentum fraction
+$x_\ell$. Between the factorisation scale $\mu_F$ and the veto scale
+ $Qv^{1/(a+b_\ell)}$, the incoming parton can emit \emph{hard-collinear}
   gluons that are too collinear to be resolved by the observable.
   These unresolved emissions are absent from
   $\mathcal{F}_{\rm NLL}$ and instead they modify the effective PDF seen
@@ -244,15 +230,32 @@ respect to the $e^+e^-$ case:
 
 \item Resolved \emph{soft and collinear} emissions widely separated in angle,
   together with the appropriate virtual corrections, build up the
-  NLL function $\mathcal{F}_{\rm NLL}(\lambda)$, derived in
-  Sec.~\ref{sec:NLL-resum} and given in Eq.~\eqref{eq:FNLL-formula}.
-  This ingredient is unchanged from the $e^+e^-$ case.
-
+  NLL function $\mathcal{F}_{\rm NLL}(\lambda)$.
+  Its derivation was given in Sec.~\ref{sec:NLL-resum}, and its explicit form is given in
+  Eq.~\eqref{eq:FNLL-formula}. This contribution is unchanged from the
+  $e^+e^-$ case. 
+  
 \item Finite virtual corrections of relative order $\alpha_s$ are
-  encoded in the hard coefficient $H_{ij}^{(1)}$. This is a term of order
-  $\alpha_s$ multiplying the NLL function, $\mathcal{F}^{(ij)}_{\rm NLL}(\lambda)$, 
-  hence NNLL. For a generic process, $H_{ij}^{(1)}$ depends on $Q$, kinematic invariants and $\mu_R$. This contribution is process dependent. The general formula for $H_{ij}^{(1)}$ is derived in Sec.~\ref{sec:H1}; 
-   
+encoded in the hard coefficient $H_{ij}^{(1)}$. For a generic process,
+$H_{ij}^{(1)}$ depends on the hard scale $Q$, the relevant kinematic
+invariants and the renormalisation scale $\mu_R$. This contribution is
+process dependent. Its general form is derived in Sec.~\ref{sec:H1}.
+
+\item A single unresolved \emph{hard-collinear} splitting of leg
+$\ell$, together with the corresponding virtual correction and, for
+initial-state radiation, the collinear counterterm associated with PDF
+renormalisation (cf.~Sec.~\ref{subsec:factorisation-formula}), gives
+the coefficient $C_{\mathrm{hc},\ell}^{(1)}$. It is the finite
+remainder after the cancellation of the collinear
+$1/\varepsilon$ singularities. For final-state radiation, this
+cancellation takes place between the real and virtual contributions.
+For initial-state radiation, the collinear singularity associated with
+the incoming parton is additionally absorbed into the PDF, requiring
+the corresponding counterterm. The resulting initial-state coefficient is a new result of this work,
+derived in Sec.~\ref{sec:NNLL-initial}, while the final-state
+contribution is identical to that of the $e^+e^-$ case given in
+Ref.~\cite{Arpino:2019ozn}.
+
 \item A single unresolved \emph{hard-collinear splitting} of leg
   $\ell$ combines with the corresponding virtual corrections and, in
   the case of initial-state radiation, to the collinear counterterm
@@ -276,12 +279,8 @@ while the initial-state contribution is a new result of this work, derived
   
   \item All remaining resolved emissions and their associated virtual
   corrections are collected in the NNLL function
-  $\delta\mathcal{F}_{\rm NNLL}(\lambda)$. These consist of one
-  special \emph{soft and/or collinear} emission accompanied by an
-  arbitrary ensemble of soft-collinear emissions widely
-  separated in angle, together with the corresponding virtual
-  corrections:
-   \begin{equation}
+  $\delta\mathcal{F}_{\rm NNLL}(\lambda)$,
+     \begin{equation}
     \label{eq:dFNNLL}
     \delta\mathcal{F}_{\rm NNLL} =
     \delta\mathcal{F}_{\rm sc}
@@ -292,21 +291,34 @@ while the initial-state contribution is a new result of this work, derived
     +\Delta\mathcal{F}_{\rm wa}
     +\delta\mathcal{F}_{\rm correl}\,.
   \end{equation}
+  These terms describe configurations containing one special
+  \emph{soft and/or collinear} emission together with an arbitrary
+  ensemble of widely separated soft-collinear emissions and the
+  corresponding virtual corrections.
   Each term reflects the region of phase space spanned by the special emission
   and can be expressed as an integral over the soft-collinear measure $\dZ$ with the appropriate weight function $G(\{k_i\})$ 
   (see Eq.~\eqref{eq:dZ-def}). 
 
-The contributions of soft origin ---
+The contributions of soft origin,
 $\delta\mathcal{F}_{\rm sc}$, $\delta\mathcal{F}_{\rm wa}$,
-$\Delta\mathcal{F}_{\rm wa}$, and $\delta\mathcal{F}_{\rm correl}$
---- are identical to those derived in Ref.~\cite{Arpino:2019ozn} and
-receive no additional contributions from initial-state radiation. This follows directly
-from the soft matrix-element factorisation described in
-Sec.~\ref{subsec:soft-fact}, according to which each soft emission
-depends only on the colour charge and direction of the emitting leg,
-and is independent of its momentum fraction, flavour, or whether the
-emitter is in the initial or final state. Consequently, the soft
-corrections are universal for ISR and FSR.
+$\Delta\mathcal{F}_{\rm wa}$ and $\delta\mathcal{F}_{\rm correl}$,
+are identical to those derived in Ref.~\cite{Arpino:2019ozn}. 
+They receive no additional contributions from initial-state radiation
+because, in the soft limit, the matrix element depends only on the
+colour charge and direction of the emitting leg, and not on its
+momentum fraction, flavour or whether it is incoming or outgoing.
+The soft corrections are therefore universal between ISR and FSR.
+
+The collinear contributions, by contrast, distinguish initial- and
+final-state radiation. An emission collinear to an incoming parton
+carries a finite fraction of its longitudinal momentum, leading to
+collinear singularities that are absorbed into the PDFs. The resulting
+factorisation therefore involves splitting functions convoluted with
+PDFs and depends explicitly on the flavour and momentum fraction of
+the incoming parton. This modifies the hard-collinear contributions
+$\delta\mathcal{F}_{\rm hc}$, $\delta\mathcal{F}_{\rm rec}$ and
+$\Delta\mathcal{F}_{\rm rec}$ relative to the $e^+e^-$ case, while
+leaving their overall structure unchanged.
 
 In contrast, the collinear contributions differ between initial- and
 final-state radiation. Emissions collinear to an incoming parton carry
@@ -319,7 +331,20 @@ introduced in Sec.~\ref{subsec:collinear-fact}, is reflected in the
 hard-collinear contributions --- $\delta\mathcal{F}_{\rm hc}$, $\delta\mathcal{F}_{\rm rec}$, and
 $\Delta\mathcal{F}_{\rm rec}$. While these terms retain the same formal
 structure as in the $e^+e^-$ case, their ingredients are modified for
-ISR through the appearance of PDF convolutions. For the one-jettiness
+ISR through the appearance of PDF convolutions. 
+
+For the one-jettiness observable considered here, the spin-correlation
+contribution to $\Delta\mathcal{F}_{\rm rec}$ vanishes for both
+initial- and final-state radiation. Therefore, the ISR extension considered in this 
+chapter requires only the derivation of $\delta\mathcal{F}_{\rm hc}$ and $\delta\mathcal{F}_{\rm rec}$. 
+A complete NNLL formulation for generic observables must also include
+spin-correlation effects; the corresponding initial-state
+contribution is derived in Appendix~\ref{app:spin-correl}. The
+remaining ISR corrections relevant to the present calculation are
+derived in Sec.~\ref{sec:NNLL-initial}.
+
+
+For the one-jettiness
 observable considered in this chapter, the spin-correlation contribution
 to $\Delta\mathcal{F}_{\rm rec}$ vanishes for both initial- and
 final-state radiation. Therefore, the ISR extension considered here
@@ -334,18 +359,18 @@ Sec.~\ref{sec:NNLL-initial}.
   
   \end{itemize} 
   
-  In the following two subsections we discuss $H_{ij}^{(1)}(Q,\mu_R)$
-and $R_{\rm NNLL}(v)$ in more detail. The radiator can in principle
-be taken directly from Ref.~\cite{Arpino:2019ozn}, since the Born-level process
-$hh\to Z+\text{jet}$ has the same three-leg colour structure as the
-$e^+e^-\to q\bar q g$ case. Nevertheless we present its derivation here to
-illustrate how the NLL radiator is extended to NNLL and to
-establish the conventions used throughout this chapter. The hard
-function $H_{ij}^{(1)}$, by contrast, is process specific
-and cannot be taken from Ref.~\cite{Arpino:2019ozn}. Its general
-formula is derived in the following.
-
-
+In the following two subsections we discuss
+$H_{ij}^{(1)}(Q,\mu_R)$ and $R_{\rm NNLL}(v)$ in more detail. The
+radiator can in principle be taken directly from
+Ref.~\cite{Arpino:2019ozn}, since the Born-level process
+$hh\to Z+\text{jet}$ has the same three-leg colour structure as
+$e^+e^-\to q\bar q g$. We nevertheless derive it here to show how the
+NLL radiator is extended to NNLL and to establish the conventions used
+throughout this chapter. The hard coefficient $H_{ij}^{(1)}$, by
+contrast, is process dependent and cannot be taken from
+Ref.~\cite{Arpino:2019ozn}. Its general form is derived in the
+following subsection.
+  
 \subsection{The hard coefficient $\mathbf{H_{ij}^{(1)}(Q,\mu_R)}$}
 \label{sec:H1}
 
@@ -465,8 +490,7 @@ we find
 \end{equation}
 where the finite constant piece, $\mathcal{H}_1$, is
 process dependent and determined by the one-loop hard scattering
-amplitude. It must therefore be calculated separately for each hard
-process.
+amplitude.
 
 \subsection{The NNLL radiator}
 \label{sec:radiator}
