@@ -12,7 +12,7 @@ perturbation theory becomes unreliable and resummation is required to obtain mea
 Traditionally, resummation for final-state observables was performed in an
 observable-dependent manner, requiring separate analytical calculations for
 each case~\cite{Collins:1984kg, Catani:1992ua, Bonciani:2003nt}. A first
-step towards a more general approach was taken in~\cite{Banfi:2001bz},
+step towards a more general approach was taken in Ref.~\cite{Banfi:2001bz},
 where a systematic semi-numerical framework was developed to achieve NLL
 accuracy for a broad class of observables. This framework was subsequently
 extended and implemented in the computer code \textsc{CAESAR}
@@ -20,11 +20,12 @@ extended and implemented in the computer code \textsc{CAESAR}
 In this approach, the resummation formula is expressed in terms of a set of
 observable-dependent parameters, which can be determined automatically and
 numerically for a given observable. The framework has been used to resum a
-broad class of observables, including event shapes and jet rates. This
-approach was subsequently extended in \textsc{ARES}
+broad class of observables, including event shapes and jet rates. 
+To achieve NNLL resummation, the semi-numerical \textsc{ARES}
 (\emph{Automated Resummation for Event Shapes})~\cite{Banfi:2014sua,
-Banfi:2016zlc, Banfi:2018mcq, Arpino:2019ozn}, which achieves NNLL
-accuracy for jet observables in $e^+e^-$ collisions. In this thesis, we
+Banfi:2016zlc, Banfi:2018mcq, Arpino:2019ozn} framework was devised
+for $e^+e^-$ collisions.
+In this thesis, we
 work within the \textsc{ARES} framework.
 
 The structure of this chapter is as follows. We begin by introducing event-shape
@@ -47,7 +48,7 @@ discrete jets, event shapes provide a continuous description of the
 event geometry, making them powerful probes of QCD 
 radiation. They have been widely used in precision studies of QCD, most 
 notably in the extraction of the strong coupling constant 
-$\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. Notable examples 
+$\alpha_s$~\cite{Becher:2008cf, Abbate:2010xh}. Examples 
 include:
 
 \begin{itemize}
@@ -55,13 +56,13 @@ include:
 most widely studied event-shape observables. It is defined as
 \begin{equation}
 \label{eq:thrust}
-	T \equiv \max_{\vec{n}} \frac{\sum_i |\vec{p}_i \cdot \vec{n}|}{\sum_i |\vec{p}_i|}\,, \quad \tau \equiv 1 - T \,,
+	T \equiv \max_{\vec{n}} \frac{\sum_i |\vec{q}_i \cdot \vec{n}|}{\sum_i |\vec{q}_i|}\,, \quad \tau \equiv 1 - T \,,
 \end{equation}
-where $\vec{p}_i$ denotes the three-momentum of particle $i$ in the final state. 
+where $\vec{q}_i$ denotes the three-momentum of particle $i$ in the final state. 
 The unit vector $\vec{n}$ that maximises this quantity is referred to as the \emph{thrust axis}, $\vec{n}_T$. 
 This axis separates the event into two distinct hemispheres, $\mathcal{H}_1$ and $\mathcal{H}_2$, as shown in Fig.~\ref{fig:thrust}. 
 In practice, one usually works with the variable $\tau$, as defined in Eq.~\eqref{eq:thrust}.
-For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate more spherically distributed multi-particle final state. 
+For $e^+e^- \to \mathrm{hadrons}$, thrust provides a measure of how ``pencil-like'' an event is: $\tau \to 0$ corresponds to the Born-level configuration with a perfectly back-to-back $q\bar{q}$ pair, while larger values of $\tau$ indicate a more spherically distributed multi-particle final state. 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=1.0, >=Stealth]
@@ -109,7 +110,7 @@ $\mathcal{H}_1$ and $\mathcal{H}_2$, and for each hemisphere the
 broadening is defined as
 
 \begin{equation}
-	B_\ell \equiv \frac{\sum_{i \in \mathcal{H}_\ell} |\vec{p}_i \times \vec{n}_T|}{2 \sum_i |\vec{p}_i|}, \quad \ell = 1, 2\,.
+	B_\ell \equiv \frac{\sum_{i \in \mathcal{H}_\ell} |\vec{q}_i \times \vec{n}_T|}{2 \sum_i |\vec{q}_i|}, \quad \ell = 1, 2\,.
 \end{equation}
 The wide-jet broadening, narrow-jet broadening, and total 
 broadening are defined respectively as  
@@ -121,7 +122,7 @@ broadening are defined respectively as
 
 \item{\textbf{Jet masses}}~\cite{Chandramohan:1980ry, Clavelli:1981yh} are defined by computing the invariant mass of each hemisphere,
 \begin{equation}
-	\rho_{\ell}\equiv \frac{\left(\sum_{i\in\mathcal{H}_{\ell}}p_i\right)^2}{\left(\sum_iE_i\right)^2}\,,\quad \ell=1, 2\,,
+	\rho_{\ell}\equiv \frac{\left(\sum_{i\in\mathcal{H}_{\ell}}q_i\right)^2}{\left(\sum_iE_i\right)^2}\,,\quad \ell=1, 2\,,
 \end{equation}
 where $E_i$ is the energy of the particle $i$ in the final-state.
 The heavy-jet mass and light-jet mass are defined respectively as
@@ -145,80 +146,88 @@ calculation of the thrust distribution. At Born level, the process
 $e^+e^- \to q\bar{q}$ produces a perfectly back-to-back quark--antiquark 
 pair with $\tau = 0$, giving the distribution
 \begin{equation}
-    \frac{1}{\sigma_0}\frac{d\sigma}{d\tau} = \delta(\tau),
+    \frac{1}{\sigma}\frac{d\sigma}{d\tau} = \delta(\tau),
 \end{equation}
-where $\sigma_0$ is the leading-order cross section 
-defined in Eq.~\eqref{eq:sigma-LO}.The first non-trivial contribution arises 
+where $\sigma$ is the total hadronic cross section. At the order
+considered here, we may approximate $\sigma \simeq \sigma_0$, with
+$\sigma_0$ the leading-order cross section defined in
+Eq.~\eqref{eq:sigma-LO}.
+
+The first non-trivial contribution arises 
 at $\mathcal{O}(\alpha_s)$ from the real-emission process $
 e^+e^- \to q\bar{q}g$. For a 
 three-particle final state with energy fractions satisfying 
 $x_q + x_{\bar{q}} + x_g = 2$, the thrust distribution in
 Eq.~\eqref{eq:thrust} reduces to
 \begin{equation}
-T = \max[x_q, x_{\bar{q}}, x_g]\,,
+\label{eq:tau-three-parton}
+    \tau = \min\!\left[1-x_q,\; 1-x_{\bar{q}},\;x_q+x_{\bar{q}}-1\right]\,,
 \end{equation}
-with $T_{\min} = 2/3$ for the symmetric
-configuration $x_q = x_{\bar{q}} = x_g = 2/3$, and $T_{\max} = 1$.
+with $\tau_{\max} = 1/3$ for the symmetric
+configuration $x_q = x_{\bar{q}} = x_g = 2/3$, and $\tau_{\min} = 0$.
 
 Using the real-emission cross section in Eq.~\eqref{eq:qqg-real}, the
 differential thrust distribution is
 \begin{equation}
-    \frac{1}{\sigma_0}\frac{d\sigma}{dT}
+\begin{aligned}
+   & \frac{1}{\sigma}\frac{d\sigma}{d\tau}
     = C_F \frac{\alpha_s}{2\pi}
       \int_0^1 dx_q \int_0^1 dx_{\bar{q}}\,
       \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}
-      \, \Theta\!\left(x_q+x_{\bar{q}}-1\right)
-      \delta\!\left(T - \max[x_q, x_{\bar{q}}, x_g]\right)\,.
+      \, \Theta\!\left(x_q+x_{\bar{q}}-1\right)\\
+      &\qquad \qquad \times\delta\!\left(\tau - \min\!\left[1-x_q,\, 1-x_{\bar{q}},\,
+                                       x_q+x_{\bar{q}}-1\right]\right)\,.
+\end{aligned}
 \end{equation}
 As discussed in Sec.~\ref{subsec:IR-div}, this expression
 contains soft and collinear singularities. Regulating these singularities
 using dimensional regularisation gives
-\begin{multline}
-    \frac{1}{\sigma_0}\frac{d\sigma}{dT}
+\begin{equation}
+\begin{aligned}
+    &\frac{1}{\sigma}\frac{d\sigma}{d\tau}
     = C_F\frac{\alpha_s}{2\pi}
       \left(\frac{4\pi\mu_R^2}{s}\right)^\varepsilon
       \frac{1}{\Gamma(1-\varepsilon)}
-      \int_0^1 dx_q \int_0^1 dx_{\bar{q}} \\
-    \times
-      \frac{(x_q^2+x_{\bar{q}}^2)
+      \int_0^1 dx_q \int_0^1 dx_{\bar{q}}  \frac{(x_q^2+x_{\bar{q}}^2)
             -\varepsilon(2-x_q-x_{\bar{q}})^2}
            {(1-x_q)^{1+\varepsilon}\,
             (1-x_{\bar{q}})^{1+\varepsilon}\,
-            (x_q+x_{\bar{q}}-1)^\varepsilon}
-      \,\Theta\!\left(x_q+x_{\bar{q}}-1\right)
-      \delta\!\left(T - \max[x_q, x_{\bar{q}}, x_g]\right)\,.
-\end{multline}
+            (x_q+x_{\bar{q}}-1)^\varepsilon}\\[0.5ex]
+    &\qquad\qquad\times
+      \Theta\!\left(x_q+x_{\bar{q}}-1\right)
+      \delta\!\left(\tau - \min\!\left[1-x_q,\,1-x_{\bar{q}},\,
+                                       x_q+x_{\bar{q}}-1\right]\right)\,.
+\end{aligned}
+\end{equation}
 The resulting phase-space integrals contain poles in $\varepsilon$, which
 cancel against the corresponding poles in the virtual contribution.
 Since the virtual contribution is proportional to $\delta(\tau)$, its
 finite coefficient can be fixed by requiring that the complete
 distribution reproduces the total cross section at NLO, given in
-Eq.~\eqref{eq:sigma-full}. Changing variables to
-$\tau\equiv1-T$, this gives the complete thrust distribution at
+Eq.~\eqref{eq:sigma-full}. This gives the complete thrust distribution at
 $\mathcal{O}(\alpha_s)$,
-\ABquestion{Is the $\Theta(1/3 -\tau)$ is meant
-to go in front of the square brackets like the below? 
-Also do not understand your comment about normalising by $\sigma_0$
-not being physical -- how is this Eq meant to be presented? Also is it OK that I am using
-the partonic cross section?}
-\begin{multline}
+\begin{equation}
+\begin{aligned}
 \label{eq:full-thrust-NLO}
-    \frac{1}{\sigma_0}\frac{d\sigma}{d\tau}
+    &\frac{1}{\sigma}\frac{d\sigma}{d\tau}
     =\; \delta(\tau)
     + C_F\frac{\alpha_s}{2\pi}
       \left\{
         \delta(\tau) \left( \frac{\pi^2}{3} - 1 \right)
-      \right. \\
-    +\Theta\left(\frac{1}{3}-\tau\right) \left[
-        3(1+\tau)(3\tau-1)
-        + \frac{(4+6\tau(\tau-1))\ln(1-2\tau)}{1-\tau}
+        + \Theta\!\left(\frac{1}{3}-\tau\right)
+      \right. \\[0.5ex]
+    &\qquad\qquad\times \left[
+        \left(
+          3(1+\tau)(3\tau-1)
+          + \frac{\left(4+6\tau(\tau-1)\right)\ln(1-2\tau)}{1-\tau}
+        \right)
+        \left( \frac{1}{\tau} \right)_+ \right.  \left. \left.
+        - \frac{4+6\tau(\tau-1)}{1-\tau}
+          \left( \frac{\ln \tau}{\tau} \right)_+
       \right]
-      \left( \frac{1}{\tau} \right)_+ \\
-    \left.
-      - \frac{4+6\tau(\tau-1)}{1-\tau}
-        \left( \frac{\ln \tau}{\tau} \right)_+
     \right\}\,.
-\end{multline}
+\end{aligned}
+\end{equation}
 The plus distributions are defined by
 \begin{equation}
     \int_0^1 d\tau
@@ -234,7 +243,7 @@ In the two-jet limit, $\tau\to0$, the fixed-order distribution contains
 logarithmically enhanced contributions that become increasingly large.
 Keeping only these terms, Eq.~\eqref{eq:full-thrust-NLO} gives
 \begin{equation}
-    \left(\frac{1}{\sigma_0}\frac{d\sigma}{d\tau}\right)_{\!\text{log-enh}}
+    \left(\frac{1}{\sigma}\frac{d\sigma}{d\tau}\right)_{\!\text{log-enh}}
     = C_F \frac{\alpha_s}{2\pi}
       \left[
         -3 \left(\frac{1}{\tau}\right)_+
@@ -246,7 +255,7 @@ defined by
 \begin{equation}
 \label{eq:cumulant}
     \Sigma(\tau)
-    = \frac{1}{\sigma_0}\int_0^\tau d\tau'\, \frac{d\sigma}{d\tau'}\,.
+    = \frac{1}{\sigma}\int_0^\tau d\tau'\, \frac{d\sigma}{d\tau'}\,.
 \end{equation}
 Using 
 \begin{equation}
@@ -273,10 +282,9 @@ generate up to two logarithms from the soft and collinear divergences. As
 $\tau\to0$, these logarithms become increasingly large and spoil the
 convergence of the fixed-order expansion.
 
-This behaviour is illustrated in Fig.~\ref{fig:thrust-data-FO}. While 
-the experimental data exhibits a turning point and local maximum in the two-jet region, 
-the fixed-order predictions continue to increase as $\tau\to0$. 
-Including higher-order corrections, moving from LO to NLO to NNLO, does not
+This behaviour is illustrated in Fig.~\ref{fig:thrust-data-FO}, where the
+fixed-order predictions fail to reproduce the turning point and local
+maximum seen in the data. Including higher-order corrections, moving from LO to NLO to NNLO, does not
 resolve this behaviour, since the same logarithmically enhanced contributions appear at every order
 in perturbation theory. Therefore, fixed-order predictions are not
 sufficient to describe the two-jet region, and a resummation of these
@@ -308,12 +316,6 @@ therefore be reorganised as
 	+ \cdots 
 	\right\}\,.
 \end{equation}
-\ABquestion{You say we need Eq.~\eqref{eq:log-counting}, but where? In place of this
-or do we say, ``Eq.~\eqref{eq:resummed-cumulant} can also be written as 
-\begin{equation}
-  \Sigma_{ij}(\{p_1,p_2,p_3\},v) = e^{L g_1(\alpha_s L)}\left[G_2(\alpha_s L)+ \alpha_s G_3(\alpha_s L)+\dots\right]\,.
-\end{equation} 
-''}
 
 Each function $g_i$ resums logarithms at a successive level of accuracy,
 as summarised in Table~\ref{tab:log-accuracy}.
@@ -370,10 +372,10 @@ systematically. This will be discussed in Sec.~\ref{sec:NLL-resum}.
 
 Having motivated the need for resummation using the thrust distribution,
 we now formulate the general problem. We consider events with $n_i$ incoming partons and an arbitrary number $n$ of
-final-state particles, whose momenta are denoted $p_1,\dots,p_n$.
+final-state particles, whose momenta are denoted $q_1,\dots,q_n$.
 At Born level the process involves $N$ hard partons in total -- including
 both the $n_i$ incoming legs and the $N - n_i$ outgoing legs -- which define
-the underlying hard configuration. We define an observable $V(p_1,\dots,p_n)$ as a non-negative function of
+the underlying hard configuration. We define an observable $V(q_1,\dots,q_n)$ as a non-negative function of
 the final-state momenta. We assume the observable to be IRC safe and to vanish
 smoothly as the event approaches an $N$-parton configuration.
 Such observables are commonly referred to as $(N\!+\!1)$-jet observables,
@@ -381,10 +383,10 @@ where both the outgoing jets and the incoming beam jets are included in the
 jet counting.
 
 To select events containing $N$ or more well-separated hard jets, we 
-introduce a selection function $\mathcal{H}(p_1,\dots,p_n)$, defined as
+introduce a selection function $\mathcal{H}(q_1,\dots,q_n)$, defined as
 \begin{equation}
 \label{eq:H-def}
-\mathcal{H}(p_1,\dots,p_n)=
+\mathcal{H}(q_1,\dots,q_n)=
 \begin{cases}
 1\,, & \text{if the event satisfies the selection criteria,}\\
 0\,, & \text{otherwise.}
@@ -399,7 +401,7 @@ then
   \sigma_{\mathcal{H}}
   = \sum_{n=N-n_i}^{\infty}
     \int d\Phi_n\,\frac{d\sigma_n}{d\Phi_n}\,
-    \mathcal{H}(p_1,\dots,p_n)\,,
+    \mathcal{H}(q_1,\dots,q_n)\,,
 \end{equation}
 where $d\sigma_n/d\Phi_n$ is the differential cross section for producing
 $n$ final-state particles and $d\Phi_n$ is the corresponding $n$-particle
@@ -416,8 +418,8 @@ than $v$,
   = \frac{1}{\sigma_{\mathcal{H}}}
     \sum_{n=N-n_i}^{\infty}
     \int d\Phi_n\,\frac{d\sigma_n}{d\Phi_n}\,
-    \Theta\!\left(v - V(p_1,\dots,p_n)\right)
-    \mathcal{H}(p_1,\dots,p_n)\,.
+    \Theta\!\left(v - V(q_1,\dots,q_n)\right)
+    \mathcal{H}(q_1,\dots,q_n)\,.
 \end{equation}
 In the limit $v\ll1$, where logarithmically enhanced contributions become
 important, the cumulant $\Sigma_{\mathcal H}(v)$ assumes the factorised
@@ -449,9 +451,9 @@ remainder of this chapter is devoted to their resummation.
 
 Before deriving the resummation formula, it is necessary to specify the
 class of observables for which the \textsc{CAESAR} and \textsc{ARES}
-formalism applies. Beyond IRC safety, these observables must satisfy a
+formalisms can be applied. Beyond IRC safety, these observables must satisfy a
 number of additional requirements. Specifically, for
-$V(p_1,p_2,\dots)$ these conditions are:
+$V(q_1,q_2,\dots)$ these conditions are:
 
 \begin{enumerate}
 \item \textbf{Vanishes smoothly in the soft-collinear limit}: the observable
@@ -474,11 +476,10 @@ the parameters $a$,  $b_\ell$, $d_\ell$, and the function $g_\ell(\phi)$ charact
 observable in this limit. These quantities
 can be determined for each emitting leg and form the basic ingredients
 of the resummation formula. IRC safety requires $a > 0$ and 
-$b_\ell > -a$. \ABquestion{The scale $Q$ is a hard scale but in hadronic collisions
-it is a resummation scale. Does the hard and resummation scale coincide for $\ee$?}
+$b_\ell > -a$.
 
-\item \textbf{Recursively IRC (rIRC) safe}: rIRC safety requires that
-the observable is insensitive to the addition of an emission that is
+\item \textbf{Recursively IRC (rIRC) safe}: rIRC safety requires that the
+scaling properties of the observable are insensitive to the addition of an emission that is
 relatively much softer and/or more collinear than the existing ensemble of
 soft and collinear emissions. A formal definition is given in Refs.~\cite{Banfi:2004yd, Banfi:2003je}. The key requirements are summarised below.
 
@@ -536,7 +537,7 @@ V(\{\tilde{p}\},\kappa_1(\bar{v}\zeta_1),\dots,\{\kappa_{i_a},\kappa_{i_b}\}(\ba
 \end{enumerate}
 The rIRC safety condition is precisely what allows the leading-logarithmic
 contributions to exponentiate. Observables that violate rIRC safety do not
-exponentiate (cf.\ Eq.~\eqref{eq:resummed-cumulant}), where a well-known example is the \textsc{JADE} 3-jet resolution
+exponentiate (cf.\ Eq.~\eqref{eq:resummed-cumulant}), a well-known example is the \textsc{JADE} 3-jet resolution
 parameter in $e^+e^-$ collisions~\cite{Catani:1992tm}. 
 
 \item \textbf{Continuously global}: an observable is said to be
@@ -554,11 +555,11 @@ Non-global logarithms lie beyond the scope of this thesis.
 \end{enumerate}
 These properties define the class of observables for which the
 \textsc{CAESAR} and \textsc{ARES} resummation formalisms can be applied.
-The event-shape observables considered in this thesis satisfy these
+The event-shape observables discussed in Sec.~\ref{sec:event-shapes} satisfy these
 requirements. With these properties established, we now turn to the
 derivation of the NLL resummation formula.
 
-\section{NLL Resummation}
+\section{NLL resummation}
 \label{sec:NLL-resum}
 
 The cumulant for an observable $v$ in a process with hard legs
@@ -642,7 +643,7 @@ taken in the soft-collinear limit,
 which is guaranteed to exist for rIRC-safe observables by condition~\ref{cond:rIRC-a}.
 
 At NLL, the virtual corrections exponentiate, 
-$\mathcal{V}(\{\tilde{p}\})=e^{-\int[dk]M^2(k)}$, ensuring
+$\mathcal{V}(\{p\})=e^{-\int[dk]M^2(k)}$, ensuring
 that the inclusive sum over all real and virtual contributions equals
 unity. Additionally, the $n$ emissions are treated as identical gluons, such that $S(n)=1/n!$, and:
 \begin{equation}
@@ -659,10 +660,10 @@ for a single emission $k$ exceeds $v$:
 \end{equation}
 In the second term, the matrix element and observable are replaced by
 their soft-collinear approximations, $M_{\mathrm{sc}}^2$ and
-$V_{\mathrm{sc}}$, respectively. At NLL accuracy, only the
-soft-collinear approximation is required for this contribution, while
-the difference between the full and soft-collinear descriptions gives
-subleading corrections that enter at NNLL accuracy.
+$V_{\mathrm{sc}}$, respectively. At NLL accuracy, only these
+approximations are required, while the difference between the full and
+soft-collinear descriptions gives subleading corrections that enter at
+NNLL accuracy.
 
 The first term defines the \emph{radiator} $R(v)$, and the cumulant
 factorises as
@@ -671,26 +672,22 @@ factorises as
   \Sigma\left(\{p\},v\right)
   = e^{-R(v)}\,\mathcal{F}(v)\,,
 \end{equation}
-where $\mathcal{F}(v)$ collects the real emissions together with the
-virtual corrections from emissions with $V(\{\tilde{p}\},k)\leq v$.
+where $\mathcal{F}(v)$ collects the real emissions satisfying
+$V(\{\tilde{p}\},k)\leq v$, together with the corresponding virtual
+corrections.
 We discuss the radiator $R(v)$ and the multiple-emission function
 $\mathcal{F}(v)$ in turn.
 
 \subsection{The NLL radiator, $R_{\mathrm{NLL}}$}
 \label{subsec:NLL-radiator}
 
-\ndp{For this section, I really
-want to pin down the origin of the radiator
-because then it can be used to explain the
-NNLL radiator and hard function in the following chapter.}\\
 The radiator is defined as
 \begin{equation}
 \label{eq:radiator-NLL}
 R(v) \equiv \int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)\,,
 \end{equation}
-which integrates the emission probability over the region of phase
-space where the observable value exceeds $v$. Its exponential
-$e^{-R(v)}$ is the \emph{Sudakov form factor}, giving the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs.
+which integrates the emission probability over the region of phase space in which the observable exceeds $v$.
+Its exponential $e^{-R(v)}$ is the \emph{Sudakov form factor}, giving the probability that no emission with $V(\{\tilde{p}\},k)>v$ occurs.
 This factor resums all LL contributions for rIRC safe observables.
 
 At NLL accuracy, the radiator receives contributions from all regions. 
@@ -726,8 +723,8 @@ than matrices. These colour factors satisfy, for any number of hard legs,
 \end{equation}
 where $C_\ell$ is the colour factor of leg $\ell$ ($C_F$ for a quark and $C_A$ for a gluon). 
 
-The kinematics of an emission with respect to the $(\ell\bar\ell)$
-dipole are described by the rapidity
+We parametrise the emission kinematics with respect to 
+the $(\ell\bar\ell)$ dipole in terms of the rapidity
 \begin{equation}
     \eta^{(\ell\bar\ell)}
     \equiv \frac{1}{2}\ln\frac{z^{(\ell)}}{z^{(\bar\ell)}}\,,
@@ -740,12 +737,10 @@ with respect to the dipole,
 \begin{equation}
 \label{eq:kappa}
     \kappa_{\ell\bar\ell}^2
-    = \frac{2(p_\ell\cdot k)(2k\cdot p_{\bar\ell})}
-           {2(p_\ell\cdot p_{\bar\ell})}\,,
+    = \frac{(2p_\ell\cdot k)(2k\cdot p_{\bar\ell})}
+           {(2p_\ell\cdot p_{\bar\ell})}\,.
 \end{equation}
-where $Q_{\ell\bar\ell}^2 = 2(p_\ell\cdot p_{\bar\ell})$. 
 
-\ABquestion{ I am trying to explain the origin of this radiator- can I confirm the following is true: 
 In terms of these variables, the contribution
 $\mathcal{R}_{\ell\bar\ell}(v)$ is obtained by restricting the general
 radiator to the soft matrix element associated with the
@@ -758,43 +753,39 @@ $(\ell\bar\ell)$ dipole,
   \times \Theta(\eta^{(\ell\bar \ell)})
   \Theta\left(d^{(\ell\bar\ell)}_\ell\left(\frac{\kappa_{\ell\bar
           \ell}}{Q_{\ell\bar\ell}}\right)^{a}
-    e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell\bar\ell)})-v\right)\,.
+    e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell\bar\ell)})-v\right)\,,
 \end{multline}
-The final Heaviside function implements the observable constraint, using
-the soft-collinear limit $V_{\mathrm{sc}}^{(\ell\bar\ell)}$ expressed in
-terms of the dipole variables, where the dipole coefficient is
+where $Q_{\ell\bar\ell}^2 = 2(p_\ell\cdot p_{\bar\ell})$. 
+The final Heaviside function imposes the observable constraint, using the soft-collinear limit $V_{\mathrm{sc}}^{(\ell\bar\ell)}$ expressed in terms of the dipole variables. The corresponding dipole coefficient is
 \begin{equation}
 \label{eq:dll}
     d^{(\ell\bar{\ell})}_\ell = d_\ell 
     \left(\frac{Q_{\ell\bar{\ell}}}{Q}\right)^a 
     \left(\frac{Q_{\ell\bar{\ell}}}{2E_\ell}\right)^{b_\ell}\,.
 \end{equation}
-Moreover, the factor $\Theta(\eta^{(\ell\bar\ell)})$ is a convention for splitting
-the dipole's phase space between its two legs, and avoids double counting
-for wide-angle emissions  $\eta=0$. Other choice only
-shifts the result at NNLL. 
-The $  \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar\ell}}{\kappa_{\ell\bar \ell}^2}-\eta^{(\ell\bar \ell)}
-  \right)$-function restricts the rapidity bounded by the dipole kinematics.
-  The remaining $\Theta$-function restrict the integration to the region where the
-emission is genuinely soft, where $\kappa_{\ell\bar\ell}$ cut
-off at a scale of the same order as the hard process in the second --
-here taken to be $Q_{\ell\bar\ell}$. Though this choice is a convention,
-any comparably large scale would serve equally well, since differences
-amount to corrections suppressed by powers of
-$\kappa_{\ell\bar\ell}/Q_{\ell\bar\ell}$~\cite{Banfi:2018mcq}.
-Note that $1/\kappa_{\ell\bar\ell}^2$ is the same as the eikonal factor for
-soft gluon emission from the dipole with colour factor $C_{\ell\bar\ell}$
-as shown in Sec.~\ref{subsec:soft-fact}.}
+The function $\Theta(\eta^{(\ell\bar\ell)})$ is a convention used to split
+the dipole phase space between its two legs, while
+$\Theta\left(\frac{1}{2}\ln Q^2_{\ell\bar\ell}/\kappa_{\ell\bar\ell}^2
+-\eta^{(\ell\bar\ell)}\right)$ restricts the rapidity to its
+kinematically allowed range. The condition
+$\Theta(Q_{\ell\bar\ell}-\kappa_{\ell\bar\ell})$ restricts the integration
+to the soft region by imposing an upper cutoff on
+$\kappa_{\ell\bar\ell}$ at a scale of the same order as the hard process, 
+taken here to be $Q_{\ell\bar\ell}$. The
+$1/\kappa_{\ell\bar\ell}^2$ term is the same as the eikonal factor for
+soft-gluon emission from the dipole, with colour factor
+$C_{\ell\bar\ell}$, as discussed in Sec.~\ref{subsec:soft-fact}.
 
-
-To simplify the expression for $\mathcal{R}_{\ell\bar\ell}(v)$, we separate the dependence on the Born momenta from the azimuthal dependence, 
-by expanding the final Heaviside function in Eq.~\eqref{eq:Rll-dip} as:
+To simplify the expression for $\mathcal{R}_{\ell\bar\ell}(v)$, we
+separate out the dependence on the Born momenta and on the azimuthal
+angle by expanding the final Heaviside function in
+Eq.~\eqref{eq:Rll-dip} as
 \begin{multline}
 \Theta\left(d^{(\ell\bar\ell)}_\ell\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}
 e^{-b_\ell\eta^{(\ell\bar \ell)}} g_\ell(\phi^{(\ell \bar \ell)})-v\right)\simeq\Theta\left(\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^{a}e^{-b_\ell\eta^{(\ell\bar \ell)}}-v\right)+\\
-+\delta\left(\ln\left[\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^ae^{-b_\ell\eta^{(\ell\bar \ell)}}\right]-\ln v\right)\ln\left(d^{(\ell\bar\ell)}_\ell g_\ell(\phi^{(\ell \bar \ell)})\right)+\cdots\,,
++\delta\left(\ln\left[\left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar\ell}}\right)^ae^{-b_\ell\eta^{(\ell\bar \ell)}}\right]-\ln v\right)\ln\left(d^{(\ell\bar\ell)}_\ell g_\ell(\phi^{(\ell \bar \ell)})\right)+\cdots\,.
 \end{multline}
-where the expansion is truncated at this order for NLL accuracy and the omitted terms are of NNLL accuracy and beyond. 
+For NLL accuracy, this expansion is truncated at this order, and the omitted terms are of NNLL accuracy and beyond. 
 
 Substituting this expansion into Eq.~\eqref{eq:Rll-dip} gives
 \begin{equation}
@@ -813,19 +804,16 @@ and the leading contribution is
 \begin{equation}
   \label{eq:Rll-final}
   R_{\ell\bar \ell}(v,Q_{\ell\bar \ell})\equiv \int_0^{Q^2_{\ell\bar \ell}} \frac{d\kappa_{\ell\bar\ell}^2}{\kappa_{\ell\bar\ell}^2} \frac{\alpha^{\mathrm{phys}}_s(\kappa_{\ell\bar\ell})}{\pi} \int_0^\infty\!\! d\eta^{(\ell\bar\ell)}\, \Theta\!\left(\ln\frac{Q_{\ell\bar\ell}}{\kappa_{\ell\bar\ell}}-\eta^{(\ell\bar\ell)}\right)\Theta\left(
-      d_{\ell\bar \ell} \left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta^{(\ell\bar\ell)}}-v
+      \left(\frac{\kappa_{\ell\bar\ell}}{Q_{\ell\bar \ell}}\right)^a e^{-b_\ell\eta^{(\ell\bar\ell)}}-v
     \right) \,,
 \end{equation}
-where  $R'_{\ell\bar\ell}\equiv -v dR_{\ell\bar\ell}/dv$ and $R''_{\ell\bar\ell}\equiv -v dR'_{\ell\bar\ell}/dv$.
+where  $R'_{\ell\bar\ell}\equiv -v dR_{\ell\bar\ell}/dv$.
 
 \subsubsection{Hard-collinear radiator}
 
 The hard-collinear radiator arises from virtual corrections collinear to
 each hard leg, integrated from the characteristic hard-collinear scale
-$Qv^{1/(a+b_\ell)}$ up to the hard scale $Q$. \ABquestion{Don't understand
-how we can show that this is the hard-collinear scale.}
-
-It can be written as a sum over hard legs,
+$Qv^{1/(a+b_\ell)}$ up to the hard scale $Q$. It can be written as a sum over hard legs,
 \begin{equation}
 R_{\mathrm{hc}}(v)=\sum_\ell R_{\mathrm{hc},\ell}(v)\,,
 \end{equation}
@@ -846,22 +834,18 @@ Eq.~\eqref{eq:splitting-func-real-virt}:
     \end{split}
     \right.
 \end{equation}
-These coefficients govern the collinear singularity structure of the
-virtual corrections to each leg.
 
-To evaluate Eqs.~\eqref{eq:Rll-final} and~\eqref{eq:Rhc-NLL}, we use
-the renormalisation group equation in Eq.~\eqref{eq:coupling-DE} and 
-use the following ansatz to solve it 
+To evaluate Eqs.~\eqref{eq:Rll-final} and~\eqref{eq:Rhc-NLL}, we solve the renormalisation group equation in Eq.~\eqref{eq:coupling-DE} using the ansatz
 \begin{equation}
 \label{eq:ansatz}
-	\alpha_s(\kappa_{\ell\bar\ell})=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{\kappa_{\ell\bar\ell}^2}{Q^2}\,,
+	\alpha_s(k)=\sum_{n=1}^\infty\left(\frac{\alpha_s(Q)}{1+t}\right)^nf_n(t)\,,\quad t\equiv\alpha_s(Q)\beta_0\ln\frac{k^2}{Q^2}\,,
 \end{equation}
 with
 \begin{subequations}
 \begin{align}
 &f_1(t)=1\,, \\
 &f_2(t)=-\frac{\beta_1}{\beta_0}\ln(1+t)\,, \\
-&f_3(t)=-\frac{\beta_2}{\beta_0}t+\left(\frac{\beta_1}{\beta_0}\right)^2[t+(\ln(1+t)-1)]\ln(1+t)\,,
+&f_3(t)=-\frac{\beta_2}{\beta_0}t+\left(\frac{\beta_1}{\beta_0}\right)^2[t+(\ln(1+t)-1)]\ln(1+t)\,.
 \end{align}
 \end{subequations}
 At NLL accuracy only $f_1$ and $f_2$ are required, while $f_3$
@@ -895,7 +879,7 @@ NLL radiator is
       C_{\ell\bar\ell}\!
       \left(
         \mathfrak{g}_2^{(\ell)}(\lambda,Q_{\ell\bar\ell})
-        +\alpha_s(Q)\beta_0\,
+        -\alpha_s(Q)\beta_0\,
          \frac{d}{d\lambda}\!\left(
            -\frac{\lambda}{\alpha_s(Q)\beta_0}
            g_1^{(\ell)}(\lambda)
@@ -932,8 +916,8 @@ $R'_{\mathrm{NLL}}(v) = \sum_\ell R'_{\mathrm{NLL},\ell}(v)$, where
 \label{subsec:FNLL}
 
 Having established the radiator, we now turn to the multiple-emission
-function $\mathcal{F}(v)$. Combining Eqs.~\eqref{eq:cumu-factor-combine}
-and~\eqref{eq:exp-rad}, it is given by
+function $\mathcal{F}(v)$. Combining Eqs.~\eqref{eq:exp-rad}
+and~\eqref{eq:cumu-factor-combine}, it is given by
 \begin{equation}
   \label{eq:Fv-sc}
   \mathcal{F}(v) = e^{-\int[dk]\,M_{\mathrm{sc}}^2(k)\,\Theta(v-V_{\mathrm{sc}}(\{\tilde{p}\},k))}
@@ -979,12 +963,13 @@ Substituting Eq.~\eqref{eq:measure-replace} into Eq.~\eqref{eq:Fv-sc} gives
   \int_{\epsilon}^\infty\!\prod_{i=1}^n\left(\sum_{\ell_i}R_{\ell_i}'\left(\zeta_i v\right)\frac{d\zeta_i}{\zeta_i}\frac{d\phi_i^{(\ell_i)}}{2\pi}\right)
   \Theta\!\left(v-V_{\mathrm{sc}}\!\left(\{\tilde{p}\},k_1,\dots,k_n\right)\right)\,,
 \end{equation}
-\ABquestion{Is the following correct and does it provide us with enough background to understand what resolved and unresolved emissions 
-are for NNLL in Ch.~\ref{ch:hhZjet}: \\
-where the cutoff $\epsilon\ll 1$ ensures that emissions with $\zeta_i \ll \epsilon$ cancel between the real and virtual contributions, up to power corrections in $\epsilon$ that vanish because of rIRC safety. Note that an emission with $\zeta_i < \epsilon$ is referred to as
-an \emph{unresolved} emission. These emissions contributes negligibly to the observable on its own and 
-cancel exactly between the real sum and the virtual exponent. Emissions with  $\zeta_i > \epsilon$ are referred to as
-\emph{resolved emissions}, whose contribution to the observable must be accounted for.}
+where the cutoff $\epsilon\ll 1$ ensures that emissions with
+$\zeta_i<\epsilon$ cancel between the real sum and the virtual exponent,
+up to power corrections in $\epsilon$ that vanish because of rIRC
+safety. Such emissions contribute negligibly to the observable on their
+own, and are referred to as \emph{unresolved}. Emissions with
+$\zeta_i>\epsilon$ are referred to as \emph{resolved}, and their
+contribution to the observable must be accounted for.
 
 Approximating $R'(\zeta v) \simeq R'(v)$, thereby neglecting subleading effects due to corrections of relative order $\alpha_s$, 
 the exponent evaluates to $\epsilon^{R'}$, giving
@@ -1023,8 +1008,7 @@ for any function $G$ of the emissions.
 \subsection{The NLL cumulant}
 \label{subsec:NLL-cumulant}
 
-Combining the results of the previous subsections, 
-the NLL cumulant takes the form 
+Combining the radiator and multiple-emission function derived above, the NLL cumulant is
 \begin{equation}
 \label{eq:NLL-cumulant}
 \Sigma\left(\{p\},v\right)
@@ -1032,28 +1016,16 @@ the NLL cumulant takes the form
   \mathcal{F}_{\mathrm{NLL}}\!\left(R'_{\mathrm{NLL}}(v)\right)\,,
 \qquad R'_{\mathrm{NLL}}\simeq -v\frac{dR_{\mathrm{NLL}}}{dv}\,,
 \end{equation}
-where the derivative is evaluated retaining only the terms required for NLL accuracy.
+where only the terms required for NLL accuracy are retained in the derivative.
 
-This result applies to any continuously global rIRC-safe observable, and
-requires only the parameters $a$, $b_\ell$, $d_\ell$ and $g_\ell(\phi)$ together
-with the soft-collinear limit $V_{\mathrm{sc}}$, all of which follow from the
-definition of the observable. The existence of this limit is guaranteed by rIRC
-safety, and it may be evaluated using suitable ensembles of soft and collinear
-emissions.
+This result applies to any continuously global, rIRC-safe observable. Its NLL resummation requires only the parameters $a$, $b_\ell$, $d_\ell$ and $g_\ell(\phi)$, together with the soft-collinear limit $V_{\mathrm{sc}}$, all of which are determined by the definition of the observable. The existence of this limit follows from rIRC safety and it can be evaluated using suitable ensembles of soft and collinear emissions.
 
-This procedure is implemented in the \textsc{CAESAR} computer
-code~\cite{Banfi:2004yd}, in which emissions are generated by a simplified
-parton-shower event generator and passed to a subroutine that evaluates
-$V_{\mathrm{sc}}$. The code can also be used to verify the rIRC safety of an
-observable directly from its definition in terms of final-state momenta. Its
+This procedure is implemented in the \textsc{CAESAR} computer code~\cite{Banfi:2004yd}. The code generates emissions using a simplified parton-shower event generator and passes them to a subroutine that evaluates $V_{\mathrm{sc}}$. It can also be used to test the rIRC safety of an observable directly from its definition in terms of final-state momenta. Its
 successor, \textsc{ARES}~\cite{Banfi:2014sua,Banfi:2016zlc,Banfi:2018mcq,Arpino:2019ozn},
-extends the framework to NNLL accuracy (cf.\ Ch.~\ref{ch:hhZjet}). The two also
-differ in how the multiple-emission function is obtained, with \textsc{CAESAR}
-evaluating $\mathcal{F}_{\mathrm{NLL}}$ entirely numerically, whereas
-\textsc{ARES} determines $V_{\mathrm{sc}}$ analytically and performs the
-remaining integrations by Monte Carlo. Fig.~\ref{fig:FNLL-CAESAR-comp} compares
-both against the analytical result for thrust, derived below, and excellent
-agreement is observed.
+is a first step towards extending  the framework to NNLL accuracy (cf.\ Ch.~\ref{ch:hhZjet}). 
+The two approaches also differ in how the multiple-emission function is evaluated.
+ \textsc{CAESAR} determines $\mathcal{F}_{\mathrm{NLL}}$ entirely numerically, whereas \textsc{ARES} determines $V_{\mathrm{sc}}$ analytically and evaluates the remaining integrations using Monte Carlo methods.
+Figure~\ref{fig:FNLL-CAESAR-comp} compares the results from both codes with the analytical result for thrust derived below, showing excellent agreement.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{figures/chapter4/fnll_vs_R.pdf}
@@ -1074,10 +1046,11 @@ emissions,
 \label{eq:additive-def}
     V_{\mathrm{sc}}(\{\tilde{p}\},k_1,\dots,k_n) = \sum_{i=1}^n V_{\mathrm{sc}}(\{\tilde{p}\},k_i)\,.
 \end{equation}
-This property allows the multiple-emission function to be evaluated
-analytically, where the result is the same for every such observable, with the
-observable dependence entering only through the value of $\RpNLL$. Thrust is one
-example, as is one-jettiness, the observable studied in Ch.~\ref{ch:hhZjet}.
+This property allows the multiple-emission function to be evaluated analytically. 
+Remarkably, the resulting expression is the same for all additive observables, 
+with the observable dependence entering only through $R'_{\mathrm{NLL}}$. 
+Examples include thrust and one-jettiness, the latter being the observable studied in Ch.~\ref{ch:hhZjet}.
+
 
 Substituting Eq.~\eqref{eq:additive-def} into Eq.~\eqref{eq:FNLL-formula}, and
 recalling the rescaled variable $\zeta_i$ of Eq.~\eqref{eq:zeta-1-emsn}, we
@@ -1086,8 +1059,8 @@ obtain
  \label{eq:FNLL-add-1}
  \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i}\int_0^{2\pi}\frac{d\phi_i}{2\pi}\right) \Theta\left(1-\sum_{i=1}^n\zeta_i\right)\,,
 \end{equation}
-where $\RpNLL\equiv \sum_{\ell_i} R'_{\mathrm{NLL},\ell_i}$ since $\phi_i^{(\ell_i)}\to\phi_i$ for
-additive observables. \ABquestion{It is true the $\phi$-dependence is the same for each leg?}
+where $\RpNLL\equiv \sum_{\ell_i} R'_{\mathrm{NLL},\ell_i}$ and $\phi_i^{(\ell_i)}\to\phi_i$ for
+brevity.
 
 The Heaviside function can be expressed using the Mellin transform
 \begin{equation}
@@ -1098,16 +1071,16 @@ The Heaviside function can be expressed using the Mellin transform
 so that Eq.~\eqref{eq:FNLL-add-1} becomes,
 \begin{equation}
 \label{eq:FNLL-add-2}
-    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}\frac{e^\nu}{\nu}\ \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i} \int_0^{2\pi}\frac{d\phi_i}{2\pi} e^{-\nu\zeta_i}\right) \,.
+    \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)=\lim_{\epsilon\to 0} \epsilon^{\RpNLL} \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \sum_{n=0}^\infty\frac{(\RpNLL)^n}{n!}  \prod_{i=1}^n \left(\int_{\epsilon}^\infty \frac{d\zeta_i}{\zeta_i} \int_0^{2\pi}\frac{d\phi_i}{2\pi} e^{-\nu\zeta_i}\right) \,.
 \end{equation}
-The azimuthal integrals are now trivial, and the sum over $n$ exponentiates,
-giving
+The azimuthal integrals are trivial, while the sum over emissions exponentiates, giving
 \begin{equation}
 \label{eq:FNLL-add-3}
     \mathcal{F}_{\mathrm{NLL}}\left(R'_{\mathrm{NLL}}\right)= \int_{c-i\infty}^{c+i\infty}\frac{d\nu}{2\pi i \nu}e^\nu \lim_{\epsilon\to 0} \epsilon^{\RpNLL} \exp\left[ \RpNLL \int_{\epsilon}^\infty \frac{d\zeta}{\zeta} e^{-\nu\zeta}\right] \,.
 \end{equation}
-The limit $\epsilon\to 0$ becomes finite only after combining the prefactor
-$\epsilon^{\RpNLL}$ with the exponent. Writing
+The $\epsilon\to0$ limit is finite only after combining the 
+prefactor $\epsilon^{R'_{\mathrm{NLL}}}$ with the exponent.
+Writing
 \begin{equation}
   \epsilon^{\RpNLL}=\exp\left[-\RpNLL\int_{\epsilon}^1\frac{d\zeta}{\zeta}\right]\,,
   \end{equation}
@@ -1140,11 +1113,7 @@ we arrive at the final result
 \end{equation}
 in agreement with the numerical results shown in Fig.~\ref{fig:FNLL-CAESAR-comp}.
 
-Having established the NLL resummation framework, we now turn to its
-extension to NNLL accuracy provided by the \textsc{ARES} method.
-The method was originally developed for $e^+e^-$ annihilation, 
-first for jet rates and jet observables in dijet processes~\cite{Banfi:2014sua, Banfi:2016zlc,Banfi:2018mcq},
- and subsequently for event shapes in three-jet production~\cite{Arpino:2019ozn}.
-In the following chapter, we extend the \textsc{ARES} method
-to hadronic collisions for the first time.
+Having established the NLL resummation framework, we now turn 
+to its extension to NNLL accuracy through the \textsc{ARES} method. 
+The method was originally developed for $e^+e^-$ annihilation, first for jet rates and jet observables in dijet processes~\cite{Banfi:2014sua,Banfi:2016zlc,Banfi:2018mcq}, and subsequently for event shapes in three-jet production~\cite{Arpino:2019ozn}. In the following chapter, we extend the \textsc{ARES} framework to hadronic collisions for the first time.
 
