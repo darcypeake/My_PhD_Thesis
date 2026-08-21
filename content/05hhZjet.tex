@@ -1007,14 +1007,13 @@ regularised splitting functions of Eq.~\eqref{eq:regularised-Pij},
 	\end{align}
   \end{subequations}
   For the final-state leg ($\ell=3$), $C^{(1)}_{{\rm hc},3}$ depends
-  on the flavour of the outgoing parton and can be obtained by
+  only on the flavour of the outgoing parton and can be obtained by
   the replacement
   \begin{equation}
     \label{eq:C-recovery}
     \frac{1}{z}\frac{f_k(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_i(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\Theta(z-x_\ell)\to 1
   \end{equation}
-  and integrating over $z$. This gives exactly
-  the same results as in Ref.~\cite{Arpino:2019ozn},
+  and integrating over $z$. This reproduces the result of Ref.~\cite{Arpino:2019ozn},
   such that for a quark or antiquark,
   \begin{equation}
     \label{eq:C1hc-q}
@@ -1028,13 +1027,13 @@ regularised splitting functions of Eq.~\eqref{eq:regularised-Pij},
     \end{split}
   \end{equation}
 
-Similarly, we find that $\delta \mathcal{F}_{\rm hc}$ can be written generally as
+The hard-collinear correction, $\delta \mathcal{F}_{\rm hc}$ takes the general form
  \begin{multline}
    \label{eq:dFhc-ISR}
    \delta\mathcal{F}_{\rm hc}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
- \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
+ \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,,
  \end{multline}
- For initial-state radiation, $B_\ell$ is given by
+with, for an initial-state leg,
  \begin{equation}
    \label{eq:Bell-ISR}
 B_\ell=\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\delta_{ik}\right) \frac{f_k(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}  \,,
@@ -1051,28 +1050,20 @@ B_\ell=\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\de
  \end{subequations}
   For final-state radiation, the same substitution can be
   used as in Eq.~\eqref{eq:C-recovery}, such that $B_\ell=-\gamma_\ell^{(0)}$,
- where 
- \begin{equation}
-  \gamma_\ell^{(0)} = \left\{
-    \begin{split}
-      & \frac{3}{2}C_F\,,\qquad\text{if $\ell$ is a quark,} \\
-      & 2\pi \beta_0 \,,\qquad\text{if $\ell$ is a gluon}\,.
-    \end{split}
-    \right.
-\end{equation}
+ with $\gamma_\ell^{(0)}$ defined in Eq.~\eqref{eq:gammal-flav}.
 
-The recoil correction, $\delta\mathcal{F}_{\rm rec}$ can be written in the general form,
+The recoil correction, $\delta\mathcal{F}_{\rm rec}$ takes the general form,
  \begin{multline}
    \label{eq:dFrec-ISR}
    \delta\mathcal{F}_{\rm rec}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz P_\ell(z) \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
- \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,.
+ \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
 \end{multline}
-For an initial-state leg,
+with, for an initial-state leg, 
 \begin{equation}
   \label{eq:Pell-ISR}
   P_\ell(z)=\sum_k \hat P_{ik}(z;0) \frac{f_k(x_\ell/z,Qv^{1/(a+b_\ell)})}{z f_i(x_\ell,Qv^{1/(a+b_\ell)})} \Theta(z-x_\ell)\,,
 \end{equation}
-where $ \hat P_{ik}(z;0)$ are defined in Eq.~\eqref{eq:Pij-general}.
+where $ \hat P_{ik}(z;0)$ are defined in Eq.~\eqref{eq:regularised-Pij}.
 For a final-state leg, 
 \begin{equation}
   \label{eq:Pell-FSR}
