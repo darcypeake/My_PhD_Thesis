@@ -1,23 +1,17 @@
-\chapter{One-Loop hard function}
+\chapter{One-loop hard function}
 \label{ap:H1-extraction}
 
-In this appendix, we perform the calculation required to identify
-the hard coefficient $H^{(1)}_{ij}$ in Eq.~\eqref{eq:HQ-expanded} and the
-one-loop hard function $C^{(1)}_H$ defined in Eq.~\eqref{eq:CH-SCET}.
-These contributions rely on the one-loop virtual corrections, which for the $hh\to Z+$ jet
-process are not directly available in the literature and so we use the work from Ref.~\cite{Ravindran:2002dc} which
-presents the one-loop virtual amplitude for the $hh\to H+$ jet process. 
-
-\ndp{The infrared pole structure of a one-loop QCD amplitude is universal, fixed entirely by the colour charges
-and directions of the external coloured partons (cf.\ Eq.~\eqref{eq:HQ}). Since $q\bar{q}\to Hg$
-and $q\bar{q}\to Zg$ share an identical coloured-parton configuration, their poles must
-agree up to the known colour and kinematic prefactors, which we verify explicitly below.
-The finite remainder is not universal and depends on the underlying hard interaction. Consequently, 
-this substitution validates the pole-subtraction procedure used to extract the finite part 
-of the hard coefficient $\mathcal{H}_1$
-in Eq.~\eqref{eq:H1-final} as well as the full SCET hard function $C^{(1)}_H$,
-but does not itself calculate the physical $Z$+jet hard function. This calculation is left to future work.
-In the following, we carry out this validation for the $q\bar{q}\to Hg$ channel, with the remaining partonic channels proceeding analogously.} 
+Following the argument of Sec.~\ref{subsec:NNLL-coeff}, we extract the
+hard coefficient $H^{(1)}_{ij}$ of Eq.~\eqref{eq:HQ-expanded} and the
+one-loop hard function $H^{(1)}_{\rm SCET}$ of Eq.~\eqref{eq:CH-SCET}
+for the $q\bar q\to Hg$ channel, using the known one-loop virtual corrections for
+$hh\to H+\mathrm{jet}$~\cite{Ravindran:2002dc}. The remaining partonic channels follow
+analogously. Since the relation between the two is fixed by the colour
+charges and directions of the external partons alone
+(cf.\ Eq.~\eqref{eq:HQ}), the finite remainder obtained below is
+specific to Higgs production, but the relation it validates is not. \todo{Sort out 
+this last bit of the paragraph I think as unsure if necessary or untrue?
+Maybe say something about convention?}
 
 \paragraph{Pole comparison.} Expanding Eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
 $q\bar{q}\to Zg$ process, the double-pole
@@ -36,22 +30,20 @@ and the single-pole coefficient is
   -C_A\ln\frac{\mu_R^2}{Q_{23}^2}
   \right)\,.
 \end{equation}
-Comparing with the poles found in Ref.~\cite{Ravindran:2002dc}. The bare differential cross section at leading-order is
+Comparing with the poles found in Ref.~\cite{Ravindran:2002dc}. The bare differential cross section at leading order is
 \begin{equation}
-  Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to g H}^{(1)}}{dQ_{13}^2\,dQ_{23}^2} =
-  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
-  \frac{S_\varepsilon}{\Gamma(1-\varepsilon)}
+\label{eq:LO-bare}
+  Q_{12}^4\frac{d^2\sigma_{0,\,q\bar{q}\to g H}}{dQ_{13}^2\,dQ_{23}^2} =
+\pi\,\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-m_H^2)
   \,\frac{1}{4N_c^2}
   \left(\frac{\mu_0^2\,Q_{12}^2}{Q_{13}^2Q_{23}^2}\right)^\varepsilon
- \left( \frac{\alpha_s(\mu_0^2)}{4\pi}\right)^3|M_{q\bar{q}\to g H}^{(1)}|^2
-  \,,
+ \left( \frac{\alpha_s(\mu_0^2)}{4\pi}\right)^3
+ |\mathcal{M}^{(0)}_{q\bar{q}\to g H}|^2\,,
 \end{equation}
-where $S_\varepsilon=\exp(\varepsilon(\ln4\pi-\gamma_E))$ and $\mu_0$ is the bare reference scale. 
-\ABquestion{In Ref.~\cite{Ravindran:2002dc} $G^2=4\sqrt{2}(\alpha_s(\mu_r)/4\pi)^2 G_F\tau^2 F^2(\tau)\mathcal{C}^2$
-where $\mu_r$ is the renormalisation scale. I have substituted in directly as $G^2=(\alpha_s(\mu_0)/4\pi)^2$, is this OK? Also
-should I make a note the in Eq. (2.13) of Ref.~\cite{Ravindran:2002dc} that $\mu_r\to\mu_0$ and $\mu\to\mu_0$?}
+where $\mu_0$ is the bare reference scale and $\mathcal{M}^{(0)}$ the
+tree-level amplitude.
 
-We must renormalise the strong coupling constant due to UV divergences using,
+Renormalising the coupling through
 \begin{equation}
   \label{eq:Catani-renorm}
   \alpha_s(\mu_0^2) =
@@ -59,133 +51,83 @@ We must renormalise the strong coupling constant due to UV divergences using,
   \!\left[1-\frac{\alpha_s(\mu_R^2)\beta_0}{\varepsilon}
   +\mathcal{O}(\alpha_s^2)\right] \left(\frac{\mu_R^2}{\mu_0^2}\right)^\varepsilon\,,
 \end{equation}
-leading to the renormalised form of the LO differential cross-section
-\begin{equation}
-\begin{aligned}
-  \label{eq:LO-ren}
-  Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to gH}^{{\rm LO},\rm Ren}}{dQ_{13}^2\,dQ_{23}^2}& \simeq
-  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
-  \frac{S_\varepsilon}{\Gamma(1-\varepsilon)}
-  \,\frac{1}{4N_c^2}
-  \left(\frac{\mu_R^2\,Q_{12}^2}{Q_{13}^2Q_{23}^2}\right)^\varepsilon
-\left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^3
-\left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\\
-&\times  \!\left[1-\frac{3\alpha_s(\mu_R^2)\beta_0}{\varepsilon}\right] |M_{q\bar{q}\to gH}^{(1)}|^2\,.
-  \end{aligned}
-  \end{equation}
- 
-The bare one-loop virtual correction have the form
+replaces $\mu_0\to\mu_R$ inside the bracket of Eq.~\eqref{eq:LO-bare}
+and generates a residual $\left(\mu_R^2/\mu_0^2\right)^{2\varepsilon}$
+together with a factor $\left[1-3\alpha_s(\mu_R^2)\beta_0/\varepsilon\right]$.
+\todo{Give the explicit result.}
+\todo{Ask if we need the MS-bar pre-factor. We might not as
+the ARES definition of the hard function doesn't?}
+
+The bare one-loop virtual correction takes the form
 \begin{equation}
 \label{eq:VIRT-bare}
+  Q_{12}^4\frac{d^2\sigma^{\rm virt}_{q\bar{q}\to g H}}{dQ_{13}^2\,dQ_{23}^2} =
+  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-m_H^2)\,
+  \frac{1}{N_c^2}
+  \left(\frac{\alpha_s(\mu_0^2)}{4\pi}\right)^4
+  \mathcal{I}(\varepsilon)\,
+  |\mathcal{M}^{(0)}_{q\bar{q}\to g H}|^2\,,
+\end{equation}
+where
+\begin{equation}
+\label{eq:VIRT-bracket}
 \begin{aligned}
-  &Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT}}{dQ_{13}^2\,dQ_{23}^2} =
-  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,S_\varepsilon^2\,\frac{1}{N_c^2}
- \left(\frac{\alpha_s(\mu_0^2)}{4\pi}\right)^2
-   \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^2  \\[0.5ex]
-  &\quad\qquad\qquad\qquad\times\left[ n_f\!\left(-\frac{1}{3\varepsilon}
-  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_R^2}
+  \mathcal{I}(\varepsilon) =\;
+  &n_f\!\left(-\frac{1}{3\varepsilon}
   +\frac{1}{3}\ln\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{5}{9}\right) \right.\\
-   &\qquad\qquad\qquad\qquad+C_A\!\left(-\frac{1}{2\varepsilon^2}
+  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_R^2}
+  -\frac{5}{9}\right)\\
+  &+C_A\!\left(-\frac{1}{2\varepsilon^2}
   +\!\left(-\ln\frac{Q_{12}^2}{\mu_R^2}
-  +\ln\frac{Q_{23}^2}{\mu_R^2}
   +\ln\frac{Q_{13}^2}{\mu_R^2}
-  +\frac{11}{6}\right)\frac{1}{\varepsilon}\right.\\[0.5ex]
-  &\qquad\qquad\qquad\qquad+\operatorname{Li}_2\!\left(
-  \frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
-  -\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  +\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}
-  +\ln\frac{Q_{13}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\left.-\ln^2\frac{Q_{23}^2}{\mu_R^2}
-  -\ln^2\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{11}{6}\right)\frac{1}{\varepsilon}
+  +\operatorname{Li}_2\!\left(\frac{Q_{12}^2-m_H^2}{Q_{12}^2}\right)\right.\\
+  &\qquad\quad-\ln\frac{Q_{13}^2}{\mu_R^2}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\ln\frac{Q_{12}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  +\ln\frac{Q_{12}^2}{\mu_R^2}\ln\frac{Q_{23}^2}{\mu_R^2}\\
+  &\qquad\quad\left.-\ln^2\frac{Q_{13}^2}{\mu_R^2}
+  -\ln^2\frac{Q_{23}^2}{\mu_R^2}
   -\frac{11}{6}\ln\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\[0.5ex]
-  &\qquad\qquad\qquad\qquad+C_F\left(-\frac{1}{\varepsilon^2}
-  +\!\left(\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\ln\frac{Q_{13}^2}{\mu_R^2}-\frac{3}{2}\right)\frac{1}{\varepsilon}
-  +\operatorname{Li}_2\!\left(\frac{-Q_{23}^2}{M^2}\right)
-  +\operatorname{Li}_2\!\left(\frac{-Q_{13}^2}{M^2}\right)\right.\\[0.5ex]
-  &\qquad\qquad\qquad\qquad-2\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{Q_{23}^2}\right)
-  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{Q_{13}^2}\right)\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\left.+\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{M^2}\right)
-  +\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{M^2}\right)
+  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_R^2}
+  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\
+  &+C_F\!\left(-\frac{1}{\varepsilon^2}
+  +\!\left(\ln\frac{Q_{13}^2}{\mu_R^2}
+  +\ln\frac{Q_{23}^2}{\mu_R^2}-\frac{3}{2}\right)\frac{1}{\varepsilon}
+  +\operatorname{Li}_2\!\left(-\frac{Q_{13}^2}{m_H^2}\right)
+  +\operatorname{Li}_2\!\left(-\frac{Q_{23}^2}{m_H^2}\right)\right.\\
+  &\qquad\quad-2\ln\frac{Q_{13}^2}{\mu_R^2}\ln\frac{Q_{23}^2}{\mu_R^2}
+  -\frac{1}{2}\ln^2\!\left(\frac{m_H^2+Q_{13}^2}{Q_{13}^2}\right)
+  -\frac{1}{2}\ln^2\!\left(\frac{m_H^2+Q_{23}^2}{Q_{23}^2}\right)\\
+  &\qquad\quad+\frac{1}{2}\ln^2\!\left(\frac{m_H^2+Q_{13}^2}{m_H^2}\right)
+  +\frac{1}{2}\ln^2\!\left(\frac{m_H^2+Q_{23}^2}{m_H^2}\right)\\
+  &\qquad\quad\left.+\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
   +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  +9\zeta_2-4\right)\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\left.+\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  +9\zeta_2-4\right]|M^{(1)}_{q\bar{q}\to g H}|^2\,.
+  +9\zeta_2-4\right)\,.
 \end{aligned}
 \end{equation}
-\ABquestion{Note I have removed the $\frac{(C_A-C_F)}{2}C_A C_F\left(Q_{23}^2+Q_{13}^2\right)$ term out of
-this virtual piece as it doesn't multiply the $M^{(1)}$ term?}
-We renormalise the bare coupling, again using Eq.~\eqref{eq:Catani-renorm} and find
+Renormalising Eq.~\eqref{eq:VIRT-bare} in the same way and retaining the
+$\mathcal{O}(\alpha_s^4)$ terms, in which the one-loop correction
+multiplies the Born amplitude, the sum of the two contributions is
+\todo{Not sure I understand this sentence?}
 \begin{equation}
-\label{eq:virt-ren}
-  Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT, Ren}}{dQ_{13}^2\,dQ_{23}^2} \simeq
-  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,S_\varepsilon^2
-  \,\frac{1}{N_c^2}
-  \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^4  \left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\left[\ldots\right]|M^{(1)}_{q\bar{q}\to g H}|^2 \,,
-\end{equation}
-where the $\ldots$ represent terms found in the square brackets of Eq.~\eqref{eq:VIRT-bare}.
-The relevant combination for extracting the hard function is the
-sum of the renormalised LO and virtual terms at order $\mathcal{O}(\alpha_s^4)$
-\ABquestion{Do I need to explain why we go up to this order of $\alpha_s$ and also why it is this combination which gives the the finite virtual corrections?}
-\begin{equation}
-\begin{aligned}
 \label{eq:LO+virt-ren}
-  &Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dQ_{13}^2\,dQ_{23}^2}
-  +Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT,Ren}}{dQ_{13}^2\,dQ_{23}^2}\\[0.5ex]
- &\simeq  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
-  \frac{S_\varepsilon}{\Gamma(1-\varepsilon)}
-  \,\frac{1}{4N_c^2}
-  \left(\frac{\mu_R^2\,s}{tu}\right)^\varepsilon
-\left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^4
-\left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\left\{-\frac{12 \pi \beta_0}{\varepsilon}+\right.\\[0.5ex]
-&+4 S_{\varepsilon}\Gamma(1-\varepsilon)
-  \left(\frac{Q_{13}^2 Q_{23}^2}{\mu_R^2\,Q_{12}^2}\right)^\varepsilon \left[ n_f\!\left(-\frac{1}{3\varepsilon}
-  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\frac{1}{3}\ln\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{5}{9}\right) \right.\\[0.5ex]
-   &\qquad\qquad\qquad\qquad\qquad\qquad+C_A\!\left(-\frac{1}{2\varepsilon^2}
-  +\!\left(-\ln\frac{Q_{12}^2}{\mu_R^2}
-  +\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\ln\frac{Q_{13}^2}{\mu_R^2}
-  +\frac{11}{6}\right)\frac{1}{\varepsilon}\right.\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad+\operatorname{Li}_2\!\left(
-  \frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
-  -\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  +\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}
-  +\ln\frac{Q_{13}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad\left.-\ln^2\frac{Q_{23}^2}{\mu_R^2}
-  -\ln^2\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_R^2}
-  -\frac{11}{6}\ln\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad+C_F\left(-\frac{1}{\varepsilon^2}
-  +\!\left(\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\ln\frac{Q_{13}^2}{\mu_R^2}-\frac{3}{2}\right)\frac{1}{\varepsilon}
-  +\operatorname{Li}_2\!\left(\frac{-Q_{23}^2}{M^2}\right)
-  +\operatorname{Li}_2\!\left(\frac{-Q_{13}^2}{M^2}\right)\right.\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad-2\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{Q_{23}^2}\right)
-  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{Q_{13}^2}\right)\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad\left.+\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{M^2}\right)
-  +\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{M^2}\right)
-  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}\right)\\[0.5ex]
-  &\qquad\qquad\qquad\qquad\qquad\qquad\left.\left.+9\zeta_2-4+\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
-  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
-  +9\zeta_2-4\right]\right\}|M^{(1)}_{q\bar{q}\to g H}|^2\,.
+\begin{aligned}
+  &Q_{12}^4\!\left(\frac{d^2\sigma^{\rm ren}_{0,\,q\bar{q}\to g H}}{dQ_{13}^2\,dQ_{23}^2}
+  +\frac{d^2\sigma^{\rm virt,ren}_{q\bar{q}\to g H}}{dQ_{13}^2\,dQ_{23}^2}\right)
+  \simeq
+  \pi\,\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-m_H^2)
+  \,\frac{1}{4N_c^2}\\
+  &\qquad\qquad\times
+  \left(\frac{\mu_R^2\,Q_{12}^2}{Q_{13}^2Q_{23}^2}\right)^\varepsilon
+  \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^4
+  \left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\left\{-\frac{12\pi\beta_0}{\varepsilon}
+  +4
+  \left(\frac{Q_{13}^2 Q_{23}^2}{\mu_R^2\,Q_{12}^2}\right)^\varepsilon
+  \mathcal{I}(\varepsilon)\right\}|\mathcal{M}^{(0)}_{q\bar{q}\to g H}|^2\,.
 \end{aligned}
 \end{equation}
-\ABquestion{The $S_{\varepsilon}\Gamma(1-\varepsilon)$
-term gives a $\ln 4\pi$ which is absorbed into the coupling in MS-bar scheme which
-is what the Catani poles are in so in essence this can also be absorbed into
-the coupling?}
-
+ 
 The double-pole coefficients in Eq.~\eqref{eq:LO+virt-ren} are:
 \begin{equation}
   \label{eq:vN-pole2}
@@ -250,9 +192,19 @@ H_{q\bar{q}}^{(1)}=\mathcal{H}_1
 +\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{13}^2}{Q^2}
 +\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{23}^2}{Q^2}\,.
 \end{equation}
-Unlike $C^{(1)}_H$, which takes all finite terms from
-Ref.~\cite{Ravindran:2002dc}, the finite terms contained in
- $\mathcal{H}_1$ are found by subtracting the finite terms Eq.~\eqref{eq:HQ-expanded} (not including  $\mathcal{H}_1$) from Eq.~\eqref{eq:C1-SCET}, such that we obtain\footnote{Please note the factor of 2 difference due to Eq.~\eqref{eq:coeff-convent}) }
+\todo{Unsure if we need this sentence or really if we just need to simply say the difference is just
+the universal terms i.e.\ the log terms of this above expression
+which are the same if the hard legs are the same which they are for $H$ or $Z$
+production and so is a valid proof at this order. Also dont have a footnote if possible.}
+Unlike $H_{\rm SCET}^{(1)}$, which is identified directly with the finite
+remainder of the one-loop amplitude, the \textsc{ARES} hard coefficient
+$\mathcal H_1$ is obtained by subtracting the remaining finite
+contributions appearing in Eq.~\eqref{eq:HQ-expanded} from the SCET hard
+function of Eq.~\eqref{eq:H1-SCET}. Since these subtraction terms are
+universal, this provides a validation of the relation between the SCET
+hard function and the corresponding \textsc{ARES} hard coefficient. We
+therefore obtain\footnote{Please note the factor of 2 difference due to
+Eq.~\eqref{eq:coeff-convent}.}
 \begin{equation}
 \begin{aligned}
 \mathcal{H}_1=&\frac{1}{36}\left\{-20n_f+C_A(152-21\pi^2)+18C_F(-8+3\pi^2)
@@ -278,9 +230,3 @@ Ref.~\cite{Ravindran:2002dc}, the finite terms contained in
 +C_F\operatorname{Li}_2\left(-\frac{Q_{23}^2}{M^2}\right)\right]\right\}\,.
 \end{aligned}
 \end{equation}
-
-\ABquestion{
-Also I don't know if I expanded too much i.e.\ the prefactor and have factors of
-$\pi^2$ which should not be there?}
-
-
