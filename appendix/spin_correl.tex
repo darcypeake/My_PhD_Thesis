@@ -6,10 +6,9 @@ a gluon enters the hard scattering. In addition to the ISR
 hard-collinear corrections
 $C_{{\rm hc},\ell}^{(1)}$, $\delta\mathcal{F}_{\rm hc}$, and
 $\delta\mathcal{F}_{\rm rec}$ derived in
-Sec.~\ref{sec:NNLL-initial}, an incoming gluon introduces a further
-contribution with no counterpart for quark-initiated radiation: spin
-correlations. These give rise to the additional NNLL contribution
-$\Delta\mathcal{F}_{\rm rec}$, which vanishes for one-jettiness but is
+Sec.~\ref{sec:NNLL-initial}, an incoming gluon gives rise to a further
+contribution due to spin correlations. This contribution,
+$\Delta\mathcal{F}_{\rm rec}$, vanishes for one-jettiness but is
 required for the general ISR formalism and for observables with
 non-trivial azimuthal dependence.
 
@@ -17,14 +16,15 @@ To account for this, we introduce the spin-density matrix for the hard process
 in $4-2\varepsilon$ dimensions. Neglecting terms that are antisymmetric in $\mu,\nu$, the general form is 
 \begin{equation}
 \rho^{\mu\nu} = \frac{d^{\mu\nu} }{2(1-\varepsilon)}
-+ \mathcal{T}_\ell(\{p\};\varepsilon)\left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu} }{1-\varepsilon}\right) \,,
++ \mathcal{T}_\ell(\{p\};\varepsilon)\left(2n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu} }{1-\varepsilon}\right) \,.
 \end{equation}
-where we choose $d^{\mu\nu}$ to be the sum over physical polarisations transverse to both $p_1$ and $p_2$,
+Here $d^{\mu\nu}$ is chosen to be the sum over physical polarisations transverse to both $p_1$ and $p_2$,
 \begin{equation}
 d^{\mu\nu} = -g^{\mu\nu} + \frac{p_1^\mu p_2^\nu + p_2^\mu p_1^\nu}{p_1 \cdot p_2}\,,
 \end{equation}
 and $n_{\rm in}$ is a space-like unit vector that lies in the plane identified
-by the beam and the $Z$ boson, satisfying $n_{\rm in}^2=-1$ and $n_{\rm in}\cdot p_1=n_{\rm in}\cdot p_2=0$. We obtain the following relations: 
+by the beam and the $Z$ boson, satisfying $n_{\rm in}^2=-1$ and $n_{\rm in}\cdot p_1=n_{\rm in}\cdot p_2=0$. 
+The tensors above satisfy
 \begin{subequations}
   \begin{align}
   &d^{\mu\nu}d_{\mu\nu}=-g^{\mu\nu}d_{\mu\nu}=2(1-\varepsilon)\,,\\[1.5ex]
@@ -32,13 +32,13 @@ by the beam and the $Z$ boson, satisfying $n_{\rm in}^2=-1$ and $n_{\rm in}\cdot
   &\left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right)\left(2 n_{{\rm in},\mu} n_{{\rm in },\nu} - \frac{d_{\mu\nu}}{1-\varepsilon}\right) = 2 \frac{1-2\varepsilon}{1-\varepsilon}\,.
   \end{align}
 \end{subequations}
-This implies
+This gives
 \begin{equation}
   \label{eq:PL}
   \mathcal{T}_\ell(\{\tilde p\};\varepsilon) = \frac{1-\varepsilon}{2(1-2\varepsilon)} \left(2 n_{\rm in}^\mu n_{\rm in }^\nu - \frac{d^{\mu\nu}}{1-\varepsilon}\right) \rho_{\mu\nu}\,.
 \end{equation}
 
-The collinear splitting probability is then obtained by contracting
+The collinear splitting probability is obtained by contracting
 $\rho^{\mu\nu}$ with the unaveraged splitting functions
 \begin{equation}
 \left[\hat{P}_{ga}^{(1)}(z,\vec k_t;\varepsilon)\right]^{\mu\nu}
@@ -51,15 +51,15 @@ with $k_\perp\cdot k_\perp = -k_t^2$, and
   \label{eq:Grho}
   d_{\mu\nu}\left(\frac{g^{\mu\nu}}{1-\varepsilon} + 2\frac{k_\perp^\mu k_\perp^\nu}{k_t^2}\right)=0\,.
 \end{equation}
-The azimuthally averaged splitting functions $\hat{P}_{ga}(z;\varepsilon)$ with $a=q,g$ are those present in Eqs.~\eqref{eq:Pgq-epsilon} and.~\eqref{eq:Pgg-epsilon} respectively, and the
-spin-correlated functions are 
+The azimuthally averaged splitting functions $\hat{P}_{ga}(z;\varepsilon)$ with $a=q,g$ are those present in Eqs.~\eqref{eq:Pgq-epsilon} and~\eqref{eq:Pgg-epsilon} respectively.
+The spin-correlated functions are 
 \begin{equation}
 \begin{aligned}
 \hat G_{gg}(z) &= -(1-\varepsilon)C_A \frac{1-z}{z}\,,\qquad
 \hat G_{gq}(z) &= C_F \frac{1-z}{z}\,.
 \end{aligned}
 \end{equation}
-Performing the contraction, using the fact $k_\perp \cdot n_{\rm in }=-k_t \cos\phi$ we obtain
+Using $k_\perp \cdot n_{\rm in}=-k_t\cos\phi$, the contraction gives
 \begin{equation}
 \rho^{\mu\nu}\left[\hat{P}_{ga}(z,\vec k_t;\varepsilon)\right]_{\mu\nu}
 = \hat{P}_{ga}(z;\varepsilon)
@@ -67,18 +67,12 @@ Performing the contraction, using the fact $k_\perp \cdot n_{\rm in }=-k_t \cos\
 \qquad a = g,q\,.
 \end{equation}
 The above equation gives the probability for a splitting $a\to g
-a$. The contribution proportional to the term
-splitting function $\hat{P}_{ga}(z;\varepsilon)$ can be treated exactly
-as in Sec.~\ref{sec:NNLL-initial}, leading to the ISR
-hard-collinear coefficient $C_{\mathrm{hc},\ell}^{(1)}$ together with
-the corrections $\delta\mathcal{F}_{\rm hc}$ and
-$\delta\mathcal{F}_{\rm rec}$. The remaining term, proportional to
-$\hat{G}_{ga}(z;\varepsilon)$, contains the spin-correlation
-dependence. Following the same derivation as
-Ref.~\cite{Arpino:2019ozn}, this gives rise to the additional NNLL
-correction
-\ABquestion{Is this correct sum over legs here? Do all the $\ell$'s need to be $\ell_g$
-and does the $z$ and $\phi$ need to be $z^{\ell_g}$ and $\phi^{\ell_g}$}
+a$. The first term can be treated as in Sec.~\ref{sec:NNLL-initial},
+giving the ISR hard-collinear coefficient $C_{\mathrm{hc},\ell}^{(1)}$
+and the corrections $\delta\mathcal{F}_{\rm hc}$ and
+$\delta\mathcal{F}_{\rm rec}$. The second term contains the
+spin-correlation dependence. Following the derivation of
+Ref.~\cite{Arpino:2019ozn}, this gives the additional NNLL correction
 \begin{equation}
 \begin{aligned}
 \label{eq:DFrec-ISR}
@@ -103,7 +97,7 @@ radiation,
 4\left(\frac{1-z}{z}\right)\frac{\Theta(z-x_\ell)}{z f_g(x_\ell,Q v^{1/(a+b_\ell)})}
 \left[C_A f_g\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right) + C_F f_q\left(\frac{x_\ell}z,Q v^{1/(a+b_\ell)}\right)\right]\,,
 \end{equation}
-while for final-state radiation
+while for final-state radiation,
 \begin{equation}
 \label{eq:DPg-FSR}
 \Delta P_g(z) =4z(1-z)\left[\frac{C_A}{2}-T_Rn_f\right]\,.
