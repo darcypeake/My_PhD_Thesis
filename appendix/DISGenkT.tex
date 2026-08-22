@@ -22,7 +22,6 @@ double DISBriefJet::beam_distance() const {
   return (1 - _beam_sign * _nz)*_E2p;  
 }
 \end{lstlisting}
-
 The clustering sequence is performed using the \textsc{FastJet}
 nearest-neighbour heuristic (\texttt{NNH}) class. If the minimum is $d_{ij}$ ($j\geq0$),
  jets $i$ and $j$ are merged, whereas if it is $d_{iB}$ ($j<0$), jet $i$ is declared
@@ -77,6 +76,7 @@ std::vector<PseudoJet> DISGenktPlugin::sorted_by_zjet(
   return objects_sorted_by_values(jets, zproj);
 }
 \end{lstlisting}
-
+This is similar to the \texttt{sorted\_by\_pt(...)} function in \textsc{FastJet}
+which sorts the jets by decreasing $p_t$.
 
 
