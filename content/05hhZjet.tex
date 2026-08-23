@@ -15,21 +15,23 @@ vanBeekveld:2023chs} collaborations. Within Soft-Collinear Effective Theory (SCE
 resummation has been achieved up to N$^3$LL accuracy for a number of
 observables~\cite{Becher:2008cf, Abbate:2010xh, Alioli:2023rxx}.
 However, these calculations rely on observable-specific factorisation
-theorems, which limits their generality. Recent progress has been made
-towards a more general treatment~\cite{vanBeekveld:2025zjh}, but no
-formalism applicable to a wide range of event shapes currently exists.
+theorems, which limits their generality. Recent progress has been made towards
+a more general treatment~\cite{vanBeekveld:2025zjh}, but a general framework
+for NNLL resummation of jet observables in hadronic collisions is still not
+available.
 
-In this chapter, we extend the \textsc{ARES} formalism for NNLL
-resummation to hadronic collisions, considering the process
-$hh\to Z+\text{jet}$, where the $Z$ boson recoils against a jet with
-high transverse momentum. We find that the structure of the NNLL
-resummation is formally identical to that for three-jet events in
-$e^+e^-$ annihilation~\cite{Arpino:2019ozn}, with the same master
-formula but different ingredients. The main new feature is the
-treatment of initial-state radiation, whose NNLL contributions involve
-convolutions of splitting functions with parton distribution functions.
-These terms have no analogue in the $e^+e^-$ case and constitute the
-key extension required for applications to hadronic collisions.
+In this chapter, we extend the \textsc{ARES} formalism for NNLL resummation
+to hadronic collisions, considering the process $hh\to Z+\text{jet}$,
+where the $Z$ boson recoils against a jet with high transverse momentum.
+We find that the structure of the NNLL resummation is the same as that
+for three-jet events in $e^+e^-$ annihilation~\cite{Arpino:2019ozn},
+with the differences contained in the corresponding ingredients of the
+master formula. The main new ingredient is the treatment of initial-state
+radiation. At NNLL accuracy, this gives rise to contributions involving
+convolutions of splitting functions with parton distribution functions,
+which have no analogue in the $e^+e^-$ case. These contributions therefore
+provide the main extension required to apply \textsc{ARES} to hadronic
+collisions.
 
 As a first application of the formalism, we consider the event-shape
 observable one-jettiness. This observable has been extensively studied
@@ -47,19 +49,18 @@ corresponding NNLL terms with the results obtained for Lund tree shapes
 in Ref.~\cite{vanBeekveld:2025zjh}.
 
 Unlike the NLL discussion presented in the previous chapter, we do not
-derive the NNLL master formula from first principles, as this is not the
-primary focus of this work. Instead, we focus on its extension to
-hadronic collisions, in particular the treatment of initial-state
-radiation. The derivation of the general NNLL master formula can be
-found in Refs.~\cite{Banfi:2014sua,Banfi:2018mcq,Arpino:2019ozn}, to
-which we refer the reader for a detailed discussion.
+derive the NNLL master formula from first principles. Instead, we focus
+on the extension to hadronic collisions, in particular on the treatment
+of initial-state radiation. The general derivation of the NNLL master
+formula can be found in Refs.~\cite{Banfi:2014sua,Banfi:2018mcq,
+Arpino:2019ozn}, to which we refer the reader for a detailed discussion.
 
-The remainder of this chapter is organised as follows. We first present
+The remainder of this chapter is organised as follows. We first introduce
 the \textsc{ARES} NNLL master formula for hadronic collisions and derive
 the corresponding initial-state radiation contributions. We then apply
-the formalism to one-jettiness and conclude with a validation of the
-results against existing calculations in the literature.
-\todo{Need to make this whole intro sound better.}
+the formalism to one-jettiness and validate the resulting expressions
+against existing calculations in the literature.
+
 
 \section{General setup}
 \label{sec:setup}
@@ -118,6 +119,7 @@ manifestly invariant under boosts along the beam direction,
 \end{equation}
 where $k_{t,i}$ and $\eta_i$ denote the transverse momentum and rapidity
 of hadron $q_i$ with respect to the beam, while $\eta_J$ is the rapidity of the jet. 
+
 To reduce the impact of experimental systematics associated with the measurements of particle momenta, 
 we can set $M=H_T$, with $H_T$ the scalar sum of all hadron transverse
 momenta. This leads to the dimensionless observable
@@ -147,8 +149,8 @@ The cumulative distribution $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ contains
 logarithms of $v$ that become large in the one-jet region. The
 largest of these contributions are double logarithms of the form
 $(\alpha_s L^2)^n$, with $L\equiv \ln(1/v)$. Provided $V(\{\tilde p\},\{k_i\})$
-is rIRC safe, and neglecting coherence-violating effects, at each Born
-phase space point $\Sigma_{ij}$ can be reorganised in the region
+is rIRC safe, and neglecting coherence-violating effects
+\todo{reference here or delete.}, $\Sigma_{ij}$ can be reorganised in the region
 $\alpha_s L\sim 1$ as
 \begin{equation}
   \label{eq:log-counting}
@@ -164,7 +166,7 @@ function $g_1(\alpha_s L)$ resums all leading logarithmic (LL) terms,
 $\alpha_s^n L^{n+1}$, in $\ln\Sigma_{ij}$. For rIRC safe observables,
 $g_1$ exponentiates. The function $G_2(\alpha_s L)$ resums
 next-to-leading logarithmic (NLL) contributions ($\alpha_s^n L^n$) to
-$\ln\Sigma_{ij}$, and so on. Here we work to NNLL accuracy, i.e.\
+$\ln\Sigma_{ij}$, and so on. Here we work to NNLL accuracy, 
 calculating $g_1$, $G_2$ and $G_3$.
 
 \section{General form of NNLL resummation}
@@ -432,7 +434,7 @@ and the anomalous dimension integral gives
   \label{eq:gamma0-int}
   \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s(k^2;\varepsilon)}{2\pi} = \frac{\alpha_s(\mu_R)}{2\pi}\gamma_\ell^{(0)} \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon} = -\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{Q^2}\right)^{\varepsilon} \gamma_\ell^{(0)}\frac{\alpha_s(\mu_R)}{2\pi}\,.
 \end{equation}
-Using the fact that $\mathcal{V}(Q;\varepsilon)$ has the universal structure~\cite{Catani:1998bh}\footnote{Note that the general formula of~\cite{Catani:1998bh} includes also phase factors (Coulomb phases) that arise when the two legs $\ell$ and $\bar \ell$ are both incoming or outgoing. In the case of three emitters, these phase factors give rise to a finite contribution, included in $\mathcal{H}_1$.}
+Using the fact that $\mathcal{V}(Q;\varepsilon)$ has the universal structure~\cite{Catani:1998bh}\footnote{Note that the general formula of~\cite{Catani:1998bh} includes also phase factors (Coulomb phases) that arise when the two legs $\ell$ and $\bar \ell$ are both incoming or outgoing. In the case of three emitters, these phase factors give rise to a finite contribution, included in $\mathcal{H}_1$. \todo{check this is actually helping understand.}}
 \begin{equation}
   \label{eq:HQ-expanded}
   \mathcal{V}(Q;\varepsilon) = 1+\frac{\alpha_s(\mu_R)}{2\pi}\left[-\frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\sum_\ell\left(\frac{1}{\varepsilon^2}+\frac{1}{\varepsilon}\frac{\gamma_\ell^{(0)}}{C_\ell}\right)\sum_{\bar \ell\ne \ell} C_{\ell\bar\ell}\left(\frac{\mu_R^2}{Q_{\ell\bar \ell}^2}\right)^{\varepsilon}+\mathcal{H}_1\right]\,,
@@ -652,7 +654,8 @@ $q\to qg$, or from an incoming gluon splitting into a quark--antiquark
 pair, $g\to q\bar q$, the two splittings of the $q\bar q$ channel in
 the upper row. A gluon reaches it either from an incoming quark, $q\to
 gq$, or from an incoming gluon, $g\to gg$, giving the $gq$ channel in
-the lower row. \todo{This paragraph needs to be reworded.}
+the lower row. \todo{This paragraph needs to be reworded -- I think it can be deleted
+and referred to figure and just talk about incoming quark or gluon.}
 
 Channels with an incoming gluon also generate spin correlations, which
 contribute to $\Delta\mathcal{F}_{\rm rec}$. One-jettiness has no
@@ -1665,17 +1668,19 @@ one-loop hard Wilson coefficients, obtained by matching the QCD amplitude
 onto the corresponding SCET operator basis.
 
 The hard function is the only process-dependent ingredient in
-$\mathcal{C}_{-1}^{(1)}$. Its relation to the \textsc{ARES} coefficient
-$\mathcal{H}_1$ is process independent, so it suffices to validate that
-relation using the known one-loop virtual corrections for
-$hh\to H+\mathrm{jet}$~\cite{Ravindran:2002dc}, since $q\bar q\to Hg$
-and $q\bar q\to Zg$ share the same coloured-parton configuration. The
-extraction is presented in Appendix~\ref{ap:H1-extraction}, with the
-remaining partonic channels following analogously.
+$\mathcal{C}_{-1}^{(1)}$. Its relation to the ARES coefficient
+$\mathcal{H}_1$ follows from the universal infrared structure of
+one-loop amplitudes, which depends only on the colour charges and
+directions of the external legs. Since $q\bar q\to Hg$ and $q\bar q\to
+Zg$ share the same coloured-parton configuration, the relation is the
+same for both, and we fix it in Appendix~\ref{ap:H1-extraction} using
+the one-loop virtual corrections for
+$hh\to H+\mathrm{jet}$~\cite{Ravindran:2002dc}. The remaining partonic
+channels follow analogously.
 
 Using Eq.~\eqref{eq:H1-SCET} together with the subtraction ingredients
 listed in Eq.~\eqref{eq:Cd1-ingred}, we obtain for the
-$q\bar{q}\to Hg$ channel
+$q\bar{q}$ channel
 \begin{equation}
 \begin{aligned}
 &\mathcal{C}^{(1)}_{-1} = H_{\rm SCET}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\left(2I_{qk}^{(1)}(z)+2P_{qk}(z)\ln\frac{Q_1\,M}{\mu_F^2}\right)\\[0.5ex]
@@ -1690,8 +1695,8 @@ $q\bar{q}\to Hg$ channel
 \end{aligned}
 \end{equation}
 %
-The corresponding \textsc{ARES} expansion coefficient $h_{10}$ for the
-$q\bar q\to Hg$ channel, given in Eq.~\eqref{eq:h10}, is
+The corresponding \textsc{ARES} expansion coefficient $h_{10}$,
+given in Eq.~\eqref{eq:h10}, is
 \begin{equation}
 \begin{aligned}
 &h_{10}=H_{q\bar{q}}^{(1)}+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_1/z,\mu_F)}{f_i(x_1,\mu_F)}\left(I_{qk}^{(1)}(z)+P_{qk}(z)\ln\frac{Q_1\,M}{\mu_F^2}\right)\\[0.5ex]
