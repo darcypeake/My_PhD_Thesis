@@ -382,7 +382,7 @@ is performed in the $\overline{\rm MS}$ scheme. The collinear anomalous dimensio
   \label{eq:gammal}
   \gamma_\ell (\alpha_s) = \gamma^{(0)}_\ell \frac{\alpha_s}{2\pi} + \gamma^{(1)}_\ell \left(\frac{\alpha_s}{2\pi} \right)^2+\dots
 \end{equation}
-where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav}, and \todo{make this format better.}
+where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav}, and 
  \begin{equation}
   \label{eq:gammal1-flav}
   \gamma_\ell^{(1)} = \left\{
@@ -393,7 +393,7 @@ where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav}, and \todo{make
     \right.
 \end{equation}
 
-\item \todo{make sound better} the ``web'' function
+\item the ``web'' function
   $w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon)$
   which consistently resum the contribution of multiple soft virtual
   corrections from the dipole $(\ell\bar\ell)$. Physically, the web function is the weight associated
@@ -434,7 +434,7 @@ and the anomalous dimension integral gives
   \label{eq:gamma0-int}
   \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\gamma_\ell^{(0)}\frac{\alpha_s(k^2;\varepsilon)}{2\pi} = \frac{\alpha_s(\mu_R)}{2\pi}\gamma_\ell^{(0)} \int_0^{Q^2}\!\!\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon} = -\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{Q^2}\right)^{\varepsilon} \gamma_\ell^{(0)}\frac{\alpha_s(\mu_R)}{2\pi}\,.
 \end{equation}
-Using the fact that $\mathcal{V}(Q;\varepsilon)$ has the universal structure~\cite{Catani:1998bh}\footnote{Note that the general formula of~\cite{Catani:1998bh} includes also phase factors (Coulomb phases) that arise when the two legs $\ell$ and $\bar \ell$ are both incoming or outgoing. In the case of three emitters, these phase factors give rise to a finite contribution, included in $\mathcal{H}_1$. \todo{check this is actually helping understand.}}
+Using the fact that $\mathcal{V}(Q;\varepsilon)$ has the universal structure~\cite{Catani:1998bh}\footnote{Note that the general formula of~\cite{Catani:1998bh} includes also phase factors (Coulomb phases) that arise when the two legs $\ell$ and $\bar \ell$ are both incoming or outgoing. In the case of three emitters, these phase factors give rise to a finite contribution, included in $\mathcal{H}_1$.}
 \begin{equation}
   \label{eq:HQ-expanded}
   \mathcal{V}(Q;\varepsilon) = 1+\frac{\alpha_s(\mu_R)}{2\pi}\left[-\frac{e^{\varepsilon\gamma_E}}{\Gamma(1-\varepsilon)}\sum_\ell\left(\frac{1}{\varepsilon^2}+\frac{1}{\varepsilon}\frac{\gamma_\ell^{(0)}}{C_\ell}\right)\sum_{\bar \ell\ne \ell} C_{\ell\bar\ell}\left(\frac{\mu_R^2}{Q_{\ell\bar \ell}^2}\right)^{\varepsilon}+\mathcal{H}_1\right]\,,
@@ -1091,39 +1091,37 @@ We begin by considering the behaviour of the observable in the presence of a
 single soft emission collinear to leg $\ell$. By definition,
  $k\cdot p_\ell/E_\ell=k_t^{(\ell)} e^{-\eta^{(\ell)}}$, where
   $k_t^{(\ell)}$ is the relative transverse momentum with respect to
-  the emitting leg $\ell$ and $\eta^{(\ell)}$ its rapidity with respect to the same leg. 
+  the emitting leg $\ell$ and $\eta^{(\ell)}$ is the corresponding rapidity.
   Using $\tau_1 = \mathcal{T}_1/M$ with $\mathcal{T}_1$ defined in
 Eq.~\eqref{eq:T1}, the soft-collinear limit takes the same form for each leg:
     \begin{equation}
     \label{eq:tau1-sc-1emsn}
     \tau_1(\{\tilde p\},k)\simeq \tau^{\rm sc}_1(\{\tilde p\},k) =  \frac{2E_\ell}{Q_\ell}\frac{k_t^{(\ell)}}{M} e^{-\eta^{(\ell)}}\,.
   \end{equation}
-  From Eq.~\eqref{eq:tau1-sc-1emsn}  we immediately identify the single-emission
+  From Eq.~\eqref{eq:tau1-sc-1emsn}, we immediately identify the single-emission
 parameters,
 \begin{equation}
   \label{eq:tau1-1em-props}
   a=1\,, \quad b_\ell=1\,, \quad d_\ell=\frac{Q}{M}\frac{2E_{\ell}}{Q_{\ell}} \,, \quad g_\ell(\phi) = 1\,, \qquad \ell=1,2,3\,.
 \end{equation}
 
-These parameters can now be substituted into the general NNLL expressions.
-In particular, Eqs.~\eqref{eq:H1-final}, \eqref{eq:radiator-NNLL},
+These parameters determine the ingredients entering the NNLL
+cumulant. In particular, Eqs.~\eqref{eq:H1-final}, \eqref{eq:radiator-NNLL},
 and~\eqref{eq:Cell-ISR} determine the hard coefficient
 $H_{ij}^{(1)}$, the NNLL radiator $R_{\rm NNLL}$, and the
-hard-collinear coefficients $C_{\rm hc,\ell}^{(1)}$, respectively.
-Since one-jettiness is additive, the NLL multiple-emission function
-$\mathcal{F}_{\rm NLL}$ is given by the additive expression in
-Eq.~\eqref{eq:FNLL-add-final}. The remaining corrections which contribute 
-to the NNLL cumulant are those
-contained in Eq.~\eqref{eq:dFNNLL}. For an additive observable, these
-contributions simplify considerably, and the corresponding master formulae
-are collected in Appendix~\ref{ap:add-res-NNLL}. 
+hard-collinear coefficient $C_{\rm hc,\ell}^{(1)}$, respectively.
+Since one-jettiness is additive, the
+NLL multiple-emission function $\mathcal{F}_{\rm NLL}$ is given by the
+additive expression in Eq.~\eqref{eq:FNLL-add-final}. The remaining NNLL
+terms are contained in $\delta\mathcal{F}_{\rm NNLL}$, given in
+Eq.~\eqref{eq:dFNNLL}. For an additive observable, these simplify
+considerably, and the corresponding expressions are collected in
+Appendix~\ref{ap:add-res-NNLL}.
 
 In the following subsections we evaluate each contribution separately,
 organising the discussion according to the kinematic region from which
-the correction originates. For more details on the corrections, one may refer to.
-
-
-
+the correction originates.
+ 
 \subsection{Soft and collinear contributions}
 \label{sec:sc-contributions}
 
@@ -1135,20 +1133,11 @@ ensemble of soft and collinear emissions that are widely separated in
 angle.
 
 The correction $\delta\mathcal{F}_{\rm sc}$ corresponds to the addition
-of a single soft-collinear emission $k$, parametrised by the standard
-variables $\zeta=\Vsc{k}/v$, the emitting leg $\ell$, and its azimuthal
-angle $\phi^{(\ell)}$. Physically, this correction accounts for running
-coupling corrections to real emissions in the physical scheme and for
-the correct rapidity boundary for a single soft-collinear emission. 
-
-The correlated correction $\delta\mathcal{F}_{\rm correl}$ accounts for
-the contribution of correlated double emissions. In this case, the additional
-soft-collinear emission undergoes a splitting into two partons,
-$k_a$ and $k_b$, whose kinematics are described by the variables
-introduced in Eq.~\eqref{eq:dFcorrel-general}. This correction therefore 
-captures the effect of correlated splittings into either a $q\bar q$ pair or a gluon pair.
-
-The general expression for $\delta\mathcal{F}_{\rm sc}$ is
+of a single soft-collinear emission $k$, parametrised by $\zeta=\Vsc{k}/v$, 
+the emitting leg $\ell$, and its azimuthal angle $\phi^{(\ell)}$.
+It accounts for running coupling corrections to real emissions in the physical scheme,
+as well as the correct rapidity boundary for a single soft-collinear emission. 
+The general expression is 
 \begin{multline}
 	\label{eq:dFsc-general}
 	\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\times 
@@ -1156,9 +1145,10 @@ The general expression for $\delta\mathcal{F}_{\rm sc}$ is
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
      \right]\,.
 \end{multline}
-
-Using the one-jettiness parameters in Eq.~\eqref{eq:tau1-1em-props}
-in the additive result, Eq.~\eqref{eq:dFhc-general-add}, gives
+Substituting the one-jettiness parameters in
+Eq.~\eqref{eq:tau1-1em-props} into the additive expression for
+$\delta\mathcal{F}_{\rm sc}$ given in
+Appendix~\ref{ap:add-res-NNLL}, we obtain
 \begin{multline}
 \delta\mathcal{F}_{\mathrm{sc}}(\lambda)=-\FNLL(\lambda)\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\ln\frac{Q^2}{M Q_{\ell}}\right)\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)\right. \times\\
  \left.+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,,
@@ -1167,10 +1157,17 @@ where $\RpNLL$ and $R''_{\ell,\mathrm{NNLL}}$ are given in
 Eqs.~\eqref{eq:RpNLL} and~\eqref{eq:R2NNLL}, respectively, while
 \begin{equation}
 \label{eq:DRNNLL}
-\Delta R'_{\ell,\rm NNLL}(v) \equiv C_\ell\left(-\alpha_s(Q)\beta_0\,\frac{dg_2^{(\ell)}(\lambda)}{d\lambda}\right)\,.
+\Delta R'_{\ell,\rm NNLL}(v) \equiv C_\ell\left(-\alpha_s(Q)\beta_0\,\frac{dg_2^{(\ell)}(\lambda)}{d\lambda}\right)\,,
 \end{equation}
+with $g_2^{(\ell)}$ given in Eq.~\eqref{eq:RNLL-g-h}.
 
-The general expression for the correlated correction is
+The correlated correction $\delta\mathcal{F}_{\rm correl}$ accounts for
+the contribution of correlated double emissions. In this case, the additional
+soft-collinear emission undergoes a splitting into two partons,
+$k_a$ and $k_b$, whose kinematics are described by the variables
+introduced in Eq.~\eqref{eq:dFcorrel-general}. This correction therefore accounts for
+correlated splittings into either a $q\bar q$ pair or a pair of gluons.
+The general expression is
 \begin{equation}
 \begin{aligned}
 \label{eq:dFcorrel-general}
@@ -1185,10 +1182,10 @@ where $k=k_a+k_b$, $\mu^2=m^2/k_t^2$ is the rescaled invariant mass of the
 splitting, and $\mathcal{A}^2$ is the double-emission function defined in
 Ref.~\cite{Arpino:2019ozn}. 
 
-Since one-jettiness is formally equivalent to thrust in
-$e^+e^-$ annihilation, both observables being additive with
-$a=b_\ell=1$ and $g_\ell(\phi)=1$, we can directly use the angularity
-result of Ref.~\cite{Banfi:2018mcq} evaluated at $x=0$, to give:
+Since one-jettiness has $a=b_\ell=1$ and $g_\ell(\phi)=1$, the
+soft-collinear parameters entering the correlated correction are identical
+to those in the angularity result of Ref.~\cite{Banfi:2018mcq}. We can
+therefore use that result, evaluated at $x=0$, to obtain
 \begin{equation}
 \label{eq:dFcorrel-tau_1}
 	\delta  \mathcal{F}_{\rm correl}(\lambda)=\frac{\pi}{2\alpha_s(Q)}\lambda\,R'' \zeta_2 \FNLL(\lambda)\,.
@@ -1197,99 +1194,107 @@ result of Ref.~\cite{Banfi:2018mcq} evaluated at $x=0$, to give:
 \subsection {Hard and collinear contributions}
 \label{sec:hc-contributions}
 
-We next consider the NNLL corrections originating from the
-hard-collinear region. These corrections arise because a hard-collinear
-emission modifies the relation between the underlying Born kinematics
-and the accompanying ensemble of soft-collinear emissions. There are
-three such contributions:
-\begin{itemize}
-  \item $\delta\mathcal{F}_{\rm hc}$, which accounts for the emission of
-  a hard-collinear parton at the level of the squared matrix element;
-  \item $\delta\mathcal{F}_{\rm rec}$, which describes the kinematic
-  recoil induced by a hard-collinear emission against the
-  soft-collinear ensemble;
-  \item $\Delta\mathcal{F}_{\rm rec}$, which accounts for spin
-  correlations between a hard-collinear gluon and the event plane.
-\end{itemize}
-The hard-collinear correction $\delta\mathcal{F}_{\rm hc}$ depends on the
-same soft-collinear limit appearing in $\delta\mathcal{F}_{\rm sc}$,
-Eq.~\eqref{eq:dFsc-general}. The recoil corrections additionally require
-the hard-collinear limit of the observable,
-\begin{equation}
-  \label{eq:Vhc}
-  \frac{V_{\mathrm{hc}}(\{\tilde{p}\}, k_{\mathrm{hc}}, k_1,\dots,k_n)}{v}\equiv \lim_{v\to 0}\frac{\Vfull{k_{\mathrm{hc}}, k_1,\dots,k_n}}{v}\,,
-\end{equation}
-where $k_{\mathrm{hc}}$ denotes a single hard-collinear emission,
-while $k_1,\ldots,k_n$ represent an ensemble independently emitted 
- soft and collinear emissions.
- 
-We first consider the hard-collinear correction,
+The NNLL corrections associated with the hard-collinear region are
+$\delta\mathcal{F}_{\rm hc}$, $\delta\mathcal{F}_{\rm rec}$, and
+$\Delta\mathcal{F}_{\rm rec}$. These arise from the emission of a hard-collinear parton and its
+effect on the soft-collinear ensemble. 
+
+The hard-collinear correction, $\delta\mathcal{F}_{\rm hc}$, accounts
+for the emission of a hard-collinear parton at the level of the squared matrix element
+and depends on the same soft-collinear limit as $\delta\mathcal{F}_{\rm sc}$,
+given in Eq.~\eqref{eq:dFsc-general}. The general expression is 
 \begin{multline}
   \label{eq:dFhc-general}
    \delta\mathcal{F}_{\rm hc}=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}B_\ell \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
  \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
 \end{multline}
 
-For one-jettiness, inserting the parameters of
-Eq.~\eqref{eq:tau1-1em-props} into the additive expression in
-Eq.~\eqref{eq:dFhc-general-add}, gives
+Substituting the one-jettiness parameters in
+Eq.~\eqref{eq:tau1-1em-props} into the additive expression for
+$\delta\mathcal{F}_{\rm hc}$ given in Appendix~\ref{ap:add-res-NNLL}, we obtain
  \begin{equation}
   \label{eq:dFhc-tau_1}
-    \delta \mathcal{F}_{\rm hc}(\lambda) = \frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL} \sum_{\ell}B_\ell\,.
+    \delta \mathcal{F}_{\rm hc}(\lambda) = 
+    \frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL} \sum_{\ell}B_\ell\,.
   \end{equation}
-For final-state legs, the result reproduces the $e^+e^-$ three-jet result of Ref.~\cite{Arpino:2019ozn}\todo{check same factor
-- think it might be comparing to angularity instead.}:
+For the final-state leg, $\ell=3$, this reduces to the
+$e^+e^-\to3\text{-jet}$ result of Ref.~\cite{Arpino:2019ozn}:
 \begin{equation}
   \label{eq:dFhc-FSR-1jet}
   \left.\delta\mathcal{F}_{\rm hc}\right|_{\ell=3}
   = -\frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}\gamma_3^{(0)}\,,
 \end{equation}
-while for the initial-state legs, using Eq.~\eqref{eq:Bell-ISR}, the $z$ integration entering
-$B_\ell$ cannot be carried out analytically due to the presence of
-PDFs:
+while for the initial-state contributions, using
+Eq.~\eqref{eq:Bell-ISR}, the $z$ integration cannot be performed
+analytically due to the presence of PDFs:
 \begin{equation}
   \label{eq:dFhc-ISR-1jet}
   \left.\delta\mathcal{F}_{\rm hc}\right|_{\ell=1,2}
-  = \frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\delta_{ik}\right) \frac{f_k(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}\,.
+  = \frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\delta_{ik}\right) \frac{f_k(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}\,,
 \end{equation}
+where $P_{ik}(z)$ are given in Eq.~\eqref{eq:full-AP}.
 
-The general expression for $\delta\mathcal{F}_{\rm rec}$ is
+The recoil corrections additionally require the hard-collinear limit
+of the observable,
+\begin{equation}
+  \label{eq:Vhc}
+  \frac{V_{\mathrm{hc}}(\{\tilde{p}\}, k_{\mathrm{hc}}, k_1,\dots,k_n)}{v}\equiv \lim_{v\to 0}\frac{\Vfull{k_{\mathrm{hc}}, k_1,\dots,k_n}}{v}\,,
+\end{equation}
+where $k_{\mathrm{hc}}$ denotes a single hard-collinear emission,
+while $k_1,\ldots,k_n$ represent an ensemble of independently emitted
+soft and collinear emissions.
+ 
+ The recoil correction, $\delta\mathcal{F}_{\rm rec}$, describes the kinematic
+  recoil induced by a hard-collinear emission against the
+  soft-collinear ensemble. The general expression is
  \begin{multline}
  \label{eq:dFrec-general}
    \delta\mathcal{F}_{\rm rec}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz\,P_\ell(z) \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
  \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k_{\mathrm{hc}},\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,.
 \end{multline}
 
-Again, using the results of Ref.~\cite{Banfi:2018mcq} for angularities at $x=0$, 
-for the final-state leg,
-$\ell=3$, the result coincides with the corresponding
-$e^+e^-$ three-jet calculation~\cite{Arpino:2019ozn}. Isolating this
-contribution, one finds for a final-state quark
+Using the additive result for $\delta\mathcal{F}_{\rm rec}$ in
+Appendix~\ref{ap:add-res-NNLL}, the final-state contribution agrees
+with the corresponding $e^+e^-$ three-jet result~\cite{Arpino:2019ozn}.
+For a final-state quark,
 \begin{equation}
   \label{eq:dFrec-tau_1q}
   \left.\delta\mathcal{F}_{\rm rec}\right|_{\ell=3}
-  =\FNLL\frac{\alpha_s(Q\sqrt{\tau_1})}{2\alpha_s(Q)} C_F\left(\frac{5}{4}-\frac{\pi^2}{3}\right)\,,
+  =
+  \FNLL
+  \frac{\alpha_s(Q\sqrt{\tau_1})}{2\alpha_s(Q)}
+  C_F\left(\frac{5}{4}-\frac{\pi^2}{3}\right)\,,
 \end{equation}
-while for a final-state gluon
+while for a final-state gluon,
 \begin{equation}
   \label{eq:dFrec-tau_1g}
   \left.\delta\mathcal{F}_{\rm rec}\right|_{\ell=3}
-  =\FNLL\frac{\alpha_s(Q\sqrt{\tau_1})}{2\alpha_s(Q)} \left(
- C_A\left(\frac{67}{36}-\frac{\pi^2}{3}\right)
- -T_Rn_f\frac{13}{18} \right)\,.
- \end{equation}
- For the initial-state legs, using Eq.~\eqref{eq:Pell-ISR}
- \begin{equation}
+  =
+  \FNLL
+  \frac{\alpha_s(Q\sqrt{\tau_1})}{2\alpha_s(Q)}
+  \left[
+  C_A\left(\frac{67}{36}-\frac{\pi^2}{3}\right)
+  -T_Rn_f\frac{13}{18}
+  \right]\,.
+\end{equation}
+For the initial-state contributions, the $z$ integrations cannot
+be performed analytically. Using Eq.~\eqref{eq:Pell-ISR}, we obtain
+\begin{equation}
   \label{eq:dFrec-ISR-1jet}
   \left.\delta\mathcal{F}_{\rm rec}\right|_{\ell=1,2}
-  =\FNLL\frac{\alpha_s(Q\sqrt{\tau_1})}{2\alpha_s(Q)}\int_0^1 dz \sum_k \hat P_{ik}(z;0) \frac{f_k(x_\ell/z,Qv^{1/(a+b_\ell)})}{z f_i(x_\ell,Qv^{1/(a+b_\ell)})} \Theta(z-x_\ell)\ln z\,.
+  =
+  \FNLL
+  \frac{\alpha_s(Q\sqrt{\tau_1})}{2\alpha_s(Q)}
+  \int_0^1 dz \sum_k \hat P_{ik}(z;0)
+  \frac{f_k(x_\ell/z,Qv^{1/(a+b_\ell)})}
+  {z f_i(x_\ell,Qv^{1/(a+b_\ell)})}
+  \Theta(z-x_\ell)\ln z\,,
 \end{equation}
- 
- 
- 
-The remaining hard-collinear contribution,
-$\Delta\mathcal{F}_{\rm rec}$, accounts for spin correlations and is
-written as a sum over gluon legs, $\ell_g$,
+where $\hat P_{ik}(z;0)$ is defined in Eq.~\eqref{eq:regularised-Pij}
+
+The final contribution, $\Delta\mathcal{F}_{\rm rec}$, 
+accounts for spin correlations between a hard-collinear gluon 
+and the event plane. The general expression is
 \begin{equation}
 \label{eq:DFrec-general}
 \begin{aligned}
@@ -1306,36 +1311,28 @@ written as a sum over gluon legs, $\ell_g$,
 \right]\,,
 \end{aligned}
 \end{equation}
+where the sum runs over gluon legs, $\ell_g$.
 
-For additive observables, Eq.~\eqref{eq:DFrec-general-add} applies.
-Since one-jettiness has no azimuthal dependence,
- the spin-correlation contribution vanishes identically,
+Substituting the one-jettiness parameters into the corresponding
+additive expression in Appendix~\ref{ap:add-res-NNLL}, this contribution
+vanishes for all legs since $g(\phi)=1$:
 \begin{equation}
-\Delta\mathcal{F}_{\rm rec}(\lambda)=0\,.
+  \Delta\mathcal{F}_{\rm rec}(\lambda)=0\,.
 \end{equation}
-
-Spin correlations depend on the orientation of a hard gluon's
-polarisation relative to the event plane. An observable can only see
-this if it distinguishes radiation in that plane from radiation outside
-it. One-jettiness makes no such distinction: it only depends on how
-close a hadron is to the beam or to the jet direction, not on its position
-around them. With no sensitivity to the event plane, there is nothing
-for the polarisation to affect, so $\Delta\mathcal{F}_{\rm rec}$
-vanishes identically. \todo{Work out if we need such a big explanation.}
 
 \subsection{Soft wide angle contributions}
 \label{sec:wa-contributions}
 
 The final class of NNLL corrections originates from soft radiation
-emitted at wide angles. Two contributions arise in this region.
-The first, $\delta\mathcal{F}_{\rm wa}$, accounts for the difference
-between the full observable and its soft-collinear approximation for a
-single soft wide-angle emission accompanied by an ensemble of
-soft-collinear emissions. The second,
-$\Delta\mathcal{F}_{\rm wa}$, is associated with resolved soft
-wide-angle radiation.
+emitted at wide angles. The two contributions in this region are
+$\delta\mathcal{F}_{\rm wa}$ and $\Delta\mathcal{F}_{\rm wa}$.
 
-The evaluation of $\delta\mathcal{F}_{\rm wa}$ is naturally expressed in
+The wide-angle correction, $\delta\mathcal{F}_{\rm wa}$,
+accounts for the difference between the full observable and its
+soft-collinear parametrisation for a single soft wide-angle emission
+accompanied by multiple soft-collinear emissions.
+
+This correction  is naturally expressed in
 terms of dipoles $(\ell\bar\ell)$. Accordingly, the momentum
 of a single emission $k$ can be decomposed along any pair of light-like 
 momenta $(p_{\ell},p_{\bar \ell})$ forming the $(\ell \bar\ell)$ dipole,
@@ -1351,8 +1348,7 @@ with $\vec n_{\ell/\bar\ell}=\vec p_{\ell/\bar\ell}/E_{\ell/\bar\ell}$.
 The remaining variables entering this decomposition are defined in
 Sec.~\ref{subsubsec:Rs}.
 
-The correction $\delta\mathcal{F}_{\rm wa}$ is written in terms of the
-soft wide-angle limit of the observable,
+This correction requires the soft wide-angle limit of the observable,
 \begin{equation}
   \label{eq:Vwa}
   \frac{V_{\mathrm{wa}}(\{\tilde{p}\}, k^{(\ell\bar{\ell})}, k_1,\dots,k_n)}{v}\equiv \lim_{v\to 0}\frac{\Vfull{k^{(\ell\bar{\ell})}, k_1,\dots,k_n}}{v}\,,
@@ -1360,7 +1356,7 @@ soft wide-angle limit of the observable,
 where the emission $k^{(\ell\bar\ell)}$ denotes a soft emission at wide angle with
 respect to the Born legs.
 
-The corresponding wide-angle correction is
+The general expression is
 \begin{equation}
 \label{eq:dFwa-general}
 \begin{aligned}
@@ -1371,8 +1367,8 @@ The corresponding wide-angle correction is
 \end{equation}
 where the sum runs over all the dipoles $(\ell\bar\ell)$ that build up the Born event. 
 
-Using the additive expression for this correction inEq.~\eqref{eq:dFwa-general-add}
-gives:
+Using the additive result for $\delta\mathcal{F}_{\rm wa}$ in Appendix~\ref{ap:add-res-NNLL},
+we obtain
 \begin{equation}
     \delta\mathcal{F}_{\mathrm{wa}}(\lambda) =
     \mathcal{F}_{\rm NLL}(\lambda)\,
@@ -1382,19 +1378,14 @@ gives:
     - 2\!\left(I_{\ell\bar\ell,\hat\ell}
     + I_{\bar\ell\ell,\hat\ell}\right)\right]\,,
 \end{equation}
-where $I_{\ell\bar\ell,\hat\ell}$ are the integrals defined in Eq.~(51) of
-Ref.~\cite{Alioli:2023rxx} (see also Ref.~\cite{Jouttenus:2011wh}),
-and $\hat\ell$ denotes the leg which is neither  $\ell$ or $\bar\ell$.
+where $I_{\ell\bar\ell,\hat\ell}$ are the integrals defined in Eq.~(51)
+of Ref.~\cite{Alioli:2023rxx} (see also Ref.~\cite{Jouttenus:2011wh}),
+and $\hat\ell$ denotes the leg which is neither $\ell$ nor $\bar\ell$.
 
-Unlike $\delta\mathcal{F}_{\rm wa}$, the correction
-$\Delta\mathcal{F}_{\rm wa}$ does not involve the wide-angle limit of the
-observable, but instead takes the same limits as $\delta\mathcal{F}_{\rm sc}$. The general expression is
-%Nevertheless
-%it is classified as a soft wide-angle contribution because of the logarithm
-%$\ln(Q_{\ell\bar\ell}/Q)$, which originates from soft radiation emitted
-%at large angles between the legs $\ell$ and $\bar\ell$. In other words,
-%the term ``wide-angle'' refers to the logarithm rather
-%than to the kinematic approximation used for the observable.
+The second contribution, $\Delta\mathcal{F}_{\rm wa}$, is associated
+with resolved soft wide-angle radiation and takes the same
+soft-collinear limit as $\delta\mathcal{F}_{\rm sc}$, given in Eq.~\eqref{eq:dFsc-general}. 
+The general expression is
 \begin{multline}
 \label{eq:DFwa-general}
 	\Delta\mathcal{F}_{\mathrm{wa}}=2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\frac{\alpha_s(v^{1/a}Q)}{a\,\alpha_s(Q)}\ln\frac{Q_{\ell\bar\ell}}{Q}\int_0^\infty \frac{d\zeta}{\zeta}
@@ -1402,47 +1393,44 @@ observable, but instead takes the same limits as $\delta\mathcal{F}_{\rm sc}$. T
 	\times \left[\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\}, k,\{k_i\}\right)}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\}, \{k_i\}\right)}{v}\right)\left(1-\zeta\right)\right]\,.
 \end{multline}
 
-For additive observables, Eq.~\eqref{eq:DFwa-general} simplifies to the
-formula of Eq.~\eqref{eq:DFwa-general-add}. Applying this result
-to one-jettiness gives
+Substituting the one-jettiness parameters in
+Eq.~\eqref{eq:tau1-1em-props} into the additive expression for
+$\Delta\mathcal{F}_{\rm wa}$ given in Appendix~\ref{ap:add-res-NNLL}, we obtain
  \begin{equation}
   \label{eq:DFwa-tau_one}
     \Delta \mathcal{F}_{\rm wa}(\lambda) =  \frac{\alpha_s(\tau_1\,Q)}{\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}2\sum_{(\ell\bar\ell)} C_{\ell\bar\ell}\ln\left(\frac{Q_{\ell\bar\ell}}{Q}\right)\,. 
   \end{equation}
   
+
 This completes the evaluation of all NNLL corrections entering the
-resummation of one-jettiness in $Z$+jet production. In the following sections these results are validated against two
-independent calculations: the $N$-jettiness subtraction framework of
+resummation of one-jettiness in $Z$+jet production. In the following
+sections, these results are validated against two independent
+calculations: the $N$-jettiness subtraction framework of
 Ref.~\cite{Gaunt:2015pea} in Sec.~\ref{subsec:N-jet-SCET-val}, and the
 Lund-tree shape resummation of Ref.~\cite{vanBeekveld:2025zjh} in
 Sec.~\ref{sec:LTS-val}.
-
 
  \section{Comparison with $N$-jettiness}
  \label{subsec:N-jet-SCET-val}
  
  Having derived the NNLL cumulant for hadronic collisions, we now validate
-our resummation formula, paying particular attention to the treatment of
-initial-state radiation. This is achieved by comparing the logarithmic
-expansion of the \textsc{ARES} cumulant with the corresponding results
-obtained in the SCET-based $N$-jettiness subtraction framework of
-Ref.~\cite{Gaunt:2015pea}.
+our resummation formula by comparing its logarithmic expansion with the
+corresponding results obtained in the SCET-based $N$-jettiness subtraction
+framework of Ref.~\cite{Gaunt:2015pea}.
 
-The comparison is performed order by order in $\alpha_s$ and $L$. Expanding the master formula,
-$\Sigma_{ij}$, in Eq.~\eqref{eq:Sigma-NNLL}, we write~\cite{Banfi:2004yd}
+Expanding the master formula, $\Sigma_{ij}$, in Eq.~\eqref{eq:Sigma-NNLL},
+order by order in $\alpha_s$ and $L$, we write~\cite{Banfi:2004yd}
  \begin{equation}
 \label{eq:sig-coeff}
 	\Sigma_{ij}(v)=\sum_{n=1}^{\infty}\sum_{m=0}^{n+1} h_{nm}\bar{\alpha}^n_sL^m\,,
 \end{equation}
 where $\bar{\alpha}_s\equiv\alpha_s(Q)/(2\pi)$. The coefficients
-$h_{nm}$ are obtained by expanding the NNLL radiator and collecting
-terms order by order in the cumulant. Their explicit expressions for
-one-jettiness are given in Appendix~\ref{ap:coefficients}.
+$h_{nm}$ are given explicitly for one-jettiness in
+Appendix~\ref{ap:coefficients}.
 
 These expansion coefficients are compared with the subtraction coefficients,
 $\mathcal{C}_n^{(m)}$, appearing in the logarithmic expansion of the
-SCET-based $N$-jettiness subtraction formula of
-Ref.~\cite{Gaunt:2015pea}. Agreement between the two calculations
+SCET-based $N$-jettiness subtraction formula. Agreement between the two calculations
 provides an independent check of the NNLL resummation derived in this
 chapter, and in particular of the treatment of initial-state radiation.
 
@@ -1472,10 +1460,10 @@ $\hat{p}_\ell=p_\ell/Q_\ell$.
 
 The dimensionless variables entering the subtraction ingredients are
 \begin{equation}
-    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
-    \lambda_s = \frac{M}{\mu_R}\,, \qquad
     \lambda_1 = \frac{Q_1 M}{\mu_R}\,, \qquad
     \lambda_2 = \frac{Q_2 M}{\mu_R}\,, \qquad
+    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
+    \lambda_s = \frac{M}{\mu_R}\,, \qquad
     \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,,
 \end{equation}
 while their explicit expressions are collected in
@@ -1495,19 +1483,16 @@ jet function is written as
 \end{subequations}
 with analogous expansions holding for the beam and soft functions.
 
-To compare the SCET subtraction coefficients with the \textsc{ARES}
-expansion coefficients, we first establish their relation. The
-\textsc{ARES} quantities are obtained from the expansion of the
-integrated cumulant, whereas those entering the subtraction formula of
-Ref.~\cite{Gaunt:2015pea} are defined for the differential distribution.
-Accounting also for the different normalisations of the strong coupling,
-$2\pi$ versus $4\pi$, gives
+To relate the two sets of coefficients, we note that the
+\textsc{ARES} coefficients are obtained from the integrated cumulant,
+whereas the subtraction coefficients are defined for the differential
+distribution. Accounting for this difference and for the different
+normalisations of the strong coupling, $2\pi$ versus $4\pi$, gives
 \begin{equation}
 \label{eq:coeff-convent}
 h_{mn}=\frac{\mathcal{C}_{n-1}^{(m)}}{n}\,\frac{(-1)^n}{2m}\,.
 \end{equation}
-For $\mathcal{C}_{-1}^{(m)}$, the denominator is understood to
-correspond to $n=1$.
+For $\mathcal{C}_{-1}^{(m)}$, the denominator is taken to be $n=1$.
 
 For brevity, we suppress the arguments of the subtraction coefficients
 throughout the remainder of this section. We also partially suppress the
@@ -1527,19 +1512,18 @@ At LL accuracy, the first subtraction coefficient is
     J_{\kappa_3,1}^{(1)}(\lambda_3)
     +\widehat{S}^{(1)}_{\kappa,1}\left(\lambda_s\right)\,.
 \end{equation}
-Using the explicit expressions for the individual ingredients given in
+Using the explicit expressions for the individual ingredients in
 Eq.~\eqref{eq:C11-ingred}, this reduces to
 \begin{equation}
     \mathcal{C}^{(1)}_1=-4\sum_{\ell}C_{\ell}\,.
 \end{equation}
-Applying the relation between the SCET subtraction coefficients and the
-\textsc{ARES} expansion coefficients in Eq.~\eqref{eq:coeff-convent}, we
+Applying the relation between the two sets of coefficients in Eq.~\eqref{eq:coeff-convent}, we
 obtain
 \begin{equation}
     h_{12}=-\sum_{\ell}C_{\ell}\,,
 \end{equation}
-which agrees with the corresponding \textsc{ARES} expansion coefficient
-given in Eq.~\eqref{eq:h12}.
+in agreement with the corresponding \textsc{ARES} coefficient in
+Eq.~\eqref{eq:h12}.
 
 The second subtraction coefficient contributing at LL accuracy is
 \begin{equation}
@@ -1559,7 +1543,7 @@ Using Eq.~\eqref{eq:coeff-convent}, we then obtain
 \begin{equation}
     h_{24}=\frac{1}{2}\left(\sum_{\ell}C_{\ell}\right)^2\,,
 \end{equation}
-in agreement with the corresponding \textsc{ARES} expansion coefficient
+again in agreement with the corresponding \textsc{ARES} expansion coefficient
 given in Eq.~\eqref{eq:h24}.
 
 \subsection{Next-to-leading-logarithmic coefficients}
@@ -1600,7 +1584,7 @@ which can be simplified to
     +4C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,.
     \end{aligned}
 \end{equation}
-Applying Eq.~\eqref{eq:coeff-convent}, we obtain the corresponding
+Using Eq.~\eqref{eq:coeff-convent}, we obtain the corresponding
 \textsc{ARES} expansion coefficient
 \begin{equation}
 \label{eq:SCET-h11}
@@ -1613,8 +1597,7 @@ Applying Eq.~\eqref{eq:coeff-convent}, we obtain the corresponding
     -2C_3\ln\frac{Q_{13}^2 Q_{23}^2}{Q_{12}^2 MQ_3}\,,
     \end{aligned}
 \end{equation}
-which agrees exactly with the \textsc{ARES} expansion coefficient given
-in Eq.~\eqref{eq:h11}.
+which agrees with the \textsc{ARES} result in Eq.~\eqref{eq:h11}.
 
 The remaining subtraction coefficient entering at NLL accuracy is
 \begin{equation}
@@ -1656,9 +1639,9 @@ $\mathcal{C}_{-1}^{(1)}$, defined as
     \mathcal{C}_{-1}^{(1)}=H^{(1)}_{\rm SCET}\,+\frac{B_{\kappa_1,-1}^{(1)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,-1}^{(1)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+J_{\kappa_3,-1}^{(1)}(\lambda_c)
     +\widehat{S}^{(1)}_{\kappa,-1}\left(\lambda_s\right)\,,
 \end{equation}
-where the explicit expressions for the individual subtraction ingredients
-are given in Eqs.~\eqref{eq:Cd1-ingred},~\eqref{eq:C10-ingred}, and
-~\eqref{eq:C11-ingred}. The hard function is given by 
+where the individual subtraction ingredients are given in
+Eqs.~\eqref{eq:Cd1-ingred}, \eqref{eq:C10-ingred}, and
+\eqref{eq:C11-ingred}. The hard function is given by 
 \begin{equation}
 \label{eq:CH-SCET}
 	H^{(1)}_{\rm SCET}\equiv \frac{\left(\vec{C}^{\dagger(1)}\vec{C}^{(0)}+\vec{C}^{\dagger(0)}\vec{C}^{(1)}\right)}{|\vec{C}^{(0)}|^2}\,,
@@ -1667,16 +1650,22 @@ where $\vec{C}^{(0)}$ and $\vec{C}^{(1)}$ are the tree-level and
 one-loop hard Wilson coefficients, obtained by matching the QCD amplitude
 onto the corresponding SCET operator basis.
 
-The hard function is the only process-dependent ingredient in
-$\mathcal{C}_{-1}^{(1)}$. Its relation to the ARES coefficient
-$\mathcal{H}_1$ follows from the universal infrared structure of
-one-loop amplitudes, which depends only on the colour charges and
-directions of the external legs. Since $q\bar q\to Hg$ and $q\bar q\to
-Zg$ share the same coloured-parton configuration, the relation is the
-same for both, and we fix it in Appendix~\ref{ap:H1-extraction} using
-the one-loop virtual corrections for
-$hh\to H+\mathrm{jet}$~\cite{Ravindran:2002dc}. The remaining partonic
-channels follow analogously.
+Both $H^{(1)}_{\rm SCET}$ and the \textsc{ARES} hard coefficient
+$H^{(1)}_{ij}$ require the corresponding one-loop amplitude for
+$Z$+jet production, which can be calculated either from the
+analytic continuation of the $e^+e^-\to q\bar q g$ amplitude. Instead,
+we use the one-loop amplitude for $hh\to H+\mathrm{jet}$ given 
+explicitly in Ref.~\cite{Ravindran:2002dc}. This
+is sufficient because the relation between $H^{(1)}_{\rm SCET}$ and
+$H^{(1)}_{ij}$ follows from the universal infrared structure of one-loop
+amplitudes, which depends only on the colour charges and directions of
+the external legs. Since
+$q\bar q\to Hg$ and $q\bar q\to Zg$ have the same coloured-parton
+configuration, the relation can be extracted from the
+$hh\to H+\mathrm{jet}$ amplitude and applied to the $Z$+jet process.
+The comparison is shown in Appendix~\ref{ap:H1-extraction}, and the
+remaining partonic channels follow analogously. \question{need to check that this
+is what we actually want to say.}
 
 Using Eq.~\eqref{eq:H1-SCET} together with the subtraction ingredients
 listed in Eq.~\eqref{eq:Cd1-ingred}, we obtain for the
@@ -1712,11 +1701,11 @@ where we have used the relation
 \begin{equation}
 \label{eq:I1-ARES}
 I_{ik}^{(1)}(z) =
--\hat{P}_{ik}^{(\varepsilon)}(z)
+-{P}_{ik}^{(\varepsilon)}(z)
 +\hat{P}_{ik}(z;0)\!\left[
 \left(\frac{\ln(1-z)}{1-z}\right)_{\!\!+}(1-z)
 -\ln z\right]
-+\frac{\pi^2}{6}\,\delta_{ij}\,C_i\,\delta(1-z)\,,
++\frac{\pi^2}{6}\,\delta_{ik}\,C_i\,\delta(1-z)\,.
 \end{equation}
 to express the SCET matching functions $I_{qk}^{(1)}(z)$ and
 $I_{\bar{q}k}^{(1)}(z)$ in terms of the corresponding \textsc{ARES}
@@ -1726,16 +1715,11 @@ recoil correction $\delta\mathcal{F}_{\rm rec}$ associated with
 initial-state radiation, as defined in Eqs.~\eqref{eq:Cij-ISR} and
 \eqref{eq:dFrec-ISR}.
 
-The remaining comparison between the SCET subtraction coefficient and the
-\textsc{ARES} expansion coefficient involves a lengthy rearrangement of
+The remaining comparison between these coefficients involves a lengthy rearrangement of
 the logarithmic and finite terms and is therefore not shown explicitly
 here. Instead, the symbolic implementation of this comparison is provided
 in the \textsc{Mathematica} notebook of Ref.~\cite{peake2026validation},
-where it is verified that
-\begin{equation}
-    \mathcal{C}^{(1)}_{-1}=2h_{10}\,,
-\end{equation}
-as required by Eq.~\eqref{eq:coeff-convent}.
+where it is verified that $    \mathcal{C}^{(1)}_{-1}=2h_{10}$, as required by Eq.~\eqref{eq:coeff-convent}.
 
 Finally, we consider the remaining subtraction coefficients contributing
 at NNLL accuracy, $\mathcal{C}^{(2)}_1$ and $\mathcal{C}^{(2)}_0$, which
@@ -1799,6 +1783,7 @@ accuracy, we perform the comparison with the \textsc{ARES} expansion
 coefficients symbolically using \textsc{Mathematica}. Details of the
 implementation are provided in Appendix~\ref{ap:symb-val}, while the
 complete notebook is available in Ref.~\cite{peake2026validation}.
+
 In the next section, we provide an alternative analytic validation of
 the treatment of initial-state radiation.
 
@@ -1811,10 +1796,9 @@ Eq.~\eqref{eq:Sigma-NNLL} with the NNLL resummation of Ref.~\cite{vanBeekveld:20
 of observables known as Lund-tree Shapes (LTS). This provides
 a particularly clean test of the ISR treatment, since the hadron--hadron
 results of Ref.~\cite{vanBeekveld:2025zjh} are restricted to colour-singlet
-production without resolved final-state jets ($N=0$). In this Born-level configuration, 
-the only coloured legs are the two incoming partons. Consequently, any
-difference between the two formulations is entirely associated with the
-treatment of initial-state radiation.
+production without any final-state jets ($N=0$). In this configuration, 
+the only coloured legs are the two incoming partons, and so
+the comparison directly tests the treatment of initial-state radiation.
 
 Restricting the \textsc{ARES} master formula in Eq.~\eqref{eq:Sigma-NNLL}
  to the same $N=0$ configuration leaves only the two incoming legs 
@@ -1833,10 +1817,9 @@ where
 	 \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL} = \delta\mathcal{F}_{\rm sc}+\delta\mathcal{F}_{\rm hc}+\delta\mathcal{F}_{\rm wa}+\delta\mathcal{F}_{\rm correl}+\delta \mathcal{F}_{\mathrm{rec}}\,.
 \end{equation}
 The terms $\Delta\mathcal{F}_{\rm wa}$ and $\Delta\mathcal{F}_{\rm rec}$
-are absent from Eq.~\eqref{eq:dFNNLL}. These corrections were introduced
+are absent from Eq.~\eqref{eq:dFNNLL}, since these corrections were introduced
 for three-jet configurations in Ref.~\cite{Arpino:2019ozn} and require the
-presence of a final-state coloured leg. They therefore do not contribute
-to the present $N=0$ configuration.
+presence of a final-state coloured leg. 
 
 We restrict ourselves to the additive LTS observable $S_b^{(0)}$,
 for which the NNLL resummation contains a comparable ISR
@@ -1954,12 +1937,11 @@ this has been confirmed with the authors of the paper.}
   +\ln\frac{M^2}{\mu_F^2}P_{qk}(z)\right]\,,
 \end{multline}
 and analogously for $C_{\bar{q}k}^{(1),\mathrm{LTS}}$.
-The first two terms correspond to contributions that are treated
-separately in \textsc{ARES}, namely the hard-collinear coefficient
-$C_{{\rm hc},\ell}^{(1)}$ and the recoil correction
-$\delta\mathcal{F}_{\rm rec}$. To see this, we
-specialise Eq.~\eqref{eq:Cell-ISR} to the parameters in
-Eq.~\eqref{eq:LTS-1-emsn} with $Q=M$ and $E_\ell=M/2$:
+The first two terms correspond to the hard-collinear coefficient
+$C_{{\rm hc},\ell}^{(1)}$ and recoil correction
+$\delta\mathcal{F}_{\rm rec}$ in \textsc{ARES}. Specialising
+Eq.~\eqref{eq:Cell-ISR} to the parameters in Eq.~\eqref{eq:LTS-1-emsn},
+with $Q=M$ and $E_\ell=M/2$, gives
 \begin{equation}
 \begin{aligned}
   \label{eq:Cij-LTS-comp}
@@ -1986,13 +1968,18 @@ parameters of Eq.~\eqref{eq:LTS-1-emsn},
   \left(-\frac{2b}{1+b}\hat{P}_{qk}(z;0)\ln z\right)
   +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
 \end{equation}
-Combining Eqs.~\eqref{eq:Cij-LTS-comp} and~\eqref{eq:dFrec-LTS-comp}
-reproduces the first two terms of Eq.~\eqref{eq:CkiLTS} exactly. The
-third term, $\ln(M^2/\mu_F^2)P_{qk}(z)$, arises because the PDFs are 
-evaluated at different scales in the two formulations:
-\textsc{ARES} uses $Mv^{1/(1+b)}$, while Ref.~\cite{vanBeekveld:2025zjh} uses $\mu_Fv^{1/(1+b)}$. The logarithm $\ln(M^2/\mu_F^2)$ is the 
-DGLAP evolution between these two scales and compensates for the
-difference between the two. The prefactor $(1+b)/(1+b-2\lambda)$ in Eq.~\eqref{eq:LTS-cum} arises from expressing the running coupling $\alpha_s(Mv^{1/(1+b)})$ in terms of $\lambda=\alpha_s(\mu_R)\beta_0\ln(1/v)$ at one loop. 
+Combining Eqs.~\eqref{eq:Cij-LTS-comp} and
+\eqref{eq:dFrec-LTS-comp} reproduces the first two terms of
+Eq.~\eqref{eq:CkiLTS} exactly. The remaining term,
+$\ln(M^2/\mu_F^2)P_{qk}(z)$, accounts for the different PDF scales used
+in the two formulations: \textsc{ARES} evaluates the PDFs at
+$Mv^{1/(1+b)}$, whereas Ref.~\cite{vanBeekveld:2025zjh} uses
+$\mu_Fv^{1/(1+b)}$. It is precisely the DGLAP evolution between these
+scales. The prefactor $(1+b)/(1+b-2\lambda)$ in
+Eq.~\eqref{eq:LTS-cum} similarly results from expressing
+$\alpha_s(Mv^{1/(1+b)})$ in terms of
+$\lambda=\alpha_s(\mu_R)\beta_0\ln(1/v)$ at one loop.
+
 The remaining hard-collinear correction in the LTS formulation is
 \begin{equation}
 \label{eq:dFhc-LTS}
@@ -2010,9 +1997,9 @@ Combining this with $\delta\Sigma^{pp}_{\rm DGLAP}$ in Eq.~\eqref{eq:DGLAP-add},
 + \left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}
 \right]\,.
 \end{multline}
-
-This is equivalent to $\delta\mathcal{F}_{\rm hc}$ in \textsc{ARES}, and can see this explicitly by calculating
-Eqs.~\eqref{eq:dFhc-ISR} for additive observables,
+This is equivalent to the \textsc{ARES} contribution
+$\delta\mathcal{F}_{\rm hc}$. This can be seen explicitly by evaluating
+Eq.~\eqref{eq:dFhc-ISR} for the additive observable,
 \begin{equation}
 	\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}=\frac{\alpha_s(Qv^{1/(1+b)})}{\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\sum_k \left[\int_{x_1}^1 \frac{dz}{z} \left(P_{qk}(z)-\gamma_1^{(0)}\delta_{qk}\right) \frac{f_k(x_{1}/z,Qv^{1/(a+b_\ell)})}{f_q(x_1,Qv^{1/(a+b_\ell)})}   +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
 \end{equation}
@@ -2025,9 +2012,9 @@ Ref.~\cite{vanBeekveld:2025zjh} does not represent a new physical effect, but ra
 
 In this chapter we extended the \textsc{ARES} formalism to NNLL resummation in
 hadronic collisions, applying it to $hh\to Z+\text{jet}$. The central result is
-that the NNLL master formula takes the same structural form as the
-$e^+e^-\to3$-jet case of Ref.~\cite{Arpino:2019ozn}, with the radiator and the
-NNLL corrections of soft origin carrying over unchanged. What genuinely differs
+that the NNLL master formula takes the same structure as the
+$e^+e^-\to3$-jet result of Ref.~\cite{Arpino:2019ozn}, with the individual
+components being different. What genuinely differs
 is the treatment of initial-state radiation, where a collinear splitting on an
 incoming leg convolutes with the parton distribution functions, generating
 contributions that have no counterpart in $e^+e^-$ annihilation.
