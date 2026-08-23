@@ -13,7 +13,7 @@ The notation used in the \textsc{Mathematica} implementation is summarised
 in Table~\ref{tab:mma-symbols}. Uppercase symbols denote the full
 expansion of a subtraction ingredient, following
 Eq.~\eqref{eq:subt-mn-exp}. The lowercase symbols are the corresponding
-coefficients defined in Appendix~\ref{ap:ARES-coeff}.
+coefficients defined in Appendix~\ref{ap:coefficients}.
 
 \begin{table}[h]
 \begin{center}
@@ -97,15 +97,13 @@ Using Eq.~\eqref{eq:coeff-convent}, the $h_{22}$ comparison requires
 $\mathcal{C}^{(2)}_1=8h_{22}$:
 \begin{lstlisting}[style=mma, caption={Validation of $h_{22}$.}]
 C21Rem - 8 h22 // FullSimplify
- 
 (* Out: 0 *)
 \end{lstlisting}
 For $h_{21}$, Eq.~\eqref{eq:coeff-convent} requires
 $\mathcal{C}^{(2)}_0=-4h_{21}$. The corresponding result is
 \begin{lstlisting}[style=mma, caption={Validation of $h_{21}$, leaving a
 residual in $\gamma^{(1)}_\ell$.}]
-g1Res = C20Rem + 4 h21 // FullSimplify
- 
+g1Res = C20Rem + 4 h21 // FullSimplify 
 (* Out: (1/2)(-g[1, 1] - 8 gA[1, 1] - g[2, 1] - 8 gA[2, 1]
                - g[3, 1] - 8 gA[3, 1] - 2 Ctot gs1) *)
 \end{lstlisting}
@@ -118,7 +116,6 @@ the explicit values for the $q\bar q\to Zg$ channel gives
 $q\bar q\to Zg$ channel.}]
 g1Res /. {g[1, 1] -> ..., gA[1, 1] -> ..., gs1 -> ...,
           Ck[1] -> CF, Ck[2] -> CF, Ck[3] -> CA} // FullSimplify
- 
 (* Out: 0 *)
 \end{lstlisting}
 The remaining partonic channels follow analogously.
