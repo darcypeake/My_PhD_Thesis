@@ -1,12 +1,12 @@
 \chapter{Conclusion}
 \label{ch:conc}
 
-In high-energy collisions, QCD radiation plays a central role in shaping the
-events observed in experiments. Describing this radiation reliably presents
-a number of theoretical challenges. This thesis has addressed two of them:
-the clustering of QCD radiation into jets and the resummation of the large
-logarithms that accompany it. \todo{This sounds weird, I dont like 'them'
-and unsure i like experiments.}
+High-energy collisions are accompanied by QCD radiation, giving rise to the
+complex hadronic final states observed in experiments. Providing reliable
+theoretical predictions therefore requires an accurate description of this
+radiation, which presents a number of theoretical challenges. This thesis has
+addressed two of them --- the clustering of QCD radiation into jets and the
+resummation of the large logarithms that arise from it.
 
 
 In Chapter~\ref{chapter:DIS} we introduced a new family of inclusive
@@ -17,27 +17,24 @@ introduced an ordering variable for the reconstructed jets --- the
 light-cone fraction $z_i$ of Eq.~\eqref{eq:zi} --- which provides an
 infrared-safe prescription for identifying the final-state macrojet. We
 also reviewed the existing jet algorithms used in DIS, outlining their
-development and the ideas that led to our algorithm. To illustrate some
-of the features of the algorithm, we performed a phenomenological study
+development and the ideas that led to our algorithm. 
+
+To illustrate the features of the algorithm, we performed a phenomenological study
 comparing the angular-ordered, $k_t$ and anti-$k_t$ variants with the more
 recently developed Centauro algorithm~\cite{Arratia:2020ssx}. The
 comparison showed differences in the treatment of soft radiation and in
 the amount of struck-quark radiation retained within the final-state
-macrojet. We also investigated hadronisation effects and identified
-observables that are particularly insensitive to hadronisation, providing
-useful probes of non-perturbative physics in DIS.
-The algorithms have been implemented as the \texttt{DISGenkt} plugin
+macrojet. We also investigated the effects of hadronisation, which vary
+considerably across the distributions, and identified those best
+suited to probing non-perturbative physics in DIS. The algorithms have been
+implemented as the \texttt{DISGenkt} plugin
 to \textsc{FastJet}, distributed as part of \texttt{fjcontrib}.
-\todo{Dont really get all the parameter fit stuff so dont really want
-to empthasise it but do want to indicate that we did this study to observe
-features of the algorithm. Maybe say next steps is a more thorough analysis, unsure.
-Make sure the hadronisaiton stuff is accurate.}
 
 Further work could investigate the non-perturbative effects identified in
-this study, including through a re-analysis of existing HERA data. The
-development of the Electron--Ion Collider (EIC) also provides an
+this study, for example through a re-analysis of existing HERA data. The
+development of the Electron--Ion Collider also provides an
 opportunity to apply these algorithms to future DIS measurements. A
-further extension of this work is the resummation of jet rates. These
+natural extension of this work is the resummation of jet rates. These
 observables contain large logarithms of the resolution parameter, which make
 fixed-order predictions unreliable in precisely the region where the
 clustering properties of the algorithm matter most. As discussed in
@@ -51,20 +48,17 @@ for NNLL resummation in the presence of initial-state radiation and showed
 that the \textsc{ARES} master formula retains the same overall structure
 as in $\ee$ collisions, with the modifications associated with
 initial-state radiation contained in the corresponding ingredients of
-the formalism. In particular, we found that the inclusion of
-initial-state radiation does not alter the structure of the cumulant. We
-then derived the treatment of initial-state radiation in detail 
-and applied it to one-jettiness. The resulting expressions were
-compared analytically with existing results in the literature, providing
-a validation of the initial-state radiation formalism.
+the formalism. We derived the treatment of initial-state radiation in detail 
+and applied it to one-jettiness. The resulting expressions were validated against the 
+$N$-jettiness SCET subtraction coefficients of Ref.~\cite{Gaunt:2015pea} and, for colour-singlet
+production for the Lund tree-shape resummation of Ref.~\cite{vanBeekveld:2025zjh}.
 
 The formalism established here provides the basis for NNLL resummation of
 a broad class of observables in hadronic collisions. The next step towards
 phenomenological predictions is the calculation of the process-dependent
 hard coefficient for $hh\to Z+\mathrm{jet}$, which would complete the
 ingredients required for matching the resummed result to fixed-order
-calculations. Work towards this calculation is already underway.
-Beyond $Z+\mathrm{jet}$ production, the same formalism can be applied to
+calculations. Beyond $Z+\mathrm{jet}$ production, the same formalism can be applied to
 other observables and processes. In particular, progress has already been
 made towards its application to thrust minor and one minus transverse
 thrust. The formalism could also be extended to higher logarithmic
@@ -73,9 +67,10 @@ introduces additional complications through the colour structure of the
 wide-angle corrections. 
 
 The two areas of work in this thesis address different aspects of the same
-underlying problem: understanding how QCD radiation is organised and how
-its effects can be calculated reliably. The jet-algorithm study develops
-new tools for identifying and studying jets in DIS, while the resummation
-work extends the reach of NNLL predictions to hadronic collisions. Together,
-these results contribute to the development of precision QCD phenomenology
-for current and future collider experiments.
+underlying problem, namely how QCD radiation is organised and how
+its effects can be calculated reliably. The jet-algorithm work develops
+new tools for reconstructing jets in DIS, while the resummation
+work extends the reach of NNLL predictions to hadronic collisions.
+Together, these results contribute
+to the development of reliable theoretical predictions for QCD at current
+and future collider experiments.
