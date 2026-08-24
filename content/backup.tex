@@ -1,0 +1,934 @@
+\chapter{Backup}
+
+
+\section{Observable requirements: Resummation chapter}
+As a concrete example, consider thrust in the soft-collinear limit.
+Evaluating $\tau = 1 - T$ when an additional emission is soft and collinear
+to leg $\ell$, one finds~\cite{Banfi:2004yd}:
+\begin{equation}
+	\tau\simeq\tau_\mathrm{sc}=\sum_{\ell=1,2}\sum_{i\in\mathcal{H}_\ell}\frac{k_{ti}^{(\ell)}}{Q}e^{-\eta^{(\ell)}}\,,
+\end{equation}
+which is of the form of Eq.~\eqref{eq:general-sc-V}, with parameters
+\begin{equation}
+    a = b_\ell = d_\ell = g_\ell(\phi) = 1\,, \quad \ell = 1, 2\,.
+\end{equation}
+This particularly simple parameter set gives rise to a correspondingly 
+simple resummation structure.
+
+\section{NLL Resummation: Resummation chapter}
+
+To evaluate $\Sigma(\{p\},v)$, we split the exponent in
+Eq.~\eqref{eq:cumu-factor-more} according to whether the observable value
+for a single emission $k$ exceeds $v$:
+\begin{equation}
+\label{eq:exp-rad}
+  \int[dk]\,M^2(k)
+  = \underbrace{\int[dk]\,M^2(k)\,\Theta\!\left(V(\{\tilde{p}\},k)-v\right)}_{\displaystyle R(v)}+ \int[dk]\,M_{\mathrm{sc}}^2(k)\,\Theta\!\left(v-V_{\mathrm{sc}}(\{\tilde{p}\},k)\right)\,.
+\end{equation}
+In the second term, the full matrix element $M^2$ is replaced by its
+soft-collinear limit $M_{\mathrm{sc}}^2$, and $V$ by $V_{\mathrm{sc}}$.
+This is valid because the constraint
+$\Theta(v-V_{\mathrm{sc}})$ restricts the emission to the
+soft-collinear region, where $M^2\simeq M_{\mathrm{sc}}^2$, with the
+remaining corrections contributing only at NNLL accuracy.\footnote{These
+corrections are accounted for by the terms
+$\delta\mathcal{F}_{\rm hc}$, $\delta\mathcal{F}_{\rm sc}$, and
+$\Delta\mathcal{F}_{\rm wa}$ introduced in the NNLL extension in
+Ch.~\ref{ch:hhZjet}.}
+
+\section{Validation: N-jettiness subtraction}
+
+Ref.~\cite{Gaunt:2015pea} presents a subtraction method for
+performing NNLO QCD calculations for arbitrary processes, exploiting
+the factorisation of the $N$-jettiness distribution in the limit
+$\mathcal{T}_N\to0$. The method uses SCET to determine the IR
+singular contributions to $N$-jet cross sections analytically and
+constructs suitable $\mathcal{T}_N$-subtractions from them. The
+singular structure is organised into hard, beam, jet, and soft
+functions. The beam function $B_a$ encodes all collinear emissions
+from incoming parton $a$ and depends on its flavour $\kappa_a$ and
+momentum fraction $x_a$. The jet function $J_c$ encodes collinear
+emissions from the outgoing parton $c$ and depends on its flavour
+$\kappa_c$. The soft function $S_\kappa$, where
+$\kappa\equiv\{\kappa_a,\kappa_b,\kappa_c\}$ denotes the full
+partonic channel, describes all soft emissions between the partons.
+
+Specialising this to the one-jettiness ($N=1$), we find that the singular part of the distribution ($\tau_1\to0$) factorises as 
+\begin{equation}
+	\label{eq:Cnm-def}
+	\frac{\mathrm{d}\sigma^{\rm sing}(\{p\})}{\mathrm{d}\tau_1}
+	=\sum_{m\geq0}\left[\mathcal{C}_{-1}^{(m)}(\{p\},M,\mu_R)\,\delta(\tau_1)
+	+\sum_{n=0}^{2m-1}\mathcal{C}_n^{(m)}(\{p\},M,\mu_R)\,\mathcal{L}_n(\tau_1)\right]
+	\left(\frac{\alpha_s(\mu_R)}{4\pi}\right)^m\,,
+\end{equation}
+where 
+\begin{equation}
+	\mathcal{L}_n(\tau_1)=\left[\frac{\theta(\tau_1)\ln^n(\tau_1)}{\tau_1}\right]_+\,.
+\end{equation} 
+are the standard plus distributions. 
+
+The coefficients have the expansion
+\begin{subequations}
+\label{eq:subt-mn-exp}
+\begin{align}
+    &\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F,\lambda_1) =
+    \mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \mathcal{I}_{\kappa_1 k,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_1\,,\\
+    &J_{\kappa_3,n}^{(m)}(\lambda_3) = J_{\kappa_3,n}^{(m)}
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{\kappa_3,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
+    &\widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) =
+    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,,
+\end{align}
+\end{subequations}
+and analogously for $\mathcal{I}_{\kappa_2 k,n}^{(m)}(z,\lambda_F,\lambda_2)$. 
+
+For the $\mathcal{C}_{-1}^{(m)}$ coefficients:
+\begin{subequations}
+\begin{align}
+    &\mathcal{I}_{\kappa_1 k,-1}^{(m)}(z,\lambda_F,\lambda_1) =
+    \mathcal{I}_{\kappa_1 k,-1}^{(m)}(z,\lambda_F)
+    + \sum_{n=0}^{2m-1}\mathcal{I}_{\kappa_1 k,n}^{(m)}(z,\lambda_F)\,
+    \frac{\ln^{n+1}\!\lambda_1}{n+1}\,,\\
+    &J_{\kappa_3,-1}^{(m)}(\lambda_3) =J_{\kappa_3,-1}^{(m)}+\sum_{n=0}^{2m-1}J_{\kappa_3,n}^{(m)}\,\frac{\ln^{n+1}\!\lambda_3}{n+1}\,, \\
+   & \widehat{S}_{\kappa,-1}^{(m)}(\lambda_s) =
+    \widehat{S}_{\kappa,-1}^{(m)}+\sum_{n=0}^{2m-1}\widehat{S}_{\kappa,n}^{(m)}\,
+    \frac{\ln^{n+1}\!\lambda_s}{n+1}\,,
+\end{align}
+\end{subequations}
+
+
+\subsection{$h_{10}$}
+These are complete form of the coefficients when everything has been substituted in and simplified by 
+Mathematica while keeping the argument of the logarithms as dimensionless. 
+\begin{equation}
+\begin{aligned}
+\mathcal{C}^{(1)}_{-1} \;=\;& \frac{2}{3}\left(5C_F-3C_A\right)\pi^2 \,-\,4\pi\beta_0\ln\frac{M\,Q_{ab}^2\,Q_c}{\mu_R^4}\,+\,\frac{40\pi}{3}\beta_0 \\[1.5ex]
+&+\sum_{k}\int\frac{dz}{z}\,\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\,2I_{qk}^{(1)}
+ \;+\;\sum_{k}\int\frac{dz}{z}\,\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,2I_{\bar{q}k}^{(1)} \\[1ex]
+&+\sum_{k}\int\frac{dz}{z}\left(2P_{qk}\ln\frac{Q_a\,M}{Q^2}+2P_{qk}\ln\frac{Q^2}{\mu_F^2}+3C_F\ln\frac{Q^2}{Q_a\,M}\right)\frac{f_k(x_a/z,\mu_F)}{f_q(x_a,\mu_F)} \\[1ex]
+&+\sum_{k}\int\frac{dz}{z}\left(2P_{\bar{q}k}\ln\frac{Q_b\,M}{Q^2}+2P_{\bar{q}k}\ln\frac{Q^2}{\mu_F^2}+3C_F\ln\frac{Q^2}{Q_b\,M}\right)\frac{f_k(x_b/z,\mu_F)}{f_{\bar q}(x_b,\mu_F)} \\[1.5ex]
+&+(C_A-2C_F)\left(\ln^2\frac{Q_{ab}^2}{Q_aQ_b}+2\left(I_{ab,c}+I_{ba,c}\right)\right) \\[1ex]
+&-C_A\left(\ln^2\frac{Q_{ac}^2}{Q_aQ_c}+2\left(I_{ac,b}+I_{ca,b}\right)\right) \\[1ex]
+&-C_A\left(\ln^2\frac{Q_{bc}^2}{Q_bQ_c}+2\left(I_{bc,a}+I_{cb,a}\right)\right) \\[1.5ex]
+&+C_F\left[\ln^2\frac{Q_{ac}^2}{Q_{bc}^2}-\ln^2\frac{Q_{ab}^2}{\mu_R^2}
+ +2\ln^2\frac{Q_a}{\mu_R}+2\ln^2\frac{Q_b}{\mu_R}
+ +\ln^2\left(\frac{Q_aQ_b\,\mu_R^2}{Q_{ab}^4}\right)
+ -\ln^2\left(\frac{M^2Q_aQ_b}{Q_{ab}^4}\right) \right.\\[1ex]
+&\left.\hphantom{+C_F\left[\right.}
+ -6\ln\frac{Q^2}{Q_{ab}\,\mu_R}-8
+ +2\operatorname{Li}_2\left(\frac{-Q_{ac}^2}{M^2}\right)+2\operatorname{Li}_2\left(\frac{-Q_{bc}^2}{M^2}\right) \right.\\[1ex]
+&\left.\hphantom{+C_F\left[\right.}
+ +\ln^2\frac{M^2+Q_{ac}^2}{M^2}+\ln^2\frac{M^2+Q_{bc}^2}{M^2}
+ -\ln^2\frac{Q_{ac}^2+M^2}{Q_{ac}^2}-\ln^2\frac{Q_{bc}^2+M^2}{Q_{bc}^2}\right] \\[1.5ex]
+&+C_A\left[2\ln^2\left(\frac{\mu_R\,Q_{ab}^2\,Q_c}{Q_{ac}^2Q_{bc}^2}\right)+2\ln^2\frac{Q_c}{\mu_R}
+ -\frac{1}{2}\ln^2\frac{Q_{ac}^2Q_{bc}^2}{Q_{ab}^2\mu_R^2}
+ -2\ln^2\left(\frac{M\,Q_c\,Q_{ab}^2}{Q_{ac}^2Q_{bc}^2}\right)+\frac{11}{3} \right.\\[1ex]
+&\left.\hphantom{+C_A\left[\right.}
+ +2\operatorname{Li}_2\left(\frac{Q_{ab}^2-M^2}{Q_{ab}^2}\right)\right]
+\end{aligned}
+\end{equation}
+
+The \textsc{ARES} coefficient $h_{10}$ for the $q\bar q\to g H$ channel is
+\begin{equation}
+\begin{aligned}
+	h_{10}=\;&\frac{67\,C_A-10\,n_f}{18}
+	+\frac{19\pi^2}{12}(2C_F-C_A)
+	-2\pi\beta_0\ln\frac{M\,Q_c\,Q_{ab}^4}{\mu_R^6}\\[2ex]
+	&+\sum_{k}\int\frac{dz}{z} \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}2I_{qk}^{(1)}+\sum_{k}\int\frac{dz}{z}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}2I_{\bar{q}k}^{(1)}\\
+	&+\sum_{k}\int\frac{dz}{z}\left(P_{qk}(z)\ln\frac{Q_a\,M}{Q^2}+P_{qk}(z)\ln\frac{Q^2}{\mu_F^2}+\frac{3}{2}C_F\ln\frac{Q^2}{Q_a\,M}\right)
+    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}\\
+    &+\sum_{k}\int\frac{dz}{z}\left(P_{\bar{q}k}(z)\ln\frac{Q_b\,M}{Q^2}+P_{qk}(z)\ln\frac{Q^2}{\mu_F^2}+\frac{3}{2}C_F\ln\frac{Q^2}{Q_b\,M}\right)
+    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\\[1ex]
+	&+\frac{3}{2}C_F\ln\frac{Q_{ab}^2}{Q^2}
+	+\frac{3}{2}C_F\ln\frac{Q_{ab}^2}{Q^2}\\[1ex]
+	&+C_F\left[
+	\ln^2\frac{M}{Q_a}
+	+\ln^2\frac{M}{Q_b}
+	-\ln^2\frac{Q_{ab}^2}{M^2}
+	\right]
+\\[1ex]
+	&+\frac{C_A}{2}\left[
+	2\ln^2\frac{M}{Q_c}
+	+\ln^2\frac{M^2}{Q_{ab}^2}
+	-\ln^2\frac{M^2}{Q_{ac}^2}
+	-\ln^2\frac{M^2}{Q_{bc}^2}
+	\right]\\[2ex]
+	&+\frac{(C_A-2C_F)}{2}
+	\left(
+	\ln^2\frac{Q_{ab}^2}{Q_aQ_b}
+	+2(I_{ab,c}+I_{ba,c})
+	\right)\\[1ex]
+	&-\frac{C_A}{2}
+	\left(
+	\ln^2\frac{Q_{ac}^2}{Q_aQ_c}
+	+2(I_{ac,b}+I_{ca,b})
+	\right)\\[1ex]
+	&-\frac{C_A}{2}
+	\left(
+	\ln^2\frac{Q_{bc}^2}{Q_bQ_c}
+	+2(I_{bc,a}+I_{cb,a})
+	\right)\\
+	&+\frac{C_A}{2}\left[
+	\frac{152}{9}
+	+4\operatorname{Li}_2\left(\frac{Q_{ab}^2-M^2}{Q_{ab}^2}\right)
+	+2\ln\frac{Q_{ab}^2}{Q_{ac}^2}
+	\ln\frac{Q_{ab}^2}{Q_{bc}^2}
+	\right]\\[1ex]
+	&+\frac{C_F}{2}\left(
+	-16
+	+4\operatorname{Li}_2\left(\frac{-Q_{ac}^2}{M^2}\right)
+	+4\operatorname{Li}_2\left(\frac{-Q_{bc}^2}{M^2}\right)
+	-2\ln^2\frac{Q_{ac}^2+M^2}{Q_{ac}^2}
+	-2\ln^2\frac{Q_{bc}^2+M^2}{Q_{bc}^2}
+\right.
+\\[1ex]
+	&\left.
+	+2\ln^2\frac{M^2+Q_{ac}^2}{M^2}
+	+2\ln^2\frac{M^2+Q_{bc}^2}{M^2}
+	+2\ln^2\frac{Q_{ac}^2}{Q_{bc}^2}
+	\right)
+	-\frac{20}{18}n_f\,,
+\end{aligned}
+\end{equation}
+where we have used the relation
+\begin{equation}
+\label{eq:I1-ARES}
+I_{ik}^{(1)}(z) =
+-\hat{P}_{ik}^{(\varepsilon)}(z)
++\hat{P}_{ik}(z;0)\!\left[
+\left(\frac{\ln(1-z)}{1-z}\right)_{\!\!+}(1-z)
+-\ln z\right]
++\frac{\pi^2}{6}\,\delta_{ij}\,C_i\,\delta(1-z)\,,
+\end{equation}
+
+\subsection{NNLO ingredients}
+\label{subsec:NNLO-ingred}
+
+Unlike the NLO case, there is no compact master expression for the
+NNLO subtraction coefficients. For brevity the scale arguments are suppressed throughout this subsection. The contributions which make up these NNLO coefficients are organised into three types of quantity. The genuine $m$-loop contributions from the jet, beam, and soft functions as
+\begin{equation}
+\begin{aligned}
+\label{eq:Xn-def}
+    X_n^{(m)} \equiv &J_{c,n}^{(m)} + \widehat{S}_{\kappa,n}^{(m)} \\
+&   + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(m)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(m)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
+    \end{aligned}
+\end{equation}
+The cross terms involving the one-loop
+virtual amplitude $\vec{C}^{(1)}$ are
+\begin{equation}
+\label{eq:Xn11-def}
+\begin{aligned}
+    X_n^{(1+1)} \equiv& \,H^{(1)}_{\rm SCET}
+    \left[J_{c,n}^{(1)} + \widehat{S}_{\kappa,n}^{(1)} \right.\\
+  &\left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
+    \end{aligned}
+\end{equation}
+Finally, the cross-terms between two one-loop functions arising from the
+$\mathcal{L}_n\otimes\mathcal{L}_m$ convolution are
+\begin{equation}
+\label{eq:Xnm11-def}
+    X_{n,m}^{(1+1)} \equiv
+J_{\kappa_3,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}+\frac{B_{\kappa_1}}{f_i}J_{\kappa_3,m}^{(1)}
+    +\frac{B_{\kappa_2}}{f_j}J_{\kappa_3,m}^{(1)}+\frac{B_{\kappa_1}}{f_i}\widehat{S}_{\kappa,m}^{(1)}
+    +\frac{B_{\kappa_2}}{f_j}\widehat{S}_{\kappa,m}^{(1)}+\frac{B_{\kappa_1}}{f_i}\frac{B_{\kappa_2}}{f_j}\end{equation}
+With these definitions, the NNLO subtraction coefficients are
+\begin{subequations}
+\label{eq:NNLO-Cn}
+\begin{align}
+    \mathcal{C}_3^{(2)} &= X_3^{(2)} + X_{1,1}^{(1+1)}\,, 
+    \label{eq:C32}\\
+    \mathcal{C}_2^{(2)} &= X_2^{(2)} + \frac{3}{2}\!\left(
+        X_{0,1}^{(1+1)} + X_{1,0}^{(1+1)}\right)\,,
+    \label{eq:C22}\\
+    \mathcal{C}_1^{(2)} &= X_1^{(2)} + X_1^{(1+1)} + 2X_{0,0}^{(1+1)}
+        - \frac{\pi^2}{3}X_{1,1}^{(1+1)}+X_{1,-1}^{(1+1)}+X_{-1,1}^{(1+1)}\,,
+    \label{eq:C12}\\
+    \mathcal{C}_0^{(2)} &= X_0^{(2)} + X_0^{(1+1)}
+        - \frac{\pi^2}{6}\!\left(X_{0,1}^{(1+1)}+X_{1,0}^{(1+1)}\right)
+        + 2\zeta_3\,X_{1,1}^{(1+1)}+X_{0,-1}^{(1+1)}+X_{-1,0}^{(1+1)}\,.
+    \label{eq:C02}
+\end{align}
+\end{subequations}
+The last two terms Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are not present in Ref.~\cite{Gaunt:2015pea}. Please note that
+we believe this to be an error on their side and these terms must contribute to make
+up the full coefficient.
+
+\subsection{NLO ingredients}
+\label{subsec:NLO-ingred}
+
+
+At NLO, the required coefficients are $\mathcal{C}_1^{(1)}$ and $\mathcal{C}_0^{(1)}$,
+given by $n=1$ and $n=0$ respectively in
+\begin{equation}
+\label{eq:Cn1}
+\begin{aligned}
+    \mathcal{C}_n^{(1)}&(\{p\},M,\mu_R)=J_{c,n}^{(1)}(\lambda_c)
+    +\widehat{S}^{(1)}_{\kappa,n}\!\left(\{\widehat{q}_\ell\},\lambda_s\right)\\
+    &+\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}(z,\lambda_F,\lambda_a)
+    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_{k}\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}(z,\lambda_F,\lambda_b)
+    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
+\end{aligned}
+\end{equation}
+The beam function coefficients are related to the
+coefficients $\mathcal{I}_{ij}$ by
+\begin{equation}
+  B_{i,n}^{(m)}(x_i,\mu_R,\mu_F,\lambda_i) =
+  \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ik,n}^{(m)}\!\left(z,\lambda_F,\lambda_i\right)
+  f_k\!\left(\frac{x_i}{z},\mu_F\right)\,.
+\end{equation}
+We have substituted these directly into Eq.~\eqref{eq:Cn1} for a
+more transparent comparison with \textsc{ARES}, and refer to
+$\mathcal{I}_{ij}$ as the beam function coefficients throughout.
+
+The functions in Eq.~\eqref{eq:Cn1} are expanded in logarithms of the $\lambda$
+parameters as
+\begin{subequations}
+\label{eq:subt-mn-exp}
+\begin{align}
+    J_{\ell=3,n}^{(m)}(\lambda_3) &= J_{\ell=3,n}^{(m)}
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,J_{c,n+r}^{(m)}\,\ln^r\!\lambda_3\,, \\
+    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\},\lambda_s) &=
+    \widehat{S}_{\kappa,n}^{(m)}(\{\hat{q}_\ell\})
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \widehat{S}_{\kappa,n+r}^{(m)}(\{\hat{q}_\ell\})\,\ln^r\!\lambda_s\,, \\
+    \mathcal{I}_{i;\ell=1, k,n}^{(m)}(z,\lambda_F,\lambda_a) &=
+    \mathcal{I}_{ak,n}^{(m)}(z,\lambda_F)
+    + \sum_{r=1}^{2m-1-n}\frac{(n+r)!}{n!\,r!}\,
+    \mathcal{I}_{ak,n+r}^{(m)}(z,\lambda_F)\,\ln^r\!\lambda_a\,,
+\end{align}
+\end{subequations}
+and analogously for $\mathcal{I}_{bk,n}^{(m)}(z,\lambda_F,\lambda_b)$. 
+The $\lambda$
+parameters are defined as
+\begin{equation}
+    \lambda_3 = \frac{Q_3 M}{\mu_R^2}\,, \qquad
+    \lambda_s = \frac{M}{\mu_R}\,, \qquad
+    \lambda_1 = \frac{Q_1 M}{\mu_R}\,, \qquad
+    \lambda_2 = \frac{Q_2 M}{\mu_R}\,, \qquad
+    \lambda_F = \frac{\mu_R^2}{\mu_F^2}\,.
+\end{equation}
+
+
+\subsection{NNLO ingredients}
+\label{subsec:NNLO-ingred}
+
+Unlike the NLO case, there is no compact master expression for the
+NNLO subtraction coefficients. For brevity the scale arguments are suppressed throughout this subsection. The contributions which make up these NNLO coefficients are organised into three types of quantity. The genuine $m$-loop contributions from the jet, beam, and soft functions as
+\begin{equation}
+\begin{aligned}
+\label{eq:Xn-def}
+    X_n^{(m)} \equiv &J_{c,n}^{(m)} + \widehat{S}_{\kappa,n}^{(m)} \\
+&   + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(m)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(m)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\,.
+    \end{aligned}
+\end{equation}
+The cross terms involving the one-loop
+virtual amplitude $\vec{C}^{(1)}$ are
+\begin{equation}
+\label{eq:Xn11-def}
+\begin{aligned}
+    X_n^{(1+1)} \equiv& \,H^{(1)}_{\rm SCET}
+    \left[J_{c,n}^{(1)} + \widehat{S}_{\kappa,n}^{(1)} \right.\\
+  &\left.  + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}\frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    + \sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}\frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
+    \end{aligned}
+\end{equation}
+Finally, the cross-terms between two one-loop functions arising from the
+$\mathcal{L}_n\otimes\mathcal{L}_m$ convolution are
+\begin{equation}
+\label{eq:Xnm11-def}
+\begin{aligned}
+    X_{n,m}^{(1+1)} \equiv{}&
+    \left[J_{c,n}^{(1)}\,\widehat{S}_{\kappa,m}^{(1)}\right.\\
+    &+\!\left(J_{c,m}^{(1)}+\widehat{S}_{\kappa,m}^{(1)}\right)\!
+    \left(\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
+    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    +\sum_k\int\frac{dz}{z}\,\mathcal{I}_{bk,n}^{(1)}
+    \frac{f_k(x_b/z,\mu_F)}{f_b(x_b,\mu_F)}\right)\\
+    &\left.+\sum_k\int\frac{dz}{z}\,\mathcal{I}_{ak,n}^{(1)}
+    \frac{f_k(x_a/z,\mu_F)}{f_a(x_a,\mu_F)}
+    \cdot\sum_{k'}\int\frac{dz'}{z'}\,\mathcal{I}_{bk',m}^{(1)}
+    \frac{f_{k'}(x_b/z',\mu_F)}{f_b(x_b,\mu_F)}\right]\,.
+\end{aligned}
+\end{equation}
+With these definitions, the NNLO subtraction coefficients are
+\begin{subequations}
+\label{eq:NNLO-Cn}
+\begin{align}
+    \mathcal{C}_3^{(2)} &= X_3^{(2)} + X_{1,1}^{(1+1)}\,, 
+    \label{eq:C32}\\
+    \mathcal{C}_2^{(2)} &= X_2^{(2)} + \frac{3}{2}\!\left(
+        X_{0,1}^{(1+1)} + X_{1,0}^{(1+1)}\right)\,,
+    \label{eq:C22}\\
+    \mathcal{C}_1^{(2)} &= X_1^{(2)} + X_1^{(1+1)} + 2X_{0,0}^{(1+1)}
+        - \frac{\pi^2}{3}X_{1,1}^{(1+1)}+X_{1,-1}^{(1+1)}+X_{-1,1}^{(1+1)}\,,
+    \label{eq:C12}\\
+    \mathcal{C}_0^{(2)} &= X_0^{(2)} + X_0^{(1+1)}
+        - \frac{\pi^2}{6}\!\left(X_{0,1}^{(1+1)}+X_{1,0}^{(1+1)}\right)
+        + 2\zeta_3\,X_{1,1}^{(1+1)}+X_{0,-1}^{(1+1)}+X_{-1,0}^{(1+1)}\,.
+    \label{eq:C02}
+\end{align}
+\end{subequations}
+The last two terms Eqs.~\eqref{eq:C12} and~\eqref{eq:C02} are not present in Ref.~\cite{Gaunt:2015pea}.
+
+\section{SCET subtraction ingredients: Appendix}
+\label{ap:N-jet-ing}
+ Legs are labelled $a$, $b$ (incoming) and
+$c$ (outgoing jet), in place of $\ell=1,2,3$ used
+when calculating the \textsc{ARES} coefficients above.
+
+\subsection{NLO subtraction ingredients}
+\begin{subequations}
+\label{eq:C11-ingred}
+\begin{align}
+&J_{c,1}^{(1)} = 4C_c\,, \\[1ex]
+&\mathcal{I}_{ak,1}^{(1)} = 4C_a\,\delta_{ak}\,\delta(1-z)\,, \\[1ex]
+&\mathcal{I}_{bk,1}^{(1)} = 4C_b\,\delta_{bk}\,\delta(1-z)\,, \\[1ex]
+&\widehat{S}_{\kappa,1}^{(1)} = -8(C_a+C_b+C_c)\,.
+\end{align}
+\end{subequations}
+%
+\begin{subequations}
+\label{eq:C10-ingred}
+\begin{align}
+&J_{c,0}^{(1)} = -2\gamma_c^{(0)}\,, \\[1ex]
+&\mathcal{I}_{ak,0}^{(1)} = -2\gamma_a^{(0)}\,\delta_{ak}\,\delta(1-z)+2P_{ak}\,, \\[1ex]
+&\mathcal{I}_{bk,0}^{(1)} = -2\gamma_b^{(0)}\,\delta_{bk}\,\delta(1-z)+2P_{bk}\,, \\[1ex]
+&\widehat{S}_{\kappa,0}^{(1)} =
+    4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}+\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    -\ln\frac{Q_{bc}^2}{Q_b Q_c}\right) \nonumber\\[0.5ex]
+  &\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}+\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    -\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \nonumber\\[0.5ex]
+  &\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}+\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\,.
+\end{align}
+\end{subequations}
+%
+\begin{subequations}
+\label{eq:Cd1-ingred}
+\begin{align}
+&J_{c,-1}^{(1)} = \begin{cases}
+    C_F(7-\pi^2)\,, & \text{if $c$ is a quark}\,, \\[4pt]
+    C_A\!\left(\dfrac{4}{3}-\pi^2\right)+\dfrac{20}{3}\pi\beta_0\,, &\text{if $c$ is a gluon}\,,
+\end{cases} \\[1ex]
+&\mathcal{I}_{ak,-1}^{(1)} = 2I_{ak}^{(1)}+2\ln\lambda_F\,P_{ak}\,, \\[1ex]
+&\mathcal{I}_{bk,-1}^{(1)} = 2I_{bk}^{(1)}+2\ln\lambda_F\,P_{bk}\,, \\[1ex]
+&\widehat{S}_{\kappa,-1}^{(1)}
+  = C_a\!\left(\ln^2\frac{Q_{bc}^2}{Q_b Q_c}
+     -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
+     -\ln^2\frac{Q_{ac}^2}{Q_a Q_c}+\frac{\pi^2}{6}\right) \notag\\[0.5ex]
+  &\qquad+C_b\!\left(\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
+     -\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
+     -\ln^2\frac{Q_{bc}^2}{Q_b Q_c}+\frac{\pi^2}{6}\right) \notag\\[0.5ex]
+  &\qquad+C_c\!\left(\ln^2\frac{Q_{ab}^2}{Q_a Q_b}
+     -\ln^2\frac{Q_{ac}^2}{Q_a Q_c}
+     -\ln^2\frac{Q_{bc}^2}{Q_b Q_c}+\frac{\pi^2}{6}\right) \notag\\[0.5ex]
+  &\qquad+2C_a\!\left(I_{bc,a}+I_{cb,a}-I_{ab,c}-I_{ba,c}-I_{ac,b}-I_{ca,b}\right) \notag\\[0.5ex]
+  &\qquad+2C_b\!\left(I_{ac,b}+I_{ca,b}-I_{ab,c}-I_{ba,c}-I_{bc,a}-I_{cb,a}\right) \notag\\[0.5ex]
+  &\qquad+2C_c\!\left(I_{ab,c}+I_{ba,c}-I_{ac,b}-I_{ca,b}-I_{bc,a}-I_{cb,a}\right)\,.
+\end{align}
+\end{subequations}
+The matching functions, $I_{ak}^{(1)}$ and $I_{bk}^{(1)}$, are expressed as:
+\begin{subequations}
+\begin{align}
+  I^{(1)}_{qq}(z) &=C_F\left[ \left(\frac{\ln(1-z)}{1-z}\right)_+(1+z^2)
+  -\frac{\pi^2}{6}\delta(1-z)+\Theta(1-z)\left(1-z-\frac{1+z^2}{1-z}\ln z\right)\right]\,,\\[1ex]
+  I^{(1)}_{qg}(z) &= T_R\left[\left(z^2+(1-z)^2\right)\ln\frac{1-z}{z}
+  +2z(1-z)\right]\,,\\[1ex]
+  I^{(1)}_{gq}(z) &= C_F\left[\frac{1+(1-z)^2}{z}\ln\frac{1-z}{z}+z\right]\,,\\[1ex]
+  I^{(1)}_{gg}(z) &= C_A\left[\left(\frac{\ln(1-z)}{1-z}\right)_+\frac{2(1-z+z^2)^2}{z}-\frac{\pi^2}{6}\delta(1-z)-\frac{2\ln z}{(1-z)_+}\frac{(1-z+z^2)^2}{z}\right]\notag\\[0.5ex]
+  &\qquad\qquad+\frac{\beta_0}{2}\delta(1-z)\,.
+\end{align}
+\end{subequations}
+
+\subsection{NNLO subtraction ingredients}
+\begin{subequations}
+\label{eq:C23-ingred}
+\begin{align}
+&J_{c,3}^{(2)} = 8C_c^2\,, \\[1ex]
+&\mathcal{I}_{ak,3}^{(2)} = 8C_a^2\,\delta_{ak}\,\delta(1-z)\,, \\[1ex]
+&\mathcal{I}_{bk,3}^{(2)} = 8C_b^2\,\delta_{bk}\,\delta(1-z)\,, \\[1ex]
+&\widehat{S}_{\kappa,3}^{(2)} = 32\left(C_a+C_b+C_c\right)^2\,.
+\end{align}
+\end{subequations}
+\begin{subequations}
+\label{eq:C22-ingred}
+\begin{align}
+&J_{c,2}^{(2)} = -2C_c\left(6\gamma_c^{(0)}+4\pi\beta_0\right)\,, \\[1ex]
+&\mathcal{I}_{ak,2}^{(2)} = 4C_a\left[
+    -\left(3\gamma_a^{(0)}+2\pi\beta_0\right)\delta_{ak}\,\delta(1-z)
+    +3P_{ak}\right]\,, \\[1ex]
+&\mathcal{I}_{bk,2}^{(2)} = 4C_b\left[
+    -\left(3\gamma_b^{(0)}+2\pi\beta_0\right)\delta_{bk}\,\delta(1-z)
+    +3P_{bk}\right]\,, \\[1ex]
+&\widehat{S}_{\kappa,2}^{(2)} =
+    4(C_a+C_b+C_c)\left[8\pi\beta_0-12C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
+  &\qquad\qquad\qquad\qquad\qquad-12C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}\notag
+      +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
+  &\left.\qquad\qquad\qquad\qquad\qquad-12C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
+\end{align}
+\end{subequations}
+
+\begin{subequations}
+\label{eq:C21-ingred}
+\begin{align}
+&J_{c,1}^{(2)} = 8C_c K^{(1)}-\frac{8\pi^2}{3}C_c^2
+    +2\gamma_c^{(0)}\!\left(2\gamma_c^{(0)}+4\pi\beta_0\right)
+    +4C_c J_{c,-1}^{(1)}\,, \\[1ex]
+&\mathcal{I}_{ak,1}^{(2)} =
+    \left[8C_a K^{(1)}-\frac{8\pi^2}{3}C_a^2
+    +2\gamma_a^{(0)}\left(2\gamma_a^{(0)}+4\pi\beta_0\right)\right]
+    \delta_{ak}\,\delta(1-z) \notag\\[0.5ex]
+  &\qquad+8C_a\left(I_{ak}^{(1)}+\ln\lambda_F\,P_{ak}\right)
+    +4\sum_m P_{am}\otimes_z P_{mk}
+    -2\left(4\gamma_a^{(0)}+4\pi\beta_0\right)P_{ak}\,, \\[1ex]
+&\mathcal{I}_{bk,1}^{(2)} =
+    \left[8C_b K^{(1)}-\frac{8\pi^2}{3}C_b^2
+    +2\gamma_b^{(0)}\left(2\gamma_b^{(0)}+4\pi\beta_0\right)\right]
+    \delta_{bk}\,\delta(1-z) \notag\\[0.5ex]
+  &\qquad+8C_b\left(I_{bk}^{(1)}+\ln\lambda_F\,P_{bk}\right)
+    +4\sum_m P_{bm}\otimes_z P_{mk}
+    -2\left(4\gamma_b^{(0)}+4\pi\beta_0\right)P_{bk}\,, \\[1ex]
+&\widehat{S}_{\kappa,1}^{(2)} =-\left(C_a+C_b+C_c\right)\left(8\widehat{S}_{\kappa,-1}^{(1)}
+    +16K^{(1)}+\frac{32\pi^2}{3}\left(C_a+C_b+C_c\right)\right) \notag \\[0.5ex]
+    &\qquad+16\left[C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
+  &\qquad\qquad+C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
+  &\left.\qquad\qquad+C_c\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]^2\notag\\[0.5ex]
+  &\qquad+8\pi\beta_0\left[-4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
+  &\qquad\qquad\qquad-4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
+  &\left.\qquad\qquad\qquad-4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
+\end{align}
+\end{subequations}
+
+\begin{subequations}
+\label{eq:C20-ingred}
+\begin{align}
+&J_{c,0}^{(2)} = 16C_c^2\zeta_3+\frac{4\pi^2}{3}C_c\gamma_c^{(0)}
+    -\left(4\gamma_c^{(0)}+4\pi\beta_0\right)J_{c,-1}^{(1)}
+    -\frac{\gamma_{c,s}^{(1)}}{2}\,, \\[1ex]
+&\mathcal{I}_{ak,0}^{(2)} =
+    \left(16C_a^2\zeta_3+\frac{4\pi^2}{3}C_a\gamma_a^{(0)}
+    -\frac{\gamma_{a,s}^{(1)}}{2}\right)\delta_{ak}\,\delta(1-z)
+    -\frac{4\pi^2}{3}C_a P_{ak} \notag\\[0.5ex]
+  &\qquad-\left(4\gamma_a^{(0)}+8\pi\beta_0\right)I_{ak}^{(1)}
+    +4\sum_m I_{am}^{(1)}\otimes_z P_{mk}+4P_{ak}^{(1)} \notag\\[0.5ex]
+  &\qquad+\ln\lambda_F\!\left[-4\gamma_a^{(0)}P_{ak}
+    +4\sum_m P_{am}\otimes_z P_{mk}+4P_{ak}^{(1)}\right]\,, \\[1ex]
+&\mathcal{I}_{bk,0}^{(2)} =
+    \left(16C_b^2\zeta_3+\frac{4\pi^2}{3}C_b\gamma_b^{(0)}
+    -\frac{\gamma_{b,s}^{(1)}}{2}\right)\delta_{bk}\,\delta(1-z)
+    -\frac{4\pi^2}{3}C_b P_{bk} \notag\\[0.5ex]
+  &\qquad-\left(4\gamma_b^{(0)}+8\pi\beta_0\right)I_{bk}^{(1)}
+    +4\sum_m I_{bm}^{(1)}\otimes_z P_{mk}+4P_{bk}^{(1)} \notag\\[0.5ex]
+  &\qquad+\ln\lambda_F\!\left[-4\gamma_b^{(0)}P_{bk}
+    +4\sum_m P_{bm}\otimes_z P_{mk}+4P_{bk}^{(1)}\right]\,, \\[1ex]
+&\widehat{S}_{\kappa,0}^{(2)} =
+    64\left(C_a+C_b+C_c\right)^2\zeta_3-\gamma_S^{(1)}\left(C_a+C_b+C_c\right)
+    -8\pi\beta_0\,\widehat{S}_{\kappa,-1}^{(1)} \notag\\[0.5ex]
+  &\qquad+\frac{4\pi^2}{3}(C_a+C_b+C_c)\left[
+    4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
+  &\qquad\qquad\qquad\qquad\qquad\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
+  &\left.\qquad\qquad\qquad\qquad\qquad\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right] \notag\\[0.5ex]
+  &\qquad+\left(\widehat{S}_{\kappa,-1}^{(1)}+K^{(1)}\right)\!\left[
+    4C_a\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{ac}^2}{Q_a Q_c}-\ln\frac{Q_{bc}^2}{Q_b Q_c}\right)\right. \notag\\[0.5ex]
+  &\qquad\qquad\qquad\qquad\qquad+4C_b\!\left(\ln\frac{Q_{ab}^2}{Q_a Q_b}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}-\ln\frac{Q_{ac}^2}{Q_a Q_c}\right) \notag\\[0.5ex]
+  &\left.\qquad\qquad\qquad\qquad\qquad+4C_c\!\left(\ln\frac{Q_{ac}^2}{Q_a Q_c}
+    +\ln\frac{Q_{bc}^2}{Q_b Q_c}
+    -\ln\frac{Q_{ab}^2}{Q_a Q_b}\right)\right]\,.
+\end{align}
+\end{subequations}
+The convolution $\otimes_z$ is defined as:
+\begin{equation}
+P_{ij}(z)\otimes_z P_{jk}(z)=\int_z^1\frac{dw}{w}P_{ij}(w)P_{jk}\left(\frac{z}{w}\right)
+\end{equation}
+and analogously for $I_{ij}^{(1)}\otimes_z P_{jk}$, where the index $j$ is not summed over. 
+Additionally,  the noncusp soft anomalous dimension is
+\begin{equation}
+\gamma_S^{(1)}=C_A\left(-\frac{64}{9}+28\zeta_3\right)+4\pi\beta_0\left(-\frac{56}{9}+\frac{\pi^2}{3}\right)\,,
+\end{equation}
+while those for the beam and jet functions $\gamma^{(1)}_{\ell,s}$ are, for a quark,
+\begin{equation}
+\gamma_{q,s}^{(1)}=C_F\left[C_A\left(\frac{146}{9}-80\zeta_3\right)+C_F(3-4\pi^2+48\zeta_3)+4\pi\beta_0\left(\frac{121}{9}+\frac{2\pi^2}{3}\right)\right]\,,
+\end{equation}
+and for a gluon,
+\begin{equation}
+\gamma_{g,s}^{(1)}=C_A\left[C_A\left(\frac{182}{9}-32\zeta_3\right)+4\pi\beta_0\left(\frac{94}{9}-\frac{2\pi^2}{3}\right)\right]\,.
+\end{equation}
+The subscript $s$ indicates that these follow the $N$-jettiness SCET convention opposed to 
+those used within the \textsc{ARES} formalism as defined in Eq.~\eqref{eq:gammal1-flav}.
+
+
+\section{ISR parts}
+\subsection{qg channel}
+The contribution of the splitting $g\to q\bar q$ can be obtained in a
+similar way, with the major difference that there is no soft limit to
+subtract and there are no virtual corrections.
+This gives three contributions, $C_{\mathrm{hc},qg}^{(1)}$, $\delta\mathcal{F}_{\mathrm{hc},qg}$, $\delta\mathcal{F}_{\mathrm{rec},qg}$:
+  \begin{multline}
+    \label{eq:C1qg-final}
+C^{(1)}_{\mathrm{hc}, qg}=  \int_{x_\ell}^1\frac{dz}{z}\,\frac{f_g(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\times \\ \times
+\left[\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
+        \left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\right)(1-z)\hat P_{qg}(z;0)-P_{qg}^{(\varepsilon)}(z)\right]\,.
+  \end{multline}
+\begin{equation}
+\label{eq:dFrec-qg}
+\begin{aligned}
+\delta \mathcal{F}_{\mathrm{rec},qg} = \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta} &\int_0^{2\pi}\frac{d\phi}{2\pi}\int \dZ\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qg}(z;0)\,\frac{f_g(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \\
+&\times  
+\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
+\end{aligned}
+\end{equation}
+\begin{multline}
+\label{eq:dFhc-qg}
+\delta \mathcal{F}_{\mathrm{hc},qg} = \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left(\int_{x_\ell}^1 \frac{dz}{z}\frac{f_g(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} P_{qg}(z)\right)\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\times \\
+\times \int \dZ   \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
+\end{multline}
+Where we have introduced the splitting functions
+\begin{equation}
+  \label{eq:Pqg}
+  \hat P_{qg}(z;\varepsilon) = \hat P_{qg}(z;0)+\varepsilon \hat P_{qg}^{(\varepsilon)}(z)\,,\quad
+ \hat P_{qg}(z;0)= P_{qg}(z) = T_R \left[z^2+(1-z)^2\right]\,,
+   \quad \hat P_{qg}^{(\varepsilon)}(z) = -2T_R z(1-z)\,.
+ \end{equation}
+
+
+\section{Hard function}
+
+\chapter{One-loop hard function}
+\label{ap:H1-extraction}
+
+Following the argument of Sec.~\ref{subsec:NNLL-coeff}, we extract the
+hard coefficient $H^{(1)}_{ij}$ of Eq.~\eqref{eq:HQ-expanded} and the
+one-loop hard function $H^{(1)}_{\rm SCET}$ of Eq.~\eqref{eq:CH-SCET}
+for the $q\bar q\to Hg$ channel. The remaining partonic channels follow
+analogously. Since the relation between the two is fixed by the colour
+charges and directions of the external partons alone
+(cf.\ Eq.~\eqref{eq:HQ}), the finite remainder obtained below is
+specific to Higgs production, but the relation it validates is not.
+
+\paragraph{Pole comparison.} Expanding Eq.~\eqref{eq:HQ-expanded} in $\varepsilon$ for the
+$q\bar{q}\to Zg$ process, the double-pole
+coefficient is
+\begin{equation}
+  \label{eq:H-pole2}
+  -\frac{1}{\varepsilon^2}(C_A+2C_F)\,,
+\end{equation}
+and the single-pole coefficient is
+\begin{equation}
+  \label{eq:H-pole1}
+  \frac{1}{\varepsilon}\!\left(
+  -\frac{11}{6}C_A-3C_F+\frac{n_f}{3}
+  +(C_A-2C_F)\ln\frac{\mu_R^2}{Q_{12}^2}
+  -C_A\ln\frac{\mu_R^2}{Q_{13}^2}
+  -C_A\ln\frac{\mu_R^2}{Q_{23}^2}
+  \right)\,.
+\end{equation}
+Comparing with the poles found in Ref.~\cite{Ravindran:2002dc}. The bare differential cross section at leading-order is
+\begin{equation}
+\label{eq:LO-bare}
+  Q_{12}^4\frac{d^2\sigma_{0,\,q\bar{q}\to g H}}{dQ_{13}^2\,dQ_{23}^2} =
+  \frac{\pi\,\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-m_H^2)}{\Gamma(1-\varepsilon)}
+  \,\frac{1}{4N_c^2}
+  \left(\frac{\mu_0^2\,Q_{12}^2}{Q_{13}^2Q_{23}^2}\right)^\varepsilon
+ \left( \frac{\alpha_s(\mu_0^2)}{4\pi}\right)^3
+ |\mathcal{M}^{(0)}_{q\bar{q}\to g H}|^2\,,
+\end{equation}
+where $\mu_0$ is the bare reference scale.
+
+We must renormalise the strong coupling constant due to UV divergences using,
+\begin{equation}
+  \label{eq:Catani-renorm}
+  \alpha_s(\mu_0^2) =
+\alpha_s(\mu_R^2)
+  \!\left[1-\frac{\alpha_s(\mu_R^2)\beta_0}{\varepsilon}
+  +\mathcal{O}(\alpha_s^2)\right] \left(\frac{\mu_R^2}{\mu_0^2}\right)^\varepsilon\,,
+\end{equation}
+leading to the renormalised form of the LO differential cross-section
+\begin{equation}
+\begin{aligned}
+  \label{eq:LO-ren}
+  Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to gH}^{{\rm LO},\rm Ren}}{dQ_{13}^2\,dQ_{23}^2}& \simeq
+  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
+  \frac{S_\varepsilon}{\Gamma(1-\varepsilon)}
+  \,\frac{1}{4N_c^2}
+  \left(\frac{\mu_R^2\,Q_{12}^2}{Q_{13}^2Q_{23}^2}\right)^\varepsilon
+\left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^3
+\left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\\
+&\times  \!\left[1-\frac{3\alpha_s(\mu_R^2)\beta_0}{\varepsilon}\right] |M_{q\bar{q}\to gH}^{(1)}|^2\,.
+  \end{aligned}
+  \end{equation}
+ 
+The bare one-loop virtual correction have the form
+\begin{equation}
+\label{eq:VIRT-bare}
+\begin{aligned}
+  &Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT}}{dQ_{13}^2\,dQ_{23}^2} =
+  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,S_\varepsilon^2\,\frac{1}{N_c^2}
+ \left(\frac{\alpha_s(\mu_0^2)}{4\pi}\right)^2
+   \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^2  \\[0.5ex]
+  &\quad\qquad\qquad\qquad\times\left[ n_f\!\left(-\frac{1}{3\varepsilon}
+  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{1}{3}\ln\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{5}{9}\right) \right.\\
+   &\qquad\qquad\qquad\qquad+C_A\!\left(-\frac{1}{2\varepsilon^2}
+  +\!\left(-\ln\frac{Q_{12}^2}{\mu_R^2}
+  +\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\ln\frac{Q_{13}^2}{\mu_R^2}
+  +\frac{11}{6}\right)\frac{1}{\varepsilon}\right.\\[0.5ex]
+  &\qquad\qquad\qquad\qquad+\operatorname{Li}_2\!\left(
+  \frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
+  -\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  +\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}
+  +\ln\frac{Q_{13}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}\\[0.5ex]
+  &\qquad\qquad\qquad\qquad\left.-\ln^2\frac{Q_{23}^2}{\mu_R^2}
+  -\ln^2\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_R^2}
+  -\frac{11}{6}\ln\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\[0.5ex]
+  &\qquad\qquad\qquad\qquad+C_F\left(-\frac{1}{\varepsilon^2}
+  +\!\left(\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\ln\frac{Q_{13}^2}{\mu_R^2}-\frac{3}{2}\right)\frac{1}{\varepsilon}
+  +\operatorname{Li}_2\!\left(\frac{-Q_{23}^2}{M^2}\right)
+  +\operatorname{Li}_2\!\left(\frac{-Q_{13}^2}{M^2}\right)\right.\\[0.5ex]
+  &\qquad\qquad\qquad\qquad-2\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{Q_{23}^2}\right)
+  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{Q_{13}^2}\right)\\[0.5ex]
+  &\qquad\qquad\qquad\qquad\left.+\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{M^2}\right)
+  +\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{M^2}\right)
+  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  +9\zeta_2-4\right)\\[0.5ex]
+  &\qquad\qquad\qquad\qquad\left.+\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  +9\zeta_2-4\right]|M^{(1)}_{q\bar{q}\to g H}|^2\,.
+\end{aligned}
+\end{equation}
+We renormalise the bare coupling, again using Eq.~\eqref{eq:Catani-renorm} and find
+\begin{equation}
+\label{eq:virt-ren}
+  Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT, Ren}}{dQ_{13}^2\,dQ_{23}^2} \simeq
+  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,S_\varepsilon^2
+  \,\frac{1}{N_c^2}
+  \left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^4  \left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\left[\ldots\right]|M^{(1)}_{q\bar{q}\to g H}|^2 \,,
+\end{equation}
+where the $\ldots$ represent terms found in the square brackets of Eq.~\eqref{eq:VIRT-bare}.
+The relevant combination for extracting the hard function is the
+sum of the renormalised LO and virtual terms at order $\mathcal{O}(\alpha_s^4)$
+\ABquestion{Do I need to explain why we go up to this order of $\alpha_s$ and also why it is this combination which gives the the finite virtual corrections?}
+\begin{equation}
+\begin{aligned}
+\label{eq:LO+virt-ren}
+  &Q_{12}^4\frac{d^2\sigma_{q\bar{q}\to g H}^{(1),\rm Ren}}{dQ_{13}^2\,dQ_{23}^2}
+  +Q_{12}^4\frac{d^2\hat\sigma_{q\bar{q}\to g H}^{\rm VIRT,Ren}}{dQ_{13}^2\,dQ_{23}^2}\\[0.5ex]
+ &\simeq  \pi\delta(Q_{12}^2-Q_{13}^2-Q_{23}^2-M^2)\,
+  \frac{S_\varepsilon}{\Gamma(1-\varepsilon)}
+  \,\frac{1}{4N_c^2}
+  \left(\frac{\mu_R^2\,s}{tu}\right)^\varepsilon
+\left(\frac{\alpha_s(\mu_R^2)}{4\pi}\right)^4
+\left(\frac{\mu_R^2}{\mu_0^2}\right)^{2\varepsilon}\\[0.5ex]
+&\times\left\{-\frac{12 \pi \beta_0}{\varepsilon}+\right.+4 S_{\varepsilon}\Gamma(1-\varepsilon)
+  \left(\frac{Q_{13}^2 Q_{23}^2}{\mu_R^2\,Q_{12}^2}\right)^\varepsilon \left[ n_f\!\left(-\frac{1}{3\varepsilon}
+  +\frac{1}{3}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{1}{3}\ln\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{5}{9}\right) \right.\\[0.5ex]
+   &\quad+C_A\!\left(-\frac{1}{2\varepsilon^2}
+  +\!\left(-\ln\frac{Q_{12}^2}{\mu_R^2}
+  +\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\ln\frac{Q_{13}^2}{\mu_R^2}
+  +\frac{11}{6}\right)\frac{1}{\varepsilon}\right.\\[0.5ex]
+  &\quad+\operatorname{Li}_2\!\left(
+  \frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
+  -\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  +\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}
+  +\ln\frac{Q_{13}^2}{\mu_R^2}\ln\frac{Q_{12}^2}{\mu_R^2}\\[0.5ex]
+  &\quad\left.-\ln^2\frac{Q_{23}^2}{\mu_R^2}
+  -\ln^2\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{11}{6}\ln\frac{Q_{23}^2}{\mu_R^2}
+  -\frac{11}{6}\ln\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{7}{2}\zeta_2+\frac{38}{9}\right)\\[0.5ex]
+  &\quad+C_F\left(-\frac{1}{\varepsilon^2}
+  +\!\left(\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\ln\frac{Q_{13}^2}{\mu_R^2}-\frac{3}{2}\right)\frac{1}{\varepsilon}
+  +\operatorname{Li}_2\!\left(\frac{-Q_{23}^2}{M^2}\right)
+  +\operatorname{Li}_2\!\left(\frac{-Q_{13}^2}{M^2}\right)\right.\\[0.5ex]
+  &\quad-2\ln\frac{Q_{23}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{Q_{23}^2}\right)
+  -\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{Q_{13}^2}\right)\\[0.5ex]
+  &\quad\left.+\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{23}^2}{M^2}\right)
+  +\frac{1}{2}\ln^2\!\left(\frac{M^2+Q_{13}^2}{M^2}\right)
+  +\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}\right)\\[0.5ex]
+  &\quad\left.\left.+9\zeta_2-4+\frac{3}{2}\ln\frac{Q_{23}^2}{\mu_R^2}
+  +\frac{3}{2}\ln\frac{Q_{13}^2}{\mu_R^2}
+  +9\zeta_2-4\right]\right\}|M^{(1)}_{q\bar{q}\to g H}|^2\,.
+\end{aligned}
+\end{equation}
+\ABquestion{The $S_{\varepsilon}\Gamma(1-\varepsilon)$
+term gives a $\ln 4\pi$ which is absorbed into the coupling in MS-bar scheme which
+is what the Catani poles are in so in essence this can also be absorbed into
+the coupling?}
+
+The double-pole coefficients in Eq.~\eqref{eq:LO+virt-ren} are:
+\begin{equation}
+  \label{eq:vN-pole2}
+  -\frac{2}{\varepsilon^2}(C_A+2C_F)\,,
+\end{equation}
+and the single-pole coefficient is
+\begin{equation}
+   \label{eq:vN-pole1}
+  \frac{1}{\varepsilon}\!\left(
+  -\frac{11}{3}C_A-6C_F+\frac{2n_f}{3}
+  +2(C_A-2C_F)\ln\frac{\mu_R^2}{Q_{12}^2}
+  -2C_A\ln\frac{\mu_R^2}{Q_{13}^2}
+  -2C_A\ln\frac{\mu_R^2}{Q_{23}^2}
+  \right)\,.
+\end{equation}
+
+Comparing with Eqs.~\eqref{eq:H-pole2} and~\eqref{eq:H-pole1},
+the poles of Ref.~\cite{Ravindran:2002dc} are exactly twice those
+of $\mathcal{V}(Q;\varepsilon)$, this factor is taken into account when 
+subtracting the finite terms.
+
+\paragraph{Extraction of the finite remainder}
+The finite remainder is extracted from the
+$\mathcal{O}(\varepsilon^0)$ terms of Eq.~\eqref{eq:VIRT-bare}
+after subtracting the predicted poles giving rise to
+the SCET hard function
+\begin{equation}
+\label{eq:H1-SCET}
+\begin{aligned}
+& H^{(1)}_{\rm SCET}=n_f\left(-\frac{10}{9}-\frac{2}{3}\ln\frac{\mu_R^2}{Q_{12}^2}\right)+\pi^2\left(
+3C_F-\frac{7}{6}C_A
+\right)\\[0.5ex]
+& \qquad+C_A\left[
+\frac{76}{9}
++2\operatorname{Li}_2\left(\frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
+-\frac{11}{3}\ln\frac{Q_{12}^2}{\mu_R^2}
++\frac{1}{2}\ln^2\frac{\mu_R^2}{Q_{12}^2}
+-\frac{1}{2}\ln^2\frac{\mu_R^2}{Q_{13}^2}
+-\frac{1}{2}\ln^2\frac{\mu_R^2}{Q_{23}^2}\right.\\[0.5ex]
+&\quad\qquad\qquad\left.+\ln\frac{Q_{12}^2}{Q_{13}^2}
+ \ln\frac{Q_{12}^2}{Q_{23}^2}
+\right]\\[0.5ex]
+&\qquad+C_F\left[-8
++2\operatorname{Li}_2\left(\frac{-Q_{13}^2}{M^2}\right)
++2\operatorname{Li}_2\left(\frac{-Q_{23}^2}{M^2}\right)
+-\ln^2\frac{-Q_{13}^2-M^2}{-Q_{13}^2}
+-\ln^2\frac{-Q_{23}^2-M^2}{-Q_{23}^2}\right.\\
+&\quad\qquad\qquad\left.
++\ln^2\frac{M^2+Q_{13}^2}{M^2}
++\ln^2\frac{M^2+Q_{23}^2}{M^2}
+-\ln^2\frac{Q_{12}^2}{\mu_R^2}
++3\ln\frac{Q_{12}^2}{\mu_R^2}
++\ln^2\frac{Q_{13}^2}{Q_{23}^2}
+\right]\,.
+\end{aligned}
+\end{equation}
+For the \textsc{ARES} formalism, the hard coefficient is given by
+Eq.~\eqref{eq:H1-final}, such that we obtain: 
+\begin{equation}
+H_{q\bar{q}}^{(1)}=\mathcal{H}_1
++3\left(C_F-\frac{C_A}{2}\right)\ln\frac{Q_{12}^2}{Q^2}
++\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{13}^2}{Q^2}
++\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{23}^2}{Q^2}\,.
+\end{equation}
+Unlike $H_{\rm SCET}^{(1)}$, which is identified directly with the finite
+remainder of the one-loop amplitude, the \textsc{ARES} hard coefficient
+$\mathcal H_1$ is obtained by subtracting the remaining finite
+contributions appearing in Eq.~\eqref{eq:HQ-expanded} from the SCET hard
+function of Eq.~\eqref{eq:H1-SCET}. Since these subtraction terms are
+universal, this provides a validation of the relation between the SCET
+hard function and the corresponding \textsc{ARES} hard coefficient. We
+therefore obtain\footnote{Please note the factor of 2 difference due to
+Eq.~\eqref{eq:coeff-convent}.}
+\begin{equation}
+\begin{aligned}
+\mathcal{H}_1=&\frac{1}{36}\left\{-20n_f+C_A(152-21\pi^2)+18C_F(-8+3\pi^2)
+-66C_A\ln\frac{Q_{12}^2}{\mu_R^2}\right.\\[1ex]
+&\quad+6\left[-3C_F\ln^2\left(\frac{Q_{13}^2+M^2}{Q_{13}^2}\right)-3C_F\ln^2\left(\frac{Q_{23}^2+M^2}{Q_{23}^2}\right)\right.\\
+&\quad+3C_F\ln^2\left(\frac{M^2+Q_{13}^2}{M^2}\right)+3C_F\ln^2\left(\frac{M^2+Q_{23}^2}{M^2}\right)
++9C_F\ln\frac{Q_{13}^2}{\mu_R^2}+2n_f\ln\frac{Q_{13}^2}{\mu_R^2}\\
+&\quad+6C_A\ln\frac{Q_{12}^2}{\mu_R^2}\ln\frac{Q_{13}^2}{\mu_R^2}
+-6C_A\ln^2\frac{Q_{13}^2}{\mu_R^2}-6C_A\ln^2\frac{Q_{23}^2}{\mu_R^2}\\
+&\quad\left.+\left(-11C_A+9C_F+2n_f+6C_A\ln\frac{Q_{12}^2}{\mu_R^2}
+-6(C_A+2C_F)\ln\frac{Q_{13}^2}{\mu_R^2}\right)\ln\frac{Q_{23}^2}{\mu_R^2}-6C_A\ln^2\frac{Q_{23}^2}{\mu_R^2}\right]\\[1ex]
+&\quad+6\left[11C_A-9C_F-2n_f-6C_A\ln\frac{Q_{12}^2}{\mu_R^2}
++6(C_A+C_F)\left(\ln\frac{Q_{12}^2}{\mu_R^2}+\ln\frac{Q_{23}^2}{\mu_R^2}\right)\right]
+\ln\frac{Q_{13}^2Q_{23}^2}{Q_{12}^2\mu_R^2}\\[1ex]
+&\quad-9(C_A+2C_F)\ln^2\frac{Q_{13}^2Q_{23}^2}{Q_{12}^2\mu_R^2}\\[1ex]
+&\quad+3\left[-(C_A+2C_F)\pi^2-18(C_A-2C_F)\ln\frac{\mu_R^2}{Q_{12}^2}
+-6(C_A-2C_F)\ln^2\frac{\mu_R^2}{Q_{12}^2}\right.\\
+&\quad\left.+3(3C_A+4\pi\beta_0)\ln\frac{\mu_R^2}{Q_{13}^2}
++6C_A\ln^2\frac{\mu_R^2}{Q_{13}^2}+3\ln\frac{\mu_R^2}{Q_{23}^2}\left(3C_A+4\pi\beta_0
++2C_A\ln\frac{\mu_R^2}{Q_{23}^2}\right)\right]\\[1ex]
+&\quad\left.+36\left[C_A\operatorname{Li}_2\left(\frac{Q_{12}^2-M^2}{Q_{12}^2}\right)
++C_F\operatorname{Li}_2\left(-\frac{Q_{13}^2}{M^2}\right)
++C_F\operatorname{Li}_2\left(-\frac{Q_{23}^2}{M^2}\right)\right]\right\}\,.
+\end{aligned}
+\end{equation}
+
+\section{General set up - chapter 5}
+
+Eq.~\eqref{eq:dsigma-def}
+requires a mapping between the full event -- made up
+of the three hard partons $\{\tilde p\}\equiv\{\tilde p_1,\tilde p_2,\tilde p_3\}$ and an arbitrary number of soft and/or collinear emissions -- and
+a Born event with only three hard partons $\{p_1,p_2,p_3\}$.
+The difference between the approximation on the right-hand side of
+Eq.~\eqref{eq:dsigma-def} and the full expression for
+$ d\sigma(v)/(dq_T dy_Z d\eta_J)$ is a well-defined expansion in powers of the
+strong coupling $\alpha_s$, with coefficients vanishing as a power of
+$v$, potentially enhanced by logarithms of $v$. 
+
+\section{NNLL cumulant: chapter 5}
+The NNLL radiator $R_{\rm NNLL}(v)$ includes all virtual
+  corrections of \emph{soft and/or collinear origin}. These are divergent,
+  but their divergences cancel with those of real radiation. In
+  order to cancel the singularities of virtual corrections analytically, the
+  radiator also includes a subset of real corrections for suitably
+  defined unresolved emissions. The procedure to define those
+  emissions is not unique (cf.\ Sec.\ref{sec:NLL-resum}). 
+  A proposal adequate for three emitting legs is given in
+  Ref.~\cite{Arpino:2019ozn}, leading to a master formula for
+  $R_{\rm NNLL}(v)$ whose explicit expression depends only on the
+  single-emission parameters $a$, $b_\ell$, $d_\ell$, and
+  $g_\ell(\phi)$. For completeness, we illustrate how
+  the NNLL radiator extends from the NLL result in
+  Sec.~\ref{sec:radiator}. 
+
+\section{One-jettiness ARES}
+\begin{equation}
+\begin{aligned}
+	&f_{\rm sc}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)})=\frac{Q_{\ell\bar\ell}^2}{MQ_{\ell}}e^{-\eta^{(\ell\bar\ell)}}\Theta\left(\eta^{(\ell\bar\ell)}\right)+\frac{Q_{\ell\bar\ell}^2}{MQ_{\bar\ell}}e^{\eta^{(\ell\bar\ell)}}\Theta\left(-\eta^{(\ell\bar\ell)}\right)\,,\\
+	&f_{\rm wa}^{(\ell\bar\ell)}(\eta^{(\ell\bar\ell)},\phi^{(\ell\bar\ell)}) =
+\min\left\{
+\frac{Q_{\ell\bar\ell}^2}{MQ_1}\,e^{-\eta^{(\ell\bar\ell)}},\;
+\frac{Q_{\ell\bar\ell}^2}{MQ_2}\,e^{+\eta^{(\ell\bar\ell)}},\;
+\frac{Q_{\ell\bar\ell}}{M}\!\left(\cosh(\eta^{(\ell\bar\ell)}-\eta_J)
+-\cos(\phi^{(\ell\bar\ell)}-\phi_J)\right)
+\right\}\,.
+\end{aligned}
+\end{equation}
+
+
