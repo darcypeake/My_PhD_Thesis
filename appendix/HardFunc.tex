@@ -5,14 +5,15 @@ Following the argument of Sec.~\ref{subsec:NNLL-coeff}, we extract the
 hard coefficient $H^{(1)}_{ij}$ of Eq.~\eqref{eq:HQ-expanded} and the
 one-loop hard function $H^{(1)}_{\rm SCET}$ of Eq.~\eqref{eq:CH-SCET}
 for the $q\bar q\to Hg$ channel, using the known one-loop virtual
-corrections for $hh\to H+\mathrm{jet}$~\cite{Ravindran:2002dc}. The
-relation between the two hard functions, like the infrared poles
-themselves, is fixed by the colour charges and directions of the
-external partons (cf.\ Eq.~\eqref{eq:HQ}). These are the same for
-$H$+jet and $Z$+jet, so the Higgs amplitude serves equally well for the
-extraction. The remaining partonic channels follow analogously.
+corrections to $hh\to H+\mathrm{jet}$~\cite{Ravindran:2002dc}. The relation
+between the two hard functions, like the infrared poles themselves, is fixed
+by the colour charges and directions of the external partons
+(cf.\ Eq.~\eqref{eq:HQ}). Since $H+\mathrm{jet}$ and $Z+\mathrm{jet}$
+production share the same colour configuration, the Higgs amplitude serves to
+determine both. The remaining partonic channels follow analogously.
 
-The one-loop virtual corrections for $q\bar q\to Hg$ are
+Adopting the convention given in Sec.~\ref{sec:H1},
+the one-loop virtual corrections for $q\bar q\to Hg$ are
 \begin{equation}
 \label{eq:V-oneloop}
 \begin{aligned}
@@ -43,13 +44,9 @@ The one-loop virtual corrections for $q\bar q\to Hg$ are
 \end{aligned}
 \end{equation}
 
-\question{Am unsure whether we need this line about the poles
-coinciding since we are not comparing it.}
-The pole terms coincide with those predicted by
-Eq.~\eqref{eq:HQ-expanded}, so the remaining $\mathcal{O}(\varepsilon^0)$
-terms can be extracted. The SCET hard function collects these finite
-terms. By the definition in Eq.~\eqref{eq:CH-SCET} it is twice the
-$\mathcal{O}(\varepsilon^0)$ coefficient of Eq.~\eqref{eq:V-oneloop},
+The SCET hard function is obtained from the finite terms of
+Eq.~\eqref{eq:V-oneloop}. By the definition in Eq.~\eqref{eq:CH-SCET},
+it is twice the one-loop correction,
 \begin{equation}
 \label{eq:H1-SCET}
 \begin{aligned}
@@ -78,19 +75,18 @@ $\mathcal{O}(\varepsilon^0)$ coefficient of Eq.~\eqref{eq:V-oneloop},
 \end{aligned}
 \end{equation}
 
-Using Eq.~\eqref{eq:H1-final}, the \textsc{ARES} hard coefficient
-for the $q\bar{q}$ channel is
+While $H^{(1)}_{\rm SCET}$ retains all finite terms of the virtual correction,
+the \textsc{ARES} coefficient does not. Instead, starting from the finite
+terms of Eq.~\eqref{eq:V-oneloop}, we subtract the finite remainder of the
+pole structure in Eq.~\eqref{eq:HQ-expanded}. Using Eq.~\eqref{eq:H1-final},
+the \textsc{ARES} hard coefficient for the $q\bar{q}$ channel is
 \begin{equation}
 H_{q\bar{q}}^{(1)}=\mathcal{H}_1
 +3\left(C_F-\frac{C_A}{2}\right)\ln\frac{Q_{12}^2}{Q^2}
 +\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{13}^2}{Q^2}
-+\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{23}^2}{Q^2}\,.
++\left(\frac{3C_A}{4}+\pi\beta_0\right)\ln\frac{Q_{23}^2}{Q^2}\,,
 \end{equation}
-The finite piece is contained within $\mathcal{H}_1$. 
-While $H^{(1)}_{\rm SCET}$ retains all finite terms of the virtual
-correction, the \textsc{ARES} coefficient does not. We subtract the finite part
-of the pole structure in Eq.~\eqref{eq:HQ-expanded}, giving
-\question{check this says what we need it to}
+where
 \begin{equation}
 \label{eq:H1-ARES}
 \begin{aligned}
@@ -113,7 +109,8 @@ of the pole structure in Eq.~\eqref{eq:HQ-expanded}, giving
 \end{aligned}
 \end{equation}
 
-The difference between the two hard functions involves only terms fixed
-by the colour charges and directions of the external legs. These are
-identical for $H$+jet and $Z$+jet, so extracting $\mathcal{H}_1$ from
-the Higgs amplitude fixes the relation at this order.
+The two hard functions therefore differ only by terms fixed by the colour
+charges and directions of the external legs, which are unchanged for
+$q\bar q\to Zg$. The relation obtained here can then be used in
+Sec.~\ref{subsec:NNLL-coeff} to compare the \textsc{ARES} and SCET expansion
+coefficients.
