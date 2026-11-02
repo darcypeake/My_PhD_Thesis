@@ -41,7 +41,7 @@ Quantum chromodynamics (QCD) is the $\mathrm{SU}(3)$ non-Abelian gauge theory
 governing the strong interaction. It describes how quarks bind together to form hadrons,
 with the interaction mediated by gauge bosons known as gluons. Throughout this thesis, 
 quarks and gluons are collectively referred to as \emph{partons} and carry a conserved 
-charge known as colour.
+charge known as colour. \minor{The discussion of the quark model should include a brief explanation of the underlying flavour symmetry. This would make the transition from the quark model to QCD less abrupt.}
 
 Quarks transform in the fundamental representation of $\mathrm{SU}(3)$,
 with fields denoted by $q_a$, where $a=1,2,3$ labels the three colour
@@ -50,7 +50,10 @@ antiquark fields are denoted by $\bar{q}^a$ and transform in the conjugate
 representation, where $\bar{q}=q^\dagger\gamma^0$ is the Dirac adjoint of
 $q$. Gluons, denoted by $\mathcal{A}_\mu^A$, transform in the adjoint
 representation of $\mathrm{SU}(3)$, with $A=1,\ldots,8$ labelling the eight
-colour degrees of freedom of the gluon field.
+colour degrees of freedom of the gluon field. Strictly, this holds only for global transformations: under a
+local transformation the gluon field acquires an additional inhomogeneous
+term, whereas the field-strength tensor $F^A_{\mu\nu}$ (defined in Eq.~\eqref{eq:F-alpha-beta} below) always transforms
+in the adjoint representation.
  
  The QCD Lagrangian density governing the dynamics of quarks with mass $m_f$ 
  and massless gluons can be written as
@@ -72,6 +75,7 @@ for the quark and gluon fields,
 Here $n_f$ denotes the number of quark flavours, with $n_f = 6$ in the Standard Model 
 (see Table~\ref{table:quark-properties}). The gluon dynamics are encoded in the non-Abelian field-strength tensor
 \begin{equation}
+\label{eq:F-alpha-beta}
 F_{\alpha\beta}^{A}
 = \partial_\alpha \mathcal{A}_\beta^A
 - \partial_\beta \mathcal{A}_\alpha^A
@@ -270,9 +274,21 @@ from the propagators and interaction vertices shown in
 Figs.~\ref{fig:QCD-Propagator-Rules} and~\ref{fig:QCD-Vertex-Rules}, and translated
 into a mathematical expression according to the corresponding Feynman rules.
 The sum of all contributing diagrams gives the \emph{scattering amplitude}, or
-matrix element, $\mathcal{M}$. Cross sections are
-then obtained from the squared amplitude, integrated over the allowed phase
-space.
+matrix element, $\mathcal{M}$. \minor{The discussion should mention that LSZ reduction relates scattering amplitudes to amputated connected Green’s functions, including the role of external leg residues.} \correction{More formally, the scattering
+amplitude is obtained from the connected Green's functions of the theory
+(the vacuum expectation values of time-ordered products of fields) through
+the Lehmann--Symanzik--Zimmermann (LSZ) reduction
+formula~\cite{Lehmann:1954rq}. In perturbation theory, these Green's
+functions are computed using the Feynman rules above, and include a
+propagator on each external leg. The LSZ formula removes (amputates) these
+external propagators and takes the external momenta on shell, with each
+external leg instead contributing a factor $\sqrt{Z_i}$, where $Z_i$ is the
+residue of the full propagator at its on-shell pole. These factors fix the
+normalisation of the incoming and outgoing states.}
+
+Cross sections are
+then obtained from the squared amplitude, $|\mathcal{M}|^2$, integrated over the allowed phase
+space. 
 
 To illustrate the construction of a partonic cross section, consider a hard
 $2\to m$ scattering process involving massless partons,
@@ -381,9 +397,13 @@ As $\mu_R \to \infty$, the coupling decreases, and quarks and gluons behave incr
 This behaviour is known as \emph{asymptotic freedom}, a regime in which pQCD provides an excellent approximation. 
 Conversely, as $\mu_R$ decreases the running coupling
 in Eq.~\eqref{eq:scale-dependence} diverges at $\Lambda_{\mathrm{QCD}}$, a scale of a few hundred MeV.
-Close to $\Lambda_{\mathrm{QCD}}$ the coupling grows large, signalling the breakdown of perturbation theory and 
-the emergence of a strongly interacting regime in which quarks and gluons are confined into hadrons. 
-This phenomenon is known as \emph{confinement}. 
+Close to $\Lambda_{\mathrm{QCD}}$ the coupling grows large, signalling the
+breakdown of perturbation theory. This growth is compatible
+with the emergence of a strongly interacting regime in which quarks and
+gluons are confined into hadrons, known as
+\emph{confinement}.\footnote{Note, however, that this growth does not, by
+itself, constitute a proof of confinement, which is an inherently 
+non-perturbative phenomenon.}
 
 The running of $\alpha_s$ has been confirmed experimentally across
 several orders of magnitude in $Q$, as illustrated in
@@ -432,8 +452,8 @@ illustrated by the fermion bubble diagram in Fig.~\ref{fig:fermion-bubble}.
 \centering
 \begin{tikzpicture}[scale=2]
 \begin{feynman}
-    \vertex (a) at (-2,0) {$\mu$, a};
-    \vertex (b) at ( 2,0) {$\nu$, b};
+    \vertex (a) at (-2,0) {$\mu, A$};
+    \vertex (b) at ( 2,0) {$\nu, B$};
     \vertex (c) at (-0.8,0);
     \vertex (d) at ( 0.8,0);
 
@@ -453,12 +473,12 @@ to the gluon self-energy.}
 Taking the quarks to be massless, as assumed throughout this thesis, the Feynman
 rules give an integral of the form
 \begin{equation}
-    I = \int d^4 q \, \frac{N^{\mu\nu}}{q^2 (p+q)^2}\,,
+    I^{\mu\nu} = \int \frac{d^4q}{(2\pi)^4} \, \frac{N^{\mu\nu}}{q^2 (p+q)^2}\,,
 \end{equation}
 where $N^{\mu\nu}$ denotes a numerator whose explicit form is not required for the present
-discussion. At large loop momentum, the integral reveals a UV divergence,
+discussion. At large loop momentum, the integral reveals a UV divergence, which, suppressing Lorentz indices, behaves schematically as
 \begin{equation}
-    I \sim \lim_{\Lambda \to \infty} \int_0^\Lambda \frac{dq}{q}
+    I\sim \lim_{\Lambda \to \infty} \int_0^\Lambda \frac{dq}{q}
       \sim \lim_{\Lambda \to \infty} \ln \Lambda\,.
 \end{equation}
 Such divergences cannot be allowed to remain in the theory, 
@@ -467,12 +487,25 @@ This is achieved through a procedure known as \emph{regularisation}.
 Although several regularisation procedures exist, in this thesis we use \emph{dimensional regularisation}~\cite{tHooft:1972tcz, Bollini:1972ui}. This method preserves both Lorentz and gauge invariance and, as will be discussed in Sec.~\ref{subsec:IR-div}, can also be applied to infrared divergences. The basic idea is to promote the space-time dimension to $d = 4 - 2\varepsilon$, such that 
 logarithmic divergences appear as poles in $\varepsilon$. 
 
-Once these poles have been isolated, the next step is to remove them. This is achieved by 
-a procedure known as \emph{renormalisation} where the parameters of the theory are redefined 
-to absorb the divergent contributions via counterterms. Throughout this thesis we work in the modified minimal subtraction ($\overline{\mathrm{MS}}$) renormalisation scheme~\cite{Bardeen:1978yd}.
+Once these poles have been isolated, the next step is to remove them. 
+This is achieved through a procedure known as
+\emph{renormalisation}. The parameters appearing in the Lagrangian,
+such as the coupling, are not themselves measurable; what is measured
+are physical observables, such as cross sections. These Lagrangian, or
+\emph{bare}, parameters are related to renormalised parameters through
+counterterms, which are chosen to absorb the ultraviolet divergences
+arising from the loop integrals. The renormalised parameters are then
+fixed by experiment, allowing predictions for physical observables
+to be finite and expressed in terms of other measured quantities. Since finite
+contributions can be absorbed along with the divergences, this
+procedure is not unique, and each choice defines a
+\emph{renormalisation scheme}.
+
+Throughout this thesis we work in the modified minimal subtraction ($\overline{\mathrm{MS}}$) renormalisation scheme~\cite{Bardeen:1978yd}.
 In this scheme, the counterterms subtract not only the $1/\varepsilon$ poles, 
 but also the accompanying constants $\ln 4\pi$ and $\gamma_E \approx 0.5772$ (the Euler--Mascheroni constant), 
 that arise from using dimensional regularisation. The renormalisation procedure introduces the scale $\mu_R$, giving rise to the corresponding scale dependence of the strong coupling $\alpha_s$, as discussed in Sec.~\ref{sec:running-coupling}.
+
 
 \subsection{IR divergences}
 \label{subsec:IR-div}
@@ -962,7 +995,7 @@ where the Altarelli--Parisi splitting functions $P_{ij}(z)$ admit the perturbati
 	P_{ij}(z,\alpha_s(Q^2)) = P_{ij}^{(0)}(z)+\frac{\alpha_s}{2\pi} P_{ij}^{(1)}(z)+\dots\,.
 \end{equation}
 The leading-order splitting functions $P_{ij}^{(0)}$ are the
-regularised counterparts of the unregularised functions
+regularised counterparts of the unregularised $d$-dimensional functions
 $\hat{P}_{(ij)\to i+j}$ of Eq.~\eqref{eq:AP-functions}. Here, we consider
 initial- rather than final-state splittings, for which the two cases
 coincide at this order. Note that the index ordering follows the opposite convention,
@@ -1027,12 +1060,12 @@ The three stages described above capture the main features of the QCD dynamics i
 
 Prior to the hard interaction, the incoming partons may radiate, producing \emph{initial-state radiation} (ISR). This radiation evolves down to the hadronisation scale and contributes to the final-state hadrons (dark green blobs). The light blue ovals in Fig.~\ref{fig:high-energy-event} represent the beam remnants: the fragments of the incoming protons that do not participate in the hard scattering.
 
-\subsection{The QCD factorisation formula}
+\subsection{The QCD factorisation theorem}
 \label{subsec:factorisation-formula}
 
 To relate the partonic dynamics of a hard scattering to experimentally
 measured hadronic cross sections, we employ the QCD factorisation
-formula,
+theorem~\cite{Collins:1985ue,Collins:1988ig,Collins:1989gx},
 \begin{equation}
 \label{eq:factorisation-formula}
     d\sigma(P_1,P_2) = \sum_{i,j}\int_0^1 dx_1\,dx_2\,
@@ -1096,7 +1129,7 @@ $\hat{\sigma}_{ij}$ denotes the corresponding partonic cross section.
         \node at (-0.75,1) {\LARGE{$\hat{\sigma}_{ij}$}};
         
     \end{tikzpicture}
-\caption{Diagrammatic representation of the QCD factorisation formula, 
+\caption{Diagrammatic representation of the QCD factorisation theorem, 
 Eq.~\eqref{eq:factorisation-formula}. The PDFs $f_{i/P_1}(x_1,\mu_F^2)$ and 
 $f_{j/P_2}(x_2,\mu_F^2)$
 describe the distributions of partons $i$ and $j$ carrying longitudinal
@@ -1107,7 +1140,7 @@ the final-state particles and proton remnants.}
 \label{fig:factorisation-formula}
 \end{figure}
 
-The factorisation formula separates the long-distance, non-perturbative physics, encoded in the PDFs, 
+The factorisation theorem separates the long-distance, non-perturbative physics, encoded in the PDFs, 
 from the short-distance hard interaction, captured by $\hat{\sigma}_{ij}$.  
 This separation is made precise by the factorisation scale $\mu_F$: 
 radiation with transverse momentum below $\mu_F$ is absorbed into the PDFs and treated as part of the proton structure, while harder emissions are included explicitly in $\hat{\sigma}_{ij}$. 
@@ -1130,7 +1163,11 @@ definition of the PDFs, giving rise to their dependence on the factorisation sca
 
 The power-suppressed corrections $\mathcal{O}\!\left(\Lambda_{\mathrm{QCD}}^{2}/Q^{2}\right)$ 
 in Eq.~\eqref{eq:factorisation-formula} reflect the fact that this description is valid only in the high-energy limit, $Q \gg \Lambda_{\mathrm{QCD}}$, which is satisfied throughout
-this thesis.
+this thesis. Factorisation has been proven for deep inelastic
+scattering and for inclusive Drell--Yan
+production~\cite{Collins:1985ue,Collins:1988ig,Collins:1989gx}, while for more
+general hadron-collider processes it is assumed to hold up to these power
+corrections.
 
 \section{Jet physics}
 \label{sec:jet-phys}

@@ -165,12 +165,12 @@ Eq.~\eqref{eq:thrust} reduces to
 \end{equation}
 with $\tau_{\max} = 1/3$ for the symmetric
 configuration $x_q = x_{\bar{q}} = x_g = 2/3$, and $\tau_{\min} = 0$.
-
-Using the real-emission cross section in Eq.~\eqref{eq:qqg-real}, the
-differential thrust distribution is
+\minor{Eqs. (4.8) and (4.9) should be identified explicitly as real emission corrections to the distribution, possibly by adding an (R) label on the left-hand side. The discussion should also explain that the calculation is intended to include the delta(t) contribution, and hence the poles and plus distributions.}
+\correction{Using Eq.~\eqref{eq:qqg-real}, the real-emission contribution
+to the differential thrust distribution is}
 \begin{equation}
 \begin{aligned}
-   & \frac{1}{\sigma}\frac{d\sigma}{d\tau}
+   & \left(\frac{1}{\sigma}\frac{d\sigma}{d\tau}\right)_{\rm real}
     = C_F \frac{\alpha_s}{2\pi}
       \int_0^1 dx_q \int_0^1 dx_{\bar{q}}\,
       \frac{x_q^2 + x_{\bar{q}}^2}{(1-x_q)(1-x_{\bar{q}})}
@@ -184,21 +184,30 @@ contains soft and collinear singularities. Regulating these singularities
 using dimensional regularisation gives
 \begin{equation}
 \begin{aligned}
-    &\frac{1}{\sigma}\frac{d\sigma}{d\tau}
+    &\left(\frac{1}{\sigma}\frac{d\sigma}{d\tau}\right)_{\rm real}
     = C_F\frac{\alpha_s}{2\pi}
       \left(\frac{4\pi\mu_R^2}{s}\right)^\varepsilon
       \frac{1}{\Gamma(1-\varepsilon)}
-      \int_0^1 dx_q \int_0^1 dx_{\bar{q}}  \frac{(x_q^2+x_{\bar{q}}^2)
+      \int_0^1 dx_q \int_0^1 dx_{\bar{q}}\\[0.5ex]
+    &\qquad\qquad\times\frac{(x_q^2+x_{\bar{q}}^2)
             -\varepsilon(2-x_q-x_{\bar{q}})^2}
-           {(1-x_q)^{1+\varepsilon}\,
-            (1-x_{\bar{q}})^{1+\varepsilon}\,
-            (x_q+x_{\bar{q}}-1)^\varepsilon}\\[0.5ex]
+           {(1-x_q)^{1+\varepsilon}
+            (1-x_{\bar{q}})^{1+\varepsilon}
+            (x_q+x_{\bar{q}}-1)^\varepsilon}\,
+      \Theta\!\left(x_q+x_{\bar{q}}-1\right)\\[0.5ex]
     &\qquad\qquad\times
-      \Theta\!\left(x_q+x_{\bar{q}}-1\right)
       \delta\!\left(\tau - \min\!\left[1-x_q,\,1-x_{\bar{q}},\,
                                        x_q+x_{\bar{q}}-1\right]\right)\,.
 \end{aligned}
 \end{equation}
+\correction{Since we aim to obtain the complete $\mathcal{O}(\alpha_s)$ distribution, including the $\delta(\tau)$ contribution at $\tau=0$, integrating the regulated real emission down to $\tau=0$ generates poles in $\varepsilon$ multiplying $\delta(\tau)$, with the remaining $\tau$ dependence expressed through plus distributions. These poles}
+cancel against the corresponding poles in the virtual contribution.
+Since the virtual contribution is proportional to $\delta(\tau)$, its
+finite coefficient can be fixed by requiring that the complete
+distribution reproduces the total cross section at NLO, given in
+Eq.~\eqref{eq:sigma-full}. This gives the complete thrust distribution at
+$\mathcal{O}(\alpha_s)$,
+
 The resulting phase-space integrals contain poles in $\varepsilon$, which
 cancel against the corresponding poles in the virtual contribution.
 Since the virtual contribution is proportional to $\delta(\tau)$, its
@@ -209,21 +218,23 @@ $\mathcal{O}(\alpha_s)$,
 \begin{equation}
 \begin{aligned}
 \label{eq:full-thrust-NLO}
-    &\frac{1}{\sigma}\frac{d\sigma}{d\tau}
-    =\; \delta(\tau)
+    \frac{1}{\sigma}\frac{d\sigma}{d\tau}
+    ={}& \delta(\tau)
     + C_F\frac{\alpha_s}{2\pi}
       \left\{
         \delta(\tau) \left( \frac{\pi^2}{3} - 1 \right)
         + \Theta\!\left(\frac{1}{3}-\tau\right)
       \right. \\[0.5ex]
-    &\qquad\qquad\times \left[
+    &\times \left[
         \left(
           3(1+\tau)(3\tau-1)
           + \frac{\left(4+6\tau(\tau-1)\right)\ln(1-2\tau)}{1-\tau}
         \right)
-        \left( \frac{1}{\tau} \right)_+ \right.  \left. \left.
-        - \frac{4+6\tau(\tau-1)}{1-\tau}
+        \left( \frac{1}{\tau} \right)_+ \right. \\[0.5ex]
+    &\left. \left.
+        \qquad- \frac{4+6\tau(\tau-1)}{1-\tau}
           \left( \frac{\ln \tau}{\tau} \right)_+
+        \vphantom{\frac{\left(4+6\tau(\tau-1)\right)\ln(1-2\tau)}{1-\tau}}
       \right]
     \right\}\,.
 \end{aligned}
@@ -305,7 +316,8 @@ terms in the perturbative series are no longer suppressed, so an
 expansion in powers of $\alpha_s$ alone is insufficient. Instead, one 
 must perform a systematic \emph{resummation} of the logarithmically enhanced 
 contributions to all orders in $\alpha_s$. In this region, the cumulant can 
-therefore be reorganised as 
+therefore be reorganised as \minor{The sentence leading to Eq. (4.16) on page 51 should be revised. The present wording does not adequately convey the physical significance of exponentiation for thrust and related observables.}
+\correction{For thrust and related observables, this is possible because the logarithms arise from soft and collinear emissions which, at this accuracy, can be treated as independent. Summing over any number of such emissions, together with the corresponding virtual corrections, then gives an exponential~\cite{Luisoni:2015xha}, so that the logarithms \emph{exponentiate} and the cumulant can be written as -- CHECK}
 \begin{equation}
 \label{eq:resummed-cumulant}
 	\Sigma(\tau) \simeq 
@@ -603,7 +615,7 @@ radiation when all subsequent branchings from an initial emission are
 included~\cite{Banfi:2018mcq}. This is related to the
 $\overline{\mathrm{MS}}$ coupling $\alpha_s$
 by\footnote{This scheme is an extension of the CMW scheme of
-Ref.~\cite{Catani:1990rr}.}
+Ref.~\cite{Catani:1990rr}.} \minor{In the discussion of the physical coupling scheme on page 56, the importance of the scale at which the coupling is evaluated should be mentioned, since this choice is required to obtain NLL accuracy, see also Eq. (4.43).}
  \begin{equation} 
  \alpha_s^{\mathrm{phys}} = \alpha_s\left(1+\sum_{n=1}^\infty\left(\frac{\alpha_s}{2\pi} \right)^nK^{(n)}\right)\,,
 \end{equation} 
@@ -626,6 +638,7 @@ where the first two coefficients are
 \end{align}
 \end{subequations}
 Only the first coefficient, $K^{(1)}$, is required at NLL accuracy.
+\correction{Equally important is the scale at which the coupling is evaluated. For each emission, the coupling is evaluated at the transverse momentum of the emission with respect to its emitting dipole, rather than at the hard scale $Q$ (see Eq.~\eqref{eq:Rll-dip}). The running of the coupling between these scales already contributes at LL through $\beta_0$, while $\beta_1$ and $K^{(1)}$ contribute at NLL, so that evaluating the coupling at this scale, with two-loop running in the physical scheme, is required to obtain NLL accuracy~\cite{Catani:1990rr,Banfi:2004yd}. CHECK THIS}
 
 \paragraph{Factorisation of the matrix element.} 
 At NLL accuracy, correlated clusters contribute only through the 
@@ -652,7 +665,7 @@ unity. Additionally, the $n$ emissions are treated as identical gluons, such tha
 \end{equation}
 To evaluate $\Sigma(\{p\},v)$, we split the exponent in
 Eq.~\eqref{eq:cumu-factor-more} according to whether the observable value
-for a single emission $k$ exceeds $v$:
+for a single emission $k$ exceeds $v$: \minor{The discussion surrounding Eqs. (4.34), (4.37), (4.62) and (4.63) should clarify whether the radiator is defined using full kinematics and how this is reconciled with the statement that only the soft and hard collinear regions contribute at the stated accuracy.}
 \begin{equation}
 \label{eq:exp-rad}
   \int[dk]\,M^2(k)
@@ -692,6 +705,7 @@ This factor resums all LL contributions for rIRC safe observables.
 
 At NLL accuracy, the radiator receives contributions from all regions. 
 Accordingly, it can be split into
+\correction{Although the radiator in Eq.~\eqref{eq:radiator-NLL} is defined with full kinematics, only the soft and hard-collinear regions of phase space contribute at NLL accuracy. It can therefore be evaluated using the soft and hard-collinear limits of the matrix element, with the observable approximated by its form for a single soft-collinear emission, Eq.~\eqref{eq:general-sc-V}, while the corrections from full kinematics enter only at NNLL~\cite{Banfi:2014sua}. The radiator then splits into two pieces,}
 two pieces,
 \begin{equation}
 \label{eq:R(v)-split}
@@ -903,13 +917,15 @@ The derivative of the NLL radiator decomposes as a sum over legs,
 $R'_{\mathrm{NLL}}(v) = \sum_\ell R'_{\mathrm{NLL},\ell}(v)$, where
 \begin{equation}
 \label{eq:RpNLL}
-    R'_{\mathrm{NLL},\ell}(v) = C_\ell\,\alpha_s(Q)\beta_0\,
+  \begin{split}
+    R'_{\mathrm{NLL},\ell}(v) &= C_\ell\,\alpha_s(Q)\beta_0\,
       \frac{d}{d\lambda}\!\left(
         -\frac{\lambda}{\alpha_s(Q)\beta_0}
-        g_1^{(\ell)}(\lambda)\right)
-    = \frac{C_\ell}{b_{\ell}\pi\beta_0}
+        g_1^{(\ell)}(\lambda)\right)\\[1ex]
+    &= \frac{C_\ell}{b_{\ell}\pi\beta_0}
       \left[\ln\!\left(1-\frac{2\lambda}{a+b_{\ell}}\right)
            -\ln\!\left(1-\frac{2\lambda}{a}\right)\right]\,.
+  \end{split}
 \end{equation}
 
 \subsection{The NLL $\mathcal{F}$-function, $\mathcal{F}_{\mathrm{NLL}}$}
@@ -936,6 +952,7 @@ and introducing, for each emission, the rescaled variable
 	\zeta=\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\,,
 \end{equation}
 we have
+\correction{the definition of the radiator in Eq.~\eqref{eq:radiator-NLL}, with full kinematics, gives}
 \begin{equation}
 	\int [dk] M^2(k)=\int_0^\infty \frac{d\zeta}{\zeta} R'(\zeta v)\,,
 \end{equation}
@@ -943,7 +960,8 @@ and, in particular,
 \begin{equation}
 \int[dk]\,M^2(k)\,\Theta\!\left(v-V(\{\tilde{p}\},k)\right)=\int_0^1 \frac{d\zeta}{\zeta}\, R'(\zeta v)\,.
 \end{equation}
-Using the fact that $R'(v)$ decomposes
+\correction{Taking the soft-collinear limit, and us 
+ing} Using the fact that $R'(v)$ decomposes
 as a sum over hard legs, $R'(v)\equiv\sum_\ell R'_\ell(v)$,
 and changing variables, we obtain 
 \begin{equation} 

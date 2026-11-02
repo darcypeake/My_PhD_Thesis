@@ -49,18 +49,20 @@ corresponding NNLL terms with the results obtained for Lund tree shapes
 in Ref.~\cite{vanBeekveld:2025zjh}.
 
 Unlike the NLL discussion presented in the previous chapter, we do not
-derive the NNLL master formula from first principles. Instead, we focus
-on the extension to hadronic collisions, in particular on the treatment
-of initial-state radiation. The general derivation of the NNLL master
-formula can be found in Refs.~\cite{Banfi:2014sua,Banfi:2018mcq,
+derive the NNLL master formula from first principles, and instead
+begin Sec.~\ref{sec:NNLL-general} with a brief summary of how the NLL
+resummation of Chapter~\ref{ch:resum} is extended to NNLL. The general
+derivation can be found in Refs.~\cite{Banfi:2014sua,Banfi:2018mcq,
 Arpino:2019ozn}, to which we refer the reader for a detailed discussion.
+Our focus is on the extension to hadronic collisions, in
+particular on the treatment of initial-state radiation.
 
-The remainder of this chapter is organised as follows. We first introduce
-the \textsc{ARES} NNLL master formula for hadronic collisions and derive
+The remainder of this chapter is organised as follows. After
+briefly summarising how the NLL resummation is extended to NNLL, we
+introduce the \textsc{ARES} NNLL master formula for hadronic collisions and derive
 the corresponding initial-state radiation contributions. We then apply
 the formalism to one-jettiness and validate the resulting expressions
 against existing calculations in the literature.
-
 
 \section{General setup}
 \label{sec:setup}
@@ -171,23 +173,53 @@ calculating $g_1$, $G_2$ and $G_3$.
 \section{General form of NNLL resummation}
 \label{sec:NNLL-general}
 
-The main differences between event shape resummation in hadronic
-collisions and $e^+e^-$ annihilation are
+\correction{We begin by briefly summarising how the NLL resummation of
+Chapter~\ref{ch:resum} is extended to NNLL, following
+Ref.~\cite{Banfi:2014sua}. At NLL, all emissions are treated as soft and
+collinear, widely separated in angle and emitted independently, with the
+matrix element and observable taken in their soft-collinear limits
+(cf.\ Sec.~\ref{subsec:NLL-approx}). Unresolved emissions, together with the
+virtual corrections, exponentiate into the radiator, while resolved emissions
+build up the multiple-emission function $\mathcal{F}_{\rm NLL}$
+(cf.\ Eq.~\eqref{eq:NLL-cumulant}). Relaxing any of these approximations gives
+a correction of relative order $\alpha_s$, so at NNLL it is sufficient to
+consider the same ensemble of soft-collinear emissions together with a single
+emission treated beyond the NLL approximation. This emission may be hard and
+collinear ($\delta\mathcal{F}_{\rm hc}$), including its recoil against the
+ensemble ($\delta\mathcal{F}_{\rm rec}$), soft and at wide angle
+($\delta\mathcal{F}_{\rm wa}$), or part of a correlated pair
+($\delta\mathcal{F}_{\rm correl}$), while the soft-collinear emissions
+themselves receive corrections from the exact rapidity bounds and the running
+of the coupling ($\delta\mathcal{F}_{\rm sc}$). For three hard legs, two
+further corrections appear~\cite{Arpino:2019ozn}: $\Delta\mathcal{F}_{\rm wa}$,
+arising from the dipole structure of soft wide-angle emissions, and
+$\Delta\mathcal{F}_{\rm rec}$, arising from spin correlations when a
+hard-collinear emission is radiated from a gluon leg. Together, all of these give the
+NNLL corrections $\delta\mathcal{F}_{\rm NNLL}$ of Eq.~\eqref{eq:dFNNLL}. In
+addition, the radiator is extended to NNLL accuracy (Sec.~\ref{sec:radiator}),
+and the finite one-loop virtual and hard-collinear corrections enter through
+the coefficients $H^{(1)}_{ij}$ (Sec.~\ref{sec:H1}) and
+$C^{(1)}_{\mathrm{hc},\ell}$. These ingredients were established for $e^+e^-$
+annihilation in Refs.~\cite{Banfi:2014sua,Banfi:2018mcq,Arpino:2019ozn}.}
+
+When extending them to hadronic collisions, the main differences
+with respect to $e^+e^-$ annihilation are
 \begin{itemize}
 \item the presence of initial-state radiation;
 \item the fact that there is no single natural hard scale.
 \end{itemize}
 Nevertheless, as will be made clear in Sec.~\ref{sec:NNLL-initial}, the structure of the NNLL resummation for $\Sigma_{ij}(\{p_1,p_2,p_3\},v)$ is the same as for $e^+e^-$ annihilation, although several ingredients appearing in the
 resummation formula are modified to account for initial-state radiation.
- In this section, we present the general structure of the NNLL resummation, and discuss the physical meaning of each ingredient. 
+ In the remainder of this section, we present the general structure of the NNLL resummation, and discuss the physical meaning of each ingredient. 
  For each partonic channel $ij$, we have 
-\begin{multline}
+\begin{equation}
   \label{eq:Sigma-NNLL}
-  \Sigma_{ij}(\{p_1,p_2,p_3\},v)= e^{-R_{\rm NNLL}(v)} \frac{f_i(x_1,v^{\frac{1}{a+b_1}}Q)}{f_i(x_1,\mu_F)} \frac{f_j(x_2,v^{\frac{1}{a+b_2}}Q)}{f_j(x_2,\mu_F)}
-  \times \\ \times
-  \left(\mathcal{F}^{(ij)}_{\rm NLL}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H_{ij}^{(1)}(Q,\mu_R)
-      +\sum_{\ell}\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},\ell}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(ij)}_{\rm NNLL}(\lambda)\right)\,,
-\end{multline}
+  \begin{split}
+  \Sigma_{ij}(\{p_1,p_2,p_3\},v)= {}& e^{-R_{\rm NNLL}(v)} \frac{f_i(x_1,v^{\frac{1}{a+b_1}}Q)}{f_i(x_1,\mu_F)} \frac{f_j(x_2,v^{\frac{1}{a+b_2}}Q)}{f_j(x_2,\mu_F)}\\
+  &\times\Bigg[\mathcal{F}^{(ij)}_{\rm NLL}(\lambda)\bigg(1+\frac{\alpha_s(Q)}{2\pi}H_{ij}^{(1)}(Q,\mu_R)+\sum_{\ell}\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},\ell}^{(1)}\bigg)\\
+  &\qquad+\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(ij)}_{\rm NNLL}(\lambda)\Bigg]\,,
+  \end{split}
+\end{equation}
 where $\mu_R,\mu_F$ are the renormalisation and factorisation
 scales in the $\overline{\rm MS}$ scheme, and $\lambda$
 is defined in Eq.~\eqref{eq:lambda}.
@@ -217,20 +249,25 @@ respect to the $e^+e^-$ case:
   $g_\ell(\phi)$. For completeness, we illustrate how
   the NNLL radiator extends from the NLL result in
   Sec.~\ref{sec:radiator}. 
-
-  \item Parton distribution functions (PDFs) enter through the ratios
-$f_i(x_\ell,v^{1/(a+b_\ell)}Q)/f_i(x_\ell,\mu_F)$, where $f_i(x_\ell,\mu_F)$
+  
+ \item As in the NLL resummation for hadronic collisions of
+Ref.~\cite{Banfi:2004yd}, parton distribution functions (PDFs) enter through the ratios
+\begin{equation*}
+\frac{f_i(x_\ell,v^{1/(a+b_\ell)}Q)}{f_i(x_\ell,\mu_F)}\,,
+\end{equation*}
+where $f_i(x_\ell,\mu_F)$
 is the PDF for the incoming parton $p_\ell$ entering the hard scattering, carrying momentum fraction
 $x_\ell$. Between the factorisation scale $\mu_F$ and the veto scale
  $Qv^{1/(a+b_\ell)}$, the incoming parton can emit \emph{hard-collinear}
   gluons that are too collinear to be resolved by the observable.
   These unresolved emissions are absent from
   $\mathcal{F}_{\rm NLL}$ and instead they modify the effective PDF seen
-  by the hard process. The ratio $f_i(x_\ell,v^{1/(a+b_\ell)}Q)/
-  f_i(x_\ell,\mu_F)$ resums precisely this effect via DGLAP
-  evolution from $\mu_F$ down to the veto scale. This contribution is absent in
-  $e^+e^-$ annihilation, where there are no incoming partons, and
-  is a genuinely new ingredient in hadronic collisions.
+  by the hard process. The ratio resums precisely this effect via DGLAP
+  evolution from $\mu_F$ down to the veto scale. This is the same
+contribution that appears at NLL, although at NNLL the DGLAP evolution must
+include the next-order splitting functions. This contribution is absent in
+ $e^+e^-$ annihilation, where there are no incoming partons, and
+is therefore a new ingredient with respect to the $e^+e^-$ case.
 
 \item Resolved \emph{soft and collinear} emissions widely separated in angle,
   together with the appropriate virtual corrections, build up the
@@ -340,12 +377,13 @@ the web function formalism that also underlies the derivation of the NNLL radiat
  slightly adapted to our needs.
  
  The starting point for the computation of $H_{ij}^{(1)}$ is the
-following representation of UV-renormalised virtual corrections
-~\cite{Banfi:2018mcq,Arpino:2019ozn}:
-\begin{multline}
-  \label{eq:HQ}
-  \mathcal{V}(Q;\varepsilon) = H_{ij}(\alpha_s(\mu_R),Q) \exp\left\{\int^{Q^2}\!\!\frac{dk^2}{k^2}\sum_{\ell=1}^3 \gamma_\ell\left(\alpha_s(k;\varepsilon)\right)\right\}\times \\ \times \exp\left\{-\int \frac{d^dk}{(2\pi)^d}\sum_{\ell=1}^3 \sum_{\bar \ell\ne \ell} w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon) \Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar \ell}}{m^2+\kappa_{\ell\bar \ell}^2}-|\eta^{(\ell\bar \ell)}| \right) \Theta(Q_{\ell \bar \ell}-\kappa_{\ell\bar \ell})\right\}\,,
-\end{multline}
+following representation of the UV-renormalised virtual
+corrections~\cite{Banfi:2018mcq,Arpino:2019ozn}:
+\begin{align}
+  \mathcal{V}(Q;\varepsilon) ={}& H_{ij}(\alpha_s(\mu_R),Q) \exp\left\{\int^{Q^2}\!\!\frac{dk^2}{k^2}\sum_{\ell=1}^3 \gamma_\ell\left(\alpha_s(k;\varepsilon)\right)\right\}\nonumber\\
+  &\times \exp\left\{-\int \frac{d^dk}{(2\pi)^d}\sum_{\ell=1}^3 \sum_{\bar \ell\ne \ell} w_{\ell \bar \ell}(m^2,m^2+\kappa_{\ell\bar \ell}^2;\varepsilon)\right.\nonumber\\
+  &\qquad\qquad\left.\vphantom{\int \frac{d^dk}{(2\pi)^d}\sum_{\ell=1}^3 \sum_{\bar \ell\ne \ell}}\times\Theta\left(\frac 12\ln\frac{Q^2_{\ell\bar \ell}}{m^2+\kappa_{\ell\bar \ell}^2}-|\eta^{(\ell\bar \ell)}| \right) \Theta(Q_{\ell \bar \ell}-\kappa_{\ell\bar \ell})\right\}\,, \label{eq:HQ}
+\end{align}
 where $Q_{\ell\bar\ell}^2=2p_\ell\cdot p_{\bar\ell}$ and dimensional
 regularisation is used to regulate soft and collinear divergences,
 with $d=4-2\varepsilon$.  
@@ -383,12 +421,10 @@ is performed in the $\overline{\rm MS}$ scheme. The collinear anomalous dimensio
 where $\gamma_\ell^{(0)}$ is given in Eq.~\eqref{eq:gammal-flav}, and 
  \begin{equation}
   \label{eq:gammal1-flav}
-  \gamma_\ell^{(1)} = \left\{
-    \begin{split}
-      &\frac{C_F}{2}\left(C_F\left(\frac{3}{4}-\pi^2+12\zeta_3\right)+C_A\left(\frac{17}{12}+\frac{11\pi^2}{9}-6\zeta_3\right)-n_f\left(\frac{1}{6}+\frac{2\pi^2}{9}\right)\right)\,,\quad \text{if $\ell$ is a quark,} \\
-      & C_A^2\left(\frac{8}{3}+3\zeta_3\right)-\frac{n_f}{2}C_F-\frac{2}{3}n_fC_A \,,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\text{if $\ell$ is a gluon}\,;
-    \end{split}
-    \right.
+  \gamma_\ell^{(1)} = \begin{cases}
+      \frac{C_F}{2}\left(C_F\left(\frac{3}{4}-\pi^2+12\zeta_3\right)+C_A\left(\frac{17}{12}+\frac{11\pi^2}{9}-6\zeta_3\right)-n_f\left(\frac{1}{6}+\frac{2\pi^2}{9}\right)\right)\,, & \ell = q\,, \\[1ex]
+      C_A^2\left(\frac{8}{3}+3\zeta_3\right)-\frac{n_f}{2}C_F-\frac{2}{3}n_fC_A \,, & \ell = g\,;
+    \end{cases}
 \end{equation}
 
 \item the ``web'' function
@@ -567,9 +603,11 @@ Eq.~\eqref{eq:ansatz} to obtain
 \end{subequations}
 where $g_1^{(\ell)}, g_2^{(\ell)}, \mathfrak{g}_2^{(\ell)}$, and
 $h_2^{(\ell)}$ are given in Eq.~\eqref{eq:RNLL-g-h}. The remaining functions are:
+
 \begin{subequations}
 \begin{align}
-	&g_3^{(\ell)}(\lambda)=\left[K^{(1)}\frac{\beta_1\left(a^2(a+b_{\ell}-2\lambda)\ln\left(1-\frac{2\lambda}{a}\right)-(a+b_{\ell})^2(a-2\lambda)\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+6b_{\ell}\lambda^2\right)}{4\pi b_{\ell}\beta_0^3(a-2\lambda)(a+b_{\ell}-2\lambda)}\right.\notag \\[0.5ex]
+	&g_3^{(\ell)}(\lambda)=\left[\frac{K^{(1)}\beta_1}{4\pi b_{\ell}\beta_0^3(a-2\lambda)(a+b_{\ell}-2\lambda)}\left(a^2(a+b_{\ell}-2\lambda)\ln\left(1-\frac{2\lambda}{a}\right)\right.\right.\notag\\[0.5ex]
+	&\qquad\qquad\left.\left.-(a+b_{\ell})^2(a-2\lambda)\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)+6b_{\ell}\lambda^2\right)\right.\notag \\[0.5ex]
 	&\qquad\qquad+\frac{\left(\beta_1^2(a+b_{\ell})^2(a-2\lambda)\ln^2\left(1-\frac{2\lambda}{a+b_{\ell}}\right)-4b_{\ell}\lambda^2\left(\beta_0\beta_2+\beta_1^2\right)\right)}{4 b_{\ell}\beta_0^4(a-2\lambda)(a+b_{\ell}-2\lambda)} \notag \\[0.5ex]
 	&\qquad\qquad-\frac{a\ln\left(1-\frac{2\lambda}{a}\right)\left(2\beta_0\beta_2(a-2\lambda)+a\beta_1^2\ln\left(1-\frac{2\lambda}{a}\right)+4\beta_1^2\lambda\right)}{4b_{\ell}\beta_0^4(a-2\lambda)} \notag\\[0.5ex]
 	&\qquad\qquad+\frac{(a+b_{\ell})\ln\left(1-\frac{2\lambda}{a+b_{\ell}}\right)\left(\beta_0\beta_2(a+b_{\ell}-2\lambda)+2\beta_1^2\lambda\right)}{2b_{\ell}\beta_0^4(a+b_{\ell}-2\lambda)} \notag\\[0.5ex]
@@ -665,7 +703,7 @@ corrections is deferred to Appendix~\ref{app:spin-correl}.
 
 \begin{subfigure}{0.48\textwidth}
 \centering
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.75]
 \begin{feynman}
   \vertex (H) at (0,0);
   \vertex (v1) at (-2.0, 1.5);
@@ -696,7 +734,7 @@ corrections is deferred to Appendix~\ref{app:spin-correl}.
 \hfill
 \begin{subfigure}{0.48\textwidth}
 \centering
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.75]
 \begin{feynman}
   \vertex (H) at (0,0);
   \vertex (v1) at (-2.0, 1.5);
@@ -729,7 +767,7 @@ corrections is deferred to Appendix~\ref{app:spin-correl}.
 
 \begin{subfigure}{0.48\textwidth}
 \centering
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.75]
 \begin{feynman}
   \vertex (H) at (0,0);
   \vertex (v1) at (-2.0, 1.5);
@@ -760,7 +798,7 @@ corrections is deferred to Appendix~\ref{app:spin-correl}.
 \hfill
 \begin{subfigure}{0.48\textwidth}
 \centering
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.75]
 \begin{feynman}
   \vertex (H) at (0,0);
   \vertex (v1) at (-2.0, 1.5);
@@ -807,17 +845,16 @@ $x_{\ell}$. The contribution of this emission to
 $\Sigma_{ij}(\{\tilde p\},v)$ defines a function $\mathcal{F}_{qq}$,
 which we reorganise into the separate NNLL contributions. In the
 $\overline{\mathrm{MS}}$ scheme, it is
-\begin{equation}
-  \label{eq:FISR-start}
-  \begin{aligned}
-    &\mathcal{F}_{qq} = \int \dZ \int_0^{2\pi}\frac{d\phi}{2\pi}\left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \frac{\alpha_s(k_t)}{2\pi}\right. \\
-    & \quad \times \left[\int_{x_\ell}^1 \frac{dz}{z}\hat P_{qq}(z;\varepsilon)\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) \frac{f_q(x_\ell/z,\mu_F)}{f_q(x_\ell,\mu_F)}- \int_0^1 dz \frac{2C_\ell}{1-z}\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] \\
-   & \quad +\left[-\gamma_\ell^{(0)}\int_0^{Q^2v^{2/(a+b_\ell)}}\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}
-     +\frac{1}{\varepsilon} \left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon} \frac{\alpha_s(\mu_R)}{2\pi} \int_{x_\ell}^1 \frac{dz}{z} P_{qq}(z) \frac{f_q(x_\ell/z,\mu_F)}{f_q(x_\ell,\mu_F)}\right]  \\ 
-     & \quad \times \left. \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right\} \,,
-\end{aligned}
-\end{equation}
-where we have introduced the regularised Altarelli-Parisi (AP) splitting function
+\begin{align}
+\label{eq:FISR-start}
+\mathcal{F}_{qq} &= \int \dZ \int_0^{2\pi}\frac{d\phi}{2\pi}\left\{\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon}\frac{\alpha_s(k_t)}{2\pi}\right.\nonumber\\
+&\quad\times\left[\int_{x_\ell}^1\frac{dz}{z}\,\hat P_{qq}(z;\varepsilon)\,\Theta\!\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\frac{f_q(x_\ell/z,\mu_F)}{f_q(x_\ell,\mu_F)}\right.\nonumber\\
+&\qquad\left.-\int_0^1 dz\,\frac{2C_\ell}{1-z}\,\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\nonumber\\
+&\quad+\left[-\gamma_\ell^{(0)}\int_0^{Q^2v^{2/(a+b_\ell)}}\frac{dk^2}{k^2}\left(\frac{\mu_R^2}{k^2}\right)^{\varepsilon}\frac{\alpha_s(k)}{2\pi}\right.\nonumber\\
+&\qquad\left.+\frac{1}{\varepsilon}\left(\frac{\mu_R^2}{\mu_F^2}\right)^{\varepsilon}\frac{\alpha_s(\mu_R)}{2\pi}\int_{x_\ell}^1\frac{dz}{z}\,P_{qq}(z)\,\frac{f_q(x_\ell/z,\mu_F)}{f_q(x_\ell,\mu_F)}\right]\nonumber\\
+&\quad\times\left.\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right\}\,,
+\end{align}
+where we have introduced the spin-averaged, unregularised $d$-dimensional Altarelli--Parisi (AP) splitting function of Eq.~\eqref{eq:AP-functions},
 \begin{equation}
   \label{eq:regularised-Pij}
   \hat P_{ik}(z;\varepsilon) = \hat P_{ik}(z;0)+\varepsilon P^{(\varepsilon)}_{ik}(z)\,, \qquad k=q,g\,. 
@@ -827,7 +864,8 @@ In the present case,
   \label{eq:Pqq}
   \hat P_{qq}(z;0)  = C_F \frac{1+z^2}{1-z}\,, \qquad  P_{qq}^{(\varepsilon)}(z)=-C_F (1-z)\,,
 \end{equation}
-and $P_{qq}(z) = (\hat{P}_{qq}(z;0))_+$ is the full AP splitting function.
+and $P_{qq}(z) = (\hat{P}_{qq}(z;0))_+$ is the regularised AP
+splitting function $P^{(0)}_{qq}(z)$ of Eq.~\eqref{eq:splitting-func-real-virt}.
 
 We now comment on the physical meaning of the ingredients within Eq.~\eqref{eq:FISR-start}.
 The second line represents the splitting of a
@@ -848,12 +886,12 @@ throughout, leaving a finite expression up to subleading terms of $\mathcal{O}(\
 
 To evaluate $\mathcal{F}_{qq}$ in four dimensions we add and subtract
 the counterterm
-\begin{equation}
-\begin{aligned}
-   &\mathrm{CT}=\int \dZ \frac{\alpha_s(Qv^{1/(a+b_\ell)})}{2\pi} \int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \int_0^{2\pi}\frac{d\phi}{2\pi} \\
-   &\quad \times \left[\int_{x_\ell}^1\frac{dz}{z}\hat P_{qq}(z;\varepsilon)\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}-\int_0^1dz\frac{2 C_\ell}{1-z}\right] \Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\,.
-   \end{aligned}
-  \end{equation}
+  \begin{align}
+\mathrm{CT}={}&\int \dZ\, \frac{\alpha_s(Qv^{1/(a+b_\ell)})}{2\pi} \int\frac{dk_t^2}{k_t^2}\left(\frac{\mu_R^2}{k_t^2}\right)^{\varepsilon} \int_0^{2\pi}\frac{d\phi}{2\pi}\nonumber\\
+&\times\left[\int_{x_\ell}^1\frac{dz}{z}\,\hat P_{qq}(z;\varepsilon)\,\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}-\int_0^1dz\,\frac{2 C_\ell}{1-z}\right]\nonumber\\
+&\times\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\,.
+\end{align}
+  
 Adding and subtracting $\mathrm{CT}$ recasts $\mathcal{F}_{qq}$ in
 terms of the ingredients of Eq.~\eqref{eq:Sigma-NNLL},
 \begin{equation}
@@ -861,8 +899,8 @@ terms of the ingredients of Eq.~\eqref{eq:Sigma-NNLL},
   \mathcal{F}_{qq} = \frac{\alpha_s(Q)}{\pi}\left( \delta \mathcal{F}_{\rm rec,qq}+\delta\mathcal{F}_{\rm hc,qq}\right)+ \frac{\alpha_s(Q v^{1/(a+b_\ell)})}{2\pi} C^{(1)}_{\rm hc,qq} \mathcal{F}_{\rm NLL}\,.
 \end{equation}
 Here $C^{(1)}_{\rm hc,qq}$ plays the role of an integrated counterterm
-in a fixed-order calculation, while $\delta \mathcal{F}_{\rm
-  rec,qq}+\delta\mathcal{F}_{\rm hc,qq}$ is the real-emission
+in a fixed-order calculation, while the remaining terms,
+$\delta\mathcal{F}_{\rm rec,qq}$ and $\delta\mathcal{F}_{\rm hc,qq}$, give the real-emission
 contribution after $\mathrm{CT}$ has been
 subtracted, leaving a finite integrand in four dimensions.
 
@@ -870,12 +908,12 @@ subtracted, leaving a finite integrand in four dimensions.
 We now proceed to the detailed derivation of Eq.~\eqref{eq:FISR-split}. 
 Adding $\mathrm{CT}$ to the last two lines of
 Eq.~\eqref{eq:FISR-start} gives
-\begin{equation}
-\begin{aligned}
-  & C^{(1)}_{\rm hc,qq} \mathcal{F}_{\rm NLL}(\lambda)= \int \dZ \int_0^{2\pi}\frac{d\phi}{2\pi}\,\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right) \times \\ & \times \left\{ -\gamma_\ell^{(0)}\int_0^{Q^2v^{2/(a+b_\ell)}}\frac{dk^2}{k^2}\left(\frac{Q^2v^{2/(a+b_\ell)}}{k^2}\right)^{\varepsilon}+\frac{1}{\varepsilon} \int_{x_\ell}^1 \frac{dz}{z} P_{qq}(z) \frac{f_q(x_\ell/z,Q v^{1/(a+b_\ell)})}{f_q(x_\ell,Q v^{1/(a+b_\ell)})} \right. \\ 
-   &\left. +\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{Q^2v^{2/(a+b_\ell)}}{k_t^2}\right)^{\varepsilon} \left[\int_{x_\ell}^1\frac{dz}{z} \hat P_{qq}(z;\varepsilon)\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}-\int_0^1dz\frac{2 C_\ell}{1-z}\right]\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\right\}\,.
-\end{aligned}
-\end{equation}
+\begin{align}
+&C^{(1)}_{\rm hc,qq}\, \mathcal{F}_{\rm NLL}(\lambda)= \int \dZ \int_0^{2\pi}\frac{d\phi}{2\pi}\,\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\nonumber\\
+&\;\times\left\{ -\gamma_\ell^{(0)}\int_0^{Q^2v^{2/(a+b_\ell)}}\frac{dk^2}{k^2}\left(\frac{Q^2v^{2/(a+b_\ell)}}{k^2}\right)^{\varepsilon}+\frac{1}{\varepsilon} \int_{x_\ell}^1 \frac{dz}{z}\, P_{qq}(z)\, \frac{f_q(x_\ell/z,Q v^{1/(a+b_\ell)})}{f_q(x_\ell,Q v^{1/(a+b_\ell)})} \right.\nonumber\\
+&\;+\int_0^{Q^2}\frac{dk_t^2}{k_t^2}\left(\frac{Q^2v^{2/(a+b_\ell)}}{k_t^2}\right)^{\varepsilon} \left[\int_{x_\ell}^1\frac{dz}{z}\, \hat P_{qq}(z;\varepsilon)\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}-\int_0^1dz\,\frac{2 C_\ell}{1-z}\right]\nonumber\\
+&\;\left.\times\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)\right\}\,.
+\end{align}
 We identify the first term on the right-hand side as $\FNLL(\lambda)$, by
 comparison with Eq.~\eqref{eq:FNLL-formula}. 
 Parameterising  $V_{\mathrm{sc}}(\{\tilde{p}\},k)$ in terms of the splitting variables,
@@ -884,45 +922,40 @@ Parameterising  $V_{\mathrm{sc}}(\{\tilde{p}\},k)$ in terms of the splitting var
 V_{\mathrm{sc}}(\{\tilde{p}\},k)=d_\ell g_\ell(\phi) \left(\frac{Q}{2 E_\ell}\right)^{b_\ell}\left(\frac{k_t}{Q}\right)^{a+b_\ell}\frac{1}{(1-z)^{b_\ell}}\,,
 \end{equation}
 and using Eq.~\eqref{eq:Pqq}, we find
-\begin{multline}
-\label{eq:C1qq-alm-final}
-C^{(1)}_{\rm hc, qq}=  \int_{x_\ell}^1\frac{dz}{z}\,\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\times \\ \times
-C_F\left[\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
-        \left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\right)(1+z^2)+(1-z)\right]\,.
-  \end{multline}
-  Using the regularised AP function in Eq.~\eqref{eq:Pqq}, the above expression can be written in the more compact form
-  \begin{multline}
-    \label{eq:C1qq-final}
-C^{(1)}_{\rm hc, qq}=  \int_{x_\ell}^1\frac{dz}{z}\,\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\times \\ \times
-\left[\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
-        \left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\right)(1-z)\hat P_{qq}(z;0)-P_{qq}^{(\varepsilon)}(z)\right]\,.
-  \end{multline}
+\begin{align}
+C^{(1)}_{\rm hc, qq}={}&  \int_{x_\ell}^1\frac{dz}{z}\,\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\,
+C_F\Bigg[\frac{2 }{a+b_\ell}\Bigg(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+\nonumber\\
+&-\frac{1}{(1-z)_+}\left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\Bigg)(1+z^2)+(1-z)\Bigg]\,. \label{eq:C1qq-alm-final}
+\end{align}
+Using Eq.~\eqref{eq:Pqq}, the above expression can be written in the more compact form
+  \begin{align}
+C^{(1)}_{\rm hc, qq}={}&  \int_{x_\ell}^1\frac{dz}{z}\,\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}
+\Bigg[\frac{2 }{a+b_\ell}\Bigg(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+\nonumber\\
+&-\frac{1}{(1-z)_+}\left(\langle\ln d_\ell g_\ell\rangle-b_\ell \ln\frac{2E_\ell}{Q}\right)\Bigg)(1-z)\,\hat P_{qq}(z;0)-P_{qq}^{(\varepsilon)}(z)\Bigg]\,. \label{eq:C1qq-final}
+\end{align}
 
 The remaining contribution to Eq.~\eqref{eq:FISR-split} follows in the
 same way, by subtracting $\mathrm{CT}$ from the first two lines of
 Eq.~\eqref{eq:FISR-start},
-\begin{equation}
-\label{eq:dFISR+CT}
-\begin{aligned}
-  &\frac{\alpha_s(Q)}{\pi}\left(\delta \mathcal{F}_{\mathrm{rec,qq}}+\delta \mathcal{F}_{\mathrm{hc,qq}}\right)=\int \dZ
+\begin{align}
+&\frac{\alpha_s(Q)}{\pi}\left(\delta \mathcal{F}_{\mathrm{rec,qq}}+\delta \mathcal{F}_{\mathrm{hc,qq}}\right)=\nonumber\\
+&\quad=\int \dZ\,
   \frac{\alpha_s(Qv^{\frac{1}{a+b_\ell}})}{2\pi} \int_0^{Q^2}\frac{dk_t^2}{k_t^2}
-\left(\frac{Q^2v^{\frac{2}{a+b_\ell}}}{k_t^2}\right)^{\varepsilon} \int_0^{2\pi}\frac{d\phi}{2\pi}
-\\
-&\qquad\times \left\{\left[\int_{x_\ell}^1 \frac{dz}{z}
-\hat P_{qq}(z;\varepsilon)
-\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
-\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}+\right.\right. \\
-&\qquad\left.
-  - \int_0^1 dz \frac{2C_\ell}{1-z}
-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right] + \\
-&\qquad-\left[\int_{x_\ell}^1\frac{dz}{z} \hat P_{qq}(z;\varepsilon)
+\left(\frac{Q^2v^{\frac{2}{a+b_\ell}}}{k_t^2}\right)^{\varepsilon} \int_0^{2\pi}\frac{d\phi}{2\pi}\nonumber\\
+&\qquad\times \left\{\left[\int_{x_\ell}^1 \frac{dz}{z}\,
+\hat P_{qq}(z;\varepsilon)\,
+\Theta\!\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
+\frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\right.\right.\nonumber\\
+&\qquad\qquad\left.
+  - \int_0^1 dz\, \frac{2C_\ell}{1-z}\,
+\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\nonumber\\
+&\qquad\quad-\left[\int_{x_\ell}^1\frac{dz}{z}\, \hat P_{qq}(z;\varepsilon)\,
 \frac{f_q(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_q(x_\ell,Qv^{\frac{1}{a+b_\ell}})}
--\int_0^1dz\frac{2 C_\ell}{1-z}\right] \times\\
-&\qquad\times \left.\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)
-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
-\right\}\,.
-\end{aligned}
-\end{equation}
+-\int_0^1dz\,\frac{2 C_\ell}{1-z}\right]\nonumber\\
+&\qquad\quad\left.\times\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k)}{v}\right)
+\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
+\right\}\,. \label{eq:dFISR+CT}
+\end{align}
 We now introduce the rescaled variable $\zeta \equiv
 V_{\mathrm{sc}}(\{\tilde{p}\},k)/v$ and change variables using
 Eq.~\eqref{eq:Vsc-param}, which gives
@@ -945,27 +978,22 @@ We observe that the second and third line give two contributions that
 are separately finite in the collinear limit $\zeta\to 0$. However, in
 order to take the limit $z\to 1$ and obtain a finite result, one needs to compute the expression in
 Eq.~\eqref{eq:dFrec+dFhq} as a whole. A further simplification can be achieved by adding and subtracting the following term
-\begin{multline}
-  \label{eq:dFhc-sub}
-  \int \dZ \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\pi\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
- \int_{x_\ell}^1 \frac{dz}{z}  \hat P_{qq}(z;0)\, \frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}\\
- \times\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\,.
-\end{multline}
+\begin{align}
+&\int \dZ\, \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\pi\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\nonumber\\
+&\qquad\times \int_{x_\ell}^1 \frac{dz}{z}\,  \hat P_{qq}(z;0)\, \frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}\,
+\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\,. \label{eq:dFhc-sub}
+\end{align}
 This separates Eq.~\eqref{eq:dFrec+dFhq} into $\delta \mathcal{F}_{\mathrm{rec,qq}}$ and $\delta \mathcal{F}_{\mathrm{hc,qq}}$:
-\begin{equation}
-\label{eq:dFrec-qq}
-\begin{aligned}
-\delta \mathcal{F}_{\mathrm{rec,qq}} = \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}&\int_0^{2\pi}\frac{d\phi}{2\pi} \int \dZ\int_{x_\ell}^1 \frac{dz}{z} \hat P_{qq}(z;0)\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \\
-&\times\left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
-\end{aligned}
-\end{equation}
-\begin{equation}
-\label{eq:dFhc-qq}
-\begin{aligned}
-\delta \mathcal{F}_{\mathrm{hc,qq}} &= \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left(\int_{x_\ell}^1 \frac{dz}{z}\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \left(P_{qq}(z)-\gamma^{(0)}_\ell\delta(1-z)\right)\right)\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\times \\
-&\times \int \dZ   \left[\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,.
-\end{aligned}
-\end{equation} 
+\begin{align}
+\delta \mathcal{F}_{\mathrm{rec,qq}} ={}& \frac{\alpha_s\left(Q v^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi} \int \dZ\nonumber\\
+&\times\int_{x_\ell}^1 \frac{dz}{z}\, \hat P_{qq}(z;0)\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})}\nonumber\\
+&\times\left[\Theta\!\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)-\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,, \label{eq:dFrec-qq}
+\end{align}
+\begin{align}
+\delta \mathcal{F}_{\mathrm{hc,qq}} ={}& \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\left(\int_{x_\ell}^1 \frac{dz}{z}\,\frac{f_q(x_\ell/z,Qv^{1/(a+b_\ell)})}{f_q(x_\ell,Qv^{1/(a+b_\ell)})} \left(P_{qq}(z)-\gamma^{(0)}_\ell\delta(1-z)\right)\right)\nonumber\\
+&\times\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\int \dZ\nonumber\\
+&\times\left[\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta(1-\zeta)\,\Theta\!\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)\right]\,. \label{eq:dFhc-qq}
+\end{align}
 
 The $q\to qg$ channel is one instance of a general structure. 
 Surprisingly, each of the three objects in Eq.~\eqref{eq:FISR-split}
@@ -978,8 +1006,7 @@ The hard-collinear coefficient for leg $\ell$ takes the general form
     C_{\mathrm{hc},\ell}^{(1)} = \sum_k  \int_{x_\ell}^1\frac{dz}{z}\,C_{ik}^{(1)}(z) \frac{f_k(x_\ell/z,Qv^{\frac{1}{a+b_\ell}})}{f_i(x_\ell,Qv^{\frac{1}{a+b_\ell}})}\,,
   \end{equation}
   where $i$ is the flavour of leg $\ell$, and Eq.~\eqref{eq:C1qq-final}
-is its $i=k=q$ term. The coefficients $C_{ik}^{(1)}(z)$ follow from the
-regularised splitting functions of Eq.~\eqref{eq:regularised-Pij},
+is its $i=k=q$ term. The coefficients $C_{ik}^{(1)}(z)$ follow from the unregularised splitting functions of Eq.~\eqref{eq:regularised-Pij},
   \begin{multline}
     \label{eq:Cij-ISR}
     C_{ik}^{(1)}(z) = - P_{ik}^{(\varepsilon)}(z) \\ +\frac{2 }{a+b_\ell}\left(b_\ell\left(\frac{\ln(1-z)}{1-z}\right)_+-\frac{1}{(1-z)_+}
@@ -1029,16 +1056,9 @@ with, for an initial-state leg,
    \label{eq:Bell-ISR}
 B_\ell=\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\delta_{ik}\delta(1-z)\right) \frac{f_k(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}  \,,
  \end{equation}
- where $P_{ik}(z)$ are the full Altarelli-Parisi splitting functions,
- \begin{subequations}
- \label{eq:full-AP}
-\begin{align}
-	&P_{qq}(z)=C_F\left[\frac{1+z^2}{1-z}\right]_+\,,\\
-	&P_{qg}(z)=T_R\left[z^2+(1-z)^2\right]\,,\\
-	&P_{gq}(z)=C_F\left[\frac{1+(1-z)^2}{z}\right]\,,\\
-	&P_{gg}(z)=2C_A\left[\frac{z}{(1-z)_+}+\frac{1-z}{z}+z(1-z)\right]+2\pi\beta_0\delta(1-z)\,.
-\end{align}
- \end{subequations}
+ where $P_{ik}(z) \equiv P^{(0)}_{ik}(z)$ are the regularised
+ Altarelli--Parisi splitting functions given in
+ Eq.~\eqref{eq:splitting-func-real-virt}.
   For final-state radiation, the same substitution can be
   used as in Eq.~\eqref{eq:C-recovery}, such that $B_\ell=-\gamma_\ell^{(0)}$,
  with $\gamma_\ell^{(0)}$ defined in Eq.~\eqref{eq:gammal-flav}.
@@ -1047,7 +1067,7 @@ The recoil correction, $\delta\mathcal{F}_{\rm rec}$ takes the general form,
  \begin{multline}
    \label{eq:dFrec-ISR}
    \delta\mathcal{F}_{\rm rec}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz P_\ell(z) \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
- \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
+ \int \dZ  \\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,,
 \end{multline}
 with, for an initial-state leg, 
 \begin{equation}
@@ -1126,21 +1146,26 @@ the emitting leg $\ell$, and its azimuthal angle $\phi^{(\ell)}$.
 It accounts for running coupling corrections to real emissions in the physical scheme,
 as well as the correct rapidity boundary for a single soft-collinear emission. 
 The general expression is 
-\begin{multline}
+\begin{equation}
+\begin{aligned}
 	\label{eq:dFsc-general}
-	\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\times 
-	 \\ \times \int \dZ  \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
+	&\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=\frac{\pi}{\alpha_s(Q)}\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}\sum_{\ell=1}^3\left[\Delta R'_{\ell,\mathrm{NNLL}}+R''_{\ell,\mathrm{NNLL}}\left(\ln\frac{d_\ell g_\ell(\phi)}{\zeta}-b_\ell\ln\frac{2E_\ell}{Q}\right)\right]\times 
+	 \\ &\times \int \dZ  \left[\Theta\left(1-\frac{\Vsc{k,\{k_i\}}}{v}\right)
        -\Theta\left(1-\frac{\Vsc{\{k_i\}}}{v}\right)\Theta(1-\zeta)
      \right]\,.
-\end{multline}
+    \end{aligned}
+\end{equation}
 Substituting the one-jettiness parameters in
 Eq.~\eqref{eq:tau1-1em-props} into the additive expression for
 $\delta\mathcal{F}_{\rm sc}$ given in
 Appendix~\ref{ap:add-res-NNLL}, we obtain
-\begin{multline}
-\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=-\FNLL(\lambda)\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\ln\frac{Q^2}{M Q_{\ell}}\right)\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)\right. \times\\
- \left.+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,,
-\end{multline}
+
+\begin{equation}
+\begin{aligned}
+&\delta\mathcal{F}_{\mathrm{sc}}(\lambda)=-\FNLL(\lambda)\frac{\pi}{\alpha_s(Q)}\sum_{\ell=1}^3\left[\left(\Delta R'_{\ell,\mathrm{NNLL}}+ R''_{\ell,\mathrm{NNLL}}\ln\frac{Q^2}{M Q_{\ell}}\right)\left(\psi^{(0)}\left(1+\RpNLL\right)+\gamma_E\right)\right. \\
+ &\qquad\qquad\left.+\frac{R''_{\ell,\mathrm{NNLL}}}{2}\left(\left(\psi^{(0)}(1+\RpNLL)+\gamma_E\right)^2-\psi^{(1)}(1+\RpNLL)+\frac{\pi^2}{6}\right)\right]\,,
+ \end{aligned}
+\end{equation}
 where $\RpNLL$ and $R''_{\ell,\mathrm{NNLL}}$ are given in
 Eqs.~\eqref{eq:RpNLL} and~\eqref{eq:R2NNLL}, respectively, while
 \begin{equation}
@@ -1156,16 +1181,13 @@ $k_a$ and $k_b$, whose kinematics are described by the variables
 introduced in Eq.~\eqref{eq:dFcorrel-general}. This correction therefore accounts for
 correlated splittings into either a $q\bar q$ pair or a pair of gluons.
 The general expression is
-\begin{equation}
-\begin{aligned}
-\label{eq:dFcorrel-general}
-\delta&\mathcal{F}_{\mathrm{correl}}(\lambda)=\sum_{\ell=1}^3\frac{\lambda R''_{\ell,\mathrm{NNLL}}}{2a\beta_0\alpha_s(Q)}
-\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\int_0^\infty
-\frac{d\mu^2}{\mu^2(1+\mu^2)}\int_0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)\times\\
-&\int\dZ\left[ \Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\},k_a,k_b,\{k_i\}\right)}{v}\right) - 
-\lim_{\mu^2\to0}\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\},k_a+k_b,\{k_i\}\right)}{v}\right) \right]\,,
-\end{aligned}
-\end{equation}
+\begin{align}
+&\delta\mathcal{F}_{\mathrm{correl}}(\lambda)={}\sum_{\ell=1}^3\frac{\lambda R''_{\ell,\mathrm{NNLL}}}{2a\beta_0\alpha_s(Q)}
+\int_0^\infty\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi^{(\ell)}}{2\pi}\nonumber\\
+&\quad\times\int_0^\infty
+\frac{d\mu^2}{\mu^2(1+\mu^2)}\int_0^1dz\int_0^{2\pi}\frac{d\phi}{2\pi}\,\frac{1}{2!}\mathcal{A}^2(z,\mu,\phi)\int\dZ\nonumber\\
+&\quad\times\left[ \Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\},k_a,k_b,\{k_i\}\right)}{v}\right)-\lim_{\mu^2\to0}\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\},k_a+k_b,\{k_i\}\right)}{v}\right) \right]\,, \label{eq:dFcorrel-general}
+\end{align}
 where $k=k_a+k_b$, $\mu^2=m^2/k_t^2$ is the rescaled invariant mass of the
 splitting, and $\mathcal{A}^2$ is the double-emission function defined in
 Ref.~\cite{Arpino:2019ozn}. 
@@ -1220,7 +1242,7 @@ analytically due to the presence of PDFs:
   \left.\delta\mathcal{F}_{\rm hc}\right|_{\ell=1,2}
   = \frac{\alpha_s(\sqrt{\tau_1}\,Q)}{2\,\alpha_s(Q)}\frac{d\FNLL}{d\RpNLL}\sum_k\int_{x_{\ell}}^1 \frac{dz}{z} \left(P_{ik}(z)-\gamma_\ell^{(0)}\delta_{ik}\right) \frac{f_k(x_{\ell}/z,Qv^{1/(a+b_\ell)})}{f_i(x_\ell,Qv^{1/(a+b_\ell)})}\,,
 \end{equation}
-where $P_{ik}(z)$ are given in Eq.~\eqref{eq:full-AP}.
+where $P_{ik}(z)$ are given in Eq.~\eqref{eq:splitting-func-real-virt}.
 
 The recoil corrections additionally require the hard-collinear limit
 of the observable,
@@ -1238,7 +1260,7 @@ soft and collinear emissions.
  \begin{multline}
  \label{eq:dFrec-general}
    \delta\mathcal{F}_{\rm rec}(\lambda)=\sum_\ell \frac{\alpha_s\left(Qv^{1/(a+b_\ell)}\right)}{\alpha_s(Q)\left(a+b_\ell\right)}\int_0^1 dz\,P_\ell(z) \int_0^{\infty}\frac{d\zeta}{\zeta}\int_0^{2\pi}\frac{d\phi}{2\pi}
- \int \dZ  \times\\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k_{\mathrm{hc}},\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,.
+ \int \dZ  \\ \times  \left[\Theta\left(1-\frac{V_{\mathrm{hc}}(\{\tilde{p}\},k_{\mathrm{hc}},\{k_i\})}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)\right]\,.
 \end{multline}
 
 Using the additive result for $\delta\mathcal{F}_{\rm rec}$ in
@@ -1286,13 +1308,13 @@ and the event plane. The general expression is
 \begin{equation}
 \label{eq:DFrec-general}
 \begin{aligned}
-  \Delta&\mathcal{F}_{\mathrm{rec}}(\lambda) =
+  &\Delta\mathcal{F}_{\mathrm{rec}}(\lambda) =
 \sum_{\ell_g}\frac{\alpha_s(Qv^{1/(a+b_{\ell_g})})}{\alpha_s(Q)(a+b_{\ell_g})}\int_0^\infty \frac{d\zeta}{\zeta}
 \int_0^\pi \frac{d\phi^{({\ell}_{g})}}{\pi}\left[2\cos^2\phi^{(\ell_g)} - 1\right]
 \int_0^1\!dz^{({\ell}_{g})}\,
 \Delta P_g(z^{(\ell_g)})
 \\
-&\quad \times \int \dZ \left[
+& \times \int \dZ \left[
 \Theta\left(1 - \frac{V_{\mathrm{hc}}(\{\tilde{p}\},k,\{k_i\})}{v}\right)
 - \Theta(1-\zeta)\,
 \Theta\left(1 - \frac{V_{\mathrm{sc}}(\{\tilde{p}\},\{k_i\})}{v}\right)
@@ -1349,8 +1371,8 @@ The general expression is
 \label{eq:dFwa-general}
 \begin{aligned}
 	&\delta\mathcal{F}_{\mathrm{wa}}(\lambda)=\frac{\alpha_s(v^{1/a}Q)}{a\,\alpha_s(Q)}2\sum_{(\ell\bar\ell)}C_{\ell\bar\ell}\int_0^\infty \frac{d\zeta}{\zeta}
-	\int_{-\infty}^\infty d\eta^{(\ell\bar\ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar\ell)}}{2\pi}\times\\
-	&\times \int \dZ\left[\Theta\left(1-\frac{V_{\mathrm{wa}}\left(\{\tilde{p}\}, k^{(\ell\bar\ell)},\{k_i\}\right)}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\}, k^{(\ell\bar\ell)},\{k_i\}\right)}{v}\right)\right]\,,
+	\int_{-\infty}^\infty d\eta^{(\ell\bar\ell)}\int_0^{2\pi}\frac{d\phi^{(\ell\bar\ell)}}{2\pi} \int \dZ\\
+	&\quad\times\left[\Theta\left(1-\frac{V_{\mathrm{wa}}\left(\{\tilde{p}\}, k^{(\ell\bar\ell)},\{k_i\}\right)}{v}\right) -\Theta\left(1-\frac{V_{\mathrm{sc}}\left(\{\tilde{p}\}, k^{(\ell\bar\ell)},\{k_i\}\right)}{v}\right)\right]\,,
 \end{aligned}
 \end{equation}
 where the sum runs over all the dipoles $(\ell\bar\ell)$ that build up the Born event. 
@@ -1520,7 +1542,8 @@ The second subtraction coefficient contributing at LL accuracy is
 	&\mathcal{C}^{(2)}_3=\frac{B_{\kappa_1,3}^{(2)}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B_{\kappa_2,3}^{(2)}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}+
     J_{\kappa_3,3}^{(2)}(\lambda_3)
     +\widehat{S}^{(2)}_{\kappa,3}\left(\lambda_s\right)\\[0.5ex]
-    &\qquad +\left(\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_1,1}^{(1)}(\lambda_3)+\widehat{S}_{\kappa,1}^{(1)}(\lambda_s)\right)+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\,.
+    &\qquad +\left(\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}+\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\right)\left(J_{\kappa_1,1}^{(1)}(\lambda_3)+\widehat{S}_{\kappa,1}^{(1)}(\lambda_s)\right)\\
+    &\qquad+\frac{B^{(1)}_{\kappa_1,1}(x_1,\lambda_1)}{f_i(x_1,\mu_F)}\frac{B^{(1)}_{\kappa_2,1}(x_2,\lambda_2)}{f_j(x_2,\mu_F)}\,.
  \end{aligned}   
 \end{equation}
 Substituting the explicit expressions from
@@ -1555,10 +1578,9 @@ Eqs.~\eqref{eq:C11-ingred} and~\eqref{eq:C10-ingred}, this becomes
     +\sum_{k}\int\frac{dz}{z}2P_{jk}(z)\frac{f_k(x_2/z,\mu_F)}{f_j(x_2,\mu_F)}\\
     &+4C_1\ln\frac{Q_1 M}{\mu_R^2}+4C_2\ln\frac{Q_2 M}{\mu_R^2}
     +4C_3\ln\frac{Q_3 M}{\mu_R^2} \\
-    &-4\left[(C_1-C_2-C_3)\ln\frac{Q_{23}^2}{Q_2 Q_3}
-    +(C_2-C_1-C_3)\ln\frac{Q_{13}^2}{Q_1 Q_3}
-    +(C_3-C_1-C_2)\ln\frac{Q_{12}^2}{Q_1 Q_2}\right]\\
-    &-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
+        &-4\left[(C_1-C_2-C_3)\ln\frac{Q_{23}^2}{Q_2 Q_3}
+    +(C_2-C_1-C_3)\ln\frac{Q_{13}^2}{Q_1 Q_3}\right.\\
+    &\qquad\left.+(C_3-C_1-C_2)\ln\frac{Q_{12}^2}{Q_1 Q_2}\right]-8\ln\frac{M}{\mu_R}\sum_{\ell}C_{\ell}\,,
     \end{aligned}
 \end{equation}
 which can be simplified to
@@ -1781,13 +1803,14 @@ Restricting the \textsc{ARES} master formula in Eq.~\eqref{eq:Sigma-NNLL}
  to the same $N=0$ configuration leaves only the two incoming legs 
  $\ell=1,2$, with the only Born channel being $q\bar q\to Z$. The NNLL
 cumulant becomes
-\begin{multline}
+\begin{equation}
   \label{eq:Sigma-qqbar}
-  \Sigma_{q\bar q}(\{p\},v)= e^{-R_{\rm NNLL}(v)} \frac{f_{q}(x_1,v^{\frac{1}{a+b_1}}Q)}{f_{q}(x_1,\mu_F)} \frac{f_{\bar q}(x_2,v^{\frac{1}{a+b_2}}Q)}{f_{\bar q}(x_2,\mu_F)}
-  \times \\ \times
-  \left(\mathcal{F}^{(q \bar q)}_{\rm NLL}(\lambda)\left(1+\frac{\alpha_s(Q)}{2\pi}H_{q \bar q}^{(1)}(Q,\mu_R)
-      +\sum_{\ell}\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},\ell}^{(1)}\right) +\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL}(\lambda)\right)\,,
-\end{multline}
+  \begin{split}
+  \Sigma_{q\bar q}(\{p\},v)= {}& e^{-R_{\rm NNLL}(v)} \frac{f_{q}(x_1,v^{\frac{1}{a+b_1}}Q)}{f_{q}(x_1,\mu_F)} \frac{f_{\bar q}(x_2,v^{\frac{1}{a+b_2}}Q)}{f_{\bar q}(x_2,\mu_F)}\\
+  &\times\Bigg[\mathcal{F}^{(q\bar q)}_{\rm NLL}(\lambda)\bigg(1+\frac{\alpha_s(Q)}{2\pi}H_{q\bar q}^{(1)}(Q,\mu_R)+\sum_{\ell}\frac{\alpha_s(Q v^{\frac{1}{a+b_\ell}})}{2\pi}C_{\mathrm{hc},\ell}^{(1)}\bigg)\\
+  &\qquad+\frac{\alpha_s(Q)}{\pi} \delta\mathcal{F}^{(q\bar q)}_{\rm NNLL}(\lambda)\Bigg]\,,
+  \end{split}
+\end{equation}
 where 
 \begin{equation}
 \label{eq:dFNNLL-qq}
@@ -1828,15 +1851,17 @@ Ref.~\cite{vanBeekveld:2025zjh} can be written as
 \begin{aligned}
 &\Sigma^{\mathrm{LTS}}(\{p\},v)=e^{-R_{\mathrm{NNLL}}(v)}
 \frac{f_q(x_1,\mu_F v^{\frac{1}{1+b}})f_{\bar q}(x_{2},\mu_F v^{\frac{1}{1+b}})}
-{f_q(x_1,\mu_F )f_{\bar q}(x_{2},\mu_F )}\left\{\mathcal{F}_{\mathrm{NLL}}(v)\left[
-1+\frac{\alpha_s(\mu_R)}{2\pi}H_{q\bar q}^{(1)}(Q,\mu_R)+
+{f_q(x_1,\mu_F )f_{\bar q}(x_{2},\mu_F )}\\[0.5ex]
+&\quad\times\left\{\mathcal{F}_{\mathrm{NLL}}(v)\left[
+1+\frac{\alpha_s(\mu_R)}{2\pi}H_{q\bar q}^{(1)}(Q,\mu_R)\vphantom{\frac{f_k\left(x_1/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_1,\mu_F v^{\frac{1}{1+b}})}}
 \right.\right.\\[0.5ex]
-&\qquad\qquad +\frac{\alpha_s(\mu_R)}{2\pi}\frac{1+b}{1+b-2\lambda}
+&\qquad +\frac{\alpha_s(\mu_R)}{2\pi}\frac{1+b}{1+b-2\lambda}
 \sum_k\left(
 \int_{x_1}^1\frac{dz}{z}C_{qk}^{(1), \rm LTS}(z)
 \frac{f_k\left(x_1/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_1,\mu_F v^{\frac{1}{1+b}})}\right.\\[0.5ex]
-&\qquad\qquad\left.\left.\left.+\int_{x_2}^1\frac{dz}{z}C_{\bar{q}k}^{(1), \rm LTS}(z)
-\frac{f_k\left(x_2/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{\bar{q}}(x_2,\mu_F v^{\frac{1}{1+b}})}\right)\right]+\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{\mathrm{LTS}}_{\mathrm{NNLL}}(v)\right\}+\delta\Sigma_{\mathrm{DGLAP}}(v)\,,
+&\qquad\left.\left.\left.+\int_{x_2}^1\frac{dz}{z}C_{\bar{q}k}^{(1), \rm LTS}(z)
+\frac{f_k\left(x_2/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{\bar{q}}(x_2,\mu_F v^{\frac{1}{1+b}})}\right)\right]\right.\\[0.5ex]
+&\qquad\left.+\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{\mathrm{LTS}}_{\mathrm{NNLL}}(v)\vphantom{\frac{f_k\left(x_1/z,\mu_F v^{\frac{1}{1+b}}\right)}{f_{ q}(x_1,\mu_F v^{\frac{1}{1+b}})}}\right\}+\delta\Sigma_{\mathrm{DGLAP}}(v)\,,
 \end{aligned}
 \end{equation}
 where 
@@ -1849,7 +1874,7 @@ and
 \label{eq:DGLAP-add}
 \begin{aligned}
 	&\delta\Sigma_{\mathrm{DGLAP}}(v)=e^{-R_{\mathrm{NNLL}}(v)}\frac{\alpha_s(\mu_R)}{\pi}\frac{1}{1+b-2\lambda}\frac{d\FNLL}{d\RpNLL}\\
-	&\qquad\qquad\times\sum_k\left(
+	&\qquad\times\sum_k\left(
 \int_{x_1}^1\frac{dz}{z}P_{qk}(z)
 \frac{f_k\left(x_1/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{1},\mu_F v^{1/(1+b)})}
 +\int_{x_2}^1\frac{dz}{z}P_{\bar{q}k}(z)
@@ -1857,8 +1882,8 @@ and
 \right)\,,
 \end{aligned}
 \end{equation}
-where $P_{qk}(z)$ and $P_{\bar q k}(z)$ are the full Altarelli--Parisi
-splitting functions defined in Eq.~\eqref{eq:full-AP}.
+where $P_{qk}(z)$ and $P_{\bar q k}(z)$ are the regularised Altarelli--Parisi
+splitting functions of Eq.~\eqref{eq:splitting-func-real-virt}.
 
 The two cumulants have a similar general structure, differing only in how they organise the NNLL corrections.
 The relation between the different contributions in the two formulations can be summarised as follows.
@@ -1919,32 +1944,26 @@ $C_{{\rm hc},\ell}^{(1)}$ and recoil correction
 $\delta\mathcal{F}_{\rm rec}$ in \textsc{ARES}. Specialising
 Eq.~\eqref{eq:Cell-ISR} to the parameters in Eq.~\eqref{eq:LTS-1-emsn},
 with $Q=M$ and $E_\ell=M/2$, gives
-\begin{equation}
-\begin{aligned}
-  \label{eq:Cij-LTS-comp}
-  &\frac{\alpha_s(Mv^{\frac{1}{1+b}})}{2\pi}\sum_{\ell=1}^2
-  C_{{\rm hc},\ell}^{(1)} =\\
-  &\quad=\sum_k\left[\int_{x_1}^1\frac{dz}{z}
+\begin{align}
+  \frac{\alpha_s(Mv^{\frac{1}{1+b}})}{2\pi}\sum_{\ell=1}^2
+  &C_{{\rm hc},\ell}^{(1)} ={}\sum_k\left[\int_{x_1}^1\frac{dz}{z}
   \frac{f_k(x_1/z,Mv^{\frac{1}{1+b}})}
   {f_q(x_1,Mv^{\frac{1}{1+b}})}
-  \left(-P_{qk}^{(\varepsilon)}(z)
-  +\frac{2b}{1+b}
-  \!\left(\frac{\ln(1-z)}{1-z}\right)_+\!(1-z)\hat{P}_{qk}(z;0)
-  \right)  +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
-\end{aligned}
-\end{equation}
+  \left(-P_{qk}^{(\varepsilon)}(z)\vphantom{\left(\frac{\ln(1-z)}{1-z}\right)_+}\right.\right.\nonumber\\
+  &\qquad\left.\left.\vphantom{\frac{f_k(x_1/z,Mv^{\frac{1}{1+b}})}{f_q(x_1,Mv^{\frac{1}{1+b}})}}+\frac{2b}{1+b}
+  \left(\frac{\ln(1-z)}{1-z}\right)_+(1-z)\hat{P}_{qk}(z;0)
+  \right)+\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,. \label{eq:Cij-LTS-comp}
+\end{align}
 Using Eq.~\eqref{eq:dFrec-ISR} for additive observables with the
 parameters of Eq.~\eqref{eq:LTS-1-emsn},
-\begin{equation}
-  \label{eq:dFrec-LTS-comp}
-  \frac{\alpha_s(M)}{\pi}\delta\mathcal{F}_{\rm rec}(\lambda) =
+\begin{align}
+  &\frac{\alpha_s(M)}{\pi}\delta\mathcal{F}_{\rm rec}(\lambda) ={}
   \frac{\alpha_s(Mv^{\frac{1}{1+b}})}{2\pi}
-  \sum_k\!\left[\int_{x_1}^1\frac{dz}{z}
+  \sum_k\left[\int_{x_1}^1\frac{dz}{z}
   \frac{f_k(x_1/z,\mu_F v^{\frac{1}{1+b}})}
-  {f_q(x_1,\mu_F v^{\frac{1}{1+b}})}
-  \left(-\frac{2b}{1+b}\hat{P}_{qk}(z;0)\ln z\right)
-  +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
-\end{equation}
+  {f_q(x_1,\mu_F v^{\frac{1}{1+b}})}\right.\nonumber\\
+  &\qquad\left.\vphantom{\frac{f_k(x_1/z,\mu_F v^{\frac{1}{1+b}})}{f_q(x_1,\mu_F v^{\frac{1}{1+b}})}}\times\left(-\frac{2b}{1+b}\hat{P}_{qk}(z;0)\ln z\right)+\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,. \label{eq:dFrec-LTS-comp}
+\end{align}
 Combining Eqs.~\eqref{eq:Cij-LTS-comp} and
 \eqref{eq:dFrec-LTS-comp} reproduces the first two terms of
 Eq.~\eqref{eq:CkiLTS} exactly. The remaining term,
@@ -1966,20 +1985,21 @@ The remaining hard-collinear correction in the LTS formulation is
 \sum_{\ell}\gamma_\ell^{(0)}\,.
 \end{equation}
 Combining this with $\delta\Sigma_{\rm DGLAP}$ in Eq.~\eqref{eq:DGLAP-add}, we find that at NNLL this gives rise to:
-\begin{multline}
-	\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)+
-	\delta\Sigma_{\rm DGLAP}\simeq\\
-	\frac{\alpha_s(\mu_R)}{\pi(1+b)}\frac{1+b}{1+b-2\lambda}\frac{d\mathcal{F}_{\rm NLL}}{dR_{\rm NLL}}\left[\int_{x_1}^1\frac{dz}{z}\left(P_{qk}(z)-\gamma^{(0)}_1\delta_{qk}\right)
-\frac{f_k\left(x_1/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{1},\mu_F v^{1/(1+b)})}
-+ \left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}
+\begin{align}
+	&\frac{\alpha_s(\mu_R)}{\pi}\delta\mathcal{F}^{\rm LTS}_{\mathrm{hc}}(v)+
+	\delta\Sigma_{\rm DGLAP}\nonumber\\
+	&\quad\simeq\frac{\alpha_s(\mu_R)}{\pi(1+b)}\frac{1+b}{1+b-2\lambda}\frac{d\mathcal{F}_{\rm NLL}}{dR_{\rm NLL}}\left[\int_{x_1}^1\frac{dz}{z}\left(P_{qk}(z)-\gamma^{(0)}_1\delta_{qk}\right)
+\frac{f_k\left(x_1/z,\mu_F v^{1/(1+b)}\right)}{f_{ q}(x_{1},\mu_F v^{1/(1+b)})}\right.\nonumber\\
+&\qquad\left.+ \left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}
 \right]\,.
-\end{multline}
+\end{align}
 This is equivalent to the \textsc{ARES} contribution
 $\delta\mathcal{F}_{\rm hc}$. This can be seen explicitly by evaluating
 Eq.~\eqref{eq:dFhc-ISR} for the additive observable,
-\begin{equation}
-	\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}=\frac{\alpha_s(Qv^{1/(1+b)})}{\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\sum_k \left[\int_{x_1}^1 \frac{dz}{z} \left(P_{qk}(z)-\gamma_1^{(0)}\delta_{qk}\right) \frac{f_k(x_{1}/z,Qv^{1/(a+b_\ell)})}{f_q(x_1,Qv^{1/(a+b_\ell)})}   +\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
-\end{equation}
+\begin{align}
+	&\frac{\alpha_s(Q)}{\pi}\delta\mathcal{F}_{\rm hc}={}\frac{\alpha_s(Qv^{1/(1+b)})}{\pi(1+b)}\frac{d\FNLL}{d\RpNLL}\nonumber\\
+	&\quad\times\sum_k \left[\int_{x_1}^1 \frac{dz}{z} \left(P_{qk}(z)-\gamma_1^{(0)}\delta_{qk}\right) \frac{f_k(x_{1}/z,Qv^{1/(a+b_\ell)})}{f_q(x_1,Qv^{1/(a+b_\ell)})}+\left\{\substack{x_1\leftrightarrow x_2\\[0.5ex] q\leftrightarrow\bar{q}}\right\}\right]\,.
+\end{align}
 This is exactly the combination of the DGLAP term with $\delta\mathcal{F}_{\rm hc}^{\rm LTS}$. Consequently, the
 additional DGLAP term introduced in
 Ref.~\cite{vanBeekveld:2025zjh} does not represent a new physical effect, but rather a different organisation of the hard-collinear corrections. Once all terms are combined, the resummed contributions due to ISR in the two formalisms are the same.
@@ -2018,18 +2038,17 @@ provide the process-specific hard coefficient required for phenomenological
 predictions, replacing the $H+\mathrm{jet}$ coefficient employed here, and
 complete the ingredients needed for matching the NNLL resummation to
 fixed-order calculations.
-Further interesting observables include the additive observable one minus transverse thrust and the
-non-additive thrust minor, the latter an out-of-plane observable, both
-sensitive to the spin-correlation effects derived in appendix~\ref{app:spin-correl}. 
+
+More generally, the ISR corrections derived in this chapter are given for a general rIRC-safe observable, and can therefore be applied directly to other observables. The simplest extension would be another additive observable, such as one minus transverse thrust, for which the NNLL corrections reduce to the analytic expressions of Appendix~\ref{ap:add-res-NNLL} and only the parametrisation of the observable for a single emission is required. Non-additive observables, such as thrust minor, instead require the general expressions to be evaluated numerically, as in the $e^+e^-$ case~\cite{Banfi:2014sua}. Both observables are also sensitive to the spin-correlation effects derived in Appendix~\ref{app:spin-correl}, with thrust minor, as an out-of-plane observable, providing a further test of these contributions.
+
+Similarly, the ISR corrections depend on the hard process only through the Born kinematics and the flavours of the incoming partons. Applications to other processes with three hard legs, such as $W$+jet or $H$+jet production, would therefore require only the corresponding process-specific hard coefficient. An
+extension to deep inelastic scattering should be comparatively
+straightforward, as this involves only a single incoming coloured leg. 
 The formalism could also be extended to N$^3$LL accuracy
 and to processes involving a larger number of hard coloured legs. The
 latter presents a significant challenge, since for
 $\ell\geq4$ the wide-angle corrections become matrices in colour space,
-substantially increasing the complexity of the calculation. An
-extension to deep inelastic scattering should be comparatively
-straightforward, as this involves only a single incoming coloured leg. 
-Applications to Higgs- or $W$-boson production would require a dedicated calculation 
-of the corresponding process-dependent hard functions.
+substantially increasing the complexity of the calculation.
 
 The broader motivation for this work is precision phenomenology at the LHC. A
 general NNLL resummation for hadronic collisions is particularly valuable
@@ -2039,3 +2058,5 @@ range, and offers a benchmark for validating parton-shower algorithms aiming
 at NNLL accuracy. The next steps towards phenomenological applications are 
 to match the resummation to fixed-order calculations, include hadronisation corrections, 
 and compare with experimental data to extract the value of the strong coupling.
+
+\correction{In the longer term, this work is a stepping stone towards a general, automated NNLL resummation. At NLL, such automation is already provided by \textsc{CAESAR}~\cite{Banfi:2004yd}, which resums a broad class of observables in $e^+e^-$, DIS and hadronic collisions without a dedicated calculation for each. At NNLL, the \textsc{ARES} formalism~\cite{Banfi:2014sua,Banfi:2018mcq,Arpino:2019ozn} provides the analogous framework, but until now had been developed only for $e^+e^-$ annihilation. The missing ingredient for collisions involving incoming hadrons was the treatment of initial-state radiation, which this chapter provides for a general observable. Together with the process-specific hard coefficients and the extension to more hard legs discussed above, this would allow \textsc{ARES} to play the role of \textsc{CAESAR} at NNLL. Such a framework would be useful to the wider community, providing NNLL predictions for new observables without a dedicated resummation for each, and will be particularly valuable at the High-Luminosity LHC, where the reduced experimental uncertainties will require NNLL accuracy for a wide range of observables.}
